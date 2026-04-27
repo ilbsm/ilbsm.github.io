@@ -586,7 +586,7 @@
     if(el) el.classList.add('active');
   }
 
-  document.querySelectorAll('nav a').forEach(a => a.addEventListener('click', e => e.preventDefault()));
+  //document.querySelectorAll('nav a').forEach(a => a.addEventListener('click', e => e.preventDefault()));
 
   function galTab(name, btn) {
     document.querySelectorAll('.gal-tab').forEach(b => b.classList.remove('active'));
@@ -652,6 +652,7 @@ window.show = function(name) {
     media:        '/media/',
     contact:      '/contact/'
   };
+  console.log('show ' + name);
   if (!(name in map)) return false;
   var base = window.SITE_BASEURL || '';
   window.location.href = base + map[name];
