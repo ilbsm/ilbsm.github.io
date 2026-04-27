@@ -1,0 +1,326 @@
+---
+layout: default
+title: "Projects & Software — Sulkowska Lab"
+description: "Projects, databases, and software developed by the Sulkowska Lab."
+permalink: /research/
+---
+
+<div id="page-research" class="page active">
+<div class="cw">
+
+  <h2 class="sec-title">Projects &amp; Software</h2>
+  <p style="color:#555;font-size:0.91rem;margin-bottom:1.8rem;max-width:680px">
+    All tools developed by the Sulkowska Lab are freely available online. Click any card to open the tool directly.
+  </p>
+
+  <!-- FILTER TABS -->
+  <div class="sw-tabs">
+    <button class="sw-tab active" onclick="swFilter('all',this)">All Tools</button>
+    <button class="sw-tab" onclick="swFilter('database',this)">Databases</button>
+    <button class="sw-tab" onclick="swFilter('server',this)">Web Servers</button>
+    <button class="sw-tab" onclick="swFilter('plugin',this)">Plugins &amp; Packages</button>
+    <button class="sw-tab" onclick="swFilter('prediction',this)">Structure Prediction</button>
+    <button class="sw-tab" onclick="swFilter('chromatin',this)">Chromatin &amp; Genome</button>
+  </div>
+
+  <!-- ── TOPOLOGY DATABASES ── -->
+  <div class="sw-section-label">
+    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#1a73e8" stroke-width="2" stroke-linecap="round"><ellipse cx="12" cy="5" rx="9" ry="3"/><path d="M21 12c0 1.66-4 3-9 3s-9-1.34-9-3"/><path d="M3 5v14c0 1.66 4 3 9 3s9-1.34 9-3V5"/></svg>
+    Protein Topology — Databases &amp; Servers
+  </div>
+  <div class="sw-grid">
+
+    <a class="sw-card" href="http://alphaknot.cent.uw.edu.pl" target="_blank" data-cat="database server">
+      <div class="sw-img-wrap">
+        <img src="https://jsulkowska.cent.uw.edu.pl/wp-content/uploads/2016/05/knot63.png" alt="AlphaKnot"/>
+        <div class="sw-img-overlay">
+          <span class="sw-img-badge sw-badge-new">AlphaFold</span>
+        </div>
+      </div>
+      <div class="sw-card-body">
+        <div class="sw-card-name">AlphaKnot 2.0</div>
+        <div class="sw-card-desc">Database &amp; webserver for entanglement analysis in AlphaFold-predicted protein models. Detects knots, slipknots and knotoids at proteome scale.</div>
+        <div class="sw-card-link">alphaknot.cent.uw.edu.pl →</div>
+      </div>
+    </a>
+
+    <a class="sw-card" href="http://alphalasso.cent.uw.edu.pl" target="_blank" data-cat="database server">
+      <div class="sw-img-wrap">
+        <img src="https://jsulkowska.cent.uw.edu.pl/wp-content/uploads/2016/05/cropped.png" alt="AlphaLasso"/>
+        <div class="sw-img-overlay">
+          <span class="sw-img-badge sw-badge-new">AlphaFold</span>
+        </div>
+      </div>
+      <div class="sw-card-body">
+        <div class="sw-card-name">AlphaLasso</div>
+        <div class="sw-card-desc">Server and database of proteins with lasso-type motifs found in AlphaFold models. Classifies loop and lasso topology in 3D biopolymer structures.</div>
+        <div class="sw-card-link">alphalasso.cent.uw.edu.pl →</div>
+      </div>
+    </a>
+
+    <a class="sw-card" href="http://knotprot.cent.uw.edu.pl" target="_blank" data-cat="database">
+      <div class="sw-img-wrap">
+        <img src="https://jsulkowska.cent.uw.edu.pl/wp-content/uploads/2016/05/knotprot.jpg" alt="KnotProt"/>
+      </div>
+      <div class="sw-card-body">
+        <div class="sw-card-name">KnotProt 2.0</div>
+        <div class="sw-card-desc">Comprehensive database of proteins with knots, slipknots and knotoids from the PDB. The original reference resource for knotted protein structures.</div>
+        <div class="sw-card-link">knotprot.cent.uw.edu.pl →</div>
+      </div>
+    </a>
+
+    <a class="sw-card" href="http://lassoprot.cent.uw.edu.pl" target="_blank" data-cat="database server">
+      <div class="sw-img-wrap">
+        <img src="https://jsulkowska.cent.uw.edu.pl/wp-content/uploads/2016/05/lassoprot.jpg" alt="LassoProt"/>
+      </div>
+      <div class="sw-card-body">
+        <div class="sw-card-name">LassoProt</div>
+        <div class="sw-card-desc">Server and database of proteins with lasso motifs — covalent loops whose tail threads through the loop, classified by piercing number.</div>
+        <div class="sw-card-link">lassoprot.cent.uw.edu.pl →</div>
+      </div>
+    </a>
+
+    <a class="sw-card" href="http://linkprot.cent.uw.edu.pl" target="_blank" data-cat="database">
+      <div class="sw-img-wrap">
+        <img src="http://linkprot.cent.uw.edu.pl/static/img/gallery_Fig4.png" alt="LinkProt"/>
+      </div>
+      <div class="sw-card-body">
+        <div class="sw-card-name">LinkProt</div>
+        <div class="sw-card-desc">Database of proteins with topological links — pairs of closed loops that are topologically entangled in protein structures.</div>
+        <div class="sw-card-link">linkprot.cent.uw.edu.pl →</div>
+      </div>
+    </a>
+
+  </div>
+
+  <!-- ── PLUGINS & PACKAGES ── -->
+  <div class="sw-section-label">
+    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#9c27b0" stroke-width="2" stroke-linecap="round"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/></svg>
+    Topology Identification — Plugins &amp; Packages
+  </div>
+  <div class="sw-grid">
+
+    <a class="sw-card" href="http://pylasso.cent.uw.edu.pl" target="_blank" data-cat="plugin">
+      <div class="sw-img-wrap sw-img-dark">
+        <img src="http://pylasso.cent.uw.edu.pl/pics/introduction_prot.png" alt="PyLasso"/>
+        <div class="sw-img-overlay">
+          <span class="sw-img-badge" style="background:#7b1fa2">Plugin</span>
+        </div>
+      </div>
+      <div class="sw-card-body">
+        <div class="sw-card-name">PyLasso</div>
+        <div class="sw-card-desc">PyMOL/VMD plugin to detect lasso motifs in protein structures and analyze their geometric properties with 3D visualization.</div>
+        <div class="sw-card-link">pylasso.cent.uw.edu.pl →</div>
+      </div>
+    </a>
+
+    <a class="sw-card" href="http://pylink.cent.uw.edu.pl" target="_blank" data-cat="plugin">
+      <div class="sw-img-wrap sw-img-dark">
+        <img src="https://jsulkowska.cent.uw.edu.pl/wp-content/uploads/2016/05/carousel_3sumABCD.png" alt="PyLink"/>
+        <div class="sw-img-overlay">
+          <span class="sw-img-badge" style="background:#6a1b9a">Plugin</span>
+        </div>
+      </div>
+      <div class="sw-card-body">
+        <div class="sw-card-name">PyLink</div>
+        <div class="sw-card-desc">PyMOL plugin to identify and visualize topological links in protein structures using link invariants.</div>
+        <div class="sw-card-link">pylink.cent.uw.edu.pl →</div>
+      </div>
+    </a>
+
+    <a class="sw-card" href="https://github.com/dzarmola/knot_pull" target="_blank" data-cat="plugin">
+      <div class="sw-img-wrap">
+        <img src="https://jsulkowska.cent.uw.edu.pl/wp-content/uploads/2016/05/knotpull.jpg" alt="Knot_pull"/>
+        <div class="sw-img-overlay">
+          <span class="sw-img-badge" style="background:#24292e">GitHub</span>
+        </div>
+      </div>
+      <div class="sw-card-body">
+        <div class="sw-card-name">Knot_pull</div>
+        <div class="sw-card-desc">Python package for biopolymer smoothing and knot detection via iterative chain-pulling algorithm. Simplifies and classifies topology.</div>
+        <div class="sw-card-link">github.com/dzarmola/knot_pull →</div>
+      </div>
+    </a>
+
+    <a class="sw-card" href="http://topoly.cent.uw.edu.pl" target="_blank" data-cat="plugin">
+      <div class="sw-img-wrap" style="background:#f8f8f8">
+        <img src="https://jsulkowska.cent.uw.edu.pl/wp-content/uploads/2016/05/knotpull.jpg" alt="Topoly" style="opacity:0.15"/>
+        <div class="sw-img-text-center">
+          <span style="font-size:2.8rem;font-weight:900;color:#5e35b1;font-family:'Merriweather',serif;letter-spacing:-2px">Topoly</span>
+        </div>
+        <div class="sw-img-overlay">
+          <span class="sw-img-badge" style="background:#5e35b1">Package</span>
+        </div>
+      </div>
+      <div class="sw-card-body">
+        <div class="sw-card-name">Topoly</div>
+        <div class="sw-card-desc">Python package for analyzing topology of polymers — computes knot and link invariants (Alexander, Jones, HOMFLY) for protein and polymer chains.</div>
+        <div class="sw-card-link">topoly.cent.uw.edu.pl →</div>
+      </div>
+    </a>
+
+  </div>
+
+  <!-- ── MECHANICAL PROPERTIES ── -->
+  <div class="sw-section-label">
+    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#e65100" stroke-width="2" stroke-linecap="round"><path d="M18 20V10"/><path d="M12 20V4"/><path d="M6 20v-6"/></svg>
+    Mechanical Properties
+  </div>
+  <div class="sw-grid">
+
+    <a class="sw-card" href="http://jowisz.ifpan.edu.pl/BSDB/" target="_blank" data-cat="database">
+      <div class="sw-img-wrap" style="background:#f0f0f0">
+        <img src="https://jsulkowska.cent.uw.edu.pl/wp-content/uploads/2016/05/stretch-512x107.png" alt="BSDB" style="object-fit:contain;background:#f0f0f0"/>
+      </div>
+      <div class="sw-card-body">
+        <div class="sw-card-name">BSDB — Bio-molecule Stretching Database</div>
+        <div class="sw-card-desc">Database of mechanical stretching of biomolecules. Force-extension data from coarse-grained simulations of proteins under mechanical force.</div>
+        <div class="sw-card-link">jowisz.ifpan.edu.pl/BSDB →</div>
+      </div>
+    </a>
+
+  </div>
+
+  <!-- ── STRUCTURE PREDICTION ── -->
+  <div class="sw-section-label">
+    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#2e7d32" stroke-width="2" stroke-linecap="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+    Structure Prediction — Co-evolution Methods
+  </div>
+  <div class="sw-grid">
+
+    <a class="sw-card" href="http://dca-mol.cent.uw.edu.pl" target="_blank" data-cat="prediction server">
+      <div class="sw-img-wrap" style="background:#f8f8f8">
+        <img src="https://jsulkowska.cent.uw.edu.pl/wp-content/uploads/2016/05/dcamol.png" alt="DCA-mol" style="object-fit:contain;background:#f8f8f8"/>
+        <div class="sw-img-overlay">
+          <span class="sw-img-badge" style="background:#388e3c">Server</span>
+        </div>
+      </div>
+      <div class="sw-card-body">
+        <div class="sw-card-name">DCA-mol</div>
+        <div class="sw-card-desc">Plugin to analyze direct evolutionary couplings. Uses coevolutionary information from multiple sequence alignments for structure prediction.</div>
+        <div class="sw-card-link">dca-mol.cent.uw.edu.pl →</div>
+      </div>
+    </a>
+
+    <a class="sw-card" href="http://pconsfam.bioinfo.se/" target="_blank" data-cat="prediction database">
+      <div class="sw-img-wrap" style="background:#fff">
+        <img src="http://pconsfam.bioinfo.se/static/images/pconsfam_logo_trans.png" alt="PconsFam" style="object-fit:contain;background:#fff"/>
+      </div>
+      <div class="sw-card-body">
+        <div class="sw-card-name">PconsFam</div>
+        <div class="sw-card-desc">Database of Pfam protein families modelled using PconsFold2 — contact-assisted structure prediction for thousands of protein families.</div>
+        <div class="sw-card-link">pconsfam.bioinfo.se →</div>
+      </div>
+    </a>
+
+    <a class="sw-card" href="http://gaprepairer.cent.uw.edu.pl" target="_blank" data-cat="server prediction">
+      <div class="sw-img-wrap">
+        <img src="https://jsulkowska.cent.uw.edu.pl/wp-content/uploads/2016/05/gaprepairer.jpg" alt="GapRepairer"/>
+        <div class="sw-img-overlay">
+          <span class="sw-img-badge" style="background:#558b2f">Server</span>
+        </div>
+      </div>
+      <div class="sw-card-body">
+        <div class="sw-card-name">GapRepairer</div>
+        <div class="sw-card-desc">Server for automatic reconstruction of missing backbone fragments in protein models. Fills gaps in PDB structures using statistical methods.</div>
+        <div class="sw-card-link">gaprepairer.cent.uw.edu.pl →</div>
+      </div>
+    </a>
+
+  </div>
+
+  <!-- ── CHROMATIN & GENOME ── -->
+  <div class="sw-section-label">
+    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#c62828" stroke-width="2" stroke-linecap="round"><path d="M21 3H3v7a6 6 0 0 0 12 0V3"/><path d="M6 21v-4a6 6 0 0 1 12 0v4"/></svg>
+    Chromatin &amp; Genome Topology
+  </div>
+  <div class="sw-grid">
+
+    <a class="sw-card" href="http://knotgenom.cent.uw.edu.pl" target="_blank" data-cat="chromatin database server">
+      <div class="sw-img-wrap">
+        <img src="https://knotgenom.cent.uw.edu.pl/static/img/help_figs/intro_fig1.jpg" alt="KnotGenome"/>
+        <div class="sw-img-overlay">
+          <span class="sw-img-badge" style="background:#c62828">Server</span>
+        </div>
+      </div>
+      <div class="sw-card-body">
+        <div class="sw-card-name">KnotGenome</div>
+        <div class="sw-card-desc">Server to detect entanglement in and between chromosomes. Identifies knots and links in chromatin fiber topology from polymer models.</div>
+        <div class="sw-card-link">knotgenom.cent.uw.edu.pl →</div>
+      </div>
+    </a>
+
+  </div>
+
+  <!-- ── GENUS ── -->
+  <div class="sw-section-label">
+    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#4527a0" stroke-width="2" stroke-linecap="round"><path d="M12 2L2 7l10 5 10-5-10-5z"/><path d="M2 17l10 5 10-5"/><path d="M2 12l10 5 10-5"/></svg>
+    Biomolecular Complexity — Genus
+  </div>
+  <div class="sw-grid">
+
+    <a class="sw-card" href="http://genus.fuw.edu.pl" target="_blank" data-cat="database server">
+      <div class="sw-img-wrap" style="background:#f0f4ff">
+        <img src="https://jsulkowska.cent.uw.edu.pl/wp-content/uploads/2016/05/genus_logo_wieksze.png" alt="Genus" style="object-fit:contain;background:#f0f4ff"/>
+      </div>
+      <div class="sw-card-body">
+        <div class="sw-card-name">Genus for Biomolecules</div>
+        <div class="sw-card-desc">Database and server for genus characteristics of proteins and RNA chains. Uses minimal surface theory to quantify topological complexity.</div>
+        <div class="sw-card-link">genus.fuw.edu.pl →</div>
+      </div>
+    </a>
+
+  </div>
+
+  <!-- ── COMPUTING ── -->
+  <div class="sw-section-label">
+    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#37474f" stroke-width="2" stroke-linecap="round"><rect x="2" y="2" width="20" height="8" rx="2"/><rect x="2" y="14" width="20" height="8" rx="2"/><line x1="6" y1="6" x2="6.01" y2="6"/><line x1="6" y1="18" x2="6.01" y2="18"/></svg>
+    Computing Infrastructure
+  </div>
+  <div class="sw-grid">
+
+    <a class="sw-card" href="https://horda.cent.uw.edu.pl" target="_blank" data-cat="server">
+      <div class="sw-img-wrap" style="background:#1c313a;display:flex;align-items:center;justify-content:center">
+        <div style="text-align:center">
+          <div style="font-size:2rem;font-weight:900;color:#fff;letter-spacing:-1px;font-family:'Merriweather',serif">HORDA</div>
+          <div style="font-size:0.72rem;color:rgba(255,255,255,0.45);letter-spacing:0.15em;text-transform:uppercase;margin-top:0.2rem">HPC Cluster · CeNT UW</div>
+        </div>
+      </div>
+      <div class="sw-card-body">
+        <div class="sw-card-name">Horda Cluster</div>
+        <div class="sw-card-desc">HORDA high-performance computing cluster at CeNT, University of Warsaw — Sulkowska Lab's HPC resource for large-scale topology simulations.</div>
+        <div class="sw-card-link">horda.cent.uw.edu.pl →</div>
+      </div>
+    </a>
+
+    <a class="sw-card" href="https://cent.uw.edu.pl" target="_blank" data-cat="server">
+      <div class="sw-img-wrap" style="background:#263238;display:flex;align-items:center;justify-content:center">
+        <div style="text-align:center">
+          <div style="font-size:2rem;font-weight:900;color:#fff;letter-spacing:-1px;font-family:Arial">C<span style="color:#4fc3f7;font-size:0.8em">e</span>NT</div>
+          <div style="font-size:0.72rem;color:rgba(255,255,255,0.45);letter-spacing:0.15em;text-transform:uppercase;margin-top:0.2rem">LSSCB Cluster</div>
+        </div>
+      </div>
+      <div class="sw-card-body">
+        <div class="sw-card-name">LSSCB Cluster</div>
+        <div class="sw-card-desc">LSSCB computing cluster at CeNT, University of Warsaw (Bartosz Trzaskowski's Group) — shared HPC infrastructure for structural bioinformatics.</div>
+        <div class="sw-card-link">cent.uw.edu.pl →</div>
+      </div>
+    </a>
+
+  </div>
+
+  <!-- Important Links -->
+  <div style="margin-top:2.5rem;padding:1.2rem 1.4rem;background:#f5f5f5;border-radius:10px;border:1px solid #e8e8e8">
+    <h3 class="sub-title" style="margin-top:0;margin-bottom:0.8rem">Important Links</h3>
+    <div style="display:flex;flex-wrap:wrap;gap:0.6rem">
+      <a href="https://jsulkowska.cent.uw.edu.pl" target="_blank" class="sw-link-pill">Our Lab Website</a>
+      <a href="https://jsulkowska.cent.uw.edu.pl/topics/collaboration/" target="_blank" class="sw-link-pill">Collaborators</a>
+      <a href="https://www.cent.uw.edu.pl" target="_blank" class="sw-link-pill">CeNT, University of Warsaw</a>
+      <a href="https://scholar.google.com/citations?user=_LNjYQcAAAAJ" target="_blank" class="sw-link-pill">Google Scholar</a>
+      <a href="https://github.com/ilbsm" target="_blank" class="sw-link-pill">GitHub: @ilbsm</a>
+      <a href="https://www.researchgate.net/profile/Joanna-Sulkowska" target="_blank" class="sw-link-pill">ResearchGate</a>
+    </div>
+  </div>
+
+</div>
+</div>

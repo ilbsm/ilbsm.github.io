@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en">
+{% include head.html %}
+<body>
+
+  {% include slideshow.html %}
+  {% include nav.html %}
+
+  <!-- Active page content (each page has class="page active" so it renders) -->
+  {{ content }}
+
+  {% include footer.html %}
+
+  <!-- Custom JS (extracted from original index.html) + Jekyll routing shim -->
+  <script>window.SITE_BASEURL = "{{ site.baseurl }}";</script>
+  <script src="{{ '/assets/js/sulkowska.js' | relative_url }}"></script>
+</body>
+</html>

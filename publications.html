@@ -1,0 +1,57 @@
+---
+layout: default
+title: "Publications — Sulkowska Lab"
+description: "Publications by the Sulkowska Lab — fetched live from OpenAlex."
+permalink: /publications/
+---
+
+<div id="page-publications" class="page active pub-page">
+
+  <!-- Header -->
+  <div class="pub-hero">
+    <div class="pub-hero-inner">
+      <div class="pub-hero-eyebrow">Research Output</div>
+      <h2 class="pub-hero-title">Publications</h2>
+      <p class="pub-hero-sub">Live database of all publications by Prof. Joanna I. Sulkowska, fetched directly from OpenAlex. Sort, search, and filter by year or journal.</p>
+      <div class="pub-stats" id="pub-stats">
+        <div class="ps-item"><div class="ps-n" id="ps-count">—</div><div class="ps-l">Publications</div></div>
+        <div class="ps-item"><div class="ps-n" id="ps-cites">—</div><div class="ps-l">Citations</div></div>
+        <div class="ps-item"><div class="ps-n" id="ps-h">—</div><div class="ps-l">h-index</div></div>
+        <div class="ps-item">
+          <div class="ps-live"><span class="ps-dot"></span> Live</div>
+          <div class="ps-l">via OpenAlex</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Controls -->
+  <div class="pub-controls">
+    <div class="pub-search">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#888" stroke-width="2"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+      <input type="text" id="pub-search-input" placeholder="Search by title, author, or keyword..." oninput="pubFilter()"/>
+    </div>
+    <div class="pub-sort">
+      <label>Sort:</label>
+      <select id="pub-sort-select" onchange="pubFilter()">
+        <option value="cites">Most cited</option>
+        <option value="year-desc">Newest first</option>
+        <option value="year-asc">Oldest first</option>
+      </select>
+    </div>
+    <a class="pub-scholar" href="https://scholar.google.com/citations?user=BVBwiyAAAAAJ" target="_blank">
+      Google Scholar ↗
+    </a>
+  </div>
+
+  <!-- Results -->
+  <div class="pub-content">
+    <div id="pub-loading" class="pub-loading">
+      <div class="pub-spinner"></div>
+      <div>Loading publications from OpenAlex…</div>
+    </div>
+    <div id="pub-list" class="pub-list" style="display:none"></div>
+    <div id="pub-error" class="pub-error" style="display:none"></div>
+  </div>
+
+</div>

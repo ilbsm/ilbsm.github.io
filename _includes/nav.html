@@ -1,0 +1,12 @@
+<nav>
+  <div class="nav-inner">
+    <a href="{{ '/'              | relative_url }}" id="n-home"         {% if page.url == '/'              %}class="active"{% endif %}>Home</a>
+    <a href="{{ '/group/'         | relative_url }}" id="n-group"        {% if page.url contains '/group/'         %}class="active"{% endif %}>Group</a>
+    <a href="{{ '/topics/'        | relative_url }}" id="n-topics"       {% if page.url contains '/topics/'        %}class="active"{% endif %}>Research</a>
+    <a href="{{ '/collaboration/' | relative_url }}" id="n-collab"       {% if page.url contains '/collaboration/' %}class="active"{% endif %}>Collaboration</a>
+    <a href="{{ '/research/'      | relative_url }}" id="n-research"     {% if page.url contains '/research/'      %}class="active"{% endif %}>Projects &amp; Software</a>
+    <a href="{{ '/publications/'  | relative_url }}" id="n-publications" {% if page.url contains '/publications/'  %}class="active"{% endif %}>Publications</a>
+    <a href="{{ '/media/'         | relative_url }}" id="n-media"        {% if page.url contains '/media/'         %}class="active"{% endif %}>Media</a>
+    <a href="{{ '/contact/'       | relative_url }}" id="n-contact"      {% if page.url contains '/contact/'       %}class="active"{% endif %}>Contact</a>
+  </div>
+</nav>

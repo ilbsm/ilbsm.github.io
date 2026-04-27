@@ -1,0 +1,661 @@
+---
+layout: default
+title: "Media — Sulkowska Lab"
+description: "Press, media, public talks, and gallery — Sulkowska Lab."
+permalink: /media/
+---
+
+<div id="page-media" class="page active med-page">
+
+  <!-- ═══ HORIZONTAL PILL NAV ═══ -->
+  <div class="med-nav">
+    <div class="med-nav-inner">
+      <button class="med-pill active" data-target="ms-gallery" onclick="medScroll('ms-gallery',this)">
+        <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg>
+        Gallery
+      </button>
+      <button class="med-pill" data-target="ms-videos" onclick="medScroll('ms-videos',this)">
+        <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><polygon points="23 7 16 12 23 17 23 7"/><rect x="1" y="5" width="15" height="14" rx="2"/></svg>
+        Videos
+      </button>
+      <button class="med-pill" data-target="ms-tv" onclick="medScroll('ms-tv',this)">
+        <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><rect x="2" y="7" width="20" height="15" rx="2"/><polyline points="17 2 12 7 7 2"/></svg>
+        TV
+      </button>
+      <button class="med-pill" data-target="ms-radio" onclick="medScroll('ms-radio',this)">
+        <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M3 18v-6a9 9 0 0 1 18 0v6"/><path d="M21 19a2 2 0 0 1-2 2h-1a2 2 0 0 1-2-2v-3a2 2 0 0 1 2-2h3zM3 19a2 2 0 0 0 2 2h1a2 2 0 0 0 2-2v-3a2 2 0 0 0-2-2H3z"/></svg>
+        Radio
+      </button>
+      <button class="med-pill" data-target="ms-interviews" onclick="medScroll('ms-interviews',this)">
+        <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/></svg>
+        Interviews
+      </button>
+      <button class="med-pill" data-target="ms-press" onclick="medScroll('ms-press',this)">
+        <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/></svg>
+        Press
+      </button>
+      <button class="med-pill" data-target="ms-talks" onclick="medScroll('ms-talks',this)">
+        <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+        Public Talks
+      </button>
+    </div>
+  </div>
+
+  <!-- ═══ GALLERY ═══ -->
+  <div id="ms-gallery" class="med-sec med-sec-gallery">
+    <div class="med-sec-header">
+      <div>
+        <div class="med-eyebrow">Pictures</div>
+        <h2 class="med-title">Lab Gallery</h2>
+        <p class="med-subtitle">Browse photos from lab life, conferences, and science outreach. Click any image to open full-size.</p>
+      </div>
+      <!-- Category filter pills -->
+      <div class="med-filter-pills">
+        <button class="med-fpill active" onclick="mgCat('all',this)">All</button>
+        <button class="med-fpill" onclick="mgCat('group',this)">Member &amp; Group</button>
+        <button class="med-fpill" onclick="mgCat('conf',this)">Conferences</button>
+        <button class="med-fpill" onclick="mgCat('ourconf',this)">Our Events</button>
+        <button class="med-fpill" onclick="mgCat('kfnd',this)">Children's Fund</button>
+      </div>
+    </div>
+    <div class="med-gallery-grid" id="mg-grid">
+<div class="mg-item" data-cat="group" onclick="mgOpen('https://i.imgur.com/72eECOe.jpeg','Lab members — group photo')">
+          <img src="https://i.imgur.com/72eECOe.jpeg" alt="Lab members — group photo" loading="lazy" onerror="this.closest('.mg-item').style.display='none'"/>
+          <div class="mg-caption">Lab members — group photo</div>
+        </div>
+<div class="mg-item" data-cat="group" onclick="mgOpen('https://i.imgur.com/bg6fQOH.jpeg','Lab gathering')">
+          <img src="https://i.imgur.com/bg6fQOH.jpeg" alt="Lab gathering" loading="lazy" onerror="this.closest('.mg-item').style.display='none'"/>
+          <div class="mg-caption">Lab gathering</div>
+        </div>
+<div class="mg-item" data-cat="group" onclick="mgOpen('https://i.imgur.com/Yf5CkxL.jpeg','Lab meeting')">
+          <img src="https://i.imgur.com/Yf5CkxL.jpeg" alt="Lab meeting" loading="lazy" onerror="this.closest('.mg-item').style.display='none'"/>
+          <div class="mg-caption">Lab meeting</div>
+        </div>
+<div class="mg-item" data-cat="group" onclick="mgOpen('https://i.imgur.com/FBUwdRU.jpeg','Team at CeNT')">
+          <img src="https://i.imgur.com/FBUwdRU.jpeg" alt="Team at CeNT" loading="lazy" onerror="this.closest('.mg-item').style.display='none'"/>
+          <div class="mg-caption">Team at CeNT</div>
+        </div>
+<div class="mg-item" data-cat="group" onclick="mgOpen('https://i.imgur.com/upIza2H.jpeg','Lab members')">
+          <img src="https://i.imgur.com/upIza2H.jpeg" alt="Lab members" loading="lazy" onerror="this.closest('.mg-item').style.display='none'"/>
+          <div class="mg-caption">Lab members</div>
+        </div>
+<div class="mg-item" data-cat="group" onclick="mgOpen('https://i.imgur.com/gCyo6II.jpeg','Lab at work')">
+          <img src="https://i.imgur.com/gCyo6II.jpeg" alt="Lab at work" loading="lazy" onerror="this.closest('.mg-item').style.display='none'"/>
+          <div class="mg-caption">Lab at work</div>
+        </div>
+<div class="mg-item" data-cat="group" onclick="mgOpen('https://i.imgur.com/BU3fzaK.jpeg','Research discussion')">
+          <img src="https://i.imgur.com/BU3fzaK.jpeg" alt="Research discussion" loading="lazy" onerror="this.closest('.mg-item').style.display='none'"/>
+          <div class="mg-caption">Research discussion</div>
+        </div>
+<div class="mg-item" data-cat="group" onclick="mgOpen('https://i.imgur.com/Ftc6Frx.jpeg','Lab social event')">
+          <img src="https://i.imgur.com/Ftc6Frx.jpeg" alt="Lab social event" loading="lazy" onerror="this.closest('.mg-item').style.display='none'"/>
+          <div class="mg-caption">Lab social event</div>
+        </div>
+<div class="mg-item" data-cat="group" onclick="mgOpen('https://i.imgur.com/KOV9l7B.png','Adam Stasiulewicz PhD defense')">
+          <img src="https://i.imgur.com/KOV9l7B.png" alt="Adam Stasiulewicz PhD defense" loading="lazy" onerror="this.closest('.mg-item').style.display='none'"/>
+          <div class="mg-caption">Adam Stasiulewicz PhD defense</div>
+        </div>
+<div class="mg-item" data-cat="group" onclick="mgOpen('https://i.imgur.com/3h9RGF1.jpeg','Group photo outdoors')">
+          <img src="https://i.imgur.com/3h9RGF1.jpeg" alt="Group photo outdoors" loading="lazy" onerror="this.closest('.mg-item').style.display='none'"/>
+          <div class="mg-caption">Group photo outdoors</div>
+        </div>
+<div class="mg-item" data-cat="group" onclick="mgOpen('https://i.imgur.com/7Z1NE9M.jpeg','Lab meeting — Teatr Nowy')">
+          <img src="https://i.imgur.com/7Z1NE9M.jpeg" alt="Lab meeting — Teatr Nowy" loading="lazy" onerror="this.closest('.mg-item').style.display='none'"/>
+          <div class="mg-caption">Lab meeting — Teatr Nowy</div>
+        </div>
+<div class="mg-item" data-cat="group" onclick="mgOpen('https://i.imgur.com/GzPEZ6J.jpeg','TrmD inhibitors — wet lab')">
+          <img src="https://i.imgur.com/GzPEZ6J.jpeg" alt="TrmD inhibitors — wet lab" loading="lazy" onerror="this.closest('.mg-item').style.display='none'"/>
+          <div class="mg-caption">TrmD inhibitors — wet lab</div>
+        </div>
+<div class="mg-item" data-cat="group" onclick="mgOpen('https://i.imgur.com/iwDwR4k.jpeg','Lab life — miscellaneous')">
+          <img src="https://i.imgur.com/iwDwR4k.jpeg" alt="Lab life — miscellaneous" loading="lazy" onerror="this.closest('.mg-item').style.display='none'"/>
+          <div class="mg-caption">Lab life — miscellaneous</div>
+        </div>
+<div class="mg-item" data-cat="group" onclick="mgOpen('https://i.imgur.com/FXLBMFD.jpeg','Lab celebration')">
+          <img src="https://i.imgur.com/FXLBMFD.jpeg" alt="Lab celebration" loading="lazy" onerror="this.closest('.mg-item').style.display='none'"/>
+          <div class="mg-caption">Lab celebration</div>
+        </div>
+<div class="mg-item" data-cat="group" onclick="mgOpen('https://i.imgur.com/2s3arOZ.jpeg','Team social event')">
+          <img src="https://i.imgur.com/2s3arOZ.jpeg" alt="Team social event" loading="lazy" onerror="this.closest('.mg-item').style.display='none'"/>
+          <div class="mg-caption">Team social event</div>
+        </div>
+<div class="mg-item" data-cat="group" onclick="mgOpen('https://i.imgur.com/uHnbEK3.jpeg','Lab members')">
+          <img src="https://i.imgur.com/uHnbEK3.jpeg" alt="Lab members" loading="lazy" onerror="this.closest('.mg-item').style.display='none'"/>
+          <div class="mg-caption">Lab members</div>
+        </div>
+<div class="mg-item" data-cat="group" onclick="mgOpen('https://i.imgur.com/8zPFRK2.jpeg','Group photo')">
+          <img src="https://i.imgur.com/8zPFRK2.jpeg" alt="Group photo" loading="lazy" onerror="this.closest('.mg-item').style.display='none'"/>
+          <div class="mg-caption">Group photo</div>
+        </div>
+<div class="mg-item" data-cat="group" onclick="mgOpen('https://i.imgur.com/boOgt0G.jpeg','Group outing')">
+          <img src="https://i.imgur.com/boOgt0G.jpeg" alt="Group outing" loading="lazy" onerror="this.closest('.mg-item').style.display='none'"/>
+          <div class="mg-caption">Group outing</div>
+        </div>
+<div class="mg-item" data-cat="group" onclick="mgOpen('https://i.imgur.com/D8f81Pn.jpeg','Lab social')">
+          <img src="https://i.imgur.com/D8f81Pn.jpeg" alt="Lab social" loading="lazy" onerror="this.closest('.mg-item').style.display='none'"/>
+          <div class="mg-caption">Lab social</div>
+        </div>
+<div class="mg-item" data-cat="group" onclick="mgOpen('https://i.imgur.com/wse8hJq.jpeg','Team')">
+          <img src="https://i.imgur.com/wse8hJq.jpeg" alt="Team" loading="lazy" onerror="this.closest('.mg-item').style.display='none'"/>
+          <div class="mg-caption">Team</div>
+        </div>
+<div class="mg-item" data-cat="conf" onclick="mgOpen('https://i.imgur.com/leXzRKe.jpeg','San Sebastián — Eutopia-2')">
+          <img src="https://i.imgur.com/leXzRKe.jpeg" alt="San Sebastián — Eutopia-2" loading="lazy" onerror="this.closest('.mg-item').style.display='none'"/>
+          <div class="mg-caption">San Sebastián — Eutopia-2</div>
+        </div>
+<div class="mg-item" data-cat="conf" onclick="mgOpen('https://i.imgur.com/e8qGQU5.jpeg','Conference presentation')">
+          <img src="https://i.imgur.com/e8qGQU5.jpeg" alt="Conference presentation" loading="lazy" onerror="this.closest('.mg-item').style.display='none'"/>
+          <div class="mg-caption">Conference presentation</div>
+        </div>
+<div class="mg-item" data-cat="conf" onclick="mgOpen('https://i.imgur.com/azVpQn2.jpeg','Bulgaria workshop 2021')">
+          <img src="https://i.imgur.com/azVpQn2.jpeg" alt="Bulgaria workshop 2021" loading="lazy" onerror="this.closest('.mg-item').style.display='none'"/>
+          <div class="mg-caption">Bulgaria workshop 2021</div>
+        </div>
+<div class="mg-item" data-cat="conf" onclick="mgOpen('https://i.imgur.com/M3R6KRy.jpeg','International conference')">
+          <img src="https://i.imgur.com/M3R6KRy.jpeg" alt="International conference" loading="lazy" onerror="this.closest('.mg-item').style.display='none'"/>
+          <div class="mg-caption">International conference</div>
+        </div>
+<div class="mg-item" data-cat="conf" onclick="mgOpen('https://i.imgur.com/2a8mLXc.jpeg','Conference talk')">
+          <img src="https://i.imgur.com/2a8mLXc.jpeg" alt="Conference talk" loading="lazy" onerror="this.closest('.mg-item').style.display='none'"/>
+          <div class="mg-caption">Conference talk</div>
+        </div>
+<div class="mg-item" data-cat="conf" onclick="mgOpen('https://i.imgur.com/X1AHi2f.jpeg','Poster session')">
+          <img src="https://i.imgur.com/X1AHi2f.jpeg" alt="Poster session" loading="lazy" onerror="this.closest('.mg-item').style.display='none'"/>
+          <div class="mg-caption">Poster session</div>
+        </div>
+<div class="mg-item" data-cat="conf" onclick="mgOpen('https://i.imgur.com/9j2Qfrq.jpeg','International meeting')">
+          <img src="https://i.imgur.com/9j2Qfrq.jpeg" alt="International meeting" loading="lazy" onerror="this.closest('.mg-item').style.display='none'"/>
+          <div class="mg-caption">International meeting</div>
+        </div>
+<div class="mg-item" data-cat="conf" onclick="mgOpen('https://i.imgur.com/5w3IANU.jpeg','Conference networking')">
+          <img src="https://i.imgur.com/5w3IANU.jpeg" alt="Conference networking" loading="lazy" onerror="this.closest('.mg-item').style.display='none'"/>
+          <div class="mg-caption">Conference networking</div>
+        </div>
+<div class="mg-item" data-cat="conf" onclick="mgOpen('https://i.imgur.com/A05S51P.jpeg','Scientific workshop')">
+          <img src="https://i.imgur.com/A05S51P.jpeg" alt="Scientific workshop" loading="lazy" onerror="this.closest('.mg-item').style.display='none'"/>
+          <div class="mg-caption">Scientific workshop</div>
+        </div>
+<div class="mg-item" data-cat="conf" onclick="mgOpen('https://i.imgur.com/srOe36v.jpeg','Conference group')">
+          <img src="https://i.imgur.com/srOe36v.jpeg" alt="Conference group" loading="lazy" onerror="this.closest('.mg-item').style.display='none'"/>
+          <div class="mg-caption">Conference group</div>
+        </div>
+<div class="mg-item" data-cat="conf" onclick="mgOpen('https://i.imgur.com/8ZerPF5.jpeg','Conference')">
+          <img src="https://i.imgur.com/8ZerPF5.jpeg" alt="Conference" loading="lazy" onerror="this.closest('.mg-item').style.display='none'"/>
+          <div class="mg-caption">Conference</div>
+        </div>
+<div class="mg-item" data-cat="conf" onclick="mgOpen('https://i.imgur.com/lmyYTI6.jpeg','Workshop')">
+          <img src="https://i.imgur.com/lmyYTI6.jpeg" alt="Workshop" loading="lazy" onerror="this.closest('.mg-item').style.display='none'"/>
+          <div class="mg-caption">Workshop</div>
+        </div>
+<div class="mg-item" data-cat="conf" onclick="mgOpen('https://i.imgur.com/CSNpH97.jpeg','Scientific meeting')">
+          <img src="https://i.imgur.com/CSNpH97.jpeg" alt="Scientific meeting" loading="lazy" onerror="this.closest('.mg-item').style.display='none'"/>
+          <div class="mg-caption">Scientific meeting</div>
+        </div>
+<div class="mg-item" data-cat="conf" onclick="mgOpen('https://i.imgur.com/coaTWx1.jpeg','Conference session')">
+          <img src="https://i.imgur.com/coaTWx1.jpeg" alt="Conference session" loading="lazy" onerror="this.closest('.mg-item').style.display='none'"/>
+          <div class="mg-caption">Conference session</div>
+        </div>
+<div class="mg-item" data-cat="conf" onclick="mgOpen('https://i.imgur.com/yn3ABXv.jpeg','Scientific gathering')">
+          <img src="https://i.imgur.com/yn3ABXv.jpeg" alt="Scientific gathering" loading="lazy" onerror="this.closest('.mg-item').style.display='none'"/>
+          <div class="mg-caption">Scientific gathering</div>
+        </div>
+<div class="mg-item" data-cat="ourconf" onclick="mgOpen('https://i.imgur.com/3QE20KI.jpeg','Protein DICES 2025')">
+          <img src="https://i.imgur.com/3QE20KI.jpeg" alt="Protein DICES 2025" loading="lazy" onerror="this.closest('.mg-item').style.display='none'"/>
+          <div class="mg-caption">Protein DICES 2025</div>
+        </div>
+<div class="mg-item" data-cat="ourconf" onclick="mgOpen('https://i.imgur.com/urrjt1D.jpeg','Knots and Proteins Workshop')">
+          <img src="https://i.imgur.com/urrjt1D.jpeg" alt="Knots and Proteins Workshop" loading="lazy" onerror="this.closest('.mg-item').style.display='none'"/>
+          <div class="mg-caption">Knots and Proteins Workshop</div>
+        </div>
+<div class="mg-item" data-cat="ourconf" onclick="mgOpen('https://i.imgur.com/fnbO3P0.jpeg','Organized workshop')">
+          <img src="https://i.imgur.com/fnbO3P0.jpeg" alt="Organized workshop" loading="lazy" onerror="this.closest('.mg-item').style.display='none'"/>
+          <div class="mg-caption">Organized workshop</div>
+        </div>
+<div class="mg-item" data-cat="ourconf" onclick="mgOpen('https://i.imgur.com/3KDw9Bo.jpeg','Organized scientific event')">
+          <img src="https://i.imgur.com/3KDw9Bo.jpeg" alt="Organized scientific event" loading="lazy" onerror="this.closest('.mg-item').style.display='none'"/>
+          <div class="mg-caption">Organized scientific event</div>
+        </div>
+<div class="mg-item" data-cat="ourconf" onclick="mgOpen('https://i.imgur.com/ILNsbtO.jpeg','Lab-organized workshop')">
+          <img src="https://i.imgur.com/ILNsbtO.jpeg" alt="Lab-organized workshop" loading="lazy" onerror="this.closest('.mg-item').style.display='none'"/>
+          <div class="mg-caption">Lab-organized workshop</div>
+        </div>
+<div class="mg-item" data-cat="ourconf" onclick="mgOpen('https://i.imgur.com/ucuDeWF.jpeg','Workshop speakers')">
+          <img src="https://i.imgur.com/ucuDeWF.jpeg" alt="Workshop speakers" loading="lazy" onerror="this.closest('.mg-item').style.display='none'"/>
+          <div class="mg-caption">Workshop speakers</div>
+        </div>
+<div class="mg-item" data-cat="ourconf" onclick="mgOpen('https://i.imgur.com/FDffXls.jpeg','Conference opening')">
+          <img src="https://i.imgur.com/FDffXls.jpeg" alt="Conference opening" loading="lazy" onerror="this.closest('.mg-item').style.display='none'"/>
+          <div class="mg-caption">Conference opening</div>
+        </div>
+<div class="mg-item" data-cat="ourconf" onclick="mgOpen('https://i.imgur.com/XaRUA0P.jpeg','Workshop participants')">
+          <img src="https://i.imgur.com/XaRUA0P.jpeg" alt="Workshop participants" loading="lazy" onerror="this.closest('.mg-item').style.display='none'"/>
+          <div class="mg-caption">Workshop participants</div>
+        </div>
+<div class="mg-item" data-cat="ourconf" onclick="mgOpen('https://i.imgur.com/oW4X9pt.jpeg','Panel discussion')">
+          <img src="https://i.imgur.com/oW4X9pt.jpeg" alt="Panel discussion" loading="lazy" onerror="this.closest('.mg-item').style.display='none'"/>
+          <div class="mg-caption">Panel discussion</div>
+        </div>
+<div class="mg-item" data-cat="ourconf" onclick="mgOpen('https://i.imgur.com/8gz5gsI.jpeg','Symposium')">
+          <img src="https://i.imgur.com/8gz5gsI.jpeg" alt="Symposium" loading="lazy" onerror="this.closest('.mg-item').style.display='none'"/>
+          <div class="mg-caption">Symposium</div>
+        </div>
+<div class="mg-item" data-cat="kfnd" onclick="mgOpen('https://i.imgur.com/LUyk3jp.jpeg','Polish Children&#39;s Fund — workshop')">
+          <img src="https://i.imgur.com/LUyk3jp.jpeg" alt="Polish Children's Fund — workshop" loading="lazy" onerror="this.closest('.mg-item').style.display='none'"/>
+          <div class="mg-caption">Polish Children's Fund — workshop</div>
+        </div>
+<div class="mg-item" data-cat="kfnd" onclick="mgOpen('https://i.imgur.com/4UWYf9v.jpeg','Biophysics for talented youths')">
+          <img src="https://i.imgur.com/4UWYf9v.jpeg" alt="Biophysics for talented youths" loading="lazy" onerror="this.closest('.mg-item').style.display='none'"/>
+          <div class="mg-caption">Biophysics for talented youths</div>
+        </div>
+<div class="mg-item" data-cat="kfnd" onclick="mgOpen('https://i.imgur.com/4dgy6Tq.jpeg','Science workshop')">
+          <img src="https://i.imgur.com/4dgy6Tq.jpeg" alt="Science workshop" loading="lazy" onerror="this.closest('.mg-item').style.display='none'"/>
+          <div class="mg-caption">Science workshop</div>
+        </div>
+<div class="mg-item" data-cat="kfnd" onclick="mgOpen('https://i.imgur.com/XW55Jnp.jpeg','Children&#39;s Fund workshop 2016')">
+          <img src="https://i.imgur.com/XW55Jnp.jpeg" alt="Children's Fund workshop 2016" loading="lazy" onerror="this.closest('.mg-item').style.display='none'"/>
+          <div class="mg-caption">Children's Fund workshop 2016</div>
+        </div>
+<div class="mg-item" data-cat="kfnd" onclick="mgOpen('https://i.imgur.com/eHXcKmC.jpeg','Workshop with students')">
+          <img src="https://i.imgur.com/eHXcKmC.jpeg" alt="Workshop with students" loading="lazy" onerror="this.closest('.mg-item').style.display='none'"/>
+          <div class="mg-caption">Workshop with students</div>
+        </div>
+<div class="mg-item" data-cat="kfnd" onclick="mgOpen('https://i.imgur.com/xuEOB26.jpeg','Science outreach')">
+          <img src="https://i.imgur.com/xuEOB26.jpeg" alt="Science outreach" loading="lazy" onerror="this.closest('.mg-item').style.display='none'"/>
+          <div class="mg-caption">Science outreach</div>
+        </div>
+<div class="mg-item" data-cat="kfnd" onclick="mgOpen('https://i.imgur.com/UXkGDg3.jpeg','Young scientists workshop')">
+          <img src="https://i.imgur.com/UXkGDg3.jpeg" alt="Young scientists workshop" loading="lazy" onerror="this.closest('.mg-item').style.display='none'"/>
+          <div class="mg-caption">Young scientists workshop</div>
+        </div>
+<div class="mg-item" data-cat="kfnd" onclick="mgOpen('https://i.imgur.com/uJuGz7U.jpeg','Polish Children&#39;s Fund 2017')">
+          <img src="https://i.imgur.com/uJuGz7U.jpeg" alt="Polish Children's Fund 2017" loading="lazy" onerror="this.closest('.mg-item').style.display='none'"/>
+          <div class="mg-caption">Polish Children's Fund 2017</div>
+        </div>
+<div class="mg-item" data-cat="kfnd" onclick="mgOpen('https://i.imgur.com/85Z2QG6.jpeg','Outreach activity')">
+          <img src="https://i.imgur.com/85Z2QG6.jpeg" alt="Outreach activity" loading="lazy" onerror="this.closest('.mg-item').style.display='none'"/>
+          <div class="mg-caption">Outreach activity</div>
+        </div>
+<div class="mg-item" data-cat="kfnd" onclick="mgOpen('https://i.imgur.com/toyimyG.jpeg','DOKO — workshops for children')">
+          <img src="https://i.imgur.com/toyimyG.jpeg" alt="DOKO — workshops for children" loading="lazy" onerror="this.closest('.mg-item').style.display='none'"/>
+          <div class="mg-caption">DOKO — workshops for children</div>
+        </div>
+<div class="mg-item" data-cat="kfnd" onclick="mgOpen('https://i.imgur.com/cRYQnJe.jpeg','Children&#39;s Fund — Serock')">
+          <img src="https://i.imgur.com/cRYQnJe.jpeg" alt="Children's Fund — Serock" loading="lazy" onerror="this.closest('.mg-item').style.display='none'"/>
+          <div class="mg-caption">Children's Fund — Serock</div>
+        </div>
+<div class="mg-item" data-cat="kfnd" onclick="mgOpen('https://i.imgur.com/x98ooAO.jpeg','Science cafeteria — PAN')">
+          <img src="https://i.imgur.com/x98ooAO.jpeg" alt="Science cafeteria — PAN" loading="lazy" onerror="this.closest('.mg-item').style.display='none'"/>
+          <div class="mg-caption">Science cafeteria — PAN</div>
+        </div>
+<div class="mg-item" data-cat="kfnd" onclick="mgOpen('https://i.imgur.com/5XSbg3x.jpeg','Universytet Dzieci lecture')">
+          <img src="https://i.imgur.com/5XSbg3x.jpeg" alt="Universytet Dzieci lecture" loading="lazy" onerror="this.closest('.mg-item').style.display='none'"/>
+          <div class="mg-caption">Universytet Dzieci lecture</div>
+        </div>
+<div class="mg-item" data-cat="kfnd" onclick="mgOpen('https://i.imgur.com/U0eIPNW.jpeg','Children&#39;s Fund 2007')">
+          <img src="https://i.imgur.com/U0eIPNW.jpeg" alt="Children's Fund 2007" loading="lazy" onerror="this.closest('.mg-item').style.display='none'"/>
+          <div class="mg-caption">Children's Fund 2007</div>
+        </div>
+<div class="mg-item" data-cat="kfnd" onclick="mgOpen('https://i.imgur.com/4Ql2ZqD.jpeg','Science for children')">
+          <img src="https://i.imgur.com/4Ql2ZqD.jpeg" alt="Science for children" loading="lazy" onerror="this.closest('.mg-item').style.display='none'"/>
+          <div class="mg-caption">Science for children</div>
+        </div>
+<div class="mg-item" data-cat="kfnd" onclick="mgOpen('https://i.imgur.com/vjJrgVS.jpeg','Workshop activity')">
+          <img src="https://i.imgur.com/vjJrgVS.jpeg" alt="Workshop activity" loading="lazy" onerror="this.closest('.mg-item').style.display='none'"/>
+          <div class="mg-caption">Workshop activity</div>
+        </div>
+<div class="mg-item" data-cat="kfnd" onclick="mgOpen('https://i.imgur.com/j0OpJNv.jpeg','Young researchers')">
+          <img src="https://i.imgur.com/j0OpJNv.jpeg" alt="Young researchers" loading="lazy" onerror="this.closest('.mg-item').style.display='none'"/>
+          <div class="mg-caption">Young researchers</div>
+        </div>
+<div class="mg-item" data-cat="kfnd" onclick="mgOpen('https://i.imgur.com/VyogMfM.jpeg','Biophysics workshop')">
+          <img src="https://i.imgur.com/VyogMfM.jpeg" alt="Biophysics workshop" loading="lazy" onerror="this.closest('.mg-item').style.display='none'"/>
+          <div class="mg-caption">Biophysics workshop</div>
+        </div>
+<div class="mg-item" data-cat="kfnd" onclick="mgOpen('https://i.imgur.com/iPwWCft.jpeg','Outreach')">
+          <img src="https://i.imgur.com/iPwWCft.jpeg" alt="Outreach" loading="lazy" onerror="this.closest('.mg-item').style.display='none'"/>
+          <div class="mg-caption">Outreach</div>
+        </div>
+<div class="mg-item" data-cat="kfnd" onclick="mgOpen('https://i.imgur.com/camgtt7.jpeg','Science event')">
+          <img src="https://i.imgur.com/camgtt7.jpeg" alt="Science event" loading="lazy" onerror="this.closest('.mg-item').style.display='none'"/>
+          <div class="mg-caption">Science event</div>
+        </div>
+<div class="mg-item" data-cat="kfnd" onclick="mgOpen('https://i.imgur.com/ItFPGjp.jpeg','Children&#39;s science day')">
+          <img src="https://i.imgur.com/ItFPGjp.jpeg" alt="Children's science day" loading="lazy" onerror="this.closest('.mg-item').style.display='none'"/>
+          <div class="mg-caption">Children's science day</div>
+        </div>
+<div class="mg-item" data-cat="kfnd" onclick="mgOpen('https://i.imgur.com/zNXh6XI.jpeg','Workshop for youth')">
+          <img src="https://i.imgur.com/zNXh6XI.jpeg" alt="Workshop for youth" loading="lazy" onerror="this.closest('.mg-item').style.display='none'"/>
+          <div class="mg-caption">Workshop for youth</div>
+        </div>
+<div class="mg-item" data-cat="kfnd" onclick="mgOpen('https://i.imgur.com/XuLKKDU.jpeg','Outreach 2018')">
+          <img src="https://i.imgur.com/XuLKKDU.jpeg" alt="Outreach 2018" loading="lazy" onerror="this.closest('.mg-item').style.display='none'"/>
+          <div class="mg-caption">Outreach 2018</div>
+        </div>
+<div class="mg-item" data-cat="kfnd" onclick="mgOpen('https://i.imgur.com/9yWQ1ZA.jpeg','Science cafeteria')">
+          <img src="https://i.imgur.com/9yWQ1ZA.jpeg" alt="Science cafeteria" loading="lazy" onerror="this.closest('.mg-item').style.display='none'"/>
+          <div class="mg-caption">Science cafeteria</div>
+        </div>
+<div class="mg-item" data-cat="kfnd" onclick="mgOpen('https://i.imgur.com/fEKhZYl.jpeg','Children&#39;s Fund activity')">
+          <img src="https://i.imgur.com/fEKhZYl.jpeg" alt="Children's Fund activity" loading="lazy" onerror="this.closest('.mg-item').style.display='none'"/>
+          <div class="mg-caption">Children's Fund activity</div>
+        </div>
+<div class="mg-item" data-cat="kfnd" onclick="mgOpen('https://i.imgur.com/looiWL6.jpeg','Polish Children&#39;s Fund')">
+          <img src="https://i.imgur.com/looiWL6.jpeg" alt="Polish Children's Fund" loading="lazy" onerror="this.closest('.mg-item').style.display='none'"/>
+          <div class="mg-caption">Polish Children's Fund</div>
+        </div>
+<div class="mg-item" data-cat="kfnd" onclick="mgOpen('https://i.imgur.com/jWKKlvr.jpeg','Science outreach')">
+          <img src="https://i.imgur.com/jWKKlvr.jpeg" alt="Science outreach" loading="lazy" onerror="this.closest('.mg-item').style.display='none'"/>
+          <div class="mg-caption">Science outreach</div>
+        </div>
+<div class="mg-item" data-cat="kfnd" onclick="mgOpen('https://i.imgur.com/ISvp8tC.jpeg','Workshop session')">
+          <img src="https://i.imgur.com/ISvp8tC.jpeg" alt="Workshop session" loading="lazy" onerror="this.closest('.mg-item').style.display='none'"/>
+          <div class="mg-caption">Workshop session</div>
+        </div>
+<div class="mg-item" data-cat="kfnd" onclick="mgOpen('https://i.imgur.com/pwdk6Nm.jpeg','Young scientists')">
+          <img src="https://i.imgur.com/pwdk6Nm.jpeg" alt="Young scientists" loading="lazy" onerror="this.closest('.mg-item').style.display='none'"/>
+          <div class="mg-caption">Young scientists</div>
+        </div>
+<div class="mg-item" data-cat="kfnd" onclick="mgOpen('https://i.imgur.com/EZVYtPT.jpeg','Children&#39;s Fund activity')">
+          <img src="https://i.imgur.com/EZVYtPT.jpeg" alt="Children's Fund activity" loading="lazy" onerror="this.closest('.mg-item').style.display='none'"/>
+          <div class="mg-caption">Children's Fund activity</div>
+        </div>
+    </div>
+    <div class="med-show-more">
+      <button class="med-show-btn" id="med-more-btn" onclick="medShowMore()">
+        Show all 75 photos
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><polyline points="6 9 12 15 18 9"/></svg>
+      </button>
+    </div>
+  </div>
+
+  <!-- LIGHTBOX -->
+  <div class="mg-lightbox" id="mg-lightbox" onclick="mgClose()">
+    <div class="mg-lb-wrap" onclick="event.stopPropagation()">
+      <button class="mg-lb-close" onclick="mgClose()">&#10005;</button>
+      <button class="mg-lb-prev" onclick="mgLbNav(-1)">&#8592;</button>
+      <img id="mg-lb-img" src="" alt=""/>
+      <button class="mg-lb-next" onclick="mgLbNav(1)">&#8594;</button>
+      <div class="mg-lb-cap" id="mg-lb-cap"></div>
+    </div>
+  </div>
+
+  <!-- ═══ VIDEOS ═══ -->
+  <div id="ms-videos" class="med-sec med-sec-dark">
+    <div class="med-sec-header-dark">
+      <div class="med-eyebrow-light">Multimedia</div>
+      <h2 class="med-title-light">Videos</h2>
+    </div>
+    <div class="med-video-grid">
+      <div class="med-vid-card"><div class="med-vid-frame"><iframe src="https://www.youtube.com/embed/nlf9iqyRM58" title="EMBO laureate" allowfullscreen loading="lazy"></iframe></div><div class="med-vid-info"><div class="med-vid-t">EMBO Young Investigator Laureate</div><div class="med-vid-s">Interview after EMBO YIP 2017 award</div></div></div>
+      <div class="med-vid-card"><div class="med-vid-frame"><iframe src="https://www.youtube.com/embed/ERkuYN_uVfY" title="INTER FNP" allowfullscreen loading="lazy"></iframe></div><div class="med-vid-info"><div class="med-vid-t">INTER FNP — Popularization of Science 2013</div><div class="med-vid-s">Public science lecture</div></div></div>
+      <div class="med-vid-card"><div class="med-vid-frame"><iframe src="https://www.youtube.com/embed/vLU3DHUwUoQ" title="Jutronauci" allowfullscreen loading="lazy"></iframe></div><div class="med-vid-info"><div class="med-vid-t">Jutronauci — Science Talk (38K views)</div><div class="med-vid-s">Popular science interview</div></div></div>
+      <div class="med-vid-card"><div class="med-vid-frame"><iframe src="https://www.youtube.com/embed/2YgLn4VZRBU" title="Onet News" allowfullscreen loading="lazy"></iframe></div><div class="med-vid-info"><div class="med-vid-t">Onet News Interview</div><div class="med-vid-s">TV appearance</div></div></div>
+      <div class="med-vid-card"><div class="med-vid-frame"><iframe src="https://www.youtube.com/embed/0cNIrE5JV_U" title="FNP scholarship" allowfullscreen loading="lazy"></iframe></div><div class="med-vid-info"><div class="med-vid-t">Foundation for Polish Science — Scholarship</div><div class="med-vid-s">FNP interview</div></div></div>
+      <div class="med-vid-card"><div class="med-vid-frame"><iframe src="https://www.youtube.com/embed/hJqaGJqOVo0" title="L'Oréal 2016" allowfullscreen loading="lazy"></iframe></div><div class="med-vid-info"><div class="med-vid-t">L'Oréal Poland For Women in Science 2016</div><div class="med-vid-s">Award ceremony</div></div></div>
+      <div class="med-vid-card"><div class="med-vid-frame"><iframe src="https://www.youtube.com/embed/bi_SNHNcSBY" title="INTER 2013" allowfullscreen loading="lazy"></iframe></div><div class="med-vid-info"><div class="med-vid-t">INTER Grant Laureate 2013</div><div class="med-vid-s">FNP interview</div></div></div>
+      <a class="med-vid-card med-vid-yt-link" href="https://www.youtube.com/channel/UCykKLQTTlftS-APrHgFL8OYEw" target="_blank">
+        <div class="med-vid-yt-box"><svg width="52" height="52" viewBox="0 0 24 24" fill="#e53935"><path d="M21.582,6.186c-0.23-0.86-0.908-1.538-1.768-1.768C18.254,4,12,4,12,4S5.746,4,4.186,4.418c-0.86,0.23-1.538,0.908-1.768,1.768C2,7.746,2,12,2,12s0,4.254,0.418,5.814c0.23,0.86,0.908,1.538,1.768,1.768C5.746,20,12,20,12,20s6.254,0,7.814-0.418c0.861-0.23,1.538-0.908,1.768-1.768C22,16.254,22,12,22,12S22,7.746,21.582,6.186z M10,15.464V8.536L16,12L10,15.464z"/></svg></div>
+        <div class="med-vid-info"><div class="med-vid-t">Sulkowska Lab YouTube Channel</div><div class="med-vid-s">Subscribe for all videos →</div></div>
+      </a>
+    </div>
+  </div>
+
+  <!-- ═══ TV & RADIO side by side ═══ -->
+  <div class="med-split-row">
+    <div id="ms-tv" class="med-split-col">
+      <div class="med-eyebrow" style="color:#1a73e8">Broadcast</div>
+      <h2 class="med-title-sm">TV Interviews</h2>
+      <div class="med-link-list">
+        <a class="med-link-item" href="https://www.polsatnews.pl/wiadomosc/2017-03-13/polka-w-elitarnym-gronie-kobiet-ktore-moga-zmienic-swiat-wybrana-przez-unesco/" target="_blank">
+          <div class="med-li-left"><div class="med-li-source">Polsat News</div><div class="med-li-year">2017</div></div>
+          <div class="med-li-title">Polka w elitarnym gronie "kobiet, które mogą zmienić świat". Wybrana przez UNESCO</div>
+          <svg class="med-li-arrow" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><line x1="7" y1="17" x2="17" y2="7"/><polyline points="7 7 17 7 17 17"/></svg>
+        </a>
+        <a class="med-link-item" href="https://wiadomosci.onet.pl" target="_blank">
+          <div class="med-li-left"><div class="med-li-source">Onet</div><div class="med-li-year">2017</div></div>
+          <div class="med-li-title">TV Interview</div>
+          <svg class="med-li-arrow" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><line x1="7" y1="17" x2="17" y2="7"/><polyline points="7 7 17 7 17 17"/></svg>
+        </a>
+        <a class="med-link-item" href="https://dziendobry.tvn.pl" target="_blank">
+          <div class="med-li-left"><div class="med-li-source">TVN Dzień Dobry</div><div class="med-li-year">2017</div></div>
+          <div class="med-li-title">Morning TV appearance</div>
+          <svg class="med-li-arrow" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><line x1="7" y1="17" x2="17" y2="7"/><polyline points="7 7 17 7 17 17"/></svg>
+        </a>
+        <a class="med-link-item" href="https://www.tvp3.pl" target="_blank">
+          <div class="med-li-left"><div class="med-li-source">TVP3</div><div class="med-li-year">2017</div></div>
+          <div class="med-li-title">Regional TV interview</div>
+          <svg class="med-li-arrow" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><line x1="7" y1="17" x2="17" y2="7"/><polyline points="7 7 17 7 17 17"/></svg>
+        </a>
+      </div>
+    </div>
+    <div class="med-split-divider"></div>
+    <div id="ms-radio" class="med-split-col">
+      <div class="med-eyebrow" style="color:#26a69a">Broadcast</div>
+      <h2 class="med-title-sm">Radio Interviews</h2>
+      <div class="med-link-list">
+        <a class="med-link-item" href="https://audycje.tokfm.pl" target="_blank">
+          <div class="med-li-left"><div class="med-li-source">TOK FM</div><div class="med-li-year">2017</div></div>
+          <div class="med-li-title">Radio interview</div>
+          <svg class="med-li-arrow" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><line x1="7" y1="17" x2="17" y2="7"/><polyline points="7 7 17 7 17 17"/></svg>
+        </a>
+        <a class="med-link-item" href="https://www.polskieradio.pl" target="_blank">
+          <div class="med-li-left"><div class="med-li-source">Radio Poland</div><div class="med-li-year">2017</div></div>
+          <div class="med-li-title">Interview on knotted proteins research</div>
+          <svg class="med-li-arrow" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><line x1="7" y1="17" x2="17" y2="7"/><polyline points="7 7 17 7 17 17"/></svg>
+        </a>
+        <a class="med-link-item" href="https://www.rdc.pl" target="_blank">
+          <div class="med-li-left"><div class="med-li-source">RDC</div><div class="med-li-year">2017</div></div>
+          <div class="med-li-title">Science radio interview</div>
+          <svg class="med-li-arrow" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><line x1="7" y1="17" x2="17" y2="7"/><polyline points="7 7 17 7 17 17"/></svg>
+        </a>
+        <a class="med-link-item" href="https://zdrowie.radiozet.pl" target="_blank">
+          <div class="med-li-left"><div class="med-li-source">Radio ZET Zdrowie</div><div class="med-li-year">2017</div></div>
+          <div class="med-li-title">Według UNESCO ta Polka może zmienić świat!</div>
+          <svg class="med-li-arrow" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><line x1="7" y1="17" x2="17" y2="7"/><polyline points="7 7 17 7 17 17"/></svg>
+        </a>
+      </div>
+    </div>
+  </div>
+
+  <!-- ═══ PAPER INTERVIEWS ═══ -->
+  <div id="ms-interviews" class="med-sec">
+    <div class="med-sec-header">
+      <div>
+        <div class="med-eyebrow">Print</div>
+        <h2 class="med-title">Paper Interviews</h2>
+      </div>
+    </div>
+    <div class="med-interview-cards">
+      <a class="med-int-card" href="https://kobieta.onet.pl" target="_blank">
+        <div class="med-int-source">Onet.pl</div>
+        <div class="med-int-year">2018</div>
+        <div class="med-int-title">"Musiałam się wykazać dwa razy bardziej niż mężczyźni". Kulisy świata nauk ścisłych</div>
+        <div class="med-int-arrow">Read →</div>
+      </a>
+      <a class="med-int-card" href="https://wyborcza.pl/7,75400,23793827,polka-wsrod-najbardziej-obiecujacych-badaczek-swiata.html" target="_blank">
+        <div class="med-int-source">Gazeta Wyborcza</div>
+        <div class="med-int-year">2018</div>
+        <div class="med-int-title">Polka wśród najbardziej obiecujących badaczek świata</div>
+        <div class="med-int-arrow">Read →</div>
+      </a>
+      <a class="med-int-card" href="https://wyborcza.pl" target="_blank">
+        <div class="med-int-source">Wyborcza Gazeta</div>
+        <div class="med-int-year">2017</div>
+        <div class="med-int-title">Full feature article</div>
+        <div class="med-int-arrow">Read →</div>
+      </a>
+      <a class="med-int-card" href="https://jsulkowska.cent.uw.edu.pl/paper/" target="_blank">
+        <div class="med-int-source">Magiel</div>
+        <div class="med-int-year">2017</div>
+        <div class="med-int-title">Niezależny Miesięcznik Studentów — "Było sobie białko"</div>
+        <div class="med-int-arrow">Read →</div>
+      </a>
+      <a class="med-int-card" href="https://jsulkowska.cent.uw.edu.pl/paper/" target="_blank">
+        <div class="med-int-source">Przegląd Urologiczny</div>
+        <div class="med-int-year">2017</div>
+        <div class="med-int-title">Interview on protein topology research</div>
+        <div class="med-int-arrow">Read →</div>
+      </a>
+    </div>
+  </div>
+
+  <!-- ═══ PRESS ═══ -->
+  <div id="ms-press" class="med-sec med-sec-pale">
+    <div class="med-sec-header">
+      <div>
+        <div class="med-eyebrow">Coverage</div>
+        <h2 class="med-title">Press Coverage</h2>
+      </div>
+    </div>
+    <div class="med-press-grid">
+      <a class="med-press-item" href="https://businessinsider.com.pl" target="_blank"><span class="med-press-org">Business Insider</span><span class="med-press-yr">2017</span></a>
+      <a class="med-press-item" href="https://wyborcza.pl" target="_blank"><span class="med-press-org">Gazeta Wyborcza</span><span class="med-press-yr">2017</span></a>
+      <a class="med-press-item" href="https://www.pap.pl" target="_blank"><span class="med-press-org">PAP — Polska Agencja Prasowa</span><span class="med-press-yr">2017</span></a>
+      <a class="med-press-item" href="https://www.focus.pl" target="_blank"><span class="med-press-org">Focus</span><span class="med-press-yr">2017</span></a>
+      <a class="med-press-item" href="https://www.pb.pl" target="_blank"><span class="med-press-org">Puls Biznesu</span><span class="med-press-yr">2017</span></a>
+      <a class="med-press-item" href="https://namazowszu.pl" target="_blank"><span class="med-press-org">Na Mazowszu</span><span class="med-press-yr">2017</span></a>
+      <a class="med-press-item" href="https://www.pulsfarmacji.pl" target="_blank"><span class="med-press-org">Puls Farmacji</span><span class="med-press-yr">2017</span></a>
+      <a class="med-press-item" href="https://www.polki.pl" target="_blank"><span class="med-press-org">Polki.pl</span><span class="med-press-yr">2017</span></a>
+      <a class="med-press-item" href="https://www.polsatnews.pl" target="_blank"><span class="med-press-org">Polsat News</span><span class="med-press-yr">2017</span></a>
+      <a class="med-press-item" href="https://sukces.pl" target="_blank"><span class="med-press-org">Sukces jest kobietą</span><span class="med-press-yr">2017</span></a>
+      <a class="med-press-item" href="https://forumakademickie.pl" target="_blank"><span class="med-press-org">Forum Akademickie</span><span class="med-press-yr">2017</span></a>
+      <a class="med-press-item" href="https://nauka.uw.edu.pl" target="_blank"><span class="med-press-org">Nauka Online</span><span class="med-press-yr">2014</span></a>
+      <a class="med-press-item" href="https://www.biotechnologia.pl" target="_blank"><span class="med-press-org">Biotechnologia.pl</span><span class="med-press-yr">2013</span></a>
+      <a class="med-press-item" href="https://www.pap.pl" target="_blank"><span class="med-press-org">PAP — Zagadka związanych białek</span><span class="med-press-yr">2013</span></a>
+      <a class="med-press-item" href="https://www.ncbj.gov.pl" target="_blank"><span class="med-press-org">Narodowe Centrum Badań Jądrowych</span><span class="med-press-yr">2010</span></a>
+      <a class="med-press-item" href="https://naukowy.pl" target="_blank"><span class="med-press-org">Naukowy.pl</span><span class="med-press-yr">2010</span></a>
+    </div>
+  </div>
+
+  <!-- ═══ PUBLIC TALKS — VISUAL TIMELINE ═══ -->
+  <div id="ms-talks" class="med-sec med-talks-section">
+    <div class="med-talks-header">
+      <div>
+        <div class="med-eyebrow">Outreach &amp; Engagement</div>
+        <h2 class="med-title">Public Talks &amp; Workshops</h2>
+        <p class="med-subtitle">Science communication and outreach activities — from lectures for children to international congress panels.</p>
+      </div>
+      <div class="med-talks-stats">
+        <div class="med-tstat"><div class="med-tstat-n">11+</div><div class="med-tstat-l">Years of outreach</div></div>
+        <div class="med-tstat"><div class="med-tstat-n">500+</div><div class="med-tstat-l">Children reached (2017)</div></div>
+        <div class="med-tstat"><div class="med-tstat-n">100+</div><div class="med-tstat-l">Attendees (2014 lecture)</div></div>
+      </div>
+    </div>
+
+    <div class="med-timeline">
+
+      <!-- 2018 -->
+      <div class="med-tl-item">
+        <div class="med-tl-year-col">
+          <div class="med-tl-year">2018</div>
+          <div class="med-tl-line"></div>
+        </div>
+        <div class="med-tl-cards">
+          <div class="med-tl-card med-tc-blue">
+            <div class="med-tc-tag">Public Lecture</div>
+            <div class="med-tc-title">Kawiarenka Naukowa (Scientific Cafeteria) PAN</div>
+            <div class="med-tc-body">Public invited lecture · Polish Academy of Sciences, Warsaw</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- 2017 -->
+      <div class="med-tl-item">
+        <div class="med-tl-year-col">
+          <div class="med-tl-year">2017</div>
+          <div class="med-tl-line"></div>
+        </div>
+        <div class="med-tl-cards">
+          <a class="med-tl-card med-tc-purple" href="https://uniwersytetdzieci.pl/wykladowca/2952" target="_blank">
+            <div class="med-tc-tag">Children's Lecture · 500+ kids</div>
+            <div class="med-tc-title">Fundacja Universytet Dzieci — "Jak zapętlone białka mogą pomóc w projektowaniu leków?"</div>
+            <div class="med-tc-body">Two invited lectures · 28 October 2017</div>
+            <div class="med-tc-link">View →</div>
+          </a>
+          <div class="med-tl-card med-tc-teal">
+            <div class="med-tc-tag">Invited Lecture</div>
+            <div class="med-tc-title">Polish Children's Fund — "Klasyfikacja nietrywialnych topologii w białkach"</div>
+            <div class="med-tc-body">27 April – 7 May · Serock</div>
+          </div>
+          <div class="med-tl-card med-tc-teal">
+            <div class="med-tc-tag">Workshop for Children</div>
+            <div class="med-tc-title">Dzień Otwarty Kampusu Ochota (DOKO) — "Jak zbudować biologiczną maszynę molekularną?"</div>
+            <div class="med-tc-body">With P. Dąbrowski-Tumański &amp; W. Niemyska · special table for girls · 8 April, Warsaw</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- 2016 -->
+      <div class="med-tl-item">
+        <div class="med-tl-year-col">
+          <div class="med-tl-year">2016</div>
+          <div class="med-tl-line"></div>
+        </div>
+        <div class="med-tl-cards">
+          <div class="med-tl-card med-tc-orange">
+            <div class="med-tc-tag">Panelist · Congress</div>
+            <div class="med-tc-title">2nd Congress of Polish Biochemistry — Women in Science</div>
+            <div class="med-tc-body">13–16 September · Wrocław</div>
+          </div>
+          <div class="med-tl-card med-tc-teal">
+            <div class="med-tc-tag">Workshop</div>
+            <div class="med-tc-title">Polish Children's Fund — Biophysics for Talented Youths</div>
+            <div class="med-tc-body">Workshop instructor</div>
+          </div>
+          <div class="med-tl-card med-tc-orange">
+            <div class="med-tc-tag">Panelist</div>
+            <div class="med-tc-title">Panel dyskusyjny BIO 2016 — Kobiety w nauce</div>
+            <div class="med-tc-body">"Gorzka prawda i alarm do działania"</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- 2014 -->
+      <div class="med-tl-item">
+        <div class="med-tl-year-col">
+          <div class="med-tl-year">2014</div>
+          <div class="med-tl-line"></div>
+        </div>
+        <div class="med-tl-cards">
+          <div class="med-tl-card med-tc-blue">
+            <div class="med-tc-tag">Popular Science · 100+ attendees</div>
+            <div class="med-tc-title">Popular science talk — "Entanglement in Biology"</div>
+            <div class="med-tc-body">Prof. De Witt Sumners · Florida State University · 21 September · Aula, Old Library, University of Warsaw</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- 2013 -->
+      <div class="med-tl-item">
+        <div class="med-tl-year-col">
+          <div class="med-tl-year">2013</div>
+          <div class="med-tl-line"></div>
+        </div>
+        <div class="med-tl-cards">
+          <a class="med-tl-card med-tc-red" href="https://youtu.be/ERkuYN_uVfY?si=aX0p3HixaxwXAY6z" target="_blank">
+            <div class="med-tc-tag">Video Available</div>
+            <div class="med-tc-title">INTER FNP — Popularization of Science Lecture</div>
+            <div class="med-tc-body">Foundation for Polish Science INTER grant laureate lecture</div>
+            <div class="med-tc-link">Watch on YouTube →</div>
+          </a>
+        </div>
+      </div>
+
+      <!-- 2007 -->
+      <div class="med-tl-item med-tl-last">
+        <div class="med-tl-year-col">
+          <div class="med-tl-year">2007</div>
+        </div>
+        <div class="med-tl-cards">
+          <div class="med-tl-card med-tc-teal">
+            <div class="med-tc-tag">Workshop</div>
+            <div class="med-tc-title">Polish Children's Fund — Biophysics for Talented Youths</div>
+            <div class="med-tc-body">Conducting biophysics workshop for talented youth</div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+</div>
