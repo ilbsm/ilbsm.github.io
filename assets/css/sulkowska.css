@@ -1831,6 +1831,55 @@
     .med-press-org { font-size: 0.82rem; font-weight: 600; color: #222; }
     .med-press-yr { font-size: 0.68rem; font-weight: 700; color: #aaa; }
 
+    /* ── Featured-in marquee ── */
+    .med-feat-wrap {
+      background: #fff; border-bottom: 1px solid #e8ebf0;
+      padding: 1.8rem 0 1.6rem;
+    }
+    .med-feat-label {
+      text-align: center;
+      font-size: 0.62rem; font-weight: 800; letter-spacing: 0.2em;
+      text-transform: uppercase; color: #bbb;
+      margin-bottom: 1.4rem;
+    }
+    .med-feat-track-outer {
+      overflow: hidden;
+      -webkit-mask-image: linear-gradient(to right, transparent 0%, #000 8%, #000 92%, transparent 100%);
+      mask-image: linear-gradient(to right, transparent 0%, #000 8%, #000 92%, transparent 100%);
+    }
+    .med-feat-track {
+      display: flex; align-items: center; gap: 0;
+      width: max-content;
+      animation: med-feat-scroll 36s linear infinite;
+    }
+    .med-feat-track:hover { animation-play-state: paused; }
+    @keyframes med-feat-scroll {
+      from { transform: translateX(0); }
+      to   { transform: translateX(-50%); }
+    }
+    .med-feat-item {
+      display: inline-flex; align-items: center; justify-content: center;
+      padding: 0 2.2rem; height: 56px;
+      border-right: 1px solid #f0f0f0;
+      text-decoration: none; flex-shrink: 0;
+      transition: background 0.18s;
+    }
+    .med-feat-item:hover { background: #f8faff; text-decoration: none; }
+    .med-feat-logo {
+      height: 36px; width: auto; max-width: 130px;
+      object-fit: contain;
+      filter: grayscale(1) opacity(0.45);
+      transition: filter 0.25s;
+      display: block;
+    }
+    .med-feat-item:hover .med-feat-logo { filter: grayscale(0) opacity(1); }
+    .med-feat-fallback {
+      display: none;
+      font-size: 0.82rem; font-weight: 700; color: #666;
+      white-space: nowrap;
+    }
+    .med-feat-item:hover .med-feat-fallback { color: #1a73e8; }
+
     /* ── Talks timeline ── */
     .med-talks-section { background: #f7f8fc; border-bottom: 1px solid #e8ebf0; }
     .med-talks-header {

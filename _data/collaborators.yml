@@ -1,0 +1,146 @@
+# ============================================================
+#  COLLABORATORS DATA
+#  Edit this file to update the collaboration page — no HTML needed!
+#
+#  Fields per collaborator:
+#    name:    Full name with title
+#    url:     Link to their lab/page
+#    logo:    Filename in assets/img/collab/ (e.g. iimcb.png)
+#    fallback_text:  Short text shown if no logo (e.g. "IIMCB")
+#    fallback_color: Hex color for fallback circle
+#    inst:    Institution name
+#    topic:   Research topics
+#    cta:     Link label shown on card (e.g. "genesilico.pl ↗")
+# ============================================================
+
+stats:
+  groups: "10+"
+  continents: "5"
+  years: "15+"
+
+collaborators:
+  - name: "Prof. Janusz Bujnicki"
+    url: "https://genesilico.pl"
+    logo: "iimcb.png"
+    fallback_text: "IIMCB"
+    fallback_color: "#1a73e8"
+    inst: "International Institute of Molecular and Cell Biology, Warsaw"
+    topic: "RNA structure prediction · comparative genomics · protein engineering"
+    cta: "genesilico.pl ↗"
+
+  - name: "Prof. Jose Onuchic"
+    url: "https://onuchic.rice.edu"
+    logo: "rice.png"
+    fallback_text: "Rice"
+    fallback_color: "#003366"
+    inst: "Rice University, Houston, USA"
+    topic: "Energy landscape theory · protein folding · AWSEM coarse-grained models"
+    cta: "onuchic.rice.edu ↗"
+
+  - name: "Prof. Faruck Morcos"
+    url: "https://www.utdallas.edu/~faruck.morcos/"
+    logo: "rice.png"
+    fallback_text: "Rice"
+    fallback_color: "#003366"
+    inst: "University of Texas at Dallas / Rice University"
+    topic: "Direct Coupling Analysis · co-evolutionary methods · statistical physics"
+    cta: "utdallas.edu ↗"
+
+  - name: "Prof. Terence Hwa"
+    url: "http://hwalab.ucsd.edu/"
+    logo: "ucsd.png"
+    fallback_text: "UCSD"
+    fallback_color: "#0d6f7e"
+    inst: "University of California San Diego, USA"
+    topic: "Statistical physics of biological systems · co-evolution · information theory"
+    cta: "hwalab.ucsd.edu ↗"
+
+  - name: "Prof. Piotr Sułkowski"
+    url: "https://www.fuw.edu.pl/~psulkows"
+    logo: "uw.png"
+    fallback_text: "UW"
+    fallback_color: "#0d47a1"
+    inst: "University of Warsaw / Caltech, USA"
+    topic: "Mathematical physics · knot invariants · BPS states · AIM SQuaRE collaboration"
+    cta: "fuw.edu.pl ↗"
+
+  - name: "Prof. Boštjan Gabrovšek"
+    url: "http://www.fs.uni-lj.si/"
+    logo: "ljubljana.png"
+    fallback_text: "UNI LJ"
+    fallback_color: "#1b5e20"
+    inst: "University of Ljubljana, Slovenia (OPUS LAP 22)"
+    topic: "Knot theory · graph theory · algorithms for topological classification"
+    cta: "fs.uni-lj.si ↗"
+
+  - name: "Prof. Martin Weigt"
+    url: "http://www.lcqb.upmc.fr/users/weigt"
+    logo: "upmc.jpg"
+    fallback_text: "UPMC"
+    fallback_color: "#c62828"
+    inst: "Sorbonne University / UPMC, Paris, France"
+    topic: "DCA methods · protein coevolution · statistical inference · sequence analysis"
+    cta: "lcqb.upmc.fr ↗"
+
+  - name: "Prof. Wladek Minor"
+    url: "https://minorlab.org"
+    logo: "uva.png"
+    fallback_text: "UVA"
+    fallback_color: "#1565c0"
+    inst: "University of Virginia, Charlottesville, USA"
+    topic: "Macromolecular crystallography · protein data quality · structural biology"
+    cta: "minorlab.org ↗"
+
+  - name: "Prof. Eric Rawdon"
+    url: "http://george.math.stthomas.edu/~rawdon/"
+    logo: "stthomas.jpg"
+    fallback_text: "St T"
+    fallback_color: "#6a1b9a"
+    inst: "University of St. Thomas, Saint Paul, USA"
+    topic: "Knot theory in proteins · knotted curves in space · topology of open chains"
+    cta: "stthomas.edu ↗"
+
+  - name: "Dr. Andrzej Stasiak"
+    url: "https://www.unil.ch/cig/en/home/menuinst/research/research-groups/prof-stasiak.html"
+    logo: "lausanne.png"
+    fallback_text: "UNIL"
+    fallback_color: "#c62828"
+    inst: "University of Lausanne, Switzerland · Center for Integrative Genomics"
+    topic: "Knot theory · DNA topology · structural biology · open-chain entanglement"
+    cta: "unil.ch ↗"
+
+  - name: "Prof. Kenneth Millett"
+    url: "http://www.math.ucsb.edu/~millett/"
+    logo: "ucsb.png"
+    fallback_text: "UCSB"
+    fallback_color: "#003660"
+    inst: "University of California Santa Barbara, USA"
+    topic: "Mathematical knot theory · invariants for proteins · open-chain knotting"
+    cta: "math.ucsb.edu ↗"
+
+  - name: "Dr. Ellinor Haglund"
+    url: "https://chemistry.rice.edu/"
+    logo: "rice.png"
+    fallback_text: "Rice"
+    fallback_color: "#003366"
+    inst: "Rice University / University of Hawaii at Manoa, USA"
+    topic: "Slipknot proteins · protein folding · biophysics · single-molecule experiments"
+    cta: "rice.edu ↗"
+
+  - name: "Prof. Patricia Jennings"
+    url: "http://www-chem.ucsd.edu/faculty/profiles/jennings_patricia_a.html"
+    logo: "ucsd.png"
+    fallback_text: "UCSD"
+    fallback_color: "#0d6f7e"
+    inst: "University of California San Diego, USA"
+    topic: "Knotted proteins · structural biology · NMR · protein folding mechanisms"
+    cta: "chem.ucsd.edu ↗"
+
+  - name: "Prof. Andrzej Koliński"
+    url: "http://biocomp.chem.uw.edu.pl/"
+    logo: "uw.png"
+    fallback_text: "UW"
+    fallback_color: "#0d47a1"
+    inst: "Faculty of Chemistry, University of Warsaw"
+    topic: "Coarse-grained protein modeling · CABS · multiscale simulations"
+    cta: "biocomp.chem.uw.edu.pl ↗"

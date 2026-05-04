@@ -447,6 +447,60 @@
     });
   });
 
+  // ── Featured-in marquee: clone track so animation loops seamlessly ──
+  document.addEventListener('DOMContentLoaded', function() {
+    var track = document.getElementById('med-feat-track');
+    if (!track) return;
+    var clone = track.cloneNode(true);
+    clone.removeAttribute('id');
+    clone.querySelectorAll('a').forEach(function(a) {
+      a.setAttribute('aria-hidden', 'true');
+      a.setAttribute('tabindex', '-1');
+    });
+    track.parentNode.appendChild(clone);
+  });
+
+  // ── Media page centralised event listeners ──
+  document.addEventListener('DOMContentLoaded', function() {
+    // Pill nav (data-target already present on each button)
+    document.querySelectorAll('.med-pill[data-target]').forEach(function(btn) {
+      btn.addEventListener('click', function() { medScroll(btn.dataset.target, btn); });
+    });
+
+    // Gallery category filter pills (data-cat added by build script)
+    document.querySelectorAll('.med-fpill[data-cat]').forEach(function(btn) {
+      btn.addEventListener('click', function() { mgCat(btn.dataset.cat, btn); });
+    });
+
+    // Gallery grid — event delegation, reads img src + caption text
+    var grid = document.getElementById('mg-grid');
+    if (grid) {
+      grid.addEventListener('click', function(e) {
+        var item = e.target.closest('.mg-item');
+        if (!item) return;
+        var img = item.querySelector('img');
+        var cap = item.querySelector('.mg-caption');
+        mgOpen(img ? img.src : '', cap ? cap.textContent : '');
+      });
+    }
+
+    // Lightbox backdrop closes on click; inner wrap stops propagation
+    var lb = document.getElementById('mg-lightbox');
+    if (lb) lb.addEventListener('click', mgClose);
+    var lbWrap = document.querySelector('.mg-lb-wrap');
+    if (lbWrap) lbWrap.addEventListener('click', function(e) { e.stopPropagation(); });
+    var lbClose = document.querySelector('.mg-lb-close');
+    if (lbClose) lbClose.addEventListener('click', mgClose);
+    var lbPrev = document.querySelector('.mg-lb-prev');
+    if (lbPrev) lbPrev.addEventListener('click', function() { mgLbNav(-1); });
+    var lbNext = document.querySelector('.mg-lb-next');
+    if (lbNext) lbNext.addEventListener('click', function() { mgLbNav(1); });
+
+    // Show more / show fewer
+    var moreBtn = document.getElementById('med-more-btn');
+    if (moreBtn) moreBtn.addEventListener('click', medShowMore);
+  });
+
 
 
   // ── Section nav scroll/spy (home + group) ──
