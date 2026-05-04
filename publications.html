@@ -5,53 +5,585 @@ description: "Publications by the Sulkowska Lab — fetched live from OpenAlex."
 permalink: /publications/
 ---
 
+<style>
+  /* ── Page shell ── */
+  :root { --nav-h: 42px; --sidebar-w: 290px; }
+  .pub-page { background: #f0f2f5; min-height: 100vh; }
+
+  /* ── Compact page header ── */
+  .pub-pghead {
+    background: linear-gradient(90deg, #0a1020 0%, #0f1a2e 100%);
+    border-bottom: 1px solid rgba(255,255,255,0.07);
+    padding: 0.65rem 1.5rem;
+    position: sticky;
+    top: var(--nav-h);
+    z-index: 100;
+  }
+  .pub-pghead-inner {
+    max-width: 1400px; margin: 0 auto;
+    display: flex; align-items: center; gap: 0; flex-wrap: wrap;
+  }
+  .pub-pghead-eyebrow {
+    font-size: 0.58rem; font-weight: 800; letter-spacing: 0.2em;
+    text-transform: uppercase; color: #4db8e8; line-height: 1;
+    margin-bottom: 0.15rem;
+  }
+  .pub-pghead-title {
+    font-family: 'Merriweather', serif; font-size: 1rem;
+    font-weight: 900; color: #fff; margin: 0;
+  }
+  .pub-pghead-divider {
+    width: 1px; height: 28px; background: rgba(255,255,255,0.15);
+    margin: 0 1rem; flex-shrink: 0;
+  }
+  /* Inline stats in top bar */
+  .pub-pghead-stats {
+    display: flex; align-items: center; gap: 0;
+  }
+  .pub-pghead-stat {
+    display: flex; flex-direction: column; align-items: center;
+    padding: 0 0.85rem;
+    border-right: 1px solid rgba(255,255,255,0.12);
+  }
+  .pub-pghead-stat:last-child { border-right: none; }
+  .pub-pghead-stat-n {
+    font-size: 0.92rem; font-weight: 700; color: #fff; line-height: 1;
+  }
+  .pub-pghead-stat-l {
+    font-size: 0.58rem; color: rgba(255,255,255,0.4);
+    text-transform: lowercase; margin-top: 0.1rem; letter-spacing: 0.02em;
+  }
+  .pub-pghead-sub {
+    font-size: 0.76rem; color: rgba(255,255,255,0.45);
+    flex: 1; min-width: 0; margin-left: 1rem;
+  }
+  .pub-pghead-live {
+    display: flex; align-items: center; gap: 0.4rem;
+    font-size: 0.7rem; font-weight: 700; color: #4caf50;
+    white-space: nowrap; margin-left: 1rem;
+    padding-left: 1rem;
+    border-left: 1px solid rgba(255,255,255,0.12);
+  }
+  .ps-dot {
+    width: 7px; height: 7px; border-radius: 50%;
+    background: #4caf50; animation: pub-pulse 2s infinite;
+  }
+  @keyframes pub-pulse { 0%,100%{opacity:1} 50%{opacity:0.35} }
+
+  /* ── Two-column layout ── */
+  .pub-layout {
+    max-width: 1400px; margin: 0 auto;
+    display: grid;
+    grid-template-columns: var(--sidebar-w) 1fr;
+    gap: 0;
+    align-items: start;
+  }
+
+  /* ── Sidebar ── */
+  .pub-sidebar {
+    position: sticky;
+    top: calc(var(--nav-h) + 57px);
+    height: calc(100vh - var(--nav-h) - 57px);
+    overflow-y: auto;
+    background: #fff;
+    border-right: 1px solid #e0e4ec;
+    padding-bottom: 2rem;
+  }
+  .pub-sidebar::-webkit-scrollbar { width: 4px; }
+  .pub-sidebar::-webkit-scrollbar-thumb { background: #dde1e9; border-radius: 2px; }
+
+  /* Sidebar sections */
+  .psb-section { border-bottom: 1px solid #f0f2f5; padding: 1rem 1.2rem; }
+  .psb-section:last-child { border-bottom: none; }
+
+  /* Stats in sidebar */
+  .psb-stats { display: grid; grid-template-columns: 1fr 1fr; gap: 0.6rem; }
+  .psb-stat { background: #f7f8fc; border-radius: 8px; padding: 0.6rem 0.75rem; }
+  .psb-stat-n {
+    font-family: 'Merriweather', serif; font-size: 1.3rem;
+    font-weight: 900; color: #1a73e8; line-height: 1;
+  }
+  .psb-stat-l {
+    font-size: 0.65rem; font-weight: 700; text-transform: uppercase;
+    letter-spacing: 0.08em; color: #aaa; margin-top: 0.2rem;
+  }
+  .psb-stat.live-stat { grid-column: span 2; background: #e8f5e9; }
+  .psb-stat.live-stat .psb-stat-n { font-size: 0.8rem; color: #2e7d32; font-family: inherit; }
+
+  /* Section toggle headers — field-label style */
+  .psb-toggle {
+    display: flex; justify-content: space-between; align-items: center;
+    font-size: 0.68rem; font-weight: 400; text-transform: uppercase;
+    letter-spacing: 0.08em; color: #aaa; cursor: pointer; user-select: none;
+    margin-bottom: 0.5rem;
+  }
+  .psb-toggle-arrow {
+    transition: transform 0.2s; color: #ccc;
+    display: flex; align-items: center;
+  }
+  .psb-toggle.collapsed .psb-toggle-arrow { transform: rotate(-90deg); }
+  .psb-body { overflow: hidden; transition: max-height 0.25s ease; }
+  .psb-body.collapsed { max-height: 0 !important; }
+
+  /* Tighter Sort + Filter sections */
+  .psb-section-sort  { border-bottom: none; padding: 0.75rem 1.2rem 0.4rem; }
+  .psb-section-filter { border-bottom: 1px solid #f0f2f5; padding: 0.4rem 1.2rem 0.75rem; }
+
+  /* Search in sidebar */
+  .psb-search {
+    display: flex; align-items: center; gap: 0.5rem;
+    padding: 0.5rem 0.75rem; background: #f5f7fa;
+    border: 1px solid rgba(0,0,0,0.1); border-radius: 6px;
+  }
+  .psb-search input {
+    flex: 1; border: none; background: transparent;
+    font-size: 0.84rem; outline: none; color: #222;
+    min-width: 0;
+  }
+
+  /* Custom select — no browser chrome */
+  .psb-sort-wrap { position: relative; }
+  .psb-sort {
+    width: 100%; font-size: 0.82rem; padding: 0.5rem 2rem 0.5rem 0.75rem;
+    border: 1px solid rgba(0,0,0,0.12); border-radius: 6px;
+    background: #f7f8fc; cursor: pointer; color: #333;
+    appearance: none; -webkit-appearance: none;
+    outline: none;
+    transition: border-color 0.15s;
+  }
+  .psb-sort:focus { border-color: #1a73e8; }
+  .psb-sort-chevron {
+    pointer-events: none; position: absolute; right: 0.6rem;
+    top: 50%; transform: translateY(-50%); color: #aaa;
+  }
+
+  /* Pill filter chips */
+  .psb-chips { display: flex; flex-direction: column; gap: 0.3rem; }
+  .pchip {
+    font-size: 0.77rem; font-weight: 500;
+    padding: 0.3rem 0.85rem; border-radius: 999px;
+    border: 1px solid rgba(0,0,0,0.1); background: #f5f6f8;
+    color: #555; cursor: pointer; text-align: left;
+    transition: background 0.15s ease, color 0.15s ease, border-color 0.15s ease;
+  }
+  .pchip:hover { background: #eef2ff; color: #1a73e8; border-color: rgba(26,115,232,0.3); }
+  .pchip.active { background: #1a73e8; border-color: #1a73e8; color: #fff; }
+  .psb-chips-divider { height: 1px; background: #f0f2f5; margin: 0.25rem 0; }
+
+  /* Scholar link */
+  .psb-scholar {
+    display: block; text-align: center; font-size: 0.78rem;
+    font-weight: 700; color: #1a73e8; text-decoration: none;
+    padding: 0.5rem; border: 1.5px solid #1a73e8; border-radius: 6px;
+    transition: background 0.18s, color 0.18s;
+  }
+  .psb-scholar:hover { background: #1a73e8; color: #fff; text-decoration: none; }
+
+  /* ── Charts inside sidebar ── */
+  .bar-chart { display: flex; align-items: flex-end; gap: 2px; height: 80px; }
+  .bar-col { display: flex; flex-direction: column; align-items: center; flex: 1; height: 100%; justify-content: flex-end; }
+  .bar-fill {
+    width: 100%; background: #1a73e8; border-radius: 2px 2px 0 0;
+    min-height: 2px; cursor: default; position: relative;
+    transition: background 0.15s;
+  }
+  .bar-fill:hover { background: #4db8e8; }
+  .bar-fill:hover::after {
+    content: attr(data-tip); position: absolute; bottom: calc(100% + 4px);
+    left: 50%; transform: translateX(-50%);
+    background: #0a1020; color: #fff; font-size: 0.62rem; font-weight: 700;
+    padding: 2px 6px; border-radius: 4px; white-space: nowrap;
+    pointer-events: none; z-index: 20;
+  }
+  .bar-label { font-size: 0.48rem; color: #bbb; margin-top: 2px; transform: rotate(-45deg); transform-origin: top center; white-space: nowrap; }
+
+  .hbar-row { display: flex; align-items: center; gap: 0.5rem; margin-bottom: 0.45rem; }
+  .hbar-label { font-size: 0.68rem; color: #555; width: 90px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; flex-shrink: 0; }
+  .hbar-track { flex: 1; background: #e8ebf0; border-radius: 3px; height: 6px; overflow: hidden; }
+  .hbar-fill { height: 100%; background: #1a73e8; border-radius: 3px; }
+  .hbar-val { font-size: 0.66rem; font-weight: 700; color: #1a73e8; width: 18px; text-align: right; flex-shrink: 0; }
+
+  .donut-wrap { display: flex; align-items: center; gap: 0.8rem; }
+  .donut-legend { display: flex; flex-direction: column; gap: 0.3rem; }
+  .donut-leg-item { display: flex; align-items: center; gap: 0.35rem; font-size: 0.67rem; color: #555; }
+  .donut-dot { width: 8px; height: 8px; border-radius: 50%; flex-shrink: 0; }
+
+  .chart-skeleton {
+    height: 80px;
+    background: linear-gradient(90deg,#eee 25%,#f5f5f5 50%,#eee 75%);
+    background-size: 200% 100%; animation: shimmer 1.4s infinite; border-radius: 6px;
+  }
+  @keyframes shimmer { 0%{background-position:200% 0} 100%{background-position:-200% 0} }
+
+  /* ── Main content area ── */
+  .pub-main { padding: 1.2rem 1.5rem 4rem; min-width: 0; }
+
+  .pub-result-bar {
+    font-size: 0.76rem; color: #888; margin-bottom: 0.75rem;
+    display: none;
+  }
+  .pub-result-bar strong { color: #333; }
+
+  .pub-loading { display: flex; flex-direction: column; align-items: center; gap: 1rem; padding: 4rem 0; color: #888; font-size: 0.88rem; }
+  .pub-spinner { width: 30px; height: 30px; border: 3px solid #e0e4ec; border-top-color: #1a73e8; border-radius: 50%; animation: spin 0.8s linear infinite; }
+  @keyframes spin { to { transform: rotate(360deg); } }
+
+  .pub-list { display: flex; flex-direction: column; gap: 0.5rem; }
+  .pub-item {
+    display: grid; grid-template-columns: auto 1fr auto; gap: 0.5rem 0.9rem;
+    padding: 0.8rem 1rem; background: #fff; border-radius: 8px;
+    border: 1px solid #e4e8f0; text-decoration: none; color: inherit;
+    transition: box-shadow 0.18s, border-color 0.15s;
+  }
+  .pub-item:hover { box-shadow: 0 3px 12px rgba(0,0,0,0.07); border-color: #b8d0f7; text-decoration: none; }
+  .pub-num { font-size: 0.72rem; font-weight: 800; color: #bbb; padding-top: 2px; min-width: 24px; }
+  .pub-body { min-width: 0; }
+  .pub-title { font-size: 0.88rem; font-weight: 700; color: #0a1020; line-height: 1.4; margin-bottom: 0.2rem; }
+  .pub-meta { font-size: 0.74rem; color: #888; line-height: 1.45; }
+  .pub-meta em { color: #1a73e8; font-style: normal; font-weight: 600; }
+  .pub-cites { font-size: 0.7rem; font-weight: 700; color: #1a73e8; white-space: nowrap; padding-top: 2px; }
+
+  .pub-error { padding: 1.2rem; border-radius: 8px; background: #fff3e0; border-left: 4px solid #f57c00; color: #e65100; font-size: 0.88rem; }
+
+  /* ── Responsive: collapse to single column ── */
+  @media (max-width: 1024px) {
+    .pub-layout { grid-template-columns: 1fr; }
+    .pub-sidebar {
+      position: static; height: auto; overflow: visible;
+      border-right: none; border-bottom: 1px solid #e0e4ec;
+    }
+    .psb-chips { flex-direction: row; flex-wrap: wrap; }
+    .psb-chips-divider { display: none; }
+    .pub-main { padding: 1rem 1rem 3rem; }
+  }
+  @media (max-width: 700px) {
+    .pub-pghead-stats { display: none; }
+    .pub-pghead-divider { display: none; }
+    .pub-pghead-sub { display: none; }
+  }
+</style>
+
 <div id="page-publications" class="page active pub-page">
 
-  <!-- Header -->
-  <div class="pub-hero">
-    <div class="pub-hero-inner">
-      <div class="pub-hero-eyebrow">Research Output</div>
-      <h2 class="pub-hero-title">Publications</h2>
-      <p class="pub-hero-sub">Live database of all publications by Prof. Joanna I. Sulkowska, fetched directly from OpenAlex. Sort, search, and filter by year or journal.</p>
-      <div class="pub-stats" id="pub-stats">
-        <div class="ps-item"><div class="ps-n" id="ps-count">—</div><div class="ps-l">Publications</div></div>
-        <div class="ps-item"><div class="ps-n" id="ps-cites">—</div><div class="ps-l">Citations</div></div>
-        <div class="ps-item"><div class="ps-n" id="ps-h">—</div><div class="ps-l">h-index</div></div>
-        <div class="ps-item">
-          <div class="ps-live"><span class="ps-dot"></span> Live</div>
-          <div class="ps-l">via OpenAlex</div>
+  <!-- Compact sticky page header -->
+  <div class="pub-pghead">
+    <div class="pub-pghead-inner">
+      <div>
+        <div class="pub-pghead-eyebrow">Research Output</div>
+        <h1 class="pub-pghead-title">Publications</h1>
+      </div>
+      <div class="pub-pghead-divider"></div>
+      <div class="pub-pghead-stats">
+        <div class="pub-pghead-stat">
+          <span class="pub-pghead-stat-n" id="ps-count">—</span>
+          <span class="pub-pghead-stat-l">publications</span>
+        </div>
+        <div class="pub-pghead-stat">
+          <span class="pub-pghead-stat-n" id="ps-cites">—</span>
+          <span class="pub-pghead-stat-l">citations</span>
+        </div>
+        <div class="pub-pghead-stat">
+          <span class="pub-pghead-stat-n" id="ps-h">—</span>
+          <span class="pub-pghead-stat-l">h-index</span>
         </div>
       </div>
+      <p class="pub-pghead-sub">Prof. Joanna I. Sulkowska — fetched live from OpenAlex.</p>
+      <div class="pub-pghead-live"><span class="ps-dot"></span> Live via OpenAlex</div>
     </div>
   </div>
 
-  <!-- Controls -->
-  <div class="pub-controls">
-    <div class="pub-search">
-      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#888" stroke-width="2"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
-      <input type="text" id="pub-search-input" placeholder="Search by title, author, or keyword..." oninput="pubFilter()"/>
-    </div>
-    <div class="pub-sort">
-      <label>Sort:</label>
-      <select id="pub-sort-select" onchange="pubFilter()">
-        <option value="cites">Most cited</option>
-        <option value="year-desc">Newest first</option>
-        <option value="year-asc">Oldest first</option>
-      </select>
-    </div>
-    <a class="pub-scholar" href="https://scholar.google.com/citations?user=BVBwiyAAAAAJ" target="_blank">
-      Google Scholar ↗
-    </a>
-  </div>
+  <!-- Two-column layout -->
+  <div class="pub-layout">
 
-  <!-- Results -->
-  <div class="pub-content">
-    <div id="pub-loading" class="pub-loading">
-      <div class="pub-spinner"></div>
-      <div>Loading publications from OpenAlex…</div>
-    </div>
-    <div id="pub-list" class="pub-list" style="display:none"></div>
-    <div id="pub-error" class="pub-error" style="display:none"></div>
+    <!-- ── Sidebar ── -->
+    <aside class="pub-sidebar">
+
+      <!-- Search -->
+      <div class="psb-section">
+        <div class="psb-search">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#aaa" stroke-width="2.5"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+          <input type="text" id="pub-search-input" placeholder="Title, author, journal…" oninput="pubFilter()"/>
+        </div>
+      </div>
+
+      <!-- Sort -->
+      <div class="psb-section psb-section-sort">
+        <div class="psb-toggle" onclick="pubToggle(this)">
+          Sort
+          <span class="psb-toggle-arrow"><svg width="10" height="10" viewBox="0 0 10 10" fill="none"><path d="M2 3.5L5 6.5L8 3.5" stroke="#ccc" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+        </div>
+        <div class="psb-body" style="max-height:200px">
+          <div class="psb-sort-wrap">
+            <select id="pub-sort-select" class="psb-sort" onchange="pubFilter()">
+              <option value="cites">Most cited</option>
+              <option value="year-desc">Newest first</option>
+              <option value="year-asc">Oldest first</option>
+              <option value="alpha">A–Z title</option>
+            </select>
+            <svg class="psb-sort-chevron" width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M2.5 4.5L6 8L9.5 4.5" stroke="#aaa" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </div>
+        </div>
+      </div>
+
+      <!-- Filters -->
+      <div class="psb-section psb-section-filter">
+        <div class="psb-toggle" onclick="pubToggle(this)">
+          Filter
+          <span class="psb-toggle-arrow"><svg width="10" height="10" viewBox="0 0 10 10" fill="none"><path d="M2 3.5L5 6.5L8 3.5" stroke="#ccc" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+        </div>
+        <div class="psb-body" style="max-height:400px">
+          <div class="psb-chips">
+            <button class="pchip active" data-filter="all"      onclick="pubChip(this)">All papers</button>
+            <button class="pchip"        data-filter="cited50"  onclick="pubChip(this)">50+ citations</button>
+            <button class="pchip"        data-filter="cited100" onclick="pubChip(this)">100+ citations</button>
+            <div class="psb-chips-divider"></div>
+            <button class="pchip"        data-filter="2020s"    onclick="pubChip(this)">2020s</button>
+            <button class="pchip"        data-filter="2010s"    onclick="pubChip(this)">2010s</button>
+            <button class="pchip"        data-filter="pre2010"  onclick="pubChip(this)">Before 2010</button>
+            <div class="psb-chips-divider"></div>
+            <button class="pchip"        data-filter="oa"       onclick="pubChip(this)">Open Access only</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Analytics -->
+      <div class="psb-section">
+        <div class="psb-toggle" onclick="pubToggle(this)">
+          Analytics <span class="psb-toggle-arrow">▾</span>
+        </div>
+        <div class="psb-body" style="max-height:700px">
+
+          <div style="margin-bottom:1rem">
+            <div style="font-size:0.65rem;font-weight:700;text-transform:uppercase;letter-spacing:0.1em;color:#bbb;margin-bottom:0.5rem">Publications per year</div>
+            <div id="chart-year" class="chart-skeleton"></div>
+          </div>
+
+          <div style="margin-bottom:1rem">
+            <div style="font-size:0.65rem;font-weight:700;text-transform:uppercase;letter-spacing:0.1em;color:#bbb;margin-bottom:0.5rem">Top journals</div>
+            <div id="chart-journals" class="chart-skeleton"></div>
+          </div>
+
+          <div>
+            <div style="font-size:0.65rem;font-weight:700;text-transform:uppercase;letter-spacing:0.1em;color:#bbb;margin-bottom:0.5rem">Citation tiers</div>
+            <div id="chart-cites" class="chart-skeleton"></div>
+          </div>
+
+        </div>
+      </div>
+
+      <!-- Scholar link -->
+      <div class="psb-section">
+        <a class="psb-scholar" href="https://scholar.google.com/citations?user=BVBwiyAAAAAJ" target="_blank">
+          Google Scholar ↗
+        </a>
+      </div>
+
+    </aside>
+
+    <!-- ── Main list ── -->
+    <main class="pub-main">
+      <div class="pub-result-bar" id="pub-result-bar">
+        Showing <strong id="pub-result-n">0</strong> publications
+      </div>
+      <div id="pub-loading" class="pub-loading">
+        <div class="pub-spinner"></div>
+        <div>Loading publications from OpenAlex…</div>
+      </div>
+      <div id="pub-list" class="pub-list" style="display:none"></div>
+      <div id="pub-error" class="pub-error" style="display:none"></div>
+    </main>
+
   </div>
 
 </div>
+
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+  let _allPubs = [], _loaded = false;
+
+  async function load() {
+    if (_loaded) return;
+    _loaded = true;
+    try {
+      const ar = await fetch('https://api.openalex.org/authors?search=Joanna+Sulkowska&filter=last_known_institutions.country_code:PL&per-page=5&mailto=contact@lab.uw.edu.pl');
+      const ad = await ar.json();
+      let authorId = null;
+      if (ad.results?.length) {
+        const best = ad.results.sort((a,b) => b.cited_by_count - a.cited_by_count)[0];
+        authorId = best.id.replace('https://openalex.org/', '');
+        document.getElementById('ps-count').textContent = best.works_count?.toLocaleString() || '–';
+        document.getElementById('ps-cites').textContent = best.cited_by_count?.toLocaleString() || '–';
+        document.getElementById('ps-h').textContent     = best.summary_stats?.h_index || '–';
+      }
+
+      let works = [], cursor = '*';
+      for (let i = 0; i < 2; i++) {
+        const url = authorId
+          ? `https://api.openalex.org/works?filter=author.id:${authorId}&sort=cited_by_count:desc&per-page=100&cursor=${cursor}&mailto=contact@lab.uw.edu.pl`
+          : `https://api.openalex.org/works?filter=author.display_name.search:Joanna+Sulkowska,institutions.country_code:PL&sort=cited_by_count:desc&per-page=100&cursor=${cursor}&mailto=contact@lab.uw.edu.pl`;
+        const wr = await fetch(url);
+        const wd = await wr.json();
+        if (!wd.results?.length) break;
+        works = works.concat(wd.results);
+        cursor = wd.meta?.next_cursor;
+        if (!cursor) break;
+      }
+      if (!works.length) throw new Error('No publications found');
+
+      _allPubs = works;
+      document.getElementById('pub-loading').style.display = 'none';
+      renderCharts(works);
+      renderPubs();
+    } catch(e) {
+      document.getElementById('pub-loading').style.display = 'none';
+      const err = document.getElementById('pub-error');
+      err.style.display = 'block';
+      err.innerHTML = `<strong>Could not load live data</strong> — ${e.message}. <a href="https://jsulkowska.cent.uw.edu.pl/publications/" target="_blank">View on original website →</a>`;
+    }
+  }
+
+  function renderCharts(works) {
+    // Bar chart: publications per year
+    const yearMap = {};
+    works.forEach(w => { const y = w.publication_year; if (y) yearMap[y] = (yearMap[y]||0)+1; });
+    const years = Object.keys(yearMap).map(Number).sort((a,b)=>a-b);
+    const maxCount = Math.max(...Object.values(yearMap));
+    const barEl = document.getElementById('chart-year');
+    barEl.className = 'bar-chart';
+    barEl.innerHTML = years.map(y => `
+      <div class="bar-col">
+        <div class="bar-fill" style="height:${Math.round((yearMap[y]/maxCount)*100)}%" data-tip="${y}: ${yearMap[y]}"></div>
+        <div class="bar-label">${y}</div>
+      </div>`).join('');
+
+    // Horizontal bars: top journals
+    const jMap = {};
+    works.forEach(w => {
+      const j = w.primary_location?.source?.display_name;
+      if (j) jMap[j] = (jMap[j]||0)+1;
+    });
+    const topJ = Object.entries(jMap).sort((a,b)=>b[1]-a[1]).slice(0,6);
+    const maxJ = topJ[0]?.[1] || 1;
+    const jEl = document.getElementById('chart-journals');
+    jEl.className = '';
+    jEl.innerHTML = topJ.map(([name, count]) => `
+      <div class="hbar-row">
+        <div class="hbar-label" title="${name}">${name}</div>
+        <div class="hbar-track"><div class="hbar-fill" style="width:${Math.round((count/maxJ)*100)}%"></div></div>
+        <div class="hbar-val">${count}</div>
+      </div>`).join('');
+
+    // Donut: citation tiers
+    const tiers = [
+      { label: '100+ cit.',  color: '#0d47a1', min: 100 },
+      { label: '50–99',      color: '#1a73e8', min: 50  },
+      { label: '10–49',      color: '#4db8e8', min: 10  },
+      { label: '1–9',        color: '#a8d5f0', min: 1   },
+      { label: '0 cit.',     color: '#e0e4ec', min: 0   },
+    ];
+    const total = works.length || 1;
+    let cum = 0;
+    const segments = tiers.map((t, i) => {
+      const max = tiers[i-1]?.min ?? Infinity;
+      const count = works.filter(w => (w.cited_by_count||0) >= t.min && (w.cited_by_count||0) < max).length;
+      const pct = count / total;
+      const start = cum; cum += pct;
+      return { pct, start, color: t.color, label: t.label, count };
+    });
+    const r = 34, cx = 40, cy = 40, strokeW = 15;
+    const circ = 2 * Math.PI * r;
+    const svgPaths = segments.map(s => {
+      const dash = s.pct * circ;
+      const offset = circ - s.start * circ;
+      return `<circle cx="${cx}" cy="${cy}" r="${r}" fill="none" stroke="${s.color}" stroke-width="${strokeW}" stroke-dasharray="${dash} ${circ-dash}" stroke-dashoffset="${offset}" transform="rotate(-90 ${cx} ${cy})"/>`;
+    }).join('');
+    document.getElementById('chart-cites').className = 'donut-wrap';
+    document.getElementById('chart-cites').innerHTML = `
+      <svg width="80" height="80" viewBox="0 0 80 80" style="flex-shrink:0">${svgPaths}
+        <text x="40" y="37" text-anchor="middle" font-size="10" font-weight="700" fill="#0a1020">${total}</text>
+        <text x="40" y="48" text-anchor="middle" font-size="6.5" fill="#888">papers</text>
+      </svg>
+      <div class="donut-legend">${segments.map(s=>`
+        <div class="donut-leg-item">
+          <div class="donut-dot" style="background:${s.color}"></div>
+          <span>${s.label} <strong>(${s.count})</strong></span>
+        </div>`).join('')}
+      </div>`;
+  }
+
+  let _activeChip = 'all';
+
+  window.pubToggle = function(header) {
+    header.classList.toggle('collapsed');
+    const body = header.nextElementSibling;
+    body.classList.toggle('collapsed');
+  };
+
+  window.pubChip = function(btn) {
+    document.querySelectorAll('.pchip').forEach(c => c.classList.remove('active'));
+    btn.classList.add('active');
+    _activeChip = btn.dataset.filter;
+    renderPubs();
+  };
+
+  function renderPubs() {
+    const q    = (document.getElementById('pub-search-input')?.value || '').toLowerCase();
+    const sort = document.getElementById('pub-sort-select')?.value || 'cites';
+    const chip = _activeChip;
+
+    let list = _allPubs.filter(w => {
+      const year  = w.publication_year || 0;
+      const cites = w.cited_by_count || 0;
+      const isOA  = w.open_access?.is_oa;
+      if (chip === 'cited50'  && cites < 50)                   return false;
+      if (chip === 'cited100' && cites < 100)                  return false;
+      if (chip === '2020s'    && year < 2020)                  return false;
+      if (chip === '2010s'    && (year < 2010 || year >= 2020)) return false;
+      if (chip === 'pre2010'  && year >= 2010)                 return false;
+      if (chip === 'oa'       && !isOA)                        return false;
+      if (!q) return true;
+      const t    = (w.title || '').toLowerCase();
+      const auth = (w.authorships || []).map(a => a.author?.display_name || '').join(' ').toLowerCase();
+      const j    = (w.primary_location?.source?.display_name || '').toLowerCase();
+      return t.includes(q) || auth.includes(q) || j.includes(q);
+    });
+
+    list.sort((a, b) => {
+      if (sort === 'year-desc') return (b.publication_year||0) - (a.publication_year||0);
+      if (sort === 'year-asc')  return (a.publication_year||0) - (b.publication_year||0);
+      if (sort === 'alpha')     return (a.title||'').localeCompare(b.title||'');
+      return (b.cited_by_count||0) - (a.cited_by_count||0);
+    });
+
+    const bar = document.getElementById('pub-result-bar');
+    bar.style.display = 'block';
+    document.getElementById('pub-result-n').textContent = list.length.toLocaleString();
+
+    const html = list.map((w, i) => {
+      const auths  = (w.authorships||[]).slice(0,5).map(a=>a.author?.display_name||'').join(', ');
+      const more   = (w.authorships||[]).length > 5 ? ' et al.' : '';
+      const journal = w.primary_location?.source?.display_name || '';
+      const year   = w.publication_year || '';
+      const url    = w.doi ? 'https://doi.org/'+w.doi.replace('https://doi.org/','') : (w.id||'#');
+      const cites  = w.cited_by_count || 0;
+      const oaBadge = w.open_access?.is_oa
+        ? '<span style="font-size:0.65rem;font-weight:700;color:#2e7d32;background:#e8f5e9;padding:1px 5px;border-radius:8px;margin-left:5px">OA</span>' : '';
+      return `<a class="pub-item" href="${url}" target="_blank">
+        <div class="pub-num">${i+1}</div>
+        <div class="pub-body">
+          <div class="pub-title">${(w.title||'Untitled').replace(/</g,'&lt;')}${oaBadge}</div>
+          <div class="pub-meta">${auths}${more} · <em>${journal||'—'}</em> · ${year}</div>
+        </div>
+        <div class="pub-cites">${cites.toLocaleString()} cit.</div>
+      </a>`;
+    }).join('');
+
+    const lst = document.getElementById('pub-list');
+    lst.style.display = 'block';
+    lst.innerHTML = html || '<div style="padding:2rem;text-align:center;color:#888">No publications match this filter.</div>';
+  }
+
+  window.pubFilter = renderPubs;
+  load();
+});
+</script>
