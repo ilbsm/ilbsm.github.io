@@ -10,6 +10,11 @@ url: "https://jsulkowska.cent.uw.edu.pl"
 markdown: kramdown
 plugins: []
 
+collections:
+  news:
+    output: true
+    permalink: /news/:path/
+
 # Folders/files to exclude from build
 exclude:
   - README.md

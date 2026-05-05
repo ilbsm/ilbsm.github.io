@@ -1,4 +1,3 @@
-@ -1,1042 +0,0 @@
 ---
 layout: default
 title: "Joanna I. Sulkowska — Interdisciplinary Laboratory of Biological Systems Modelling"
@@ -47,7 +46,16 @@ permalink: /
 .hp-head-title {
   font-family: 'Merriweather', serif; font-size: 0.95rem; font-weight: 900; color: #fff; margin: 0;
 }
-@media (max-width: 640px) { .hp-head-eyebrow { display: none; } }
+.hp-head-div { width: 1px; height: 28px; background: rgba(255,255,255,0.15); margin: 0 1rem; flex-shrink: 0; }
+.hp-head-stats { display: flex; align-items: center; }
+.hp-head-stat {
+  display: flex; flex-direction: column; align-items: center;
+  padding: 0 0.85rem; border-right: 1px solid rgba(255,255,255,0.12);
+}
+.hp-head-stat:last-child { border-right: none; }
+.hp-head-stat-n { font-size: 0.9rem; font-weight: 700; color: #fff; line-height: 1; }
+.hp-head-stat-l { font-size: 0.58rem; color: rgba(255,255,255,0.4); text-transform: lowercase; margin-top: 0.1rem; }
+@media (max-width: 640px) { .hp-head-stats, .hp-head-div { display: none; } }
 
 /* ── STICKY NAV PILLS ── */
 .hp-nav {
@@ -297,6 +305,29 @@ permalink: /
 .hp-news-title { font-size: var(--text-sm); font-weight: 600; color: #28251d; line-height: 1.5; flex: 1; }
 .hp-news-arrow { font-size: var(--text-xs); font-weight: 600; color: #01696f; margin-top: auto; }
 
+/* ── NEWS ARCHIVE TOGGLE ── */
+.hp-news-archive-toggle {
+  display: inline-flex; align-items: center; gap: 0.4rem;
+  font-size: var(--text-xs); font-weight: 600;
+  color: #5a5957; background: #f0ede8;
+  border: 1px solid #dcd9d5; border-radius: var(--radius-full);
+  padding: var(--space-2) var(--space-4);
+  cursor: pointer; transition: all var(--transition);
+  margin-top: var(--space-5);
+}
+.hp-news-archive-toggle:hover { background: #e8e5e0; color: #28251d; border-color: #c8c5be; }
+.hp-news-archive { margin-top: var(--space-4); display: none; }
+.hp-news-archive.open { display: block; }
+.hp-news-archive-grid {
+  display: grid; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); gap: var(--space-3);
+}
+.hp-news-archive-label {
+  font-size: var(--text-xs); font-weight: 700; letter-spacing: 0.08em;
+  text-transform: uppercase; color: #9a9896;
+  margin-bottom: var(--space-3); padding-bottom: var(--space-2);
+  border-bottom: 1px solid #ede9e3;
+}
+
 /* ── COLLABORATORS STRIP ── */
 .hp-collabs {
   display: flex; flex-wrap: wrap; gap: var(--space-3); align-items: stretch;
@@ -389,8 +420,12 @@ permalink: /
 <div class="hp-head">
   <div class="hp-head-inner">
     <div>
-      <div class="hp-head-eyebrow">Centre of New Technologies · University of Warsaw</div>
-      <div class="hp-head-title">Prof. Joanna I. Sulkowska — Biological Systems Modelling</div>
+      <div class="hp-head-eyebrow">Sulkowska Lab · CeNT, University of Warsaw</div>
+      <div class="hp-head-title">Interdisciplinary Laboratory of Biological Systems Modelling</div>
+    </div>
+    <div class="hp-head-div"></div>
+    <div class="hp-head-stats">
+
     </div>
   </div>
 </div>
@@ -885,66 +920,50 @@ permalink: /
         <div class="hp-eyebrow">Latest News</div>
         <div class="hp-title" style="font-size:var(--text-lg)">From the Lab</div>
       </div>
-      <a href="https://jsulkowska.cent.uw.edu.pl/home/news/" target="_blank" class="hp-see-all">All news →</a>
     </div>
+
+    <!-- ✏️ TO ADD/REMOVE NEWS: edit _data/news.yml — no HTML changes needed -->
     <div class="hp-news-grid">
-
-      <a class="hp-news-card" href="https://jsulkowska.cent.uw.edu.pl/national-synthesis-center-for-emergence-in-the-molecular-and-cellular-sciences-grant-awarded-to-joanna-sulkowska/" target="_blank">
-        <div class="hp-news-date">23 Feb 2026</div>
-        <div class="hp-news-title">NSF NCEMS Working Group Grant awarded to Joanna Sułkowska</div>
+      {% assign recent_news = site.data.news | where: "archive", false %}
+      {% for item in recent_news %}
+      <a class="hp-news-card" href="/news/{{ item.slug }}/">
+        <div class="hp-news-date">{{ item.date }}</div>
+        <div class="hp-news-title">{{ item.title }}</div>
         <div class="hp-news-arrow">Read →</div>
       </a>
-
-      <a class="hp-news-card" href="https://jsulkowska.cent.uw.edu.pl/protein-dices-we-invite-you-june-10-11-2025/" target="_blank">
-        <div class="hp-news-date">23 May 2025</div>
-        <div class="hp-news-title">Protein DICES — we invite you June 10–11, 2025!</div>
-        <div class="hp-news-arrow">Read →</div>
-      </a>
-
-      <a class="hp-news-card" href="https://jsulkowska.cent.uw.edu.pl/knots-proteins-workshop-in-bologna-19-20-05-2025/" target="_blank">
-        <div class="hp-news-date">11 May 2025</div>
-        <div class="hp-news-title">Knots &amp; Proteins — Workshop in Bologna (19–20.05.2025)</div>
-        <div class="hp-news-arrow">Read →</div>
-      </a>
-
-      <a class="hp-news-card" href="https://jsulkowska.cent.uw.edu.pl/prof-joanna-sulkowska-has-been-awarded-an-embo-advanced-collaboration-grant/" target="_blank">
-        <div class="hp-news-date">21 Nov 2024</div>
-        <div class="hp-news-title">Prof. Joanna Sułkowska awarded EMBO Advanced Collaboration Grant</div>
-        <div class="hp-news-arrow">Read →</div>
-      </a>
-
-      <a class="hp-news-card" href="https://jsulkowska.cent.uw.edu.pl/joanna-sulkowska-aim-square-grant-caltech-usa/" target="_blank">
-        <div class="hp-news-date">19 Jul 2024</div>
-        <div class="hp-news-title">Joanna Sulkowska — AIM SQuaRE grant, Caltech, USA</div>
-        <div class="hp-news-arrow">Read →</div>
-      </a>
-
-      <a class="hp-news-card" href="https://jsulkowska.cent.uw.edu.pl/agata-perlinska-doctorate-degree/" target="_blank">
-        <div class="hp-news-date">19 Jul 2024</div>
-        <div class="hp-news-title">Agata Perlińska — Doctorate Degree, Faculty of Biology, UW</div>
-        <div class="hp-news-arrow">Read →</div>
-      </a>
-
-      <a class="hp-news-card" href="https://jsulkowska.cent.uw.edu.pl/marta-korpacz-deepmind-scholarship/" target="_blank">
-        <div class="hp-news-date">19 Jul 2024</div>
-        <div class="hp-news-title">Marta Korpacz — DeepMind Scholarship</div>
-        <div class="hp-news-arrow">Read →</div>
-      </a>
-
-      <a class="hp-news-card" href="https://jsulkowska.cent.uw.edu.pl/joanna-sulkowska-idub-grant-for-design-of-artificial-proteins/" target="_blank">
-        <div class="hp-news-date">10 Dec 2023</div>
-        <div class="hp-news-title">Joanna Sulkowska — IDUB grant for design of artificial proteins</div>
-        <div class="hp-news-arrow">Read →</div>
-      </a>
-
-      <a class="hp-news-card" href="https://jsulkowska.cent.uw.edu.pl/fernando-bruno-idub-grant-for-grc-protein-folding-dynamics-grs-2024/" target="_blank">
-        <div class="hp-news-date">10 Dec 2023</div>
-        <div class="hp-news-title">Fernando Bruno — IDUB grant for GRC Protein Folding Dynamics 2024</div>
-        <div class="hp-news-arrow">Read →</div>
-      </a>
-
+      {% endfor %}
     </div>
+
+    <button class="hp-news-archive-toggle" onclick="toggleArchive(this)">
+      <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><polyline points="6 9 12 15 18 9"/></svg>
+      Show archive (2015–2022)
+    </button>
+
+    <div class="hp-news-archive" id="news-archive">
+      <div class="hp-news-archive-label">Archive — 2015 to 2022</div>
+      <div class="hp-news-archive-grid">
+        {% assign archive_news = site.data.news | where: "archive", true %}
+        {% for item in archive_news %}
+        <a class="hp-news-card" href="/news/{{ item.slug }}/">
+          <div class="hp-news-date">{{ item.date }}</div>
+          <div class="hp-news-title">{{ item.title }}</div>
+          <div class="hp-news-arrow">Read →</div>
+        </a>
+        {% endfor %}
+      </div>
+    </div>
+
   </div><!-- /sec-news -->
+
+  <script>
+  function toggleArchive(btn) {
+    var archive = document.getElementById('news-archive');
+    var isOpen = archive.classList.toggle('open');
+    btn.innerHTML = isOpen
+      ? '<svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><polyline points="18 15 12 9 6 15"/></svg> Hide archive'
+      : '<svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><polyline points="6 9 12 15 18 9"/></svg> Show archive (2015–2022)';
+  }
+  </script>
 
 </div><!-- /hp-wrap -->
 </div><!-- /hp -->
@@ -1018,26 +1037,15 @@ function hpNav(id, btn) {
     var pc = document.getElementById('hp-particles');
     var kc = document.getElementById('hp-knot');
     if (!kc) return;
-    /* Particle starfield on the background canvas */
     new ParticleField(pc, { color: '#4db8e8', n: 60, speed: 0.004 });
-    /* Trefoil knot — glowing cyan-to-teal tube */
     new Knot3D(kc, {
-      type:       'trefoil',
-      color:      '#4db8e8',
-      color2:     '#00bcd4',
-      speed:      0.006,
-      tiltX:      0.42,
-      N:          520,
-      fov:        5.5,
-      glow:       true,
-      glowSize:   6,
-      wobble:     0.06
+      type: 'trefoil', color: '#4db8e8', color2: '#00bcd4',
+      speed: 0.006, tiltX: 0.42, N: 520, fov: 5.5,
+      glow: true, glowSize: 6, wobble: 0.06
     });
   }
   if (document.readyState === 'loading') {
     document.addEventListener('DOMContentLoaded', init);
-  } else {
-    init();
-  }
+  } else { init(); }
 }());
 </script>

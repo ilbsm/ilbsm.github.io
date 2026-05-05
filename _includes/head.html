@@ -14,4 +14,8 @@
 
   <!-- Sulkowska Lab styles (extracted verbatim from original index.html) -->
   <link rel="stylesheet" href="{{ '/assets/css/sulkowska.css' | relative_url }}">
+
+  <!-- Scripts loaded with defer so they execute after DOM is parsed but before DOMContentLoaded -->
+  <script defer src="{{ '/assets/js/sulkowska.js' | relative_url }}"></script>
+  <script defer src="{{ '/assets/js/knot3d.js' | relative_url }}"></script>
 </head>

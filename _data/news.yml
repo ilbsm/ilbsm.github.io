@@ -1,0 +1,517 @@
+# ============================================================
+#  NEWS DATA — edit this file to add / remove / update news
+#  archive: false → shown in main news grid
+#  archive: true  → shown only when user clicks "Show archive"
+# ============================================================
+
+- slug: nsf-ncems-grant-2026
+  date: "23 Feb 2026"
+  title: "NSF NCEMS Working Group Grant awarded to Joanna Sulkowska"
+  archive: false
+  body: |
+    <p>Prof. Joanna Sulkowska has been selected for the <strong>National Synthesis Center for Emergence in the Molecular and Cellular Sciences (NCEMS)</strong> Working Group Grant by the NSF, USA.</p>
+    <ul>
+      <li><strong>PI:</strong> Prof. Joanna Sulkowska</li>
+      <li><strong>Team:</strong> Julia Sikorska, Mateusz Fortunka</li>
+      <li><strong>Funder:</strong> National Science Foundation (NSF), USA</li>
+    </ul>
+
+- slug: protein-dices-june-2025
+  date: "23 May 2025"
+  title: "Protein DICES - we invite you June 10-11, 2025!"
+  archive: false
+  body: |
+    <p>Workshop at Centre of New Technologies, UW: <strong>Protein DICES - Design. Interactions. Catalysis. Engineering. Senescence.</strong></p>
+    <ul>
+      <li><strong>Dates:</strong> June 10-11, 2025</li>
+      <li><strong>Organizers:</strong> Andrzej Joachimiak, Jacek Plonka, Julia Sikorska, Joanna Sulkowska</li>
+      <li><strong>Website:</strong> <a href="https://protein-dices.cent.uw.edu.pl/">protein-dices.cent.uw.edu.pl</a></li>
+    </ul>
+
+- slug: knots-proteins-workshop-bologna-2025
+  date: "11 May 2025"
+  title: "Knots and Proteins Workshop in Bologna (19-20.05.2025)"
+  archive: false
+  body: |
+    <p>Prof. Joanna Sulkowska co-organized the <strong>Knots and Proteins Workshop</strong> in Bologna, Italy.</p>
+    <ul>
+      <li><strong>Co-organizers:</strong> Prof. Alessia Cattabriga (U. Bologna), Prof. Bostjan Gabrovsek (U. Ljubljana)</li>
+    </ul>
+
+- slug: embo-advanced-collaboration-grant-2024
+  date: "21 Nov 2024"
+  title: "Prof. Joanna Sulkowska awarded EMBO Advanced Collaboration Grant"
+  archive: false
+  body: |
+    <p>Prof. Joanna Sulkowska received an <strong>EMBO Advanced Collaboration Grant</strong>.</p>
+    <ul>
+      <li><strong>Collaborator:</strong> Prof. Sophie Jackson, Cambridge University, UK</li>
+    </ul>
+
+- slug: aim-square-grant-caltech-2024
+  date: "19 Jul 2024"
+  title: "Joanna Sulkowska AIM SQuaRE grant, Caltech, USA"
+  archive: false
+  body: |
+    <p>Prof. Joanna Sulkowska received a <strong>3-year AIM SQuaRE grant</strong> from the American Institute of Mathematics, hosted at Caltech, USA.</p>
+    <ul>
+      <li><strong>More info:</strong> <a href="https://aimath.org/programs/squares/">aimath.org/programs/squares</a></li>
+    </ul>
+
+- slug: polish-childrens-fund-workshop-2024
+  date: "19 Jul 2024"
+  title: "Workshops for Polish Children's Fund"
+  archive: false
+  body: |
+    <p>Lab members ran workshops for the <strong>Polish Children's Fund</strong>, June 17-21, 2024.</p>
+    <ul>
+      <li><strong>Presenters:</strong> Julia Sosinska, Mateusz Fortunka, Mariusz Mozajew, Maciek Sikora</li>
+    </ul>
+
+- slug: kamil-luczkiewicz-masters-degree-2024
+  date: "19 Jul 2024"
+  title: "Kamil Luczkiewicz Master's Degree, Faculty of Physics, UW"
+  archive: false
+  body: |
+    <p>Kamil Luczkiewicz defended his Master's degree at the Faculty of Physics, University of Warsaw.</p>
+    <ul>
+      <li><strong>Thesis:</strong> Classification of non-trivial topologies in polymers and proteins using machine learning methods</li>
+    </ul>
+
+- slug: agata-perlinska-doctorate-2024
+  date: "19 Jul 2024"
+  title: "Agata Perlinska Doctorate Degree, Faculty of Biology, UW"
+  archive: false
+  body: |
+    <p>Agata Perlinska defended her <strong>PhD thesis</strong> at the Faculty of Biology, University of Warsaw.</p>
+    <ul>
+      <li><strong>Thesis:</strong> Impact of the knotted motif on protein structure and function</li>
+      <li><strong>Repository:</strong> <a href="https://repozytorium.uw.edu.pl/entities/publication/f476bf4a-740a-44b6-87cc-b5f91df8aee9">repozytorium.uw.edu.pl</a></li>
+    </ul>
+
+- slug: mateusz-fortunka-embo-scholarship-2024
+  date: "19 Jul 2024"
+  title: "Mateusz Fortunka EMBO scholarship - workshops in Grenoble"
+  archive: false
+  body: |
+    <p>Mateusz Fortunka received an <strong>EMBO scholarship</strong> for the practical course in Grenoble.</p>
+    <ul>
+      <li><strong>Course:</strong> Structure, dynamics and function of biological macromolecules by NMR</li>
+      <li><strong>More info:</strong> <a href="https://meetings.embo.org/event/24-nmr">meetings.embo.org/event/24-nmr</a></li>
+    </ul>
+
+- slug: marta-korpacz-erasmus-scholarship-2024
+  date: "19 Jul 2024"
+  title: "Marta Korpacz Erasmus Scholarship"
+  archive: false
+  body: |
+    <p>Marta Korpacz received an <strong>Erasmus+ scholarship</strong> for a semester at Ludwig Maximilian University of Munich, Germany.</p>
+
+- slug: marta-korpacz-deepmind-scholarship-2024
+  date: "19 Jul 2024"
+  title: "Marta Korpacz DeepMind Scholarship"
+  archive: false
+  body: |
+    <p>Marta Korpacz received a <strong>DeepMind Scholarship</strong> (4th edition).</p>
+    <ul>
+      <li><strong>More info:</strong> <a href="https://www.uw.edu.pl/stypendystki-czwartej-edycji-deepmind/">uw.edu.pl</a></li>
+    </ul>
+
+- slug: bartosz-gren-idub-grant-ljubljana-2024
+  date: "22 Jan 2024"
+  title: "Bartosz Gren, IDUB grant for long-term research trip to Ljubljana"
+  archive: false
+  body: |
+    <p>Bartosz Gren received a <strong>University of Warsaw IDUB grant</strong> for a long-term research stay in Ljubljana, Slovenia.</p>
+
+- slug: joanna-sulkowska-idub-artificial-proteins-2023
+  date: "10 Dec 2023"
+  title: "Joanna Sulkowska, IDUB grant for design of artificial proteins"
+  archive: false
+  body: |
+    <p>Prof. Joanna Sulkowska received a <strong>University of Warsaw IDUB grant</strong> supporting the rational design of artificial knotted proteins.</p>
+
+- slug: fernando-bruno-idub-grc-2023
+  date: "10 Dec 2023"
+  title: "Fernando Bruno, IDUB grant for GRC - Protein Folding Dynamics 2024"
+  archive: false
+  body: |
+    <p>Fernando Bruno received an <strong>IDUB grant</strong> to attend the Gordon Research Conference - Protein Folding Dynamics (GRS) 2024.</p>
+
+- slug: roksana-malinowska-bachelors-2022
+  date: "19 Sep 2022"
+  title: "Roksana Malinowska defended her Bachelor's thesis in Bioinformatics, MIM UW"
+  archive: true
+  body: "<p>Roksana Malinowska defended her Bachelor's thesis in Bioinformatics at MIM, University of Warsaw.</p>"
+
+- slug: michal-sanocki-bachelors-2022
+  date: "16 Sep 2022"
+  title: "Michal Sanocki defended his Bachelor's thesis in Faculty of Chemistry, UW"
+  archive: true
+  body: "<p>Michal Sanocki defended his Bachelor's thesis at the Faculty of Chemistry, University of Warsaw.</p>"
+
+- slug: opus-lap-kickoff-2022
+  date: "25 Jul 2022"
+  title: "Kick off meeting (25-28.07) for OPUS LAP grant"
+  archive: true
+  body: "<p>Kick-off meeting held July 25-28, 2022 for the OPUS LAP grant project.</p>"
+
+- slug: przytycki-lectures-2022
+  date: "25 Jul 2022"
+  title: "Lectures of Prof. Jozef Przytycki (George Washington University, USA)"
+  archive: true
+  body: "<p>Prof. Jozef Przytycki from The George Washington University delivered a series of lectures.</p>"
+
+- slug: entanglement-days-2021
+  date: "19 Jun 2021"
+  title: "22-26 June 2021: Entanglement days of biopolymers, online"
+  archive: true
+  body: "<p>Online workshop: Entanglement days of biopolymers, June 22-26, 2021.</p>"
+
+- slug: ministry-scholarships-piejko-gren-2018
+  date: "20 Dec 2018"
+  title: "Ministry Scholarships for Maciej Piejko and Bartosz Gren"
+  archive: true
+  body: "<p>Maciej Piejko and Bartosz Gren received Ministry of Science and Higher Education Scholarships.</p>"
+
+- slug: sulkowska-associate-professor-2018
+  date: "21 Nov 2018"
+  title: "Joanna Sulkowska was promoted to associate professor at the University of Warsaw"
+  archive: true
+  body: "<p>Prof. Joanna Sulkowska was promoted to the rank of Associate Professor at the University of Warsaw.</p>"
+
+- slug: perlinska-jarmolinska-preludium-2018
+  date: "20 Nov 2018"
+  title: "Agata Perlinska and Aleksandra Jarmolinska received Preludium grants from NCN"
+  archive: true
+  body: "<p>Both researchers received Preludium grants from the National Science Centre (NCN), Poland.</p>"
+
+- slug: piejko-youngchem-2018
+  date: "15 Oct 2018"
+  title: "Maciej Piejko received an award for the best presentation at YoungChem"
+  archive: true
+  body: "<p>Maciej Piejko received an award for the best presentation at the YoungChem conference.</p>"
+
+- slug: sulkowska-nsc-award-2018
+  date: "10 Oct 2018"
+  title: "Joanna Sulkowska is one of the winners of the 2018 National Science Centre Award"
+  archive: true
+  body: "<p>Prof. Joanna Sulkowska was named one of the winners of the prestigious 2018 National Science Centre Award.</p>"
+
+- slug: childrens-fund-workshop-2018
+  date: "18 Jun 2018"
+  title: "Start of the workshop for the Polish Children's Fund"
+  archive: true
+  body: "<p>Start of the annual workshop series for the Polish Children's Fund.</p>"
+
+- slug: dni-otwarte-2018
+  date: "14 Apr 2018"
+  title: "Dni Otwarte Kampusu Ochota - warsztaty dla dzieci"
+  archive: true
+  body: "<p>Warsztaty na Dniach Otwartych Kampusu Ochota, 14 April 2018.</p>"
+
+- slug: jeff-noel-visit-2018
+  date: "29 Mar 2018"
+  title: "Jeff Noel from AG Daumke Max Delbruck Center, Berlin visits our laboratory"
+  archive: true
+  body: "<p>Jeff Noel from the AG Daumke group at the Max Delbruck Center, Berlin visited our laboratory.</p>"
+
+- slug: sulkowska-person-of-year-2018
+  date: "14 Mar 2018"
+  title: "Joanna Sulkowska is the Person of the Year in MocArty Challenge"
+  archive: true
+  body: "<p>Prof. Joanna Sulkowska was named Person of the Year in the MocArty Challenge.</p>"
+
+- slug: katarzyna-tych-visit-2018
+  date: "8 Mar 2018"
+  title: "Katarzyna Tych from Technische Universitat Muenchen visits our laboratory"
+  archive: true
+  body: "<p>Dr. Katarzyna Tych from Technische Universitat Muenchen visited our laboratory.</p>"
+
+- slug: perlinska-jarmolinska-college-support-2018
+  date: "10 Jan 2018"
+  title: "Perlinska and Jarmolinska received support from the College of Inter-Faculty Individual Studies"
+  archive: true
+  body: "<p>Agata Perlinska and Aleksandra Jarmolinska received support from the College of Inter-Faculty Individual Studies.</p>"
+
+- slug: ministry-scholarships-gierut-dabrowski-2017
+  date: "14 Dec 2017"
+  title: "Ministry Scholarships for Aleksandra Gierut and Pawel Dabrowski-Tumanski"
+  archive: true
+  body: "<p>Aleksandra Gierut and Pawel Dabrowski-Tumanski received Ministry of Science and Higher Education Scholarships.</p>"
+
+- slug: jarmolinska-perlinska-posters-2017
+  date: "7 Oct 2017"
+  title: "Jarmolinska and Perlinska awarded for best posters at Coarse Graining Workshop"
+  archive: true
+  body: "<p>Aleksandra Jarmolinska and Agata Perlinska received awards for the best posters at the Coarse Graining Workshop.</p>"
+
+- slug: jarmolinska-ptbi-talk-2017
+  date: "29 Sep 2017"
+  title: "Aleksandra Jarmolinska won best talk at X Symposium of the PTBI"
+  archive: true
+  body: "<p>Aleksandra Jarmolinska won the competition for the best talk at the X Symposium of the Polish Bioinformatics Society.</p>"
+
+- slug: dabrowski-mobilnosc-plus-2017
+  date: "27 Sep 2017"
+  title: "Mobilnosc PLUS grant for Pawel Dabrowski-Tumanski"
+  archive: true
+  body: "<p>Pawel Dabrowski-Tumanski received the Mobilnosc PLUS grant from the Ministry of Science and Higher Education.</p>"
+
+- slug: gierut-bachelors-2017
+  date: "20 Sep 2017"
+  title: "Aleksandra Gierut defended her Bachelor's thesis on Jagiellonian University in Cracow"
+  archive: true
+  body: "<p>Aleksandra Gierut defended her Bachelor's thesis at the Jagiellonian University in Cracow.</p>"
+
+- slug: dabrowski-etiuda-2017
+  date: "26 Jul 2017"
+  title: "Etiuda grant for Pawel Dabrowski-Tumanski"
+  archive: true
+  body: "<p>Pawel Dabrowski-Tumanski received the Etiuda doctoral scholarship from the National Science Centre (NCN).</p>"
+
+- slug: okeanos-grant-2017
+  date: "25 Jul 2017"
+  title: "New computational grant on Okeanos"
+  archive: true
+  body: "<p>The lab was awarded a new computational grant on the Okeanos supercomputer cluster.</p>"
+
+- slug: domagala-internship-2017
+  date: "24 Jul 2017"
+  title: "Wiktoria Domagala starts an internship"
+  archive: true
+  body: "<p>Wiktoria Domagala started an internship in the laboratory.</p>"
+
+- slug: kedzierski-bachelors-2017
+  date: "12 Jul 2017"
+  title: "Jacek Kedzierski defended his Bachelor's thesis at Faculty of Chemistry, UW"
+  archive: true
+  body: "<p>Jacek Kedzierski defended his Bachelor's thesis at the Faculty of Chemistry, University of Warsaw.</p>"
+
+- slug: childrens-fund-2017
+  date: "19 Jun 2017"
+  title: "Polish Children's Fund - start of the workshop"
+  archive: true
+  body: "<p>Start of the annual workshop for the Polish Children's Fund, June 2017.</p>"
+
+- slug: dabrowski-start-stipend-2017
+  date: "16 May 2017"
+  title: "START stipend for Pawel Dabrowski-Tumanski"
+  archive: true
+  body: "<p>Pawel Dabrowski-Tumanski received the START stipend from the Foundation for Polish Science (FNP).</p>"
+
+- slug: ochota-workshop-2017
+  date: "8 Apr 2017"
+  title: "Workshop for children on Ochota Campus Open Days"
+  archive: true
+  body: "<p>Workshop for children on the Ochota Campus Open Days, April 2017.</p>"
+
+- slug: sulkowska-tvn-2017
+  date: "26 Mar 2017"
+  title: "Joanna Sulkowska talked about her scientific career in TVN"
+  archive: true
+  body: "<p>Prof. Joanna Sulkowska was interviewed about her scientific career on TVN television.</p>"
+
+- slug: zayats-joined-2017
+  date: "3 Mar 2017"
+  title: "Vasilina Zayats joined the group at CeNT, UW"
+  archive: true
+  body: "<p>Vasilina Zayats joined the laboratory at the Centre of New Technologies, University of Warsaw.</p>"
+
+- slug: jakubowski-joined-2017
+  date: "3 Mar 2017"
+  title: "Rafal Jakubowski joined the group at CeNT, UW"
+  archive: true
+  body: "<p>Rafal Jakubowski joined the laboratory at the Centre of New Technologies, University of Warsaw.</p>"
+
+- slug: embo-small-grant-2017
+  date: "16 Jan 2017"
+  title: "EMBO Small Grant awarded for Joanna Sulkowska"
+  archive: true
+  body: "<p>Prof. Joanna Sulkowska was awarded an EMBO Small Grant supporting laboratory research activities.</p>"
+
+- slug: mismaps-traineeship-2017
+  date: "12 Jan 2017"
+  title: "MISMaP UW traineeship for Joanna Macnar and Jacek Kedzierski"
+  archive: true
+  body: "<p>Joanna Macnar and Jacek Kedzierski received traineeships under the Studying at MISMaP UW programme.</p>"
+
+- slug: klaudel-joined-2017
+  date: "6 Jan 2017"
+  title: "Mgr Gaja Klaudel joined the group at CeNT, UW"
+  archive: true
+  body: "<p>Mgr Gaja Klaudel joined the laboratory at the Centre of New Technologies, University of Warsaw.</p>"
+
+- slug: macnar-ministry-scholarship-2016
+  date: "15 Dec 2016"
+  title: "Minister of Science and Higher Education Scholarship for Joanna Macnar"
+  archive: true
+  body: "<p>Joanna Macnar received a Minister of Science and Higher Education Scholarship.</p>"
+
+- slug: sulkowska-radio-zet-2016
+  date: "8 Dec 2016"
+  title: "Joanna Sulkowska talked about her scientific career in Radio Zet"
+  archive: true
+  body: "<p>Prof. Joanna Sulkowska was interviewed about her scientific career on Radio Zet.</p>"
+
+- slug: loreal-unesco-habilitation-2016
+  date: "24 Nov 2016"
+  title: "Joanna Sulkowska awarded L'Oreal-UNESCO For Women in Science habilitation scholarship"
+  archive: true
+  body: "<p>Prof. Joanna Sulkowska was awarded the habilitation scholarship from L'Oreal-UNESCO For Women in Science.</p>"
+
+- slug: preludium-dabrowski-2016
+  date: "15 Nov 2016"
+  title: "NCN Preludium grant for Pawel Dabrowski-Tumanski"
+  archive: true
+  body: "<p>Pawel Dabrowski-Tumanski received a Preludium grant from the National Science Centre (NCN), Poland.</p>"
+
+- slug: niemyska-ictp-2016
+  date: "30 Sep 2016"
+  title: "Wanda Niemyska chosen to give a talk at ICTP Workshop, Trieste"
+  archive: true
+  body: "<p>Wanda Niemyska was chosen to give a talk at the Workshop on Knots and Links in Biological and Soft Matter Systems, ICTP, Trieste.</p>"
+
+- slug: perlinska-best-thesis-award-2016
+  date: "29 Sep 2016"
+  title: "Award for Agata Perlinska for best MSc. thesis in bioinformatics in 2015"
+  archive: true
+  body: "<p>Agata Perlinska received an award for the best MSc. thesis in bioinformatics in 2015 from the Polish Bioinformatics Society.</p>"
+
+- slug: jarmolinska-poster-award-2016
+  date: "29 Sep 2016"
+  title: "Best poster award to Aleksandra Jarmolinska at 9th Symposium of PTBI, Bialystok"
+  archive: true
+  body: "<p>Aleksandra Jarmolinska received the award for the best poster at the 9th Symposium of PTBI in Bialystok.</p>"
+
+- slug: embo-networking-congress-bio-2016
+  date: "10 Sep 2016"
+  title: "EMBO Networking grant to Joanna Sulkowska to support the 2nd Congress Bio"
+  archive: true
+  body: "<p>Prof. Joanna Sulkowska received an EMBO Networking grant to support the 2nd Congress Bio event.</p>"
+
+- slug: dabrowski-lausanne-internship-2016
+  date: "15 Aug 2016"
+  title: "Pawel Dabrowski-Tumanski internship at University of Lausanne (Prof. Stasiak)"
+  archive: true
+  body: "<p>Pawel Dabrowski-Tumanski started an internship at the University of Lausanne in the group of Prof. Andrzej Stasiak.</p>"
+
+- slug: jarmolinska-rio-2016
+  date: "12 Aug 2016"
+  title: "Aleksandra Jarmolinska at the XXXI Olympic Games in Rio de Janeiro"
+  archive: true
+  body: "<p>Aleksandra Jarmolinska participated in the XXXI Olympic Games in Rio de Janeiro, 2016.</p>"
+
+- slug: dabrowski-knots-in-hellas-2016
+  date: "20 Jul 2016"
+  title: "Pawel Dabrowski-Tumanski chosen to give a talk at Knots in Hellas, Ancient Olympia"
+  archive: true
+  body: "<p>Pawel Dabrowski-Tumanski was selected to give a talk at Knots in Hellas, Ancient Olympia, Greece.</p>"
+
+- slug: dabrowski-dsm-grant-2016
+  date: "18 Jul 2016"
+  title: "Young researchers grant DSM for Pawel Dabrowski-Tumanski"
+  archive: true
+  body: "<p>Pawel Dabrowski-Tumanski received a young researchers DSM grant from the University of Warsaw.</p>"
+
+- slug: embo-visegrad-2016
+  date: "22 Jun 2016"
+  title: "EMBO networking support for 6th Visegrad Symposium on Structural Systems Biology"
+  archive: true
+  body: "<p>EMBO networking support awarded to Sulkowska and Setny to organize the 6th Visegrad Symposium on Structural Systems Biology.</p>"
+
+- slug: early-science-grant-2016
+  date: "22 Jun 2016"
+  title: "Grant Early Science, ICM UW"
+  archive: true
+  body: "<p>The laboratory received a Grant Early Science from ICM, University of Warsaw.</p>"
+
+- slug: academianet-nomination-2016
+  date: "22 Jun 2016"
+  title: "Joanna Sulkowska nominated for AcademiaNet: Profiles of Leading Women Scientists"
+  archive: true
+  body: "<p>Prof. Joanna Sulkowska was nominated for AcademiaNet: Profiles of Leading Women Scientists.</p>"
+
+- slug: perlinska-thesis-nomination-2016
+  date: "22 May 2016"
+  title: "Master's thesis of Agata Perlinska was nominated for an award"
+  archive: true
+  body: "<p>The Master's thesis of Agata Perlinska was nominated for an academic award.</p>"
+
+- slug: niemyska-rector-award-2016
+  date: "22 May 2016"
+  title: "Rector (US) award for Wanda Niemyska"
+  archive: true
+  body: "<p>Wanda Niemyska received the Rector of the University of Warsaw Award.</p>"
+
+- slug: embo-workshop-jablonna-2016
+  date: "8 Apr 2016"
+  title: "8-10 April 2016: EMBO Workshop in Jablonna"
+  archive: true
+  body: "<p>The EMBO Workshop was held in Jablonna, Poland, April 8-10, 2016.</p>"
+
+- slug: dabrowski-embo-prize-2016
+  date: "6 Apr 2016"
+  title: "First prize for best talk and best slides for Pawel Dabrowski at EMBO workshop"
+  archive: true
+  body: "<p>Pawel Dabrowski-Tumanski received first prizes for both best talk and best slides at the EMBO workshop in Jablonna.</p>"
+
+- slug: niemyska-ucsb-internship-2016
+  date: "5 Apr 2016"
+  title: "Internship in UCSB for Wanda Niemyska"
+  archive: true
+  body: "<p>Wanda Niemyska received an internship at the University of California, Santa Barbara (UCSB).</p>"
+
+- slug: idea-plus-grant-2016
+  date: "1 Apr 2016"
+  title: "Idea Plus grant to Joanna Sulkowska"
+  archive: true
+  body: "<p>Prof. Joanna Sulkowska received the Idea Plus grant from the Foundation for Polish Science (FNP).</p>"
+
+- slug: embo-young-scientist-workshop-2016
+  date: "3 Mar 2016"
+  title: "EMBO networking support for Young Scientist Workshop on Computational Biology 2"
+  archive: true
+  body: "<p>EMBO networking support awarded to Sulkowska and Setny to organize the Young Scientist Workshop on Computational Biology 2.</p>"
+
+- slug: birs-events-2016
+  date: "2 Feb 2016"
+  title: "BIRS events to Joanna Sulkowska"
+  archive: true
+  body: "<p>Joanna Sulkowska received support for Banff International Research Station (BIRS) events.</p>"
+
+- slug: embo-small-grant-2016
+  date: "2 Jan 2016"
+  title: "EMBO Small grant to Joanna Sulkowska"
+  archive: true
+  body: "<p>Prof. Joanna Sulkowska received an EMBO Small Grant supporting laboratory research.</p>"
+
+- slug: visegrad-symposium-2016
+  date: "1 Jan 2016"
+  title: "Our 6th Visegrad Symposium on Structural Systems Biology"
+  archive: true
+  body: "<p>The 6th Visegrad Symposium on Structural Systems Biology was held, organized by the Sulkowska lab.</p>"
+
+- slug: niemyska-inter-grant-2015
+  date: "22 Oct 2015"
+  title: "Inter grant to Wanda Niemyska"
+  archive: true
+  body: "<p>Wanda Niemyska received an Inter grant from the Foundation for Polish Science (FNP).</p>"
+
+- slug: dabrowski-dsm-grant-2015
+  date: "22 Oct 2015"
+  title: "DSM grant to Pawel Dabrowski-Tumanski"
+  archive: true
+  body: "<p>Pawel Dabrowski-Tumanski received a DSM grant from the University of Warsaw.</p>"
+
+- slug: welcome-phd-students-2015
+  date: "1 Oct 2015"
+  title: "Welcome to new Ph.D students!"
+  archive: true
+  body: "<p>Welcome to the new PhD students joining the Sulkowska laboratory.</p>"
+
+- slug: visegrad-symposium-2015
+  date: "1 Jan 2015"
+  title: "Our 6th Visegrad Symposium on Structural Systems Biology (announcement)"
+  archive: true
+  body: "<p>Announcement of the 6th Visegrad Symposium on Structural Systems Biology.</p>"
