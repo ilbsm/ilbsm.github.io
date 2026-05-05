@@ -9,15 +9,29 @@
       position: relative; width: 100%; height: 440px;
       display: flex; flex-direction: column;
       align-items: center; justify-content: center; text-align: center; overflow: hidden;
+      isolation: isolate;
+      -webkit-font-smoothing: antialiased;
     }
     /* ── SLIDESHOW ── */
     .hero-slideshow {
       position: absolute; inset: 0; z-index: 0; overflow: hidden;
+      transform: translateZ(0);
+      -webkit-transform: translateZ(0);
     }
     .hero-slide {
       position: absolute; inset: 0;
-      background-size: cover; background-position: center;
-      opacity: 0; transition: opacity 1.2s ease-in-out;
+      background-size: cover;
+      background-position: center center;
+      background-repeat: no-repeat;
+      opacity: 0;
+      transition: opacity 1.2s ease-in-out;
+      will-change: opacity;
+      transform: translateZ(0);
+      -webkit-transform: translateZ(0);
+      backface-visibility: hidden;
+      -webkit-backface-visibility: hidden;
+      image-rendering: -webkit-optimize-contrast;
+      image-rendering: crisp-edges;
     }
     .hero-slide.active { opacity: 1; }
     .hero-slide::after {
