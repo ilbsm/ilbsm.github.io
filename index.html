@@ -509,11 +509,11 @@ permalink: /
         <div class="hp-eyebrow hp-eyebrow-gold">Recent Major Grants</div>
         <div class="hp-title" style="font-size:var(--text-lg)">Funding &amp; Recognition</div>
       </div>
-      <a href="https://jsulkowska.cent.uw.edu.pl/home/news/" target="_blank" class="hp-see-all">All news →</a>
+      <a href="#sec-news" onclick="hpNav('sec-news'); return false;" class="hp-see-all">All news →</a>
     </div>
     <div class="hp-grants-grid">
 
-      <a class="hp-grant-card hp-gc-nsf" href="https://jsulkowska.cent.uw.edu.pl/national-synthesis-center-for-emergence-in-the-molecular-and-cellular-sciences-grant-awarded-to-joanna-sulkowska/" target="_blank">
+      <a class="hp-grant-card hp-gc-nsf" href="https://cent.uw.edu.pl/the-national-synthesis-center-for-emergence-in-the-molecular-and-cellular-sciences-grant-awarded-to-joanna-sulkowska/" target="_blank" rel="noopener noreferrer">
         <div class="hp-grant-year">2026</div>
         <div class="hp-grant-badge">NSF · NCEMS</div>
         <div class="hp-grant-title">National Synthesis Center for Emergence in the Molecular and Cellular Sciences</div>
@@ -521,7 +521,7 @@ permalink: /
         <div class="hp-grant-arrow">Read more →</div>
       </a>
 
-      <a class="hp-grant-card hp-gc-embo" href="https://jsulkowska.cent.uw.edu.pl/prof-joanna-sulkowska-has-been-awarded-an-embo-advanced-collaboration-grant/" target="_blank">
+      <a class="hp-grant-card hp-gc-embo" href="https://cent.uw.edu.pl/prof-joanna-sulkowska-has-been-awarded-an-embo-advanced-collaboration-grant/" target="_blank" rel="noopener noreferrer">
         <div class="hp-grant-year">2024</div>
         <div class="hp-grant-badge">EMBO · Advanced Collaboration</div>
         <div class="hp-grant-title">EMBO Advanced Collaboration Grant</div>
@@ -529,7 +529,7 @@ permalink: /
         <div class="hp-grant-arrow">Read more →</div>
       </a>
 
-      <a class="hp-grant-card hp-gc-aim" href="https://jsulkowska.cent.uw.edu.pl/joanna-sulkowska-aim-square-grant-caltech-usa/" target="_blank">
+      <a class="hp-grant-card hp-gc-aim" href="/news/aim-square-grant-caltech-2024/">
         <div class="hp-grant-year">2024</div>
         <div class="hp-grant-badge">AIM · SQuaRE</div>
         <div class="hp-grant-title">AIM SQuaRE Grant — American Institute of Mathematics</div>
@@ -537,7 +537,7 @@ permalink: /
         <div class="hp-grant-arrow">Read more →</div>
       </a>
 
-      <a class="hp-grant-card hp-gc-idub" href="https://jsulkowska.cent.uw.edu.pl/joanna-sulkowska-idub-grant-for-design-of-artificial-proteins/" target="_blank">
+      <a class="hp-grant-card hp-gc-idub" href="/news/joanna-sulkowska-idub-artificial-proteins-2023/">
         <div class="hp-grant-year">2023</div>
         <div class="hp-grant-badge">IDUB · University of Warsaw</div>
         <div class="hp-grant-title">IDUB Grant — Design of Artificial Proteins</div>
@@ -1025,7 +1025,11 @@ permalink: /
 /* ── SMOOTH SCROLL NAV ── */
 function hpNav(id, btn) {
   document.querySelectorAll('.hp-pill').forEach(p => p.classList.remove('active'));
-  btn.classList.add('active');
+  if (btn) btn.classList.add('active');
+  else {
+    const activePill = document.querySelector('.hp-pill[data-sec="' + id + '"]');
+    if (activePill) activePill.classList.add('active');
+  }
   const el = document.getElementById(id);
   if (el) el.scrollIntoView({ behavior: 'smooth', block: 'start' });
 }
