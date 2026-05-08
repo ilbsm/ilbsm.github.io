@@ -24,14 +24,29 @@ permalink: /group/
   --text-base: clamp(1rem,     0.95rem + 0.25vw, 1.125rem);
   --text-lg:   clamp(1.125rem, 1rem    + 0.75vw, 1.5rem);
   --text-xl:   clamp(1.5rem,   1.2rem  + 1.25vw, 2.25rem);
-  --space-1:0.25rem;--space-2:0.5rem;--space-3:0.75rem;--space-4:1rem;
-  --space-5:1.25rem;--space-6:1.5rem;--space-8:2rem;--space-10:2.5rem;
-  --space-12:3rem;--space-16:4rem;
-  --radius-sm:0.375rem;--radius-md:0.5rem;--radius-lg:0.75rem;--radius-xl:1rem;--radius-full:9999px;
-  --transition:180ms cubic-bezier(0.16,1,0.3,1);
-  --shadow-sm:0 1px 3px rgba(0,0,0,0.07);
-  --shadow-md:0 4px 16px rgba(0,0,0,0.09);
-  --shadow-lg:0 8px 32px rgba(0,0,0,0.13);
+
+  --space-1: 0.25rem;
+  --space-2: 0.5rem;
+  --space-3: 0.75rem;
+  --space-4: 1rem;
+  --space-5: 1.25rem;
+  --space-6: 1.5rem;
+  --space-8: 2rem;
+  --space-10: 2.5rem;
+  --space-12: 3rem;
+  --space-16: 4rem;
+
+  --radius-sm: 0.375rem;
+  --radius-md: 0.5rem;
+  --radius-lg: 0.75rem;
+  --radius-xl: 1rem;
+  --radius-full: 9999px;
+
+  --transition: 180ms cubic-bezier(0.16, 1, 0.3, 1);
+
+  --shadow-sm: 0 1px 3px rgba(0,0,0,0.07);
+  --shadow-md: 0 4px 16px rgba(0,0,0,0.09);
+  --shadow-lg: 0 8px 32px rgba(0,0,0,0.13);
 }
 
 /* ── PAGE SHELL ── */
@@ -45,7 +60,7 @@ permalink: /group/
   position: sticky; top: var(--nav-h, 42px); z-index: 110;
 }
 .grp-pghead-inner {
-  max-width: 1140px; margin: 0 auto;
+  width: calc(100% - 48px); max-width: none; margin: 0 auto;
   display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: var(--space-4);
 }
 .grp-pghead-eyebrow {
@@ -78,8 +93,8 @@ permalink: /group/
   padding: var(--space-3) 0;
 }
 .grp-nav-inner {
-  max-width: 1140px; margin: 0 auto;
-  padding: 0 var(--space-6);
+  width: calc(100% - 48px); max-width: none; margin: 0 auto;
+  padding: 0;
   display: flex; gap: var(--space-1); flex-wrap: wrap; align-items: center;
   overflow-x: auto; scrollbar-width: none;
 }
@@ -97,12 +112,12 @@ permalink: /group/
 .grp-pill.active { background: #28251d; color: #f9f8f5; border-color: transparent; }
 
 /* ── MAIN WRAPPER ── */
-.grp-wrap { max-width: 1140px; margin: 0 auto; padding: var(--space-6) var(--space-6); }
+.grp-wrap { width: calc(100% - 48px); max-width: none; margin: 0 auto; padding: var(--space-6) 0; }
 
 /* ── SECTION CARDS ── */
 .grp-sec {
   background: white; border-radius: var(--radius-xl);
-  padding: var(--space-10) var(--space-10);
+  padding: var(--space-6) var(--space-6);
   margin-bottom: var(--space-4);
   box-shadow: 0 1px 4px rgba(0,0,0,0.055);
   scroll-margin-top: 136px;
@@ -112,15 +127,15 @@ permalink: /group/
   text-transform: uppercase; color: #01696f; margin-bottom: var(--space-2);
 }
 .grp-title {
-  font-size: var(--text-lg); font-weight: 700; color: #28251d; line-height: 1.2; margin-bottom: 0;
+  font-size: clamp(1.75rem, 1.45rem + 0.8vw, 2rem); font-weight: 700; color: #073d55; line-height: 1.2; margin-bottom: 0;
 }
 .grp-subtitle {
   font-size: var(--text-xs); color: #9a9896; margin-top: var(--space-1);
 }
 .grp-sec-header {
   display: flex; align-items: flex-start; justify-content: space-between;
-  gap: var(--space-4); flex-wrap: wrap; margin-bottom: var(--space-8);
-  padding-bottom: var(--space-6); border-bottom: 1px solid #f0ede8;
+  gap: var(--space-4); flex-wrap: wrap; margin-bottom: var(--space-5);
+  padding-bottom: var(--space-4); border-bottom: 1px solid #f0ede8;
 }
 .grp-count-badge {
   display: inline-flex; align-items: center; justify-content: center;
@@ -132,13 +147,13 @@ permalink: /group/
 /* ── MEMBER CARDS (Current) ── */
 .grp-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(170px, 1fr));
+  grid-template-columns: repeat(4, minmax(0, 1fr));
   gap: var(--space-4);
 }
 .grp-card {
   display: flex; flex-direction: column; align-items: center; text-align: center;
-  gap: var(--space-3);
-  padding: var(--space-6) var(--space-4) var(--space-5);
+  gap: 0.25rem;
+  padding: 0.5rem 0.75rem;
   border-radius: var(--radius-xl); background: #f9f8f5;
   border: 1px solid #ede9e3;
   transition: box-shadow var(--transition), transform var(--transition), border-color var(--transition);
@@ -147,6 +162,7 @@ permalink: /group/
   cursor: default;
   position: relative;
 }
+
 .grp-card:hover {
   box-shadow: var(--shadow-md); transform: translateY(-4px);
   border-color: #c8c5be;
@@ -158,7 +174,7 @@ permalink: /group/
 
 /* ── PHOTO ── */
 .grp-photo-wrap {
-  width: 88px; height: 88px; position: relative; flex-shrink: 0;
+  width: 175px; height: 175px; position: relative; flex-shrink: 0;
   border-radius: 50%; overflow: hidden;
   box-shadow: 0 2px 8px rgba(0,0,0,0.12);
 }
@@ -176,11 +192,11 @@ permalink: /group/
 }
 
 /* ── CARD INFO ── */
-.grp-info { width: 100%; display: flex; flex-direction: column; gap: var(--space-1); }
-.grp-name { font-size: var(--text-xs); font-weight: 700; color: #28251d; line-height: 1.35; }
-.grp-role { font-size: 0.7rem; color: #7a7974; line-height: 1.4; }
-.grp-since { font-size: 0.65rem; font-weight: 600; color: #b0ada8; }
-.grp-detail { font-size: 0.68rem; color: #9a9896; line-height: 1.4; margin-top: var(--space-1); }
+.grp-info { width: 100%; display: flex; flex-direction: column; gap: 0.2rem; }
+.grp-name { font-size: 1.9rem; font-weight: 800; color: #28251d; line-height: 1.25; }
+.grp-role { font-size: 0.9375rem; color: #7a7974; line-height: 1.35; }
+.grp-since { font-size: 0.9375rem; font-weight: 600; color: #8f8b85; line-height: 1.3; }
+.grp-detail { font-size: 0.9375rem; color: #817d77; line-height: 1.25; margin-top: 0.45rem; }
 
 /* ── PROFILE LINKS ── */
 .grp-links {
@@ -202,52 +218,6 @@ permalink: /group/
 .grp-link-github:hover { background: #24292e; color: #fff; }
 .grp-link-web:hover { background: #01696f; color: #fff; }
 
-/* ── PI FEATURED CARD ── */
-.grp-pi-card {
-  display: flex; align-items: center; gap: var(--space-8);
-  padding: var(--space-8); border-radius: var(--radius-xl);
-  background: linear-gradient(135deg, #0a1020 0%, #0f1a2e 100%);
-  border: 1px solid rgba(255,255,255,0.07);
-  box-shadow: var(--shadow-lg);
-  margin-bottom: var(--space-8);
-  animation: grpFadeUp 0.4s ease both;
-  transition: transform var(--transition), box-shadow var(--transition);
-}
-.grp-pi-card:hover { transform: translateY(-3px); box-shadow: 0 12px 40px rgba(0,0,0,0.2); }
-@media (max-width: 640px) { .grp-pi-card { flex-direction: column; align-items: flex-start; gap: var(--space-5); } }
-.grp-pi-photo-wrap {
-  width: 110px; height: 110px; flex-shrink: 0; position: relative;
-  border-radius: 50%; overflow: hidden;
-  border: 3px solid rgba(255,255,255,0.2);
-  box-shadow: 0 4px 20px rgba(0,0,0,0.4);
-}
-.grp-pi-info { flex: 1; }
-.grp-pi-eyebrow {
-  font-size: 0.6rem; font-weight: 800; letter-spacing: 0.18em; text-transform: uppercase;
-  color: #4db8e8; margin-bottom: var(--space-1);
-}
-.grp-pi-name {
-  font-family: 'Merriweather', serif; font-size: var(--text-lg);
-  font-weight: 900; color: #fff; margin-bottom: var(--space-1);
-}
-.grp-pi-role { font-size: var(--text-xs); color: rgba(255,255,255,0.55); margin-bottom: var(--space-4); line-height: 1.6; }
-.grp-pi-interests { display: flex; flex-wrap: wrap; gap: var(--space-2); }
-.grp-pi-chip {
-  font-size: 0.68rem; font-weight: 600; padding: 0.2rem 0.6rem;
-  border-radius: var(--radius-full);
-  background: rgba(255,255,255,0.08); color: rgba(255,255,255,0.65);
-  border: 1px solid rgba(255,255,255,0.12);
-}
-.grp-pi-links { display: flex; gap: var(--space-2); margin-top: var(--space-4); }
-.grp-pi-link {
-  display: inline-flex; align-items: center; gap: var(--space-2);
-  padding: 0.3rem 0.75rem; border-radius: var(--radius-full);
-  font-size: 0.68rem; font-weight: 600; text-decoration: none;
-  background: rgba(255,255,255,0.08); color: rgba(255,255,255,0.7);
-  border: 1px solid rgba(255,255,255,0.12);
-  transition: background var(--transition), color var(--transition);
-}
-.grp-pi-link:hover { background: rgba(255,255,255,0.18); color: #fff; text-decoration: none; }
 
 /* ── ALUMNI SECTION ── */
 .grp-sec-alumni { background: #f9f8f5; border: 1px solid #ede9e3; }
@@ -305,7 +275,7 @@ permalink: /group/
 .grp-join-sub { font-size: var(--text-sm); color: rgba(255,255,255,0.72); max-width: 50ch; line-height: 1.6; }
 .grp-join-roles { display: flex; flex-wrap: wrap; gap: var(--space-2); margin-top: var(--space-4); }
 .grp-join-role {
-  font-size: var(--text-xs); font-weight: 600; padding: var(--space-2) var(--space-4);
+  font-size: var(--text-xs); font-weight: 600; padding: var(--space-1) var(--space-4);
   border-radius: var(--radius-full); background: rgba(255,255,255,0.12);
   color: rgba(255,255,255,0.85); border: 1px solid rgba(255,255,255,0.2);
 }
@@ -322,9 +292,14 @@ permalink: /group/
 /* ── RESPONSIVE ── */
 @media (max-width: 640px) {
   .grp-sec { padding: var(--space-6) var(--space-5); }
-  .grp-wrap { padding: var(--space-4) var(--space-4); }
-  .grp-grid { grid-template-columns: repeat(auto-fill, minmax(140px, 1fr)); }
+  .grp-pghead-inner, .grp-nav-inner, .grp-wrap { width: calc(100% - 32px); }
+  .grp-wrap { padding: var(--space-4) 0; }
+  .grp-grid { grid-template-columns: repeat(auto-fill, minmax(150px, 1fr)); }
   .grp-alumni-grid { grid-template-columns: repeat(auto-fill, minmax(110px, 1fr)); }
+}
+
+@media (min-width: 641px) and (max-width: 980px) {
+  .grp-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
 }
 
 /* ── PRINT ── */
@@ -339,112 +314,94 @@ permalink: /group/
 
 <div id="page-group" class="page active grp">
 
-<!-- ── DARK PAGE HEADER ── -->
-<div class="grp-pghead">
-  <div class="grp-pghead-inner">
-    <div>
-      <div class="grp-pghead-eyebrow">Centre of New Technologies · University of Warsaw</div>
-      <div class="grp-pghead-title">Prof. Sulkowska — Research Group</div>
-    </div>
-    <div class="grp-pghead-counts">
-      {% assign current_count = 0 %}
-      {% assign current_count = current_count | plus: site.data.group.senior.size %}
-      {% assign current_count = current_count | plus: site.data.group.postdocs.size %}
-      {% assign current_count = current_count | plus: site.data.group.phd.size %}
-      {% assign current_count = current_count | plus: site.data.group.msc.size %}
-      {% assign current_count = current_count | plus: site.data.group.bsc.size %}
-      {% assign current_count = current_count | plus: site.data.group.tech.size %}
-      <div class="grp-pghead-count"><span class="grp-pghead-count-n">{{ current_count | plus: 1 }}</span><span class="grp-pghead-count-l">current members</span></div>
-      <div class="grp-pghead-count"><span class="grp-pghead-count-n">{{ site.data.group.postdocs.size }}</span><span class="grp-pghead-count-l">postdocs</span></div>
-      <div class="grp-pghead-count"><span class="grp-pghead-count-n">{{ site.data.group.phd.size }}</span><span class="grp-pghead-count-l">phd students</span></div>
-      {% assign alumni_count = site.data.group.former.size | plus: site.data.group.former_text.size %}
-      <div class="grp-pghead-count"><span class="grp-pghead-count-n">{{ alumni_count }}</span><span class="grp-pghead-count-l">alumni</span></div>
-    </div>
-  </div>
+<!-- ── MINIMAL SCROLL LINE NAV ── -->
+<!-- ── FIXED ANIMATED SCROLL LINE ── -->
+<style>
+.grp-scroll-indicator {
+  position: fixed;
+  top: var(--nav-h, 42px);
+  left: 0;
+  z-index: 9999;
+  height: 4px;
+  width: 100%;
+  background: rgba(0,0,0,0.06);
+  overflow: hidden;
+}
+
+.grp-scroll-line {
+  height: 100%;
+  width: 0%;
+  border-radius: 999px;
+
+  background: linear-gradient(
+    90deg,
+    #00c2ff,
+    #00ffb3,
+    #8b5cf6,
+    #00c2ff
+  );
+
+  background-size: 300% 100%;
+
+  box-shadow:
+    0 0 14px rgba(0,194,255,.65),
+    0 0 28px rgba(139,92,246,.45);
+
+  animation: grpLineMove 3s linear infinite;
+}
+
+@keyframes grpLineMove {
+  from {
+    background-position: 0% 50%;
+  }
+  to {
+    background-position: 300% 50%;
+  }
+}
+</style>
+
+<div class="grp-scroll-indicator">
+  <div class="grp-scroll-line"></div>
 </div>
 
-<!-- ── STICKY NAV PILLS ── -->
-<div class="grp-nav" id="grp-nav">
-  <div class="grp-nav-inner">
-    <button class="grp-pill active" data-sec="grp-head"     onclick="grpNav('grp-head',this)">Head</button>
-    {% if site.data.group.senior.size > 0 %}
-    <button class="grp-pill"        data-sec="grp-senior"   onclick="grpNav('grp-senior',this)">Senior Scientists</button>
-    {% endif %}
-    {% if site.data.group.postdocs.size > 0 %}
-    <button class="grp-pill"        data-sec="grp-postdocs" onclick="grpNav('grp-postdocs',this)">Postdocs</button>
-    {% endif %}
-    {% if site.data.group.phd.size > 0 %}
-    <button class="grp-pill"        data-sec="grp-phd"      onclick="grpNav('grp-phd',this)">PhD Students</button>
-    {% endif %}
-    {% if site.data.group.msc.size > 0 %}
-    <button class="grp-pill"        data-sec="grp-msc"      onclick="grpNav('grp-msc',this)">MSc Students</button>
-    {% endif %}
-    {% if site.data.group.bsc.size > 0 %}
-    <button class="grp-pill"        data-sec="grp-bsc"      onclick="grpNav('grp-bsc',this)">Undergrad</button>
-    {% endif %}
-    {% if site.data.group.tech.size > 0 %}
-    <button class="grp-pill"        data-sec="grp-tech"     onclick="grpNav('grp-tech',this)">Tech &amp; Interns</button>
-    {% endif %}
-    <button class="grp-pill"        data-sec="grp-join"     onclick="grpNav('grp-join',this)">Join Us</button>
-    <button class="grp-pill"        data-sec="grp-alumni"   onclick="grpNav('grp-alumni',this)">Alumni</button>
-  </div>
-</div>
+<script>
+function updateGroupScrollLine() {
+  const line = document.querySelector('.grp-scroll-line');
+  if (!line) return;
 
-<div class="grp-wrap">
+  const scrollTop = window.scrollY || document.documentElement.scrollTop;
 
-  <!-- ── PI FEATURED CARD ── -->
-  <div id="grp-head" style="scroll-margin-top:136px; margin-bottom: var(--space-4);">
-    {% for pi in site.data.group.head %}
-    <div class="grp-pi-card">
-      <div class="grp-pi-photo-wrap">
-        <div class="grp-initials grp-pi-initials"
-             data-color="{{ pi.color | default: '#8b0000' }}"
-             data-slug="{{ pi.slug }}" data-name="{{ pi.name }}">{{ pi.initials }}</div>
-      </div>
-      <div class="grp-pi-info">
-        <div class="grp-pi-eyebrow">Principal Investigator · Head of Laboratory</div>
-        <div class="grp-pi-name">{{ pi.name }}</div>
-        <div class="grp-pi-role">{{ pi.role }}<br>Centre of New Technologies, University of Warsaw</div>
-        {% if pi.detail %}
-        <div class="grp-pi-interests">
-          {% assign chips = pi.detail | split: " · " %}
-          {% for chip in chips %}
-          <span class="grp-pi-chip">{{ chip }}</span>
-          {% endfor %}
-        </div>
-        {% endif %}
-        <div class="grp-pi-links">
-          {% if pi.email %}<a class="grp-pi-link" href="mailto:{{ pi.email }}">
-            <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="M2 7l10 7 10-7"/></svg>
-            Email
-          </a>{% endif %}
-          {% if pi.orcid %}<a class="grp-pi-link" href="https://orcid.org/{{ pi.orcid }}" target="_blank">ORCID</a>{% endif %}
-          {% if pi.scholar %}<a class="grp-pi-link" href="{{ pi.scholar }}" target="_blank">Scholar</a>{% endif %}
-          {% if pi.url %}<a class="grp-pi-link" href="{{ pi.url }}" target="_blank">Website</a>{% endif %}
-        </div>
-      </div>
-    </div>
-    {% endfor %}
-  </div>
+  const docHeight =
+    document.documentElement.scrollHeight -
+    document.documentElement.clientHeight;
+
+  const progress = docHeight > 0 ? (scrollTop / docHeight) * 100 : 0;
+
+  line.style.width = progress + '%';
+}
+
+window.addEventListener('scroll', updateGroupScrollLine, { passive: true });
+window.addEventListener('resize', updateGroupScrollLine);
+document.addEventListener('DOMContentLoaded', updateGroupScrollLine);
+updateGroupScrollLine();
+</script>
 
   <!-- ── CURRENT MEMBER SECTIONS ── -->
-  {% assign sections = "senior|Senior Scientists|grp-senior|Research scientists and visiting professors,postdocs|Postdoctoral Researchers|grp-postdocs|Postdoctoral fellows driving core research projects,phd|PhD Students|grp-phd|Doctoral candidates pushing the frontiers of topology research,msc|MSc Students|grp-msc|Master's students developing research expertise,bsc|Undergraduate Students|grp-bsc|Bachelor's students getting their first taste of research,tech|Research Technicians &amp; Interns|grp-tech|Technical support and short-term project contributors" | split: "," %}
+  {% assign sections = "senior|Senior Scientists|grp-senior,postdocs|Postdoctoral Researchers|grp-postdocs,phd|PhD Students|grp-phd,msc|MSc Students|grp-msc,bsc|Undergraduate Students|grp-bsc,tech|Research Technicians &amp; Interns|grp-tech" | split: "," %}
 
   {% for sec in sections %}
     {% assign parts   = sec | split: "|" %}
     {% assign key     = parts[0] %}
     {% assign label   = parts[1] %}
     {% assign anchor  = parts[2] %}
-    {% assign subline = parts[3] %}
     {% assign members = site.data.group[key] %}
 
     {% if members and members.size > 0 %}
     <div class="grp-sec" id="{{ anchor }}">
       <div class="grp-sec-header">
         <div>
-          <div class="grp-eyebrow">Current Members</div>
+        
           <div class="grp-title">{{ label }} <span class="grp-count-badge">{{ members.size }}</span></div>
-          <div class="grp-subtitle">{{ subline }}</div>
         </div>
       </div>
       <div class="grp-grid">
@@ -457,7 +414,6 @@ permalink: /group/
           </div>
           <div class="grp-info">
             <div class="grp-name">{{ m.name }}</div>
-            <div class="grp-role">{{ m.role | split: " · since " | first }}</div>
             {% assign since_parts = m.role | split: " · since " %}
             {% if since_parts.size > 1 %}<div class="grp-since">since {{ since_parts[1] }}</div>{% endif %}
             {% if m.detail %}<div class="grp-detail">{{ m.detail }}</div>{% endif %}
@@ -501,7 +457,7 @@ permalink: /group/
     <div class="grp-join-inner">
       <div>
         <div class="grp-join-title">Join the Lab</div>
-        <div class="grp-join-sub">We are always looking for motivated students and researchers passionate about protein topology, mathematical biology, and bioinformatics. If you are interested in joining our group, reach out!</div>
+        <div class="grp-join-sub">We are always looking for motivated students and researchers. If you are interested in joining our group, reach out!</div>
         <div class="grp-join-roles">
           <span class="grp-join-role">PhD Positions</span>
           <span class="grp-join-role">Postdoctoral Fellowships</span>
@@ -540,7 +496,6 @@ permalink: /group/
                data-slug="{{ m.slug }}" data-name="{{ m.name }}">{{ m.initials }}</div>
         </div>
         <div class="grp-alumni-name">{{ m.name }}</div>
-        <div class="grp-alumni-role">{{ m.role }}</div>
       </div>
       {% endfor %}
     </div>
@@ -551,7 +506,6 @@ permalink: /group/
       {% for m in site.data.group.former_text %}
       <div class="grp-alumni-text-item">
         <div class="grp-alumni-text-name">{{ m.name }}</div>
-        <div class="grp-alumni-text-role">{{ m.role }}</div>
       </div>
       {% endfor %}
     </div>
