@@ -1,0 +1,67 @@
+# Public Talks & Workshops — edit here to update the timeline section
+# Each entry is a year with a list of talks.
+# Talk fields:
+#   type:       Label shown above title (e.g. "Lecture", "Workshop", "Panel", "Video")
+#   color:      CSS color key: blue | purple | teal | orange | red
+#   title:      Talk/event title
+#   body:       Optional — date or venue shown below title
+#   url:        Optional — makes the card a clickable link
+#   link_label: Optional — text shown as a call-to-action (e.g. "View →", "Watch →")
+
+- year: 2018
+  talks:
+    - type: "Lecture"
+      color: "blue"
+      title: "Scientific Cafeteria — Polish Academy of Sciences"
+
+- year: 2017
+  talks:
+    - type: "Kids lecture"
+      color: "purple"
+      title: "Fundacja Uniwersytet Dzieci — protein knots and drug design"
+      body: "28 Oct 2017"
+      url: "https://uniwersytetdzieci.pl/wykladowca/2952"
+      link_label: "View →"
+    - type: "Invited"
+      color: "teal"
+      title: "Polish Children's Fund — protein topology"
+      body: "Apr-May · Serock"
+    - type: "Workshop"
+      color: "teal"
+      title: "DOKO — biological molecular machines"
+      body: "8 Apr · Warsaw"
+
+- year: 2016
+  talks:
+    - type: "Panel"
+      color: "orange"
+      title: "Polish Biochemistry Congress — Women in Science"
+      body: "Wrocław"
+    - type: "Workshop"
+      color: "teal"
+      title: "Polish Children's Fund — Biophysics"
+    - type: "Panel"
+      color: "orange"
+      title: "BIO 2016 — Women in science"
+
+- year: 2014
+  talks:
+    - type: "Public talk"
+      color: "blue"
+      title: "Entanglement in Biology"
+      body: "University of Warsaw"
+
+- year: 2013
+  talks:
+    - type: "Video"
+      color: "red"
+      title: "INTER FNP science lecture"
+      body: "Foundation for Polish Science"
+      url: "https://youtu.be/ERkuYN_uVfY?si=aX0p3HixaxwXAY6z"
+      link_label: "Watch →"
+
+- year: 2007
+  talks:
+    - type: "Workshop"
+      color: "teal"
+      title: "Polish Children's Fund — Biophysics"

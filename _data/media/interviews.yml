@@ -1,0 +1,33 @@
+# Paper Interviews — edit here to update the Paper Interviews section
+# Fields: source, logo (filename in assets/img/logos/media/), logo_class (optional if no logo), url, year, title
+
+- source: "Onet.pl"
+  logo: "onet.svg"
+  logo_class: "med-logo-wide"
+  url: "https://kobieta.onet.pl"
+  year: 2018
+  title: '"Musiałam się wykazać dwa razy bardziej niż mężczyźni". Kulisy świata nauk ścisłych'
+
+- source: "Gazeta Wyborcza"
+  logo: "wyborcza.svg"
+  logo_class: "med-logo-wide"
+  url: "https://wyborcza.pl/7,75400,23793827,polka-wsrod-najbardziej-obiecujacych-badaczek-swiata.html"
+  year: 2018
+  title: "Polka wśród najbardziej obiecujących badaczek świata"
+
+- source: "Wyborcza Gazeta"
+  logo: "wyborcza.svg"
+  logo_class: "med-logo-wide"
+  url: "https://wyborcza.pl"
+  year: 2017
+  title: "Full feature article"
+
+- source: "Magiel"
+  url: "https://jsulkowska.cent.uw.edu.pl/paper/"
+  year: 2017
+  title: 'Niezależny Miesięcznik Studentów — "Było sobie białko"'
+
+- source: "Przegląd Urologiczny"
+  url: "https://jsulkowska.cent.uw.edu.pl/paper/"
+  year: 2017
+  title: "Interview on protein topology research"

@@ -26,142 +26,113 @@ permalink: /
 /* ── PAGE SHELL ── */
 .hp { background: #f0f2f5; min-height: 100vh; padding-bottom: var(--space-16); }
 
-/* ── DARK HEADER BAR ── */
-.hp-head {
-  background: linear-gradient(90deg, #0a1020 0%, #0f1a2e 100%);
-  border-bottom: 1px solid rgba(255,255,255,0.07);
-  padding: 0.65rem 1.5rem;
-  position: sticky;
-  top: var(--nav-h, 42px);
-  z-index: 110;
+/* ── PAGE TOOLS ── */
+.hp-sections {
+  position: relative;
+  width: min(178px, 100%);
 }
-.hp-head-inner {
-  max-width: 1140px; margin: 0 auto;
-  display: flex; align-items: center; gap: 0; flex-wrap: wrap;
+.hp-sections-toggle {
+  min-height: 36px;
+  width: 100%;
+  display: inline-flex; align-items: center; justify-content: space-between; gap: var(--space-2);
+  padding: 0 0.75rem;
+  border-radius: var(--radius-lg);
+  font-size: 0.78rem; font-weight: 700;
+  color: #28251d; background: #fff; border: 1px solid #d9d4cc;
+  box-shadow: var(--shadow-sm);
+  cursor: pointer; transition: border-color var(--transition), box-shadow var(--transition);
+  font-family: inherit;
 }
-.hp-head-eyebrow {
-  font-size: 0.58rem; font-weight: 800; letter-spacing: 0.2em;
-  text-transform: uppercase; color: #4db8e8; line-height: 1; margin-bottom: 0.12rem;
+.hp-sections-toggle:hover { border-color: #b0a898; box-shadow: var(--shadow-md); }
+.hp-sections.is-open .hp-sections-toggle { border-color: #01696f; box-shadow: 0 0 0 3px rgba(1,105,111,0.12); }
+.hp-sections-caret {
+  width: 0.45rem; height: 0.45rem; flex-shrink: 0;
+  border-right: 2px solid #7a7670; border-bottom: 2px solid #7a7670;
+  transform: rotate(45deg) translateY(-1px);
+  transition: transform var(--transition);
 }
-.hp-head-title {
-  font-family: 'Merriweather', serif; font-size: 0.95rem; font-weight: 900; color: #fff; margin: 0;
+.hp-sections.is-open .hp-sections-caret { transform: rotate(225deg) translateY(-1px); }
+.hp-sections-menu {
+  position: absolute; right: 0; top: calc(100% + 0.45rem);
+  min-width: 100%; z-index: 200;
+  display: grid; gap: 0.08rem;
+  padding: 0.35rem;
+  border-radius: var(--radius-lg);
+  background: #fff; border: 1px solid #e5e0d8;
+  box-shadow: 0 8px 24px rgba(0,0,0,0.12);
+  opacity: 0; transform: translateY(-6px) scale(0.98);
+  pointer-events: none;
+  transition: opacity 160ms ease, transform 160ms ease;
 }
-.hp-head-div { width: 1px; height: 28px; background: rgba(255,255,255,0.15); margin: 0 1rem; flex-shrink: 0; }
-.hp-head-stats { display: flex; align-items: center; }
-.hp-head-stat {
-  display: flex; flex-direction: column; align-items: center;
-  padding: 0 0.85rem; border-right: 1px solid rgba(255,255,255,0.12);
-}
-.hp-head-stat:last-child { border-right: none; }
-.hp-head-stat-n { font-size: 0.9rem; font-weight: 700; color: #fff; line-height: 1; }
-.hp-head-stat-l { font-size: 0.58rem; color: rgba(255,255,255,0.4); text-transform: lowercase; margin-top: 0.1rem; }
-@media (max-width: 640px) { .hp-head-stats, .hp-head-div { display: none; } }
-
-/* ── STICKY NAV PILLS ── */
-.hp-nav {
-  position: sticky;
-  top: calc(var(--nav-h, 42px) + 46px);
-  z-index: 100;
-  background: rgba(255,255,255,0.97);
-  backdrop-filter: blur(12px);
-  -webkit-backdrop-filter: blur(12px);
-  border-bottom: 1px solid rgba(0,0,0,0.07);
-  box-shadow: 0 1px 3px rgba(0,0,0,0.04);
-  padding: var(--space-3) 0;
-}
-.hp-nav-inner {
-  max-width: 1140px; margin: 0 auto;
-  padding: 0 var(--space-6);
-  display: flex; gap: var(--space-1); flex-wrap: wrap; align-items: center;
+.hp-sections.is-open .hp-sections-menu {
+  opacity: 1; transform: translateY(0) scale(1);
+  pointer-events: auto;
 }
 .hp-pill {
-  display: inline-flex; align-items: center; gap: var(--space-2);
-  padding: var(--space-2) var(--space-4);
-  border-radius: var(--radius-full);
-  font-size: var(--text-xs); font-weight: 500;
-  color: #5a5957; background: transparent;
-  border: 1px solid transparent;
-  cursor: pointer; transition: all var(--transition); white-space: nowrap;
-  text-decoration: none; font-family: inherit;
+  width: 100%;
+  display: inline-flex; align-items: center; justify-content: flex-start;
+  padding: 0.45rem 0.7rem;
+  border-radius: var(--radius-md);
+  font-size: 0.82rem; font-weight: 500;
+  color: #3d3a35; background: transparent; border: none;
+  cursor: pointer; transition: background 120ms ease, color 120ms ease;
+  white-space: nowrap; text-decoration: none; font-family: inherit; text-align: left;
 }
-.hp-pill:hover { background: #f0ede8; color: #28251d; border-color: rgba(0,0,0,0.1); text-decoration: none; }
-.hp-pill.active { background: #28251d; color: #f9f8f5; border-color: transparent; }
+.hp-pill:hover { background: #f0ede8; color: #1a1814; text-decoration: none; }
+.hp-pill.active { background: #01696f; color: #fff; font-weight: 700; }
 
 /* ── MAIN WRAPPER ── */
-.hp-wrap { max-width: 1140px; margin: 0 auto; padding: var(--space-6) var(--space-6); }
+.hp-wrap { max-width: none; padding: var(--space-3) var(--space-6) 0; }
 
 /* ── SECTION CARDS ── */
 .hp-sec {
   background: white; border-radius: var(--radius-xl);
-  padding: var(--space-10) var(--space-10);
+  padding: var(--space-6) var(--space-6);
   margin-bottom: var(--space-4);
   box-shadow: 0 1px 4px rgba(0,0,0,0.055);
-  scroll-margin-top: 136px;
+  scroll-margin-top: 88px;
 }
-.hp-eyebrow {
-  font-size: var(--text-xs); font-weight: 700; letter-spacing: 0.1em;
-  text-transform: uppercase; color: #01696f; margin-bottom: var(--space-2);
-}
-.hp-eyebrow-gold { color: #b07d2a; }
-.hp-eyebrow-blue { color: #1a5fa8; }
-.hp-eyebrow-purple { color: #6a1b9a; }
 .hp-title {
-  font-size: var(--text-xl); font-weight: 700; color: #28251d; line-height: 1.15; margin-bottom: var(--space-2);
+  font-size: clamp(1.75rem, 1.45rem + 0.8vw, 2rem); font-weight: 700; color: #073d55; line-height: 1.2; margin-bottom: 0;
 }
-.hp-title-light { color: #f9f8f5; }
-.hp-subtitle { font-size: var(--text-sm); color: #7a7974; max-width: 64ch; margin-bottom: var(--space-8); line-height: 1.6; }
 .hp-row-head {
-  display: flex; align-items: flex-end; justify-content: space-between;
-  gap: var(--space-4); flex-wrap: wrap; margin-bottom: var(--space-6);
+  display: flex; align-items: flex-start; justify-content: space-between;
+  gap: var(--space-4); flex-wrap: wrap;
+  margin-bottom: var(--space-5); padding-bottom: var(--space-4);
+  border-bottom: 1px solid #f0ede8;
 }
-.hp-see-all {
-  display: inline-flex; align-items: center; gap: 0.3rem;
-  font-size: var(--text-xs); font-weight: 600; color: #01696f;
-  text-decoration: none; transition: color var(--transition); flex-shrink: 0; padding-bottom: 0.1rem;
-}
-.hp-see-all:hover { color: #28251d; text-decoration: none; }
 
 /* ── STATS STRIP ── */
-.hp-stats {
-  display: grid; grid-template-columns: repeat(5, 1fr); gap: 0;
-  background: linear-gradient(135deg, #0a1020 0%, #0f1a2e 60%, #091528 100%);
-  border-radius: var(--radius-xl); overflow: hidden;
-  margin-bottom: var(--space-4); box-shadow: var(--shadow-lg);
+.lp-stats {
+  display: flex; align-items: stretch; flex-wrap: wrap;
+  background: linear-gradient(135deg, #07112a 0%, #0c1e38 100%);
+  border-radius: var(--radius-xl);
+  overflow: hidden;
+  margin-bottom: var(--space-4);
 }
 .hp-stat {
   display: flex; flex-direction: column; align-items: center; justify-content: center;
-  padding: var(--space-8) var(--space-4);
-  border-right: 1px solid rgba(255,255,255,0.08);
-  position: relative; overflow: hidden; transition: background var(--transition);
+  flex: 1; min-width: 82px; padding: 0.38rem 0.4rem;
+  border-right: 1px solid rgba(255,255,255,0.07);
 }
-.hp-stat:hover { background: rgba(255,255,255,0.04); }
 .hp-stat:last-child { border-right: none; }
-.hp-stat::before {
-  content: ''; position: absolute; inset: 0;
-  background: radial-gradient(circle at 50% 0%, rgba(77,184,232,0.08) 0%, transparent 70%);
-}
 .hp-stat-n {
   font-family: 'Merriweather', serif;
-  font-size: clamp(1.6rem, 1.4rem + 1vw, 2.4rem);
-  font-weight: 700; color: #fff; line-height: 1; margin-bottom: 0.3rem; position: relative;
+  font-size: 1.15rem; font-weight: 700; color: #7dd3fc; line-height: 1;
 }
 .hp-stat-l {
-  font-size: 0.65rem; color: rgba(255,255,255,0.42);
-  text-transform: uppercase; letter-spacing: 0.1em; text-align: center; position: relative;
+  font-size: 0.5rem; font-weight: 600; color: rgba(255,255,255,0.42);
+  letter-spacing: 0.1em; text-transform: uppercase; margin-top: 0.2rem;
 }
-@media (max-width: 700px) {
-  .hp-stats { grid-template-columns: repeat(3, 1fr); }
-  .hp-stat:nth-child(4), .hp-stat:nth-child(5) { border-top: 1px solid rgba(255,255,255,0.08); }
-}
-@media (max-width: 420px) { .hp-stats { grid-template-columns: repeat(2, 1fr); } }
+@media (max-width: 640px) { .lp-stats { display: none; } }
 
 /* ── GRANTS ── */
 .hp-grants-grid {
-  display: grid; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); gap: var(--space-4);
+  display: grid; grid-template-columns: repeat(auto-fill, minmax(210px, 1fr)); gap: var(--space-3);
 }
 .hp-grant-card {
   display: flex; flex-direction: column; gap: var(--space-2);
-  padding: var(--space-5); background: #f9f8f5;
+  padding: var(--space-4); background: #f9f8f5;
   border: 1px solid #dcd9d5; border-radius: var(--radius-lg);
   text-decoration: none; color: inherit;
   transition: box-shadow var(--transition), transform var(--transition), border-color var(--transition);
@@ -169,38 +140,57 @@ permalink: /
 }
 .hp-grant-card::before {
   content: ''; position: absolute; top: 0; left: 0; right: 0; height: 3px;
+  background: #dcd9d5;
 }
-.hp-gc-nsf::before  { background: linear-gradient(90deg, #1565c0, #42a5f5); }
-.hp-gc-embo::before { background: linear-gradient(90deg, #01696f, #4dd0e1); }
-.hp-gc-aim::before  { background: linear-gradient(90deg, #6a1b9a, #ab47bc); }
-.hp-gc-idub::before { background: linear-gradient(90deg, #b07d2a, #f9a825); }
-.hp-grant-card:hover { box-shadow: var(--shadow-md); transform: translateY(-2px); border-color: #c8c5be; text-decoration: none; }
-.hp-grant-year  { font-size: 0.7rem; font-weight: 700; color: #9a9896; }
+.hp-grant-card:hover { box-shadow: 0 2px 10px rgba(0,0,0,0.1); border-color: #b0aca6; text-decoration: none; }
+.hp-grant-card:hover .hp-grant-title { color: #01696f; }
+.hp-grant-logo-wrap {
+  height: 44px;
+  display: flex; align-items: center; justify-content: flex-start;
+  margin-bottom: 0.15rem;
+}
+.hp-grant-logo {
+  max-width: 96px; max-height: 38px;
+  object-fit: contain; display: block;
+}
+.hp-grant-logo-seal { max-width: 42px; max-height: 42px; }
+.hp-grant-logo-wide { max-width: 118px; max-height: 38px; }
+.hp-grant-meta {
+  display: flex; align-items: flex-start; gap: 0.42rem;
+  flex-wrap: nowrap; min-width: 0;
+}
+.hp-grant-year {
+  display: inline-block; font-size: 0.64rem; font-weight: 800;
+  letter-spacing: 0.1em; text-transform: uppercase;
+  background: #28251d; color: #f5f4f2;
+  padding: 0.13rem 0.44rem; border-radius: var(--radius-full);
+  width: fit-content; flex: 0 0 auto;
+}
 .hp-grant-badge {
-  display: inline-block; font-size: 0.64rem; font-weight: 700;
-  letter-spacing: 0.08em; text-transform: uppercase;
-  padding: 0.18rem 0.6rem; border-radius: var(--radius-full);
-  background: #f0ede8; color: #5a5957; width: fit-content;
+  display: block; flex: 1 1 auto; min-width: 0;
+  font-size: 0.54rem; font-weight: 800;
+  letter-spacing: 0.08em; line-height: 1.25; text-transform: uppercase;
+  padding-top: 0.08rem;
+  color: #6f6961;
 }
-.hp-grant-title { font-size: var(--text-sm); font-weight: 700; color: #28251d; line-height: 1.4; flex: 1; }
-.hp-grant-body  { font-size: var(--text-xs); color: #7a7974; line-height: 1.55; }
-.hp-grant-arrow { font-size: var(--text-xs); font-weight: 600; color: #01696f; margin-top: auto; }
+.hp-grant-title { font-size: var(--text-sm); font-weight: 700; color: #28251d; line-height: 1.4; flex: 1; transition: color var(--transition); }
+.hp-grant-body  { font-size: var(--text-xs); color: #7a7974; line-height: 1.5; }
 
 /* ── BIO + AWARDS 2-col ── */
 .hp-bio-grid {
   display: grid; grid-template-columns: 1.2fr 1fr; gap: var(--space-12); align-items: start;
 }
 @media (max-width: 780px) { .hp-bio-grid { grid-template-columns: 1fr; gap: var(--space-8); } }
-.hp-bio-lead { font-size: var(--text-sm); color: #5a5957; line-height: 1.75; margin-bottom: var(--space-3); }
+.hp-bio-lead { font-size: var(--text-base); color: #5a5957; line-height: 1.75; margin-bottom: var(--space-3); }
 .hp-bio-lead strong { color: #28251d; }
 .hp-bio-pills { display: flex; flex-wrap: wrap; gap: var(--space-2); margin: var(--space-4) 0; }
 .hp-bpill {
-  font-size: 0.75rem; font-weight: 600; padding: 0.27rem 0.75rem;
+  font-size: var(--text-xs); font-weight: 600; padding: 0.3rem 0.85rem;
   border-radius: var(--radius-full); cursor: default; transition: transform var(--transition);
 }
 .hp-bpill:hover { transform: translateY(-1px); }
 .hp-bio-meta { display: flex; flex-direction: column; gap: var(--space-3); margin-top: var(--space-5); padding-top: var(--space-5); border-top: 1px solid #f0ede8; }
-.hp-bio-row { display: flex; align-items: flex-start; gap: var(--space-2); font-size: var(--text-xs); color: #5a5957; line-height: 1.65; }
+.hp-bio-row { display: flex; align-items: flex-start; gap: var(--space-2); font-size: var(--text-sm); color: #5a5957; line-height: 1.65; }
 .hp-bio-row svg { flex-shrink: 0; margin-top: 2px; }
 .hp-bio-row a { color: #1a5fa8; text-decoration: none; }
 .hp-bio-row a:hover { text-decoration: underline; }
@@ -215,10 +205,10 @@ permalink: /
   transition: background var(--transition);
 }
 .hp-award:hover { background: #f9f8f5; }
-.hp-award-yr { font-size: 0.7rem; font-weight: 700; color: #4f98a3; min-width: 32px; padding-top: 2px; flex-shrink: 0; }
+.hp-award-yr { font-size: var(--text-xs); font-weight: 700; color: #4f98a3; min-width: 36px; padding-top: 2px; flex-shrink: 0; }
 .hp-award-body { flex: 1; }
-.hp-award-name { font-size: var(--text-xs); font-weight: 700; color: #28251d; line-height: 1.35; }
-.hp-award-org  { font-size: 0.68rem; color: #9a9896; margin-top: 0.1rem; }
+.hp-award-name { font-size: var(--text-sm); font-weight: 700; color: #28251d; line-height: 1.35; }
+.hp-award-org  { font-size: var(--text-xs); color: #9a9896; margin-top: 0.1rem; }
 .hp-award-new { background: #f0f9f9; }
 .hp-award-badge {
   font-size: 0.6rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.06em;
@@ -228,41 +218,79 @@ permalink: /
 
 /* ── RESEARCH DOMAINS ── */
 .hp-domains-grid {
-  display: grid; grid-template-columns: repeat(auto-fill, minmax(240px, 1fr)); gap: var(--space-3);
+  display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 0.38rem;
 }
 .hp-domain-card {
-  display: flex; flex-direction: column; gap: var(--space-2);
-  padding: var(--space-5); border-radius: var(--radius-lg);
-  background: #f9f8f5; border: 1px solid #e8e5e0;
+  display: flex; flex-direction: column; gap: 0.28rem;
+  padding: 0.5rem 0.65rem; border-radius: var(--radius-lg);
+  background: linear-gradient(180deg, color-mix(in srgb, var(--domain-accent, #01696f) 7%, #fff) 0%, #f9f8f5 58%);
+  border: 1px solid #e8e5e0;
   text-decoration: none; color: inherit;
-  transition: box-shadow var(--transition), transform var(--transition);
-  border-left: 4px solid;
+  transition: box-shadow var(--transition), border-color var(--transition), background var(--transition), transform var(--transition);
+  border-top: 3px solid var(--domain-accent, #01696f);
+  position: relative; overflow: hidden;
 }
-.hp-domain-card:hover { box-shadow: var(--shadow-md); transform: translateY(-2px); text-decoration: none; }
-.hp-dc-num   { font-size: 0.68rem; font-weight: 800; letter-spacing: 0.1em; opacity: 0.35; }
-.hp-dc-title { font-size: var(--text-sm); font-weight: 700; color: #28251d; line-height: 1.35; }
-.hp-dc-desc  { font-size: var(--text-xs); color: #7a7974; line-height: 1.6; flex: 1; }
-.hp-dc-tags  { display: flex; flex-wrap: wrap; gap: var(--space-1); margin-top: auto; padding-top: var(--space-3); }
-.hp-dc-tag   { font-size: 0.64rem; font-weight: 600; padding: 0.15rem 0.5rem; border-radius: var(--radius-full); background: rgba(0,0,0,0.05); color: #5a5957; }
-.hp-dc-arrow { font-size: var(--text-xs); font-weight: 600; margin-top: var(--space-2); }
+.hp-domain-card::after {
+  content: ''; position: absolute; inset: auto 0 0 0; height: 3px;
+  background: var(--domain-accent, #01696f);
+  opacity: 0; transition: opacity var(--transition);
+}
+.hp-domain-card:hover {
+  box-shadow: 0 8px 22px rgba(0,0,0,0.1);
+  transform: translateY(-2px);
+  border-color: color-mix(in srgb, var(--domain-accent, #01696f) 42%, #d8d4ce);
+  background: linear-gradient(180deg, color-mix(in srgb, var(--domain-accent, #01696f) 12%, #fff) 0%, #faf9f7 64%);
+  text-decoration: none;
+}
+.hp-domain-card:hover::after { opacity: 1; }
+.hp-domain-card:hover .hp-dc-title { color: var(--domain-accent, #01696f); }
+.hp-dc-top { display: flex; align-items: center; justify-content: space-between; gap: var(--space-2); }
+.hp-dc-num   { font-size: 0.68rem; font-weight: 900; letter-spacing: 0.12em; color: var(--domain-accent, #01696f); opacity: 0.7; }
+.hp-dc-mark {
+  width: 18px; height: 2px; border-radius: var(--radius-full);
+  background: var(--domain-accent, #01696f); opacity: 0.55;
+}
+.hp-dc-title { font-size: var(--text-base); font-weight: 800; color: #28251d; line-height: 1.25; transition: color var(--transition); }
+.hp-dc-desc { font-size: var(--text-xs); color: #6f6b65; line-height: 1.45; max-width: 28ch; }
+@media (max-width: 980px) { .hp-domains-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+@media (max-width: 640px) { .hp-domains-grid { grid-template-columns: 1fr; } }
 
 /* ── PUBLICATIONS ── */
+#sec-pubs .hp-row-head { margin-bottom: var(--space-3); padding-bottom: var(--space-3); }
 .hp-pubs { display: flex; flex-direction: column; border-radius: var(--radius-lg); overflow: hidden; border: 1px solid #ede9e3; }
 .hp-pub {
-  display: flex; gap: var(--space-4); align-items: flex-start;
-  padding: var(--space-4) var(--space-5); border-bottom: 1px solid #f5f2ec;
+  display: flex; gap: var(--space-3); align-items: center;
+  padding: 0.68rem var(--space-6); border-bottom: 1px solid #f5f2ec;
   text-decoration: none; color: inherit; transition: background var(--transition);
 }
 .hp-pub:last-child { border-bottom: none; }
 .hp-pub:hover { background: #f9f8f5; text-decoration: none; }
 .hp-pub-rank {
-  font-family: 'Merriweather', serif; font-size: 1.1rem; font-weight: 700;
-  color: #e8b84b; min-width: 26px; flex-shrink: 0; padding-top: 1px;
+  font-family: 'Merriweather', serif; font-size: 1.3rem; font-weight: 700;
+  color: #e8b84b; min-width: 30px; flex-shrink: 0; padding-top: 1px;
 }
-.hp-pub-body { flex: 1; }
-.hp-pub-title { font-weight: 700; font-size: var(--text-sm); color: #28251d; line-height: 1.45; margin-bottom: 0.2rem; }
-.hp-pub-meta  { font-size: var(--text-xs); color: #9a9896; margin-bottom: 0.18rem; }
-.hp-pub-cites { font-size: var(--text-xs); color: #7a7974; }
+.hp-pub-body {
+  flex: 1;
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(66px, max-content);
+  column-gap: 0.75rem;
+  row-gap: 0.08rem;
+  align-items: baseline;
+}
+.hp-pub-title { grid-column: 1; font-weight: 700; font-size: var(--text-base); color: #28251d; line-height: 1.35; margin-bottom: 0; }
+.hp-pub-meta  { font-size: var(--text-sm); color: #50615f; font-weight: 700; line-height: 1.35; margin-bottom: 0; }
+.hp-pub-cites {
+  grid-column: 2;
+  grid-row: 1 / span 2;
+  align-self: center;
+  justify-self: end;
+  min-width: 66px;
+  text-align: right;
+  font-size: var(--text-sm);
+  color: #7a7974;
+  line-height: 1.35;
+  white-space: nowrap;
+}
 .hp-pub-cites strong { color: #1a5fa8; font-weight: 700; }
 .hp-pub-journal {
   display: inline-block; font-size: 0.64rem; font-weight: 700;
@@ -274,36 +302,39 @@ permalink: /
 
 /* ── SOFTWARE ── */
 .hp-software-grid {
-  display: grid; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: var(--space-3);
+  display: grid; grid-template-columns: repeat(8, minmax(0, 1fr)); gap: 0.55rem;
 }
 .hp-sw-card {
-  display: flex; flex-direction: column; gap: var(--space-2);
-  padding: var(--space-4); border-radius: var(--radius-lg);
+  display: flex; flex-direction: column; gap: 0.45rem;
+  min-height: 128px; padding: 0.9rem 0.85rem; border-radius: var(--radius-lg);
   border: 1px solid #e8e5e0; background: #f9f8f5;
   text-decoration: none; color: inherit;
   transition: box-shadow var(--transition), transform var(--transition), border-color var(--transition);
 }
 .hp-sw-card:hover { box-shadow: var(--shadow-md); transform: translateY(-2px); border-color: #c8c5be; text-decoration: none; }
-.hp-sw-dot  { width: 10px; height: 10px; border-radius: 50%; margin-bottom: 0.1rem; }
-.hp-sw-name { font-size: var(--text-sm); font-weight: 700; color: #28251d; }
-.hp-sw-desc { font-size: var(--text-xs); color: #7a7974; line-height: 1.5; flex: 1; }
-.hp-sw-link { font-size: 0.68rem; font-weight: 600; color: #01696f; margin-top: auto; }
+.hp-sw-dot  { width: 9px; height: 9px; border-radius: 50%; margin-bottom: 0.2rem; }
+.hp-sw-name { font-size: 0.9rem; font-weight: 800; color: #28251d; line-height: 1.2; }
+.hp-sw-desc { font-size: 0.72rem; color: #7a7974; line-height: 1.38; flex: 1; }
+.hp-sw-link { font-size: var(--text-xs); font-weight: 600; color: #01696f; margin-top: auto; }
+@media (max-width: 1200px) { .hp-software-grid { grid-template-columns: repeat(4, minmax(0, 1fr)); } }
+@media (max-width: 640px) { .hp-software-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
 
 /* ── NEWS ── */
 .hp-news-grid {
-  display: grid; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); gap: var(--space-3);
+  display: grid; grid-template-columns: repeat(auto-fill, minmax(195px, 1fr)); gap: 0.55rem;
+  align-items: start;
 }
 .hp-news-card {
-  padding: var(--space-4) var(--space-5); border-radius: var(--radius-lg);
+  padding: 0.9rem 1.1rem; border-radius: var(--radius-lg);
   border: 1px solid #e8e5e0; background: #f9f8f5;
   transition: box-shadow var(--transition), transform var(--transition);
   text-decoration: none; color: inherit;
-  display: flex; flex-direction: column; gap: var(--space-2);
+  display: flex; flex-direction: column; gap: 0.38rem;
 }
 .hp-news-card:hover { box-shadow: var(--shadow-md); transform: translateY(-2px); text-decoration: none; }
-.hp-news-date  { font-size: 0.7rem; font-weight: 700; color: #9a9896; }
-.hp-news-title { font-size: var(--text-sm); font-weight: 600; color: #28251d; line-height: 1.5; flex: 1; }
-.hp-news-arrow { font-size: var(--text-xs); font-weight: 600; color: #01696f; margin-top: auto; }
+.hp-news-date  { font-size: var(--text-xs); font-weight: 700; color: #9a9896; }
+.hp-news-title { font-size: var(--text-base); font-weight: 600; color: #28251d; line-height: 1.5; flex: 1; }
+.hp-news-arrow { font-size: var(--text-sm); font-weight: 600; color: #01696f; margin-top: auto; }
 
 /* ── NEWS ARCHIVE TOGGLE ── */
 .hp-news-archive-toggle {
@@ -313,13 +344,16 @@ permalink: /
   border: 1px solid #dcd9d5; border-radius: var(--radius-full);
   padding: var(--space-2) var(--space-4);
   cursor: pointer; transition: all var(--transition);
-  margin-top: var(--space-5);
+  margin-top: 0.9rem;
 }
 .hp-news-archive-toggle:hover { background: #e8e5e0; color: #28251d; border-color: #c8c5be; }
-.hp-news-archive { margin-top: var(--space-4); display: none; }
+.hp-news-archive { margin-top: 0.75rem; display: none; }
 .hp-news-archive.open { display: block; }
+.hp-awards-list { display: none; }
+.hp-awards-list.open { display: block; }
 .hp-news-archive-grid {
-  display: grid; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); gap: var(--space-3);
+  display: grid; grid-template-columns: repeat(auto-fill, minmax(195px, 1fr)); gap: 0.55rem;
+  align-items: start;
 }
 .hp-news-archive-label {
   font-size: var(--text-xs); font-weight: 700; letter-spacing: 0.08em;
@@ -330,401 +364,230 @@ permalink: /
 
 /* ── COLLABORATORS STRIP ── */
 .hp-collabs {
-  display: flex; flex-wrap: wrap; gap: var(--space-3); align-items: stretch;
+  display: grid; grid-template-columns: repeat(auto-fit, minmax(190px, 1fr)); gap: var(--space-3); align-items: stretch;
 }
 .hp-collab-pill {
-  display: flex; align-items: center; gap: var(--space-3);
-  padding: var(--space-3) var(--space-4);
+  display: flex; flex-direction: column;
+  padding: 0; overflow: hidden;
   border-radius: var(--radius-lg); background: #f9f8f5;
   border: 1px solid #e8e5e0; text-decoration: none; color: inherit;
-  transition: box-shadow var(--transition), transform var(--transition), background var(--transition);
-  flex: 1; min-width: 220px;
+  transition: box-shadow var(--transition), transform var(--transition), border-color var(--transition);
 }
-.hp-collab-pill:hover { box-shadow: var(--shadow-sm); transform: translateY(-1px); background: #f4f1ec; text-decoration: none; }
-.hp-collab-av {
-  width: 40px; height: 40px; border-radius: 50%; flex-shrink: 0;
+.hp-collab-pill:hover { box-shadow: var(--shadow-sm); transform: translateY(-1px); border-color: #c8c5be; text-decoration: none; }
+.hp-collab-logo {
+  height: 58px; background: #fff;
   display: flex; align-items: center; justify-content: center;
-  font-family: 'Merriweather', serif; font-size: 0.85rem; font-weight: 700;
-  color: #fff; background: #1a5fa8;
+  padding: 0.3rem 0.6rem; flex-shrink: 0;
+  border-bottom: 1px solid #ede9e3;
 }
-.hp-collab-name { font-size: var(--text-xs); font-weight: 700; color: #28251d; line-height: 1.3; }
-.hp-collab-inst { font-size: 0.67rem; color: #9a9896; margin-top: 0.1rem; line-height: 1.35; }
+.hp-collab-logo img { max-width: 92%; max-height: 50px; object-fit: contain; display: block; }
+.hp-collab-fallback {
+  width: 40px; height: 40px; border-radius: 50%;
+  display: none; align-items: center; justify-content: center;
+  font-size: 0.58rem; font-weight: 800; color: #fff; letter-spacing: 0.04em;
+}
+.hp-collab-more-logo {
+  background:
+    radial-gradient(circle at 25% 25%, rgba(1,105,111,0.12), transparent 36%),
+    linear-gradient(135deg, #ffffff 0%, #f2f7f8 100%);
+}
+.hp-collab-logo-cluster {
+  display: grid;
+  grid-template-columns: repeat(4, 34px);
+  align-items: center;
+  justify-content: center;
+  gap: 0.22rem;
+}
+.hp-collab-mini {
+  width: 34px;
+  height: 34px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  background: #fff;
+  border: 1px solid #dfe7ea;
+  box-shadow: 0 2px 8px rgba(13,43,51,0.07);
+  overflow: hidden;
+}
+.hp-collab-mini img {
+  max-width: 82%;
+  max-height: 82%;
+  object-fit: contain;
+}
+.hp-collab-mini-plus {
+  background: #2d7178;
+  color: #fff;
+  border-color: #2d7178;
+  font-size: 1rem;
+  font-weight: 900;
+  line-height: 1;
+}
+.hp-collab-body { padding: 0.62rem 0.8rem 0.72rem; }
+.hp-collab-name { font-size: var(--text-sm); font-weight: 700; color: #28251d; line-height: 1.3; }
+.hp-collab-inst { font-size: var(--text-xs); color: #9a9896; margin-top: 0.15rem; line-height: 1.35; }
 
 /* ── RESPONSIVE ── */
 @media (max-width: 640px) {
-  .hp-sec { padding: var(--space-6) var(--space-5); }
-  .hp-wrap { padding: var(--space-4) var(--space-4); }
+  .hp-sec { padding: var(--space-4) var(--space-4); }
+  .hp-wrap { padding: 0 var(--space-4); }
+  .hp-util-row { justify-content: stretch; padding-top: var(--space-2); }
+  .hp-sections { width: 100%; max-width: none; order: -1; }
+  .hp-row-head > div:first-child { order: 0; width: 100%; }
+  .hp-pub { align-items: flex-start; gap: var(--space-2); padding: 0.7rem var(--space-4); }
+  .hp-pub-body { grid-template-columns: 1fr; row-gap: 0.04rem; }
+  .hp-pub-title,
+  .hp-pub-cites {
+    grid-column: 1;
+  }
+  .hp-pub-cites {
+    grid-row: auto;
+    justify-self: start;
+    text-align: left;
+    min-width: 0;
+  }
+  .hp-pub-journal { margin-left: 0.25rem; }
 }
 
-/* ── 3D KNOT PANEL ── */
-.hp-knot-panel {
-  display: grid; grid-template-columns: 380px 1fr; gap: 0;
-  align-items: center;
-  background: linear-gradient(135deg, #0a1020 0%, #0f1a2e 60%, #091528 100%);
-  border-radius: var(--radius-xl); overflow: hidden;
-  margin-bottom: var(--space-4); box-shadow: var(--shadow-lg);
-  min-height: 360px;
+/* ── HERO ── */
+.lp-hero {
+  position: relative; overflow: hidden;
+  display: grid; grid-template-columns: 1fr 315px; align-items: stretch;
+  background: linear-gradient(135deg, #070f20 0%, #0a1628 60%, #0c1e38 100%);
+  width: min(calc(100% - 3rem), 1240px);
+  margin: 0.3rem auto 0;
+  border-radius: var(--radius-xl);
+  box-shadow: var(--shadow-md);
+  min-height: 130px;
 }
-@media (max-width: 860px) {
-  .hp-knot-panel { grid-template-columns: 1fr; }
-  .hp-knot-canvas-wrap { width: 280px; height: 280px; margin: var(--space-6) auto 0; }
+@media (max-width: 900px) {
+  .lp-hero { grid-template-columns: 1fr; width: calc(100% - 2rem); }
+  .lp-hero-canvas-col { height: 130px; order: -1; overflow: hidden; }
+  .lp-hero-canvas-col canvas { position: static; width: 100%; height: 130px; }
+  .lp-hero-title br { display: none; }
+  .lp-hero-content { padding: 1rem 1.5rem 1.25rem; }
 }
-.hp-knot-canvas-wrap {
-  position: relative; width: 380px; height: 380px; flex-shrink: 0;
+@media (max-width: 640px) {
+  .lp-hero { width: 100%; margin-top: 0; border-radius: 0; }
 }
-.hp-knot-bg-canvas, .hp-knot-main-canvas {
-  position: absolute; inset: 0; width: 100%; height: 100%;
+.lp-hero-content {
+  padding: 0.65rem 1.9rem 0.65rem 2.25rem;
+  display: flex; flex-direction: column; justify-content: center;
+  position: relative; z-index: 2;
 }
-.hp-knot-label {
-  position: absolute; bottom: var(--space-4); left: 50%;
-  transform: translateX(-50%);
-  font-size: 0.6rem; font-weight: 600; text-transform: uppercase;
-  letter-spacing: 0.1em; color: rgba(77,184,232,0.5);
-  text-align: center; white-space: nowrap; pointer-events: none; line-height: 1.6;
+.lp-hero-inst {
+  font-size: 0.6rem; font-weight: 700; letter-spacing: 0.13em;
+  text-transform: uppercase; color: rgba(0,210,230,0.65);
+  margin-bottom: 0.55rem;
 }
-.hp-knot-label span { display: block; color: rgba(255,255,255,0.25); font-weight: 400; text-transform: none; letter-spacing: 0; }
-.hp-knot-text { padding: var(--space-10) var(--space-10) var(--space-10) var(--space-4); }
-.hp-knot-eyebrow {
-  font-size: 0.6rem; font-weight: 800; letter-spacing: 0.18em;
-  text-transform: uppercase; color: #4db8e8; margin-bottom: var(--space-3);
-}
-.hp-knot-title {
+.lp-hero-title {
   font-family: 'Merriweather', serif;
-  font-size: clamp(1.2rem, 1rem + 1vw, 1.75rem);
-  font-weight: 700; color: #fff; line-height: 1.25; margin-bottom: var(--space-4);
+  font-size: clamp(1.3rem, 0.85rem + 1.5vw, 2.15rem);
+  font-weight: 700; color: #fff; line-height: 1.18;
+  margin-bottom: 0; letter-spacing: -0.01em;
 }
-.hp-knot-desc {
-  font-size: var(--text-xs); color: rgba(255,255,255,0.5);
-  line-height: 1.8; max-width: 52ch; margin-bottom: var(--space-5);
+.lp-hero-sub {
+  font-size: 0.9rem; color: rgba(255,255,255,0.58);
+  line-height: 1.75; max-width: 58ch; margin-bottom: 1rem;
 }
-.hp-knot-tags {
-  display: flex; flex-wrap: wrap; gap: var(--space-2); margin-bottom: var(--space-6);
+.lp-hero-actions { display: flex; gap: 0.55rem; flex-wrap: wrap; margin-top: 0.55rem; }
+.lp-btn-primary {
+  display: inline-flex; align-items: center;
+  padding: 0.33rem 0.74rem; border-radius: 4px;
+  font-size: 0.55rem; font-weight: 700; font-family: inherit;
+  background: #01696f; color: #fff; border: none;
+  text-decoration: none; cursor: pointer;
+  transition: background 180ms ease;
 }
-.hp-knot-tags span {
-  font-size: 0.65rem; font-weight: 600; padding: 0.2rem 0.65rem;
-  border-radius: var(--radius-full);
-  background: rgba(77,184,232,0.1); color: rgba(77,184,232,0.75);
-  border: 1px solid rgba(77,184,232,0.2);
+.lp-btn-primary:hover { background: #018a91; color: #fff; text-decoration: none; }
+.lp-btn-ghost {
+  display: inline-flex; align-items: center;
+  padding: 0.33rem 0.74rem; border-radius: 4px;
+  font-size: 0.55rem; font-weight: 700; font-family: inherit;
+  background: transparent; color: rgba(255,255,255,0.78);
+  border: 1px solid rgba(255,255,255,0.22);
+  text-decoration: none; cursor: pointer;
+  transition: all 180ms ease;
 }
-.hp-knot-cta {
-  display: inline-flex; align-items: center; gap: var(--space-2);
-  font-size: var(--text-xs); font-weight: 700; color: #4db8e8;
-  text-decoration: none; transition: color var(--transition);
+.lp-btn-ghost:hover { border-color: rgba(255,255,255,0.5); background: rgba(255,255,255,0.07); color: #fff; text-decoration: none; }
+.lp-hero-canvas-col {
+  position: relative;
+  background: radial-gradient(ellipse at 50% 48%, rgba(14,55,130,0.45) 0%, rgba(8,25,70,0.18) 55%, transparent 80%);
 }
-.hp-knot-cta:hover { color: #fff; text-decoration: none; }
+.lp-hero-canvas-col canvas { position: absolute; inset: 0; width: 100%; height: 100%; display: block; }
+.lp-knot-label {
+  position: absolute; bottom: 0.45rem; left: 0; right: 0;
+  text-align: center; z-index: 3; pointer-events: none;
+  font-size: 0.54rem; font-weight: 600; letter-spacing: 0.12em;
+  text-transform: uppercase; color: rgba(175,208,238,0.55);
+  font-family: 'Inter', 'Helvetica Neue', sans-serif;
+}
+
+/* ── EXPLORE NAV CARDS ── */
+.lp-explore-grid {
+  display: grid; grid-template-columns: repeat(auto-fill, minmax(100px, 1fr)); gap: 0.5rem;
+}
+.lp-explore-card {
+  display: flex; flex-direction: column; gap: 0.25rem;
+  padding: 0.6rem 0.7rem; border-radius: var(--radius-md);
+  border: 1px solid #e8e5e0; background: #f9f8f5;
+  text-decoration: none; color: inherit;
+  transition: box-shadow var(--transition), transform var(--transition), border-color var(--transition);
+}
+.lp-explore-card:hover { box-shadow: var(--shadow-sm); transform: translateY(-1px); border-color: #c8c5be; text-decoration: none; }
+.lp-explore-icon { display: flex; align-items: center; margin-bottom: 0.18rem; color: #64748b; }
+.lp-explore-icon svg { display: block; }
+.lp-explore-card:hover .lp-explore-icon { color: #01696f; }
+.lp-explore-title { font-size: 0.72rem; font-weight: 700; color: #0a1020; line-height: 1.3; }
+.lp-explore-desc  { display: none; }
+.lp-explore-arrow { display: none; }
 </style>
 
 <div id="page-home" class="page active hp">
 
-<!-- ── DARK HEADER BAR ── -->
-<div class="hp-head">
-  <div class="hp-head-inner">
-    <div>
-      <div class="hp-head-eyebrow">Sulkowska Lab · CeNT, University of Warsaw</div>
-      <div class="hp-head-title">Interdisciplinary Laboratory of Biological Systems Modelling</div>
+  <!-- ═══ HERO ═══ -->
+  <div class="lp-hero" id="sec-intro">
+    <div class="lp-hero-content">
+      <h1 class="lp-hero-title">{{ site.data.home.hero.title }}</h1>
     </div>
-    <div class="hp-head-div"></div>
-    <div class="hp-head-stats">
-
+    <div class="lp-hero-canvas-col">
+      <canvas id="kp-knot"></canvas>
     </div>
   </div>
-</div>
-
-<!-- ── STICKY NAV PILLS ── -->
-<div class="hp-nav">
-  <div class="hp-nav-inner">
-    <button class="hp-pill active" onclick="hpNav('sec-grants', this)">
-      <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M12 2 L15 8.5 L22 9.5 L17 14.5 L18 21 L12 18 L6 21 L7 14.5 L2 9.5 L9 8.5 Z"/></svg>
-      Grants
-    </button>
-    <button class="hp-pill" onclick="hpNav('sec-about', this)">
-      <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
-      About
-    </button>
-    <button class="hp-pill" onclick="hpNav('sec-awards', this)">
-      <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><circle cx="12" cy="8" r="7"/><polyline points="8.21 13.89 7 23 12 20 17 23 15.79 13.88"/></svg>
-      Awards
-    </button>
-    <button class="hp-pill" onclick="hpNav('sec-research', this)">
-      <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
-      Research
-    </button>
-    <button class="hp-pill" onclick="hpNav('sec-pubs', this)">
-      <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"/><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"/></svg>
-      Publications
-    </button>
-    <button class="hp-pill" onclick="hpNav('sec-software', this)">
-      <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg>
-      Software
-    </button>
-    <button class="hp-pill" onclick="hpNav('sec-team', this)">
-      <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
-      Team
-    </button>
-    <button class="hp-pill" onclick="hpNav('sec-news', this)">
-      <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M4 22h16a2 2 0 0 0 2-2V4a2 2 0 0 0-2-2H8a2 2 0 0 0-2 2v16a2 2 0 0 1-2 2zm0 0a2 2 0 0 1-2-2v-9c0-1.1.9-2 2-2h2"/><path d="M18 14h-8M15 18h-5M10 6h8v4h-8z"/></svg>
-      News
-    </button>
-  </div>
-</div>
 
 <!-- ── CONTENT ── -->
 <div class="hp-wrap">
-
-  <!-- 3D KNOT VISUAL PANEL -->
-  <div class="hp-knot-panel">
-    <div class="hp-knot-canvas-wrap">
-      <canvas id="hp-particles" width="420" height="420" class="hp-knot-bg-canvas"></canvas>
-      <canvas id="hp-knot"      width="420" height="420" class="hp-knot-main-canvas"></canvas>
-      <div class="hp-knot-label">Trefoil knot (3₁)<br><span>Found in YibK, MJ0366 &amp; 200+ real proteins</span></div>
-    </div>
-    <div class="hp-knot-text">
-      <div class="hp-knot-eyebrow">Non-trivial Protein Topology</div>
-      <h2 class="hp-knot-title">Where mathematics meets protein science</h2>
-      <p class="hp-knot-desc">The trefoil knot — one of the simplest mathematical knots — was discovered in real proteins. We study how these complex topologies arise during folding, how they confer remarkable mechanical stability, and how they can be exploited in drug design.</p>
-      <div class="hp-knot-tags">
-        <span>Trefoil knot (3₁)</span>
-        <span>Figure-eight knot (4₁)</span>
-        <span>Lasso topology</span>
-        <span>Protein links</span>
-        <span>Knotoids</span>
-      </div>
-      <a href="#" onclick="show('topics')" class="hp-knot-cta">Explore our research →</a>
-    </div>
-  </div>
-
-  <!-- STATS STRIP -->
-  <div class="hp-stats">
-    <div class="hp-stat"><div class="hp-stat-n" data-count="4618">0</div><div class="hp-stat-l">Citations</div></div>
-    <div class="hp-stat"><div class="hp-stat-n" data-count="122">0</div><div class="hp-stat-l">Publications</div></div>
-    <div class="hp-stat"><div class="hp-stat-n" data-count="40">0</div><div class="hp-stat-l">h-index</div></div>
-    <div class="hp-stat"><div class="hp-stat-n" data-count="14">0</div><div class="hp-stat-l">Software Tools</div></div>
-    <div class="hp-stat"><div class="hp-stat-n" data-count="20">0</div><div class="hp-stat-l">Team Members</div></div>
-  </div>
-
-  <!-- GRANTS -->
-  <div class="hp-sec" id="sec-grants">
-    <div class="hp-row-head">
-      <div>
-        <div class="hp-eyebrow hp-eyebrow-gold">Recent Major Grants</div>
-        <div class="hp-title" style="font-size:var(--text-lg)">Funding &amp; Recognition</div>
-      </div>
-      <a href="#sec-news" onclick="hpNav('sec-news'); return false;" class="hp-see-all">All news →</a>
-    </div>
-    <div class="hp-grants-grid">
-
-      <a class="hp-grant-card hp-gc-nsf" href="https://cent.uw.edu.pl/the-national-synthesis-center-for-emergence-in-the-molecular-and-cellular-sciences-grant-awarded-to-joanna-sulkowska/" target="_blank" rel="noopener noreferrer">
-        <div class="hp-grant-year">2026</div>
-        <div class="hp-grant-badge">NSF · NCEMS</div>
-        <div class="hp-grant-title">National Synthesis Center for Emergence in the Molecular and Cellular Sciences</div>
-        <div class="hp-grant-body">First Polish group selected for this NSF programme. Led by Prof. Sułkowska with Julia Sikorska and Mateusz Fortunka — focusing on the evolutionary origin of complex topologies.</div>
-        <div class="hp-grant-arrow">Read more →</div>
-      </a>
-
-      <a class="hp-grant-card hp-gc-embo" href="https://cent.uw.edu.pl/prof-joanna-sulkowska-has-been-awarded-an-embo-advanced-collaboration-grant/" target="_blank" rel="noopener noreferrer">
-        <div class="hp-grant-year">2024</div>
-        <div class="hp-grant-badge">EMBO · Advanced Collaboration</div>
-        <div class="hp-grant-title">EMBO Advanced Collaboration Grant</div>
-        <div class="hp-grant-body">Collaboration with Prof. Sophie Jackson (Cambridge University) — an expert in the molecular basis of protein folding. Strengthening international scientific ties through academic exchange.</div>
-        <div class="hp-grant-arrow">Read more →</div>
-      </a>
-
-      <a class="hp-grant-card hp-gc-aim" href="/news/aim-square-grant-caltech-2024/">
-        <div class="hp-grant-year">2024</div>
-        <div class="hp-grant-badge">AIM · SQuaRE</div>
-        <div class="hp-grant-title">AIM SQuaRE Grant — American Institute of Mathematics</div>
-        <div class="hp-grant-body">Awarded by the American Institute of Mathematics, Caltech, USA — supporting collaborative research at the intersection of mathematics and structural biology.</div>
-        <div class="hp-grant-arrow">Read more →</div>
-      </a>
-
-      <a class="hp-grant-card hp-gc-idub" href="/news/joanna-sulkowska-idub-artificial-proteins-2023/">
-        <div class="hp-grant-year">2023</div>
-        <div class="hp-grant-badge">IDUB · University of Warsaw</div>
-        <div class="hp-grant-title">IDUB Grant — Design of Artificial Proteins</div>
-        <div class="hp-grant-body">University of Warsaw excellence initiative grant supporting the rational design of artificial knotted proteins with custom topological and functional properties.</div>
-        <div class="hp-grant-arrow">Read more →</div>
-      </a>
-
-    </div>
-  </div>
-
-  <!-- BIO + AWARDS -->
-  <div class="hp-sec" id="sec-about">
-    <div class="hp-bio-grid">
-
-      <!-- BIO LEFT -->
-      <div>
-        <div class="hp-eyebrow">About the Laboratory</div>
-        <div class="hp-title" style="font-size:var(--text-lg);margin-bottom:var(--space-4)">Prof. Joanna I. Sulkowska</div>
-        <p class="hp-bio-lead">
-          The <strong>Interdisciplinary Laboratory of Biological Systems Modelling</strong> is led by <strong>Prof. Joanna I. Sulkowska</strong> at the <a href="https://www.cent.uw.edu.pl" target="_blank">Centre of New Technologies, University of Warsaw</a>. We sit at the intersection of physics, mathematics, bioinformatics and biochemistry — united by a single fascination: the <strong>complex topology of proteins</strong>.
-        </p>
-        <p class="hp-bio-lead">
-          We develop multidimensional models for energy landscapes, build proteome-scale databases, and design drug candidates targeting knotted enzymes in disease. Our tools — AlphaKnot, KnotProt, Topoly and more — are used by researchers worldwide.
-        </p>
-        <div class="hp-bio-pills">
-          <span class="hp-bpill" style="background:#e3f2fd;color:#1565c0">Protein Folding</span>
-          <span class="hp-bpill" style="background:#e0f2f1;color:#00695c">Knot Theory</span>
-          <span class="hp-bpill" style="background:#f3e5f5;color:#6a1b9a">Non-trivial Topology</span>
-          <span class="hp-bpill" style="background:#e8f5e9;color:#1b5e20">Drug Design</span>
-          <span class="hp-bpill" style="background:#fff3e0;color:#e65100">Direct Coupling Analysis</span>
-          <span class="hp-bpill" style="background:#fce4ec;color:#880e4f">Applied Mathematics</span>
-          <span class="hp-bpill" style="background:#e3f2fd;color:#1565c0">AlphaFold Analysis</span>
-          <span class="hp-bpill" style="background:#e0f2f1;color:#00695c">RNA Topology</span>
-        </div>
-        <div class="hp-bio-meta">
-          <div class="hp-bio-row">
-            <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="#1a73e8" stroke-width="2"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
-            <span><a href="https://www.cent.uw.edu.pl" target="_blank">Centre of New Technologies (CeNT), University of Warsaw</a> · office 04.43</span>
-          </div>
-          <div class="hp-bio-row">
-            <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="#1a73e8" stroke-width="2"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="M2 7l10 7 10-7"/></svg>
-            <span><a href="mailto:j.sulkowska@cent.uw.edu.pl">j.sulkowska [at] cent.uw.edu.pl</a> &nbsp;·&nbsp; <a href="tel:+48225543675">(+48) 22 55 43 675</a></span>
-          </div>
-          <div class="hp-bio-row">
-            <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="#1a73e8" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
-            <span>Collaborates with <a href="https://genesilico.pl" target="_blank">Bujnicki / IIMCB</a> · <a href="https://minorlab.org" target="_blank">Minor / UVA</a> · <a href="https://onuchic.rice.edu" target="_blank">Onuchic / Rice</a> · University of Ljubljana</span>
-          </div>
-        </div>
-      </div>
-
-      <!-- AWARDS RIGHT -->
-      <div id="sec-awards">
-        <div class="hp-awards-hd">
-          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="#b07d2a" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="8" r="7"/><polyline points="8.21 13.89 7 23 12 20 17 23 15.79 13.88"/></svg>
-          Awards &amp; Recognition
-        </div>
-
-        <div class="hp-award hp-award-new">
-          <div class="hp-award-yr">2026</div>
-          <div class="hp-award-body">
-            <div class="hp-award-name">NSF NCEMS Working Group</div>
-            <div class="hp-award-org">National Synthesis Center · First Polish group selected</div>
-          </div>
-          <span class="hp-award-badge">New</span>
-        </div>
-        <div class="hp-award hp-award-new">
-          <div class="hp-award-yr">2024</div>
-          <div class="hp-award-body">
-            <div class="hp-award-name">EMBO Advanced Collaboration Grant</div>
-            <div class="hp-award-org">With Prof. Sophie Jackson, Cambridge University</div>
-          </div>
-          <span class="hp-award-badge">New</span>
-        </div>
-        <div class="hp-award">
-          <div class="hp-award-yr">2024</div>
-          <div class="hp-award-body">
-            <div class="hp-award-name">AIM SQuaRE Grant</div>
-            <div class="hp-award-org">American Institute of Mathematics · Caltech, USA</div>
-          </div>
-        </div>
-        <div class="hp-award">
-          <div class="hp-award-yr">2023</div>
-          <div class="hp-award-body">
-            <div class="hp-award-name">IDUB Grant — Artificial Protein Design</div>
-            <div class="hp-award-org">University of Warsaw</div>
-          </div>
-        </div>
-        <div class="hp-award">
-          <div class="hp-award-yr">2017</div>
-          <div class="hp-award-body">
-            <div class="hp-award-name">International Rising Talents</div>
-            <div class="hp-award-org">L'Oréal–UNESCO For Women in Science</div>
-          </div>
-        </div>
-        <div class="hp-award">
-          <div class="hp-award-yr">2017</div>
-          <div class="hp-award-body">
-            <div class="hp-award-name">EMBO Young Investigator Programme</div>
-            <div class="hp-award-org">European Molecular Biology Organization</div>
-          </div>
-        </div>
-        <div class="hp-award">
-          <div class="hp-award-yr">2016</div>
-          <div class="hp-award-body">
-            <div class="hp-award-name">L'Oréal Poland For Women in Science</div>
-            <div class="hp-award-org">16th Awards Ceremony</div>
-          </div>
-        </div>
-        <div class="hp-award">
-          <div class="hp-award-yr">2014</div>
-          <div class="hp-award-body">
-            <div class="hp-award-name">EMBO Installation Grant</div>
-            <div class="hp-award-org">Only Pole to win two EMBO grants</div>
-          </div>
-        </div>
-        <div class="hp-award">
-          <div class="hp-award-yr">2013</div>
-          <div class="hp-award-body">
-            <div class="hp-award-name">INTER Grant Laureate</div>
-            <div class="hp-award-org">Foundation for Polish Science (FNP)</div>
-          </div>
-        </div>
-
-      </div><!-- /awards -->
-    </div><!-- /bio-grid -->
-  </div><!-- /sec-about -->
 
   <!-- RESEARCH DOMAINS -->
   <div class="hp-sec" id="sec-research">
     <div class="hp-row-head">
       <div>
-        <div class="hp-eyebrow hp-eyebrow-blue">Research Programme</div>
-        <div class="hp-title" style="font-size:var(--text-lg)">From protein topology to targeted therapeutics</div>
+
+        <div class="hp-title">Research Areas</div>
       </div>
-      <a href="#" onclick="show('topics')" class="hp-see-all">All research topics →</a>
+      <div class="hp-sections" id="hp-sections-menu">
+        <button class="hp-sections-toggle" type="button" aria-haspopup="true" aria-expanded="false" onclick="hpToggleSections(event)">
+          <span>Jump to section</span>
+          <span class="hp-sections-caret" aria-hidden="true"></span>
+        </button>
+        <div class="hp-sections-menu" role="menu" aria-label="Home page sections">
+          <button class="hp-pill active" type="button" role="menuitem" data-sec="sec-research" onclick="hpNav('sec-research', this)">Research</button>
+          <button class="hp-pill" type="button" role="menuitem" data-sec="sec-pubs" onclick="hpNav('sec-pubs', this)">Publications</button>
+          <button class="hp-pill" type="button" role="menuitem" data-sec="sec-grants" onclick="hpNav('sec-grants', this)">Grants &amp; Awards</button>
+          <button class="hp-pill" type="button" role="menuitem" data-sec="sec-software" onclick="hpNav('sec-software', this)">Software</button>
+          <button class="hp-pill" type="button" role="menuitem" data-sec="sec-team" onclick="hpNav('sec-team', this)">Team</button>
+          <button class="hp-pill" type="button" role="menuitem" data-sec="sec-news" onclick="hpNav('sec-news', this)">News</button>
+        </div>
+      </div>
     </div>
-    <p class="hp-subtitle" style="margin-bottom:var(--space-6)">A team of physicists, mathematicians, bioinformaticians and biochemists — united by the study of proteins with non-trivial topology.</p>
     <div class="hp-domains-grid">
-
-      <a class="hp-domain-card" href="#" onclick="show('topics')" style="border-left-color:#1a73e8">
-        <div class="hp-dc-num">01</div>
-        <div class="hp-dc-title">Protein Folding &amp; Energy Landscapes</div>
-        <div class="hp-dc-desc">How do knotted proteins fold reliably? We build multidimensional models of folding energy landscapes using coarse-grained Go-models and maximum entropy approaches.</div>
-        <div class="hp-dc-tags">
-          <span class="hp-dc-tag">Go-models</span>
-          <span class="hp-dc-tag">AFM simulations</span>
-          <span class="hp-dc-tag">Topological barriers</span>
-        </div>
-        <div class="hp-dc-arrow" style="color:#1a73e8">Explore →</div>
+      {% for domain in site.data.home.research %}
+      <a class="hp-domain-card" href="{{ domain.link }}" style="--domain-accent:{{ domain.accent }}">
+        <div class="hp-dc-top"><div class="hp-dc-num">{{ domain.num }}</div><div class="hp-dc-mark"></div></div>
+        <div class="hp-dc-title">{{ domain.title }}</div>
+        <div class="hp-dc-desc">{{ domain.desc }}</div>
       </a>
-
-      <a class="hp-domain-card" href="#" onclick="show('topics')" style="border-left-color:#01696f">
-        <div class="hp-dc-num">02</div>
-        <div class="hp-dc-title">Complex Topology: Knots, Lassos &amp; Links</div>
-        <div class="hp-dc-desc">Classifying and quantifying non-trivial entanglements in proteins and RNA — from mathematical knot invariants to proteome-scale analysis with AlphaFold.</div>
-        <div class="hp-dc-tags">
-          <span class="hp-dc-tag">Knot invariants</span>
-          <span class="hp-dc-tag">AlphaFold</span>
-          <span class="hp-dc-tag">RNA topology</span>
-        </div>
-        <div class="hp-dc-arrow" style="color:#01696f">Explore →</div>
-      </a>
-
-      <a class="hp-domain-card" href="#" onclick="show('topics')" style="border-left-color:#6a1b9a">
-        <div class="hp-dc-num">03</div>
-        <div class="hp-dc-title">Drug Design &amp; Therapeutics</div>
-        <div class="hp-dc-desc">Rational design of inhibitors targeting knotted enzymes involved in cancer and infectious disease. Topology as a novel pharmacological handle.</div>
-        <div class="hp-dc-tags">
-          <span class="hp-dc-tag">Knotted enzymes</span>
-          <span class="hp-dc-tag">Inhibitor design</span>
-          <span class="hp-dc-tag">Cancer targets</span>
-        </div>
-        <div class="hp-dc-arrow" style="color:#6a1b9a">Explore →</div>
-      </a>
-
-      <a class="hp-domain-card" href="#" onclick="show('topics')" style="border-left-color:#da7101">
-        <div class="hp-dc-num">04</div>
-        <div class="hp-dc-title">Structural Bioinformatics &amp; Databases</div>
-        <div class="hp-dc-desc">Building proteome-scale databases and bioinformatics tools. Direct Coupling Analysis for structure prediction. Open science infrastructure for the global topology community.</div>
-        <div class="hp-dc-tags">
-          <span class="hp-dc-tag">DCA</span>
-          <span class="hp-dc-tag">Proteome-scale</span>
-          <span class="hp-dc-tag">Open databases</span>
-        </div>
-        <div class="hp-dc-arrow" style="color:#da7101">Explore →</div>
-      </a>
-
+      {% endfor %}
     </div>
   </div><!-- /sec-research -->
 
@@ -732,129 +595,88 @@ permalink: /
   <div class="hp-sec" id="sec-pubs">
     <div class="hp-row-head">
       <div>
-        <div class="hp-eyebrow">Highlighted Publications</div>
-        <div class="hp-title" style="font-size:var(--text-lg)">Most-cited works</div>
+
+        <div class="hp-title">Most-cited works</div>
       </div>
-      <a href="#" onclick="show('publications')" class="hp-see-all">View all 122 →</a>
     </div>
     <div class="hp-pubs">
-
-      <a class="hp-pub" href="https://doi.org/10.1073/pnas.1207864109" target="_blank">
-        <div class="hp-pub-rank">1</div>
+      {% for pub in site.data.home.pubs %}
+      <a class="hp-pub" href="{{ pub.doi }}" target="_blank">
+        <div class="hp-pub-rank">{{ forloop.index }}</div>
         <div class="hp-pub-body">
-          <div class="hp-pub-title">Genomics-aided structure prediction<span class="hp-pub-journal hpj-pnas">PNAS 2012</span></div>
-          <div class="hp-pub-meta">Sulkowska, Morcos, Weigt, Hwa, Onuchic</div>
-          <div class="hp-pub-cites"><strong>251</strong> citations</div>
+          <div class="hp-pub-title">{{ pub.title }}<span class="hp-pub-journal {{ pub.journal_class }}">{{ pub.journal }}</span></div>
+          <div class="hp-pub-meta">{{ pub.authors }}</div>
+          <div class="hp-pub-cites"><strong>{{ pub.citations }}</strong> cit.</div>
         </div>
       </a>
-
-      <a class="hp-pub" href="https://doi.org/10.1073/pnas.1205918109" target="_blank">
-        <div class="hp-pub-rank">2</div>
-        <div class="hp-pub-body">
-          <div class="hp-pub-title">Conservation of complex knotting and slipknotting patterns in proteins<span class="hp-pub-journal hpj-pnas">PNAS 2012</span></div>
-          <div class="hp-pub-meta">Sulkowska, Rawdon, Millett, Onuchic, Stasiak</div>
-          <div class="hp-pub-cites"><strong>244</strong> citations</div>
-        </div>
-      </a>
-
-      <a class="hp-pub" href="https://doi.org/10.1093/nar/gku1059" target="_blank">
-        <div class="hp-pub-rank">3</div>
-        <div class="hp-pub-body">
-          <div class="hp-pub-title">KnotProt: a database of proteins with knots and slipknots<span class="hp-pub-journal hpj-nar">NAR 2014</span></div>
-          <div class="hp-pub-meta">Jamróz, Niemyska, Rawdon et al.</div>
-          <div class="hp-pub-cites"><strong>203</strong> citations</div>
-        </div>
-      </a>
-
-      <a class="hp-pub" href="https://doi.org/10.1073/pnas.0811147106" target="_blank">
-        <div class="hp-pub-rank">4</div>
-        <div class="hp-pub-body">
-          <div class="hp-pub-title">Dodging the crisis of folding proteins with knots<span class="hp-pub-journal hpj-pnas">PNAS 2009</span></div>
-          <div class="hp-pub-meta">Sulkowska, Sulkowski, Onuchic</div>
-          <div class="hp-pub-cites"><strong>177</strong> citations</div>
-        </div>
-      </a>
-
-      <a class="hp-pub" href="https://doi.org/10.1073/pnas.0805468105" target="_blank">
-        <div class="hp-pub-rank">5</div>
-        <div class="hp-pub-body">
-          <div class="hp-pub-title">Stabilizing effect of knots on proteins<span class="hp-pub-journal hpj-pnas">PNAS 2008</span></div>
-          <div class="hp-pub-meta">Sulkowska, Sulkowski, Szymczak, Cieplak</div>
-          <div class="hp-pub-cites"><strong>149</strong> citations</div>
-        </div>
-      </a>
-
+      {% endfor %}
     </div>
   </div><!-- /sec-pubs -->
+
+  <!-- GRANTS -->
+  <div class="hp-sec" id="sec-grants">
+    <div class="hp-row-head">
+      <div>
+
+        <div class="hp-title">Grants &amp; Awards</div>
+      </div>
+    </div>
+    <div class="hp-grants-grid">
+      {% for grant in site.data.home.grants %}
+      <a class="hp-grant-card"
+         href="{% if grant.external %}{{ grant.url }}{% else %}{{ grant.url | relative_url }}{% endif %}"
+         {% if grant.external %}target="_blank" rel="noopener noreferrer"{% endif %}>
+        <div class="hp-grant-logo-wrap">
+          <img class="hp-grant-logo {{ grant.logo_class }}" src="{{ grant.logo | relative_url }}" alt="{{ grant.logo_alt | escape }}" loading="lazy">
+        </div>
+        <div class="hp-grant-meta">
+          <div class="hp-grant-year">{{ grant.year }}</div>
+          <div class="hp-grant-badge">{{ grant.badge }}</div>
+        </div>
+        <div class="hp-grant-title">{{ grant.title }}</div>
+      </a>
+      {% endfor %}
+    </div>
+    <button class="hp-news-archive-toggle" onclick="toggleAwards(this)">
+      <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
+      Awards &amp; Recognition
+    </button>
+    <div class="hp-awards-list" id="awards-list">
+      <div class="hp-pubs" style="margin-top:0.6rem">
+        {% for award in site.data.home.awards %}
+        <div class="hp-pub{% if award.new %} hp-award-new{% endif %}">
+          <div class="hp-pub-rank" style="font-size:var(--text-xs);color:#4f98a3;font-family:inherit;font-weight:800;min-width:32px;">{{ award.year }}</div>
+          <div class="hp-pub-body"><div class="hp-pub-title">{{ award.title }}</div><div class="hp-pub-meta">{{ award.org }}</div></div>
+          {% if award.new %}<span class="hp-award-badge">New</span>{% endif %}
+        </div>
+        {% endfor %}
+      </div>
+    </div>
+  </div>
+
+  <!-- ═══ STATS STRIP ═══ -->
+  <div class="lp-stats">
+    {% for stat in site.data.home.stats %}
+    <div class="hp-stat"><span class="hp-stat-n" data-count="{{ stat.value }}">0</span><span class="hp-stat-l">{{ stat.label }}</span></div>
+    {% endfor %}
+  </div>
 
   <!-- SOFTWARE -->
   <div class="hp-sec" id="sec-software">
     <div class="hp-row-head">
       <div>
-        <div class="hp-eyebrow">Open Science Tools</div>
-        <div class="hp-title" style="font-size:var(--text-lg)">Software &amp; Databases</div>
+
+        <div class="hp-title">Software &amp; Databases</div>
       </div>
-      <a href="#" onclick="show('research')" class="hp-see-all">All 14 tools →</a>
     </div>
-    <p class="hp-subtitle" style="margin-bottom:var(--space-6)">All tools are freely available online. Click any card to open the tool directly.</p>
     <div class="hp-software-grid">
-
-      <a class="hp-sw-card" href="http://alphaknot.cent.uw.edu.pl" target="_blank">
-        <div class="hp-sw-dot" style="background:#1a73e8"></div>
-        <div class="hp-sw-name">AlphaKnot 2.0</div>
-        <div class="hp-sw-desc">Knotting analysis of AlphaFold models at proteome scale</div>
-        <div class="hp-sw-link">alphaknot.cent.uw.edu.pl →</div>
+      {% for sw in site.data.home.software %}
+      <a class="hp-sw-card" href="{{ sw.url }}" target="_blank">
+        <div class="hp-sw-dot" style="background:{{ sw.color }}"></div>
+        <div class="hp-sw-name">{{ sw.name }}</div>
+        <div class="hp-sw-desc">{{ sw.desc }}</div>
       </a>
-
-      <a class="hp-sw-card" href="http://knotprot.cent.uw.edu.pl" target="_blank">
-        <div class="hp-sw-dot" style="background:#0d47a1"></div>
-        <div class="hp-sw-name">KnotProt 2.0</div>
-        <div class="hp-sw-desc">Database of knotted &amp; slipknotted proteins from PDB</div>
-        <div class="hp-sw-link">knotprot.cent.uw.edu.pl →</div>
-      </a>
-
-      <a class="hp-sw-card" href="http://alphalasso.cent.uw.edu.pl" target="_blank">
-        <div class="hp-sw-dot" style="background:#26a69a"></div>
-        <div class="hp-sw-name">AlphaLasso</div>
-        <div class="hp-sw-desc">Lasso motifs in AlphaFold structures — server &amp; database</div>
-        <div class="hp-sw-link">alphalasso.cent.uw.edu.pl →</div>
-      </a>
-
-      <a class="hp-sw-card" href="http://lassoprot.cent.uw.edu.pl" target="_blank">
-        <div class="hp-sw-dot" style="background:#00695c"></div>
-        <div class="hp-sw-name">LassoProt</div>
-        <div class="hp-sw-desc">Lasso topology protein database classified by piercing number</div>
-        <div class="hp-sw-link">lassoprot.cent.uw.edu.pl →</div>
-      </a>
-
-      <a class="hp-sw-card" href="http://topoly.cent.uw.edu.pl" target="_blank">
-        <div class="hp-sw-dot" style="background:#6a1b9a"></div>
-        <div class="hp-sw-name">Topoly</div>
-        <div class="hp-sw-desc">Python package for polymer topology calculation</div>
-        <div class="hp-sw-link">topoly.cent.uw.edu.pl →</div>
-      </a>
-
-      <a class="hp-sw-card" href="http://genus.fuw.edu.pl" target="_blank">
-        <div class="hp-sw-dot" style="background:#9c27b0"></div>
-        <div class="hp-sw-name">Genus</div>
-        <div class="hp-sw-desc">Genus characteristics for biomolecules via Seifert surfaces</div>
-        <div class="hp-sw-link">genus.fuw.edu.pl →</div>
-      </a>
-
-      <a class="hp-sw-card" href="http://linkprot.cent.uw.edu.pl" target="_blank">
-        <div class="hp-sw-dot" style="background:#e65100"></div>
-        <div class="hp-sw-name">LinkProt</div>
-        <div class="hp-sw-desc">Protein links database — covalently linked protein chains</div>
-        <div class="hp-sw-link">linkprot.cent.uw.edu.pl →</div>
-      </a>
-
-      <a class="hp-sw-card" href="http://pylasso.cent.uw.edu.pl" target="_blank">
-        <div class="hp-sw-dot" style="background:#ef6c00"></div>
-        <div class="hp-sw-name">PyLasso</div>
-        <div class="hp-sw-desc">Lasso topology identification — PyMOL plugin &amp; web tool</div>
-        <div class="hp-sw-link">pylasso.cent.uw.edu.pl →</div>
-      </a>
-
+      {% endfor %}
     </div>
   </div><!-- /sec-software -->
 
@@ -862,51 +684,38 @@ permalink: /
   <div class="hp-sec" id="sec-team">
     <div class="hp-row-head">
       <div>
-        <div class="hp-eyebrow">People</div>
-        <div class="hp-title" style="font-size:var(--text-lg)">Team &amp; Collaborators</div>
+
+        <div class="hp-title">Team &amp; Collaborators</div>
       </div>
-      <a href="#" onclick="show('group')" class="hp-see-all">Meet the team →</a>
     </div>
-    <p class="hp-subtitle" style="margin-bottom:var(--space-6)">An interdisciplinary team spanning physics, mathematics, bioinformatics, and biochemistry — with active international partnerships.</p>
     <div class="hp-collabs">
 
-      <a class="hp-collab-pill" href="https://onuchic.rice.edu" target="_blank">
-        <div class="hp-collab-av" style="background:#1565c0">JO</div>
-        <div>
-          <div class="hp-collab-name">Prof. José Onuchic</div>
-          <div class="hp-collab-inst">Rice University, USA · Energy Landscapes, Protein Folding</div>
+      {% for c in site.data.collaborators.collaborators limit:4 %}
+      <a class="hp-collab-pill" href="{{ c.url }}" target="_blank" rel="noopener noreferrer">
+        <div class="hp-collab-logo">
+          <img src="/assets/img/collab/{{ c.logo }}" alt="{{ c.fallback_text }} logo" loading="lazy"
+               onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
+          <span class="hp-collab-fallback" style="background:{{ c.fallback_color }}">{{ c.fallback_text }}</span>
+        </div>
+        <div class="hp-collab-body">
+          <div class="hp-collab-name">{{ c.name }}</div>
+          <div class="hp-collab-inst">{{ c.inst }} · {{ c.topic }}</div>
         </div>
       </a>
+      {% endfor %}
 
-      <a class="hp-collab-pill" href="https://minorlab.org" target="_blank">
-        <div class="hp-collab-av" style="background:#01696f">WM</div>
-        <div>
-          <div class="hp-collab-name">Prof. Wladek Minor</div>
-          <div class="hp-collab-inst">University of Virginia, USA · Structural Biology</div>
+      <a class="hp-collab-pill" href="#" onclick="show('collaboration'); return false;">
+        <div class="hp-collab-logo hp-collab-more-logo" aria-label="International collaborator institutions">
+          <span class="hp-collab-logo-cluster" aria-hidden="true">
+            {% for ml in site.data.home.collab_more.mini_logos %}
+            <span class="hp-collab-mini"><img src="/assets/img/collab/{{ ml.src }}" alt="" loading="lazy"></span>
+            {% endfor %}
+            <span class="hp-collab-mini hp-collab-mini-plus">+</span>
+          </span>
         </div>
-      </a>
-
-      <a class="hp-collab-pill" href="https://genesilico.pl" target="_blank">
-        <div class="hp-collab-av" style="background:#6a1b9a">JB</div>
-        <div>
-          <div class="hp-collab-name">Prof. Janusz Bujnicki</div>
-          <div class="hp-collab-inst">IIMCB, Warsaw · RNA Structure, Bioinformatics</div>
-        </div>
-      </a>
-
-      <a class="hp-collab-pill" href="https://www.bms.ed.ac.uk/research/groups/jackson" target="_blank">
-        <div class="hp-collab-av" style="background:#b07d2a">SJ</div>
-        <div>
-          <div class="hp-collab-name">Prof. Sophie Jackson</div>
-          <div class="hp-collab-inst">Cambridge University, UK · Molecular Basis of Protein Folding</div>
-        </div>
-      </a>
-
-      <a class="hp-collab-pill" href="#" onclick="show('collaboration')">
-        <div class="hp-collab-av" style="background:#5a5957">+</div>
-        <div>
-          <div class="hp-collab-name">University of Ljubljana &amp; more</div>
-          <div class="hp-collab-inst">View all international collaborations →</div>
+        <div class="hp-collab-body">
+          <div class="hp-collab-name">{{ site.data.home.collab_more.name }}</div>
+          <div class="hp-collab-inst">{{ site.data.home.collab_more.inst }}</div>
         </div>
       </a>
 
@@ -917,37 +726,34 @@ permalink: /
   <div class="hp-sec" id="sec-news">
     <div class="hp-row-head">
       <div>
-        <div class="hp-eyebrow">Latest News</div>
-        <div class="hp-title" style="font-size:var(--text-lg)">From the Lab</div>
+
+        <div class="hp-title">From the Lab</div>
       </div>
     </div>
 
     <!-- ✏️ TO ADD/REMOVE NEWS: edit _data/news.yml — no HTML changes needed -->
     <div class="hp-news-grid">
-      {% assign recent_news = site.data.news | where: "archive", false %}
-      {% for item in recent_news %}
+      {% assign recent_news = site.data.home.news | where: "archive", false %}
+      {% for item in recent_news limit:7 %}
       <a class="hp-news-card" href="/news/{{ item.slug }}/">
         <div class="hp-news-date">{{ item.date }}</div>
         <div class="hp-news-title">{{ item.title }}</div>
-        <div class="hp-news-arrow">Read →</div>
       </a>
       {% endfor %}
     </div>
 
     <button class="hp-news-archive-toggle" onclick="toggleArchive(this)">
-      <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><polyline points="6 9 12 15 18 9"/></svg>
-      Show archive (2015–2022)
+      Archive
     </button>
 
     <div class="hp-news-archive" id="news-archive">
       <div class="hp-news-archive-label">Archive — 2015 to 2022</div>
       <div class="hp-news-archive-grid">
-        {% assign archive_news = site.data.news | where: "archive", true %}
+        {% assign archive_news = site.data.home.news | where: "archive", true %}
         {% for item in archive_news %}
         <a class="hp-news-card" href="/news/{{ item.slug }}/">
           <div class="hp-news-date">{{ item.date }}</div>
           <div class="hp-news-title">{{ item.title }}</div>
-          <div class="hp-news-arrow">Read →</div>
         </a>
         {% endfor %}
       </div>
@@ -955,19 +761,50 @@ permalink: /
 
   </div><!-- /sec-news -->
 
+  <!-- EXPLORE THE LAB -->
+  <div class="hp-sec" id="sec-explore">
+    <div class="hp-row-head">
+      <div>
+
+        <div class="hp-title">Explore the Lab</div>
+      </div>
+    </div>
+    <div class="lp-explore-grid">
+      {% for card in site.data.home.explore %}
+      <a class="lp-explore-card" href="#" onclick="show('{{ card.page }}')">
+        <div class="lp-explore-icon">{{ card.icon }}</div>
+        <div class="lp-explore-title">{{ card.title }}</div>
+        <div class="lp-explore-desc">{{ card.desc }}</div>
+      </a>
+      {% endfor %}
+    </div>
+  </div><!-- /sec-explore -->
+
+
   <script>
   function toggleArchive(btn) {
     var archive = document.getElementById('news-archive');
     var isOpen = archive.classList.toggle('open');
     btn.innerHTML = isOpen
-      ? '<svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><polyline points="18 15 12 9 6 15"/></svg> Hide archive'
-      : '<svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><polyline points="6 9 12 15 18 9"/></svg> Show archive (2015–2022)';
+      ? 'Hide archive'
+      : 'Archive';
+  }
+  function toggleAwards(btn) {
+    var list = document.getElementById('awards-list');
+    var isOpen = list.classList.toggle('open');
+    var chevron = btn.querySelector('svg');
+    if (chevron) chevron.style.transform = isOpen ? 'rotate(180deg)' : '';
+    btn.childNodes[btn.childNodes.length - 1].textContent = isOpen
+      ? ' Hide Awards & Recognition'
+      : ' Awards & Recognition';
   }
   </script>
 
 </div><!-- /hp-wrap -->
 </div><!-- /hp -->
 
+<script src="https://cdn.jsdelivr.net/npm/three@0.160.0/build/three.min.js"></script>
+<script src="{{ '/assets/js/knot-premium.js' | relative_url }}"></script>
 <script>
 (function () {
   /* ── ANIMATED COUNTERS ── */
@@ -997,8 +834,19 @@ permalink: /
   }
 
   /* ── SCROLL-ACTIVE NAV PILLS ── */
-  const sections = ['sec-grants','sec-about','sec-awards','sec-research','sec-pubs','sec-software','sec-team','sec-news'];
+  const sections = ['sec-research','sec-pubs','sec-grants','sec-software','sec-team','sec-news'];
   const pills = document.querySelectorAll('.hp-pill');
+  const sectionsMenu = document.getElementById('hp-sections-menu');
+  const sectionsToggle = sectionsMenu ? sectionsMenu.querySelector('.hp-sections-toggle') : null;
+
+  if (sectionsMenu && sectionsToggle) {
+    sectionsMenu.addEventListener('mouseenter', function () {
+      sectionsToggle.setAttribute('aria-expanded', 'true');
+    });
+    sectionsMenu.addEventListener('mouseleave', function () {
+      if (!sectionsMenu.classList.contains('is-open')) sectionsToggle.setAttribute('aria-expanded', 'false');
+    });
+  }
 
   function onScroll() {
     let current = sections[0];
@@ -1019,6 +867,19 @@ permalink: /
   const pillArr = [...pills];
   sections.forEach((s, i) => { if (pillArr[i]) pillArr[i].setAttribute('data-sec', s); });
 
+  window.hpToggleSections = function (event) {
+    event.stopPropagation();
+    if (!sectionsMenu) return;
+    const isOpen = sectionsMenu.classList.toggle('is-open');
+    if (sectionsToggle) sectionsToggle.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
+  };
+
+  document.addEventListener('click', function (event) {
+    if (!sectionsMenu || sectionsMenu.contains(event.target)) return;
+    sectionsMenu.classList.remove('is-open');
+    if (sectionsToggle) sectionsToggle.setAttribute('aria-expanded', 'false');
+  });
+
   window.addEventListener('scroll', onScroll, { passive: true });
 })();
 
@@ -1030,23 +891,22 @@ function hpNav(id, btn) {
     const activePill = document.querySelector('.hp-pill[data-sec="' + id + '"]');
     if (activePill) activePill.classList.add('active');
   }
+  var menu = document.getElementById('hp-sections-menu');
+  if (menu) {
+    menu.classList.remove('is-open');
+    var toggle = menu.querySelector('.hp-sections-toggle');
+    if (toggle) toggle.setAttribute('aria-expanded', 'false');
+  }
   const el = document.getElementById(id);
   if (el) el.scrollIntoView({ behavior: 'smooth', block: 'start' });
 }
 
-/* ── 3D KNOT INIT ── */
+/* ── PREMIUM THREE.JS KNOT ── */
 (function () {
   function init() {
-    if (typeof Knot3D === 'undefined') return;
-    var pc = document.getElementById('hp-particles');
-    var kc = document.getElementById('hp-knot');
-    if (!kc) return;
-    new ParticleField(pc, { color: '#4db8e8', n: 60, speed: 0.004 });
-    new Knot3D(kc, {
-      type: 'trefoil', color: '#4db8e8', color2: '#00bcd4',
-      speed: 0.006, tiltX: 0.42, N: 520, fov: 5.5,
-      glow: true, glowSize: 6, wobble: 0.06
-    });
+    var canvas = document.getElementById('kp-knot');
+    if (!canvas || typeof PremiumKnot === 'undefined') return;
+    new PremiumKnot(canvas);
   }
   if (document.readyState === 'loading') {
     document.addEventListener('DOMContentLoaded', init);

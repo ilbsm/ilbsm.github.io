@@ -6,367 +6,436 @@ permalink: /research/
 ---
 
 <style>
+/* ── SHARED TOKENS ── */
 :root {
-  --text-xs:   clamp(0.75rem,  0.7rem  + 0.25vw, 0.875rem);
-  --text-sm:   clamp(0.875rem, 0.8rem  + 0.35vw, 1rem);
-  --text-lg:   clamp(1.125rem, 1rem    + 0.75vw, 1.5rem);
-  --space-1:0.25rem;--space-2:0.5rem;--space-3:0.75rem;--space-4:1rem;
-  --space-5:1.25rem;--space-6:1.5rem;--space-8:2rem;--space-10:2.5rem;
-  --space-12:3rem;--space-16:4rem;
-  --radius-sm:0.375rem;--radius-md:0.5rem;--radius-lg:0.75rem;--radius-xl:1rem;--radius-full:9999px;
-  --transition:180ms cubic-bezier(0.16,1,0.3,1);
-  --shadow-sm:0 1px 3px rgba(0,0,0,0.07);
-  --shadow-md:0 4px 16px rgba(0,0,0,0.09);
-  --shadow-lg:0 8px 32px rgba(0,0,0,0.13);
+  --rp-side: 2rem;
+  --rp-transition: 180ms cubic-bezier(0.16,1,0.3,1);
+  --rp-shadow-sm: 0 1px 3px rgba(0,0,0,0.07);
+  --rp-shadow-md: 0 4px 16px rgba(0,0,0,0.09);
+  --rp-radius-xl: 1rem;
+  --rp-radius-full: 9999px;
 }
-.rp { background: #f0f2f5; min-height: 100vh; padding-bottom: var(--space-16); }
 
-/* ── DARK PAGE HEADER ── */
-.rp-pghead {
+/* ── STATS BAR — matches collaboration exactly ── */
+.rp-stats-bar {
+  display: flex; align-items: center;
   background: linear-gradient(90deg, #0a1020 0%, #0f1a2e 100%);
   border-bottom: 1px solid rgba(255,255,255,0.07);
-  padding: 0.65rem 1.5rem;
-  position: sticky; top: var(--nav-h, 42px); z-index: 110;
+  padding: 0.55rem var(--rp-side);
 }
-.rp-pghead-inner { max-width: 1140px; margin: 0 auto; display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: var(--space-4); }
-.rp-pghead-eyebrow { font-size: 0.58rem; font-weight: 800; letter-spacing: 0.2em; text-transform: uppercase; color: #4db8e8; line-height: 1; margin-bottom: 0.12rem; }
-.rp-pghead-title { font-family: 'Merriweather', serif; font-size: 0.95rem; font-weight: 900; color: #fff; margin: 0; }
-.rp-pghead-counts { display: flex; align-items: center; }
-.rp-pghead-count { display: flex; flex-direction: column; align-items: center; padding: 0 0.85rem; border-right: 1px solid rgba(255,255,255,0.12); }
-.rp-pghead-count:last-child { border-right: none; }
-.rp-pghead-count-n { font-size: 0.9rem; font-weight: 700; color: #fff; line-height: 1; }
-.rp-pghead-count-l { font-size: 0.58rem; color: rgba(255,255,255,0.4); text-transform: lowercase; margin-top: 0.1rem; }
-@media (max-width: 640px) { .rp-pghead-counts { display: none; } .rp-pghead-eyebrow { display: none; } }
+.rp-sbi {
+  display: flex; align-items: baseline; gap: 0.35rem;
+  padding: 0 1.1rem;
+  border-right: 1px solid rgba(255,255,255,0.12);
+}
+.rp-sbi:first-child { padding-left: 0; }
+.rp-sbi:last-child  { border-right: none; }
+.rp-sbi-n {
+  font-family: 'Merriweather', serif;
+  font-size: 1.05rem; font-weight: 700; color: #fff; line-height: 1;
+}
+.rp-sbi-l {
+  font-size: 0.58rem; font-weight: 700; letter-spacing: 0.09em;
+  text-transform: uppercase; color: rgba(255,255,255,0.4);
+}
 
-/* ── STICKY NAV ── */
+/* ── STICKY NAV — same pill style as collaboration ── */
 .rp-nav {
-  position: sticky; top: calc(var(--nav-h, 42px) + 46px); z-index: 100;
+  position: sticky; top: var(--nav-h, 42px); z-index: 100;
   background: rgba(255,255,255,0.97); backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px);
-  border-bottom: 1px solid rgba(0,0,0,0.07); box-shadow: 0 1px 3px rgba(0,0,0,0.04); padding: var(--space-3) 0;
+  border-bottom: 1px solid rgba(0,0,0,0.07); box-shadow: 0 1px 3px rgba(0,0,0,0.04);
+  padding: 0.5rem var(--rp-side);
 }
-.rp-nav-inner { max-width: 1140px; margin: 0 auto; padding: 0 var(--space-6); display: flex; gap: var(--space-1); flex-wrap: wrap; align-items: center; overflow-x: auto; scrollbar-width: none; }
+.rp-nav-inner {
+  display: flex; gap: 0.25rem; flex-wrap: wrap; align-items: center;
+  overflow-x: auto; scrollbar-width: none;
+}
 .rp-nav-inner::-webkit-scrollbar { display: none; }
-.rp-pill { display: inline-flex; align-items: center; gap: var(--space-2); padding: var(--space-2) var(--space-4); border-radius: var(--radius-full); font-size: var(--text-xs); font-weight: 500; color: #5a5957; background: transparent; border: 1px solid transparent; cursor: pointer; transition: all var(--transition); white-space: nowrap; font-family: inherit; }
+.rp-pill {
+  display: inline-flex; align-items: center; gap: 0.3rem;
+  padding: 0.3rem 0.85rem; border-radius: var(--rp-radius-full);
+  font-size: 0.75rem; font-weight: 500; color: #5a5957;
+  background: transparent; border: 1px solid transparent;
+  cursor: pointer; transition: all var(--rp-transition); white-space: nowrap; font-family: inherit;
+}
 .rp-pill:hover { background: #f0ede8; color: #28251d; border-color: rgba(0,0,0,0.1); }
 .rp-pill.active { background: #28251d; color: #f9f8f5; border-color: transparent; }
 
-/* ── WRAPPER + SECTIONS ── */
-.rp-wrap { max-width: 1140px; margin: 0 auto; padding: var(--space-6) var(--space-6); }
-.rp-sec { background: white; border-radius: var(--radius-xl); padding: var(--space-10) var(--space-10); margin-bottom: var(--space-4); box-shadow: 0 1px 4px rgba(0,0,0,0.055); scroll-margin-top: 136px; }
-.rp-sec-header { display: flex; align-items: flex-start; justify-content: space-between; gap: var(--space-4); flex-wrap: wrap; margin-bottom: var(--space-8); padding-bottom: var(--space-6); border-bottom: 1px solid #f0ede8; }
-.rp-eyebrow { font-size: var(--text-xs); font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: #01696f; margin-bottom: var(--space-2); display: flex; align-items: center; gap: var(--space-2); }
-.rp-title { font-size: var(--text-lg); font-weight: 700; color: #28251d; line-height: 1.2; }
-.rp-subtitle { font-size: var(--text-xs); color: #9a9896; margin-top: var(--space-1); max-width: 60ch; line-height: 1.6; }
-.rp-count-badge { display: inline-flex; align-items: center; justify-content: center; min-width: 24px; height: 18px; padding: 0 var(--space-2); border-radius: var(--radius-full); background: #f0ede8; font-size: 0.65rem; font-weight: 700; color: #7a7974; }
-
-/* ── STATS STRIP ── */
-.rp-stats { display: grid; grid-template-columns: repeat(4, 1fr); gap: 0; background: linear-gradient(135deg, #0a1020 0%, #0f1a2e 60%, #091528 100%); border-radius: var(--radius-xl); overflow: hidden; margin-bottom: var(--space-4); box-shadow: var(--shadow-lg); }
-.rp-stat { display: flex; flex-direction: column; align-items: center; justify-content: center; padding: var(--space-8) var(--space-4); border-right: 1px solid rgba(255,255,255,0.08); position: relative; overflow: hidden; transition: background var(--transition); }
-.rp-stat:hover { background: rgba(255,255,255,0.04); }
-.rp-stat:last-child { border-right: none; }
-.rp-stat::before { content: ''; position: absolute; inset: 0; background: radial-gradient(circle at 50% 0%, rgba(77,184,232,0.08) 0%, transparent 70%); }
-.rp-stat-n { font-family: 'Merriweather', serif; font-size: clamp(1.6rem, 1.4rem + 0.8vw, 2.2rem); font-weight: 700; color: #fff; line-height: 1; margin-bottom: 0.3rem; position: relative; }
-.rp-stat-l { font-size: 0.65rem; color: rgba(255,255,255,0.42); text-transform: uppercase; letter-spacing: 0.1em; text-align: center; position: relative; }
-@media (max-width: 600px) { .rp-stats { grid-template-columns: repeat(2, 1fr); } .rp-stat:nth-child(3),.rp-stat:nth-child(4) { border-top: 1px solid rgba(255,255,255,0.08); } }
-
-/* ── TOOL CARDS ── */
-.rp-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); gap: var(--space-4); }
-.rp-card { display: flex; flex-direction: column; border-radius: var(--radius-xl); overflow: hidden; background: #f9f8f5; border: 1px solid #ede9e3; text-decoration: none; color: inherit; transition: box-shadow var(--transition), transform var(--transition), border-color var(--transition); animation: rpFadeUp 0.4s ease both; animation-delay: calc(var(--i, 0) * 0.06s); }
-.rp-card:hover { box-shadow: var(--shadow-md); transform: translateY(-4px); border-color: #c8c5be; text-decoration: none; }
-.rp-card.rp-hidden { display: none; }
-@keyframes rpFadeUp { from { opacity: 0; transform: translateY(14px); } to { opacity: 1; transform: translateY(0); } }
-.rp-img-wrap { position: relative; overflow: hidden; aspect-ratio: 16/9; background: #e8e5e0; flex-shrink: 0; }
-.rp-img-wrap img { width: 100%; height: 100%; object-fit: cover; display: block; transition: transform 0.4s ease; }
-.rp-card:hover .rp-img-wrap img { transform: scale(1.06); }
-.rp-img-dark { background: #1c1b19; }
-.rp-img-overlay { position: absolute; inset: 0; display: flex; align-items: flex-start; justify-content: flex-end; padding: var(--space-2); pointer-events: none; }
-.rp-img-badge { font-size: 0.6rem; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; padding: 0.2rem 0.55rem; border-radius: var(--radius-full); color: #fff; background: #f59e0b; }
-.rp-img-center { position: absolute; inset: 0; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 0.3rem; }
-.rp-card-body { padding: var(--space-4) var(--space-5) var(--space-5); flex: 1; display: flex; flex-direction: column; gap: var(--space-1); }
-.rp-card-name { font-weight: 700; font-size: var(--text-sm); color: #28251d; line-height: 1.3; }
-.rp-card-desc { font-size: var(--text-xs); color: #7a7974; line-height: 1.6; flex: 1; margin-top: var(--space-1); }
-.rp-card-link { font-size: 0.68rem; font-weight: 600; color: #01696f; margin-top: var(--space-3); }
-.rp-card-tags { display: flex; flex-wrap: wrap; gap: var(--space-1); margin-top: var(--space-2); }
-.rp-card-tag { font-size: 0.6rem; font-weight: 600; padding: 0.12rem 0.45rem; border-radius: var(--radius-full); background: rgba(0,0,0,0.05); color: #7a7974; }
-
-/* ── DARK COMPUTING SECTION ── */
-.rp-sec-dark { background: #171614; border-radius: var(--radius-xl); padding: var(--space-10) var(--space-10); margin-bottom: var(--space-4); box-shadow: 0 1px 4px rgba(0,0,0,0.2); scroll-margin-top: 136px; }
-.rp-sec-dark .rp-eyebrow { color: #4f98a3; }
-.rp-sec-dark .rp-title   { color: #f9f8f5; }
-.rp-sec-dark .rp-subtitle { color: rgba(255,255,255,0.45); }
-.rp-sec-dark .rp-sec-header { border-bottom-color: rgba(255,255,255,0.07); }
-.rp-sec-dark .rp-card { background: #1c1b19; border-color: rgba(255,255,255,0.07); }
-.rp-sec-dark .rp-card:hover { border-color: rgba(255,255,255,0.18); box-shadow: 0 4px 20px rgba(0,0,0,0.4); }
-.rp-sec-dark .rp-card-name { color: #f9f8f5; }
-.rp-sec-dark .rp-card-desc { color: rgba(255,255,255,0.5); }
-.rp-sec-dark .rp-card-link { color: #4db8e8; }
-.rp-sec-dark .rp-card-tag  { background: rgba(255,255,255,0.06); color: rgba(255,255,255,0.45); }
+/* ── SECTIONS — full-width, same as collaboration ── */
+.rp-section {
+  width: 100%; border-bottom: 1px solid #e0e4ec;
+  scroll-margin-top: 80px;
+}
+.rp-section-dark { background: #0d1117; border-bottom-color: rgba(255,255,255,0.06); }
+.rp-section-head {
+  display: flex; align-items: flex-start; gap: 1rem;
+  padding: 1.8rem var(--rp-side) 1.4rem;
+}
+.rp-section-eyebrow {
+  font-size: 0.6rem; font-weight: 800; letter-spacing: 0.14em;
+  text-transform: uppercase; color: #01696f; margin-bottom: 0.28rem;
+  display: flex; align-items: center; gap: 0.3rem;
+}
+.rp-section-dark .rp-section-eyebrow { color: #4f98a3; }
+.rp-section-title {
+  font-weight: 800; font-size: 1.15rem; color: #0a1020; line-height: 1.25; margin-bottom: 0.22rem;
+}
+.rp-section-dark .rp-section-title { color: #f9f8f5; }
+.rp-section-sub {
+  font-size: 0.83rem; color: #888; line-height: 1.55; max-width: 72ch;
+}
+.rp-section-dark .rp-section-sub { color: rgba(255,255,255,0.4); }
+.rp-count-chip {
+  display: inline-flex; align-items: center; justify-content: center;
+  min-width: 22px; height: 17px; padding: 0 0.4rem;
+  border-radius: 20px; background: #f0ede8;
+  font-size: 0.62rem; font-weight: 700; color: #7a7974;
+  margin-left: 0.4rem; vertical-align: middle;
+}
+.rp-section-dark .rp-count-chip { background: rgba(255,255,255,0.08); color: rgba(255,255,255,0.4); }
 
 /* ── MINI KNOT CANVAS ── */
-.rp-mini-knot { display: block; float: right; margin: 0 0 var(--space-4) var(--space-6); border-radius: var(--radius-xl); opacity: 0.9; }
+.rp-mini-knot {
+  display: block; float: right; margin: 0 0 0.5rem 1.5rem;
+  border-radius: var(--rp-radius-xl); opacity: 0.9; flex-shrink: 0;
+}
 @media (max-width: 600px) { .rp-mini-knot { display: none; } }
 
-/* ── LINKS SECTION ── */
-.rp-links-grid { display: flex; flex-wrap: wrap; gap: var(--space-2); }
-.rp-link-pill { display: inline-flex; align-items: center; gap: var(--space-2); padding: var(--space-2) var(--space-4); border-radius: var(--radius-full); font-size: var(--text-xs); font-weight: 600; text-decoration: none; background: #f9f8f5; color: #28251d; border: 1px solid #dcd9d5; transition: background var(--transition), border-color var(--transition), transform var(--transition); }
+/* ── CARD GRID — matches collaboration exactly ── */
+.rp-grid-wrap { padding: 0 var(--rp-side) 2.2rem; }
+.rp-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+  gap: 1rem;
+}
+.rp-card {
+  display: flex; flex-direction: column;
+  border-radius: var(--rp-radius-xl); overflow: hidden;
+  background: #f9f8f5; border: 1px solid #ede9e3;
+  text-decoration: none; color: inherit;
+  transition: box-shadow var(--rp-transition), transform var(--rp-transition), border-color var(--rp-transition);
+  animation: rpFadeUp 0.4s ease both;
+  animation-delay: calc(var(--i, 0) * 0.05s);
+}
+.rp-card:hover { box-shadow: var(--rp-shadow-md); transform: translateY(-4px); border-color: #c8c5be; text-decoration: none; }
+.rp-card.rp-hidden { display: none; }
+@keyframes rpFadeUp { from { opacity: 0; transform: translateY(14px); } to { opacity: 1; transform: translateY(0); } }
+
+/* dark-section card overrides */
+.rp-section-dark .rp-card { background: #161b22; border-color: rgba(255,255,255,0.07); }
+.rp-section-dark .rp-card:hover { border-color: rgba(255,255,255,0.2); box-shadow: 0 4px 20px rgba(0,0,0,0.5); }
+.rp-section-dark .rp-card-name { color: #f9f8f5; }
+.rp-section-dark .rp-card-desc { color: rgba(255,255,255,0.5); }
+.rp-section-dark .rp-card-link { color: #4db8e8; }
+.rp-section-dark .rp-card-tag  { background: rgba(255,255,255,0.06); color: rgba(255,255,255,0.4); }
+
+.rp-img-wrap { position: relative; overflow: hidden; height: 140px; background: #e8e5e0; flex-shrink: 0; border-bottom: 1px solid #ede9e3; }
+.rp-img-wrap img { width: 100%; height: 100%; object-fit: cover; display: block; transition: transform 0.4s ease; }
+.rp-card:hover .rp-img-wrap img { transform: scale(1.06); }
+.rp-img-dark { background: #1c1b19; border-bottom-color: rgba(255,255,255,0.04); }
+.rp-img-overlay { position: absolute; inset: 0; display: flex; align-items: flex-start; justify-content: flex-end; padding: 0.4rem; pointer-events: none; }
+.rp-img-badge { font-size: 0.58rem; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; padding: 0.18rem 0.5rem; border-radius: 20px; color: #fff; background: #f59e0b; }
+.rp-img-center { position: absolute; inset: 0; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 0.3rem; }
+
+.rp-card-body { padding: 0.85rem 1rem 1rem; flex: 1; display: flex; flex-direction: column; gap: 0.12rem; }
+.rp-card-name { font-weight: 700; font-size: 0.88rem; color: #0a1020; line-height: 1.3; }
+.rp-card-desc { font-size: 0.75rem; color: #666; line-height: 1.6; flex: 1; margin-top: 0.3rem; }
+.rp-card-tags { display: flex; flex-wrap: wrap; gap: 0.25rem; margin-top: 0.4rem; }
+.rp-card-tag  { font-size: 0.58rem; font-weight: 600; padding: 0.1rem 0.4rem; border-radius: 20px; background: rgba(0,0,0,0.05); color: #7a7974; }
+.rp-card-link { font-size: 0.68rem; font-weight: 600; color: #01696f; margin-top: 0.55rem; }
+
+/* ── LINKS ROW ── */
+.rp-links-wrap { padding: 1.6rem var(--rp-side) 1.8rem; }
+.rp-links-grid { display: flex; flex-wrap: wrap; gap: 0.5rem; }
+.rp-link-pill {
+  display: inline-flex; align-items: center; gap: 0.4rem;
+  padding: 0.3rem 0.85rem; border-radius: var(--rp-radius-full);
+  font-size: 0.75rem; font-weight: 600; text-decoration: none;
+  background: #f9f8f5; color: #28251d; border: 1px solid #dcd9d5;
+  transition: background var(--rp-transition), border-color var(--rp-transition), transform var(--rp-transition);
+}
 .rp-link-pill:hover { background: #28251d; color: #f9f8f5; border-color: #28251d; transform: translateY(-1px); text-decoration: none; }
 
 @media (max-width: 640px) {
-  .rp-sec, .rp-sec-dark { padding: var(--space-6) var(--space-5); }
-  .rp-wrap { padding: var(--space-4) var(--space-4); }
-  .rp-grid { grid-template-columns: repeat(auto-fill, minmax(160px, 1fr)); }
+  :root { --rp-side: 1rem; }
+  .rp-grid { grid-template-columns: repeat(auto-fill, minmax(150px, 1fr)); }
+  .rp-section-title { font-size: 1rem; }
 }
 </style>
 
-<div id="page-research" class="page active rp">
+<div id="page-research" class="page active rpfp">
 
-<div class="rp-pghead">
-  <div class="rp-pghead-inner">
-    <div>
-      <div class="rp-pghead-eyebrow">Open Science · Sulkowska Lab</div>
-      <div class="rp-pghead-title">Projects &amp; Software</div>
+  <!-- HERO — identical style to Collaboration (.rpfp-intro from sulkowska.css) -->
+  <div class="rpfp-intro">
+    <h1 class="rpfp-intro-title">Projects &amp; Software</h1>
+    <p class="rpfp-intro-sub">Open-source databases, servers, and tools for studying the topology of proteins, genomes, and biomolecules.</p>
+  </div>
+
+  <!-- STATS BAR — matches collaboration stats bar exactly -->
+  <div class="rp-stats-bar">
+    <div class="rp-sbi"><span class="rp-sbi-n">14</span><span class="rp-sbi-l">Open Tools</span></div>
+    <div class="rp-sbi"><span class="rp-sbi-n">6</span><span class="rp-sbi-l">Databases</span></div>
+    <div class="rp-sbi"><span class="rp-sbi-n">5</span><span class="rp-sbi-l">Web Servers</span></div>
+    <div class="rp-sbi"><span class="rp-sbi-n">4</span><span class="rp-sbi-l">Plugins &amp; Packages</span></div>
+  </div>
+
+  <!-- STICKY NAV -->
+  <div class="rp-nav">
+    <div class="rp-nav-inner">
+      <button class="rp-pill active" onclick="rpFilter('all', this)">All Tools</button>
+      <button class="rp-pill" onclick="rpNav('rp-topology', this)">
+        <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><ellipse cx="12" cy="5" rx="9" ry="3"/><path d="M21 12c0 1.66-4 3-9 3s-9-1.34-9-3"/><path d="M3 5v14c0 1.66 4 3 9 3s9-1.34 9-3V5"/></svg>
+        Topology Databases
+      </button>
+      <button class="rp-pill" onclick="rpNav('rp-plugins', this)">
+        <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/></svg>
+        Plugins &amp; Packages
+      </button>
+      <button class="rp-pill" onclick="rpNav('rp-mechanical', this)">
+        <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M18 20V10"/><path d="M12 20V4"/><path d="M6 20v-6"/></svg>
+        Mechanical
+      </button>
+      <button class="rp-pill" onclick="rpNav('rp-prediction', this)">
+        <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+        Structure Prediction
+      </button>
+      <button class="rp-pill" onclick="rpNav('rp-chromatin', this)">
+        <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M21 3H3v7a6 6 0 0 0 12 0V3"/><path d="M6 21v-4a6 6 0 0 1 12 0v4"/></svg>
+        Chromatin &amp; Genome
+      </button>
+      <button class="rp-pill" onclick="rpNav('rp-computing', this)">
+        <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><rect x="2" y="2" width="20" height="8" rx="2"/><rect x="2" y="14" width="20" height="8" rx="2"/></svg>
+        Computing
+      </button>
     </div>
-    <div class="rp-pghead-counts">
-      <div class="rp-pghead-count"><span class="rp-pghead-count-n">14</span><span class="rp-pghead-count-l">tools</span></div>
-      <div class="rp-pghead-count"><span class="rp-pghead-count-n">6</span><span class="rp-pghead-count-l">databases</span></div>
-      <div class="rp-pghead-count"><span class="rp-pghead-count-n">5</span><span class="rp-pghead-count-l">web servers</span></div>
-      <div class="rp-pghead-count"><span class="rp-pghead-count-n">4</span><span class="rp-pghead-count-l">plugins</span></div>
-    </div>
-  </div>
-</div>
-
-<div class="rp-nav">
-  <div class="rp-nav-inner">
-    <button class="rp-pill active" onclick="rpFilter('all', this)">All Tools</button>
-    <button class="rp-pill" onclick="rpNav('rp-topology', this)">
-      <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><ellipse cx="12" cy="5" rx="9" ry="3"/><path d="M21 12c0 1.66-4 3-9 3s-9-1.34-9-3"/><path d="M3 5v14c0 1.66 4 3 9 3s9-1.34 9-3V5"/></svg>
-      Topology Databases
-    </button>
-    <button class="rp-pill" onclick="rpNav('rp-plugins', this)">
-      <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/></svg>
-      Plugins &amp; Packages
-    </button>
-    <button class="rp-pill" onclick="rpNav('rp-mechanical', this)">
-      <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M18 20V10"/><path d="M12 20V4"/><path d="M6 20v-6"/></svg>
-      Mechanical
-    </button>
-    <button class="rp-pill" onclick="rpNav('rp-prediction', this)">
-      <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
-      Structure Prediction
-    </button>
-    <button class="rp-pill" onclick="rpNav('rp-chromatin', this)">
-      <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M21 3H3v7a6 6 0 0 0 12 0V3"/><path d="M6 21v-4a6 6 0 0 1 12 0v4"/></svg>
-      Chromatin &amp; Genome
-    </button>
-    <button class="rp-pill" onclick="rpNav('rp-computing', this)">
-      <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><rect x="2" y="2" width="20" height="8" rx="2"/><rect x="2" y="14" width="20" height="8" rx="2"/></svg>
-      Computing
-    </button>
-  </div>
-</div>
-
-<div class="rp-wrap">
-
-  <div class="rp-stats">
-    <div class="rp-stat"><div class="rp-stat-n">14</div><div class="rp-stat-l">Open Tools</div></div>
-    <div class="rp-stat"><div class="rp-stat-n">6</div><div class="rp-stat-l">Databases</div></div>
-    <div class="rp-stat"><div class="rp-stat-n">5</div><div class="rp-stat-l">Web Servers</div></div>
-    <div class="rp-stat"><div class="rp-stat-n">4</div><div class="rp-stat-l">Plugins &amp; Packages</div></div>
   </div>
 
-  <!-- TOPOLOGY DATABASES -->
-  <div class="rp-sec" id="rp-topology">
-    <div class="rp-sec-header">
+  <!-- ── TOPOLOGY DATABASES ── -->
+  <div class="rp-section" id="rp-topology">
+    <div class="rp-section-head">
       <div>
-        <canvas id="rp-k-topology" width="86" height="86" class="rp-mini-knot"></canvas>
-        <div class="rp-eyebrow"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><ellipse cx="12" cy="5" rx="9" ry="3"/><path d="M21 12c0 1.66-4 3-9 3s-9-1.34-9-3"/><path d="M3 5v14c0 1.66 4 3 9 3s9-1.34 9-3V5"/></svg>Protein Topology</div>
-        <div class="rp-title">Databases &amp; Servers <span class="rp-count-badge">5</span></div>
-        <div class="rp-subtitle">Proteome-scale resources for detecting and classifying non-trivial topology in proteins.</div>
+        <canvas id="rp-k-topology" width="72" height="72" class="rp-mini-knot"></canvas>
+        <div class="rp-section-eyebrow">
+          <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><ellipse cx="12" cy="5" rx="9" ry="3"/><path d="M21 12c0 1.66-4 3-9 3s-9-1.34-9-3"/><path d="M3 5v14c0 1.66 4 3 9 3s9-1.34 9-3V5"/></svg>
+          Protein Topology
+        </div>
+        <div class="rp-section-title">Databases &amp; Servers <span class="rp-count-chip">5</span></div>
+        <div class="rp-section-sub">Proteome-scale resources for detecting and classifying non-trivial topology in proteins.</div>
       </div>
     </div>
-    <div class="rp-grid">
-      <a class="rp-card" href="http://alphaknot.cent.uw.edu.pl" target="_blank" data-cat="database server" style="--i:0">
-        <div class="rp-img-wrap"><img src="https://jsulkowska.cent.uw.edu.pl/wp-content/uploads/2016/05/knot63.png" alt="AlphaKnot"/><div class="rp-img-overlay"><span class="rp-img-badge">AlphaFold</span></div></div>
-        <div class="rp-card-body"><div class="rp-card-name">AlphaKnot 2.0</div><div class="rp-card-desc">Database &amp; webserver for entanglement analysis in AlphaFold-predicted protein models. Detects knots, slipknots and knotoids at proteome scale.</div><div class="rp-card-tags"><span class="rp-card-tag">Database</span><span class="rp-card-tag">Server</span><span class="rp-card-tag">AlphaFold</span></div><div class="rp-card-link">alphaknot.cent.uw.edu.pl →</div></div>
-      </a>
-      <a class="rp-card" href="http://alphalasso.cent.uw.edu.pl" target="_blank" data-cat="database server" style="--i:1">
-        <div class="rp-img-wrap"><img src="https://jsulkowska.cent.uw.edu.pl/wp-content/uploads/2016/05/cropped.png" alt="AlphaLasso"/><div class="rp-img-overlay"><span class="rp-img-badge">AlphaFold</span></div></div>
-        <div class="rp-card-body"><div class="rp-card-name">AlphaLasso</div><div class="rp-card-desc">Server and database of proteins with lasso-type motifs found in AlphaFold models. Classifies loop and lasso topology in 3D biopolymer structures.</div><div class="rp-card-tags"><span class="rp-card-tag">Database</span><span class="rp-card-tag">Server</span><span class="rp-card-tag">AlphaFold</span></div><div class="rp-card-link">alphalasso.cent.uw.edu.pl →</div></div>
-      </a>
-      <a class="rp-card" href="http://knotprot.cent.uw.edu.pl" target="_blank" data-cat="database" style="--i:2">
-        <div class="rp-img-wrap"><img src="https://jsulkowska.cent.uw.edu.pl/wp-content/uploads/2016/05/knotprot.jpg" alt="KnotProt"/></div>
-        <div class="rp-card-body"><div class="rp-card-name">KnotProt 2.0</div><div class="rp-card-desc">Comprehensive database of proteins with knots, slipknots and knotoids from the PDB. The original reference resource for knotted protein structures.</div><div class="rp-card-tags"><span class="rp-card-tag">Database</span><span class="rp-card-tag">PDB</span></div><div class="rp-card-link">knotprot.cent.uw.edu.pl →</div></div>
-      </a>
-      <a class="rp-card" href="http://lassoprot.cent.uw.edu.pl" target="_blank" data-cat="database server" style="--i:3">
-        <div class="rp-img-wrap"><img src="https://jsulkowska.cent.uw.edu.pl/wp-content/uploads/2016/05/lassoprot.jpg" alt="LassoProt"/></div>
-        <div class="rp-card-body"><div class="rp-card-name">LassoProt</div><div class="rp-card-desc">Server and database of proteins with lasso motifs — covalent loops whose tail threads through the loop, classified by piercing number.</div><div class="rp-card-tags"><span class="rp-card-tag">Database</span><span class="rp-card-tag">Server</span></div><div class="rp-card-link">lassoprot.cent.uw.edu.pl →</div></div>
-      </a>
-      <a class="rp-card" href="http://linkprot.cent.uw.edu.pl" target="_blank" data-cat="database" style="--i:4">
-        <div class="rp-img-wrap"><img src="http://linkprot.cent.uw.edu.pl/static/img/gallery_Fig4.png" alt="LinkProt"/></div>
-        <div class="rp-card-body"><div class="rp-card-name">LinkProt</div><div class="rp-card-desc">Database of proteins with topological links — pairs of closed loops that are topologically entangled in protein structures.</div><div class="rp-card-tags"><span class="rp-card-tag">Database</span><span class="rp-card-tag">Links</span></div><div class="rp-card-link">linkprot.cent.uw.edu.pl →</div></div>
-      </a>
-    </div>
-  </div>
-
-  <!-- PLUGINS & PACKAGES -->
-  <div class="rp-sec" id="rp-plugins">
-    <div class="rp-sec-header">
-      <div>
-        <canvas id="rp-k-plugins" width="86" height="86" class="rp-mini-knot"></canvas>
-        <div class="rp-eyebrow"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/></svg>Topology Identification</div>
-        <div class="rp-title">Plugins &amp; Packages <span class="rp-count-badge">4</span></div>
-        <div class="rp-subtitle">Python packages and PyMOL/VMD plugins for computing topology invariants.</div>
+    <div class="rp-grid-wrap">
+      <div class="rp-grid">
+        <a class="rp-card" href="http://alphaknot.cent.uw.edu.pl" target="_blank" data-cat="database server" style="--i:0">
+          <div class="rp-img-wrap"><img src="https://jsulkowska.cent.uw.edu.pl/wp-content/uploads/2016/05/knot63.png" alt="AlphaKnot"/><div class="rp-img-overlay"><span class="rp-img-badge">AlphaFold</span></div></div>
+          <div class="rp-card-body"><div class="rp-card-name">AlphaKnot 2.0</div><div class="rp-card-desc">Knot &amp; knotoid detection across AlphaFold proteomes.</div><div class="rp-card-tags"><span class="rp-card-tag">Database</span><span class="rp-card-tag">Server</span><span class="rp-card-tag">AlphaFold</span></div><div class="rp-card-link">alphaknot.cent.uw.edu.pl →</div></div>
+        </a>
+        <a class="rp-card" href="http://alphalasso.cent.uw.edu.pl" target="_blank" data-cat="database server" style="--i:1">
+          <div class="rp-img-wrap"><img src="https://jsulkowska.cent.uw.edu.pl/wp-content/uploads/2016/05/cropped.png" alt="AlphaLasso"/><div class="rp-img-overlay"><span class="rp-img-badge">AlphaFold</span></div></div>
+          <div class="rp-card-body"><div class="rp-card-name">AlphaLasso</div><div class="rp-card-desc">Lasso topology classified across AlphaFold structures.</div><div class="rp-card-tags"><span class="rp-card-tag">Database</span><span class="rp-card-tag">Server</span><span class="rp-card-tag">AlphaFold</span></div><div class="rp-card-link">alphalasso.cent.uw.edu.pl →</div></div>
+        </a>
+        <a class="rp-card" href="http://knotprot.cent.uw.edu.pl" target="_blank" data-cat="database" style="--i:2">
+          <div class="rp-img-wrap"><img src="https://jsulkowska.cent.uw.edu.pl/wp-content/uploads/2016/05/knotprot.jpg" alt="KnotProt"/></div>
+          <div class="rp-card-body"><div class="rp-card-name">KnotProt 2.0</div><div class="rp-card-desc">Reference database of knotted proteins from the PDB.</div><div class="rp-card-tags"><span class="rp-card-tag">Database</span><span class="rp-card-tag">PDB</span></div><div class="rp-card-link">knotprot.cent.uw.edu.pl →</div></div>
+        </a>
+        <a class="rp-card" href="http://lassoprot.cent.uw.edu.pl" target="_blank" data-cat="database server" style="--i:3">
+          <div class="rp-img-wrap"><img src="https://jsulkowska.cent.uw.edu.pl/wp-content/uploads/2016/05/lassoprot.jpg" alt="LassoProt"/></div>
+          <div class="rp-card-body"><div class="rp-card-name">LassoProt</div><div class="rp-card-desc">Covalent lasso motifs, classified by piercing number.</div><div class="rp-card-tags"><span class="rp-card-tag">Database</span><span class="rp-card-tag">Server</span></div><div class="rp-card-link">lassoprot.cent.uw.edu.pl →</div></div>
+        </a>
+        <a class="rp-card" href="http://linkprot.cent.uw.edu.pl" target="_blank" data-cat="database" style="--i:4">
+          <div class="rp-img-wrap"><img src="http://linkprot.cent.uw.edu.pl/static/img/gallery_Fig4.png" alt="LinkProt"/></div>
+          <div class="rp-card-body"><div class="rp-card-name">LinkProt</div><div class="rp-card-desc">Topologically linked loops in protein structures.</div><div class="rp-card-tags"><span class="rp-card-tag">Database</span><span class="rp-card-tag">Links</span></div><div class="rp-card-link">linkprot.cent.uw.edu.pl →</div></div>
+        </a>
       </div>
     </div>
-    <div class="rp-grid">
-      <a class="rp-card" href="http://topoly.cent.uw.edu.pl" target="_blank" data-cat="plugin" style="--i:0">
-        <div class="rp-img-wrap" style="background:#f0eeff"><div class="rp-img-center"><span style="font-size:2.4rem;font-weight:900;color:#5e35b1;font-family:'Merriweather',serif;letter-spacing:-2px">Topoly</span><span style="font-size:0.65rem;color:#9e9e9e;letter-spacing:0.1em;text-transform:uppercase">Python Package</span></div><div class="rp-img-overlay"><span class="rp-img-badge" style="background:#5e35b1">Package</span></div></div>
-        <div class="rp-card-body"><div class="rp-card-name">Topoly</div><div class="rp-card-desc">Python package for analyzing topology of polymers — computes knot and link invariants (Alexander, Jones, HOMFLY) for protein and polymer chains.</div><div class="rp-card-tags"><span class="rp-card-tag">Python</span><span class="rp-card-tag">Invariants</span></div><div class="rp-card-link">topoly.cent.uw.edu.pl →</div></div>
-      </a>
-      <a class="rp-card" href="http://pylasso.cent.uw.edu.pl" target="_blank" data-cat="plugin" style="--i:1">
-        <div class="rp-img-wrap rp-img-dark"><img src="http://pylasso.cent.uw.edu.pl/pics/introduction_prot.png" alt="PyLasso"/><div class="rp-img-overlay"><span class="rp-img-badge" style="background:#7b1fa2">Plugin</span></div></div>
-        <div class="rp-card-body"><div class="rp-card-name">PyLasso</div><div class="rp-card-desc">PyMOL/VMD plugin to detect lasso motifs in protein structures and analyze their geometric properties with 3D visualization.</div><div class="rp-card-tags"><span class="rp-card-tag">PyMOL</span><span class="rp-card-tag">VMD</span></div><div class="rp-card-link">pylasso.cent.uw.edu.pl →</div></div>
-      </a>
-      <a class="rp-card" href="http://pylink.cent.uw.edu.pl" target="_blank" data-cat="plugin" style="--i:2">
-        <div class="rp-img-wrap rp-img-dark"><img src="https://jsulkowska.cent.uw.edu.pl/wp-content/uploads/2016/05/carousel_3sumABCD.png" alt="PyLink"/><div class="rp-img-overlay"><span class="rp-img-badge" style="background:#6a1b9a">Plugin</span></div></div>
-        <div class="rp-card-body"><div class="rp-card-name">PyLink</div><div class="rp-card-desc">PyMOL plugin to identify and visualize topological links in protein structures using link invariants.</div><div class="rp-card-tags"><span class="rp-card-tag">PyMOL</span><span class="rp-card-tag">Links</span></div><div class="rp-card-link">pylink.cent.uw.edu.pl →</div></div>
-      </a>
-      <a class="rp-card" href="https://github.com/dzarmola/knot_pull" target="_blank" data-cat="plugin" style="--i:3">
-        <div class="rp-img-wrap"><img src="https://jsulkowska.cent.uw.edu.pl/wp-content/uploads/2016/05/knotpull.jpg" alt="Knot_pull"/><div class="rp-img-overlay"><span class="rp-img-badge" style="background:#24292e">GitHub</span></div></div>
-        <div class="rp-card-body"><div class="rp-card-name">Knot_pull</div><div class="rp-card-desc">Python package for biopolymer smoothing and knot detection via iterative chain-pulling algorithm. Simplifies and classifies topology.</div><div class="rp-card-tags"><span class="rp-card-tag">Python</span><span class="rp-card-tag">Open Source</span></div><div class="rp-card-link">github.com/dzarmola/knot_pull →</div></div>
-      </a>
-    </div>
   </div>
 
-  <!-- MECHANICAL -->
-  <div class="rp-sec" id="rp-mechanical">
-    <div class="rp-sec-header">
+  <!-- ── PLUGINS & PACKAGES ── -->
+  <div class="rp-section" id="rp-plugins">
+    <div class="rp-section-head">
       <div>
-        <canvas id="rp-k-mechanical" width="86" height="86" class="rp-mini-knot"></canvas>
-        <div class="rp-eyebrow" style="color:#da7101"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M18 20V10"/><path d="M12 20V4"/><path d="M6 20v-6"/></svg>Molecular Mechanics</div>
-        <div class="rp-title">Mechanical Properties <span class="rp-count-badge">2</span></div>
-        <div class="rp-subtitle">Databases and tools for studying proteins under mechanical force — stretching, unfolding, and topology effects.</div>
+        <canvas id="rp-k-plugins" width="72" height="72" class="rp-mini-knot"></canvas>
+        <div class="rp-section-eyebrow">
+          <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/></svg>
+          Topology Identification
+        </div>
+        <div class="rp-section-title">Plugins &amp; Packages <span class="rp-count-chip">4</span></div>
+        <div class="rp-section-sub">Python packages and PyMOL/VMD plugins for computing topology invariants.</div>
       </div>
     </div>
-    <div class="rp-grid">
-      <a class="rp-card" href="http://jowisz.ifpan.edu.pl/BSDB/" target="_blank" data-cat="database" style="--i:0">
-        <div class="rp-img-wrap" style="background:#f5f5f5"><img src="https://jsulkowska.cent.uw.edu.pl/wp-content/uploads/2016/05/stretch-512x107.png" alt="BSDB" style="object-fit:contain;padding:1rem"/></div>
-        <div class="rp-card-body"><div class="rp-card-name">BSDB — Bio-molecule Stretching Database</div><div class="rp-card-desc">Database of mechanical stretching of biomolecules. Force-extension data from coarse-grained simulations of proteins under mechanical force.</div><div class="rp-card-tags"><span class="rp-card-tag">Database</span><span class="rp-card-tag">Force Spectroscopy</span></div><div class="rp-card-link">jowisz.ifpan.edu.pl/BSDB →</div></div>
-      </a>
-      <a class="rp-card" href="http://genus.fuw.edu.pl" target="_blank" data-cat="database server" style="--i:1">
-        <div class="rp-img-wrap" style="background:#f0f4ff"><img src="https://jsulkowska.cent.uw.edu.pl/wp-content/uploads/2016/05/genus_logo_wieksze.png" alt="Genus" style="object-fit:contain;padding:1rem"/></div>
-        <div class="rp-card-body"><div class="rp-card-name">Genus for Biomolecules</div><div class="rp-card-desc">Database and server for genus characteristics of proteins and RNA chains. Uses minimal surface theory to quantify topological complexity.</div><div class="rp-card-tags"><span class="rp-card-tag">Database</span><span class="rp-card-tag">Server</span><span class="rp-card-tag">RNA</span></div><div class="rp-card-link">genus.fuw.edu.pl →</div></div>
-      </a>
-    </div>
-  </div>
-
-  <!-- STRUCTURE PREDICTION -->
-  <div class="rp-sec" id="rp-prediction">
-    <div class="rp-sec-header">
-      <div>
-        <canvas id="rp-k-prediction" width="86" height="86" class="rp-mini-knot"></canvas>
-        <div class="rp-eyebrow" style="color:#2e7d32"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>Co-evolution Methods</div>
-        <div class="rp-title">Structure Prediction <span class="rp-count-badge">3</span></div>
-        <div class="rp-subtitle">Tools using direct coupling analysis (DCA) and evolutionary sequence information to predict protein structure.</div>
+    <div class="rp-grid-wrap">
+      <div class="rp-grid">
+        <a class="rp-card" href="http://topoly.cent.uw.edu.pl" target="_blank" data-cat="plugin" style="--i:0">
+          <div class="rp-img-wrap" style="background:#f0eeff"><div class="rp-img-center"><span style="font-size:2rem;font-weight:900;color:#5e35b1;font-family:'Merriweather',serif;letter-spacing:-2px">Topoly</span><span style="font-size:0.6rem;color:#9e9e9e;letter-spacing:0.1em;text-transform:uppercase">Python Package</span></div><div class="rp-img-overlay"><span class="rp-img-badge" style="background:#5e35b1">Package</span></div></div>
+          <div class="rp-card-body"><div class="rp-card-name">Topoly</div><div class="rp-card-desc">Knot invariants (Alexander, Jones, HOMFLY) for polymers.</div><div class="rp-card-tags"><span class="rp-card-tag">Python</span><span class="rp-card-tag">Invariants</span></div><div class="rp-card-link">topoly.cent.uw.edu.pl →</div></div>
+        </a>
+        <a class="rp-card" href="http://pylasso.cent.uw.edu.pl" target="_blank" data-cat="plugin" style="--i:1">
+          <div class="rp-img-wrap rp-img-dark"><img src="http://pylasso.cent.uw.edu.pl/pics/introduction_prot.png" alt="PyLasso"/><div class="rp-img-overlay"><span class="rp-img-badge" style="background:#7b1fa2">Plugin</span></div></div>
+          <div class="rp-card-body"><div class="rp-card-name">PyLasso</div><div class="rp-card-desc">Lasso detection with 3D visualization in PyMOL/VMD.</div><div class="rp-card-tags"><span class="rp-card-tag">PyMOL</span><span class="rp-card-tag">VMD</span></div><div class="rp-card-link">pylasso.cent.uw.edu.pl →</div></div>
+        </a>
+        <a class="rp-card" href="http://pylink.cent.uw.edu.pl" target="_blank" data-cat="plugin" style="--i:2">
+          <div class="rp-img-wrap rp-img-dark"><img src="https://jsulkowska.cent.uw.edu.pl/wp-content/uploads/2016/05/carousel_3sumABCD.png" alt="PyLink"/><div class="rp-img-overlay"><span class="rp-img-badge" style="background:#6a1b9a">Plugin</span></div></div>
+          <div class="rp-card-body"><div class="rp-card-name">PyLink</div><div class="rp-card-desc">Topological link identification and visualization in PyMOL.</div><div class="rp-card-tags"><span class="rp-card-tag">PyMOL</span><span class="rp-card-tag">Links</span></div><div class="rp-card-link">pylink.cent.uw.edu.pl →</div></div>
+        </a>
+        <a class="rp-card" href="https://github.com/dzarmola/knot_pull" target="_blank" data-cat="plugin" style="--i:3">
+          <div class="rp-img-wrap"><img src="https://jsulkowska.cent.uw.edu.pl/wp-content/uploads/2016/05/knotpull.jpg" alt="Knot_pull"/><div class="rp-img-overlay"><span class="rp-img-badge" style="background:#24292e">GitHub</span></div></div>
+          <div class="rp-card-body"><div class="rp-card-name">Knot_pull</div><div class="rp-card-desc">Topology simplification via iterative chain pulling.</div><div class="rp-card-tags"><span class="rp-card-tag">Python</span><span class="rp-card-tag">Open Source</span></div><div class="rp-card-link">github.com/dzarmola/knot_pull →</div></div>
+        </a>
       </div>
     </div>
-    <div class="rp-grid">
-      <a class="rp-card" href="http://dca-mol.cent.uw.edu.pl" target="_blank" data-cat="prediction server" style="--i:0">
-        <div class="rp-img-wrap" style="background:#f5f9f5"><img src="https://jsulkowska.cent.uw.edu.pl/wp-content/uploads/2016/05/dcamol.png" alt="DCA-mol" style="object-fit:contain;padding:1rem"/><div class="rp-img-overlay"><span class="rp-img-badge" style="background:#388e3c">Server</span></div></div>
-        <div class="rp-card-body"><div class="rp-card-name">DCA-mol</div><div class="rp-card-desc">Plugin to analyze direct evolutionary couplings. Uses coevolutionary information from multiple sequence alignments for structure prediction.</div><div class="rp-card-tags"><span class="rp-card-tag">DCA</span><span class="rp-card-tag">MSA</span></div><div class="rp-card-link">dca-mol.cent.uw.edu.pl →</div></div>
-      </a>
-      <a class="rp-card" href="http://pconsfam.bioinfo.se/" target="_blank" data-cat="prediction database" style="--i:1">
-        <div class="rp-img-wrap" style="background:#fff"><img src="http://pconsfam.bioinfo.se/static/images/pconsfam_logo_trans.png" alt="PconsFam" style="object-fit:contain;padding:1rem"/></div>
-        <div class="rp-card-body"><div class="rp-card-name">PconsFam</div><div class="rp-card-desc">Database of Pfam protein families modelled using PconsFold2 — contact-assisted structure prediction for thousands of protein families.</div><div class="rp-card-tags"><span class="rp-card-tag">Database</span><span class="rp-card-tag">Pfam</span></div><div class="rp-card-link">pconsfam.bioinfo.se →</div></div>
-      </a>
-      <a class="rp-card" href="http://gaprepairer.cent.uw.edu.pl" target="_blank" data-cat="server prediction" style="--i:2">
-        <div class="rp-img-wrap"><img src="https://jsulkowska.cent.uw.edu.pl/wp-content/uploads/2016/05/gaprepairer.jpg" alt="GapRepairer"/><div class="rp-img-overlay"><span class="rp-img-badge" style="background:#558b2f">Server</span></div></div>
-        <div class="rp-card-body"><div class="rp-card-name">GapRepairer</div><div class="rp-card-desc">Server for automatic reconstruction of missing backbone fragments in protein models. Fills gaps in PDB structures using statistical methods.</div><div class="rp-card-tags"><span class="rp-card-tag">Server</span><span class="rp-card-tag">PDB</span></div><div class="rp-card-link">gaprepairer.cent.uw.edu.pl →</div></div>
-      </a>
-    </div>
   </div>
 
-  <!-- CHROMATIN & GENOME -->
-  <div class="rp-sec" id="rp-chromatin">
-    <div class="rp-sec-header">
+  <!-- ── MECHANICAL ── -->
+  <div class="rp-section" id="rp-mechanical">
+    <div class="rp-section-head">
       <div>
-        <canvas id="rp-k-chromatin" width="86" height="86" class="rp-mini-knot"></canvas>
-        <div class="rp-eyebrow" style="color:#c62828"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M21 3H3v7a6 6 0 0 0 12 0V3"/><path d="M6 21v-4a6 6 0 0 1 12 0v4"/></svg>Genomics</div>
-        <div class="rp-title">Chromatin &amp; Genome Topology <span class="rp-count-badge">1</span></div>
-        <div class="rp-subtitle">Applying protein topology methods to the 3D organization of chromatin and the genome.</div>
+        <canvas id="rp-k-mechanical" width="72" height="72" class="rp-mini-knot"></canvas>
+        <div class="rp-section-eyebrow" style="color:#da7101">
+          <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M18 20V10"/><path d="M12 20V4"/><path d="M6 20v-6"/></svg>
+          Molecular Mechanics
+        </div>
+        <div class="rp-section-title">Mechanical Properties <span class="rp-count-chip">2</span></div>
+        <div class="rp-section-sub">Databases and tools for studying proteins under mechanical force — stretching, unfolding, and topology effects.</div>
       </div>
     </div>
-    <div class="rp-grid">
-      <a class="rp-card" href="http://knotgenom.cent.uw.edu.pl" target="_blank" data-cat="chromatin database server" style="--i:0">
-        <div class="rp-img-wrap"><img src="https://knotgenom.cent.uw.edu.pl/static/img/help_figs/intro_fig1.jpg" alt="KnotGenome"/><div class="rp-img-overlay"><span class="rp-img-badge" style="background:#c62828">Server</span></div></div>
-        <div class="rp-card-body"><div class="rp-card-name">KnotGenome</div><div class="rp-card-desc">Server to detect entanglement in and between chromosomes. Identifies knots and links in chromatin fiber topology from polymer models.</div><div class="rp-card-tags"><span class="rp-card-tag">Server</span><span class="rp-card-tag">Chromatin</span></div><div class="rp-card-link">knotgenom.cent.uw.edu.pl →</div></div>
-      </a>
-    </div>
-  </div>
-
-  <!-- COMPUTING (dark) -->
-  <div class="rp-sec-dark" id="rp-computing">
-    <div class="rp-sec-header">
-      <div>
-        <canvas id="rp-k-computing" width="86" height="86" class="rp-mini-knot"></canvas>
-        <div class="rp-eyebrow"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><rect x="2" y="2" width="20" height="8" rx="2"/><rect x="2" y="14" width="20" height="8" rx="2"/></svg>HPC Resources</div>
-        <div class="rp-title">Computing Infrastructure <span class="rp-count-badge" style="background:rgba(255,255,255,0.1);color:rgba(255,255,255,0.5)">2</span></div>
-        <div class="rp-subtitle">High-performance computing clusters powering large-scale topology simulations.</div>
+    <div class="rp-grid-wrap">
+      <div class="rp-grid">
+        <a class="rp-card" href="http://jowisz.ifpan.edu.pl/BSDB/" target="_blank" data-cat="database" style="--i:0">
+          <div class="rp-img-wrap" style="background:#f5f5f5"><img src="https://jsulkowska.cent.uw.edu.pl/wp-content/uploads/2016/05/stretch-512x107.png" alt="BSDB" style="object-fit:contain;padding:1rem"/></div>
+          <div class="rp-card-body"><div class="rp-card-name">BSDB — Bio-molecule Stretching Database</div><div class="rp-card-desc">Force-extension data from coarse-grained simulations.</div><div class="rp-card-tags"><span class="rp-card-tag">Database</span><span class="rp-card-tag">Force Spectroscopy</span></div><div class="rp-card-link">jowisz.ifpan.edu.pl/BSDB →</div></div>
+        </a>
+        <a class="rp-card" href="http://genus.fuw.edu.pl" target="_blank" data-cat="database server" style="--i:1">
+          <div class="rp-img-wrap" style="background:#f0f4ff"><img src="https://jsulkowska.cent.uw.edu.pl/wp-content/uploads/2016/05/genus_logo_wieksze.png" alt="Genus" style="object-fit:contain;padding:1rem"/></div>
+          <div class="rp-card-body"><div class="rp-card-name">Genus for Biomolecules</div><div class="rp-card-desc">Topological genus of proteins and RNA via minimal surfaces.</div><div class="rp-card-tags"><span class="rp-card-tag">Database</span><span class="rp-card-tag">Server</span><span class="rp-card-tag">RNA</span></div><div class="rp-card-link">genus.fuw.edu.pl →</div></div>
+        </a>
       </div>
     </div>
-    <div class="rp-grid">
-      <a class="rp-card" href="https://horda.cent.uw.edu.pl" target="_blank" data-cat="server" style="--i:0">
-        <div class="rp-img-wrap" style="background:#1c313a"><div class="rp-img-center"><span style="font-size:2rem;font-weight:900;color:#fff;letter-spacing:-1px;font-family:'Merriweather',serif">HORDA</span><span style="font-size:0.6rem;color:rgba(255,255,255,0.4);letter-spacing:0.15em;text-transform:uppercase">HPC Cluster · CeNT UW</span></div></div>
-        <div class="rp-card-body"><div class="rp-card-name">Horda Cluster</div><div class="rp-card-desc">HORDA high-performance computing cluster at CeNT, University of Warsaw — primary HPC resource for large-scale topology simulations.</div><div class="rp-card-tags"><span class="rp-card-tag">HPC</span><span class="rp-card-tag">CeNT</span></div><div class="rp-card-link">horda.cent.uw.edu.pl →</div></div>
-      </a>
-      <a class="rp-card" href="https://cent.uw.edu.pl" target="_blank" data-cat="server" style="--i:1">
-        <div class="rp-img-wrap" style="background:#263238"><div class="rp-img-center"><span style="font-size:2rem;font-weight:900;color:#fff;letter-spacing:-1px;font-family:Arial">C<span style="color:#4fc3f7;font-size:0.8em">e</span>NT</span><span style="font-size:0.6rem;color:rgba(255,255,255,0.4);letter-spacing:0.15em;text-transform:uppercase">LSSCB Cluster</span></div></div>
-        <div class="rp-card-body"><div class="rp-card-name">LSSCB Cluster</div><div class="rp-card-desc">LSSCB computing cluster at CeNT — shared HPC infrastructure for structural bioinformatics (Trzaskowski Group).</div><div class="rp-card-tags"><span class="rp-card-tag">HPC</span><span class="rp-card-tag">Shared</span></div><div class="rp-card-link">cent.uw.edu.pl →</div></div>
-      </a>
+  </div>
+
+  <!-- ── STRUCTURE PREDICTION ── -->
+  <div class="rp-section" id="rp-prediction">
+    <div class="rp-section-head">
+      <div>
+        <canvas id="rp-k-prediction" width="72" height="72" class="rp-mini-knot"></canvas>
+        <div class="rp-section-eyebrow" style="color:#2e7d32">
+          <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+          Co-evolution Methods
+        </div>
+        <div class="rp-section-title">Structure Prediction <span class="rp-count-chip">3</span></div>
+        <div class="rp-section-sub">Tools using direct coupling analysis (DCA) and evolutionary sequence information to predict protein structure.</div>
+      </div>
+    </div>
+    <div class="rp-grid-wrap">
+      <div class="rp-grid">
+        <a class="rp-card" href="http://dca-mol.cent.uw.edu.pl" target="_blank" data-cat="prediction server" style="--i:0">
+          <div class="rp-img-wrap" style="background:#f5f9f5"><img src="https://jsulkowska.cent.uw.edu.pl/wp-content/uploads/2016/05/dcamol.png" alt="DCA-mol" style="object-fit:contain;padding:1rem"/><div class="rp-img-overlay"><span class="rp-img-badge" style="background:#388e3c">Server</span></div></div>
+          <div class="rp-card-body"><div class="rp-card-name">DCA-mol</div><div class="rp-card-desc">Evolutionary couplings from MSA for structure prediction.</div><div class="rp-card-tags"><span class="rp-card-tag">DCA</span><span class="rp-card-tag">MSA</span></div><div class="rp-card-link">dca-mol.cent.uw.edu.pl →</div></div>
+        </a>
+        <a class="rp-card" href="http://pconsfam.bioinfo.se/" target="_blank" data-cat="prediction database" style="--i:1">
+          <div class="rp-img-wrap" style="background:#fff"><img src="http://pconsfam.bioinfo.se/static/images/pconsfam_logo_trans.png" alt="PconsFam" style="object-fit:contain;padding:1rem"/></div>
+          <div class="rp-card-body"><div class="rp-card-name">PconsFam</div><div class="rp-card-desc">Contact-assisted models for thousands of Pfam families.</div><div class="rp-card-tags"><span class="rp-card-tag">Database</span><span class="rp-card-tag">Pfam</span></div><div class="rp-card-link">pconsfam.bioinfo.se →</div></div>
+        </a>
+        <a class="rp-card" href="http://gaprepairer.cent.uw.edu.pl" target="_blank" data-cat="server prediction" style="--i:2">
+          <div class="rp-img-wrap"><img src="https://jsulkowska.cent.uw.edu.pl/wp-content/uploads/2016/05/gaprepairer.jpg" alt="GapRepairer"/><div class="rp-img-overlay"><span class="rp-img-badge" style="background:#558b2f">Server</span></div></div>
+          <div class="rp-card-body"><div class="rp-card-name">GapRepairer</div><div class="rp-card-desc">Reconstructs missing backbone fragments in PDB structures.</div><div class="rp-card-tags"><span class="rp-card-tag">Server</span><span class="rp-card-tag">PDB</span></div><div class="rp-card-link">gaprepairer.cent.uw.edu.pl →</div></div>
+        </a>
+      </div>
     </div>
   </div>
 
-  <!-- LINKS -->
-  <div class="rp-sec">
-    <div class="rp-sec-header" style="margin-bottom:var(--space-6);padding-bottom:var(--space-5)">
-      <div><div class="rp-eyebrow">External Resources</div><div class="rp-title" style="font-size:var(--text-sm)">Important Links</div></div>
+  <!-- ── CHROMATIN & GENOME ── -->
+  <div class="rp-section" id="rp-chromatin">
+    <div class="rp-section-head">
+      <div>
+        <canvas id="rp-k-chromatin" width="72" height="72" class="rp-mini-knot"></canvas>
+        <div class="rp-section-eyebrow" style="color:#c62828">
+          <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M21 3H3v7a6 6 0 0 0 12 0V3"/><path d="M6 21v-4a6 6 0 0 1 12 0v4"/></svg>
+          Genomics
+        </div>
+        <div class="rp-section-title">Chromatin &amp; Genome Topology <span class="rp-count-chip">1</span></div>
+        <div class="rp-section-sub">Applying protein topology methods to the 3D organization of chromatin and the genome.</div>
+      </div>
     </div>
-    <div class="rp-links-grid">
-      <a href="https://jsulkowska.cent.uw.edu.pl" target="_blank" class="rp-link-pill">Lab Website</a>
-      <a href="https://www.cent.uw.edu.pl" target="_blank" class="rp-link-pill">CeNT, University of Warsaw</a>
-      <a href="https://scholar.google.com/citations?user=_LNjYQcAAAAJ" target="_blank" class="rp-link-pill">Google Scholar</a>
-      <a href="https://github.com/ilbsm" target="_blank" class="rp-link-pill">GitHub: @ilbsm</a>
-      <a href="https://www.researchgate.net/profile/Joanna-Sulkowska" target="_blank" class="rp-link-pill">ResearchGate</a>
-      <a href="https://jsulkowska.cent.uw.edu.pl/topics/collaboration/" target="_blank" class="rp-link-pill">Collaborators</a>
+    <div class="rp-grid-wrap">
+      <div class="rp-grid">
+        <a class="rp-card" href="http://knotgenom.cent.uw.edu.pl" target="_blank" data-cat="chromatin database server" style="--i:0">
+          <div class="rp-img-wrap"><img src="https://knotgenom.cent.uw.edu.pl/static/img/help_figs/intro_fig1.jpg" alt="KnotGenome"/><div class="rp-img-overlay"><span class="rp-img-badge" style="background:#c62828">Server</span></div></div>
+          <div class="rp-card-body"><div class="rp-card-name">KnotGenome</div><div class="rp-card-desc">Knots &amp; links in chromatin fiber from polymer models.</div><div class="rp-card-tags"><span class="rp-card-tag">Server</span><span class="rp-card-tag">Chromatin</span></div><div class="rp-card-link">knotgenom.cent.uw.edu.pl →</div></div>
+        </a>
+      </div>
     </div>
   </div>
 
-</div>
-</div>
+  <!-- ── COMPUTING (dark) ── -->
+  <div class="rp-section rp-section-dark" id="rp-computing">
+    <div class="rp-section-head">
+      <div>
+        <canvas id="rp-k-computing" width="72" height="72" class="rp-mini-knot"></canvas>
+        <div class="rp-section-eyebrow">
+          <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><rect x="2" y="2" width="20" height="8" rx="2"/><rect x="2" y="14" width="20" height="8" rx="2"/></svg>
+          HPC Resources
+        </div>
+        <div class="rp-section-title">Computing Infrastructure <span class="rp-count-chip">2</span></div>
+        <div class="rp-section-sub">High-performance computing clusters powering large-scale topology simulations.</div>
+      </div>
+    </div>
+    <div class="rp-grid-wrap">
+      <div class="rp-grid">
+        <a class="rp-card" href="https://horda.cent.uw.edu.pl" target="_blank" data-cat="server" style="--i:0">
+          <div class="rp-img-wrap" style="background:#1c313a;border-bottom-color:rgba(255,255,255,0.04)"><div class="rp-img-center"><span style="font-size:1.8rem;font-weight:900;color:#fff;letter-spacing:-1px;font-family:'Merriweather',serif">HORDA</span><span style="font-size:0.58rem;color:rgba(255,255,255,0.4);letter-spacing:0.15em;text-transform:uppercase">HPC Cluster · CeNT UW</span></div></div>
+          <div class="rp-card-body"><div class="rp-card-name">Horda Cluster</div><div class="rp-card-desc">Primary HPC cluster for large-scale topology simulations.</div><div class="rp-card-tags"><span class="rp-card-tag">HPC</span><span class="rp-card-tag">CeNT</span></div><div class="rp-card-link">horda.cent.uw.edu.pl →</div></div>
+        </a>
+        <a class="rp-card" href="https://cent.uw.edu.pl" target="_blank" data-cat="server" style="--i:1">
+          <div class="rp-img-wrap" style="background:#263238;border-bottom-color:rgba(255,255,255,0.04)"><div class="rp-img-center"><span style="font-size:1.8rem;font-weight:900;color:#fff;letter-spacing:-1px;font-family:Arial">C<span style="color:#4fc3f7;font-size:0.8em">e</span>NT</span><span style="font-size:0.58rem;color:rgba(255,255,255,0.4);letter-spacing:0.15em;text-transform:uppercase">LSSCB Cluster</span></div></div>
+          <div class="rp-card-body"><div class="rp-card-name">LSSCB Cluster</div><div class="rp-card-desc">Shared HPC infrastructure for structural bioinformatics.</div><div class="rp-card-tags"><span class="rp-card-tag">HPC</span><span class="rp-card-tag">Shared</span></div><div class="rp-card-link">cent.uw.edu.pl →</div></div>
+        </a>
+      </div>
+    </div>
+  </div>
+
+  <!-- ── LINKS ── -->
+  <div class="rp-section">
+    <div class="rp-section-head">
+      <div>
+        <div class="rp-section-eyebrow">External Resources</div>
+        <div class="rp-section-title">Important Links</div>
+      </div>
+    </div>
+    <div class="rp-links-wrap">
+      <div class="rp-links-grid">
+        <a href="https://jsulkowska.cent.uw.edu.pl" target="_blank" class="rp-link-pill">Lab Website</a>
+        <a href="https://www.cent.uw.edu.pl" target="_blank" class="rp-link-pill">CeNT, University of Warsaw</a>
+        <a href="https://scholar.google.com/citations?user=_LNjYQcAAAAJ" target="_blank" class="rp-link-pill">Google Scholar</a>
+        <a href="https://github.com/ilbsm" target="_blank" class="rp-link-pill">GitHub: @ilbsm</a>
+        <a href="https://www.researchgate.net/profile/Joanna-Sulkowska" target="_blank" class="rp-link-pill">ResearchGate</a>
+        <a href="https://jsulkowska.cent.uw.edu.pl/topics/collaboration/" target="_blank" class="rp-link-pill">Collaborators</a>
+      </div>
+    </div>
+  </div>
+
+</div><!-- /rpfp -->
 
 <script>
 function rpFilter(cat, btn) {
-  document.querySelectorAll('.rp-pill').forEach(function(p){ p.classList.remove('active'); });
+  document.querySelectorAll('.rp-pill').forEach(p => p.classList.remove('active'));
   btn.classList.add('active');
-  document.querySelectorAll('.rp-card').forEach(function(card) {
+  document.querySelectorAll('.rp-card').forEach(card => {
     if (cat === 'all') { card.classList.remove('rp-hidden'); return; }
-    var cats = (card.dataset.cat || '').split(' ');
-    card.classList.toggle('rp-hidden', !cats.includes(cat));
+    card.classList.toggle('rp-hidden', !(card.dataset.cat || '').split(' ').includes(cat));
   });
 }
 function rpNav(id, btn) {
-  document.querySelectorAll('.rp-pill').forEach(function(p){ p.classList.remove('active'); });
+  document.querySelectorAll('.rp-pill').forEach(p => p.classList.remove('active'));
   btn.classList.add('active');
-  var el = document.getElementById(id);
+  const el = document.getElementById(id);
   if (el) el.scrollIntoView({ behavior: 'smooth', block: 'start' });
 }
 (function(){
-  var secs  = ['rp-topology','rp-plugins','rp-mechanical','rp-prediction','rp-chromatin','rp-computing'];
-  var pills = Array.from(document.querySelectorAll('.rp-nav .rp-pill')).slice(1);
-  window.addEventListener('scroll', function() {
-    var cur = secs[0];
-    secs.forEach(function(id){ var el=document.getElementById(id); if(el&&el.getBoundingClientRect().top<=160) cur=id; });
-    pills.forEach(function(p,i){ p.classList.toggle('active', secs[i]===cur); });
+  const secs  = ['rp-topology','rp-plugins','rp-mechanical','rp-prediction','rp-chromatin','rp-computing'];
+  const pills = Array.from(document.querySelectorAll('.rp-nav .rp-pill')).slice(1);
+  window.addEventListener('scroll', () => {
+    let cur = secs[0];
+    secs.forEach(id => { const el = document.getElementById(id); if (el && el.getBoundingClientRect().top <= 120) cur = id; });
+    pills.forEach((p, i) => p.classList.toggle('active', secs[i] === cur));
   }, { passive: true });
 })();
 
@@ -381,8 +450,8 @@ function rpNav(id, btn) {
       { id:'rp-k-prediction', type:'torus',    color:'#2e7d32', speed:0.006, tiltX:0.6  },
       { id:'rp-k-chromatin',  type:'hopf',     color:'#c62828', speed:0.008, tiltX:0.45 },
       { id:'rp-k-computing',  type:'helix',    color:'#4db8e8', speed:0.01,  tiltX:0.3  }
-    ].forEach(function(d){
-      var c = document.getElementById(d.id);
+    ].forEach(d => {
+      const c = document.getElementById(d.id);
       if (!c) return;
       new Knot3D(c, { type:d.type, color:d.color, speed:d.speed, tiltX:d.tiltX, N:280, fov:5, glow:true, glowSize:4 });
     });

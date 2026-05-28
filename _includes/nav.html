@@ -1,6 +1,6 @@
 <nav>
   <div class="nav-inner">
-    <a href="{{ '/'              | relative_url }}" id="n-home"         {% if page.url == '/'              %}class="active"{% endif %}>Home</a>
+    <a href="{{ '/'              | relative_url }}" id="n-home"         {% if page.url == '/' or page.url == '/index.html' %}class="active"{% endif %}>Home</a>
     <a href="{{ '/group/'         | relative_url }}" id="n-group"        {% if page.url contains '/group/'         %}class="active"{% endif %}>Group</a>
     <a href="{{ '/topics/'        | relative_url }}" id="n-topics"       {% if page.url contains '/topics/'        %}class="active"{% endif %}>Research</a>
     <a href="{{ '/collaboration/' | relative_url }}" id="n-collab"       {% if page.url contains '/collaboration/' %}class="active"{% endif %}>Collaboration</a>

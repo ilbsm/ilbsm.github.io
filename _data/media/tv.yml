@@ -1,0 +1,31 @@
+# TV Interview items — edit here to update the TV & Radio section
+# Fields: source, logo (filename in assets/img/logos/media/), logo_class, logo_text (if text-only logo),
+#         url, year, title
+
+- source: "Polsat News"
+  logo: "polsat-news.svg"
+  logo_class: "round"
+  url: ""
+  year: 2017
+  title: 'Polka w elitarnym gronie "kobiet, które mogą zmienić świat". Wybrana przez UNESCO'
+
+- source: "Onet"
+  logo: "onet.svg"
+  logo_class: "med-logo-wide"
+  url: ""
+  year: 2017
+  title: "TV Interview"
+
+- source: "TVN Dzień Dobry"
+  logo: "tvn.svg"
+  logo_class: "med-logo-wide"
+  url: ""
+  year: 2017
+  title: "Morning TV appearance"
+
+- source: "TVP3"
+  logo: "tvp3.svg"
+  logo_class: "med-logo-wide"
+  url: ""
+  year: 2017
+  title: "Regional TV interview"

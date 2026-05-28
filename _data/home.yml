@@ -1,0 +1,251 @@
+# Home page data — all sections in one file
+# Edit here to update any content on the home page
+
+# ── HERO BANNER ────────────────────────────────────────────────────────────────
+# title: main headline (HTML <br> tags allowed for line breaks)
+# knot_label: caption under the 3D knot animation
+hero:
+  title: "We study how geometry<br>shapes life at the<br>molecular scale"
+  knot_label: "Trefoil knot — 3₁"
+
+# ── STATS STRIP ────────────────────────────────────────────────────────────────
+# Fields: value (integer, counts up to this), label (shown below the number)
+stats:
+  - value: 4618
+    label: "citations"
+  - value: 122
+    label: "publications"
+  - value: 40
+    label: "h-index"
+  - value: 14
+    label: "software tools"
+  - value: 20
+    label: "team members"
+
+# ── SOFTWARE & DATABASES ───────────────────────────────────────────────────────
+# Fields: name, url, color (dot color), desc (short description)
+software:
+  - name: "AlphaKnot 2.0"
+    url: "http://alphaknot.cent.uw.edu.pl"
+    color: "#1a73e8"
+    desc: "Knotting analysis of AlphaFold models at proteome scale"
+
+  - name: "KnotProt 2.0"
+    url: "http://knotprot.cent.uw.edu.pl"
+    color: "#0d47a1"
+    desc: "Database of knotted & slipknotted proteins from PDB"
+
+  - name: "AlphaLasso"
+    url: "http://alphalasso.cent.uw.edu.pl"
+    color: "#26a69a"
+    desc: "Lasso motifs in AlphaFold structures — server & database"
+
+  - name: "LassoProt"
+    url: "http://lassoprot.cent.uw.edu.pl"
+    color: "#00695c"
+    desc: "Lasso topology protein database classified by piercing number"
+
+  - name: "Topoly"
+    url: "http://topoly.cent.uw.edu.pl"
+    color: "#6a1b9a"
+    desc: "Python package for polymer topology calculation"
+
+  - name: "Genus"
+    url: "http://genus.fuw.edu.pl"
+    color: "#9c27b0"
+    desc: "Genus characteristics for biomolecules via Seifert surfaces"
+
+  - name: "LinkProt"
+    url: "http://linkprot.cent.uw.edu.pl"
+    color: "#e65100"
+    desc: "Protein links database — covalently linked protein chains"
+
+  - name: "PyLasso"
+    url: "http://pylasso.cent.uw.edu.pl"
+    color: "#ef6c00"
+    desc: "Lasso topology identification — PyMOL plugin & web tool"
+
+# ── MOST-CITED PUBLICATIONS ────────────────────────────────────────────────────
+# Fields: doi (full URL), title, journal, journal_class (hpj-pnas | hpj-nar),
+#         authors, citations (number shown with "cit." label)
+pubs:
+  - doi: "https://doi.org/10.1073/pnas.1207864109"
+    title: "Genomics-aided structure prediction"
+    journal: "PNAS 2012"
+    journal_class: "hpj-pnas"
+    authors: "Sulkowska, Morcos, Weigt, Hwa, Onuchic"
+    citations: 251
+
+  - doi: "https://doi.org/10.1073/pnas.1205918109"
+    title: "Conservation of complex knotting and slipknotting patterns in proteins"
+    journal: "PNAS 2012"
+    journal_class: "hpj-pnas"
+    authors: "Sulkowska, Rawdon, Millett, Onuchic, Stasiak"
+    citations: 244
+
+  - doi: "https://doi.org/10.1093/nar/gku1059"
+    title: "KnotProt: a database of proteins with knots and slipknots"
+    journal: "NAR 2014"
+    journal_class: "hpj-nar"
+    authors: "Jamróz, Niemyska, Rawdon et al."
+    citations: 203
+
+  - doi: "https://doi.org/10.1073/pnas.0811147106"
+    title: "Dodging the crisis of folding proteins with knots"
+    journal: "PNAS 2009"
+    journal_class: "hpj-pnas"
+    authors: "Sulkowska, Sulkowski, Onuchic"
+    citations: 177
+
+  - doi: "https://doi.org/10.1073/pnas.0805468105"
+    title: "Stabilizing effect of knots on proteins"
+    journal: "PNAS 2008"
+    journal_class: "hpj-pnas"
+    authors: "Sulkowska, Sulkowski, Szymczak, Cieplak"
+    citations: 149
+
+# ── RESEARCH DOMAINS ───────────────────────────────────────────────────────────
+# Fields: num (display number), title, desc, link (anchor on topics page), accent (CSS color)
+research:
+  - num: "01"
+    title: "Protein Folding & Energy Landscapes"
+    desc: "How knotted proteins fold and move."
+    link: "/topics/#rpfd-01"
+    accent: "#1a5fa8"
+
+  - num: "02"
+    title: "Complex Topology: Knots, Lassos & Links"
+    desc: "Molecular entanglements in proteins and RNA."
+    link: "/topics/#rpfd-03"
+    accent: "#01696f"
+
+  - num: "03"
+    title: "Drug Design & Therapeutics"
+    desc: "Topology-guided targeting of proteins."
+    link: "/topics/#rpfd-04"
+    accent: "#8a5a12"
+
+  - num: "04"
+    title: "Structural Bioinformatics & Databases"
+    desc: "Open tools for structural analysis."
+    link: "/topics/#rpfd-02"
+    accent: "#6a1b9a"
+
+# ── AWARDS & RECOGNITION ───────────────────────────────────────────────────────
+# Fields: year, title, org, new (optional boolean — shows "New" badge if true)
+awards:
+  - year: 2026
+    title: "NSF NCEMS Working Group"
+    org: "National Synthesis Center · First Polish group selected"
+    new: true
+
+  - year: 2024
+    title: "EMBO Advanced Collaboration Grant"
+    org: "With Prof. Sophie Jackson, Cambridge University"
+    new: true
+
+  - year: 2024
+    title: "AIM SQuaRE Grant"
+    org: "American Institute of Mathematics · Caltech, USA"
+
+  - year: 2023
+    title: "IDUB Grant — Artificial Protein Design"
+    org: "University of Warsaw"
+
+  - year: 2017
+    title: "International Rising Talents"
+    org: "L'Oréal–UNESCO For Women in Science"
+
+  - year: 2017
+    title: "EMBO Young Investigator Programme"
+    org: "European Molecular Biology Organization"
+
+  - year: 2016
+    title: "L'Oréal Poland For Women in Science"
+    org: "16th Awards Ceremony"
+
+  - year: 2014
+    title: "EMBO Installation Grant"
+    org: "Only Pole to win two EMBO grants"
+
+  - year: 2013
+    title: "INTER Grant Laureate"
+    org: "Foundation for Polish Science (FNP)"
+
+# ── GRANTS & FUNDING ───────────────────────────────────────────────────────────
+# Fields: year, badge, title, url, external (bool), logo, logo_alt, logo_class
+grants:
+  - year: "2026"
+    badge: "NSF - NCEMS"
+    title: "National Synthesis Center for Emergence in the Molecular and Cellular Sciences"
+    url: "https://cent.uw.edu.pl/the-national-synthesis-center-for-emergence-in-the-molecular-and-cellular-sciences-grant-awarded-to-joanna-sulkowska/"
+    external: true
+    logo: "/assets/img/logos/media/nsf.svg"
+    logo_alt: "National Science Foundation"
+    logo_class: "hp-grant-logo-seal"
+
+  - year: "2024"
+    badge: "EMBO - Advanced Collaboration"
+    title: "EMBO Advanced Collaboration Grant"
+    url: "https://cent.uw.edu.pl/prof-joanna-sulkowska-has-been-awarded-an-embo-advanced-collaboration-grant/"
+    external: true
+    logo: "/assets/img/logos/media/embo.png"
+    logo_alt: "EMBO"
+    logo_class: "hp-grant-logo-wide"
+
+  - year: "2024"
+    badge: "AIM - SQuaRE"
+    title: "AIM SQuaRE Grant - American Institute of Mathematics"
+    url: "/news/aim-square-grant-caltech-2024/"
+    external: false
+    logo: "/assets/img/logos/funding/aim.png"
+    logo_alt: "American Institute of Mathematics"
+    logo_class: "hp-grant-logo-wide"
+
+  - year: "2023"
+    badge: "IDUB - University of Warsaw"
+    title: "IDUB Grant - Design of Artificial Proteins"
+    url: "/news/joanna-sulkowska-idub-artificial-proteins-2023/"
+    external: false
+    logo: "/assets/img/logos/media/uw.png"
+    logo_alt: "University of Warsaw"
+    logo_class: "hp-grant-logo-wide"
+
+# ── TEAM: "MORE" COLLABORATOR PILL ────────────────────────────────────────────
+# Controls the last card in the Team & Collaborators strip (links to collaboration page)
+# mini_logos: up to 3 small logo images shown in the cluster (filenames from assets/img/collab/)
+collab_more:
+  name: "University of Ljubljana & more"
+  inst: "All international collaborations"
+  mini_logos:
+    - src: "fmf-ljubljana.svg"
+    - src: "uw.png"
+    - src: "uva.svg"
+
+# ── EXPLORE THE LAB NAV CARDS ─────────────────────────────────────────────────
+# Fields: title, page (passed to show() JS function), desc, icon (inline SVG string)
+explore:
+  - title: "Research Topics"
+    page: "topics"
+    desc: "Protein topology, RNA, drug design, AI & prediction — our full research programme"
+    icon: '<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><ellipse cx="12" cy="12" rx="10" ry="4"/><ellipse cx="12" cy="12" rx="10" ry="4" transform="rotate(60 12 12)"/><ellipse cx="12" cy="12" rx="10" ry="4" transform="rotate(120 12 12)"/><circle cx="12" cy="12" r="1.5" fill="currentColor" stroke="none"/></svg>'
+
+  - title: "The Group"
+    page: "group"
+    desc: "Meet our team of physicists, mathematicians, and biologists"
+    icon: '<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><circle cx="9" cy="7" r="3"/><path d="M3 21v-2a5 5 0 0 1 5-5h2"/><circle cx="17" cy="9" r="2.5"/><path d="M21 21v-1.5a4 4 0 0 0-3-3.87"/></svg>'
+
+  - title: "Collaboration"
+    page: "collaboration"
+    desc: "10+ international research groups across 5 continents"
+    icon: '<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="5" r="2"/><circle cx="5" cy="19" r="2"/><circle cx="19" cy="19" r="2"/><line x1="12" y1="7" x2="5" y2="17"/><line x1="12" y1="7" x2="19" y2="17"/><line x1="7" y1="19" x2="17" y2="19"/></svg>'
+
+  - title: "Projects & Software"
+    page: "research"
+    desc: "Open databases and tools for the structural biology community"
+    icon: '<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><ellipse cx="12" cy="5" rx="8" ry="2.5"/><path d="M4 5v4c0 1.38 3.58 2.5 8 2.5s8-1.12 8-2.5V5"/><path d="M4 9v4c0 1.38 3.58 2.5 8 2.5s8-1.12 8-2.5V9"/><path d="M4 13v4c0 1.38 3.58 2.5 8 2.5s8-1.12 8-2.5v-4"/></svg>'
+
+  - title: "Publications"
+    page: "publications"
+    desc: "122+ publications — PNAS, NAR, JACS, Nature Communications, and more"
+    icon: '<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M2 6s1.5-2 5-2 5 2 5 2v13s-1.5-1-5-1-5 1-5 1V6z"/><path d="M12 6s1.5-2 5-2 5 2 5 2v13s-1.5-1-5-1-5 1-5 1V6z"/></svg>'

@@ -5,81 +5,183 @@ description: "International collaborators of the Sulkowska Lab."
 permalink: /collaboration/
 ---
 
-
-
-<!--
-# Generate the new collaboration.html that reads from _data/collaborators.yml
-collab_html = """---
-layout: default
-title: "Collaboration — Sulkowska Lab"
-description: "International collaborators of the Sulkowska Lab."
-permalink: /collaboration/
-  ╔══════════════════════════════════════════════════════════╗
-  ║  TO ADD / EDIT / REMOVE a collaborator:                 ║
-  ║  → Open  _data/collaborators.yml  and edit there.       ║
-  ║  → Drop their logo in  assets/img/collab/<logo file>    ║
-  ║  You never need to touch this file!                     ║
-  ╚══════════════════════════════════════════════════════════╝
-
-with open('output/collaboration.html', 'w', encoding='utf-8') as f:
-    f.write(collab_html)
-
-# Now ZIP everything together
-zip_path = 'output/collaboration_update.zip'
-with zipfile.ZipFile(zip_path, 'w', zipfile.ZIP_DEFLATED) as zf:
-    zf.write('output/collaborators.yml', '_data/collaborators.yml')
-    zf.write('output/collaboration.html', 'collaboration.html')
-    for fname in os.listdir('output/collab_logos'):
-        zf.write(f'output/collab_logos/{fname}', f'assets/img/collab/{fname}')
-
-size = os.path.getsize(zip_path) / 1024
-print(f"ZIP created: {zip_path} ({size:.0f} KB)")
-print(f"Contents:")
-with zipfile.ZipFile(zip_path) as zf:
-    for name in zf.namelist():
-        print(f"  {name}")
--->
-
 {% assign data = site.data.collaborators %}
 
-<div id="page-collab" class="page active collab-page">
+<style>
+/* ── SHARED TOKENS (match sulkowska.css rpfp values exactly) ── */
+:root {
+  --cl-side: 2rem;
+  --cl-transition: 180ms cubic-bezier(0.16,1,0.3,1);
+  --cl-shadow-sm: 0 1px 3px rgba(0,0,0,0.07);
+  --cl-shadow-md: 0 4px 16px rgba(0,0,0,0.09);
+  --cl-radius-lg: 0.75rem;
+  --cl-radius-xl: 1rem;
+}
 
-  <!-- HERO -->
-  <div class="collab-hero">
-    <div class="collab-hero-inner">
-      <div class="collab-hero-eyebrow">International Network</div>
-      <h2 class="collab-hero-title">Our Collaborators</h2>
-      <p class="collab-hero-sub">We work closely with leading research groups worldwide — spanning knot theory, bioinformatics, structural biology, mathematics, and biochemistry. Together we develop the tools and theory needed to understand the role of topology in living systems.</p>
-      <div class="collab-stats">
-        <div class="cs-item"><div class="cs-n">{{ data.stats.groups }}</div><div class="cs-l">Research groups</div></div>
-        <div class="cs-item"><div class="cs-n">{{ data.stats.continents }}</div><div class="cs-l">Continents</div></div>
-        <div class="cs-item"><div class="cs-n">{{ data.stats.years }}</div><div class="cs-l">Years of partnership</div></div>
+/* ── STATS BAR (full-width, same domain-header rhythm) ── */
+.cl-stats-bar {
+  display: flex; align-items: center; gap: 0;
+  background: linear-gradient(90deg, #0a1020 0%, #0f1a2e 100%);
+  border-bottom: 1px solid rgba(255,255,255,0.07);
+  padding: 1.35rem var(--cl-side);
+}
+.cl-stat-item {
+  display: flex; flex-direction: column; align-items: center;
+  padding: 0 1.6rem;
+  border-right: 1px solid rgba(255,255,255,0.12);
+  position: relative;
+}
+.cl-stat-item:first-child { padding-left: 0; }
+.cl-stat-item:last-child  { border-right: none; }
+.cl-stat-n {
+  font-family: 'Merriweather', serif;
+  font-size: clamp(1.4rem, 2vw, 1.9rem); font-weight: 700;
+  color: #fff; line-height: 1;
+}
+.cl-stat-l {
+  font-size: 0.62rem; font-weight: 700; letter-spacing: 0.1em;
+  text-transform: uppercase; color: rgba(255,255,255,0.4);
+  margin-top: 0.25rem;
+}
+
+/* ── SECTION HEADER (same horizontal rhythm as rpfp-dheader) ── */
+.cl-section {
+  width: 100%;
+  border-bottom: 1px solid #e0e4ec;
+}
+.cl-section-head {
+  display: flex; align-items: flex-start; gap: 1.2rem;
+  padding: 1.8rem var(--cl-side) 1.4rem;
+}
+.cl-section-num {
+  font-family: 'Merriweather', serif;
+  font-size: 2.4rem; font-weight: 900;
+  color: #01696f; line-height: 1; min-width: 58px; flex-shrink: 0;
+}
+.cl-section-label {
+  font-size: 0.62rem; font-weight: 800; letter-spacing: 0.14em;
+  text-transform: uppercase; color: #01696f; margin-bottom: 0.3rem;
+}
+.cl-section-title {
+  font-weight: 800; font-size: 1.15rem; color: #0a1020;
+  margin-bottom: 0.22rem; line-height: 1.25;
+}
+.cl-section-sub {
+  font-size: 0.83rem; color: #888; line-height: 1.55; max-width: 72ch;
+}
+.cl-count-chip {
+  display: inline-flex; align-items: center; justify-content: center;
+  min-width: 22px; height: 17px; padding: 0 0.4rem;
+  border-radius: 20px; background: #f0ede8;
+  font-size: 0.62rem; font-weight: 700; color: #7a7974;
+  margin-left: 0.4rem; vertical-align: middle;
+}
+
+/* ── CARD GRID (inside section, same 2rem side padding) ── */
+.cl-grid-wrap {
+  padding: 0 var(--cl-side) 2.2rem;
+}
+.cl-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+  gap: 1rem;
+}
+.cl-card {
+  display: flex; flex-direction: column;
+  border-radius: var(--cl-radius-xl); overflow: hidden;
+  background: #f9f8f5; border: 1px solid #ede9e3;
+  text-decoration: none; color: inherit;
+  transition: box-shadow var(--cl-transition), transform var(--cl-transition), border-color var(--cl-transition);
+  animation: clFadeUp 0.4s ease both;
+  animation-delay: calc(var(--i, 0) * 0.04s);
+}
+.cl-card:hover { box-shadow: var(--cl-shadow-md); transform: translateY(-4px); border-color: #c8c5be; text-decoration: none; }
+@keyframes clFadeUp { from { opacity: 0; transform: translateY(14px); } to { opacity: 1; transform: translateY(0); } }
+
+.cl-logo-wrap {
+  height: 96px; background: #fff;
+  display: flex; align-items: center; justify-content: center;
+  padding: 1rem 1.25rem; flex-shrink: 0;
+  border-bottom: 1px solid #ede9e3;
+}
+.cl-logo-wrap img { max-width: 78%; max-height: 60px; object-fit: contain; display: block; }
+.cl-logo-fallback {
+  width: 50px; height: 50px; border-radius: 50%;
+  display: none; align-items: center; justify-content: center;
+  font-size: 0.72rem; font-weight: 800; color: #fff; letter-spacing: 0.04em;
+}
+.cl-card-body {
+  padding: 0.85rem 1rem 1rem; flex: 1;
+  display: flex; flex-direction: column; gap: 0.15rem;
+}
+.cl-card-name  { font-weight: 700; font-size: 0.88rem; color: #0a1020; line-height: 1.3; }
+.cl-card-inst  { font-size: 0.75rem; color: #9a9896; line-height: 1.5; margin-top: 0.1rem; }
+.cl-card-topic { font-size: 0.75rem; color: #666; line-height: 1.6; flex: 1; margin-top: 0.35rem; }
+.cl-card-link  { font-size: 0.68rem; font-weight: 600; color: #01696f; margin-top: 0.55rem; }
+
+@media (max-width: 640px) {
+  :root { --cl-side: 1rem; }
+  .cl-grid { grid-template-columns: repeat(auto-fill, minmax(150px, 1fr)); }
+  .cl-section-num { font-size: 1.8rem; min-width: 40px; }
+  .cl-stats-bar { flex-wrap: wrap; gap: 0.5rem; }
+  .cl-stat-item { border-right: none; padding: 0 0.75rem; }
+}
+</style>
+
+<div id="page-collab" class="page active rpfp">
+
+  <!-- HERO — identical style to Research page (.rpfp-intro) -->
+  <div class="rpfp-intro">
+    <h1 class="rpfp-intro-title">Our International Collaborators</h1>
+    <p class="rpfp-intro-sub">We work closely with leading research groups worldwide — spanning knot theory, bioinformatics, structural biology, mathematics, and biochemistry. Together we develop the tools and theory needed to understand the role of topology in living systems.</p>
+  </div>
+
+  <!-- STATS BAR — full-width, same top/bottom padding as domain headers -->
+  <div class="cl-stats-bar">
+    <div class="cl-stat-item">
+      <div class="cl-stat-n">{{ data.stats.groups }}</div>
+      <div class="cl-stat-l">Research Groups</div>
+    </div>
+    <div class="cl-stat-item">
+      <div class="cl-stat-n">{{ data.stats.continents }}</div>
+      <div class="cl-stat-l">Continents</div>
+    </div>
+    <div class="cl-stat-item">
+      <div class="cl-stat-n">{{ data.stats.years }}</div>
+      <div class="cl-stat-l">Years of Partnership</div>
+    </div>
+  </div>
+
+  <!-- COLLABORATORS SECTION — same structure as rpfp-domain -->
+  <div class="cl-section">
+    <div class="cl-section-head">
+      <div class="cl-section-num">01</div>
+      <div>
+        <div class="cl-section-label">International Network</div>
+        <div class="cl-section-title">Collaborating Groups <span class="cl-count-chip">{{ data.collaborators | size }}</span></div>
+        <div class="cl-section-sub">Click any card to visit the collaborator's lab page.</div>
+      </div>
+    </div>
+
+    <div class="cl-grid-wrap">
+      <div class="cl-grid">
+        {% for c in data.collaborators %}
+        <a class="cl-card" href="{{ c.url }}" target="_blank" rel="noopener noreferrer" style="--i:{{ forloop.index0 }}">
+          <div class="cl-logo-wrap">
+            <img src="/assets/img/collab/{{ c.logo }}" alt="{{ c.fallback_text }}"
+                 onerror="this.style.display='none';this.nextElementSibling.style.display='flex'"/>
+            <div class="cl-logo-fallback" style="background:{{ c.fallback_color }}">{{ c.fallback_text }}</div>
+          </div>
+          <div class="cl-card-body">
+            <div class="cl-card-name">{{ c.name }}</div>
+            <div class="cl-card-inst">{{ c.inst }}</div>
+            <div class="cl-card-topic">{{ c.topic }}</div>
+            <div class="cl-card-link">{{ c.cta }}</div>
+          </div>
+        </a>
+        {% endfor %}
       </div>
     </div>
   </div>
 
-  <!-- COLLABORATORS GRID -->
-  <div class="collab-content">
-    <div class="collab-grid">
-
-      {% for c in data.collaborators %}
-      <div class="collab-card">
-        <div class="collab-photo">
-          <img src="/assets/img/collab/{{ c.logo }}"
-               alt="{{ c.fallback_text }}"
-               onerror="this.style.display='none';this.nextElementSibling.style.display='flex'"/>
-          <div class="collab-photo-fallback"
-               style="background:{{ c.fallback_color }};display:none">{{ c.fallback_text }}</div>
-        </div>
-        <div class="collab-info">
-          <div class="collab-name">{{ c.name }}</div>
-          <div class="collab-inst">{{ c.inst }}</div>
-          <div class="collab-topic">{{ c.topic }}</div>
-         
-        </div>
-      </div>
-      {% endfor %}
-
-    </div>
-  </div>
 </div>

@@ -1,0 +1,67 @@
+# Press Coverage — edit here to update the Press Coverage section
+# Fields: org, logo (filename in assets/img/logos/media/), logo_class (optional), url, year
+# Set more: true to put an item in the expandable "More coverage" section
+
+- org: "Business Insider"
+  logo: "business-insider.svg"
+  logo_class: "med-logo-long med-logo-compact"
+  url: "https://businessinsider.com.pl"
+  year: 2017
+
+- org: "Gazeta Wyborcza"
+  logo: "wyborcza.svg"
+  logo_class: "med-logo-wide med-logo-compact"
+  url: "https://wyborcza.pl"
+  year: 2017
+
+- org: "PAP — Polska Agencja Prasowa"
+  logo: "pap.svg"
+  logo_class: "med-logo-compact"
+  url: "https://www.pap.pl"
+  year: 2017
+
+- org: "Focus"
+  url: "https://www.focus.pl"
+  year: 2017
+
+- org: "Puls Biznesu"
+  url: "https://www.pb.pl"
+  year: 2017
+
+- org: "Na Mazowszu"
+  url: "https://namazowszu.pl"
+  year: 2017
+
+- org: "Polsat News"
+  logo: "polsat-news.svg"
+  logo_class: "med-logo-compact"
+  url: "https://www.polsatnews.pl"
+  year: 2017
+  more: true
+
+- org: "Sukces jest kobietą"
+  url: "https://sukces.pl"
+  year: 2017
+  more: true
+
+- org: "Forum Akademickie"
+  url: "https://forumakademickie.pl"
+  year: 2017
+  more: true
+
+- org: "Nauka Online"
+  url: "https://nauka.uw.edu.pl"
+  year: 2014
+  more: true
+
+- org: "Biotechnologia.pl"
+  url: "https://www.biotechnologia.pl"
+  year: 2013
+  more: true
+
+- org: "PAP — Zagadka związanych białek"
+  logo: "pap.svg"
+  logo_class: "med-logo-compact"
+  url: "https://www.pap.pl"
+  year: 2013
+  more: true

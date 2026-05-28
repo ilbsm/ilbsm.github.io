@@ -1,0 +1,50 @@
+# Videos section — edit here to update featured videos and archive links
+# youtube_channel: URL of the lab YouTube channel (used for the "Subscribe" pill)
+#
+# featured: up to 3 videos shown as embedded iframes
+#   embed_id:  YouTube video ID (part after ?v= or /embed/)
+#   title:     Shown as card heading and iframe title attribute
+#   logo:      Filename in assets/img/logos/media/
+#   logo_class: CSS modifier classes for the logo span
+#   subtitle:  Caption shown below the logo
+#
+# archive: links shown in the expandable archive list
+#   url:   Full URL (YouTube or other)
+#   title: Link label text
+
+youtube_channel: "https://www.youtube.com/channel/UCeLQTTlftS-APrHgFL8OYEw"
+
+featured:
+  - embed_id: "nlf9iqyRM58"
+    title: "EMBO Young Investigator Laureate"
+    logo: "embo.png"
+    logo_class: "med-logo-compact"
+    subtitle: "Interview after EMBO YIP 2017 award"
+
+  - embed_id: "ERkuYN_uVfY"
+    title: "INTER FNP — Popularization of Science 2013"
+    logo: "fnp.svg"
+    logo_class: "med-logo-compact"
+    subtitle: "Public science lecture"
+
+  - embed_id: "bi_SNHNcSBY"
+    title: "INTER Grant Laureate 2013"
+    logo: "fnp.svg"
+    logo_class: "med-logo-compact"
+    subtitle: "FNP interview"
+
+archive:
+  - url: "https://www.youtube.com/watch?v=vLU3DHUwUoQ"
+    title: "Jutronauci — Wizjonerzy, Pasjonaci, Innowatorzy (Science Talk, 38K views)"
+
+  - url: "https://www.youtube.com/watch?v=2YgLn4VZRBU"
+    title: "Onet News Interview — TV appearance"
+
+  - url: "https://www.youtube.com/watch?v=0cNIrE5JV_U"
+    title: "FWiS — Dlaczego warto ubiegać się o stypendium (L'Oréal FWiS)"
+
+  - url: "https://www.youtube.com/watch?v=hJqaGJqOVo0"
+    title: "L'Oréal Polska Dla Kobiet i Nauki — 2016 Award"
+
+  - url: "https://jsulkowska.cent.uw.edu.pl/movies/"
+    title: "Biological Diffusion & Brownian Dynamics Brainstorm 2 — 2010"

@@ -1,0 +1,257 @@
+# ══════════════════════════════════════════════════════════════════
+#  RESEARCH TOPICS PAGE  —  _data/topics.yml
+#  Edit this file to update all content on the Research page.
+#  No HTML knowledge needed — just change the text below.
+# ══════════════════════════════════════════════════════════════════
+
+
+# ── HERO (top banner) ─────────────────────────────────────────────
+hero:
+  title: "From protein topology to targeted therapeutics"
+  sub:   "Physicists, mathematicians, bioinformaticians and biochemists — united by protein topology, from knot invariants to drug design."
+
+
+# ── RESEARCH DOMAINS ──────────────────────────────────────────────
+#
+#  Each domain has:
+#    id       — unique HTML anchor (used by Jump-to-section button)
+#    number   — display label shown in the badge (01, 02 …)
+#    color    — hex accent color for badge and top border
+#    alt      — true = light background, false = white background
+#    title    — domain heading
+#    layout   — where the image goes: "right" or "left"
+#    figures  — list of research images (see field notes below)
+#    text     — body paragraph(s) — HTML is supported (<strong>, etc.)
+#    papers   — list of featured publications
+#
+#  Figure fields:
+#    href     — DOI or URL the figure links to
+#    img      — image path (relative to /assets/img/)
+#    img2x    — high-res version path (same folder)
+#    width/height — original image dimensions in pixels
+#    alt      — screen-reader description
+#    caption  — text shown below the image
+#    wide     — true = image spans full column width (use for single wide figures)
+#
+#  Paper jclass options (controls badge color):
+#    rpfp-pj-pnas  →  blue    (PNAS, Nature, Science…)
+#    rpfp-pj-nar   →  green   (NAR, Nucleic Acids…)
+#    rpfp-pj-ps    →  purple  (Protein Science, Structure…)
+#    rpfp-pj-bib   →  orange  (Briefings, Bioinformatics…)
+# ──────────────────────────────────────────────────────────────────
+
+domains:
+
+  # ── DOMAIN 01 ───────────────────────────────────────────────────
+  - id:     "rpfd-01"
+    number: "01"
+    color:  "#1a73e8"
+    alt:    false
+    title:  "Protein Folding & Energy Landscapes"
+    layout: "right"
+
+    figures:
+      - href:    "https://doi.org/10.1073/pnas.1207864109"
+        img:     "research/Picture3.png"
+        img2x:   "research/Picture3@2x.png"
+        width:   926
+        height:  325
+        alt:     "DCA pipeline"
+        caption: "DCA pipeline: MSA to structure prediction"
+        wide:    true
+
+    text: |
+      <p>Proteins with non-trivial topology — knots, slipknots, and lassos — pose one of structural biology's deepest questions: how does a linear chain reliably fold into a knot without getting permanently trapped? We build multidimensional energy-landscape models using coarse-grained Go-models and maximum-entropy approaches. Our central finding: <strong>topological barriers</strong> protect protein function and generate unique mechanical signatures measurable by single-molecule force spectroscopy.</p>
+
+    papers:
+      - journal: "PNAS 2008"
+        jclass:  "rpfp-pj-pnas"
+        url:     "https://doi.org/10.1073/pnas.0805468105"
+        title:   "Stabilizing effect of knots on proteins"
+        authors: "Sulkowska, Sulkowski, Szymczak, Cieplak"
+        cites:   "149 cit."
+
+      - journal: "PNAS 2009"
+        jclass:  "rpfp-pj-pnas"
+        url:     "https://doi.org/10.1073/pnas.0811147106"
+        title:   "Dodging the crisis of folding proteins with knots"
+        authors: "Sulkowska, Sulkowski, Onuchic"
+        cites:   "177 cit."
+
+      - journal: "PNAS 2012"
+        jclass:  "rpfp-pj-pnas"
+        url:     "https://doi.org/10.1073/pnas.1207864109"
+        title:   "Genomics-aided structure prediction"
+        authors: "Sulkowska, Morcos, Weigt, Hwa, Onuchic"
+        cites:   "251 cit."
+
+
+  # ── DOMAIN 02 ───────────────────────────────────────────────────
+  - id:     "rpfd-02"
+    number: "02"
+    color:  "#26a69a"
+    alt:    true
+    title:  "Bioinformatics & Structure Prediction"
+    layout: "left"
+
+    figures:
+      - href:    "https://doi.org/10.1073/pnas.1207864109"
+        img:     "research/bioinf2.png"
+        img2x:   "research/bioinf2@2x.png"
+        width:   666
+        height:  287
+        alt:     "MSA contact map"
+        caption: "MSA alignment · conservation · contact map prediction"
+        wide:    true
+
+    text: |
+      <p>We build the computational infrastructure for proteome-scale topological analysis — our databases <strong>KnotProt</strong>, <strong>AlphaKnot</strong>, <strong>LassoProt</strong>, and <strong>LinkProt</strong> catalogue topological complexity across hundreds of thousands of structures. Analysing AlphaFold predictions, we were among the first to discover <strong>new knot types</strong> in the human proteome, including the rare 6₃ stevedore knot never seen in experimental data. Direct Coupling Analysis (DCA) further extracts co-evolutionary signals to predict 3D residue contacts from sequence alone.</p>
+
+    papers:
+      - journal: "NAR 2014"
+        jclass:  "rpfp-pj-nar"
+        url:     "https://doi.org/10.1093/nar/gku1059"
+        title:   "KnotProt: a database of proteins with knots and slipknots"
+        authors: "Jamróz, Niemyska, Rawdon et al."
+        cites:   "203 cit."
+
+      - journal: "NAR 2022"
+        jclass:  "rpfp-pj-nar"
+        url:     "https://doi.org/10.1093/nar/gkac388"
+        title:   "AlphaKnot: server to analyze entanglement in AlphaFold structures"
+        authors: "Niemyska, Rubach, Greń et al."
+        cites:   "37 cit."
+
+      - journal: "Protein Sci. 2023"
+        jclass:  "rpfp-pj-ps"
+        url:     "https://doi.org/10.1002/pro.4631"
+        title:   "AlphaFold predicts novel human proteins with knots"
+        authors: "Perlinska, Niemyska, Greń et al."
+        cites:   "33 cit."
+
+
+  # ── DOMAIN 03 ───────────────────────────────────────────────────
+  - id:     "rpfd-03"
+    number: "03"
+    color:  "#9c27b0"
+    alt:    false
+    title:  "Applied Mathematics & Knot Theory"
+    layout: "right"
+
+    figures:
+      - href:    "https://doi.org/10.1073/pnas.1205918109"
+        img:     "research/math1.png"
+        img2x:   "research/math1@2x.png"
+        width:   490
+        height:  245
+        alt:     "Knot types survey"
+        caption: "Knotted and slipknotted protein types"
+
+      - href:    "https://doi.org/10.1093/nar/gkz845"
+        img:     "research/math2.png"
+        img2x:   "research/math2@2x.png"
+        width:   510
+        height:  216
+        alt:     "Seifert surface"
+        caption: "Seifert surface · topological linking"
+
+    text: |
+      <p>Classifying protein topology requires rigorous mathematics: we develop <strong>knot invariants</strong> — Alexander, Jones, and HOMFLY polynomials — that uniquely identify knot types in open-chain biomolecules. We extend these tools to <strong>Seifert surfaces</strong> and <strong>genus theory</strong>, capturing topological complexity in both proteins and nucleic acids. Our open-source Topoly Python package makes all invariants freely accessible to the community.</p>
+
+    papers:
+      - journal: "PNAS 2012"
+        jclass:  "rpfp-pj-pnas"
+        url:     "https://doi.org/10.1073/pnas.1205918109"
+        title:   "Conservation of complex knotting and slipknotting patterns"
+        authors: "Sulkowska, Rawdon, Millett, Onuchic, Stasiak"
+        cites:   "244 cit."
+
+      - journal: "NAR 2019"
+        jclass:  "rpfp-pj-nar"
+        url:     "https://doi.org/10.1093/nar/gkz845"
+        title:   "Genus for biomolecules"
+        authors: "Rubach, Zajac, Jastrzebski, Sulkowska, Sułkowski"
+        cites:   "13 cit."
+
+      - journal: "Briefings Bioinf. 2020"
+        jclass:  "rpfp-pj-bib"
+        url:     "https://doi.org/10.1093/bib/bbaa196"
+        title:   "Topoly: Python package to analyze topology of polymers"
+        authors: "Dąbrowski-Tumański, Rubach et al."
+        cites:   "69 cit."
+
+
+  # ── DOMAIN 04 ───────────────────────────────────────────────────
+  - id:     "rpfd-04"
+    number: "04"
+    color:  "#e53935"
+    alt:    true
+    title:  "Biochemistry & Drug Design"
+    layout: "left"
+
+    figures:
+      - href:    "https://doi.org/10.1093/nar/gky1140"
+        img:     "research/chem1.png"
+        img2x:   "research/chem1@2x.png"
+        width:   537
+        height:  260
+        alt:     "Knotted vs unknotted fold"
+        caption: "Knotted fold vs. unknotted fold - TrmD"
+
+      - href:    "https://doi.org/10.1073/pnas.0805468105"
+        img:     "research/chem2.png"
+        img2x:   "research/chem2@2x.png"
+        width:   489
+        height:  277
+        alt:     "Antimicrobial drugs"
+        caption: "Antimicrobial drug targets"
+
+    text: |
+      <p>The <strong>TrmD enzyme</strong> — a tRNA methyltransferase essential for bacterial translation — owes its catalytic activity to a trefoil knot at its active site, a geometry impossible in unknotted proteins, making it a compelling <strong>antibiotic target</strong> with no structural human homologue. We apply DCA-guided computational docking and all-atom simulations to discover inhibitors for knotted proteins implicated in infectious disease, cancer, and neurodegeneration.</p>
+
+    papers:
+      - journal: "NAR 2018"
+        jclass:  "rpfp-pj-nar"
+        url:     "https://doi.org/10.1093/nar/gky1140"
+        title:   "KnotProt 2.0: database of proteins with knots and other entangled structures"
+        authors: "Dąbrowski-Tumański, Rubach et al."
+        cites:   "124 cit."
+
+      - journal: "NAR 2024"
+        jclass:  "rpfp-pj-nar"
+        url:     "https://doi.org/10.1093/nar/gkae443"
+        title:   "AlphaKnot 2.0: visualization of proteins' knotting"
+        authors: "Rubach, Sikora, Jarmolinska et al."
+        cites:   "11 cit."
+
+      - journal: "Protein Sci. 2024"
+        jclass:  "rpfp-pj-ps"
+        url:     "https://doi.org/10.1002/pro.4998"
+        title:   "Knot or not? Identifying unknotted proteins in knotted families with ML"
+        authors: "Sikora, Klimentova, Uchal et al."
+        cites:   "9 cit."
+
+
+# ── JOIN / OPEN POSITIONS (bottom banner) ─────────────────────────
+join:
+  title:           "We are looking for curious,<br>motivated scientists"
+  sub:             "Physicists, mathematicians, biologists, and chemists — united by curiosity and rigorous thinking."
+
+  # Bullet points shown under the subtitle
+  values:
+    - "Interdisciplinary — knot theory to biochemistry"
+    - "International network — Rice, UVA, Ljubljana, Caltech"
+    - "14 open-source tools & HORDA HPC access"
+
+  # Call-to-action button
+  cta_label:   "View Open Positions"
+  cta_href:    "#"
+  cta_onclick: "show('contact')"
+
+  # Right-side positions box
+  positions_title: "Open positions"
+  positions:
+    - "PhD students"
+    - "Postdoctoral researchers"
+    - "Visiting researchers & students"
+  positions_note: "Positions are funded through NSF, EMBO, and University of Warsaw programs. Informal inquiries are always welcome."

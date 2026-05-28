@@ -1,0 +1,37 @@
+# Recent News items — edit here to update the Recent News list in News & Grants section
+# Fields: source, logo (filename in assets/img/logos/media/), logo_class, url, year, title
+
+- source: "Centre of New Technologies"
+  logo: "cent.webp"
+  logo_class: "med-logo-xwide"
+  url: "https://cent.uw.edu.pl/the-national-synthesis-center-for-emergence-in-the-molecular-and-cellular-sciences-grant-awarded-to-joanna-sulkowska/"
+  year: 2026
+  title: "National Synthesis Center for Emergence (NCEMS) grant awarded"
+
+- source: "Centre of New Technologies"
+  logo: "cent.webp"
+  logo_class: "med-logo-xwide"
+  url: "https://cent.uw.edu.pl/six-cent-researchers-with-new-national-science-centre-grants/"
+  year: 2025
+  title: "Six CeNT researchers with new National Science Centre grants (NCN OPUS 28)"
+
+- source: "EMBO"
+  logo: "embo.png"
+  logo_class: "med-logo-wide"
+  url: "https://cent.uw.edu.pl/prof-joanna-sulkowska-has-been-awarded-an-embo-advanced-collaboration-grant/"
+  year: 2024
+  title: "EMBO Advanced Collaboration Grant awarded to Prof. Joanna Sulkowska"
+
+- source: "University of Warsaw"
+  logo: "uw.png"
+  logo_class: "med-logo-wide"
+  url: "https://en.uw.edu.pl/assist-prof-joanna-sulkowska-among-embo-young-investigators/"
+  year: 2017
+  title: "Asst. Prof. Joanna Sułkowska among EMBO Young Investigators"
+
+- source: "Radio RMF Classic / Polska Nauka"
+  logo: "rmf-classic.png"
+  logo_class: "med-logo-wide"
+  url: "http://polishscience.pl/en/dr-joanna-sulkowska-becomes-person-of-the-year-2017-in-radio-rmf-classic-contest/"
+  year: 2018
+  title: "Dr Joanna Sułkowska — Person of the Year 2017 (RMF Classic)"
