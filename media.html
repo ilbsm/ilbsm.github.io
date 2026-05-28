@@ -29,7 +29,7 @@ permalink: /media/
 
 /* ── SECTIONS DROPDOWN (matches home) ── */
 .hp-util-row {
-  display: flex; justify-content: flex-end; align-items: flex-start;
+  display: none; justify-content: flex-end; align-items: flex-start;
   height: 0; overflow: visible;
   position: sticky; top: calc(var(--nav-h, 42px) + 0.75rem);
   z-index: 100; pointer-events: none;
@@ -148,41 +148,64 @@ permalink: /media/
 .mg-lb-cap { color:rgba(255,255,255,0.75); font-size:var(--text-xs); text-align:center; margin-top:var(--space-3); }
 
 /* ── VIDEOS (white) ── */
-.med-video-grid-featured {
-  display: grid; grid-template-columns: repeat(3,1fr); gap: var(--space-4); margin-bottom: var(--space-5);
+.med-video-section .hp-row-head {
+  align-items: center;
+  margin-bottom: var(--space-4);
 }
-.med-vid-card { background: #f9f8f5; border-radius: var(--radius-lg); overflow: hidden; border: 1px solid #e8e5e0; text-decoration: none; color: inherit; display: flex; flex-direction: column; transition: box-shadow var(--transition), transform var(--transition); }
+.med-video-grid-featured {
+  display: grid; grid-template-columns: repeat(3,1fr); gap: var(--space-4); margin-bottom: var(--space-4);
+}
+.med-vid-card {
+  background: #f9f8f5; border-radius: 10px; overflow: hidden;
+  border: 1px solid #e2ded8; text-decoration: none; color: inherit;
+  display: flex; flex-direction: column;
+  box-shadow: 0 1px 4px rgba(0,0,0,0.045);
+  transition: box-shadow var(--transition), transform var(--transition);
+}
 .med-vid-card:hover { box-shadow: var(--shadow-md); transform: translateY(-2px); }
-.med-vid-frame { aspect-ratio:16/9; }
-.med-vid-frame iframe { width:100%; height:100%; border:none; }
-.med-vid-info { padding: var(--space-4); flex:1; display:flex; flex-direction:column; gap: var(--space-2); }
-.med-vid-t { font-size: var(--text-sm); font-weight: 600; color: #28251d; line-height: 1.4; }
-.med-vid-s { font-size: var(--text-xs); color: #9a9896; display: flex; align-items: center; gap: var(--space-2); }
-.med-vid-archive { display: flex; flex-direction: column; gap: 2px; margin-top: var(--space-4); }
+.med-vid-frame { aspect-ratio:16/9; background:#111; }
+.med-vid-frame iframe { width:100%; height:100%; border:none; display:block; }
+.med-vid-info { padding: 0.72rem 0.9rem 0.8rem; flex:1; display:flex; flex-direction:column; gap: 0.45rem; }
+.med-vid-t { font-size: 1rem; font-weight: 800; color: #322f2b; line-height: 1.25; }
+.med-vid-s { font-size: 0.9rem; color: #9a9896; display: flex; align-items: center; gap: var(--space-2); line-height:1.35; }
+.med-archive-toggle {
+  display: inline-flex; align-items: center; gap: 0.55rem;
+  min-height: 34px; padding: 0.35rem 1rem;
+  border-radius: var(--radius-full);
+  border: 1px solid #d9d4cc; background: #f0ede8; color: #5b5752;
+  font-family: inherit; font-size: 0.88rem; font-weight: 800;
+  cursor: pointer; box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+  transition: background var(--transition), border-color var(--transition), color var(--transition);
+}
+.med-archive-toggle:hover { background: #e9e5df; border-color: #cfc8bf; color: #33302d; }
+.med-archive-toggle svg { transition: transform var(--transition); }
+.med-archive-toggle.is-closed svg { transform: rotate(180deg); }
+.med-vid-archive { display: flex; flex-direction: column; gap: 0.42rem; }
 .med-vid-archive-label {
   display: flex; align-items: center; gap: var(--space-2);
-  font-size: var(--text-xs); font-weight: 700; letter-spacing: 0.08em;
-  text-transform: uppercase; color: #9a9896; margin-bottom: var(--space-2);
+  font-size: 0.84rem; font-weight: 900; letter-spacing: 0.08em;
+  text-transform: uppercase; color: #9a9896; margin: 0.1rem 0 0.3rem;
 }
 .med-vid-arc-item {
   display: flex; align-items: center; gap: var(--space-2);
-  padding: var(--space-2) var(--space-3); border-radius: var(--radius-sm);
-  text-decoration: none; font-size: var(--text-xs); color: #5a5957;
+  padding: 0.35rem 0.55rem; border-radius: var(--radius-sm);
+  text-decoration: none; font-size: 0.86rem; color: #66615d;
   transition: background var(--transition), color var(--transition);
 }
 .med-vid-arc-item:hover { background: #f0ede8; color: #28251d; }
 .med-vid-yt-pill {
   display: inline-flex; align-items: center; gap: var(--space-3);
-  padding: var(--space-4) var(--space-5); border-radius: var(--radius-lg);
+  padding: 1rem 1.25rem; border-radius: var(--radius-lg);
   background: #f9f8f5; border: 1px solid #e8e5e0;
   text-decoration: none; transition: box-shadow var(--transition), border-color var(--transition);
-  margin-top: var(--space-4); white-space: nowrap;
+  white-space: nowrap; align-self: start;
 }
 .med-vid-yt-pill:hover { box-shadow: var(--shadow-sm); border-color: #c8c5be; }
 .med-vid-bottom-row {
   display: grid; grid-template-columns: 1fr auto; gap: var(--space-4); align-items: start;
   padding-top: var(--space-4); border-top: 1px solid #f0ede8;
 }
+.med-vid-bottom-row.med-archive-hidden { display: none; }
 
 /* ── SOURCE LOGO ── */
 .med-src-logo {
@@ -298,6 +321,441 @@ permalink: /media/
 .med-grant-funder { margin-bottom: var(--space-1); }
 .med-grant-title { font-size: var(--text-sm); font-weight: 600; color: #28251d; line-height: 1.4; flex: 1; }
 .med-grant-sub { font-size: var(--text-xs); color: #9a9896; margin-top: auto; }
+
+/* Media restoration blocks */
+.med-shot-section {
+  padding: 0.25rem 1.65rem 1rem;
+}
+.med-shot-section .hp-row-head {
+  margin-bottom: 0.75rem;
+  padding-bottom: 0.55rem;
+  border-bottom: 1px solid #eee9e2;
+}
+.med-shot-section .hp-title {
+  color: #073d55;
+  font-size: 2rem;
+  font-weight: 800;
+  line-height: 1.15;
+}
+
+#ms-broadcast .med-tv-radio-grid {
+  align-items: start;
+  gap: 1rem;
+}
+#ms-broadcast .med-broadcast-col-label {
+  margin-bottom: 0.65rem;
+  font-size: 0.72rem;
+  font-weight: 800;
+  letter-spacing: 0.12em;
+}
+#ms-broadcast .med-link-list {
+  gap: 0.4rem;
+}
+#ms-broadcast .med-link-item {
+  grid-template-columns: minmax(220px, 300px) minmax(0, 1fr) auto;
+  gap: 0.95rem;
+  min-height: 50px;
+  padding: 0.42rem 0.72rem;
+  border: 1px solid #e5dfd8;
+  border-radius: 7px;
+  background: #fbfaf8;
+  box-shadow: none;
+  box-sizing: border-box;
+}
+#ms-broadcast .med-link-item:hover {
+  background: #fff;
+  border-color: #d5cbc1;
+  box-shadow: none;
+}
+#ms-broadcast .med-li-left,
+#ms-broadcast .med-li-source {
+  min-width: 0;
+}
+#ms-broadcast .med-li-source {
+  overflow: hidden;
+}
+#ms-broadcast .med-src-name {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+#ms-broadcast .med-src-logo {
+  width: 54px;
+  min-width: 54px;
+  height: 24px;
+  padding: 3px 6px;
+  border-color: #e6edf0;
+  border-radius: 6px;
+  box-shadow: 0 1px 4px rgba(13,43,51,0.05);
+}
+#ms-broadcast .med-src-logo.round {
+  width: 30px;
+  min-width: 30px;
+  height: 30px;
+  padding: 4px;
+}
+#ms-broadcast .med-logo-tok-text {
+  color: #2515a8;
+  font-size: 0.68rem;
+  font-weight: 900;
+  letter-spacing: 0.05em;
+}
+#ms-broadcast .med-src-name,
+#ms-broadcast .med-li-title {
+  font-size: 0.78rem;
+}
+#ms-broadcast .med-src-name {
+  font-weight: 800;
+}
+#ms-broadcast .med-li-title {
+  line-height: 1.25;
+}
+#ms-broadcast .med-li-arrow {
+  width: 13px;
+  height: 13px;
+  color: #b6b6b2;
+}
+
+#ms-news .med-grants-label {
+  margin: 0.1rem 0 1rem;
+  color: #00696f;
+  font-size: 0.84rem;
+  font-weight: 900;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+#ms-news .med-grants-grid {
+  grid-template-columns: repeat(6, minmax(0, 1fr));
+  grid-auto-rows: 1fr;
+  gap: 0.75rem;
+}
+#ms-news .med-grant-card {
+  box-sizing: border-box;
+  min-height: 218px;
+  height: 100%;
+  padding: 1.15rem 1.05rem 1.1rem;
+  border-color: #d9d4cc;
+  border-radius: 10px;
+  background: #fbfaf8;
+  box-shadow: none;
+}
+#ms-news .med-grant-card:hover {
+  transform: none;
+  box-shadow: 0 2px 9px rgba(13,43,51,0.07);
+}
+#ms-news .med-grant-funder {
+  min-height: 34px;
+  margin-bottom: 0.95rem;
+}
+#ms-news .med-grant-title {
+  font-size: 1rem;
+  font-weight: 800;
+  line-height: 1.22;
+}
+#ms-news .med-grant-sub {
+  color: #95918d;
+  font-size: 0.88rem;
+  line-height: 1.55;
+  margin-top: auto;
+}
+#ms-news .med-src-logo {
+  height: 27px;
+  box-shadow: 0 1px 5px rgba(13,43,51,0.05);
+}
+#ms-news .med-src-logo.round {
+  width: 33px;
+  min-width: 33px;
+  height: 33px;
+}
+#ms-news .hp-eyebrow {
+  margin: 2.65rem 0 0.75rem;
+  color: #00696f;
+  font-size: 0.84rem;
+  font-weight: 900;
+}
+#ms-news > .med-link-list {
+  gap: 0.55rem;
+}
+#ms-news > .med-link-list .med-link-item {
+  grid-template-columns: minmax(320px, 430px) minmax(0, 1fr) auto;
+  min-height: 59px;
+  padding: 0.55rem 0.9rem;
+  border: 1px solid #e5dfd8;
+  border-radius: 8px;
+  background: #fbfaf8;
+  box-shadow: none;
+  box-sizing: border-box;
+}
+#ms-news > .med-link-list .med-link-item:hover {
+  background: #fff;
+  border-color: #d5cbc1;
+  box-shadow: none;
+}
+#ms-news > .med-link-list .med-li-left {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  align-items: center;
+  gap: 0.9rem;
+  min-width: 0;
+}
+#ms-news > .med-link-list .med-li-source {
+  min-width: 0;
+}
+#ms-news > .med-link-list .med-src-name {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+#ms-news > .med-link-list .med-li-year {
+  min-width: 47px;
+  padding: 0.1rem 0.55rem;
+  border: 1px solid #d8d2c9;
+  background: #ece9e3;
+  color: #302e2a;
+  font-size: 0.78rem;
+  font-weight: 900;
+  text-align: center;
+}
+#ms-news > .med-link-list .med-li-title {
+  min-width: 0;
+  color: #28251d;
+  font-size: 1rem;
+  line-height: 1.35;
+}
+#ms-news > .med-link-list .med-li-arrow {
+  width: 14px;
+  height: 14px;
+  color: #b6b6b2;
+}
+
+#ms-interviews .hp-eyebrow,
+#ms-press .hp-eyebrow {
+  display: none;
+}
+#ms-interviews .hp-row-head,
+#ms-press .hp-row-head {
+  margin-bottom: 0.85rem;
+  padding-bottom: 0.55rem;
+  border-bottom: 1px solid #eee9e2;
+}
+#ms-interviews .hp-title,
+#ms-press .hp-title {
+  color: #073d55;
+  font-size: 2rem;
+  font-weight: 800;
+  line-height: 1.15;
+}
+#ms-interviews .med-interview-cards {
+  grid-template-columns: repeat(5, minmax(0, 1fr));
+  gap: 1rem;
+}
+#ms-interviews .med-int-card {
+  min-height: 230px;
+  padding: 1.45rem 1.55rem;
+  border-color: #d9d4cc;
+  border-radius: 10px;
+  background: #fbfaf8;
+  box-shadow: none;
+}
+#ms-interviews .med-int-card:hover {
+  transform: none;
+  box-shadow: 0 2px 9px rgba(13,43,51,0.07);
+}
+#ms-interviews .med-int-source {
+  min-height: 34px;
+  gap: 0.75rem;
+  align-items: center;
+}
+#ms-interviews .med-int-source .med-src-name {
+  color: #332f2b;
+  font-size: 0.88rem;
+  font-weight: 900;
+  text-transform: uppercase;
+}
+#ms-interviews .med-int-year {
+  color: #b1afab;
+  font-size: 0.9rem;
+}
+#ms-interviews .med-int-title {
+  color: #28251d;
+  font-size: 1rem;
+  font-weight: 800;
+  line-height: 1.4;
+}
+#ms-interviews .med-int-arrow {
+  display: none;
+}
+#ms-press .med-press-grid {
+  grid-template-columns: repeat(6, minmax(0, 1fr));
+  gap: 0.2rem;
+}
+#ms-press .med-press-item {
+  min-height: 100px;
+  padding: 1rem 1.25rem;
+  border: 1px solid #dfe8f2;
+  border-radius: 6px;
+  background: #fff;
+  box-sizing: border-box;
+}
+#ms-press .med-press-item:hover {
+  background: #fbfdff;
+}
+#ms-press .med-press-org {
+  font-size: 1rem;
+  font-weight: 500;
+}
+#ms-press .med-press-yr {
+  display: none;
+}
+
+#ms-talks .hp-row-head {
+  align-items: flex-start;
+  margin-bottom: 0.75rem;
+}
+#ms-talks .med-talks-stats {
+  gap: 1.35rem;
+}
+#ms-talks .med-tstat-n {
+  color: #00696f;
+  font-size: 2.35rem;
+  font-weight: 900;
+}
+#ms-talks .med-tstat-l {
+  color: #8b8883;
+  font-size: 0.72rem;
+  font-weight: 900;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+#ms-talks .med-timeline {
+  gap: 2rem;
+}
+#ms-talks .med-tl-item {
+  grid-template-columns: 52px 1fr;
+  gap: 0.7rem;
+}
+#ms-talks .med-tl-year-col {
+  padding-top: 0.35rem;
+}
+#ms-talks .med-tl-year {
+  display: inline-block;
+  padding: 0 0.15rem;
+  background: #fbfbfb;
+  font-size: 0.92rem;
+  font-weight: 800;
+  line-height: 1.1;
+}
+#ms-talks .med-tl-line {
+  display: none;
+}
+#ms-talks .med-tl-cards {
+  gap: 0.35rem;
+}
+#ms-talks .med-tl-card {
+  min-height: 60px;
+  padding: 0.65rem 0.75rem;
+  border-radius: 10px;
+  border-color: #e5dfd8;
+  background: #fbfaf8;
+  box-shadow: none;
+}
+#ms-talks .med-tl-card:hover {
+  box-shadow: none;
+  border-color: #d5cbc1;
+}
+#ms-talks .med-tc-tag {
+  margin-bottom: 0.28rem;
+  font-size: 0.84rem;
+  font-weight: 900;
+  letter-spacing: 0.12em;
+}
+#ms-talks .med-tc-title {
+  margin-bottom: 0.12rem;
+  font-size: 0.98rem;
+  font-weight: 800;
+  line-height: 1.25;
+}
+#ms-talks .med-tc-body {
+  color: #7c7975;
+  font-size: 0.86rem;
+}
+#ms-talks .med-tc-link {
+  margin-top: 0.35rem;
+  font-size: 0.86rem;
+  font-weight: 800;
+}
+#ms-talks .med-tc-blue .med-tc-tag,
+#ms-talks .med-tc-purple .med-tc-tag {
+  color: #3a6e9a;
+}
+#ms-talks .med-tc-teal .med-tc-tag {
+  color: #257f80;
+}
+#ms-talks .med-tc-orange .med-tc-tag {
+  color: #667f70;
+}
+#ms-talks .med-tc-red .med-tc-tag {
+  color: #5e789e;
+}
+#ms-talks .med-tc-blue,
+#ms-talks .med-tc-purple {
+  border-left-color: #3a6e9a;
+}
+#ms-talks .med-tc-teal {
+  border-left-color: #257f80;
+}
+#ms-talks .med-tc-orange {
+  border-left-color: #667f70;
+}
+#ms-talks .med-tc-red {
+  border-left-color: #5e789e;
+}
+#ms-talks .med-tc-purple .med-tc-link {
+  color: #7b1fa2;
+}
+#ms-talks .med-tc-red .med-tc-link {
+  color: #d51f1f;
+}
+
+@media (max-width: 980px) {
+  #ms-broadcast .med-link-item {
+    grid-template-columns: 190px 1fr auto;
+  }
+  #ms-news .med-grants-grid,
+  #ms-interviews .med-interview-cards,
+  #ms-press .med-press-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+  #ms-news > .med-link-list .med-link-item {
+    grid-template-columns: minmax(260px, 340px) minmax(0, 1fr) auto;
+  }
+}
+@media (max-width: 640px) {
+  .med-shot-section {
+    padding: 0.8rem 1rem 1rem;
+  }
+  #ms-broadcast .med-link-item {
+    grid-template-columns: 1fr auto;
+  }
+  #ms-broadcast .med-li-left {
+    grid-column: 1 / -1;
+  }
+  #ms-news .med-grants-grid,
+  #ms-interviews .med-interview-cards,
+  #ms-press .med-press-grid {
+    grid-template-columns: 1fr;
+  }
+  #ms-news > .med-link-list .med-link-item {
+    grid-template-columns: 1fr auto;
+  }
+  #ms-news > .med-link-list .med-li-left,
+  #ms-news > .med-link-list .med-li-title {
+    grid-column: 1 / -1;
+  }
+  #ms-talks .med-tl-item {
+    grid-template-columns: 44px 1fr;
+  }
+}
 
 /* ── FEATURED IN MARQUEE (white) ── */
 .med-feat-wrap { overflow: hidden; }
@@ -491,66 +949,53 @@ permalink: /media/
 
 
   <!-- ═══ VIDEOS ═══ -->
-  <div id="ms-videos" class="hp-sec">
+  <div id="ms-videos" class="hp-sec med-video-section">
+    {% assign media_videos = site.data.media.videos %}
     <div class="hp-row-head">
       <div>
         <div class="hp-title">Videos</div>
       </div>
-    </div>
-
-    <!-- 3 featured working videos -->
-    <div class="med-video-grid-featured">
-      <div class="med-vid-card">
-        <div class="med-vid-frame"><iframe src="https://www.youtube-nocookie.com/embed/nlf9iqyRM58" title="EMBO laureate" allowfullscreen loading="lazy"></iframe></div>
-        <div class="med-vid-info"><div class="med-vid-t">EMBO Young Investigator Laureate</div><div class="med-vid-s"><span class="med-src-logo med-logo-compact"><img src="{{ '/assets/img/logos/media/embo.png' | relative_url }}" alt=""></span>Interview after EMBO YIP 2017 award</div></div>
-      </div>
-      <div class="med-vid-card">
-        <div class="med-vid-frame"><iframe src="https://www.youtube-nocookie.com/embed/ERkuYN_uVfY" title="INTER FNP" allowfullscreen loading="lazy"></iframe></div>
-        <div class="med-vid-info"><div class="med-vid-t">INTER FNP — Popularization of Science 2013</div><div class="med-vid-s"><span class="med-src-logo med-logo-compact"><img src="{{ '/assets/img/logos/media/fnp.svg' | relative_url }}" alt=""></span>Public science lecture</div></div>
-      </div>
-      <div class="med-vid-card">
-        <div class="med-vid-frame"><iframe src="https://www.youtube-nocookie.com/embed/bi_SNHNcSBY" title="INTER 2013" allowfullscreen loading="lazy"></iframe></div>
-        <div class="med-vid-info"><div class="med-vid-t">INTER Grant Laureate 2013</div><div class="med-vid-s"><span class="med-src-logo med-logo-compact"><img src="{{ '/assets/img/logos/media/fnp.svg' | relative_url }}" alt=""></span>FNP interview</div></div>
-      </div>
-    </div>
-
-    <!-- Archive toggle -->
-    <div class="med-show-more">
-      <button class="med-show-btn" id="vid-archive-btn">
-        Show Archive (5 videos)
-        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><polyline points="6 9 12 15 18 9"/></svg>
+      <button class="med-archive-toggle" id="vid-archive-btn" type="button"
+              aria-expanded="true" aria-controls="vid-archive-row"
+              data-count="{{ media_videos.archive | size }}">
+        <span class="med-archive-label">Hide archive</span>
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="6 15 12 9 18 15"></polyline></svg>
       </button>
     </div>
 
-    <!-- Archive + YouTube pill -->
-    <div class="med-vid-bottom-row" id="vid-archive-row" style="display:none">
+    <div class="med-video-grid-featured">
+      {% for video in media_videos.featured %}
+      <div class="med-vid-card">
+        <div class="med-vid-frame">
+          <iframe src="https://www.youtube-nocookie.com/embed/{{ video.embed_id }}" title="{{ video.title | escape }}" allowfullscreen loading="lazy"></iframe>
+        </div>
+        <div class="med-vid-info">
+          <div class="med-vid-t">{{ video.title }}</div>
+          <div class="med-vid-s">
+            {% if video.logo %}
+            <span class="med-src-logo {{ video.logo_class }}"><img src="{{ '/assets/img/logos/media/' | append: video.logo | relative_url }}" alt="{{ video.title | escape }} source"></span>
+            {% endif %}
+            {{ video.subtitle }}
+          </div>
+        </div>
+      </div>
+      {% endfor %}
+    </div>
+
+    <div class="med-vid-bottom-row" id="vid-archive-row">
       <div class="med-vid-archive">
         <div class="med-vid-archive-label">
           <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><polyline points="21 8 21 21 3 21 3 8"/><rect x="1" y="3" width="22" height="5"/><line x1="10" y1="12" x2="14" y2="12"/></svg>
           Archive
         </div>
-        <a class="med-vid-arc-item" href="https://www.youtube.com/watch?v=vLU3DHUwUoQ" target="_blank" rel="noopener noreferrer">
+        {% for item in media_videos.archive %}
+        <a class="med-vid-arc-item" href="{{ item.url }}" target="_blank" rel="noopener noreferrer">
           <svg width="12" height="12" viewBox="0 0 24 24" fill="#e53935"><path d="M21.582,6.186c-0.23-0.86-0.908-1.538-1.768-1.768C18.254,4,12,4,12,4S5.746,4,4.186,4.418c-0.86,0.23-1.538,0.908-1.768,1.768C2,7.746,2,12,2,12s0,4.254,0.418,5.814c0.23,0.86,0.908,1.538,1.768,1.768C5.746,20,12,20,12,20s6.254,0,7.814-0.418c0.861-0.23,1.538-0.908,1.768-1.768C22,16.254,22,12,22,12S22,7.746,21.582,6.186z M10,15.464V8.536L16,12L10,15.464z"/></svg>
-          Jutronauci — Wizjonerzy, Pasjonaci, Innowatorzy (Science Talk, 38K views)
+          {{ item.title }}
         </a>
-        <a class="med-vid-arc-item" href="https://www.youtube.com/watch?v=2YgLn4VZRBU" target="_blank" rel="noopener noreferrer">
-          <svg width="12" height="12" viewBox="0 0 24 24" fill="#e53935"><path d="M21.582,6.186c-0.23-0.86-0.908-1.538-1.768-1.768C18.254,4,12,4,12,4S5.746,4,4.186,4.418c-0.86,0.23-1.538,0.908-1.768,1.768C2,7.746,2,12,2,12s0,4.254,0.418,5.814c0.23,0.86,0.908,1.538,1.768,1.768C5.746,20,12,20,12,20s6.254,0,7.814-0.418c0.861-0.23,1.538-0.908,1.768-1.768C22,16.254,22,12,22,12S22,7.746,21.582,6.186z M10,15.464V8.536L16,12L10,15.464z"/></svg>
-          Onet News Interview — TV appearance
-        </a>
-        <a class="med-vid-arc-item" href="https://www.youtube.com/watch?v=0cNIrE5JV_U" target="_blank" rel="noopener noreferrer">
-          <svg width="12" height="12" viewBox="0 0 24 24" fill="#e53935"><path d="M21.582,6.186c-0.23-0.86-0.908-1.538-1.768-1.768C18.254,4,12,4,12,4S5.746,4,4.186,4.418c-0.86,0.23-1.538,0.908-1.768,1.768C2,7.746,2,12,2,12s0,4.254,0.418,5.814c0.23,0.86,0.908,1.538,1.768,1.768C5.746,20,12,20,12,20s6.254,0,7.814-0.418c0.861-0.23,1.538-0.908,1.768-1.768C22,16.254,22,12,22,12S22,7.746,21.582,6.186z M10,15.464V8.536L16,12L10,15.464z"/></svg>
-          FWiS — Dlaczego warto ubiegać się o stypendium (L'Oréal FWiS)
-        </a>
-        <a class="med-vid-arc-item" href="https://www.youtube.com/watch?v=hJqaGJqOVo0" target="_blank" rel="noopener noreferrer">
-          <svg width="12" height="12" viewBox="0 0 24 24" fill="#e53935"><path d="M21.582,6.186c-0.23-0.86-0.908-1.538-1.768-1.768C18.254,4,12,4,12,4S5.746,4,4.186,4.418c-0.86,0.23-1.538,0.908-1.768,1.768C2,7.746,2,12,2,12s0,4.254,0.418,5.814c0.23,0.86,0.908,1.538,1.768,1.768C5.746,20,12,20,12,20s6.254,0,7.814-0.418c0.861-0.23,1.538-0.908,1.768-1.768C22,16.254,22,12,22,12S22,7.746,21.582,6.186z M10,15.464V8.536L16,12L10,15.464z"/></svg>
-          L'Oréal Polska Dla Kobiet i Nauki — 2016 Award
-        </a>
-        <a class="med-vid-arc-item" href="https://jsulkowska.cent.uw.edu.pl/movies/" target="_blank" rel="noopener noreferrer">
-          <svg width="12" height="12" viewBox="0 0 24 24" fill="#e53935"><path d="M21.582,6.186c-0.23-0.86-0.908-1.538-1.768-1.768C18.254,4,12,4,12,4S5.746,4,4.186,4.418c-0.86,0.23-1.538,0.908-1.768,1.768C2,7.746,2,12,2,12s0,4.254,0.418,5.814c0.23,0.86,0.908,1.538,1.768,1.768C5.746,20,12,20,12,20s6.254,0,7.814-0.418c0.861-0.23,1.538-0.908,1.768-1.768C22,16.254,22,12,22,12S22,7.746,21.582,6.186z M10,15.464V8.536L16,12L10,15.464z"/></svg>
-          Biological Diffusion &amp; Brownian Dynamics Brainstorm 2 — 2010
-        </a>
+        {% endfor %}
       </div>
-      <a class="med-vid-yt-pill" href="https://www.youtube.com/channel/UCeLQTTlftS-APrHgFL8OYEw" target="_blank" rel="noopener noreferrer">
+      <a class="med-vid-yt-pill" href="{{ media_videos.youtube_channel }}" target="_blank" rel="noopener noreferrer">
         <svg width="36" height="36" viewBox="0 0 24 24" fill="#e53935"><path d="M21.582,6.186c-0.23-0.86-0.908-1.538-1.768-1.768C18.254,4,12,4,12,4S5.746,4,4.186,4.418c-0.86,0.23-1.538,0.908-1.768,1.768C2,7.746,2,12,2,12s0,4.254,0.418,5.814c0.23,0.86,0.908,1.538,1.768,1.768C5.746,20,12,20,12,20s6.254,0,7.814-0.418c0.861-0.23,1.538-0.908,1.768-1.768C22,16.254,22,12,22,12S22,7.746,21.582,6.186z M10,15.464V8.536L16,12L10,15.464z"/></svg>
         <div>
           <div style="font-size:var(--text-sm);font-weight:600;color:#28251d;line-height:1.3;">Sulkowska Lab YouTube</div>
@@ -562,10 +1007,9 @@ permalink: /media/
   </div><!-- end videos section -->
 
   <!-- ═══ TV & RADIO ═══ -->
-  <div id="ms-broadcast" class="hp-sec">
+  <div id="ms-broadcast" class="hp-sec med-shot-section">
     <div class="hp-row-head">
       <div>
-        <div class="hp-eyebrow">Broadcast</div>
         <div class="hp-title">TV &amp; Radio</div>
       </div>
     </div>
@@ -573,51 +1017,49 @@ permalink: /media/
       <div id="ms-tv">
         <div class="med-broadcast-col-label">TV Interviews</div>
         <div class="med-link-list">
-          <a class="med-link-item" href="https://www.polsatnews.pl/wiadomosc/2017-03-13/polka-w-elitarnym-gronie-kobiet-ktore-moga-zmienic-swiat-wybrana-przez-unesco/" target="_blank" rel="noopener noreferrer">
-            <div class="med-li-left"><div class="med-li-source"><span class="med-src-logo round"><img src="{{ '/assets/img/logos/media/polsat-news.svg' | relative_url }}" alt=""></span><span class="med-src-name">Polsat News</span></div><span class="med-li-year">2017</span></div>
-            <div class="med-li-title">Polka w elitarnym gronie "kobiet, które mogą zmienić świat". Wybrana przez UNESCO</div>
-            <svg class="med-li-arrow" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><line x1="7" y1="17" x2="17" y2="7"/><polyline points="7 7 17 7 17 17"/></svg>
+          {% for item in site.data.media.tv %}
+          {% assign item_url = item.url | default: "#" %}
+          <a class="med-link-item" href="{{ item_url }}" target="_blank" rel="noopener noreferrer">
+            <div class="med-li-left">
+              <div class="med-li-source">
+                <span class="med-src-logo {{ item.logo_class }}">
+                  {% if item.logo %}
+                  <img src="{{ '/assets/img/logos/media/' | append: item.logo | relative_url }}" alt="{{ item.source }} logo">
+                  {% elsif item.logo_text %}
+                  {{ item.logo_text }}
+                  {% endif %}
+                </span>
+                <span class="med-src-name">{{ item.source }}</span>
+              </div>
+            </div>
+            <div class="med-li-title">{{ item.title }}</div>
+            <svg class="med-li-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><line x1="7" y1="17" x2="17" y2="7"/><polyline points="7 7 17 7 17 17"/></svg>
           </a>
-          <a class="med-link-item" href="https://wiadomosci.onet.pl" target="_blank" rel="noopener noreferrer">
-            <div class="med-li-left"><div class="med-li-source"><span class="med-src-logo med-logo-wide"><img src="{{ '/assets/img/logos/media/onet.svg' | relative_url }}" alt=""></span><span class="med-src-name">Onet</span></div><span class="med-li-year">2017</span></div>
-            <div class="med-li-title">TV Interview</div>
-            <svg class="med-li-arrow" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><line x1="7" y1="17" x2="17" y2="7"/><polyline points="7 7 17 7 17 17"/></svg>
-          </a>
-          <a class="med-link-item" href="https://dziendobry.tvn.pl" target="_blank" rel="noopener noreferrer">
-            <div class="med-li-left"><div class="med-li-source"><span class="med-src-logo med-logo-wide"><img src="{{ '/assets/img/logos/media/tvn.svg' | relative_url }}" alt=""></span><span class="med-src-name">TVN Dzień Dobry</span></div><span class="med-li-year">2017</span></div>
-            <div class="med-li-title">Morning TV appearance</div>
-            <svg class="med-li-arrow" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><line x1="7" y1="17" x2="17" y2="7"/><polyline points="7 7 17 7 17 17"/></svg>
-          </a>
-          <a class="med-link-item" href="https://www.tvp3.pl" target="_blank" rel="noopener noreferrer">
-            <div class="med-li-left"><div class="med-li-source"><span class="med-src-logo med-logo-wide"><img src="{{ '/assets/img/logos/media/tvp3.svg' | relative_url }}" alt=""></span><span class="med-src-name">TVP3</span></div><span class="med-li-year">2017</span></div>
-            <div class="med-li-title">Regional TV interview</div>
-            <svg class="med-li-arrow" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><line x1="7" y1="17" x2="17" y2="7"/><polyline points="7 7 17 7 17 17"/></svg>
-          </a>
+          {% endfor %}
         </div>
       </div>
       <div id="ms-radio">
         <div class="med-broadcast-col-label">Radio Interviews</div>
         <div class="med-link-list">
-          <a class="med-link-item" href="https://audycje.tokfm.pl" target="_blank" rel="noopener noreferrer">
-            <div class="med-li-left"><div class="med-li-source"><span class="med-src-logo med-logo-wide med-logo-dark"><img src="{{ '/assets/img/logos/media/tok-fm.png' | relative_url }}" alt=""></span><span class="med-src-name">TOK FM</span></div><span class="med-li-year">2017</span></div>
-            <div class="med-li-title">Radio interview</div>
-            <svg class="med-li-arrow" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><line x1="7" y1="17" x2="17" y2="7"/><polyline points="7 7 17 7 17 17"/></svg>
+          {% for item in site.data.media.radio %}
+          {% assign item_url = item.url | default: "#" %}
+          <a class="med-link-item" href="{{ item_url }}" target="_blank" rel="noopener noreferrer">
+            <div class="med-li-left">
+              <div class="med-li-source">
+                <span class="med-src-logo {{ item.logo_class }}">
+                  {% if item.logo %}
+                  <img src="{{ '/assets/img/logos/media/' | append: item.logo | relative_url }}" alt="{{ item.source }} logo">
+                  {% elsif item.logo_text %}
+                  {{ item.logo_text }}
+                  {% endif %}
+                </span>
+                <span class="med-src-name">{{ item.source }}</span>
+              </div>
+            </div>
+            <div class="med-li-title">{{ item.title }}</div>
+            <svg class="med-li-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><line x1="7" y1="17" x2="17" y2="7"/><polyline points="7 7 17 7 17 17"/></svg>
           </a>
-          <a class="med-link-item" href="https://www.polskieradio.pl" target="_blank" rel="noopener noreferrer">
-            <div class="med-li-left"><div class="med-li-source"><span class="med-src-logo med-logo-wide"><img src="{{ '/assets/img/logos/media/polskie-radio.svg' | relative_url }}" alt=""></span><span class="med-src-name">Radio Poland</span></div><span class="med-li-year">2017</span></div>
-            <div class="med-li-title">Interview on knotted proteins research</div>
-            <svg class="med-li-arrow" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><line x1="7" y1="17" x2="17" y2="7"/><polyline points="7 7 17 7 17 17"/></svg>
-          </a>
-          <a class="med-link-item" href="https://www.rdc.pl" target="_blank" rel="noopener noreferrer">
-            <div class="med-li-left"><div class="med-li-source"><span class="med-src-logo med-logo-wide"><img src="{{ '/assets/img/logos/media/rdc.png' | relative_url }}" alt=""></span><span class="med-src-name">RDC</span></div><span class="med-li-year">2017</span></div>
-            <div class="med-li-title">Science radio interview</div>
-            <svg class="med-li-arrow" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><line x1="7" y1="17" x2="17" y2="7"/><polyline points="7 7 17 7 17 17"/></svg>
-          </a>
-          <a class="med-link-item" href="https://zdrowie.radiozet.pl" target="_blank" rel="noopener noreferrer">
-            <div class="med-li-left"><div class="med-li-source"><span class="med-src-logo med-logo-wide"><img src="{{ '/assets/img/logos/media/radio-zet.jpg' | relative_url }}" alt=""></span><span class="med-src-name">Radio ZET Zdrowie</span></div><span class="med-li-year">2017</span></div>
-            <div class="med-li-title">Według UNESCO ta Polka może zmienić świat!</div>
-            <svg class="med-li-arrow" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><line x1="7" y1="17" x2="17" y2="7"/><polyline points="7 7 17 7 17 17"/></svg>
-          </a>
+          {% endfor %}
         </div>
       </div>
     </div>
@@ -625,97 +1067,52 @@ permalink: /media/
 
 
   <!-- ═══ NEWS & GRANTS ═══ -->
-  <div id="ms-news" class="hp-sec">
+  <div id="ms-news" class="hp-sec med-shot-section">
     <div class="hp-row-head">
       <div>
-        <div class="hp-eyebrow">Updates</div>
         <div class="hp-title">News &amp; Grants</div>
       </div>
     </div>
 
     <!-- Grants -->
-    <div class="hp-eyebrow" style="margin-bottom:var(--space-3);">Grants &amp; Awards</div>
+    <div class="med-grants-label">Grants &amp; Awards</div>
     <div class="med-grants-grid">
-      <a class="med-grant-card" href="https://cent.uw.edu.pl/the-national-synthesis-center-for-emergence-in-the-molecular-and-cellular-sciences-grant-awarded-to-joanna-sulkowska/" target="_blank" rel="noopener noreferrer">
-        <div class="med-grant-funder"><span class="med-src-logo med-logo-compact round"><img src="{{ '/assets/img/logos/media/nsf.svg' | relative_url }}" alt="NSF logo"></span></div>
-        <div class="med-grant-title">NCEMS Working Group</div>
-        <div class="med-grant-sub">US National Science Foundation · 2026</div>
+      {% for grant in site.data.media.grants %}
+      {% assign grant_url = grant.url %}
+      <a class="med-grant-card" href="{% if grant_url contains 'http' %}{{ grant_url }}{% else %}{{ grant_url | relative_url }}{% endif %}" target="_blank" rel="noopener noreferrer">
+        <div class="med-grant-funder">
+          <span class="med-src-logo {{ grant.logo_class }}">
+            {% if grant.logo %}
+            <img src="{{ '/assets/img/logos/media/' | append: grant.logo | relative_url }}" alt="{{ grant.funder }} logo">
+            {% endif %}
+          </span>
+        </div>
+        <div class="med-grant-title">{{ grant.title }}</div>
+        <div class="med-grant-sub">{{ grant.sub }}</div>
       </a>
-      <a class="med-grant-card" href="https://cent.uw.edu.pl/six-cent-researchers-with-new-national-science-centre-grants/" target="_blank" rel="noopener noreferrer">
-        <div class="med-grant-funder"><span class="med-src-logo med-logo-wide"><img src="{{ '/assets/img/logos/media/ncn.svg' | relative_url }}" alt="NCN logo"></span></div>
-        <div class="med-grant-title">Design of coiled-coil &amp; α/β non-trivial protein folds</div>
-        <div class="med-grant-sub">NCN OPUS 28 · 2025 · PLN 2,580,178</div>
-      </a>
-      <a class="med-grant-card" href="https://jsulkowska.cent.uw.edu.pl/category/news/" target="_blank" rel="noopener noreferrer">
-        <div class="med-grant-funder"><span class="med-src-logo med-logo-wide"><img src="{{ '/assets/img/logos/media/caltech.svg' | relative_url }}" alt="Caltech logo"></span></div>
-        <div class="med-grant-title">AIM SQuaRE Grant</div>
-        <div class="med-grant-sub">Caltech (USA) · 2025</div>
-      </a>
-      <a class="med-grant-card" href="https://cent.uw.edu.pl/prof-joanna-sulkowska-has-been-awarded-an-embo-advanced-collaboration-grant/" target="_blank" rel="noopener noreferrer">
-        <div class="med-grant-funder"><span class="med-src-logo med-logo-wide"><img src="{{ '/assets/img/logos/media/embo.png' | relative_url }}" alt="EMBO logo"></span></div>
-        <div class="med-grant-title">EMBO Advanced Collaboration Grant</div>
-        <div class="med-grant-sub">EMBO · 2024</div>
-      </a>
-      <a class="med-grant-card" href="https://cent.uw.edu.pl/interdisciplinary-laboratory-of-biological-systems-modelling/" target="_blank" rel="noopener noreferrer">
-        <div class="med-grant-funder"><span class="med-src-logo med-logo-wide"><img src="{{ '/assets/img/logos/media/ncn.svg' | relative_url }}" alt="NCN logo"></span></div>
-        <div class="med-grant-title">Classification of entangled proteins</div>
-        <div class="med-grant-sub">NCN OPUS · 2023–2027</div>
-      </a>
-      <a class="med-grant-card" href="https://cent.uw.edu.pl/interdisciplinary-laboratory-of-biological-systems-modelling/" target="_blank" rel="noopener noreferrer">
-        <div class="med-grant-funder"><span class="med-src-logo med-logo-wide"><img src="{{ '/assets/img/logos/media/ncn.svg' | relative_url }}" alt="NCN logo"></span></div>
-        <div class="med-grant-title">Biological code of knots (AI approach)</div>
-        <div class="med-grant-sub">NCN OPUS · 2022–2025</div>
-      </a>
-      <a class="med-grant-card" href="https://cent.uw.edu.pl/interdisciplinary-laboratory-of-biological-systems-modelling/" target="_blank" rel="noopener noreferrer">
-        <div class="med-grant-funder"><span class="med-src-logo med-logo-wide"><img src="{{ '/assets/img/logos/media/ncn.svg' | relative_url }}" alt="NCN logo"></span></div>
-        <div class="med-grant-title">Doubly knotted proteins</div>
-        <div class="med-grant-sub">NCN OPUS · 2019–2024</div>
-      </a>
-      <a class="med-grant-card" href="https://en.uw.edu.pl/assist-prof-joanna-sulkowska-among-embo-young-investigators?print=1" target="_blank" rel="noopener noreferrer">
-        <div class="med-grant-funder"><span class="med-src-logo med-logo-wide"><img src="{{ '/assets/img/logos/media/embo.png' | relative_url }}" alt="EMBO logo"></span></div>
-        <div class="med-grant-title">EMBO Young Investigator</div>
-        <div class="med-grant-sub">EMBO · 2018</div>
-      </a>
-      <a class="med-grant-card" href="https://en.uw.edu.pl/assist-prof-joanna-sulkowska-among-embo-young-investigators?print=1" target="_blank" rel="noopener noreferrer">
-        <div class="med-grant-funder"><span class="med-src-logo med-logo-wide"><img src="{{ '/assets/img/logos/media/loreal.svg' | relative_url }}" alt="L'Oréal logo"></span></div>
-        <div class="med-grant-title">International Rising Talent</div>
-        <div class="med-grant-sub">L'Oréal–UNESCO · 2018</div>
-      </a>
-      <a class="med-grant-card" href="https://cent.uw.edu.pl/interdisciplinary-laboratory-of-biological-systems-modelling/" target="_blank" rel="noopener noreferrer">
-        <div class="med-grant-funder"><span class="med-src-logo med-logo-wide"><img src="{{ '/assets/img/logos/media/ncn.svg' | relative_url }}" alt="NCN logo"></span></div>
-        <div class="med-grant-title">SARS-CoV-2 PLpro inhibition</div>
-        <div class="med-grant-sub">NCN Covid-19 · 2020–2021</div>
-      </a>
+      {% endfor %}
     </div>
 
     <!-- News items -->
     <div class="hp-eyebrow" style="margin-bottom:var(--space-3);margin-top:var(--space-8);">Recent News</div>
     <div class="med-link-list">
-      <a class="med-link-item" href="https://cent.uw.edu.pl/the-national-synthesis-center-for-emergence-in-the-molecular-and-cellular-sciences-grant-awarded-to-joanna-sulkowska/" target="_blank" rel="noopener noreferrer">
-        <div class="med-li-left"><div class="med-li-source"><span class="med-src-logo med-logo-xwide"><img src="{{ '/assets/img/logos/media/cent.webp' | relative_url }}" alt=""></span><span class="med-src-name">Centre of New Technologies</span></div><span class="med-li-year">2026</span></div>
-        <div class="med-li-title">National Synthesis Center for Emergence (NCEMS) grant awarded</div>
+      {% for item in site.data.media.news %}
+      <a class="med-link-item" href="{{ item.url }}" target="_blank" rel="noopener noreferrer">
+        <div class="med-li-left">
+          <div class="med-li-source">
+            <span class="med-src-logo {{ item.logo_class }}">
+              {% if item.logo %}
+              <img src="{{ '/assets/img/logos/media/' | append: item.logo | relative_url }}" alt="{{ item.source }} logo">
+              {% endif %}
+            </span>
+            <span class="med-src-name">{{ item.source }}</span>
+          </div>
+          <span class="med-li-year">{{ item.year }}</span>
+        </div>
+        <div class="med-li-title">{{ item.title }}</div>
         <svg class="med-li-arrow" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><line x1="7" y1="17" x2="17" y2="7"/><polyline points="7 7 17 7 17 17"/></svg>
       </a>
-      <a class="med-link-item" href="https://cent.uw.edu.pl/six-cent-researchers-with-new-national-science-centre-grants/" target="_blank" rel="noopener noreferrer">
-        <div class="med-li-left"><div class="med-li-source"><span class="med-src-logo med-logo-xwide"><img src="{{ '/assets/img/logos/media/cent.webp' | relative_url }}" alt=""></span><span class="med-src-name">Centre of New Technologies</span></div><span class="med-li-year">2025</span></div>
-        <div class="med-li-title">Six CeNT researchers with new National Science Centre grants (NCN OPUS 28)</div>
-        <svg class="med-li-arrow" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><line x1="7" y1="17" x2="17" y2="7"/><polyline points="7 7 17 7 17 17"/></svg>
-      </a>
-      <a class="med-link-item" href="https://cent.uw.edu.pl/prof-joanna-sulkowska-has-been-awarded-an-embo-advanced-collaboration-grant/" target="_blank" rel="noopener noreferrer">
-        <div class="med-li-left"><div class="med-li-source"><span class="med-src-logo med-logo-wide"><img src="{{ '/assets/img/logos/media/embo.png' | relative_url }}" alt=""></span><span class="med-src-name">EMBO</span></div><span class="med-li-year">2024</span></div>
-        <div class="med-li-title">EMBO Advanced Collaboration Grant awarded to Prof. Joanna Sulkowska</div>
-        <svg class="med-li-arrow" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><line x1="7" y1="17" x2="17" y2="7"/><polyline points="7 7 17 7 17 17"/></svg>
-      </a>
-      <a class="med-link-item" href="https://en.uw.edu.pl/assist-prof-joanna-sulkowska-among-embo-young-investigators?print=1" target="_blank" rel="noopener noreferrer">
-        <div class="med-li-left"><div class="med-li-source"><span class="med-src-logo med-logo-wide"><img src="{{ '/assets/img/logos/media/uw.png' | relative_url }}" alt=""></span><span class="med-src-name">University of Warsaw</span></div><span class="med-li-year">2018</span></div>
-        <div class="med-li-title">Asst. Prof. Joanna Sułkowska among EMBO Young Investigators</div>
-        <svg class="med-li-arrow" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><line x1="7" y1="17" x2="17" y2="7"/><polyline points="7 7 17 7 17 17"/></svg>
-      </a>
-      <a class="med-link-item" href="http://polishscience.pl/en/dr-joanna-sulkowska-becomes-person-of-the-year-2017-in-radio-rmf-classic-contest/" target="_blank" rel="noopener noreferrer">
-        <div class="med-li-left"><div class="med-li-source"><span class="med-src-logo med-logo-wide"><img src="{{ '/assets/img/logos/media/rmf-classic.png' | relative_url }}" alt=""></span><span class="med-src-name">Radio RMF Classic / Polska Nauka</span></div><span class="med-li-year">2018</span></div>
-        <div class="med-li-title">Dr Joanna Sułkowska — Person of the Year 2017 (RMF Classic)</div>
-        <svg class="med-li-arrow" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><line x1="7" y1="17" x2="17" y2="7"/><polyline points="7 7 17 7 17 17"/></svg>
-      </a>
+      {% endfor %}
     </div>
   </div>
 
@@ -728,36 +1125,19 @@ permalink: /media/
       </div>
     </div>
     <div class="med-interview-cards">
-      <a class="med-int-card" href="https://kobieta.onet.pl" target="_blank" rel="noopener noreferrer">
-        <div class="med-int-source"><span class="med-src-logo med-logo-wide"><img src="{{ '/assets/img/logos/media/onet.svg' | relative_url }}" alt=""></span><span class="med-src-name">Onet.pl</span></div>
-        <div class="med-int-year">2018</div>
-        <div class="med-int-title">"Musiałam się wykazać dwa razy bardziej niż mężczyźni". Kulisy świata nauk ścisłych</div>
+      {% for item in site.data.media.interviews %}
+      <a class="med-int-card" href="{{ item.url }}" target="_blank" rel="noopener noreferrer">
+        <div class="med-int-source">
+          {% if item.logo %}
+          <span class="med-src-logo {{ item.logo_class }}"><img src="{{ '/assets/img/logos/media/' | append: item.logo | relative_url }}" alt="{{ item.source }} logo"></span>
+          {% endif %}
+          <span class="med-src-name">{{ item.source }}</span>
+        </div>
+        <div class="med-int-year">{{ item.year }}</div>
+        <div class="med-int-title">{{ item.title }}</div>
         <div class="med-int-arrow">Read →</div>
       </a>
-      <a class="med-int-card" href="https://wyborcza.pl/7,75400,23793827,polka-wsrod-najbardziej-obiecujacych-badaczek-swiata.html" target="_blank" rel="noopener noreferrer">
-        <div class="med-int-source"><span class="med-src-logo med-logo-wide"><img src="{{ '/assets/img/logos/media/wyborcza.svg' | relative_url }}" alt=""></span><span class="med-src-name">Gazeta Wyborcza</span></div>
-        <div class="med-int-year">2018</div>
-        <div class="med-int-title">Polka wśród najbardziej obiecujących badaczek świata</div>
-        <div class="med-int-arrow">Read →</div>
-      </a>
-      <a class="med-int-card" href="https://wyborcza.pl" target="_blank" rel="noopener noreferrer">
-        <div class="med-int-source"><span class="med-src-logo med-logo-wide"><img src="{{ '/assets/img/logos/media/wyborcza.svg' | relative_url }}" alt=""></span><span class="med-src-name">Wyborcza Gazeta</span></div>
-        <div class="med-int-year">2017</div>
-        <div class="med-int-title">Full feature article</div>
-        <div class="med-int-arrow">Read →</div>
-      </a>
-      <a class="med-int-card" href="https://jsulkowska.cent.uw.edu.pl/paper/" target="_blank" rel="noopener noreferrer">
-        <div class="med-int-source"><span class="med-src-name">Magiel</span></div>
-        <div class="med-int-year">2017</div>
-        <div class="med-int-title">Niezależny Miesięcznik Studentów — "Było sobie białko"</div>
-        <div class="med-int-arrow">Read →</div>
-      </a>
-      <a class="med-int-card" href="https://jsulkowska.cent.uw.edu.pl/paper/" target="_blank" rel="noopener noreferrer">
-        <div class="med-int-source"><span class="med-src-name">Przegląd Urologiczny</span></div>
-        <div class="med-int-year">2017</div>
-        <div class="med-int-title">Interview on protein topology research</div>
-        <div class="med-int-arrow">Read →</div>
-      </a>
+      {% endfor %}
     </div>
   </div>
 
@@ -770,75 +1150,62 @@ permalink: /media/
       </div>
     </div>
     <div class="med-press-grid">
-      <a class="med-press-item" href="https://businessinsider.com.pl" target="_blank" rel="noopener noreferrer"><span class="med-press-org"><span class="med-src-logo med-logo-long med-logo-compact"><img src="{{ '/assets/img/logos/media/business-insider.svg' | relative_url }}" alt=""></span>Business Insider</span><span class="med-press-yr">2017</span></a>
-      <a class="med-press-item" href="https://wyborcza.pl" target="_blank" rel="noopener noreferrer"><span class="med-press-org"><span class="med-src-logo med-logo-wide med-logo-compact"><img src="{{ '/assets/img/logos/media/wyborcza.svg' | relative_url }}" alt=""></span>Gazeta Wyborcza</span><span class="med-press-yr">2017</span></a>
-      <a class="med-press-item" href="https://www.pap.pl" target="_blank" rel="noopener noreferrer"><span class="med-press-org"><span class="med-src-logo med-logo-compact"><img src="{{ '/assets/img/logos/media/pap.svg' | relative_url }}" alt=""></span>PAP — Polska Agencja Prasowa</span><span class="med-press-yr">2017</span></a>
-      <a class="med-press-item" href="https://www.focus.pl" target="_blank" rel="noopener noreferrer"><span class="med-press-org">Focus</span><span class="med-press-yr">2017</span></a>
-      <a class="med-press-item" href="https://www.pb.pl" target="_blank" rel="noopener noreferrer"><span class="med-press-org">Puls Biznesu</span><span class="med-press-yr">2017</span></a>
-      <a class="med-press-item" href="https://namazowszu.pl" target="_blank" rel="noopener noreferrer"><span class="med-press-org">Na Mazowszu</span><span class="med-press-yr">2017</span></a>
-      <a class="med-press-item" href="https://www.polsatnews.pl" target="_blank" rel="noopener noreferrer"><span class="med-press-org"><span class="med-src-logo med-logo-compact"><img src="{{ '/assets/img/logos/media/polsat-news.svg' | relative_url }}" alt=""></span>Polsat News</span><span class="med-press-yr">2017</span></a>
-      <a class="med-press-item" href="https://sukces.pl" target="_blank" rel="noopener noreferrer"><span class="med-press-org">Sukces jest kobietą</span><span class="med-press-yr">2017</span></a>
-      <a class="med-press-item" href="https://forumakademickie.pl" target="_blank" rel="noopener noreferrer"><span class="med-press-org">Forum Akademickie</span><span class="med-press-yr">2017</span></a>
-      <a class="med-press-item" href="https://nauka.uw.edu.pl" target="_blank" rel="noopener noreferrer"><span class="med-press-org">Nauka Online</span><span class="med-press-yr">2014</span></a>
-      <a class="med-press-item" href="https://www.biotechnologia.pl" target="_blank" rel="noopener noreferrer"><span class="med-press-org">Biotechnologia.pl</span><span class="med-press-yr">2013</span></a>
-      <a class="med-press-item" href="https://www.pap.pl" target="_blank" rel="noopener noreferrer"><span class="med-press-org"><span class="med-src-logo med-logo-compact"><img src="{{ '/assets/img/logos/media/pap.svg' | relative_url }}" alt=""></span>PAP — Zagadka związanych białek</span><span class="med-press-yr">2013</span></a>
+      {% for item in site.data.media.press %}
+      <a class="med-press-item" href="{{ item.url }}" target="_blank" rel="noopener noreferrer">
+        <span class="med-press-org">
+          {% if item.logo %}
+          <span class="med-src-logo {{ item.logo_class }}"><img src="{{ '/assets/img/logos/media/' | append: item.logo | relative_url }}" alt="{{ item.org }} logo"></span>
+          {% endif %}
+          {{ item.org }}
+        </span>
+        <span class="med-press-yr">{{ item.year }}</span>
+      </a>
+      {% endfor %}
     </div>
   </div>
 
   <!-- ═══ PUBLIC TALKS ═══ -->
-  <div id="ms-talks" class="hp-sec">
+  <div id="ms-talks" class="hp-sec med-shot-section">
     <div class="hp-row-head">
       <div>
-        <div class="hp-eyebrow">Outreach &amp; Engagement</div>
         <div class="hp-title">Public Talks &amp; Workshops</div>
-        <div class="hp-subtitle">Science communication from lectures for children to international congress panels.</div>
       </div>
       <div class="med-talks-stats">
-        <div class="med-tstat"><div class="med-tstat-n">11+</div><div class="med-tstat-l">Years of outreach</div></div>
-        <div class="med-tstat"><div class="med-tstat-n">500+</div><div class="med-tstat-l">Children reached</div></div>
+        <div class="med-tstat"><div class="med-tstat-n">11+</div><div class="med-tstat-l">Years</div></div>
+        <div class="med-tstat"><div class="med-tstat-n">500+</div><div class="med-tstat-l">Kids</div></div>
       </div>
     </div>
     <div class="med-timeline">
+      {% for year_block in site.data.media.talks %}
       <div class="med-tl-item">
-        <div class="med-tl-year-col"><div class="med-tl-year">2018</div><div class="med-tl-line"></div></div>
+        <div class="med-tl-year-col">
+          <div class="med-tl-year">{{ year_block.year }}</div>
+          <div class="med-tl-line"></div>
+        </div>
         <div class="med-tl-cards">
-          <div class="med-tl-card med-tc-blue"><div class="med-tc-tag">Public Lecture</div><div class="med-tc-title">Kawiarenka Naukowa (Scientific Cafeteria) — Polish Academy of Sciences, Warsaw</div></div>
+          {% for talk in year_block.talks %}
+          {% if talk.url %}
+          <a class="med-tl-card med-tc-{{ talk.color | default: 'teal' }}" href="{{ talk.url }}" target="_blank" rel="noopener noreferrer">
+          {% else %}
+          <div class="med-tl-card med-tc-{{ talk.color | default: 'teal' }}">
+          {% endif %}
+            <div class="med-tc-tag">{{ talk.type }}</div>
+            <div class="med-tc-title">{{ talk.title }}</div>
+            {% if talk.body %}
+            <div class="med-tc-body">{{ talk.body }}</div>
+            {% endif %}
+            {% if talk.link_label %}
+            <div class="med-tc-link">{{ talk.link_label }}</div>
+            {% endif %}
+          {% if talk.url %}
+          </a>
+          {% else %}
+          </div>
+          {% endif %}
+          {% endfor %}
         </div>
       </div>
-      <div class="med-tl-item">
-        <div class="med-tl-year-col"><div class="med-tl-year">2017</div><div class="med-tl-line"></div></div>
-        <div class="med-tl-cards">
-          <a class="med-tl-card med-tc-purple" href="https://uniwersytetdzieci.pl/wykladowca/2952" target="_blank" rel="noopener noreferrer"><div class="med-tc-tag">Children's Lecture · 500+ kids</div><div class="med-tc-title">Fundacja Universytet Dzieci — "Jak zapętlone białka mogą pomóc w projektowaniu leków?"</div><div class="med-tc-body">Two invited lectures · 28 October 2017</div><div class="med-tc-link">View →</div></a>
-          <div class="med-tl-card med-tc-teal"><div class="med-tc-tag">Invited Lecture</div><div class="med-tc-title">Polish Children's Fund — "Klasyfikacja nietrywialnych topologii w białkach"</div><div class="med-tc-body">27 Apr – 7 May · Serock</div></div>
-          <div class="med-tl-card med-tc-teal"><div class="med-tc-tag">Workshop for Children</div><div class="med-tc-title">Dzień Otwarty Kampusu Ochota (DOKO) — "Jak zbudować biologiczną maszynę molekularną?"</div><div class="med-tc-body">With P. Dąbrowski-Tumański &amp; W. Niemyska · 8 April, Warsaw</div></div>
-        </div>
-      </div>
-      <div class="med-tl-item">
-        <div class="med-tl-year-col"><div class="med-tl-year">2016</div><div class="med-tl-line"></div></div>
-        <div class="med-tl-cards">
-          <div class="med-tl-card med-tc-orange"><div class="med-tc-tag">Panelist · Congress</div><div class="med-tc-title">2nd Congress of Polish Biochemistry — Women in Science</div><div class="med-tc-body">13–16 September · Wrocław</div></div>
-          <div class="med-tl-card med-tc-teal"><div class="med-tc-tag">Workshop</div><div class="med-tc-title">Polish Children's Fund — Biophysics for Talented Youths</div></div>
-          <div class="med-tl-card med-tc-orange"><div class="med-tc-tag">Panelist</div><div class="med-tc-title">Panel BIO 2016 — "Kobiety w nauce: gorzka prawda i alarm do działania"</div></div>
-        </div>
-      </div>
-      <div class="med-tl-item">
-        <div class="med-tl-year-col"><div class="med-tl-year">2014</div><div class="med-tl-line"></div></div>
-        <div class="med-tl-cards">
-          <div class="med-tl-card med-tc-blue"><div class="med-tc-tag">Popular Science · 100+ attendees</div><div class="med-tc-title">Popular talk — "Entanglement in Biology"</div><div class="med-tc-body">Prof. De Witt Sumners · 21 Sep · Aula, Old Library, University of Warsaw</div></div>
-        </div>
-      </div>
-      <div class="med-tl-item">
-        <div class="med-tl-year-col"><div class="med-tl-year">2013</div><div class="med-tl-line"></div></div>
-        <div class="med-tl-cards">
-          <a class="med-tl-card med-tc-red" href="https://youtu.be/ERkuYN_uVfY?si=aX0p3HixaxwXAY6z" target="_blank" rel="noopener noreferrer"><div class="med-tc-tag">Video Available</div><div class="med-tc-title">INTER FNP — Popularization of Science Lecture</div><div class="med-tc-body">Foundation for Polish Science INTER grant laureate lecture</div><div class="med-tc-link">Watch on YouTube →</div></a>
-        </div>
-      </div>
-      <div class="med-tl-item">
-        <div class="med-tl-year-col"><div class="med-tl-year">2007</div></div>
-        <div class="med-tl-cards">
-          <div class="med-tl-card med-tc-teal"><div class="med-tc-tag">Workshop</div><div class="med-tc-title">Polish Children's Fund — Biophysics for Talented Youths</div></div>
-        </div>
-      </div>
+      {% endfor %}
     </div>
   </div>
   <!-- ═══ FEATURED IN MARQUEE ═══ -->
@@ -1135,12 +1502,14 @@ permalink: /media/
   const btn = document.getElementById('vid-archive-btn');
   const row = document.getElementById('vid-archive-row');
   if (!btn || !row) return;
+  const label = btn.querySelector('.med-archive-label');
+  const count = btn.dataset.count || '5';
   btn.addEventListener('click', () => {
-    const open = row.style.display !== 'none';
-    row.style.display = open ? 'none' : 'grid';
-    btn.innerHTML = open
-      ? 'Show Archive (5 videos) <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><polyline points="6 9 12 15 18 9"/></svg>'
-      : 'Hide Archive <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><polyline points="18 15 12 9 6 15"/></svg>';
+    const hideArchive = !row.classList.contains('med-archive-hidden');
+    row.classList.toggle('med-archive-hidden', hideArchive);
+    btn.classList.toggle('is-closed', hideArchive);
+    btn.setAttribute('aria-expanded', hideArchive ? 'false' : 'true');
+    if (label) label.textContent = hideArchive ? 'Show archive (' + count + ' videos)' : 'Hide archive';
   });
 })();
 

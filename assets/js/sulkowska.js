@@ -668,17 +668,19 @@
   });
 
   // Slideshow
-  let currentSlide = 0;
   const slides = document.querySelectorAll('.hero-slide');
   const dots = document.querySelectorAll('.slide-dot');
+  let currentSlide = Array.from(slides).findIndex(slide => slide.classList.contains('active'));
+  if (currentSlide < 0) currentSlide = 0;
   let autoTimer = null;
 
   function goSlide(n) {
-    slides[currentSlide].classList.remove('active');
-    dots[currentSlide].classList.remove('active');
+    if (!slides.length) return;
+    slides.forEach(slide => slide.classList.remove('active'));
+    dots.forEach(dot => dot.classList.remove('active'));
     currentSlide = (n + slides.length) % slides.length;
     slides[currentSlide].classList.add('active');
-    dots[currentSlide].classList.add('active');
+    if (dots[currentSlide]) dots[currentSlide].classList.add('active');
   }
   function moveSlide(dir) {
     clearInterval(autoTimer);
@@ -686,8 +688,9 @@
     startAuto();
   }
   function startAuto() {
-    autoTimer = setInterval(() => goSlide(currentSlide + 1), 5000);
+    if (slides.length > 1) autoTimer = setInterval(() => goSlide(currentSlide + 1), 5000);
   }
+  goSlide(currentSlide);
   startAuto();
 
 // ────────────────────────────────────────────────────────────

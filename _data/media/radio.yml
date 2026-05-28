@@ -5,27 +5,27 @@
 - source: "TOK FM"
   logo_text: "TOK FM"
   logo_class: "med-logo-wide med-logo-tok-text"
-  url: ""
+  url: "https://audycje.tokfm.pl"
   year: 2017
   title: "Radio interview"
 
 - source: "Radio Poland"
   logo: "polskie-radio.svg"
   logo_class: "med-logo-wide"
-  url: ""
+  url: "https://www.polskieradio.pl"
   year: 2017
   title: "Interview on knotted proteins research"
 
 - source: "RDC"
   logo: "rdc.png"
   logo_class: "med-logo-wide"
-  url: ""
+  url: "https://www.rdc.pl"
   year: 2017
   title: "Science radio interview"
 
 - source: "Radio ZET Zdrowie"
   logo: "radio-zet.jpg"
   logo_class: "med-logo-wide"
-  url: ""
+  url: "https://zdrowie.radiozet.pl"
   year: 2017
   title: "Według UNESCO ta Polka może zmienić świat!"

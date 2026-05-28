@@ -5,27 +5,27 @@
 - source: "Polsat News"
   logo: "polsat-news.svg"
   logo_class: "round"
-  url: ""
+  url: "https://www.polsatnews.pl/wiadomosc/2017-03-13/polka-w-elitarnym-gronie-kobiet-ktore-moga-zmienic-swiat-wybrana-przez-unesco/"
   year: 2017
   title: 'Polka w elitarnym gronie "kobiet, które mogą zmienić świat". Wybrana przez UNESCO'
 
 - source: "Onet"
   logo: "onet.svg"
   logo_class: "med-logo-wide"
-  url: ""
+  url: "https://wiadomosci.onet.pl"
   year: 2017
   title: "TV Interview"
 
 - source: "TVN Dzień Dobry"
   logo: "tvn.svg"
   logo_class: "med-logo-wide"
-  url: ""
+  url: "https://dziendobry.tvn.pl"
   year: 2017
   title: "Morning TV appearance"
 
 - source: "TVP3"
   logo: "tvp3.svg"
   logo_class: "med-logo-wide"
-  url: ""
+  url: "https://www.tvp3.pl"
   year: 2017
   title: "Regional TV interview"

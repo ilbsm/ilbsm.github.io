@@ -1,4 +1,4 @@
-# Projects & Software page — edit here to update everything on the research page
+# Projects & Software page — edit here to update everything on the /topics/ page
 # Non-coders: only edit the text fields (name, url, desc, badge, etc.)
 # Do NOT change eyebrow_icon or img_logo_html unless you know HTML/SVG
 
@@ -26,7 +26,7 @@ layout:
           - name: "AlphaKnot 2.0"
             url: "http://alphaknot.cent.uw.edu.pl"
             cat: "database server"
-            img: "https://jsulkowska.cent.uw.edu.pl/wp-content/uploads/2016/05/knot63.png"
+            img: "/assets/img/software/alphaknot.png"
             img_alt: "AlphaKnot"
             badge: "AlphaFold"
             desc: "Knot & knotoid detection across AlphaFold proteomes."
@@ -34,7 +34,7 @@ layout:
           - name: "AlphaLasso"
             url: "http://alphalasso.cent.uw.edu.pl"
             cat: "database server"
-            img: "https://jsulkowska.cent.uw.edu.pl/wp-content/uploads/2016/05/cropped.png"
+            img: "/assets/img/software/alphalasso.png"
             img_alt: "AlphaLasso"
             badge: "AlphaFold"
             desc: "Lasso topology classified across AlphaFold structures."
@@ -42,21 +42,21 @@ layout:
           - name: "KnotProt 2.0"
             url: "http://knotprot.cent.uw.edu.pl"
             cat: "database"
-            img: "https://jsulkowska.cent.uw.edu.pl/wp-content/uploads/2016/05/knotprot.jpg"
+            img: "/assets/img/software/knotprot.jpg"
             img_alt: "KnotProt"
             desc: "Reference database of knotted proteins from the PDB."
 
           - name: "LassoProt"
             url: "http://lassoprot.cent.uw.edu.pl"
             cat: "database server"
-            img: "https://jsulkowska.cent.uw.edu.pl/wp-content/uploads/2016/05/lassoprot.jpg"
+            img: "/assets/img/software/lassoprot.jpg"
             img_alt: "LassoProt"
             desc: "Covalent lasso motifs, classified by piercing number."
 
           - name: "LinkProt"
             url: "http://linkprot.cent.uw.edu.pl"
             cat: "database"
-            img: "https://linkprot.cent.uw.edu.pl/static/img/gallery_Fig4.png"
+            img: "/assets/img/software/linkprot.png"
             img_alt: "LinkProt"
             desc: "Topologically linked loops in protein structures."
 
@@ -84,7 +84,7 @@ layout:
           - name: "PyLasso"
             url: "http://pylasso.cent.uw.edu.pl"
             cat: "plugin"
-            img: "https://pylasso.cent.uw.edu.pl/pics/introduction_prot.png"
+            img: "/assets/img/software/pylasso.png"
             img_alt: "PyLasso"
             img_dark: true
             badge: "Plugin"
@@ -94,7 +94,7 @@ layout:
           - name: "PyLink"
             url: "http://pylink.cent.uw.edu.pl"
             cat: "plugin"
-            img: "https://jsulkowska.cent.uw.edu.pl/wp-content/uploads/2016/05/carousel_3sumABCD.png"
+            img: "/assets/img/software/pylink.png"
             img_alt: "PyLink"
             img_dark: true
             badge: "Plugin"
@@ -104,7 +104,7 @@ layout:
           - name: "Knot_pull"
             url: "https://github.com/dzarmola/knot_pull"
             cat: "plugin"
-            img: "https://jsulkowska.cent.uw.edu.pl/wp-content/uploads/2016/05/knotpull.jpg"
+            img: "/assets/img/software/knot-pull.jpg"
             img_alt: "Knot_pull"
             badge: "GitHub"
             badge_color: "#24292e"
@@ -123,7 +123,7 @@ layout:
           - name: "KnotGenome"
             url: "http://knotgenom.cent.uw.edu.pl"
             cat: "chromatin database server"
-            img: "https://knotgenom.cent.uw.edu.pl/static/img/help_figs/intro_fig1.jpg"
+            img: "/assets/img/software/knotgenome.png"
             img_alt: "KnotGenome"
             badge: "Server"
             badge_color: "#366094"
@@ -144,7 +144,7 @@ layout:
           - name: "BSDB — Bio-molecule Stretching Database"
             url: "http://jowisz.ifpan.edu.pl/BSDB/"
             cat: "database"
-            img: "https://jsulkowska.cent.uw.edu.pl/wp-content/uploads/2016/05/stretch-512x107.png"
+            img: "/assets/img/software/bsdb-stretch.png"
             img_alt: "BSDB"
             img_bg: "#f5f5f5"
             img_contain: true
@@ -153,7 +153,7 @@ layout:
           - name: "Genus for Biomolecules"
             url: "http://genus.fuw.edu.pl"
             cat: "database server"
-            img: "https://jsulkowska.cent.uw.edu.pl/wp-content/uploads/2016/05/genus_logo_wieksze.png"
+            img: "/assets/img/software/genus.png"
             img_alt: "Genus"
             img_bg: "#f0f4ff"
             img_contain: true
@@ -172,7 +172,7 @@ layout:
           - name: "DCA-mol"
             url: "http://dca-mol.cent.uw.edu.pl"
             cat: "prediction server"
-            img: "https://jsulkowska.cent.uw.edu.pl/wp-content/uploads/2016/05/dcamol.png"
+            img: "/assets/img/software/dca-mol.png"
             img_alt: "DCA-mol"
             img_bg: "#f0f4f8"
             img_contain: true
@@ -183,7 +183,7 @@ layout:
           - name: "PconsFam"
             url: "http://pconsfam.bioinfo.se/"
             cat: "prediction database"
-            img: "https://pconsfam.bioinfo.se/static/images/pconsfam_logo_trans.png"
+            img: "/assets/img/software/pconsfam.png"
             img_alt: "PconsFam"
             img_bg: "#fff"
             img_contain: true
@@ -192,7 +192,7 @@ layout:
           - name: "GapRepairer"
             url: "http://gaprepairer.cent.uw.edu.pl"
             cat: "server prediction"
-            img: "https://jsulkowska.cent.uw.edu.pl/wp-content/uploads/2016/05/gaprepairer.jpg"
+            img: "/assets/img/software/gaprepairer.jpg"
             img_alt: "GapRepairer"
             badge: "Server"
             badge_color: "#2a6896"

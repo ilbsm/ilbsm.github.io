@@ -1,461 +1,844 @@
 ---
 layout: default
-title: "Projects & Software — Sulkowska Lab"
-description: "Projects, databases, and software developed by the Sulkowska Lab."
+title: "Research - Sulkowska Lab"
+description: "Research topics: protein folding, knotted proteins, drug design, structural bioinformatics, and funded projects."
 permalink: /research/
 ---
 
+{% assign research = site.data.topics %}
+{% assign funded_projects = site.data.research_projects %}
+
 <style>
-/* ── SHARED TOKENS ── */
-:root {
-  --rp-side: 2rem;
-  --rp-transition: 180ms cubic-bezier(0.16,1,0.3,1);
-  --rp-shadow-sm: 0 1px 3px rgba(0,0,0,0.07);
-  --rp-shadow-md: 0 4px 16px rgba(0,0,0,0.09);
-  --rp-radius-xl: 1rem;
-  --rp-radius-full: 9999px;
+.rx-page {
+  background: #f7f8fc;
+  color: #0f172a;
 }
-
-/* ── STATS BAR — matches collaboration exactly ── */
-.rp-stats-bar {
-  display: flex; align-items: center;
-  background: linear-gradient(90deg, #0a1020 0%, #0f1a2e 100%);
-  border-bottom: 1px solid rgba(255,255,255,0.07);
-  padding: 0.55rem var(--rp-side);
-}
-.rp-sbi {
-  display: flex; align-items: baseline; gap: 0.35rem;
-  padding: 0 1.1rem;
-  border-right: 1px solid rgba(255,255,255,0.12);
-}
-.rp-sbi:first-child { padding-left: 0; }
-.rp-sbi:last-child  { border-right: none; }
-.rp-sbi-n {
-  font-family: 'Merriweather', serif;
-  font-size: 1.05rem; font-weight: 700; color: #fff; line-height: 1;
-}
-.rp-sbi-l {
-  font-size: 0.58rem; font-weight: 700; letter-spacing: 0.09em;
-  text-transform: uppercase; color: rgba(255,255,255,0.4);
-}
-
-/* ── STICKY NAV — same pill style as collaboration ── */
-.rp-nav {
-  position: sticky; top: var(--nav-h, 42px); z-index: 100;
-  background: rgba(255,255,255,0.97); backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px);
-  border-bottom: 1px solid rgba(0,0,0,0.07); box-shadow: 0 1px 3px rgba(0,0,0,0.04);
-  padding: 0.5rem var(--rp-side);
-}
-.rp-nav-inner {
-  display: flex; gap: 0.25rem; flex-wrap: wrap; align-items: center;
-  overflow-x: auto; scrollbar-width: none;
-}
-.rp-nav-inner::-webkit-scrollbar { display: none; }
-.rp-pill {
-  display: inline-flex; align-items: center; gap: 0.3rem;
-  padding: 0.3rem 0.85rem; border-radius: var(--rp-radius-full);
-  font-size: 0.75rem; font-weight: 500; color: #5a5957;
-  background: transparent; border: 1px solid transparent;
-  cursor: pointer; transition: all var(--rp-transition); white-space: nowrap; font-family: inherit;
-}
-.rp-pill:hover { background: #f0ede8; color: #28251d; border-color: rgba(0,0,0,0.1); }
-.rp-pill.active { background: #28251d; color: #f9f8f5; border-color: transparent; }
-
-/* ── SECTIONS — full-width, same as collaboration ── */
-.rp-section {
-  width: 100%; border-bottom: 1px solid #e0e4ec;
-  scroll-margin-top: 80px;
-}
-.rp-section-dark { background: #0d1117; border-bottom-color: rgba(255,255,255,0.06); }
-.rp-section-head {
-  display: flex; align-items: flex-start; gap: 1rem;
-  padding: 1.8rem var(--rp-side) 1.4rem;
-}
-.rp-section-eyebrow {
-  font-size: 0.6rem; font-weight: 800; letter-spacing: 0.14em;
-  text-transform: uppercase; color: #01696f; margin-bottom: 0.28rem;
-  display: flex; align-items: center; gap: 0.3rem;
-}
-.rp-section-dark .rp-section-eyebrow { color: #4f98a3; }
-.rp-section-title {
-  font-weight: 800; font-size: 1.15rem; color: #0a1020; line-height: 1.25; margin-bottom: 0.22rem;
-}
-.rp-section-dark .rp-section-title { color: #f9f8f5; }
-.rp-section-sub {
-  font-size: 0.83rem; color: #888; line-height: 1.55; max-width: 72ch;
-}
-.rp-section-dark .rp-section-sub { color: rgba(255,255,255,0.4); }
-.rp-count-chip {
-  display: inline-flex; align-items: center; justify-content: center;
-  min-width: 22px; height: 17px; padding: 0 0.4rem;
-  border-radius: 20px; background: #f0ede8;
-  font-size: 0.62rem; font-weight: 700; color: #7a7974;
-  margin-left: 0.4rem; vertical-align: middle;
-}
-.rp-section-dark .rp-count-chip { background: rgba(255,255,255,0.08); color: rgba(255,255,255,0.4); }
-
-/* ── MINI KNOT CANVAS ── */
-.rp-mini-knot {
-  display: block; float: right; margin: 0 0 0.5rem 1.5rem;
-  border-radius: var(--rp-radius-xl); opacity: 0.9; flex-shrink: 0;
-}
-@media (max-width: 600px) { .rp-mini-knot { display: none; } }
-
-/* ── CARD GRID — matches collaboration exactly ── */
-.rp-grid-wrap { padding: 0 var(--rp-side) 2.2rem; }
-.rp-grid {
+.rx-intro {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+  grid-template-columns: minmax(0, 1fr) 210px;
+  gap: 1.5rem;
+  align-items: start;
+  padding: 1.65rem 1.5rem 1.75rem;
+  background: #fff;
+  border-bottom: 1px solid #d9dde6;
+}
+.rx-intro h1 {
+  margin: 0 0 0.35rem;
+  color: #063f55;
+  font-family: "Merriweather", serif;
+  font-size: clamp(2rem, 3.2vw, 3rem);
+  line-height: 1.12;
+}
+.rx-intro p {
+  margin: 0;
+  max-width: 1100px;
+  color: #42454f;
+  font-size: 0.98rem;
+  line-height: 1.65;
+}
+.rx-jump {
+  width: 100%;
+  margin-top: 0.2rem;
+  padding: 0.72rem 0.8rem;
+  border: 1px solid #d8d2cb;
+  border-radius: 8px;
+  background: #fff;
+  color: #3d342c;
+  font: inherit;
+  font-size: 0.82rem;
+  font-weight: 700;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
+}
+
+.rx-domain {
+  --accent: #1a73e8;
+  border-top: 3px solid var(--accent);
+  border-bottom: 1px solid #dde2ea;
+  background: #fff;
+  scroll-margin-top: 68px;
+}
+.rx-domain-alt {
+  background: #fbfcff;
+}
+.rx-domain-head {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  padding: 1.1rem 1.5rem;
+  border: 0;
+  background: rgba(255, 255, 255, 0.94);
+  color: inherit;
+  text-align: left;
+  cursor: pointer;
+  font: inherit;
+}
+.rx-domain-titleline {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  min-width: 0;
+}
+.rx-domain-num {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 32px;
+  height: 22px;
+  padding: 0 0.45rem;
+  border-radius: 999px;
+  background: color-mix(in srgb, var(--accent) 16%, white);
+  color: var(--accent);
+  font-size: 0.68rem;
+  font-weight: 800;
+  line-height: 1;
+}
+.rx-domain-title {
+  color: #073f55;
+  font-size: clamp(1.15rem, 2vw, 1.45rem);
+  font-weight: 800;
+  line-height: 1.25;
+}
+.rx-chevron {
+  color: #b6b6b6;
+  flex: 0 0 auto;
+  transition: transform 0.2s ease;
+}
+.rx-domain.open .rx-chevron {
+  transform: rotate(180deg);
+}
+.rx-domain-body {
+  display: none;
+  border-top: 1px solid #e5e7ee;
+}
+.rx-domain.open .rx-domain-body {
+  display: block;
+}
+
+.rx-figures {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 2px;
+  align-items: center;
+  padding: 0.75rem 6vw 0.95rem;
+  background: #efefef;
+}
+.rx-figures-single {
+  display: flex;
+  justify-content: center;
+}
+.rx-figure {
+  display: block;
+  justify-self: center;
+  color: inherit;
+  text-decoration: none;
+}
+.rx-figure:hover {
+  text-decoration: none;
+}
+.rx-figure-frame {
+  background: #fff;
+  box-shadow: 8px 8px 12px rgba(0, 0, 0, 0.25);
+}
+.rx-figure img {
+  display: block;
+  width: 100%;
+  height: auto;
+  object-fit: contain;
+}
+.rx-figure-cap {
+  margin: 0 auto;
+  width: fit-content;
+  max-width: 100%;
+  padding: 0.28rem 0.7rem;
+  background: rgba(248, 248, 248, 0.92);
+  color: #666;
+  font-size: 0.72rem;
+  line-height: 1.3;
+  text-align: center;
+}
+.rx-domain-copy {
+  padding: 0.9rem 1.5rem 1.35rem;
+  background: #f5f7ff;
+}
+.rx-domain-copy p {
+  margin: 0 0 0.95rem;
+  color: #313746;
+  font-size: 0.95rem;
+  line-height: 1.68;
+}
+.rx-domain-copy strong {
+  color: #111827;
+}
+.rx-paper-toggle {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+  min-height: 27px;
+  padding: 0.24rem 0.78rem;
+  border: 1px solid #cfd4dd;
+  border-radius: 6px;
+  background: #fff;
+  color: #555;
+  cursor: pointer;
+  font: inherit;
+  font-size: 0.7rem;
+  font-weight: 800;
+  letter-spacing: 0.12em;
+  line-height: 1;
+  text-transform: uppercase;
+}
+.rx-paper-toggle::after {
+  content: "\203A";
+  font-size: 0.9rem;
+  line-height: 1;
+}
+.rx-paper-toggle[aria-expanded="true"]::after {
+  content: "\2304";
+  transform: translateY(-2px);
+}
+.rx-paper-toggle:hover {
+  border-color: var(--accent);
+  color: var(--accent);
+}
+.rx-papers {
+  margin-top: 0.7rem;
+}
+.rx-papers[hidden] {
+  display: none;
+}
+.rx-paper {
+  display: grid;
+  grid-template-columns: auto minmax(0, 1fr) auto;
+  grid-template-rows: auto auto;
+  gap: 0.22rem 0.7rem;
+  align-items: start;
+  margin-bottom: 0.45rem;
+  padding: 0.62rem 0.78rem;
+  border: 1px solid #e2e7f0;
+  border-radius: 6px;
+  background: #fff;
+  color: inherit;
+  text-decoration: none;
+}
+.rx-paper:hover {
+  border-color: var(--accent);
+  box-shadow: 0 2px 10px color-mix(in srgb, var(--accent) 15%, transparent);
+  text-decoration: none;
+}
+.rx-paper-journal {
+  grid-row: 1;
+  padding: 0.15rem 0.42rem;
+  border-radius: 3px;
+  font-size: 0.63rem;
+  font-weight: 800;
+  letter-spacing: 0.05em;
+  line-height: 1.25;
+  text-transform: uppercase;
+}
+.rx-paper-title {
+  grid-column: 2;
+  grid-row: 1;
+  color: #111827;
+  font-size: 0.82rem;
+  font-weight: 800;
+  line-height: 1.35;
+}
+.rx-paper-authors {
+  grid-column: 2;
+  grid-row: 2;
+  color: #777;
+  font-size: 0.72rem;
+  line-height: 1.35;
+}
+.rx-paper-cites {
+  grid-column: 3;
+  grid-row: 1;
+  color: #1a73e8;
+  font-size: 0.72rem;
+  font-weight: 800;
+  white-space: nowrap;
+}
+
+.rpfp-pj-pnas { background: #e3f2fd; color: #1565c0; }
+.rpfp-pj-nar { background: #e8f5e9; color: #1b5e20; }
+.rpfp-pj-ps { background: #f3e5f5; color: #4a148c; }
+.rpfp-pj-bib { background: #fff3e0; color: #bf360c; }
+
+.rx-projects {
+  padding: 2.35rem 5.7vw 2.9rem;
+  border-top: 1px solid #e0e4ec;
+  background: #f7f8fc;
+  scroll-margin-top: 68px;
+}
+.rx-section-label {
+  max-width: 1500px;
+  margin: 0 auto 1.35rem;
+  color: #999;
+  font-size: 0.68rem;
+  font-weight: 800;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+}
+.rx-project-grid {
+  max-width: 1500px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
   gap: 1rem;
 }
-.rp-card {
-  display: flex; flex-direction: column;
-  border-radius: var(--rp-radius-xl); overflow: hidden;
-  background: #f9f8f5; border: 1px solid #ede9e3;
-  text-decoration: none; color: inherit;
-  transition: box-shadow var(--rp-transition), transform var(--rp-transition), border-color var(--rp-transition);
-  animation: rpFadeUp 0.4s ease both;
-  animation-delay: calc(var(--i, 0) * 0.05s);
+.rx-project-card {
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+  padding: 0.85rem;
+  border: 1px solid #dfe5ef;
+  border-radius: 8px;
+  background: #fff;
+  color: inherit;
+  text-align: left;
+  cursor: pointer;
+  font: inherit;
+  transition: box-shadow 0.18s ease, transform 0.16s ease, border-color 0.16s ease;
 }
-.rp-card:hover { box-shadow: var(--rp-shadow-md); transform: translateY(-4px); border-color: #c8c5be; text-decoration: none; }
-.rp-card.rp-hidden { display: none; }
-@keyframes rpFadeUp { from { opacity: 0; transform: translateY(14px); } to { opacity: 1; transform: translateY(0); } }
-
-/* dark-section card overrides */
-.rp-section-dark .rp-card { background: #161b22; border-color: rgba(255,255,255,0.07); }
-.rp-section-dark .rp-card:hover { border-color: rgba(255,255,255,0.2); box-shadow: 0 4px 20px rgba(0,0,0,0.5); }
-.rp-section-dark .rp-card-name { color: #f9f8f5; }
-.rp-section-dark .rp-card-desc { color: rgba(255,255,255,0.5); }
-.rp-section-dark .rp-card-link { color: #4db8e8; }
-.rp-section-dark .rp-card-tag  { background: rgba(255,255,255,0.06); color: rgba(255,255,255,0.4); }
-
-.rp-img-wrap { position: relative; overflow: hidden; height: 140px; background: #e8e5e0; flex-shrink: 0; border-bottom: 1px solid #ede9e3; }
-.rp-img-wrap img { width: 100%; height: 100%; object-fit: cover; display: block; transition: transform 0.4s ease; }
-.rp-card:hover .rp-img-wrap img { transform: scale(1.06); }
-.rp-img-dark { background: #1c1b19; border-bottom-color: rgba(255,255,255,0.04); }
-.rp-img-overlay { position: absolute; inset: 0; display: flex; align-items: flex-start; justify-content: flex-end; padding: 0.4rem; pointer-events: none; }
-.rp-img-badge { font-size: 0.58rem; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; padding: 0.18rem 0.5rem; border-radius: 20px; color: #fff; background: #f59e0b; }
-.rp-img-center { position: absolute; inset: 0; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 0.3rem; }
-
-.rp-card-body { padding: 0.85rem 1rem 1rem; flex: 1; display: flex; flex-direction: column; gap: 0.12rem; }
-.rp-card-name { font-weight: 700; font-size: 0.88rem; color: #0a1020; line-height: 1.3; }
-.rp-card-desc { font-size: 0.75rem; color: #666; line-height: 1.6; flex: 1; margin-top: 0.3rem; }
-.rp-card-tags { display: flex; flex-wrap: wrap; gap: 0.25rem; margin-top: 0.4rem; }
-.rp-card-tag  { font-size: 0.58rem; font-weight: 600; padding: 0.1rem 0.4rem; border-radius: 20px; background: rgba(0,0,0,0.05); color: #7a7974; }
-.rp-card-link { font-size: 0.68rem; font-weight: 600; color: #01696f; margin-top: 0.55rem; }
-
-/* ── LINKS ROW ── */
-.rp-links-wrap { padding: 1.6rem var(--rp-side) 1.8rem; }
-.rp-links-grid { display: flex; flex-wrap: wrap; gap: 0.5rem; }
-.rp-link-pill {
-  display: inline-flex; align-items: center; gap: 0.4rem;
-  padding: 0.3rem 0.85rem; border-radius: var(--rp-radius-full);
-  font-size: 0.75rem; font-weight: 600; text-decoration: none;
-  background: #f9f8f5; color: #28251d; border: 1px solid #dcd9d5;
-  transition: background var(--rp-transition), border-color var(--rp-transition), transform var(--rp-transition);
+.rx-project-card:hover {
+  border-color: #cbd5e1;
+  box-shadow: 0 8px 24px rgba(15, 23, 42, 0.1);
+  transform: translateY(-2px);
 }
-.rp-link-pill:hover { background: #28251d; color: #f9f8f5; border-color: #28251d; transform: translateY(-1px); text-decoration: none; }
+.rx-project-img {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 220px;
+  margin-bottom: 0.65rem;
+  overflow: hidden;
+  border-radius: 5px;
+  background: #f1f1f1;
+}
+.rx-project-img img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+.rx-project-img.rx-cover img {
+  object-fit: cover;
+}
+.rx-project-top {
+  display: flex;
+  align-items: center;
+  gap: 0.55rem;
+  margin-bottom: 0.45rem;
+  min-width: 0;
+}
+.rx-project-badge,
+.rx-modal-badge {
+  display: inline-flex;
+  align-items: center;
+  min-height: 24px;
+  padding: 0.18rem 0.55rem;
+  border-radius: 4px;
+  font-size: 0.62rem;
+  font-weight: 800;
+  letter-spacing: 0.08em;
+  line-height: 1;
+  text-transform: uppercase;
+  white-space: nowrap;
+}
+.rpfp-fb-cost { background: #1565c0; color: #fff; }
+.rpfp-fb-mnisw { background: #6a1b9a; color: #fff; }
+.rpfp-fb-ncn { background: #c0392b; color: #fff; }
+.rpfp-fb-embo { background: #0a3e6e; color: #fff; }
+.rpfp-fb-fnp { background: #1a5276; color: #fff; }
+.rpfp-fb-uw { background: #4a148c; color: #fff; }
+.rpfp-fb-icm { background: #2e7d32; color: #fff; }
+.rx-project-meta {
+  min-width: 0;
+  color: #b1b1b1;
+  font-size: 0.68rem;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+.rx-project-title {
+  margin-bottom: 0.32rem;
+  color: #111827;
+  font-size: 0.86rem;
+  font-weight: 800;
+  line-height: 1.32;
+}
+.rx-project-polish {
+  margin-bottom: 0.35rem;
+  color: #808080;
+  font-size: 0.72rem;
+  font-style: italic;
+  line-height: 1.35;
+}
+.rx-project-summary {
+  color: #555;
+  font-size: 0.78rem;
+  line-height: 1.5;
+}
 
-@media (max-width: 640px) {
-  :root { --rp-side: 1rem; }
-  .rp-grid { grid-template-columns: repeat(auto-fill, minmax(150px, 1fr)); }
-  .rp-section-title { font-size: 1rem; }
+.rx-join {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(280px, 520px);
+  gap: 4rem;
+  align-items: center;
+  padding: 3.9rem 5.7vw;
+  background: linear-gradient(135deg, #0a1020 0%, #0f1a2e 100%);
+}
+.rx-join h2 {
+  margin: 0 0 1rem;
+  color: #fff;
+  font-family: "Merriweather", serif;
+  font-size: clamp(1.45rem, 2.2vw, 1.9rem);
+  line-height: 1.18;
+}
+.rx-join p,
+.rx-join li,
+.rx-join-note {
+  color: rgba(255, 255, 255, 0.62);
+  font-size: 0.88rem;
+  line-height: 1.6;
+}
+.rx-join ul {
+  margin: 0 0 1.2rem;
+  padding: 0;
+  list-style: none;
+}
+.rx-join li {
+  margin: 0.25rem 0;
+}
+.rx-join-cta {
+  display: inline-block;
+  padding: 0.7rem 1.25rem;
+  border-radius: 6px;
+  background: #1a73e8;
+  color: #fff;
+  font-size: 0.85rem;
+  font-weight: 800;
+  text-decoration: none;
+}
+.rx-join-cta:hover {
+  background: #1558c0;
+  text-decoration: none;
+}
+.rx-positions {
+  padding: 1.45rem 1.6rem;
+  border: 1px solid rgba(255, 255, 255, 0.16);
+  border-radius: 8px;
+}
+.rx-positions-label {
+  margin-bottom: 1rem;
+  color: rgba(255, 255, 255, 0.38);
+  font-size: 0.66rem;
+  font-weight: 800;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+}
+.rx-position {
+  margin-bottom: 0.55rem;
+  color: rgba(255, 255, 255, 0.72);
+  font-size: 0.9rem;
+  font-weight: 800;
+}
+
+.rx-modal {
+  position: fixed;
+  inset: 0;
+  z-index: 5000;
+  display: none;
+  align-items: center;
+  justify-content: center;
+  padding: 1.5rem;
+}
+.rx-modal.open {
+  display: flex;
+}
+.rx-modal-backdrop {
+  position: absolute;
+  inset: 0;
+  background: rgba(8, 13, 25, 0.68);
+}
+.rx-modal-panel {
+  position: relative;
+  z-index: 1;
+  width: min(760px, 100%);
+  max-height: min(82vh, 840px);
+  overflow: auto;
+  border-radius: 10px;
+  background: #fff;
+  box-shadow: 0 22px 80px rgba(0, 0, 0, 0.34);
+}
+.rx-modal-close {
+  position: sticky;
+  top: 0.65rem;
+  float: right;
+  width: 38px;
+  height: 38px;
+  margin: 0.65rem 0.65rem 0 0;
+  border: 1px solid #dbe1ea;
+  border-radius: 999px;
+  background: #fff;
+  color: #4b5563;
+  cursor: pointer;
+  font-size: 1.3rem;
+  line-height: 1;
+  z-index: 2;
+}
+.rx-modal-image {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 230px;
+  padding: 1.2rem;
+  background: #f4f6fa;
+}
+.rx-modal-image img {
+  display: block;
+  max-width: 100%;
+  max-height: 320px;
+  object-fit: contain;
+}
+.rx-modal-content {
+  padding: 1.35rem 1.5rem 1.6rem;
+}
+.rx-modal-kicker {
+  display: flex;
+  align-items: center;
+  gap: 0.65rem;
+  margin-bottom: 0.75rem;
+}
+.rx-modal-meta {
+  color: #929292;
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+}
+.rx-modal h2 {
+  clear: none;
+  margin: 0 0 0.5rem;
+  color: #0f172a;
+  font-size: 1.2rem;
+  line-height: 1.32;
+}
+.rx-modal-polish {
+  margin-bottom: 0.8rem;
+  color: #777;
+  font-size: 0.82rem;
+  font-style: italic;
+  line-height: 1.5;
+}
+.rx-modal-summary {
+  margin-bottom: 1rem;
+  color: #374151;
+  font-size: 0.9rem;
+  line-height: 1.65;
+}
+.rx-modal-detail p {
+  color: #424955;
+  font-size: 0.88rem;
+  line-height: 1.7;
+}
+.rx-detail-links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.45rem;
+  margin-top: 1rem;
+  padding-top: 0.9rem;
+  border-top: 1px solid #e5e7eb;
+}
+.rx-detail-links a {
+  display: inline-flex;
+  padding: 0.35rem 0.7rem;
+  border-radius: 999px;
+  background: #eef5ff;
+  color: #1a5fb4;
+  font-size: 0.78rem;
+  font-weight: 700;
+  text-decoration: none;
+}
+.rx-detail-links a:hover {
+  background: #dcecff;
+  text-decoration: none;
+}
+
+body.rx-modal-lock {
+  overflow: hidden;
+}
+
+@media (max-width: 900px) {
+  .rx-project-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+  .rx-join {
+    grid-template-columns: 1fr;
+    gap: 2rem;
+  }
+}
+@media (max-width: 680px) {
+  .rx-intro {
+    grid-template-columns: 1fr;
+    padding: 1.25rem 1rem 1.35rem;
+  }
+  .rx-domain-head {
+    padding: 0.95rem 1rem;
+  }
+  .rx-domain-titleline {
+    align-items: flex-start;
+  }
+  .rx-domain-copy {
+    padding: 0.85rem 1rem 1.25rem;
+  }
+  .rx-figures {
+    padding: 0.75rem 1rem 0.9rem;
+  }
+  .rx-projects {
+    padding: 2rem 1rem 2.5rem;
+  }
+  .rx-project-grid {
+    grid-template-columns: 1fr;
+  }
+  .rx-project-img {
+    height: 190px;
+  }
+  .rx-paper {
+    grid-template-columns: 1fr;
+  }
+  .rx-paper-title,
+  .rx-paper-authors,
+  .rx-paper-cites {
+    grid-column: 1;
+  }
+  .rx-paper-cites {
+    grid-row: auto;
+  }
+  .rx-modal {
+    padding: 0.75rem;
+  }
 }
 </style>
 
-<div id="page-research" class="page active rpfp">
-
-  <!-- HERO — identical style to Collaboration (.rpfp-intro from sulkowska.css) -->
-  <div class="rpfp-intro">
-    <h1 class="rpfp-intro-title">Projects &amp; Software</h1>
-    <p class="rpfp-intro-sub">Open-source databases, servers, and tools for studying the topology of proteins, genomes, and biomolecules.</p>
-  </div>
-
-  <!-- STATS BAR — matches collaboration stats bar exactly -->
-  <div class="rp-stats-bar">
-    <div class="rp-sbi"><span class="rp-sbi-n">14</span><span class="rp-sbi-l">Open Tools</span></div>
-    <div class="rp-sbi"><span class="rp-sbi-n">6</span><span class="rp-sbi-l">Databases</span></div>
-    <div class="rp-sbi"><span class="rp-sbi-n">5</span><span class="rp-sbi-l">Web Servers</span></div>
-    <div class="rp-sbi"><span class="rp-sbi-n">4</span><span class="rp-sbi-l">Plugins &amp; Packages</span></div>
-  </div>
-
-  <!-- STICKY NAV -->
-  <div class="rp-nav">
-    <div class="rp-nav-inner">
-      <button class="rp-pill active" onclick="rpFilter('all', this)">All Tools</button>
-      <button class="rp-pill" onclick="rpNav('rp-topology', this)">
-        <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><ellipse cx="12" cy="5" rx="9" ry="3"/><path d="M21 12c0 1.66-4 3-9 3s-9-1.34-9-3"/><path d="M3 5v14c0 1.66 4 3 9 3s9-1.34 9-3V5"/></svg>
-        Topology Databases
-      </button>
-      <button class="rp-pill" onclick="rpNav('rp-plugins', this)">
-        <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/></svg>
-        Plugins &amp; Packages
-      </button>
-      <button class="rp-pill" onclick="rpNav('rp-mechanical', this)">
-        <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M18 20V10"/><path d="M12 20V4"/><path d="M6 20v-6"/></svg>
-        Mechanical
-      </button>
-      <button class="rp-pill" onclick="rpNav('rp-prediction', this)">
-        <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
-        Structure Prediction
-      </button>
-      <button class="rp-pill" onclick="rpNav('rp-chromatin', this)">
-        <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M21 3H3v7a6 6 0 0 0 12 0V3"/><path d="M6 21v-4a6 6 0 0 1 12 0v4"/></svg>
-        Chromatin &amp; Genome
-      </button>
-      <button class="rp-pill" onclick="rpNav('rp-computing', this)">
-        <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><rect x="2" y="2" width="20" height="8" rx="2"/><rect x="2" y="14" width="20" height="8" rx="2"/></svg>
-        Computing
-      </button>
+<div id="page-research" class="page active rx-page">
+  <section class="rx-intro" aria-labelledby="rx-title">
+    <div>
+      <h1 id="rx-title">{{ research.hero.title }}</h1>
+      <p>{{ research.hero.sub }}</p>
     </div>
-  </div>
+    <select class="rx-jump" aria-label="Jump to section" onchange="rxJump(this.value)">
+      <option value="">Jump to section</option>
+      {% for domain in research.domains %}
+      <option value="{{ domain.id }}">{{ domain.number }} - {{ domain.title }}</option>
+      {% endfor %}
+      <option value="funded-projects">Funded projects</option>
+    </select>
+  </section>
 
-  <!-- ── TOPOLOGY DATABASES ── -->
-  <div class="rp-section" id="rp-topology">
-    <div class="rp-section-head">
-      <div>
-        <canvas id="rp-k-topology" width="72" height="72" class="rp-mini-knot"></canvas>
-        <div class="rp-section-eyebrow">
-          <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><ellipse cx="12" cy="5" rx="9" ry="3"/><path d="M21 12c0 1.66-4 3-9 3s-9-1.34-9-3"/><path d="M3 5v14c0 1.66 4 3 9 3s9-1.34 9-3V5"/></svg>
-          Protein Topology
+  {% for domain in research.domains %}
+  {% assign figure_count = domain.figures | size %}
+  {% assign domain_is_first = forloop.first %}
+  <section class="rx-domain{% if domain.alt %} rx-domain-alt{% endif %} open" id="{{ domain.id }}" style="--accent: {{ domain.color }}">
+    <button class="rx-domain-head" type="button" onclick="rxDomainToggle('{{ domain.id }}')" aria-expanded="true" aria-controls="{{ domain.id }}-body">
+      <span class="rx-domain-titleline">
+        <span class="rx-domain-num">{{ domain.number }}</span>
+        <span class="rx-domain-title">{{ domain.title }}</span>
+      </span>
+      <svg class="rx-chevron" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="6 9 12 15 18 9"></polyline></svg>
+    </button>
+
+    <div class="rx-domain-body" id="{{ domain.id }}-body">
+      <div class="rx-figures{% if figure_count == 1 %} rx-figures-single{% endif %}">
+        {% for figure in domain.figures %}
+        <a class="rx-figure" href="{{ figure.href }}" target="_blank" rel="noopener noreferrer" style="max-width: {{ figure.width }}px">
+          <div class="rx-figure-frame">
+            <picture>
+              {% if figure.img2x %}
+              <source srcset="{{ '/assets/img/' | append: figure.img2x | relative_url }} 2x">
+              {% endif %}
+              <img src="{{ '/assets/img/' | append: figure.img | relative_url }}" width="{{ figure.width }}" height="{{ figure.height }}" alt="{{ figure.alt }}" loading="{% if domain_is_first %}eager{% else %}lazy{% endif %}">
+            </picture>
+          </div>
+          <div class="rx-figure-cap">{{ figure.caption }}</div>
+        </a>
+        {% endfor %}
+      </div>
+
+      <div class="rx-domain-copy">
+        {{ domain.text }}
+        {% if domain.papers %}
+        <button class="rx-paper-toggle" type="button" aria-expanded="false" aria-controls="{{ domain.id }}-papers" onclick="rxPaperToggle('{{ domain.id }}-papers', this)">Featured Papers</button>
+        <div class="rx-papers" id="{{ domain.id }}-papers" hidden>
+          {% for paper in domain.papers %}
+          <a class="rx-paper" href="{{ paper.url }}" target="_blank" rel="noopener noreferrer">
+            <span class="rx-paper-journal {{ paper.jclass }}">{{ paper.journal }}</span>
+            <span class="rx-paper-title">{{ paper.title }}</span>
+            <span class="rx-paper-authors">{{ paper.authors }}</span>
+            <span class="rx-paper-cites">{{ paper.cites }}</span>
+          </a>
+          {% endfor %}
         </div>
-        <div class="rp-section-title">Databases &amp; Servers <span class="rp-count-chip">5</span></div>
-        <div class="rp-section-sub">Proteome-scale resources for detecting and classifying non-trivial topology in proteins.</div>
+        {% endif %}
       </div>
     </div>
-    <div class="rp-grid-wrap">
-      <div class="rp-grid">
-        <a class="rp-card" href="http://alphaknot.cent.uw.edu.pl" target="_blank" data-cat="database server" style="--i:0">
-          <div class="rp-img-wrap"><img src="https://jsulkowska.cent.uw.edu.pl/wp-content/uploads/2016/05/knot63.png" alt="AlphaKnot"/><div class="rp-img-overlay"><span class="rp-img-badge">AlphaFold</span></div></div>
-          <div class="rp-card-body"><div class="rp-card-name">AlphaKnot 2.0</div><div class="rp-card-desc">Knot &amp; knotoid detection across AlphaFold proteomes.</div><div class="rp-card-tags"><span class="rp-card-tag">Database</span><span class="rp-card-tag">Server</span><span class="rp-card-tag">AlphaFold</span></div><div class="rp-card-link">alphaknot.cent.uw.edu.pl →</div></div>
-        </a>
-        <a class="rp-card" href="http://alphalasso.cent.uw.edu.pl" target="_blank" data-cat="database server" style="--i:1">
-          <div class="rp-img-wrap"><img src="https://jsulkowska.cent.uw.edu.pl/wp-content/uploads/2016/05/cropped.png" alt="AlphaLasso"/><div class="rp-img-overlay"><span class="rp-img-badge">AlphaFold</span></div></div>
-          <div class="rp-card-body"><div class="rp-card-name">AlphaLasso</div><div class="rp-card-desc">Lasso topology classified across AlphaFold structures.</div><div class="rp-card-tags"><span class="rp-card-tag">Database</span><span class="rp-card-tag">Server</span><span class="rp-card-tag">AlphaFold</span></div><div class="rp-card-link">alphalasso.cent.uw.edu.pl →</div></div>
-        </a>
-        <a class="rp-card" href="http://knotprot.cent.uw.edu.pl" target="_blank" data-cat="database" style="--i:2">
-          <div class="rp-img-wrap"><img src="https://jsulkowska.cent.uw.edu.pl/wp-content/uploads/2016/05/knotprot.jpg" alt="KnotProt"/></div>
-          <div class="rp-card-body"><div class="rp-card-name">KnotProt 2.0</div><div class="rp-card-desc">Reference database of knotted proteins from the PDB.</div><div class="rp-card-tags"><span class="rp-card-tag">Database</span><span class="rp-card-tag">PDB</span></div><div class="rp-card-link">knotprot.cent.uw.edu.pl →</div></div>
-        </a>
-        <a class="rp-card" href="http://lassoprot.cent.uw.edu.pl" target="_blank" data-cat="database server" style="--i:3">
-          <div class="rp-img-wrap"><img src="https://jsulkowska.cent.uw.edu.pl/wp-content/uploads/2016/05/lassoprot.jpg" alt="LassoProt"/></div>
-          <div class="rp-card-body"><div class="rp-card-name">LassoProt</div><div class="rp-card-desc">Covalent lasso motifs, classified by piercing number.</div><div class="rp-card-tags"><span class="rp-card-tag">Database</span><span class="rp-card-tag">Server</span></div><div class="rp-card-link">lassoprot.cent.uw.edu.pl →</div></div>
-        </a>
-        <a class="rp-card" href="http://linkprot.cent.uw.edu.pl" target="_blank" data-cat="database" style="--i:4">
-          <div class="rp-img-wrap"><img src="http://linkprot.cent.uw.edu.pl/static/img/gallery_Fig4.png" alt="LinkProt"/></div>
-          <div class="rp-card-body"><div class="rp-card-name">LinkProt</div><div class="rp-card-desc">Topologically linked loops in protein structures.</div><div class="rp-card-tags"><span class="rp-card-tag">Database</span><span class="rp-card-tag">Links</span></div><div class="rp-card-link">linkprot.cent.uw.edu.pl →</div></div>
-        </a>
-      </div>
-    </div>
-  </div>
+  </section>
+  {% endfor %}
 
-  <!-- ── PLUGINS & PACKAGES ── -->
-  <div class="rp-section" id="rp-plugins">
-    <div class="rp-section-head">
-      <div>
-        <canvas id="rp-k-plugins" width="72" height="72" class="rp-mini-knot"></canvas>
-        <div class="rp-section-eyebrow">
-          <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/></svg>
-          Topology Identification
-        </div>
-        <div class="rp-section-title">Plugins &amp; Packages <span class="rp-count-chip">4</span></div>
-        <div class="rp-section-sub">Python packages and PyMOL/VMD plugins for computing topology invariants.</div>
-      </div>
+  <section class="rx-projects" id="funded-projects" aria-labelledby="rx-projects-title">
+    <div class="rx-section-label" id="rx-projects-title">Funded Research Projects</div>
+    <div class="rx-project-grid">
+      {% for project in funded_projects %}
+      <button class="rx-project-card" type="button"
+              onclick="rxOpenProject(this)"
+              data-project-id="{{ project.id | escape }}"
+              data-title="{{ project.title | escape }}"
+              data-badge="{{ project.badge | escape }}"
+              data-badge-class="{{ project.badge_class | escape }}"
+              data-meta="{{ project.meta | escape }}"
+              data-polish-title="{{ project.polish_title | escape }}"
+              data-summary="{{ project.summary | escape }}"
+              data-image="{{ project.image | relative_url }}"
+              data-alt="{{ project.alt | escape }}">
+        <span class="rx-project-img{% if project.cover %} rx-cover{% endif %}">
+          <img src="{{ project.image | relative_url }}" alt="{{ project.alt | escape }}" loading="lazy">
+        </span>
+        <span class="rx-project-top">
+          <span class="rx-project-badge {{ project.badge_class }}">{{ project.badge }}</span>
+          <span class="rx-project-meta">{{ project.meta }}</span>
+        </span>
+        <span class="rx-project-title">{{ project.title }}</span>
+        {% if project.polish_title %}
+        <span class="rx-project-polish">{{ project.polish_title }}</span>
+        {% endif %}
+        <span class="rx-project-summary">{{ project.summary }}</span>
+      </button>
+      {% endfor %}
     </div>
-    <div class="rp-grid-wrap">
-      <div class="rp-grid">
-        <a class="rp-card" href="http://topoly.cent.uw.edu.pl" target="_blank" data-cat="plugin" style="--i:0">
-          <div class="rp-img-wrap" style="background:#f0eeff"><div class="rp-img-center"><span style="font-size:2rem;font-weight:900;color:#5e35b1;font-family:'Merriweather',serif;letter-spacing:-2px">Topoly</span><span style="font-size:0.6rem;color:#9e9e9e;letter-spacing:0.1em;text-transform:uppercase">Python Package</span></div><div class="rp-img-overlay"><span class="rp-img-badge" style="background:#5e35b1">Package</span></div></div>
-          <div class="rp-card-body"><div class="rp-card-name">Topoly</div><div class="rp-card-desc">Knot invariants (Alexander, Jones, HOMFLY) for polymers.</div><div class="rp-card-tags"><span class="rp-card-tag">Python</span><span class="rp-card-tag">Invariants</span></div><div class="rp-card-link">topoly.cent.uw.edu.pl →</div></div>
-        </a>
-        <a class="rp-card" href="http://pylasso.cent.uw.edu.pl" target="_blank" data-cat="plugin" style="--i:1">
-          <div class="rp-img-wrap rp-img-dark"><img src="http://pylasso.cent.uw.edu.pl/pics/introduction_prot.png" alt="PyLasso"/><div class="rp-img-overlay"><span class="rp-img-badge" style="background:#7b1fa2">Plugin</span></div></div>
-          <div class="rp-card-body"><div class="rp-card-name">PyLasso</div><div class="rp-card-desc">Lasso detection with 3D visualization in PyMOL/VMD.</div><div class="rp-card-tags"><span class="rp-card-tag">PyMOL</span><span class="rp-card-tag">VMD</span></div><div class="rp-card-link">pylasso.cent.uw.edu.pl →</div></div>
-        </a>
-        <a class="rp-card" href="http://pylink.cent.uw.edu.pl" target="_blank" data-cat="plugin" style="--i:2">
-          <div class="rp-img-wrap rp-img-dark"><img src="https://jsulkowska.cent.uw.edu.pl/wp-content/uploads/2016/05/carousel_3sumABCD.png" alt="PyLink"/><div class="rp-img-overlay"><span class="rp-img-badge" style="background:#6a1b9a">Plugin</span></div></div>
-          <div class="rp-card-body"><div class="rp-card-name">PyLink</div><div class="rp-card-desc">Topological link identification and visualization in PyMOL.</div><div class="rp-card-tags"><span class="rp-card-tag">PyMOL</span><span class="rp-card-tag">Links</span></div><div class="rp-card-link">pylink.cent.uw.edu.pl →</div></div>
-        </a>
-        <a class="rp-card" href="https://github.com/dzarmola/knot_pull" target="_blank" data-cat="plugin" style="--i:3">
-          <div class="rp-img-wrap"><img src="https://jsulkowska.cent.uw.edu.pl/wp-content/uploads/2016/05/knotpull.jpg" alt="Knot_pull"/><div class="rp-img-overlay"><span class="rp-img-badge" style="background:#24292e">GitHub</span></div></div>
-          <div class="rp-card-body"><div class="rp-card-name">Knot_pull</div><div class="rp-card-desc">Topology simplification via iterative chain pulling.</div><div class="rp-card-tags"><span class="rp-card-tag">Python</span><span class="rp-card-tag">Open Source</span></div><div class="rp-card-link">github.com/dzarmola/knot_pull →</div></div>
-        </a>
-      </div>
-    </div>
-  </div>
+  </section>
 
-  <!-- ── MECHANICAL ── -->
-  <div class="rp-section" id="rp-mechanical">
-    <div class="rp-section-head">
-      <div>
-        <canvas id="rp-k-mechanical" width="72" height="72" class="rp-mini-knot"></canvas>
-        <div class="rp-section-eyebrow" style="color:#da7101">
-          <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M18 20V10"/><path d="M12 20V4"/><path d="M6 20v-6"/></svg>
-          Molecular Mechanics
-        </div>
-        <div class="rp-section-title">Mechanical Properties <span class="rp-count-chip">2</span></div>
-        <div class="rp-section-sub">Databases and tools for studying proteins under mechanical force — stretching, unfolding, and topology effects.</div>
-      </div>
+  <section class="rx-join">
+    <div>
+      <h2>{{ research.join.title }}</h2>
+      <p>{{ research.join.sub }}</p>
+      <ul>
+        {% for value in research.join.values %}
+        <li>{{ value }}</li>
+        {% endfor %}
+      </ul>
+      <a class="rx-join-cta" href="{{ '/contact/' | relative_url }}">{{ research.join.cta_label }}</a>
     </div>
-    <div class="rp-grid-wrap">
-      <div class="rp-grid">
-        <a class="rp-card" href="http://jowisz.ifpan.edu.pl/BSDB/" target="_blank" data-cat="database" style="--i:0">
-          <div class="rp-img-wrap" style="background:#f5f5f5"><img src="https://jsulkowska.cent.uw.edu.pl/wp-content/uploads/2016/05/stretch-512x107.png" alt="BSDB" style="object-fit:contain;padding:1rem"/></div>
-          <div class="rp-card-body"><div class="rp-card-name">BSDB — Bio-molecule Stretching Database</div><div class="rp-card-desc">Force-extension data from coarse-grained simulations.</div><div class="rp-card-tags"><span class="rp-card-tag">Database</span><span class="rp-card-tag">Force Spectroscopy</span></div><div class="rp-card-link">jowisz.ifpan.edu.pl/BSDB →</div></div>
-        </a>
-        <a class="rp-card" href="http://genus.fuw.edu.pl" target="_blank" data-cat="database server" style="--i:1">
-          <div class="rp-img-wrap" style="background:#f0f4ff"><img src="https://jsulkowska.cent.uw.edu.pl/wp-content/uploads/2016/05/genus_logo_wieksze.png" alt="Genus" style="object-fit:contain;padding:1rem"/></div>
-          <div class="rp-card-body"><div class="rp-card-name">Genus for Biomolecules</div><div class="rp-card-desc">Topological genus of proteins and RNA via minimal surfaces.</div><div class="rp-card-tags"><span class="rp-card-tag">Database</span><span class="rp-card-tag">Server</span><span class="rp-card-tag">RNA</span></div><div class="rp-card-link">genus.fuw.edu.pl →</div></div>
-        </a>
-      </div>
+    <div class="rx-positions">
+      <div class="rx-positions-label">{{ research.join.positions_title }}</div>
+      {% for position in research.join.positions %}
+      <div class="rx-position">{{ position }}</div>
+      {% endfor %}
+      <div class="rx-join-note">{{ research.join.positions_note }}</div>
     </div>
-  </div>
+  </section>
+</div>
 
-  <!-- ── STRUCTURE PREDICTION ── -->
-  <div class="rp-section" id="rp-prediction">
-    <div class="rp-section-head">
-      <div>
-        <canvas id="rp-k-prediction" width="72" height="72" class="rp-mini-knot"></canvas>
-        <div class="rp-section-eyebrow" style="color:#2e7d32">
-          <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
-          Co-evolution Methods
-        </div>
-        <div class="rp-section-title">Structure Prediction <span class="rp-count-chip">3</span></div>
-        <div class="rp-section-sub">Tools using direct coupling analysis (DCA) and evolutionary sequence information to predict protein structure.</div>
+<div class="rx-modal" id="rx-project-modal" aria-hidden="true">
+  <div class="rx-modal-backdrop" onclick="rxCloseProject()" aria-hidden="true"></div>
+  <section class="rx-modal-panel" role="dialog" aria-modal="true" aria-labelledby="rx-modal-title">
+    <button class="rx-modal-close" type="button" onclick="rxCloseProject()" aria-label="Close project details">&times;</button>
+    <div class="rx-modal-image"><img id="rx-modal-image" src="" alt=""></div>
+    <div class="rx-modal-content">
+      <div class="rx-modal-kicker">
+        <span class="rx-modal-badge" id="rx-modal-badge"></span>
+        <span class="rx-modal-meta" id="rx-modal-meta"></span>
       </div>
+      <h2 id="rx-modal-title"></h2>
+      <div class="rx-modal-polish" id="rx-modal-polish"></div>
+      <div class="rx-modal-summary" id="rx-modal-summary"></div>
+      <div class="rx-modal-detail" id="rx-modal-detail"></div>
     </div>
-    <div class="rp-grid-wrap">
-      <div class="rp-grid">
-        <a class="rp-card" href="http://dca-mol.cent.uw.edu.pl" target="_blank" data-cat="prediction server" style="--i:0">
-          <div class="rp-img-wrap" style="background:#f5f9f5"><img src="https://jsulkowska.cent.uw.edu.pl/wp-content/uploads/2016/05/dcamol.png" alt="DCA-mol" style="object-fit:contain;padding:1rem"/><div class="rp-img-overlay"><span class="rp-img-badge" style="background:#388e3c">Server</span></div></div>
-          <div class="rp-card-body"><div class="rp-card-name">DCA-mol</div><div class="rp-card-desc">Evolutionary couplings from MSA for structure prediction.</div><div class="rp-card-tags"><span class="rp-card-tag">DCA</span><span class="rp-card-tag">MSA</span></div><div class="rp-card-link">dca-mol.cent.uw.edu.pl →</div></div>
-        </a>
-        <a class="rp-card" href="http://pconsfam.bioinfo.se/" target="_blank" data-cat="prediction database" style="--i:1">
-          <div class="rp-img-wrap" style="background:#fff"><img src="http://pconsfam.bioinfo.se/static/images/pconsfam_logo_trans.png" alt="PconsFam" style="object-fit:contain;padding:1rem"/></div>
-          <div class="rp-card-body"><div class="rp-card-name">PconsFam</div><div class="rp-card-desc">Contact-assisted models for thousands of Pfam families.</div><div class="rp-card-tags"><span class="rp-card-tag">Database</span><span class="rp-card-tag">Pfam</span></div><div class="rp-card-link">pconsfam.bioinfo.se →</div></div>
-        </a>
-        <a class="rp-card" href="http://gaprepairer.cent.uw.edu.pl" target="_blank" data-cat="server prediction" style="--i:2">
-          <div class="rp-img-wrap"><img src="https://jsulkowska.cent.uw.edu.pl/wp-content/uploads/2016/05/gaprepairer.jpg" alt="GapRepairer"/><div class="rp-img-overlay"><span class="rp-img-badge" style="background:#558b2f">Server</span></div></div>
-          <div class="rp-card-body"><div class="rp-card-name">GapRepairer</div><div class="rp-card-desc">Reconstructs missing backbone fragments in PDB structures.</div><div class="rp-card-tags"><span class="rp-card-tag">Server</span><span class="rp-card-tag">PDB</span></div><div class="rp-card-link">gaprepairer.cent.uw.edu.pl →</div></div>
-        </a>
-      </div>
-    </div>
-  </div>
+  </section>
+</div>
 
-  <!-- ── CHROMATIN & GENOME ── -->
-  <div class="rp-section" id="rp-chromatin">
-    <div class="rp-section-head">
-      <div>
-        <canvas id="rp-k-chromatin" width="72" height="72" class="rp-mini-knot"></canvas>
-        <div class="rp-section-eyebrow" style="color:#c62828">
-          <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M21 3H3v7a6 6 0 0 0 12 0V3"/><path d="M6 21v-4a6 6 0 0 1 12 0v4"/></svg>
-          Genomics
-        </div>
-        <div class="rp-section-title">Chromatin &amp; Genome Topology <span class="rp-count-chip">1</span></div>
-        <div class="rp-section-sub">Applying protein topology methods to the 3D organization of chromatin and the genome.</div>
-      </div>
+<div hidden>
+  {% for project in funded_projects %}
+  <article id="rx-project-detail-{{ project.id }}">
+    {{ project.detail | markdownify }}
+    {% if project.links %}
+    <div class="rx-detail-links">
+      {% for link in project.links %}
+      <a href="{{ link.url }}" target="_blank" rel="noopener noreferrer">{{ link.label }}</a>
+      {% endfor %}
     </div>
-    <div class="rp-grid-wrap">
-      <div class="rp-grid">
-        <a class="rp-card" href="http://knotgenom.cent.uw.edu.pl" target="_blank" data-cat="chromatin database server" style="--i:0">
-          <div class="rp-img-wrap"><img src="https://knotgenom.cent.uw.edu.pl/static/img/help_figs/intro_fig1.jpg" alt="KnotGenome"/><div class="rp-img-overlay"><span class="rp-img-badge" style="background:#c62828">Server</span></div></div>
-          <div class="rp-card-body"><div class="rp-card-name">KnotGenome</div><div class="rp-card-desc">Knots &amp; links in chromatin fiber from polymer models.</div><div class="rp-card-tags"><span class="rp-card-tag">Server</span><span class="rp-card-tag">Chromatin</span></div><div class="rp-card-link">knotgenom.cent.uw.edu.pl →</div></div>
-        </a>
-      </div>
-    </div>
-  </div>
-
-  <!-- ── COMPUTING (dark) ── -->
-  <div class="rp-section rp-section-dark" id="rp-computing">
-    <div class="rp-section-head">
-      <div>
-        <canvas id="rp-k-computing" width="72" height="72" class="rp-mini-knot"></canvas>
-        <div class="rp-section-eyebrow">
-          <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><rect x="2" y="2" width="20" height="8" rx="2"/><rect x="2" y="14" width="20" height="8" rx="2"/></svg>
-          HPC Resources
-        </div>
-        <div class="rp-section-title">Computing Infrastructure <span class="rp-count-chip">2</span></div>
-        <div class="rp-section-sub">High-performance computing clusters powering large-scale topology simulations.</div>
-      </div>
-    </div>
-    <div class="rp-grid-wrap">
-      <div class="rp-grid">
-        <a class="rp-card" href="https://horda.cent.uw.edu.pl" target="_blank" data-cat="server" style="--i:0">
-          <div class="rp-img-wrap" style="background:#1c313a;border-bottom-color:rgba(255,255,255,0.04)"><div class="rp-img-center"><span style="font-size:1.8rem;font-weight:900;color:#fff;letter-spacing:-1px;font-family:'Merriweather',serif">HORDA</span><span style="font-size:0.58rem;color:rgba(255,255,255,0.4);letter-spacing:0.15em;text-transform:uppercase">HPC Cluster · CeNT UW</span></div></div>
-          <div class="rp-card-body"><div class="rp-card-name">Horda Cluster</div><div class="rp-card-desc">Primary HPC cluster for large-scale topology simulations.</div><div class="rp-card-tags"><span class="rp-card-tag">HPC</span><span class="rp-card-tag">CeNT</span></div><div class="rp-card-link">horda.cent.uw.edu.pl →</div></div>
-        </a>
-        <a class="rp-card" href="https://cent.uw.edu.pl" target="_blank" data-cat="server" style="--i:1">
-          <div class="rp-img-wrap" style="background:#263238;border-bottom-color:rgba(255,255,255,0.04)"><div class="rp-img-center"><span style="font-size:1.8rem;font-weight:900;color:#fff;letter-spacing:-1px;font-family:Arial">C<span style="color:#4fc3f7;font-size:0.8em">e</span>NT</span><span style="font-size:0.58rem;color:rgba(255,255,255,0.4);letter-spacing:0.15em;text-transform:uppercase">LSSCB Cluster</span></div></div>
-          <div class="rp-card-body"><div class="rp-card-name">LSSCB Cluster</div><div class="rp-card-desc">Shared HPC infrastructure for structural bioinformatics.</div><div class="rp-card-tags"><span class="rp-card-tag">HPC</span><span class="rp-card-tag">Shared</span></div><div class="rp-card-link">cent.uw.edu.pl →</div></div>
-        </a>
-      </div>
-    </div>
-  </div>
-
-  <!-- ── LINKS ── -->
-  <div class="rp-section">
-    <div class="rp-section-head">
-      <div>
-        <div class="rp-section-eyebrow">External Resources</div>
-        <div class="rp-section-title">Important Links</div>
-      </div>
-    </div>
-    <div class="rp-links-wrap">
-      <div class="rp-links-grid">
-        <a href="https://jsulkowska.cent.uw.edu.pl" target="_blank" class="rp-link-pill">Lab Website</a>
-        <a href="https://www.cent.uw.edu.pl" target="_blank" class="rp-link-pill">CeNT, University of Warsaw</a>
-        <a href="https://scholar.google.com/citations?user=_LNjYQcAAAAJ" target="_blank" class="rp-link-pill">Google Scholar</a>
-        <a href="https://github.com/ilbsm" target="_blank" class="rp-link-pill">GitHub: @ilbsm</a>
-        <a href="https://www.researchgate.net/profile/Joanna-Sulkowska" target="_blank" class="rp-link-pill">ResearchGate</a>
-        <a href="https://jsulkowska.cent.uw.edu.pl/topics/collaboration/" target="_blank" class="rp-link-pill">Collaborators</a>
-      </div>
-    </div>
-  </div>
-
-</div><!-- /rpfp -->
+    {% endif %}
+  </article>
+  {% endfor %}
+</div>
 
 <script>
-function rpFilter(cat, btn) {
-  document.querySelectorAll('.rp-pill').forEach(p => p.classList.remove('active'));
-  btn.classList.add('active');
-  document.querySelectorAll('.rp-card').forEach(card => {
-    if (cat === 'all') { card.classList.remove('rp-hidden'); return; }
-    card.classList.toggle('rp-hidden', !(card.dataset.cat || '').split(' ').includes(cat));
-  });
+function rxDomainToggle(id) {
+  var section = document.getElementById(id);
+  if (!section) return;
+  var open = !section.classList.contains('open');
+  section.classList.toggle('open', open);
+  var button = section.querySelector('.rx-domain-head');
+  if (button) button.setAttribute('aria-expanded', open ? 'true' : 'false');
 }
-function rpNav(id, btn) {
-  document.querySelectorAll('.rp-pill').forEach(p => p.classList.remove('active'));
-  btn.classList.add('active');
-  const el = document.getElementById(id);
-  if (el) el.scrollIntoView({ behavior: 'smooth', block: 'start' });
-}
-(function(){
-  const secs  = ['rp-topology','rp-plugins','rp-mechanical','rp-prediction','rp-chromatin','rp-computing'];
-  const pills = Array.from(document.querySelectorAll('.rp-nav .rp-pill')).slice(1);
-  window.addEventListener('scroll', () => {
-    let cur = secs[0];
-    secs.forEach(id => { const el = document.getElementById(id); if (el && el.getBoundingClientRect().top <= 120) cur = id; });
-    pills.forEach((p, i) => p.classList.toggle('active', secs[i] === cur));
-  }, { passive: true });
-})();
 
-/* ── MINI 3D KNOTS ── */
-(function(){
-  function init() {
-    if (typeof Knot3D === 'undefined') return;
-    [
-      { id:'rp-k-topology',   type:'trefoil',  color:'#1a73e8', speed:0.009, tiltX:0.5  },
-      { id:'rp-k-plugins',    type:'lasso',    color:'#7b1fa2', speed:0.007, tiltX:0.35 },
-      { id:'rp-k-mechanical', type:'slipknot', color:'#da7101', speed:0.008, tiltX:0.4  },
-      { id:'rp-k-prediction', type:'torus',    color:'#2e7d32', speed:0.006, tiltX:0.6  },
-      { id:'rp-k-chromatin',  type:'hopf',     color:'#c62828', speed:0.008, tiltX:0.45 },
-      { id:'rp-k-computing',  type:'helix',    color:'#4db8e8', speed:0.01,  tiltX:0.3  }
-    ].forEach(d => {
-      const c = document.getElementById(d.id);
-      if (!c) return;
-      new Knot3D(c, { type:d.type, color:d.color, speed:d.speed, tiltX:d.tiltX, N:280, fov:5, glow:true, glowSize:4 });
-    });
+function rxPaperToggle(id, button) {
+  var panel = document.getElementById(id);
+  if (!panel) return;
+  var open = panel.hasAttribute('hidden');
+  if (open) panel.removeAttribute('hidden');
+  else panel.setAttribute('hidden', '');
+  if (button) button.setAttribute('aria-expanded', open ? 'true' : 'false');
+}
+
+function rxJump(id) {
+  if (!id) return;
+  var section = document.getElementById(id);
+  if (!section) return;
+  if (section.classList.contains('rx-domain')) {
+    section.classList.add('open');
+    var button = section.querySelector('.rx-domain-head');
+    if (button) button.setAttribute('aria-expanded', 'true');
   }
-  if (document.readyState === 'loading') { document.addEventListener('DOMContentLoaded', init); } else { init(); }
-}());
+  section.scrollIntoView({ behavior: 'smooth', block: 'start' });
+}
+
+function rxOpenProject(button) {
+  var modal = document.getElementById('rx-project-modal');
+  if (!modal || !button) return;
+  var detail = document.getElementById('rx-project-detail-' + button.dataset.projectId);
+  var image = document.getElementById('rx-modal-image');
+  var badge = document.getElementById('rx-modal-badge');
+  var polish = button.dataset.polishTitle || '';
+
+  document.getElementById('rx-modal-title').textContent = button.dataset.title || '';
+  document.getElementById('rx-modal-meta').textContent = button.dataset.meta || '';
+  document.getElementById('rx-modal-summary').textContent = button.dataset.summary || '';
+  document.getElementById('rx-modal-polish').textContent = polish;
+  document.getElementById('rx-modal-polish').style.display = polish ? '' : 'none';
+  document.getElementById('rx-modal-detail').innerHTML = detail ? detail.innerHTML : '';
+
+  badge.className = 'rx-modal-badge ' + (button.dataset.badgeClass || '');
+  badge.textContent = button.dataset.badge || '';
+  image.src = button.dataset.image || '';
+  image.alt = button.dataset.alt || '';
+
+  modal.classList.add('open');
+  modal.setAttribute('aria-hidden', 'false');
+  document.body.classList.add('rx-modal-lock');
+}
+
+function rxCloseProject() {
+  var modal = document.getElementById('rx-project-modal');
+  if (!modal) return;
+  modal.classList.remove('open');
+  modal.setAttribute('aria-hidden', 'true');
+  document.body.classList.remove('rx-modal-lock');
+}
+
+document.addEventListener('keydown', function(event) {
+  if (event.key === 'Escape') rxCloseProject();
+});
 </script>
