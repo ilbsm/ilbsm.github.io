@@ -1,575 +1,606 @@
 ---
 layout: default
-title: "Contact — Sulkowska Lab"
+title: "Contact - Sulkowska Lab"
 description: "Contact information for the Sulkowska Lab at CeNT, University of Warsaw."
 permalink: /contact/
 ---
 
 <style>
-/* ── DESIGN TOKENS ── */
-:root {
-  --text-xs:   clamp(0.75rem,  0.7rem  + 0.25vw, 0.875rem);
-  --text-sm:   clamp(0.875rem, 0.8rem  + 0.35vw, 1rem);
-  --text-base: clamp(1rem,     0.95rem + 0.25vw, 1.125rem);
-  --text-lg:   clamp(1.125rem, 1rem    + 0.75vw, 1.5rem);
-  --space-1:0.25rem;--space-2:0.5rem;--space-3:0.75rem;--space-4:1rem;
-  --space-5:1.25rem;--space-6:1.5rem;--space-8:2rem;--space-10:2.5rem;
-  --space-12:3rem;--space-16:4rem;
-  --radius-sm:0.375rem;--radius-md:0.5rem;--radius-lg:0.75rem;--radius-xl:1rem;--radius-full:9999px;
-  --transition:180ms cubic-bezier(0.16,1,0.3,1);
-  --shadow-sm:0 1px 3px rgba(0,0,0,0.07);
-  --shadow-md:0 4px 16px rgba(0,0,0,0.09);
-  --shadow-lg:0 8px 32px rgba(0,0,0,0.13);
+.cp {
+  min-height: 100vh;
+  background: #f3f6f9;
+  color: #1c2b38;
 }
 
-/* ── PAGE SHELL ── */
-.cp { background: #f0f2f5; min-height: 100vh; padding-bottom: var(--space-16); }
-
-/* ── DARK PAGE HEADER ── */
-.cp-pghead {
-  background: linear-gradient(90deg, #0a1020 0%, #0f1a2e 100%);
-  border-bottom: 1px solid rgba(255,255,255,0.07);
-  padding: 0.65rem 1.5rem;
-  position: sticky; top: var(--nav-h, 42px); z-index: 110;
-}
-.cp-pghead-inner {
-  max-width: 1140px; margin: 0 auto;
-  display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: var(--space-4);
-}
-.cp-pghead-eyebrow {
-  font-size: 0.58rem; font-weight: 800; letter-spacing: 0.2em;
-  text-transform: uppercase; color: #4db8e8; line-height: 1; margin-bottom: 0.12rem;
-}
-.cp-pghead-title {
-  font-family: 'Merriweather', serif; font-size: 0.95rem; font-weight: 900; color: #fff; margin: 0;
-}
-.cp-pghead-badge {
-  display: inline-flex; align-items: center; gap: var(--space-2);
-  font-size: 0.68rem; font-weight: 600; color: rgba(255,255,255,0.55);
-  padding: 0.25rem 0.75rem; border-radius: var(--radius-full);
-  background: rgba(255,255,255,0.07); border: 1px solid rgba(255,255,255,0.1);
-}
-@media (max-width: 520px) { .cp-pghead-badge, .cp-pghead-eyebrow { display: none; } }
-
-/* ── STICKY NAV ── */
-.cp-nav {
-  position: sticky; top: calc(var(--nav-h, 42px) + 46px); z-index: 100;
-  background: rgba(255,255,255,0.97);
-  backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px);
-  border-bottom: 1px solid rgba(0,0,0,0.07);
-  box-shadow: 0 1px 3px rgba(0,0,0,0.04);
-  padding: var(--space-3) 0;
-}
-.cp-nav-inner {
-  max-width: 1140px; margin: 0 auto; padding: 0 var(--space-6);
-  display: flex; gap: var(--space-1); flex-wrap: wrap; align-items: center;
-}
-.cp-pill {
-  display: inline-flex; align-items: center; gap: var(--space-2);
-  padding: var(--space-2) var(--space-4); border-radius: var(--radius-full);
-  font-size: var(--text-xs); font-weight: 500; color: #5a5957;
-  background: transparent; border: 1px solid transparent;
-  cursor: pointer; transition: all var(--transition); white-space: nowrap; font-family: inherit;
-}
-.cp-pill:hover { background: #f0ede8; color: #28251d; border-color: rgba(0,0,0,0.1); }
-.cp-pill.active { background: #28251d; color: #f9f8f5; }
-
-/* ── WRAPPER ── */
-.cp-wrap { max-width: 1140px; margin: 0 auto; padding: var(--space-6) var(--space-6); }
-
-/* ── SECTION CARDS ── */
-.cp-sec {
-  background: white; border-radius: var(--radius-xl);
-  padding: var(--space-10) var(--space-10);
-  margin-bottom: var(--space-4); box-shadow: 0 1px 4px rgba(0,0,0,0.055);
-  scroll-margin-top: 136px;
-}
-.cp-eyebrow {
-  font-size: var(--text-xs); font-weight: 700; letter-spacing: 0.1em;
-  text-transform: uppercase; color: #01696f; margin-bottom: var(--space-2);
-}
-.cp-title {
-  font-size: var(--text-lg); font-weight: 700; color: #28251d; line-height: 1.2; margin-bottom: 0;
-}
-.cp-subtitle { font-size: var(--text-xs); color: #9a9896; margin-top: var(--space-1); line-height: 1.6; }
-.cp-sec-header {
-  margin-bottom: var(--space-8); padding-bottom: var(--space-6); border-bottom: 1px solid #f0ede8;
+.cp a:hover {
+  text-decoration: none;
 }
 
-/* ── CONTACT INFO CARDS ── */
+.cp-page-head {
+  background: #fff;
+  border-bottom: 1px solid #d9e2ea;
+  padding: 1.45rem 1.95rem 1.55rem;
+}
+
+.cp-page-head h1 {
+  margin: 0 0 0.5rem;
+  color: #0b4456;
+  font-family: 'Merriweather', serif;
+  font-size: clamp(2.15rem, 3vw, 3rem);
+  font-weight: 900;
+  line-height: 1.08;
+}
+
+.cp-page-head p {
+  max-width: none;
+  margin: 0;
+  color: #404a52;
+  font-size: 1rem;
+  line-height: 1.6;
+}
+
+.cp-wrap {
+  width: 100%;
+  padding: 0.65rem 1.15rem 2rem;
+}
+
+.cp-section {
+  margin-bottom: 0.8rem;
+}
+
+.cp-section-title {
+  margin: 0 0 0.45rem;
+  color: #172635;
+  font-size: 1.14rem;
+  font-weight: 800;
+  line-height: 1.25;
+}
+
 .cp-info-grid {
-  display: grid; grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); gap: var(--space-4);
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 0.55rem;
 }
-.cp-info-card {
-  display: flex; gap: var(--space-4); align-items: flex-start;
-  padding: var(--space-5); border-radius: var(--radius-lg);
-  background: #f9f8f5; border: 1px solid #ede9e3;
-  transition: box-shadow var(--transition), transform var(--transition);
-  text-decoration: none; color: inherit;
-}
-.cp-info-card:hover { box-shadow: var(--shadow-md); transform: translateY(-2px); text-decoration: none; }
-.cp-info-icon {
-  width: 38px; height: 38px; border-radius: var(--radius-md); flex-shrink: 0;
-  display: flex; align-items: center; justify-content: center;
-  background: #e8f4f4; color: #01696f;
-}
-.cp-info-card-highlight {
-  background: linear-gradient(135deg, #01696f 0%, #015a5f 100%);
-  border-color: transparent;
-}
-.cp-info-card-highlight .cp-info-icon { background: rgba(255,255,255,0.15); color: #fff; }
-.cp-info-card-highlight .cp-info-label { color: rgba(255,255,255,0.65); }
-.cp-info-card-highlight .cp-info-val  { color: #fff; }
-.cp-info-label {
-  font-size: 0.65rem; font-weight: 700; text-transform: uppercase;
-  letter-spacing: 0.1em; color: #9a9896; margin-bottom: var(--space-1);
-}
-.cp-info-val { font-size: var(--text-xs); color: #28251d; line-height: 1.65; font-weight: 500; }
 
-/* ── INQUIRY FORM ── */
-.cp-form { display: flex; flex-direction: column; gap: var(--space-5); }
-.cp-form-row { display: grid; grid-template-columns: 1fr 1fr; gap: var(--space-4); }
-@media (max-width: 640px) { .cp-form-row { grid-template-columns: 1fr; } }
-.cp-field { display: flex; flex-direction: column; gap: var(--space-2); }
+.cp-info-card {
+  display: flex;
+  min-height: 8.1rem;
+  gap: 0.75rem;
+  align-items: flex-start;
+  padding: 0.8rem 0.85rem;
+  border: 1px solid #d7e0e8;
+  border-radius: 13px;
+  background: #fff;
+  color: inherit;
+}
+
+.cp-info-card[href]:hover {
+  border-color: #bdd0dc;
+}
+
+.cp-info-icon {
+  display: inline-flex;
+  width: 28px;
+  height: 28px;
+  flex: 0 0 28px;
+  align-items: center;
+  justify-content: center;
+  border-radius: 9px;
+  background: #e7f3f5;
+  color: #2b7b84;
+}
+
+.cp-info-label {
+  margin-bottom: 0.35rem;
+  color: #8d98a2;
+  font-size: 0.66rem;
+  font-weight: 800;
+  letter-spacing: 0.14em;
+  line-height: 1.2;
+  text-transform: uppercase;
+}
+
+.cp-info-val {
+  color: #1f2f3b;
+  font-size: 0.91rem;
+  font-weight: 500;
+  line-height: 1.55;
+}
+
+.cp-info-sub {
+  color: #8a949d;
+  font-size: 0.76rem;
+}
+
+.cp-info-card-highlight {
+  border-color: transparent;
+  background: linear-gradient(135deg, #2d7c84, #246d76);
+}
+
+.cp-info-card-highlight .cp-info-icon {
+  background: rgba(255, 255, 255, 0.16);
+  color: #fff;
+}
+
+.cp-info-card-highlight .cp-info-label {
+  color: rgba(255, 255, 255, 0.68);
+}
+
+.cp-info-card-highlight .cp-info-val,
+.cp-info-card-highlight .cp-info-sub {
+  color: #fff;
+}
+
+.cp-form {
+  display: grid;
+  gap: 0.62rem;
+}
+
+.cp-form-row {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 0.55rem;
+}
+
+.cp-field {
+  min-width: 0;
+}
+
 .cp-label {
-  font-size: var(--text-xs); font-weight: 700; color: #5a5957;
-  display: flex; align-items: center; gap: var(--space-1);
+  display: block;
+  margin-bottom: 0.28rem;
+  color: #4b5862;
+  font-size: 0.82rem;
+  font-weight: 800;
+  line-height: 1.25;
 }
-.cp-required { color: #c62828; }
-.cp-input, .cp-select, .cp-textarea {
-  width: 100%; padding: var(--space-3) var(--space-4);
-  border: 1.5px solid #dcd9d5; border-radius: var(--radius-lg);
-  font-family: 'Open Sans', sans-serif; font-size: var(--text-xs);
-  color: #28251d; background: #faf9f7;
-  transition: border-color var(--transition), box-shadow var(--transition);
+
+.cp-required {
+  color: #b94a40;
+}
+
+.cp-input,
+.cp-select,
+.cp-textarea {
+  width: 100%;
+  border: 1px solid #d2dde6;
+  border-radius: 12px;
+  background: #fff;
+  color: #1f2f3b;
+  font-family: 'Open Sans', sans-serif;
+  font-size: 0.9rem;
   outline: none;
+  transition: border-color 0.16s, box-shadow 0.16s;
 }
-.cp-input:focus, .cp-select:focus, .cp-textarea:focus {
-  border-color: #01696f;
-  box-shadow: 0 0 0 3px rgba(1,105,111,0.1);
+
+.cp-input,
+.cp-select {
+  min-height: 34px;
+  padding: 0.46rem 0.72rem;
+}
+
+.cp-textarea {
+  min-height: 72px;
+  padding: 0.56rem 0.72rem;
+  resize: vertical;
+  line-height: 1.45;
+}
+
+.cp-input::placeholder,
+.cp-textarea::placeholder {
+  color: #a6b0b9;
+}
+
+.cp-input:focus,
+.cp-select:focus,
+.cp-textarea:focus {
+  border-color: #2b7b84;
+  box-shadow: 0 0 0 3px rgba(43, 123, 132, 0.12);
+}
+
+.cp-select {
+  appearance: none;
+  cursor: pointer;
+  background-image: url("data:image/svg+xml,%3Csvg width='12' height='8' viewBox='0 0 12 8' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M1 1.25L6 6.25L11 1.25' stroke='%238A949D' stroke-width='1.6' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
+  background-position: right 0.82rem center;
+  background-repeat: no-repeat;
+  padding-right: 2.2rem;
+}
+
+.cp-form-footer {
+  display: flex;
+  gap: 1rem;
+  align-items: flex-start;
+  justify-content: space-between;
+  padding-top: 0.08rem;
+}
+
+.cp-form-note {
+  max-width: 27ch;
+  color: #77838d;
+  font-size: 0.68rem;
+  line-height: 1.45;
+}
+
+.cp-submit {
+  display: inline-flex;
+  min-width: 168px;
+  height: 32px;
+  align-items: center;
+  justify-content: center;
+  gap: 0.55rem;
+  border: 0;
+  border-radius: 999px;
+  background: #2d7c84;
+  color: #fff;
+  cursor: pointer;
+  font-family: 'Open Sans', sans-serif;
+  font-size: 0.82rem;
+  font-weight: 800;
+  line-height: 1;
+  transition: background 0.16s, transform 0.16s;
+}
+
+.cp-submit:hover {
+  background: #246d76;
+  transform: translateY(-1px);
+}
+
+.cp-form-success {
+  display: none;
+  margin-top: 0.65rem;
+  padding: 0.85rem 1rem;
+  border: 1px solid #b9d9de;
+  border-radius: 12px;
+  background: #eef8f9;
+  color: #315c63;
+  font-size: 0.9rem;
+}
+
+.cp-form-success.visible {
+  display: block;
+}
+
+.cp-bottom-grid {
+  display: grid;
+  grid-template-columns: minmax(0, 2.25fr) minmax(320px, 0.95fr);
+  gap: 0.82rem;
+  align-items: start;
+}
+
+.cp-panel {
+  overflow: hidden;
+  border: 1px solid #d7e0e8;
+  border-radius: 13px;
   background: #fff;
 }
-.cp-input::placeholder, .cp-textarea::placeholder { color: #b0ada8; }
-.cp-select { appearance: none; background-image: url("data:image/svg+xml,%3Csvg width='12' height='8' viewBox='0 0 12 8' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%239a9896' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E"); background-repeat: no-repeat; background-position: right 14px center; padding-right: 36px; cursor: pointer; }
-.cp-textarea { resize: vertical; min-height: 130px; line-height: 1.65; }
-.cp-form-footer {
-  display: flex; align-items: center; justify-content: space-between;
-  gap: var(--space-4); flex-wrap: wrap;
-}
-.cp-form-note { font-size: 0.68rem; color: #9a9896; line-height: 1.55; max-width: 42ch; }
-.cp-submit {
-  display: inline-flex; align-items: center; gap: var(--space-3);
-  padding: var(--space-3) var(--space-8); border-radius: var(--radius-full);
-  background: #01696f; color: #fff; border: none;
-  font-family: 'Open Sans', sans-serif; font-size: var(--text-xs); font-weight: 700;
-  cursor: pointer; transition: background var(--transition), transform var(--transition), box-shadow var(--transition);
-  flex-shrink: 0;
-}
-.cp-submit:hover { background: #015a5f; transform: translateY(-1px); box-shadow: 0 4px 14px rgba(1,105,111,0.35); }
-.cp-submit:active { transform: none; }
-.cp-submit-icon { transition: transform var(--transition); }
-.cp-submit:hover .cp-submit-icon { transform: translateX(3px); }
 
-/* ── FORM SUCCESS / ERROR STATES ── */
-.cp-form-success {
-  display: none; padding: var(--space-5) var(--space-6);
-  border-radius: var(--radius-lg); background: #f0f9f9;
-  border: 1px solid #a8d8da; text-align: center;
+.cp-map-header,
+.cp-fb-head {
+  display: flex;
+  min-height: 34px;
+  align-items: center;
+  gap: 0.55rem;
+  padding: 0.45rem 0.8rem;
+  font-size: 0.82rem;
+  font-weight: 800;
+  line-height: 1.2;
 }
-.cp-form-success.visible { display: block; }
-.cp-form-success-icon { font-size: 2rem; margin-bottom: var(--space-2); }
-.cp-form-success-title { font-weight: 700; font-size: var(--text-base); color: #01696f; margin-bottom: var(--space-1); }
-.cp-form-success-sub   { font-size: var(--text-xs); color: #5a5957; }
 
-/* ── MAP + SOCIAL GRID ── */
-.cp-bottom-grid {
-  display: grid; grid-template-columns: 1.35fr 1fr; gap: var(--space-8); align-items: start;
-}
-@media (max-width: 720px) { .cp-bottom-grid { grid-template-columns: 1fr; } }
-
-/* ── MAP ── */
-.cp-map-box { border-radius: var(--radius-xl); overflow: hidden; box-shadow: var(--shadow-md); border: 1px solid #ede9e3; }
 .cp-map-header {
-  background: #0f1623; color: rgba(255,255,255,0.6);
-  font-size: var(--text-xs); font-weight: 600;
-  padding: var(--space-3) var(--space-4);
-  display: flex; align-items: center; gap: var(--space-2);
-}
-.cp-map-header svg { flex-shrink: 0; }
-.cp-map-link {
-  display: flex; align-items: center; justify-content: center; gap: var(--space-2);
-  padding: var(--space-3); background: #f9f8f5;
-  font-size: var(--text-xs); font-weight: 600; color: #01696f;
-  text-decoration: none; transition: background var(--transition);
-  border-top: 1px solid #ede9e3;
-}
-.cp-map-link:hover { background: #f0f9f9; text-decoration: none; }
-
-/* ── SOCIAL LINKS ── */
-.cp-social-title {
-  font-size: var(--text-xs); font-weight: 700; letter-spacing: 0.08em;
-  text-transform: uppercase; color: #9a9896; margin-bottom: var(--space-4);
-}
-.cp-social-grid { display: flex; flex-direction: column; gap: var(--space-2); margin-bottom: var(--space-8); }
-.cp-social-item {
-  display: flex; align-items: center; gap: var(--space-3);
-  padding: var(--space-3) var(--space-4); border-radius: var(--radius-lg);
-  text-decoration: none; color: inherit;
-  transition: background var(--transition), transform var(--transition);
-  font-size: var(--text-xs); font-weight: 500; color: #28251d;
-}
-.cp-social-item:hover { background: #f0ede8; transform: translateX(3px); text-decoration: none; }
-.cp-social-dot {
-  width: 30px; height: 30px; border-radius: var(--radius-md); flex-shrink: 0;
-  display: flex; align-items: center; justify-content: center; color: #fff;
+  background: #172635;
+  color: rgba(255, 255, 255, 0.82);
 }
 
-/* ── FUNDING ── */
-.cp-fund-chips { display: flex; flex-wrap: wrap; gap: var(--space-2); }
-.cp-fund-chip {
-  display: inline-flex; align-items: center; gap: var(--space-2);
-  font-size: 0.7rem; font-weight: 600; padding: 0.25rem 0.7rem;
-  border-radius: var(--radius-full); background: #f0ede8; color: #5a5957;
-  border: 1px solid #dcd9d5; text-decoration: none;
-  transition: background var(--transition), border-color var(--transition), transform var(--transition);
+.cp-map-frame,
+.cp-fb-frame {
+  display: block;
+  width: 100%;
+  border: 0;
 }
-.cp-fund-chip:hover { background: #28251d; color: #f9f8f5; border-color: #28251d; transform: translateY(-1px); text-decoration: none; }
 
-/* ── RESPONSIVE ── */
-@media (max-width: 640px) {
-  .cp-sec  { padding: var(--space-6) var(--space-5); }
-  .cp-wrap { padding: var(--space-4) var(--space-4); }
+.cp-map-frame {
+  height: 300px;
+}
+
+.cp-fb-head {
+  justify-content: space-between;
+  color: #20313d;
+}
+
+.cp-fb-title {
+  display: inline-flex;
+  min-width: 0;
+  align-items: center;
+  gap: 0.55rem;
+}
+
+.cp-fb-mark {
+  display: inline-flex;
+  width: 28px;
+  height: 28px;
+  flex: 0 0 28px;
+  align-items: center;
+  justify-content: center;
+  border-radius: 8px;
+  background: #2f77a4;
+  color: #fff;
+  font-size: 1rem;
+  font-weight: 900;
+  line-height: 1;
+}
+
+.cp-fb-open {
+  display: inline-flex;
+  flex: 0 0 auto;
+  align-items: center;
+  gap: 0.32rem;
+  padding: 0.34rem 0.64rem;
+  border: 1px solid #d9e4ec;
+  border-radius: 999px;
+  background: #fff;
+  color: #2d7c84;
+  font-size: 0.73rem;
+  font-weight: 800;
+}
+
+.cp-fb-frame-wrap {
+  height: 300px;
+  overflow: hidden;
+  background: #f8fafc;
+}
+
+.cp-fb-frame {
+  height: 300px;
+}
+
+@media (max-width: 1020px) {
+  .cp-info-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .cp-bottom-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 680px) {
+  .cp-page-head {
+    padding: 1.1rem 1rem 1.2rem;
+  }
+
+  .cp-wrap {
+    padding: 0.65rem 0.85rem 1.5rem;
+  }
+
+  .cp-info-grid,
+  .cp-form-row {
+    grid-template-columns: 1fr;
+  }
+
+  .cp-info-card {
+    min-height: 0;
+  }
+
+  .cp-form-footer {
+    align-items: stretch;
+    flex-direction: column;
+  }
+
+  .cp-form-note {
+    max-width: none;
+  }
+
+  .cp-submit {
+    width: 100%;
+  }
+
+  .cp-map-frame,
+  .cp-fb-frame-wrap,
+  .cp-fb-frame {
+    height: 280px;
+  }
 }
 </style>
 
 <div id="page-contact" class="page active cp">
+  <header class="cp-page-head">
+    <h1>Contact &amp; Visit Us</h1>
+    <p>Questions, collaborations, or looking to join? Every great connection starts with a message &mdash; we respond to all of them.</p>
+  </header>
 
-<!-- ── DARK PAGE HEADER ── -->
-<div class="cp-pghead">
-  <div class="cp-pghead-inner">
-    <div>
-      <div class="cp-pghead-eyebrow">Centre of New Technologies · University of Warsaw</div>
-      <div class="cp-pghead-title">Contact — Sulkowska Lab</div>
-    </div>
-    <div class="cp-pghead-badge">
-      <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0z"/><circle cx="12" cy="10" r="3"/></svg>
-      Warsaw, Poland · office 04.43
-    </div>
-  </div>
-</div>
-
-<!-- ── STICKY NAV ── -->
-<div class="cp-nav">
-  <div class="cp-nav-inner">
-    <button class="cp-pill active" onclick="cpNav('cp-info',this)">
-      <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0z"/><circle cx="12" cy="10" r="3"/></svg>
-      Contact Info
-    </button>
-    <button class="cp-pill" onclick="cpNav('cp-inquiry',this)">
-      <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
-      Quick Inquiry
-    </button>
-    <button class="cp-pill" onclick="cpNav('cp-location',this)">
-      <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18M9 21V9"/></svg>
-      Location &amp; Social
-    </button>
-    <button class="cp-pill" onclick="cpNav('cp-funding',this)">
-      <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>
-      Funding
-    </button>
-  </div>
-</div>
-
-<div class="cp-wrap">
-
-  <!-- ── CONTACT INFO ── -->
-  <div class="cp-sec" id="cp-info">
-    <div class="cp-sec-header">
-      <div class="cp-eyebrow">Get in Touch</div>
-      <div class="cp-title">Contact Information</div>
-      <div class="cp-subtitle">We welcome enquiries from researchers, students, journalists, and collaborators.</div>
-    </div>
-    <div class="cp-info-grid">
-
-      <div class="cp-info-card">
-        <div class="cp-info-icon">
-          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0z"/><circle cx="12" cy="10" r="3"/></svg>
+  <div class="cp-wrap">
+    <section class="cp-section" aria-labelledby="contact-information">
+      <h2 class="cp-section-title" id="contact-information">Contact Information</h2>
+      <div class="cp-info-grid">
+        <div class="cp-info-card">
+          <div class="cp-info-icon" aria-hidden="true">
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0z"/><circle cx="12" cy="10" r="3"/></svg>
+          </div>
+          <div>
+            <div class="cp-info-label">Address</div>
+            <div class="cp-info-val">Centre of New Technologies<br>University of Warsaw<br>ul. Stefana Banacha 2c<br>02-097 Warsaw, Poland</div>
+          </div>
         </div>
-        <div>
-          <div class="cp-info-label">Address</div>
-          <div class="cp-info-val">Centre of New Technologies<br>University of Warsaw<br>ul. Stefana Banacha 2c<br>02-097 Warsaw, Poland</div>
-        </div>
-      </div>
 
-      <a class="cp-info-card" href="mailto:j.sulkowska@cent.uw.edu.pl">
-        <div class="cp-info-icon">
-          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="M2 7l10 7 10-7"/></svg>
-        </div>
-        <div>
-          <div class="cp-info-label">Email</div>
-          <div class="cp-info-val">j.sulkowska<br>[at] cent.uw.edu.pl</div>
-        </div>
-      </a>
+        <a class="cp-info-card" href="mailto:j.sulkowska@cent.uw.edu.pl">
+          <div class="cp-info-icon" aria-hidden="true">
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="M2 7l10 7 10-7"/></svg>
+          </div>
+          <div>
+            <div class="cp-info-label">Email</div>
+            <div class="cp-info-val">j.sulkowska<br>[at] cent.uw.edu.pl</div>
+          </div>
+        </a>
 
-      <a class="cp-info-card" href="tel:+48225543675">
-        <div class="cp-info-icon">
-          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 13.6 19.79 19.79 0 0 1 1.61 5.07 2 2 0 0 1 3.59 3h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L7.91 10.6a16 16 0 0 0 6 6l.92-.92a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 18z"/></svg>
-        </div>
-        <div>
-          <div class="cp-info-label">Phone</div>
-          <div class="cp-info-val">(+48) 22 55 43 675<br><span style="font-size:0.72rem;color:#9a9896">office 04.43</span></div>
-        </div>
-      </a>
+        <a class="cp-info-card" href="tel:+48225543675">
+          <div class="cp-info-icon" aria-hidden="true">
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 13.6 19.79 19.79 0 0 1 1.61 5.07 2 2 0 0 1 3.59 3h3a2 2 0 0 1 2 1.72c.13.95.37 1.89.7 2.81a2 2 0 0 1-.45 2.11l-.93.96a16 16 0 0 0 6 6l.92-.92a2 2 0 0 1 2.11-.45c.92.33 1.86.57 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+          </div>
+          <div>
+            <div class="cp-info-label">Phone</div>
+            <div class="cp-info-val">(+48) 22 55 43 675<br><span class="cp-info-sub">office 04.43</span></div>
+          </div>
+        </a>
 
-      <a class="cp-info-card cp-info-card-highlight" href="https://jsulkowska.cent.uw.edu.pl/home/availble-positions/" target="_blank">
-        <div class="cp-info-icon">
-          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87M16 3.13a4 4 0 0 1 0 7.75"/></svg>
-        </div>
-        <div>
-          <div class="cp-info-label">Open Positions</div>
-          <div class="cp-info-val">Join the lab →<br><span style="font-size:0.72rem;opacity:0.75">Students &amp; researchers welcome</span></div>
-        </div>
-      </a>
-
-    </div>
-  </div>
-
-  <!-- ── QUICK INQUIRY FORM ── -->
-  <div class="cp-sec" id="cp-inquiry">
-    <div class="cp-sec-header">
-      <div class="cp-eyebrow">Quick Inquiry</div>
-      <div class="cp-title">Send a Message</div>
-      <div class="cp-subtitle">Fill in the form below and we'll get back to you within a few working days.</div>
-    </div>
-
-    <form class="cp-form" id="cp-inquiry-form" novalidate>
-      <div class="cp-form-row">
-        <div class="cp-field">
-          <label class="cp-label" for="cp-name">Full Name <span class="cp-required">*</span></label>
-          <input class="cp-input" id="cp-name" type="text" name="name" placeholder="Your name" required autocomplete="name"/>
-        </div>
-        <div class="cp-field">
-          <label class="cp-label" for="cp-email">Email Address <span class="cp-required">*</span></label>
-          <input class="cp-input" id="cp-email" type="email" name="email" placeholder="your@email.com" required autocomplete="email"/>
-        </div>
-      </div>
-
-      <div class="cp-form-row">
-        <div class="cp-field">
-          <label class="cp-label" for="cp-subject">Subject <span class="cp-required">*</span></label>
-          <select class="cp-select" id="cp-subject" name="subject" required>
-            <option value="" disabled selected>Select a topic…</option>
-            <option value="General Inquiry">General Inquiry</option>
-            <option value="Research Collaboration">Research Collaboration</option>
-            <option value="PhD / Postdoc Position">PhD / Postdoc Position</option>
-            <option value="MSc / BSc Project">MSc / BSc Project</option>
-            <option value="Press / Media">Press / Media</option>
-            <option value="Software / Database">Software / Database Support</option>
-            <option value="Other">Other</option>
-          </select>
-        </div>
-        <div class="cp-field">
-          <label class="cp-label" for="cp-affil">Affiliation</label>
-          <input class="cp-input" id="cp-affil" type="text" name="affiliation" placeholder="University / Institute (optional)" autocomplete="organization"/>
-        </div>
-      </div>
-
-      <div class="cp-field">
-        <label class="cp-label" for="cp-message">Message <span class="cp-required">*</span></label>
-        <textarea class="cp-textarea" id="cp-message" name="message" placeholder="Write your message here…" required></textarea>
-      </div>
-
-      <div class="cp-form-footer">
-        <div class="cp-form-note">
-          Your message will be sent directly to Prof. Sułkowska. We typically respond within 3–5 working days.
-        </div>
-        <button class="cp-submit" type="submit">
-          Send Message
-          <svg class="cp-submit-icon" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></svg>
-        </button>
-      </div>
-    </form>
-
-    <div class="cp-form-success" id="cp-success">
-      <div class="cp-form-success-icon">✓</div>
-      <div class="cp-form-success-title">Message sent!</div>
-      <div class="cp-form-success-sub">Your email client should have opened with a pre-filled message. If it didn't, please email <a href="mailto:j.sulkowska@cent.uw.edu.pl">j.sulkowska@cent.uw.edu.pl</a> directly.</div>
-    </div>
-  </div>
-
-  <!-- ── LOCATION & SOCIAL ── -->
-  <div class="cp-sec" id="cp-location">
-    <div class="cp-sec-header">
-      <div class="cp-eyebrow">Find Us</div>
-      <div class="cp-title">Location &amp; Social</div>
-    </div>
-    <div class="cp-bottom-grid">
-
-      <!-- MAP -->
-      <div class="cp-map-box">
-        <div class="cp-map-header">
-          <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0z"/><circle cx="12" cy="10" r="3"/></svg>
-          Centre of New Technologies · ul. Stefana Banacha 2c · Warsaw
-        </div>
-        <iframe
-          src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2445.573!2d20.98077!3d52.21137!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x471eccef30c3e8b5%3A0x4c11ad69e20b970d!2sCentre%20of%20New%20Technologies%2C%20University%20of%20Warsaw!5e0!3m2!1sen!2spl!4v1713360000000!5m2!1sen!2spl"
-          width="100%" height="300" style="border:0;display:block;"
-          loading="lazy" allowfullscreen></iframe>
-        <a class="cp-map-link" href="https://maps.google.com/?q=Centre+of+New+Technologies+University+of+Warsaw+Banacha+2c" target="_blank">
-          <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
-          Open in Google Maps
+        <a class="cp-info-card cp-info-card-highlight" href="https://jsulkowska.cent.uw.edu.pl/home/availble-positions/" target="_blank" rel="noopener">
+          <div class="cp-info-icon" aria-hidden="true">
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+          </div>
+          <div>
+            <div class="cp-info-label">Open Positions</div>
+            <div class="cp-info-val">Join the lab &rarr;<br><span class="cp-info-sub">Students &amp; researchers welcome</span></div>
+          </div>
         </a>
       </div>
+    </section>
 
-      <!-- SOCIAL + ACADEMIC -->
-      <div>
-        <div class="cp-social-title">Connect with us</div>
-        <div class="cp-social-grid">
+    <section class="cp-section" aria-labelledby="quick-inquiry">
+      <h2 class="cp-section-title" id="quick-inquiry">Quick Inquiry</h2>
 
-          <a class="cp-social-item" href="mailto:j.sulkowska@cent.uw.edu.pl">
-            <div class="cp-social-dot" style="background:#5a5957">
-              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="M2 7l10 7 10-7"/></svg>
+      <form class="cp-form" id="cp-inquiry-form" novalidate>
+        <div class="cp-form-row">
+          <div class="cp-field">
+            <label class="cp-label" for="cp-name">Full Name <span class="cp-required">*</span></label>
+            <input class="cp-input" id="cp-name" type="text" name="name" placeholder="Your name" required autocomplete="name">
+          </div>
+          <div class="cp-field">
+            <label class="cp-label" for="cp-email">Email Address <span class="cp-required">*</span></label>
+            <input class="cp-input" id="cp-email" type="email" name="email" placeholder="your@email.com" required autocomplete="email">
+          </div>
+        </div>
+
+        <div class="cp-form-row">
+          <div class="cp-field">
+            <label class="cp-label" for="cp-subject">Subject <span class="cp-required">*</span></label>
+            <select class="cp-select" id="cp-subject" name="subject" required>
+              <option value="" disabled selected>Select a topic...</option>
+              <option value="General Inquiry">General Inquiry</option>
+              <option value="Research Collaboration">Research Collaboration</option>
+              <option value="PhD / Postdoc Position">PhD / Postdoc Position</option>
+              <option value="MSc / BSc Project">MSc / BSc Project</option>
+              <option value="Press / Media">Press / Media</option>
+              <option value="Software / Database">Software / Database Support</option>
+              <option value="Other">Other</option>
+            </select>
+          </div>
+          <div class="cp-field">
+            <label class="cp-label" for="cp-affil">Affiliation</label>
+            <input class="cp-input" id="cp-affil" type="text" name="affiliation" placeholder="University / Institute (optional)" autocomplete="organization">
+          </div>
+        </div>
+
+        <div class="cp-field">
+          <label class="cp-label" for="cp-message">Message <span class="cp-required">*</span></label>
+          <textarea class="cp-textarea" id="cp-message" name="message" placeholder="Write your message here..." required></textarea>
+        </div>
+
+        <div class="cp-form-footer">
+          <div class="cp-form-note">Your message will be sent directly to Prof. Sulkowska. We typically respond within 3-5 working days.</div>
+          <button class="cp-submit" type="submit">
+            Send Message
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></svg>
+          </button>
+        </div>
+      </form>
+
+      <div class="cp-form-success" id="cp-success" role="status">
+        Your email client should have opened with a pre-filled message. If it did not, please email <a href="mailto:j.sulkowska@cent.uw.edu.pl">j.sulkowska@cent.uw.edu.pl</a> directly.
+      </div>
+    </section>
+
+    <section class="cp-section" aria-labelledby="location-social">
+      <h2 class="cp-section-title" id="location-social">Location &amp; Social</h2>
+      <div class="cp-bottom-grid">
+        <div class="cp-panel">
+          <div class="cp-map-header">
+            <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0z"/><circle cx="12" cy="10" r="3"/></svg>
+            Centre of New Technologies &middot; ul. Stefana Banacha 2c &middot; Warsaw
+          </div>
+          <iframe
+            class="cp-map-frame"
+            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2445.573!2d20.98077!3d52.21137!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x471eccef30c3e8b5%3A0x4c11ad69e20b970d!2sCentre%20of%20New%20Technologies%2C%20University%20of%20Warsaw!5e0!3m2!1sen!2spl!4v1713360000000!5m2!1sen!2spl"
+            loading="lazy"
+            allowfullscreen
+            referrerpolicy="no-referrer-when-downgrade"></iframe>
+        </div>
+
+        <div class="cp-panel">
+          <div class="cp-fb-head">
+            <div class="cp-fb-title">
+              <span class="cp-fb-mark" aria-hidden="true">f</span>
+              <span>Sulkowska Lab on Facebook</span>
             </div>
-            Email
-          </a>
-
-          <a class="cp-social-item" href="https://twitter.com/sulkowskal" target="_blank">
-            <div class="cp-social-dot" style="background:#000">
-              <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
-            </div>
-            Twitter / X
-          </a>
-
-          <a class="cp-social-item" href="https://www.facebook.com/SulkowskaLab/" target="_blank">
-            <div class="cp-social-dot" style="background:#1877f2">
-              <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg>
-            </div>
-            Facebook
-          </a>
-
-          <a class="cp-social-item" href="https://www.instagram.com/sulkowskalab/" target="_blank">
-            <div class="cp-social-dot" style="background:radial-gradient(circle at 30% 107%,#fdf497 0%,#fd5949 45%,#d6249f 60%,#285AEB 90%)">
-              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect height="20" rx="5" width="20" x="2" y="2"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"/></svg>
-            </div>
-            Instagram
-          </a>
-
-          <a class="cp-social-item" href="https://www.youtube.com/channel/UCeLQTTlftS-APrHgFL8OYEw" target="_blank">
-            <div class="cp-social-dot" style="background:#ff0000">
-              <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M22.54 6.42a2.78 2.78 0 0 0-1.95-1.96C18.88 4 12 4 12 4s-6.88 0-8.59.46A2.78 2.78 0 0 0 1.46 6.42 29 29 0 0 0 1 12a29 29 0 0 0 .46 5.58 2.78 2.78 0 0 0 1.95 1.96C5.12 20 12 20 12 20s6.88 0 8.59-.46a2.78 2.78 0 0 0 1.95-1.96A29 29 0 0 0 23 12a29 29 0 0 0-.46-5.58z"/><polygon fill="#fff" points="9.75 15.02 15.5 12 9.75 8.98 9.75 15.02"/></svg>
-            </div>
-            YouTube
-          </a>
-
-          <a class="cp-social-item" href="https://github.com/ilbsm" target="_blank">
-            <div class="cp-social-dot" style="background:#24292e">
-              <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.477 2 2 6.477 2 12c0 4.418 2.865 8.166 6.839 9.489.5.092.682-.217.682-.482 0-.237-.009-.868-.013-1.703-2.782.604-3.369-1.341-3.369-1.341-.454-1.154-1.11-1.462-1.11-1.462-.908-.62.069-.608.069-.608 1.003.07 1.531 1.03 1.531 1.03.892 1.529 2.341 1.087 2.91.831.092-.646.35-1.086.636-1.336-2.22-.253-4.555-1.11-4.555-4.943 0-1.091.39-1.984 1.029-2.683-.103-.253-.446-1.27.098-2.647 0 0 .84-.269 2.75 1.025A9.578 9.578 0 0 1 12 6.836a9.59 9.59 0 0 1 2.504.337c1.909-1.294 2.747-1.025 2.747-1.025.546 1.377.203 2.394.1 2.647.64.699 1.028 1.592 1.028 2.683 0 3.842-2.339 4.687-4.566 4.935.359.309.678.919.678 1.852 0 1.336-.012 2.415-.012 2.743 0 .267.18.578.688.48C19.138 20.163 22 16.418 22 12c0-5.523-4.477-10-10-10z"/></svg>
-            </div>
-            GitHub: @ilbsm
-          </a>
-
-          <a class="cp-social-item" href="https://scholar.google.com/citations?user=_LNjYQcAAAAJ" target="_blank">
-            <div class="cp-social-dot" style="background:#4285f4">
-              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2L2 7l10 5 10-5-10-5z"/><path d="M2 17l10 5 10-5"/><path d="M2 12l10 5 10-5"/></svg>
-            </div>
-            Google Scholar
-          </a>
-
-          <a class="cp-social-item" href="https://www.researchgate.net/profile/Joanna-Sulkowska" target="_blank">
-            <div class="cp-social-dot" style="background:#00d0af">
-              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
-            </div>
-            ResearchGate
-          </a>
-
-          <a class="cp-social-item" href="https://jsulkowska.cent.uw.edu.pl" target="_blank">
-            <div class="cp-social-dot" style="background:#01696f">
-              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
-            </div>
-            Lab Website
-          </a>
-
+            <a class="cp-fb-open" href="https://www.facebook.com/SulkowskaLab/" target="_blank" rel="noopener">
+              Open
+              <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+            </a>
+          </div>
+          <div class="cp-fb-frame-wrap">
+            <iframe
+              class="cp-fb-frame"
+              title="Sulkowska Lab on Facebook"
+              src="https://www.facebook.com/plugins/page.php?href=https%3A%2F%2Fwww.facebook.com%2FSulkowskaLab%2F&tabs=timeline&width=500&height=300&small_header=true&adapt_container_width=true&hide_cover=false&show_facepile=true"
+              scrolling="no"
+              allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share"
+              allowfullscreen></iframe>
+          </div>
         </div>
       </div>
-    </div>
+    </section>
   </div>
-
-  <!-- ── FUNDING ── -->
-  <div class="cp-sec" id="cp-funding">
-    <div class="cp-sec-header" style="margin-bottom:var(--space-6);padding-bottom:var(--space-5)">
-      <div class="cp-eyebrow">Acknowledgements</div>
-      <div class="cp-title">Funded by</div>
-      <div class="cp-subtitle">Our research is supported by these organisations.</div>
-    </div>
-    <div class="cp-fund-chips">
-      <a class="cp-fund-chip" href="https://www.nsf.gov" target="_blank">NSF · NCEMS (2026)</a>
-      <a class="cp-fund-chip" href="https://www.embo.org" target="_blank">EMBO</a>
-      <a class="cp-fund-chip" href="https://aimath.org" target="_blank">AIM SQuaRE · Caltech</a>
-      <a class="cp-fund-chip" href="https://inicjatywadoskonalosci.uw.edu.pl" target="_blank">University of Warsaw (IDUB)</a>
-      <a class="cp-fund-chip" href="https://www.ncn.gov.pl" target="_blank">National Science Centre (NCN)</a>
-      <a class="cp-fund-chip" href="https://www.fnp.org.pl" target="_blank">Foundation for Polish Science (FNP)</a>
-    </div>
-  </div>
-
-</div><!-- /cp-wrap -->
-</div><!-- /cp -->
+</div>
 
 <script>
-/* ── NAV SCROLL ── */
-function cpNav(id, btn) {
-  document.querySelectorAll('.cp-pill').forEach(function(p){ p.classList.remove('active'); });
-  btn.classList.add('active');
-  var el = document.getElementById(id);
-  if (el) el.scrollIntoView({ behavior: 'smooth', block: 'start' });
-}
+(function() {
+  var form = document.getElementById('cp-inquiry-form');
+  var success = document.getElementById('cp-success');
+  if (!form) return;
 
-/* ── SCROLL-ACTIVE PILLS ── */
-(function(){
-  var secs  = ['cp-info','cp-inquiry','cp-location','cp-funding'];
-  var pills = document.querySelectorAll('.cp-pill');
-  window.addEventListener('scroll', function() {
-    var cur = secs[0];
-    secs.forEach(function(id){
-      var el = document.getElementById(id);
-      if (el && el.getBoundingClientRect().top <= 160) cur = id;
-    });
-    pills.forEach(function(p, i){ p.classList.toggle('active', secs[i] === cur); });
-  }, { passive: true });
-})();
-
-/* ── INQUIRY FORM (mailto fallback) ── */
-document.getElementById('cp-inquiry-form').addEventListener('submit', function(e) {
-  e.preventDefault();
-  var name    = document.getElementById('cp-name').value.trim();
-  var email   = document.getElementById('cp-email').value.trim();
-  var subject = document.getElementById('cp-subject').value;
-  var affil   = document.getElementById('cp-affil').value.trim();
-  var message = document.getElementById('cp-message').value.trim();
-
-  /* basic validation */
-  if (!name || !email || !subject || !message) {
-    var first = !name ? 'cp-name' : !email ? 'cp-email' : !subject ? 'cp-subject' : 'cp-message';
-    document.getElementById(first).focus();
-    document.getElementById(first).style.borderColor = '#c62828';
-    setTimeout(function(){ document.getElementById(first).style.borderColor = ''; }, 2000);
-    return;
+  function field(id) {
+    return document.getElementById(id);
   }
 
-  var body = 'Name: ' + name + '\nEmail: ' + email + (affil ? '\nAffiliation: ' + affil : '') + '\n\n' + message;
-  var mailto = 'mailto:j.sulkowska@cent.uw.edu.pl'
-    + '?subject=' + encodeURIComponent('[Lab Contact] ' + subject + ' — ' + name)
-    + '&body='    + encodeURIComponent(body);
+  function markInvalid(el) {
+    if (!el) return;
+    el.focus();
+    el.style.borderColor = '#b94a40';
+    window.setTimeout(function() {
+      el.style.borderColor = '';
+    }, 1800);
+  }
 
-  window.location.href = mailto;
+  form.addEventListener('submit', function(event) {
+    event.preventDefault();
 
-  /* show success */
-  document.getElementById('cp-inquiry-form').style.display = 'none';
-  document.getElementById('cp-success').classList.add('visible');
-});
+    var name = field('cp-name').value.trim();
+    var email = field('cp-email').value.trim();
+    var subject = field('cp-subject').value;
+    var affiliation = field('cp-affil').value.trim();
+    var message = field('cp-message').value.trim();
 
-/* ── LIVE INPUT VALIDATION CLEAR ── */
-['cp-name','cp-email','cp-subject','cp-message'].forEach(function(id){
-  var el = document.getElementById(id);
-  if (el) el.addEventListener('input', function(){ el.style.borderColor = ''; });
-});
+    if (!name || !email || !subject || !message) {
+      markInvalid(!name ? field('cp-name') : !email ? field('cp-email') : !subject ? field('cp-subject') : field('cp-message'));
+      return;
+    }
+
+    var body = 'Name: ' + name + '\nEmail: ' + email + (affiliation ? '\nAffiliation: ' + affiliation : '') + '\n\n' + message;
+    var mailto = 'mailto:j.sulkowska@cent.uw.edu.pl'
+      + '?subject=' + encodeURIComponent('[Lab Contact] ' + subject + ' - ' + name)
+      + '&body=' + encodeURIComponent(body);
+
+    window.location.href = mailto;
+    form.style.display = 'none';
+    if (success) success.classList.add('visible');
+  });
+
+  ['cp-name', 'cp-email', 'cp-subject', 'cp-message'].forEach(function(id) {
+    var el = field(id);
+    if (el) {
+      el.addEventListener('input', function() {
+        el.style.borderColor = '';
+      });
+    }
+  });
+})();
 </script>
