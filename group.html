@@ -368,99 +368,26 @@ permalink: /group/
 
 <div id="page-group" class="page active grp">
 
-<!-- ── MINIMAL SCROLL LINE NAV ── -->
-<!-- ── FIXED ANIMATED SCROLL LINE ── -->
-<style>
-.grp-scroll-indicator {
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  z-index: 1;
-  height: 4px;
-  width: 100%;
-  background: rgba(0,0,0,0.06);
-  overflow: hidden;
-  pointer-events: none;
-}
-
-.grp-scroll-line {
-  height: 100%;
-  width: 0%;
-  border-radius: 999px;
-
-  background: linear-gradient(
-    90deg,
-    #00c2ff,
-    #00ffb3,
-    #8b5cf6,
-    #00c2ff
-  );
-
-  background-size: 300% 100%;
-
-  box-shadow:
-    0 0 14px rgba(0,194,255,.65),
-    0 0 28px rgba(139,92,246,.45);
-
-  animation: grpLineMove 3s linear infinite;
-}
-
-@keyframes grpLineMove {
-  from {
-    background-position: 0% 50%;
-  }
-  to {
-    background-position: 300% 50%;
-  }
-}
-</style>
-
-<!-- ── COMPACT SECTIONS MENU ── -->
-<div class="grp-nav">
-  <div class="grp-nav-inner">
-    <div class="grp-sections" id="grp-sections-menu">
-      <button class="grp-sections-toggle" type="button" aria-haspopup="true" aria-expanded="false" onclick="grpToggleSections(event)">
-        <span>Sections</span>
-        <span class="grp-sections-caret" aria-hidden="true"></span>
+<div class="jump-row">
+  <div class="jump-row-inner">
+    <div class="jump-nav" data-jump-nav>
+      <button class="jump-toggle" type="button" aria-haspopup="true" aria-expanded="false">
+        <span>Jump to section</span>
+        <span class="jump-caret" aria-hidden="true"></span>
       </button>
-      <div class="grp-sections-menu" role="menu" aria-label="Group page sections">
-        <button class="grp-pill active" type="button" role="menuitem" data-sec="grp-senior" onclick="grpNav('grp-senior', this)">Senior</button>
-        <button class="grp-pill" type="button" role="menuitem" data-sec="grp-postdocs" onclick="grpNav('grp-postdocs', this)">Postdocs</button>
-        <button class="grp-pill" type="button" role="menuitem" data-sec="grp-phd" onclick="grpNav('grp-phd', this)">PhD</button>
-        <button class="grp-pill" type="button" role="menuitem" data-sec="grp-msc" onclick="grpNav('grp-msc', this)">MSc</button>
-        <button class="grp-pill" type="button" role="menuitem" data-sec="grp-bsc" onclick="grpNav('grp-bsc', this)">Undergrads</button>
-        <button class="grp-pill" type="button" role="menuitem" data-sec="grp-tech" onclick="grpNav('grp-tech', this)">Tech &amp; Interns</button>
-        <button class="grp-pill" type="button" role="menuitem" data-sec="grp-join" onclick="grpNav('grp-join', this)">Join</button>
-        <button class="grp-pill" type="button" role="menuitem" data-sec="grp-alumni" onclick="grpNav('grp-alumni', this)">Alumni</button>
+      <div class="jump-menu" role="menu" aria-label="Group page sections">
+        <button class="jump-option active" type="button" role="menuitem" data-jump-target="grp-senior">Senior</button>
+        <button class="jump-option" type="button" role="menuitem" data-jump-target="grp-postdocs">Postdocs</button>
+        <button class="jump-option" type="button" role="menuitem" data-jump-target="grp-phd">PhD</button>
+        <button class="jump-option" type="button" role="menuitem" data-jump-target="grp-msc">MSc</button>
+        <button class="jump-option" type="button" role="menuitem" data-jump-target="grp-bsc">Undergrads</button>
+        <button class="jump-option" type="button" role="menuitem" data-jump-target="grp-tech">Tech &amp; Interns</button>
+        <button class="jump-option" type="button" role="menuitem" data-jump-target="grp-join">Join</button>
+        <button class="jump-option" type="button" role="menuitem" data-jump-target="grp-alumni">Alumni</button>
       </div>
     </div>
   </div>
-  <div class="grp-scroll-indicator">
-    <div class="grp-scroll-line"></div>
-  </div>
 </div>
-
-<script>
-function updateGroupScrollLine() {
-  const line = document.querySelector('.grp-scroll-line');
-  if (!line) return;
-
-  const scrollTop = window.scrollY || document.documentElement.scrollTop;
-
-  const docHeight =
-    document.documentElement.scrollHeight -
-    document.documentElement.clientHeight;
-
-  const progress = docHeight > 0 ? (scrollTop / docHeight) * 100 : 0;
-
-  line.style.width = progress + '%';
-}
-
-window.addEventListener('scroll', updateGroupScrollLine, { passive: true });
-window.addEventListener('resize', updateGroupScrollLine);
-document.addEventListener('DOMContentLoaded', updateGroupScrollLine);
-updateGroupScrollLine();
-</script>
 
 <div class="grp-wrap">
 
@@ -624,70 +551,5 @@ document.addEventListener('DOMContentLoaded', function () {
     img.src = '/assets/img/team/' + init.dataset.slug + '.jpg';
   });
 
-  /* ── SCROLL-ACTIVE NAV PILLS ── */
-  var pills = document.querySelectorAll('.grp-pill[data-sec]');
-  var secs = Array.from(pills).map(function(p){ return p.dataset.sec; });
-  var sectionsMenu = document.getElementById('grp-sections-menu');
-  var sectionsToggle = sectionsMenu ? sectionsMenu.querySelector('.grp-sections-toggle') : null;
-
-  if (sectionsMenu && sectionsToggle) {
-    sectionsMenu.addEventListener('mouseenter', function () {
-      sectionsToggle.setAttribute('aria-expanded', 'true');
-    });
-    sectionsMenu.addEventListener('mouseleave', function () {
-      if (!sectionsMenu.classList.contains('is-open')) sectionsToggle.setAttribute('aria-expanded', 'false');
-    });
-  }
-
-  function onScroll() {
-    var current = secs[0];
-    secs.forEach(function(id) {
-      var el = document.getElementById(id);
-      if (el && el.getBoundingClientRect().top <= 160) current = id;
-    });
-    pills.forEach(function(p) {
-      p.classList.toggle('active', p.dataset.sec === current);
-    });
-    history.replaceState(null, '', '#' + current);
-  }
-  window.addEventListener('scroll', onScroll, { passive: true });
 });
-
-/* ── SMOOTH SCROLL NAV ── */
-function grpToggleSections(event) {
-  event.stopPropagation();
-  var menu = document.getElementById('grp-sections-menu');
-  if (!menu) return;
-  var toggle = menu.querySelector('.grp-sections-toggle');
-  var isOpen = menu.classList.toggle('is-open');
-  if (toggle) toggle.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
-}
-
-function grpNav(id, btn) {
-  document.querySelectorAll('.grp-pill').forEach(function(p){ p.classList.remove('active'); });
-  btn.classList.add('active');
-  var menu = document.getElementById('grp-sections-menu');
-  if (menu) {
-    menu.classList.remove('is-open');
-    var toggle = menu.querySelector('.grp-sections-toggle');
-    if (toggle) toggle.setAttribute('aria-expanded', 'false');
-  }
-  var el = document.getElementById(id);
-  if (el) el.scrollIntoView({ behavior: 'smooth', block: 'start' });
-  history.replaceState(null, '', '#' + id);
-}
-
-document.addEventListener('click', function(event) {
-  var menu = document.getElementById('grp-sections-menu');
-  if (!menu || menu.contains(event.target)) return;
-  menu.classList.remove('is-open');
-  var toggle = menu.querySelector('.grp-sections-toggle');
-  if (toggle) toggle.setAttribute('aria-expanded', 'false');
-});
-
-/* ── HASH ON LOAD ── */
-if (location.hash) {
-  var target = document.querySelector(location.hash);
-  if (target) setTimeout(function(){ target.scrollIntoView({ behavior: 'smooth', block: 'start' }); }, 200);
-}
 </script>

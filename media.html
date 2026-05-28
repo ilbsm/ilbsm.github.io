@@ -382,17 +382,20 @@ permalink: /media/
 #ms-broadcast .med-src-logo {
   width: 54px;
   min-width: 54px;
-  height: 24px;
+  height: 32px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   padding: 3px 6px;
   border-color: #e6edf0;
   border-radius: 6px;
   box-shadow: 0 1px 4px rgba(13,43,51,0.05);
 }
 #ms-broadcast .med-src-logo.round {
-  width: 30px;
-  min-width: 30px;
-  height: 30px;
-  padding: 4px;
+  width: 54px;
+  min-width: 54px;
+  height: 32px;
+  padding: 6px;
 }
 #ms-broadcast .med-logo-tok-text {
   color: #2515a8;
@@ -607,6 +610,16 @@ permalink: /media/
 #ms-press .med-press-yr {
   display: none;
 }
+.med-press-more-btn {
+  margin-top: 0.75rem;
+  display: inline-flex; align-items: center; gap: 0.35rem;
+  font-family: inherit; font-size: 0.8rem; font-weight: 700;
+  color: #01696f; background: none;
+  border: 1.5px solid #01696f; border-radius: 20px;
+  padding: 0.38rem 1rem; cursor: pointer;
+  transition: background 0.18s, color 0.18s;
+}
+.med-press-more-btn:hover { background: #01696f; color: #fff; }
 
 #ms-talks .hp-row-head {
   align-items: flex-start;
@@ -833,26 +846,27 @@ permalink: /media/
 <div id="page-media" class="page active hp">
 
 
-<div class="hp-wrap">
-
-  <!-- SECTIONS DROPDOWN -->
-  <div class="hp-util-row">
-    <div class="hp-sections" id="md-sections-menu">
-      <button class="hp-sections-toggle" type="button" aria-haspopup="true" aria-expanded="false" onclick="mdToggleSections(event)">
-        <span>Sections</span>
-        <span class="hp-sections-caret" aria-hidden="true"></span>
+<div class="jump-row">
+  <div class="jump-row-inner">
+    <div class="jump-nav" data-jump-nav>
+      <button class="jump-toggle" type="button" aria-haspopup="true" aria-expanded="false">
+        <span>Jump to section</span>
+        <span class="jump-caret" aria-hidden="true"></span>
       </button>
-      <div class="hp-sections-menu" role="menu" aria-label="Media page sections">
-        <button class="hp-pill active" type="button" role="menuitem" data-sec="ms-gallery" onclick="mdNav('ms-gallery', this)">Gallery</button>
-        <button class="hp-pill" type="button" role="menuitem" data-sec="ms-videos" onclick="mdNav('ms-videos', this)">Videos</button>
-        <button class="hp-pill" type="button" role="menuitem" data-sec="ms-broadcast" onclick="mdNav('ms-broadcast', this)">TV &amp; Radio</button>
-        <button class="hp-pill" type="button" role="menuitem" data-sec="ms-interviews" onclick="mdNav('ms-interviews', this)">Interviews</button>
-        <button class="hp-pill" type="button" role="menuitem" data-sec="ms-press" onclick="mdNav('ms-press', this)">Press</button>
-        <button class="hp-pill" type="button" role="menuitem" data-sec="ms-talks" onclick="mdNav('ms-talks', this)">Public Talks</button>
-        <button class="hp-pill" type="button" role="menuitem" data-sec="ms-news" onclick="mdNav('ms-news', this)">News &amp; Grants</button>
+      <div class="jump-menu" role="menu" aria-label="Media page sections">
+        <button class="jump-option active" type="button" role="menuitem" data-jump-target="ms-gallery">Gallery</button>
+        <button class="jump-option" type="button" role="menuitem" data-jump-target="ms-videos">Videos</button>
+        <button class="jump-option" type="button" role="menuitem" data-jump-target="ms-broadcast">TV &amp; Radio</button>
+        <button class="jump-option" type="button" role="menuitem" data-jump-target="ms-interviews">Interviews</button>
+        <button class="jump-option" type="button" role="menuitem" data-jump-target="ms-press">Press</button>
+        <button class="jump-option" type="button" role="menuitem" data-jump-target="ms-talks">Public Talks</button>
+        <button class="jump-option" type="button" role="menuitem" data-jump-target="ms-news">News &amp; Grants</button>
       </div>
     </div>
   </div>
+</div>
+
+<div class="hp-wrap">
 
   <!-- ═══ GALLERY ═══ -->
   <div id="ms-gallery" class="hp-sec">
@@ -955,10 +969,10 @@ permalink: /media/
       <div>
         <div class="hp-title">Videos</div>
       </div>
-      <button class="med-archive-toggle" id="vid-archive-btn" type="button"
-              aria-expanded="true" aria-controls="vid-archive-row"
+      <button class="med-archive-toggle is-closed" id="vid-archive-btn" type="button"
+              aria-expanded="false" aria-controls="vid-archive-row"
               data-count="{{ media_videos.archive | size }}">
-        <span class="med-archive-label">Hide archive</span>
+        <span class="med-archive-label">Show archive</span>
         <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="6 15 12 9 18 15"></polyline></svg>
       </button>
     </div>
@@ -982,7 +996,7 @@ permalink: /media/
       {% endfor %}
     </div>
 
-    <div class="med-vid-bottom-row" id="vid-archive-row">
+    <div class="med-vid-bottom-row med-archive-hidden" id="vid-archive-row">
       <div class="med-vid-archive">
         <div class="med-vid-archive-label">
           <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><polyline points="21 8 21 21 3 21 3 8"/><rect x="1" y="3" width="22" height="5"/><line x1="10" y1="12" x2="14" y2="12"/></svg>
@@ -1149,19 +1163,37 @@ permalink: /media/
         <div class="hp-title">Press Coverage</div>
       </div>
     </div>
+
+    {% assign press_main = site.data.media.press | where_exp: "item", "item.logo" %}
+    {% assign press_more = site.data.media.press | where_exp: "item", "item.logo == nil" %}
+
     <div class="med-press-grid">
-      {% for item in site.data.media.press %}
+      {% for item in press_main %}
       <a class="med-press-item" href="{{ item.url }}" target="_blank" rel="noopener noreferrer">
         <span class="med-press-org">
-          {% if item.logo %}
           <span class="med-src-logo {{ item.logo_class }}"><img src="{{ '/assets/img/logos/media/' | append: item.logo | relative_url }}" alt="{{ item.org }} logo"></span>
-          {% endif %}
           {{ item.org }}
         </span>
         <span class="med-press-yr">{{ item.year }}</span>
       </a>
       {% endfor %}
     </div>
+
+    {% if press_more.size > 0 %}
+    <div id="press-extra" style="display:none">
+      <div class="med-press-grid" style="margin-top:2px">
+        {% for item in press_more %}
+        <a class="med-press-item" href="{{ item.url }}" target="_blank" rel="noopener noreferrer">
+          <span class="med-press-org">{{ item.org }}</span>
+          <span class="med-press-yr">{{ item.year }}</span>
+        </a>
+        {% endfor %}
+      </div>
+    </div>
+    <button class="med-press-more-btn" id="press-more-btn" type="button">
+      + {{ press_more.size }} more outlets
+    </button>
+    {% endif %}
   </div>
 
   <!-- ═══ PUBLIC TALKS ═══ -->
@@ -1504,12 +1536,26 @@ permalink: /media/
   if (!btn || !row) return;
   const label = btn.querySelector('.med-archive-label');
   const count = btn.dataset.count || '5';
+  if (label) label.textContent = 'Show archive (' + count + ' videos)';
   btn.addEventListener('click', () => {
-    const hideArchive = !row.classList.contains('med-archive-hidden');
-    row.classList.toggle('med-archive-hidden', hideArchive);
-    btn.classList.toggle('is-closed', hideArchive);
-    btn.setAttribute('aria-expanded', hideArchive ? 'false' : 'true');
-    if (label) label.textContent = hideArchive ? 'Show archive (' + count + ' videos)' : 'Hide archive';
+    const isHidden = row.classList.contains('med-archive-hidden');
+    row.classList.toggle('med-archive-hidden', !isHidden);
+    btn.classList.toggle('is-closed', !isHidden);
+    btn.setAttribute('aria-expanded', isHidden ? 'true' : 'false');
+    if (label) label.textContent = isHidden ? 'Hide archive' : 'Show archive (' + count + ' videos)';
+  });
+})();
+
+/* ── PRESS MORE TOGGLE ── */
+(function () {
+  const btn = document.getElementById('press-more-btn');
+  const extra = document.getElementById('press-extra');
+  if (!btn || !extra) return;
+  const count = btn.textContent.match(/\d+/)?.[0] || '';
+  btn.addEventListener('click', () => {
+    const isHidden = extra.style.display === 'none';
+    extra.style.display = isHidden ? 'block' : 'none';
+    btn.textContent = isHidden ? '− Hide extra outlets' : '+ ' + count + ' more outlets';
   });
 })();
 

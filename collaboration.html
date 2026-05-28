@@ -25,11 +25,19 @@ permalink: /collaboration/
 #page-collab .rpfp-intro {
   background: #fff;
   border-bottom: 1px solid #e6ebf2;
-  padding: 1.85rem var(--cl-side) 1.55rem;
+  padding: 1rem var(--cl-side) 0.85rem;
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 1.5rem;
+}
+#page-collab .rpfp-intro-text {
+  min-width: 0;
+  flex: 1;
 }
 
 #page-collab .rpfp-intro-title {
-  margin: 0 0 0.75rem;
+  margin: 0 0 0.35rem;
   color: #073d55;
   font-family: 'Merriweather', serif;
   font-size: clamp(2.15rem, 3vw, 3rem);
@@ -54,7 +62,7 @@ permalink: /collaboration/
 }
 .cl-section-head {
   display: block;
-  padding: 1.85rem var(--cl-side) 1.4rem;
+  padding: 0.9rem var(--cl-side) 0.6rem;
 }
 .cl-section-num {
   display: none;
@@ -79,12 +87,12 @@ permalink: /collaboration/
 
 /* ── CARD GRID (inside section, same 2rem side padding) ── */
 .cl-grid-wrap {
-  padding: 0 var(--cl-side) 2.2rem;
+  padding: 0 var(--cl-side) 1.4rem;
 }
 .cl-grid {
   display: grid;
   grid-template-columns: repeat(5, minmax(0, 1fr));
-  gap: 1rem;
+  gap: 0.65rem;
 }
 .cl-card {
   display: flex; flex-direction: column;
@@ -99,25 +107,24 @@ permalink: /collaboration/
 @keyframes clFadeUp { from { opacity: 0; transform: translateY(14px); } to { opacity: 1; transform: translateY(0); } }
 
 .cl-logo-wrap {
-  height: 110px; background: #fff;
+  height: 72px; background: #fff;
   display: flex; align-items: center; justify-content: center;
-  padding: 1rem 1.25rem; flex-shrink: 0;
+  padding: 0.55rem 1rem; flex-shrink: 0;
   border-bottom: 1px solid #ede9e3;
 }
-.cl-logo-wrap img { max-width: 76%; max-height: 70px; object-fit: contain; display: block; }
+.cl-logo-wrap img { max-width: 76%; max-height: 46px; object-fit: contain; display: block; }
 .cl-logo-fallback {
   width: 50px; height: 50px; border-radius: 50%;
   display: none; align-items: center; justify-content: center;
   font-size: 0.72rem; font-weight: 800; color: #fff; letter-spacing: 0.04em;
 }
 .cl-card-body {
-  min-height: 172px;
-  padding: 0.95rem 1.05rem 1.05rem; flex: 1;
-  display: flex; flex-direction: column; gap: 0.12rem;
+  padding: 0.65rem 0.85rem 0.75rem; flex: 1;
+  display: flex; flex-direction: column; gap: 0.1rem;
 }
 .cl-card-name  { font-weight: 800; font-size: 0.88rem; color: #0a1020; line-height: 1.3; }
-.cl-card-inst  { font-size: 0.75rem; color: #9a9896; line-height: 1.45; margin-top: 0.1rem; }
-.cl-card-topic { font-size: 0.76rem; color: #666; line-height: 1.6; flex: 1; margin-top: 0.55rem; }
+.cl-card-inst  { font-size: 0.75rem; color: #9a9896; line-height: 1.45; margin-top: 0.08rem; }
+.cl-card-topic { font-size: 0.76rem; color: #666; line-height: 1.5; flex: 1; margin-top: 0.35rem; }
 
 @media (max-width: 1260px) {
   .cl-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); }
@@ -129,12 +136,11 @@ permalink: /collaboration/
 
 @media (max-width: 640px) {
   :root { --cl-side: 1rem; }
-  #page-collab .rpfp-intro { padding: 1.35rem var(--cl-side) 1.2rem; }
+  #page-collab .rpfp-intro { padding: 0.8rem var(--cl-side) 0.7rem; }
   #page-collab .rpfp-intro-title { font-size: 1.9rem; }
   #page-collab .rpfp-intro-sub { font-size: 0.86rem; }
   .cl-grid { grid-template-columns: 1fr; }
-  .cl-logo-wrap { height: 98px; }
-  .cl-card-body { min-height: auto; }
+  .cl-logo-wrap { height: 64px; }
 }
 </style>
 
@@ -142,21 +148,23 @@ permalink: /collaboration/
 
   <!-- HERO — identical style to Research page (.rpfp-intro) -->
   <div class="rpfp-intro">
-    <h1 class="rpfp-intro-title">Our International Collaborators</h1>
-    <p class="rpfp-intro-sub">An international network of physicists, mathematicians, and biologists united by one question: what does topology do inside a living cell?</p>
+    <div class="rpfp-intro-text">
+      <h1 class="rpfp-intro-title">Our International Collaborators</h1>
+      <p class="rpfp-intro-sub">An international network of physicists, mathematicians, and biologists united by one question: what does topology do inside a living cell?</p>
+    </div>
+    <div class="jump-nav" data-jump-nav style="flex-shrink:0;margin-top:0.25rem">
+      <button class="jump-toggle" type="button" aria-haspopup="true" aria-expanded="false">
+        <span>Jump to section</span>
+        <span class="jump-caret" aria-hidden="true"></span>
+      </button>
+      <div class="jump-menu" role="menu" aria-label="Collaboration page sections">
+        <button class="jump-option active" type="button" role="menuitem" data-jump-target="collaborating-groups">Collaborating Groups</button>
+      </div>
+    </div>
   </div>
 
   <!-- COLLABORATORS SECTION — same structure as rpfp-domain -->
-  <div class="cl-section">
-    <div class="cl-section-head">
-      <div class="cl-section-num">01</div>
-      <div>
-        <div class="cl-section-label">International Network</div>
-        <div class="cl-section-title">Collaborating Groups <span class="cl-count-chip">{{ data.collaborators | size }}</span></div>
-        <div class="cl-section-sub">Click any card to visit the collaborator's lab page.</div>
-      </div>
-    </div>
-
+  <div class="cl-section" id="collaborating-groups">
     <div class="cl-grid-wrap">
       <div class="cl-grid">
         {% for c in data.collaborators %}

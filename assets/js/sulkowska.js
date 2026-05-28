@@ -715,3 +715,126 @@ window.show = function(name) {
   window.location.href = base + map[name];
   return false;
 };
+
+// Shared "Jump to section" dropdown used by multi-section pages.
+(function () {
+  if (window.__sulkowskaJumpNavReady) return;
+  window.__sulkowskaJumpNavReady = true;
+
+  function navHeight() {
+    const raw = getComputedStyle(document.documentElement).getPropertyValue('--nav-h');
+    const parsed = parseFloat(raw);
+    return Number.isFinite(parsed) ? parsed : 42;
+  }
+
+  function jumpOffset() {
+    const row = document.querySelector('.jump-row');
+    const pageHead = document.querySelector('.pub-pghead');
+    return navHeight() + (pageHead ? pageHead.offsetHeight : 0) + (row ? row.offsetHeight : 0) + 12;
+  }
+
+  function setActive(nav, id) {
+    if (!nav) return;
+    nav.querySelectorAll('.jump-option[data-jump-target]').forEach(option => {
+      option.classList.toggle('active', option.dataset.jumpTarget === id);
+    });
+  }
+
+  function closeNav(nav) {
+    if (!nav) return;
+    nav.classList.remove('is-open');
+    const toggle = nav.querySelector('.jump-toggle');
+    if (toggle) toggle.setAttribute('aria-expanded', 'false');
+  }
+
+  window.labJumpTo = function (id, trigger) {
+    if (!id) return;
+    const target = document.getElementById(id);
+    if (!target) return;
+
+    if (target.classList.contains('rx-domain')) {
+      target.classList.add('open');
+      const head = target.querySelector('.rx-domain-head');
+      if (head) head.setAttribute('aria-expanded', 'true');
+    }
+
+    const top = target.getBoundingClientRect().top + window.pageYOffset - jumpOffset();
+    window.scrollTo({ top: Math.max(0, top), behavior: 'smooth' });
+    history.replaceState(null, '', '#' + id);
+
+    const nav = trigger ? trigger.closest('[data-jump-nav]') : null;
+    if (nav) {
+      setActive(nav, id);
+      closeNav(nav);
+    }
+  };
+
+  function initJumpNavs() {
+    document.querySelectorAll('[data-jump-nav]').forEach(nav => {
+      if (nav.dataset.jumpReady) return;
+      nav.dataset.jumpReady = 'true';
+
+      const toggle = nav.querySelector('.jump-toggle');
+      const options = nav.querySelectorAll('.jump-option[data-jump-target]');
+
+      if (toggle) {
+        toggle.addEventListener('click', event => {
+          event.stopPropagation();
+          const isOpen = nav.classList.toggle('is-open');
+          toggle.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
+        });
+      }
+
+      options.forEach(option => {
+        option.addEventListener('click', () => {
+          window.labJumpTo(option.dataset.jumpTarget, option);
+        });
+      });
+    });
+
+    document.addEventListener('click', event => {
+      document.querySelectorAll('[data-jump-nav].is-open').forEach(nav => {
+        if (!nav.contains(event.target)) closeNav(nav);
+      });
+    });
+
+    document.addEventListener('keydown', event => {
+      if (event.key !== 'Escape') return;
+      document.querySelectorAll('[data-jump-nav].is-open').forEach(closeNav);
+    });
+
+    let ticking = false;
+    function onScroll() {
+      if (ticking) return;
+      ticking = true;
+      window.requestAnimationFrame(() => {
+        document.querySelectorAll('[data-jump-nav]').forEach(nav => {
+          const options = Array.from(nav.querySelectorAll('.jump-option[data-jump-target]'));
+          let current = options[0] ? options[0].dataset.jumpTarget : '';
+          options.forEach(option => {
+            const target = document.getElementById(option.dataset.jumpTarget);
+            if (target && target.getBoundingClientRect().top <= jumpOffset() + 32) {
+              current = option.dataset.jumpTarget;
+            }
+          });
+          setActive(nav, current);
+        });
+        ticking = false;
+      });
+    }
+    window.addEventListener('scroll', onScroll, { passive: true });
+    onScroll();
+
+    if (location.hash) {
+      const id = location.hash.slice(1);
+      const target = document.getElementById(id);
+      if (target) setTimeout(() => window.labJumpTo(id), 180);
+    }
+  }
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', initJumpNavs);
+  } else {
+    initJumpNavs();
+  }
+})();

@@ -14,13 +14,13 @@ permalink: /research/
   color: #0f172a;
 }
 .rx-intro {
-  display: grid;
-  grid-template-columns: minmax(0, 1fr) 210px;
-  gap: 1.5rem;
-  align-items: start;
   padding: 1.65rem 1.5rem 1.75rem;
   background: #fff;
   border-bottom: 1px solid #d9dde6;
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 1.5rem;
 }
 .rx-intro h1 {
   margin: 0 0 0.35rem;
@@ -630,13 +630,18 @@ body.rx-modal-lock {
       <h1 id="rx-title">{{ research.hero.title }}</h1>
       <p>{{ research.hero.sub }}</p>
     </div>
-    <select class="rx-jump" aria-label="Jump to section" onchange="rxJump(this.value)">
-      <option value="">Jump to section</option>
-      {% for domain in research.domains %}
-      <option value="{{ domain.id }}">{{ domain.number }} - {{ domain.title }}</option>
-      {% endfor %}
-      <option value="funded-projects">Funded projects</option>
-    </select>
+    <div class="jump-nav" data-jump-nav style="flex-shrink:0;margin-top:0.25rem">
+      <button class="jump-toggle" type="button" aria-haspopup="true" aria-expanded="false">
+        <span>Jump to section</span>
+        <span class="jump-caret" aria-hidden="true"></span>
+      </button>
+      <div class="jump-menu" role="menu" aria-label="Research page sections">
+        {% for domain in research.domains %}
+        <button class="jump-option{% if forloop.first %} active{% endif %}" type="button" role="menuitem" data-jump-target="{{ domain.id }}">{{ domain.number }} - {{ domain.title }}</button>
+        {% endfor %}
+        <button class="jump-option" type="button" role="menuitem" data-jump-target="funded-projects">Funded projects</button>
+      </div>
+    </div>
   </section>
 
   {% for domain in research.domains %}

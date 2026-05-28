@@ -7,7 +7,7 @@ permalink: /publications/
 
 <style>
   /* ── Page shell ── */
-  :root { --nav-h: 42px; --sidebar-w: 290px; }
+  :root { --nav-h: 42px; --sidebar-w: 290px; --jump-row-h: 45px; }
   .pub-page { background: #f0f2f5; min-height: 100vh; }
 
   /* ── Compact page header ── */
@@ -20,7 +20,7 @@ permalink: /publications/
     z-index: 100;
   }
   .pub-pghead-inner {
-    max-width: 1400px; margin: 0 auto;
+    width: 100%;
     display: flex; align-items: center; gap: 0; flex-wrap: wrap;
   }
   .pub-pghead-eyebrow {
@@ -72,7 +72,7 @@ permalink: /publications/
 
   /* ── Two-column layout ── */
   .pub-layout {
-    max-width: 1400px; margin: 0 auto;
+    width: 100%;
     display: grid;
     grid-template-columns: var(--sidebar-w) 1fr;
     gap: 0;
@@ -82,8 +82,8 @@ permalink: /publications/
   /* ── Sidebar ── */
   .pub-sidebar {
     position: sticky;
-    top: calc(var(--nav-h) + 57px);
-    height: calc(100vh - var(--nav-h) - 57px);
+    top: calc(var(--nav-h) + 57px + var(--jump-row-h));
+    height: calc(100vh - var(--nav-h) - 57px - var(--jump-row-h));
     overflow-y: auto;
     background: #fff;
     border-right: 1px solid #e0e4ec;
@@ -91,6 +91,7 @@ permalink: /publications/
   }
   .pub-sidebar::-webkit-scrollbar { width: 4px; }
   .pub-sidebar::-webkit-scrollbar-thumb { background: #dde1e9; border-radius: 2px; }
+  .pub-page .jump-row { top: calc(var(--nav-h) + 57px); }
 
   /* Sidebar sections */
   .psb-section { border-bottom: 1px solid #f0f2f5; padding: 1rem 1.2rem; }
@@ -180,8 +181,9 @@ permalink: /publications/
   .psb-scholar:hover { background: #1a73e8; color: #fff; text-decoration: none; }
 
   /* ── Charts inside sidebar ── */
+  .bar-chart-wrap { display: flex; flex-direction: column; gap: 0; }
   .bar-chart { display: flex; align-items: flex-end; gap: 2px; height: 80px; }
-  .bar-col { display: flex; flex-direction: column; align-items: center; flex: 1; height: 100%; justify-content: flex-end; }
+  .bar-col { flex: 1; min-width: 8px; height: 100%; display: flex; align-items: flex-end; }
   .bar-fill {
     width: 100%; background: #1a73e8; border-radius: 2px 2px 0 0;
     min-height: 2px; cursor: default; position: relative;
@@ -195,7 +197,8 @@ permalink: /publications/
     padding: 2px 6px; border-radius: 4px; white-space: nowrap;
     pointer-events: none; z-index: 20;
   }
-  .bar-label { font-size: 0.48rem; color: #bbb; margin-top: 2px; transform: rotate(-45deg); transform-origin: top center; white-space: nowrap; }
+  .bar-years { display: flex; gap: 2px; margin-top: 3px; }
+  .bar-year-lbl { flex: 1; min-width: 8px; font-size: 0.44rem; color: #bbb; text-align: center; overflow: hidden; white-space: nowrap; line-height: 1.2; }
 
   .hbar-row { display: flex; align-items: center; gap: 0.5rem; margin-bottom: 0.45rem; }
   .hbar-label { font-size: 0.68rem; color: #555; width: 90px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; flex-shrink: 0; }
@@ -287,10 +290,12 @@ permalink: /publications/
           <span class="pub-pghead-stat-l">h-index</span>
         </div>
       </div>
-      <p class="pub-pghead-sub">Prof. Joanna I. Sulkowska — fetched live from OpenAlex.</p>
+      <p class="pub-pghead-sub"></p>
       <div class="pub-pghead-live"><span class="ps-dot"></span> Live via OpenAlex</div>
     </div>
   </div>
+
+  
 
   <!-- Two-column layout -->
   <div class="pub-layout">
@@ -299,7 +304,7 @@ permalink: /publications/
     <aside class="pub-sidebar">
 
       <!-- Search -->
-      <div class="psb-section">
+      <div class="psb-section" id="pub-search-section">
         <div class="psb-search">
           <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#aaa" stroke-width="2.5"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
           <input type="text" id="pub-search-input" placeholder="Title, author, journal…" oninput="pubFilter()"/>
@@ -307,7 +312,7 @@ permalink: /publications/
       </div>
 
       <!-- Sort -->
-      <div class="psb-section psb-section-sort">
+      <div class="psb-section psb-section-sort" id="pub-sort-section">
         <div class="psb-toggle" onclick="pubToggle(this)">
           Sort
           <span class="psb-toggle-arrow"><svg width="10" height="10" viewBox="0 0 10 10" fill="none"><path d="M2 3.5L5 6.5L8 3.5" stroke="#ccc" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
@@ -326,7 +331,7 @@ permalink: /publications/
       </div>
 
       <!-- Filters -->
-      <div class="psb-section psb-section-filter">
+      <div class="psb-section psb-section-filter" id="pub-filter-section">
         <div class="psb-toggle" onclick="pubToggle(this)">
           Filter
           <span class="psb-toggle-arrow"><svg width="10" height="10" viewBox="0 0 10 10" fill="none"><path d="M2 3.5L5 6.5L8 3.5" stroke="#ccc" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
@@ -347,7 +352,7 @@ permalink: /publications/
       </div>
 
       <!-- Analytics -->
-      <div class="psb-section">
+      <div class="psb-section" id="pub-analytics-section">
         <div class="psb-toggle" onclick="pubToggle(this)">
           Analytics <span class="psb-toggle-arrow">▾</span>
         </div>
@@ -381,7 +386,7 @@ permalink: /publications/
     </aside>
 
     <!-- ── Main list ── -->
-    <main class="pub-main">
+    <main class="pub-main" id="pub-list-section">
       <div class="pub-result-bar" id="pub-result-bar">
         Showing <strong id="pub-result-n">0</strong> publications
       </div>
@@ -449,12 +454,19 @@ document.addEventListener('DOMContentLoaded', function() {
     const years = Object.keys(yearMap).map(Number).sort((a,b)=>a-b);
     const maxCount = Math.max(...Object.values(yearMap));
     const barEl = document.getElementById('chart-year');
-    barEl.className = 'bar-chart';
-    barEl.innerHTML = years.map(y => `
-      <div class="bar-col">
-        <div class="bar-fill" style="height:${Math.round((yearMap[y]/maxCount)*100)}%" data-tip="${y}: ${yearMap[y]}"></div>
-        <div class="bar-label">${y}</div>
-      </div>`).join('');
+    barEl.className = 'bar-chart-wrap';
+    const showEvery = Math.max(1, Math.ceil(years.length / 7));
+    barEl.innerHTML = `
+      <div class="bar-chart">
+        ${years.map(y => `
+          <div class="bar-col">
+            <div class="bar-fill" style="height:${Math.round((yearMap[y]/maxCount)*100)}%" data-tip="${y}: ${yearMap[y]}"></div>
+          </div>`).join('')}
+      </div>
+      <div class="bar-years">
+        ${years.map((y, i) => `
+          <div class="bar-year-lbl">${(i === 0 || i === years.length-1 || i % showEvery === 0) ? y : ''}</div>`).join('')}
+      </div>`;
 
     // Horizontal bars: top journals
     const jMap = {};
@@ -511,6 +523,26 @@ document.addEventListener('DOMContentLoaded', function() {
       </div>`;
   }
 
+  const CJK_RE = /[　-鿿豈-﫿]+/g;
+
+  function cleanTitle(raw) {
+    if (!raw) return 'Untitled';
+    const tmp = document.createElement('div');
+    tmp.innerHTML = raw;
+    let text = (tmp.textContent || tmp.innerText || '')
+      .replace(/\$([^$]+)\$/g, '$1')           // strip LaTeX math: $θ$ → θ
+      .replace(/\s*\([^)]*[　-鿿][^)]*\)/g, '') // remove CJK parentheticals
+      .replace(CJK_RE, '')                      // remove remaining CJK/Japanese
+      .replace(/\s+/g, ' ').trim();
+    return (text || 'Untitled').replace(/&/g,'&amp;').replace(/</g,'&lt;');
+  }
+
+  function cleanJournal(raw) {
+    if (!raw) return '';
+    const cleaned = raw.replace(CJK_RE, '').replace(/\s+/g, ' ').trim();
+    return cleaned.replace(/&/g,'&amp;').replace(/</g,'&lt;');
+  }
+
   let _activeChip = 'all';
 
   window.pubToggle = function(header) {
@@ -562,16 +594,16 @@ document.addEventListener('DOMContentLoaded', function() {
     const html = list.map((w, i) => {
       const auths  = (w.authorships||[]).slice(0,5).map(a=>a.author?.display_name||'').join(', ');
       const more   = (w.authorships||[]).length > 5 ? ' et al.' : '';
-      const journal = w.primary_location?.source?.display_name || '';
+      const journal = cleanJournal(w.primary_location?.source?.display_name || '');
       const year   = w.publication_year || '';
       const url    = w.doi ? 'https://doi.org/'+w.doi.replace('https://doi.org/','') : (w.id||'#');
       const cites  = w.cited_by_count || 0;
       const oaBadge = w.open_access?.is_oa
-        ? '<span style="font-size:0.65rem;font-weight:700;color:#2e7d32;background:#e8f5e9;padding:1px 5px;border-radius:8px;margin-left:5px">OA</span>' : '';
+        ? ' <span style="font-size:0.65rem;font-weight:700;color:#2e7d32;background:#e8f5e9;padding:1px 5px;border-radius:8px;margin-left:3px">OA</span>' : '';
       return `<a class="pub-item" href="${url}" target="_blank">
         <div class="pub-num">${i+1}</div>
         <div class="pub-body">
-          <div class="pub-title">${(w.title||'Untitled').replace(/</g,'&lt;')}${oaBadge}</div>
+          <div class="pub-title">${cleanTitle(w.title)}${oaBadge}</div>
           <div class="pub-meta">${auths}${more} · <em>${journal||'—'}</em> · ${year}</div>
         </div>
         <div class="pub-cites">${cites.toLocaleString()} cit.</div>
