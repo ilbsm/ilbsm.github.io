@@ -733,7 +733,7 @@ permalink: /
 
     <!-- ✏️ TO ADD/REMOVE NEWS: edit _data/news.yml — no HTML changes needed -->
     <div class="hp-news-grid">
-      {% assign recent_news = site.data.home.news | where: "archive", false %}
+      {% assign recent_news = site.data.news | where: "archive", false %}
       {% for item in recent_news limit:7 %}
       <a class="hp-news-card" href="/news/{{ item.slug }}/">
         <div class="hp-news-date">{{ item.date }}</div>
@@ -749,7 +749,7 @@ permalink: /
     <div class="hp-news-archive" id="news-archive">
       <div class="hp-news-archive-label">Archive — 2015 to 2022</div>
       <div class="hp-news-archive-grid">
-        {% assign archive_news = site.data.home.news | where: "archive", true %}
+        {% assign archive_news = site.data.news | where: "archive", true %}
         {% for item in archive_news %}
         <a class="hp-news-card" href="/news/{{ item.slug }}/">
           <div class="hp-news-date">{{ item.date }}</div>
