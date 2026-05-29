@@ -51,7 +51,7 @@ software:
     desc: "Python package for polymer topology calculation"
 
   - name: "Genus"
-    url: "http://genus.fuw.edu.pl"
+    url: "https://genus.fuw.edu.pl/"
     color: "#9c27b0"
     desc: "Genus characteristics for biomolecules via Seifert surfaces"
 
