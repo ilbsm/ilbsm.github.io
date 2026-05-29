@@ -414,11 +414,11 @@ permalink: /media/
   height: 32px;
   padding: 6px;
 }
-#ms-broadcast .med-logo-tok-text {
+.med-logo-tok-text {
   color: #2515a8;
   font-size: 0.68rem;
   font-weight: 900;
-  letter-spacing: 0.05em;
+  letter-spacing: 0;
 }
 #ms-broadcast .med-src-name,
 #ms-broadcast .med-li-title {
@@ -821,9 +821,10 @@ permalink: /media/
   display: inline-flex; align-items: center; gap: var(--space-3);
   text-decoration: none; color: #5a5957; font-size: var(--text-sm); font-weight: 500;
   white-space: nowrap; padding: var(--space-2) var(--space-4); border-radius: var(--radius-full);
+  cursor: default; user-select: none;
   transition: color var(--transition), background var(--transition);
 }
-.med-feat-item:hover { color: #28251d; background: #f0ede8; }
+.med-feat-item:hover { color: #5a5957; background: transparent; }
 
 /* ── VIDEO MARQUEE (white) ── */
 .med-vid-marquee-wrap { overflow: hidden; }
@@ -1310,27 +1311,27 @@ permalink: /media/
     <div class="med-feat-label">Featured In</div>
     <div class="med-feat-track-outer">
       <div class="med-feat-track">
-        <a class="med-feat-item" href="https://www.polsatnews.pl/wiadomosc/2017-03-13/polka-w-elitarnym-gronie-kobiet-ktore-moga-zmienic-swiat-wybrana-przez-unesco/" target="_blank" rel="noopener noreferrer"><span class="med-src-logo round"><img src="{{ '/assets/img/logos/media/polsat-news.svg' | relative_url }}" alt=""></span>Polsat News</a>
-        <a class="med-feat-item" href="https://wyborcza.pl/7,75400,23793827,polka-wsrod-najbardziej-obiecujacych-badaczek-swiata.html" target="_blank" rel="noopener noreferrer"><span class="med-src-logo med-logo-wide"><img src="{{ '/assets/img/logos/media/wyborcza.svg' | relative_url }}" alt=""></span>Gazeta Wyborcza</a>
-        <a class="med-feat-item" href="https://dziendobry.tvn.pl" target="_blank" rel="noopener noreferrer"><span class="med-src-logo med-logo-wide"><img src="{{ '/assets/img/logos/media/tvn.svg' | relative_url }}" alt=""></span>TVN Dzień Dobry</a>
-        <a class="med-feat-item" href="https://audycje.tokfm.pl" target="_blank" rel="noopener noreferrer"><span class="med-src-logo med-logo-wide med-logo-dark"><img src="{{ '/assets/img/logos/media/tok-fm.png' | relative_url }}" alt=""></span>TOK FM</a>
-        <a class="med-feat-item" href="https://www.pap.pl" target="_blank" rel="noopener noreferrer"><span class="med-src-logo med-logo-wide"><img src="{{ '/assets/img/logos/media/pap.svg' | relative_url }}" alt=""></span>Polska Agencja Prasowa</a>
-        <a class="med-feat-item" href="https://www.unesco.org" target="_blank" rel="noopener noreferrer"><span class="med-src-logo med-logo-wide"><img src="{{ '/assets/img/logos/media/unesco.svg' | relative_url }}" alt=""></span>UNESCO</a>
-        <a class="med-feat-item" href="https://www.embo.org" target="_blank" rel="noopener noreferrer"><span class="med-src-logo med-logo-wide"><img src="{{ '/assets/img/logos/media/embo.png' | relative_url }}" alt=""></span>EMBO</a>
-        <a class="med-feat-item" href="https://www.loreal.com" target="_blank" rel="noopener noreferrer"><span class="med-src-logo med-logo-wide"><img src="{{ '/assets/img/logos/media/loreal.svg' | relative_url }}" alt=""></span>L'Oréal</a>
-        <a class="med-feat-item" href="https://www.fnp.org.pl" target="_blank" rel="noopener noreferrer"><span class="med-src-logo"><img src="{{ '/assets/img/logos/media/fnp.svg' | relative_url }}" alt=""></span>Foundation for Polish Science</a>
-        <a class="med-feat-item" href="https://businessinsider.com.pl" target="_blank" rel="noopener noreferrer"><span class="med-src-logo med-logo-long"><img src="{{ '/assets/img/logos/media/business-insider.svg' | relative_url }}" alt=""></span>Business Insider</a>
+        <span class="med-feat-item"><span class="med-src-logo round"><img src="{{ '/assets/img/logos/media/polsat-news.svg' | relative_url }}" alt=""></span>Polsat News</span>
+        <span class="med-feat-item"><span class="med-src-logo med-logo-wide"><img src="{{ '/assets/img/logos/media/wyborcza.svg' | relative_url }}" alt=""></span>Gazeta Wyborcza</span>
+        <span class="med-feat-item"><span class="med-src-logo med-logo-wide"><img src="{{ '/assets/img/logos/media/tvn.svg' | relative_url }}" alt=""></span>TVN Dzień Dobry</span>
+        <span class="med-feat-item"><span class="med-src-logo med-logo-wide med-logo-tok-text">TOK FM</span>TOK FM</span>
+        <span class="med-feat-item"><span class="med-src-logo med-logo-wide"><img src="{{ '/assets/img/logos/media/pap.svg' | relative_url }}" alt=""></span>Polska Agencja Prasowa</span>
+        <span class="med-feat-item"><span class="med-src-logo med-logo-wide"><img src="{{ '/assets/img/logos/media/unesco.svg' | relative_url }}" alt=""></span>UNESCO</span>
+        <span class="med-feat-item"><span class="med-src-logo med-logo-wide"><img src="{{ '/assets/img/logos/media/embo.png' | relative_url }}" alt=""></span>EMBO</span>
+        <span class="med-feat-item"><span class="med-src-logo med-logo-wide"><img src="{{ '/assets/img/logos/media/loreal.svg' | relative_url }}" alt=""></span>L'Oréal</span>
+        <span class="med-feat-item"><span class="med-src-logo"><img src="{{ '/assets/img/logos/media/fnp.svg' | relative_url }}" alt=""></span>Foundation for Polish Science</span>
+        <span class="med-feat-item"><span class="med-src-logo med-logo-long"><img src="{{ '/assets/img/logos/media/business-insider.svg' | relative_url }}" alt=""></span>Business Insider</span>
         <!-- duplicate set for seamless loop -->
-        <a class="med-feat-item" href="https://www.polsatnews.pl/wiadomosc/2017-03-13/polka-w-elitarnym-gronie-kobiet-ktore-moga-zmienic-swiat-wybrana-przez-unesco/" target="_blank" rel="noopener noreferrer" aria-hidden="true" tabindex="-1"><span class="med-src-logo round"><img src="{{ '/assets/img/logos/media/polsat-news.svg' | relative_url }}" alt=""></span>Polsat News</a>
-        <a class="med-feat-item" href="https://wyborcza.pl/7,75400,23793827,polka-wsrod-najbardziej-obiecujacych-badaczek-swiata.html" target="_blank" rel="noopener noreferrer" aria-hidden="true" tabindex="-1"><span class="med-src-logo med-logo-wide"><img src="{{ '/assets/img/logos/media/wyborcza.svg' | relative_url }}" alt=""></span>Gazeta Wyborcza</a>
-        <a class="med-feat-item" href="https://dziendobry.tvn.pl" target="_blank" rel="noopener noreferrer" aria-hidden="true" tabindex="-1"><span class="med-src-logo med-logo-wide"><img src="{{ '/assets/img/logos/media/tvn.svg' | relative_url }}" alt=""></span>TVN Dzień Dobry</a>
-        <a class="med-feat-item" href="https://audycje.tokfm.pl" target="_blank" rel="noopener noreferrer" aria-hidden="true" tabindex="-1"><span class="med-src-logo med-logo-wide med-logo-dark"><img src="{{ '/assets/img/logos/media/tok-fm.png' | relative_url }}" alt=""></span>TOK FM</a>
-        <a class="med-feat-item" href="https://www.pap.pl" target="_blank" rel="noopener noreferrer" aria-hidden="true" tabindex="-1"><span class="med-src-logo med-logo-wide"><img src="{{ '/assets/img/logos/media/pap.svg' | relative_url }}" alt=""></span>Polska Agencja Prasowa</a>
-        <a class="med-feat-item" href="https://www.unesco.org" target="_blank" rel="noopener noreferrer" aria-hidden="true" tabindex="-1"><span class="med-src-logo med-logo-wide"><img src="{{ '/assets/img/logos/media/unesco.svg' | relative_url }}" alt=""></span>UNESCO</a>
-        <a class="med-feat-item" href="https://www.embo.org" target="_blank" rel="noopener noreferrer" aria-hidden="true" tabindex="-1"><span class="med-src-logo med-logo-wide"><img src="{{ '/assets/img/logos/media/embo.png' | relative_url }}" alt=""></span>EMBO</a>
-        <a class="med-feat-item" href="https://www.loreal.com" target="_blank" rel="noopener noreferrer" aria-hidden="true" tabindex="-1"><span class="med-src-logo med-logo-wide"><img src="{{ '/assets/img/logos/media/loreal.svg' | relative_url }}" alt=""></span>L'Oréal</a>
-        <a class="med-feat-item" href="https://www.fnp.org.pl" target="_blank" rel="noopener noreferrer" aria-hidden="true" tabindex="-1"><span class="med-src-logo"><img src="{{ '/assets/img/logos/media/fnp.svg' | relative_url }}" alt=""></span>Foundation for Polish Science</a>
-        <a class="med-feat-item" href="https://businessinsider.com.pl" target="_blank" rel="noopener noreferrer" aria-hidden="true" tabindex="-1"><span class="med-src-logo med-logo-long"><img src="{{ '/assets/img/logos/media/business-insider.svg' | relative_url }}" alt=""></span>Business Insider</a>
+        <span class="med-feat-item" aria-hidden="true"><span class="med-src-logo round"><img src="{{ '/assets/img/logos/media/polsat-news.svg' | relative_url }}" alt=""></span>Polsat News</span>
+        <span class="med-feat-item" aria-hidden="true"><span class="med-src-logo med-logo-wide"><img src="{{ '/assets/img/logos/media/wyborcza.svg' | relative_url }}" alt=""></span>Gazeta Wyborcza</span>
+        <span class="med-feat-item" aria-hidden="true"><span class="med-src-logo med-logo-wide"><img src="{{ '/assets/img/logos/media/tvn.svg' | relative_url }}" alt=""></span>TVN Dzień Dobry</span>
+        <span class="med-feat-item" aria-hidden="true"><span class="med-src-logo med-logo-wide med-logo-tok-text">TOK FM</span>TOK FM</span>
+        <span class="med-feat-item" aria-hidden="true"><span class="med-src-logo med-logo-wide"><img src="{{ '/assets/img/logos/media/pap.svg' | relative_url }}" alt=""></span>Polska Agencja Prasowa</span>
+        <span class="med-feat-item" aria-hidden="true"><span class="med-src-logo med-logo-wide"><img src="{{ '/assets/img/logos/media/unesco.svg' | relative_url }}" alt=""></span>UNESCO</span>
+        <span class="med-feat-item" aria-hidden="true"><span class="med-src-logo med-logo-wide"><img src="{{ '/assets/img/logos/media/embo.png' | relative_url }}" alt=""></span>EMBO</span>
+        <span class="med-feat-item" aria-hidden="true"><span class="med-src-logo med-logo-wide"><img src="{{ '/assets/img/logos/media/loreal.svg' | relative_url }}" alt=""></span>L'Oréal</span>
+        <span class="med-feat-item" aria-hidden="true"><span class="med-src-logo"><img src="{{ '/assets/img/logos/media/fnp.svg' | relative_url }}" alt=""></span>Foundation for Polish Science</span>
+        <span class="med-feat-item" aria-hidden="true"><span class="med-src-logo med-logo-long"><img src="{{ '/assets/img/logos/media/business-insider.svg' | relative_url }}" alt=""></span>Business Insider</span>
       </div>
     </div>
   </div>
