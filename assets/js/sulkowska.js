@@ -735,7 +735,9 @@ window.show = function(name) {
   function jumpOffset() {
     const row = document.querySelector('.jump-row');
     const pageHead = document.querySelector('.pub-pghead');
-    return navHeight() + (pageHead ? pageHead.offsetHeight : 0) + (row ? row.offsetHeight : 0) + 12;
+    const rowPosition = row ? window.getComputedStyle(row).position : '';
+    const rowOffset = row && (rowPosition === 'sticky' || rowPosition === 'fixed') ? row.offsetHeight : 0;
+    return navHeight() + (pageHead ? pageHead.offsetHeight : 0) + rowOffset + 12;
   }
 
   function setActive(nav, id) {
@@ -790,21 +792,9 @@ window.show = function(name) {
 
     if (viewportW <= 640) {
       const pad = 12;
-      const width = Math.min(360, viewportW - pad * 2);
-      const menuHeight = Math.min(menu.scrollHeight || 0, 430, Math.max(220, viewportH - pad * 2));
-      const left = Math.max(pad, Math.min(toggleRect.left, viewportW - width - pad));
-      let top = toggleRect.bottom + 8;
-      if (top + menuHeight > viewportH - pad) {
-        top = Math.max(navHeight() + pad, viewportH - menuHeight - pad);
-      }
-
-      menu.style.position = 'fixed';
-      menu.style.left = left + 'px';
-      menu.style.right = 'auto';
-      menu.style.top = top + 'px';
-      menu.style.bottom = 'auto';
-      menu.style.width = width + 'px';
-      menu.style.maxHeight = Math.max(160, Math.min(menuHeight, viewportH - top - pad)) + 'px';
+      const availableBelow = viewportH - toggleRect.bottom - pad;
+      const preferredHeight = availableBelow > 180 ? availableBelow : viewportH * 0.48;
+      menu.style.maxHeight = Math.max(170, Math.min(320, preferredHeight)) + 'px';
       return;
     }
 

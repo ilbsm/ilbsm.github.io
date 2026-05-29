@@ -238,30 +238,128 @@ permalink: /publications/
 
   /* ── Responsive: collapse to single column ── */
   @media (max-width: 1024px) {
-    .pub-layout { grid-template-columns: 1fr; }
+    .pub-layout {
+      display: flex;
+      flex-direction: column;
+    }
     .pub-sidebar {
+      display: contents;
       position: static; height: auto; overflow: visible;
       border-right: none; border-bottom: 1px solid #e0e4ec;
     }
+    #pub-search-section {
+      order: 1;
+      position: sticky;
+      top: var(--nav-h);
+      z-index: 40;
+      background: #fff;
+      border-bottom: 1px solid #dfe5ee;
+      box-shadow: 0 8px 22px rgba(10,16,32,0.08);
+    }
+    #pub-sort-section { order: 2; background: #fff; }
+    #pub-filter-section { order: 3; background: #fff; }
+    .pub-main {
+      order: 4;
+      padding: 1rem 1rem 3rem;
+      scroll-margin-top: calc(var(--nav-h) + 78px);
+    }
+    .psb-live-section { order: 5; background: #fff; }
+    #pub-analytics-section { order: 6; background: #fff; }
+    #pub-scholar-section { order: 7; background: #fff; }
     .psb-chips { flex-direction: row; flex-wrap: wrap; }
     .psb-chips-divider { display: none; }
-    .pub-main { padding: 1rem 1rem 3rem; }
   }
   @media (max-width: 700px) {
+    #pub-search-section {
+      padding: 0.55rem 0.75rem;
+    }
+    .psb-search {
+      padding: 0.62rem 0.8rem;
+      border-radius: 10px;
+      background: #fff;
+      box-shadow: 0 2px 12px rgba(10,16,32,0.08);
+    }
+    .psb-search input {
+      font-size: 0.92rem;
+    }
     .psb-section {
       padding: 0.8rem 1rem;
     }
+    .psb-section-sort {
+      padding: 0.45rem 0.75rem 0.25rem;
+    }
+    .psb-section-filter {
+      padding: 0.25rem 0.75rem 0.55rem;
+    }
+    #pub-sort-section .psb-toggle,
+    #pub-filter-section .psb-toggle {
+      display: none;
+    }
+    #pub-sort-section .psb-body,
+    #pub-filter-section .psb-body {
+      max-height: none !important;
+      overflow: visible;
+    }
+    .psb-sort {
+      min-height: 40px;
+      border-radius: 9px;
+      background: #fff;
+    }
+    .psb-chips {
+      flex-wrap: nowrap;
+      gap: 0.42rem;
+      overflow-x: auto;
+      padding: 0.1rem 0 0.22rem;
+      -webkit-overflow-scrolling: touch;
+      scrollbar-width: none;
+    }
+    .psb-chips::-webkit-scrollbar {
+      display: none;
+    }
+    .pchip {
+      flex: 0 0 auto;
+      white-space: nowrap;
+      padding: 0.43rem 0.72rem;
+      font-size: 0.72rem;
+    }
     .pub-main {
-      padding: 0.85rem 0.75rem 2rem;
+      padding: 0.65rem 0.65rem 1.6rem;
+      scroll-margin-top: calc(var(--nav-h) + 72px);
+    }
+    .pub-result-bar {
+      width: max-content;
+      max-width: 100%;
+      margin: 0.1rem 0.05rem 0.5rem;
+      padding: 0.42rem 0.62rem;
+      border-radius: 999px;
+      background: #fff;
+      box-shadow: 0 1px 8px rgba(10,16,32,0.08);
+      color: #5d6673;
     }
     .pub-item {
       grid-template-columns: auto 1fr;
-      padding: 0.75rem 0.8rem;
+      padding: 0.72rem 0.76rem;
       gap: 0.35rem 0.65rem;
+      border-radius: 10px;
+    }
+    .pub-title {
+      font-size: 0.84rem;
+    }
+    .pub-meta {
+      font-size: 0.7rem;
     }
     .pub-cites {
       grid-column: 2;
+      justify-self: start;
       padding-top: 0;
+      padding: 0.12rem 0.42rem;
+      border-radius: 999px;
+      background: #edf5ff;
+    }
+    .psb-live-section,
+    #pub-analytics-section,
+    #pub-scholar-section {
+      margin-top: 0.35rem;
     }
   }
 </style>
@@ -278,7 +376,7 @@ permalink: /publications/
       <div class="psb-section" id="pub-search-section">
         <div class="psb-search">
           <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#aaa" stroke-width="2.5"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
-          <input type="text" id="pub-search-input" placeholder="Title, author, journal…" oninput="pubFilter()"/>
+          <input type="text" id="pub-search-input" placeholder="Title, author, journal…" oninput="pubFilter(true)"/>
         </div>
       </div>
 
@@ -290,7 +388,7 @@ permalink: /publications/
         </div>
         <div class="psb-body" style="max-height:200px">
           <div class="psb-sort-wrap">
-            <select id="pub-sort-select" class="psb-sort" onchange="pubFilter()">
+            <select id="pub-sort-select" class="psb-sort" onchange="pubFilter(true)">
               <option value="cites">Most cited</option>
               <option value="year-desc">Newest first</option>
               <option value="year-asc">Oldest first</option>
@@ -352,7 +450,7 @@ permalink: /publications/
       </div>
 
       <!-- Scholar link -->
-      <div class="psb-section">
+      <div class="psb-section" id="pub-scholar-section">
         <a class="psb-scholar" href="https://scholar.google.com/citations?user=BVBwiyAAAAAJ" target="_blank">
           Google Scholar ↗
         </a>
@@ -380,6 +478,26 @@ permalink: /publications/
 <script>
 document.addEventListener('DOMContentLoaded', function() {
   let _allPubs = [], _loaded = false;
+  let _resultScrollTimer = null;
+
+  function focusResultsOnMobile() {
+    if (!window.matchMedia('(max-width: 700px)').matches) return;
+    clearTimeout(_resultScrollTimer);
+    _resultScrollTimer = setTimeout(() => {
+      const main = document.getElementById('pub-list-section');
+      if (main) main.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }, 160);
+  }
+
+  function collapseAnalyticsOnMobile() {
+    if (!window.matchMedia('(max-width: 1024px)').matches) return;
+    const analytics = document.getElementById('pub-analytics-section');
+    const header = analytics?.querySelector('.psb-toggle');
+    const body = analytics?.querySelector('.psb-body');
+    if (!header || !body) return;
+    header.classList.add('collapsed');
+    body.classList.add('collapsed');
+  }
 
   async function load() {
     if (_loaded) return;
@@ -553,9 +671,12 @@ document.addEventListener('DOMContentLoaded', function() {
     btn.classList.add('active');
     _activeChip = btn.dataset.filter;
     renderPubs();
+    focusResultsOnMobile();
   };
 
   function renderPubs() {
+    if (!_allPubs.length) return;
+
     const q    = (document.getElementById('pub-search-input')?.value || '').toLowerCase();
     const sort = document.getElementById('pub-sort-select')?.value || 'cites';
     const chip = _activeChip;
@@ -587,6 +708,7 @@ document.addEventListener('DOMContentLoaded', function() {
     const bar = document.getElementById('pub-result-bar');
     bar.style.display = 'block';
     document.getElementById('pub-result-n').textContent = list.length.toLocaleString();
+    document.getElementById('page-publications')?.classList.toggle('pub-searching', q.trim().length > 0);
 
     const html = list.map((w, i) => {
       const auths  = (w.authorships||[]).slice(0,5).map(a=>a.author?.display_name||'').join(', ');
@@ -612,7 +734,11 @@ document.addEventListener('DOMContentLoaded', function() {
     lst.innerHTML = html || '<div style="padding:2rem;text-align:center;color:#888">No publications match this filter.</div>';
   }
 
-  window.pubFilter = renderPubs;
+  window.pubFilter = function(focusList) {
+    renderPubs();
+    if (focusList && _allPubs.length) focusResultsOnMobile();
+  };
+  collapseAnalyticsOnMobile();
   load();
 });
 </script>
