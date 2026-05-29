@@ -189,29 +189,62 @@
     .footer-icons a:hover { color: rgba(255,255,255,0.9); }
     .footer-copy { color: rgba(255,255,255,0.28); font-size: 0.78rem; }
 
-	    @media(max-width:640px){
-	      .hero { height: 260px; }
+	    @media(max-width:820px){
+        body { background: #edf4ff; line-height: 1.62; }
+	      .hero {
+          height: clamp(340px, 54vh, 430px);
+          min-height: 340px;
+        }
 	      .hero-content {
-	        align-self: flex-start;
-	        width: min(100%, 390px);
-	        padding: 0 1rem;
-	        transform: translateY(-4px);
+	        align-self: center;
+	        width: min(100%, 720px);
+	        padding: 0 1.25rem;
+	        transform: none;
+          gap: 0.42rem;
 	      }
-	      .hero-avatar { width: 58px; height: 58px; }
+	      .hero-avatar {
+          width: clamp(74px, 18vw, 96px);
+          height: clamp(74px, 18vw, 96px);
+          margin-bottom: 0.25rem;
+        }
 	      .hero-lab,
 	      .hero-name,
-	      .hero-tagline { width: 100%; max-width: 330px; }
-	      .hero-lab { font-size: 1.08rem; line-height: 1.25; white-space: normal; }
-	      .hero-name { font-size: 0.78rem; }
-	      .hero-tagline { font-size: 0.7rem; line-height: 1.4; }
+	      .hero-tagline { width: 100%; max-width: 680px; }
+	      .hero-lab {
+          font-size: clamp(1.45rem, 5.2vw, 2.15rem);
+          line-height: 1.22;
+          white-space: normal;
+        }
+	      .hero-name { font-size: clamp(0.94rem, 3vw, 1.25rem); }
+	      .hero-tagline { font-size: clamp(0.82rem, 2.6vw, 1.05rem); line-height: 1.42; }
+        .slide-dots { bottom: 22px; gap: 11px; }
+        .slide-dot { width: 10px; height: 10px; }
+        nav { position: sticky; top: 0; background: #0f1623; }
 	      .nav-inner {
-	        justify-content: flex-start;
-	        flex-wrap: nowrap;
-	        overflow-x: auto;
-	        scrollbar-width: none;
+          width: 100%;
+          max-width: none;
+          display: grid;
+          grid-template-columns: repeat(4, max-content);
+          justify-content: center;
+          align-items: stretch;
+          gap: 0.12rem 0.55rem;
+          padding: 0.42rem 0.35rem 0;
+          overflow: visible;
 	      }
-	      .nav-inner::-webkit-scrollbar { display: none; }
-	      .nav-inner a { padding: 0.65rem 0.7rem; font-size: 0.76rem; }
+	      .nav-inner a {
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          min-height: 43px;
+          padding: 0.48rem 0.1rem 0.62rem;
+          border-bottom-width: 4px;
+          font-size: clamp(0.72rem, 2.7vw, 0.96rem);
+          font-weight: 700;
+          letter-spacing: 0.035em;
+          line-height: 1.15;
+          text-align: center;
+          white-space: nowrap;
+        }
 	    }
   
     /* ─── PROJECT CARDS ─── */

@@ -136,9 +136,14 @@ permalink: /collaboration/
 
 @media (max-width: 640px) {
   :root { --cl-side: 1rem; }
-  #page-collab .rpfp-intro { padding: 0.8rem var(--cl-side) 0.7rem; }
+  #page-collab .rpfp-intro {
+    flex-direction: column;
+    gap: 0.75rem;
+    padding: 1rem var(--cl-side) 0.85rem;
+  }
   #page-collab .rpfp-intro-title { font-size: 1.9rem; }
   #page-collab .rpfp-intro-sub { font-size: 0.86rem; }
+  #page-collab .jump-nav { width: 100%; max-width: 230px; margin-left: auto; }
   .cl-grid { grid-template-columns: 1fr; }
   .cl-logo-wrap { height: 64px; }
 }

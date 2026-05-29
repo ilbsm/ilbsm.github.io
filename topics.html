@@ -201,27 +201,30 @@ permalink: /topics/
 }
 @media (max-width: 640px) {
   .tp-page {
-    --tp-side: 1rem;
+    --tp-side: 0.85rem;
   }
   .tp-hero {
-    padding: 1rem;
+    padding: 1.25rem 1.1rem 1.35rem;
   }
-  .tp-jumpbar {
-    justify-content: stretch;
-    padding: 0.8rem 1rem;
+  .tp-hero-title {
+    font-size: 2.25rem;
   }
-  .tp-jump {
-    width: 100%;
+  .tp-hero-sub {
+    font-size: 0.95rem;
+    line-height: 1.65;
   }
   .tp-section-head {
     flex-wrap: wrap;
+    padding-top: 0.9rem;
+    padding-bottom: 0.85rem;
   }
   .tp-grid {
     grid-template-columns: 1fr;
-    gap: 1.25rem;
+    gap: 1rem;
+    padding-bottom: 1.4rem;
   }
   .tp-card-img {
-    height: 230px;
+    height: min(230px, 58vw);
   }
 }
 </style>
@@ -234,15 +237,24 @@ permalink: /topics/
     </div>
   </section>
 
-  <div class="tp-jumpbar">
-    <select class="tp-jump" aria-label="Jump to section" onchange="tpJump(this.value)">
-      <option value="">Jump to section</option>
-      {% for row in data.layout %}
-        {% for section in row.sections %}
-        <option value="{{ section.id }}">{{ section.title }}</option>
-        {% endfor %}
-      {% endfor %}
-    </select>
+  <div class="jump-row">
+    <div class="jump-row-inner">
+      <div class="jump-nav" data-jump-nav>
+        <button class="jump-toggle" type="button" aria-haspopup="true" aria-expanded="false">
+          <span>Jump to section</span>
+          <span class="jump-caret" aria-hidden="true"></span>
+        </button>
+        <div class="jump-menu" role="menu" aria-label="Projects and software sections">
+          {% assign first_section = true %}
+          {% for row in data.layout %}
+            {% for section in row.sections %}
+            <button class="jump-option{% if first_section %} active{% endif %}" type="button" role="menuitem" data-jump-target="{{ section.id }}">{{ section.title }}</button>
+            {% assign first_section = false %}
+            {% endfor %}
+          {% endfor %}
+        </div>
+      </div>
+    </div>
   </div>
 
   {% for row in data.layout %}
@@ -275,11 +287,3 @@ permalink: /topics/
     {% endfor %}
   {% endfor %}
 </div>
-
-<script>
-function tpJump(id) {
-  if (!id) return;
-  var section = document.getElementById(id);
-  if (section) section.scrollIntoView({ behavior: 'smooth', block: 'start' });
-}
-</script>

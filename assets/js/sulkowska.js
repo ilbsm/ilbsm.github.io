@@ -721,6 +721,11 @@ window.show = function(name) {
   if (window.__sulkowskaJumpNavReady) return;
   window.__sulkowskaJumpNavReady = true;
 
+  function updateNavHeight() {
+    const nav = document.querySelector('nav');
+    if (nav) document.documentElement.style.setProperty('--nav-h', nav.offsetHeight + 'px');
+  }
+
   function navHeight() {
     const raw = getComputedStyle(document.documentElement).getPropertyValue('--nav-h');
     const parsed = parseFloat(raw);
@@ -770,6 +775,10 @@ window.show = function(name) {
   };
 
   function initJumpNavs() {
+    updateNavHeight();
+    window.addEventListener('resize', updateNavHeight);
+    window.setTimeout(updateNavHeight, 250);
+
     document.querySelectorAll('[data-jump-nav]').forEach(nav => {
       if (nav.dataset.jumpReady) return;
       nav.dataset.jumpReady = 'true';

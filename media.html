@@ -865,10 +865,27 @@ permalink: /media/
   .med-interview-cards { grid-template-columns: repeat(auto-fill, minmax(180px,1fr)); }
 }
 @media (max-width: 640px) {
-  .hp-sec { padding: var(--space-4) var(--space-4); }
-  .hp-wrap { padding: 0 var(--space-4); }
+  .hp-sec {
+    padding: 1rem;
+    border-radius: 12px;
+    margin-bottom: 0.75rem;
+  }
+  .hp-wrap { padding: 0 0.75rem; }
   .hp-sections { width: 100%; max-width: 210px; }
+  .hp-title,
+  .med-shot-section .hp-title,
+  #ms-interviews .hp-title,
+  #ms-press .hp-title {
+    font-size: 1.65rem;
+  }
   .med-gallery-grid { grid-template-columns: repeat(2,1fr); }
+  .med-video-grid-featured {
+    gap: 0.75rem;
+  }
+  #ms-news .med-grant-card,
+  #ms-interviews .med-int-card {
+    min-height: auto;
+  }
 }
 </style>
 

@@ -368,9 +368,15 @@ permalink: /contact/
   .cp-page-head {
     padding: 1.1rem 1rem 1.2rem;
   }
+  .cp-page-head h1 {
+    font-size: 2rem;
+  }
+  .cp-page-head p {
+    font-size: 0.92rem;
+  }
 
   .cp-wrap {
-    padding: 0.65rem 0.85rem 1.5rem;
+    padding: 0.75rem 0.75rem 1.5rem;
   }
 
   .cp-info-grid,
@@ -380,6 +386,7 @@ permalink: /contact/
 
   .cp-info-card {
     min-height: 0;
+    border-radius: 11px;
   }
 
   .cp-form-footer {
@@ -408,6 +415,21 @@ permalink: /contact/
     <h1>Contact &amp; Visit Us</h1>
   </header>
 
+  <div class="jump-row">
+    <div class="jump-row-inner">
+      <div class="jump-nav" data-jump-nav>
+        <button class="jump-toggle" type="button" aria-haspopup="true" aria-expanded="false">
+          <span>Jump to section</span>
+          <span class="jump-caret" aria-hidden="true"></span>
+        </button>
+        <div class="jump-menu" role="menu" aria-label="Contact page sections">
+          <button class="jump-option active" type="button" role="menuitem" data-jump-target="contact-information">Contact Information</button>
+          <button class="jump-option" type="button" role="menuitem" data-jump-target="quick-inquiry">Quick Inquiry</button>
+          <button class="jump-option" type="button" role="menuitem" data-jump-target="location-social">Location &amp; Social</button>
+        </div>
+      </div>
+    </div>
+  </div>
 
   <div class="cp-wrap">
     <section class="cp-section" aria-labelledby="contact-information">
