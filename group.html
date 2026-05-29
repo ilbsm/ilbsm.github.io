@@ -379,9 +379,9 @@ permalink: /group/
         <button class="jump-option active" type="button" role="menuitem" data-jump-target="grp-senior">Senior</button>
         <button class="jump-option" type="button" role="menuitem" data-jump-target="grp-postdocs">Postdocs</button>
         <button class="jump-option" type="button" role="menuitem" data-jump-target="grp-phd">PhD</button>
+        <button class="jump-option" type="button" role="menuitem" data-jump-target="grp-tech">Tech &amp; Interns</button>
         <button class="jump-option" type="button" role="menuitem" data-jump-target="grp-msc">MSc</button>
         <button class="jump-option" type="button" role="menuitem" data-jump-target="grp-bsc">Undergrads</button>
-        <button class="jump-option" type="button" role="menuitem" data-jump-target="grp-tech">Tech &amp; Interns</button>
         <button class="jump-option" type="button" role="menuitem" data-jump-target="grp-join">Join</button>
         <button class="jump-option" type="button" role="menuitem" data-jump-target="grp-alumni">Alumni</button>
       </div>
@@ -392,7 +392,7 @@ permalink: /group/
 <div class="grp-wrap">
 
   <!-- ── CURRENT MEMBER SECTIONS ── -->
-  {% assign sections = "senior|Senior Scientists|grp-senior,postdocs|Postdoctoral Researchers|grp-postdocs,phd|PhD Students|grp-phd,msc|MSc Students|grp-msc,bsc|Undergraduate Students|grp-bsc,tech|Research Technicians &amp; Interns|grp-tech" | split: "," %}
+  {% assign sections = "senior|Senior Scientists|grp-senior,postdocs|Postdoctoral Researchers|grp-postdocs,phd|PhD Students|grp-phd,tech|Research Technicians &amp; Interns|grp-tech,msc|MSc Students|grp-msc,bsc|Undergraduate Students|grp-bsc" | split: "," %}
 
   {% for sec in sections %}
     {% assign parts   = sec | split: "|" %}

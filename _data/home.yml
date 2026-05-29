@@ -110,25 +110,25 @@ research:
   - num: "01"
     title: "Protein Folding & Energy Landscapes"
     desc: "How knotted proteins fold and move."
-    link: "/topics/#rpfd-01"
+    link: "/research/#rpfd-01"
     accent: "#1a5fa8"
 
   - num: "02"
     title: "Complex Topology: Knots, Lassos & Links"
     desc: "Molecular entanglements in proteins and RNA."
-    link: "/topics/#rpfd-03"
+    link: "/research/#rpfd-03"
     accent: "#01696f"
 
   - num: "03"
     title: "Drug Design & Therapeutics"
     desc: "Topology-guided targeting of proteins."
-    link: "/topics/#rpfd-04"
+    link: "/research/#rpfd-04"
     accent: "#8a5a12"
 
   - num: "04"
     title: "Structural Bioinformatics & Databases"
     desc: "Open tools for structural analysis."
-    link: "/topics/#rpfd-02"
+    link: "/research/#rpfd-02"
     accent: "#6a1b9a"
 
 # ── AWARDS & RECOGNITION ───────────────────────────────────────────────────────
