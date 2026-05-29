@@ -790,11 +790,11 @@ window.show = function(name) {
     const viewportW = window.innerWidth || document.documentElement.clientWidth;
     const viewportH = window.innerHeight || document.documentElement.clientHeight;
 
-    if (viewportW <= 640) {
+    if (viewportW <= 820) {
       const pad = 12;
       const availableBelow = viewportH - toggleRect.bottom - pad;
-      const preferredHeight = availableBelow > 180 ? availableBelow : viewportH * 0.48;
-      menu.style.maxHeight = Math.max(170, Math.min(320, preferredHeight)) + 'px';
+      const preferredHeight = availableBelow > 150 ? availableBelow : viewportH * 0.42;
+      menu.style.maxHeight = Math.max(140, Math.min(245, preferredHeight)) + 'px';
       return;
     }
 
