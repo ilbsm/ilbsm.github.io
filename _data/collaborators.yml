@@ -10,7 +10,7 @@
 #    fallback_color: Hex color for fallback circle
 #    inst:    Institution name
 #    topic:   Research topics
-#    cta:     Link label shown on card (e.g. "genesilico.pl ↗")
+#    cta:     Short link label used for card title/assistive text
 # ============================================================
 
 stats:
@@ -29,49 +29,49 @@ collaborators:
     cta: "genesilico.pl ↗"
 
   - name: "Prof. Jose Onuchic"
-    url: "https://onuchic.rice.edu"
+    url: "https://ctbp.rice.edu/senior-scientist/jose-onuchic"
     logo: "rice.png"
     fallback_text: "Rice"
     fallback_color: "#003366"
     inst: "Rice University, Houston, USA"
     topic: "Energy landscape theory · protein folding · AWSEM coarse-grained models"
-    cta: "onuchic.rice.edu ↗"
+    cta: "ctbp.rice.edu ↗"
 
   - name: "Prof. Faruck Morcos"
-    url: "https://www.utdallas.edu/~faruck.morcos/"
+    url: "https://morcoslaboratory.org/"
     logo: "utdallas.svg"
     fallback_text: "UTD"
     fallback_color: "#c75b12"
     inst: "University of Texas at Dallas / Rice University"
     topic: "Direct Coupling Analysis · co-evolutionary methods · statistical physics"
-    cta: "utdallas.edu ↗"
+    cta: "morcoslaboratory.org ↗"
 
   - name: "Prof. Terence Hwa"
-    url: "https://biology.ucsd.edu/research/faculty/thwa"
+    url: "https://matisse.ucsd.edu/principal-investigator-terry-hwa/"
     logo: "ucsd.png"
     fallback_text: "UCSD"
     fallback_color: "#0d6f7e"
     inst: "University of California San Diego, USA"
     topic: "Statistical physics of biological systems · co-evolution · information theory"
-    cta: "hwalab.ucsd.edu ↗"
+    cta: "matisse.ucsd.edu ↗"
 
   - name: "Prof. Piotr Sułkowski"
-    url: "https://www.fuw.edu.pl/~psulkows"
+    url: "https://www.theory.caltech.edu/people-listing/piotr-sulkowski"
     logo: "uw.png"
     fallback_text: "UW"
     fallback_color: "#0d47a1"
     inst: "University of Warsaw / Caltech, USA"
     topic: "Mathematical physics · knot invariants · BPS states · AIM SQuaRE collaboration"
-    cta: "fuw.edu.pl ↗"
+    cta: "theory.caltech.edu ↗"
 
   - name: "Prof. Boštjan Gabrovšek"
-    url: "http://www.fs.uni-lj.si/"
+    url: "https://www.fmf.uni-lj.si/sl/imenik/60/gabrovsek-bostjan/"
     logo: "fmf-ljubljana.svg"
     fallback_text: "FMF"
     fallback_color: "#1b5e20"
     inst: "University of Ljubljana, Slovenia (OPUS LAP 22)"
     topic: "Knot theory · graph theory · algorithms for topological classification"
-    cta: "fs.uni-lj.si ↗"
+    cta: "fmf.uni-lj.si ↗"
 
   - name: "Prof. Martin Weigt"
     url: "http://www.lcqb.upmc.fr/users/weigt"
@@ -92,7 +92,7 @@ collaborators:
     cta: "minorlab.org ↗"
 
   - name: "Prof. Eric Rawdon"
-    url: "http://george.math.stthomas.edu/~rawdon/"
+    url: "https://cas.stthomas.edu/departments/faculty/eric-rawdon/"
     logo: "stthomas.jpg"
     fallback_text: "St T"
     fallback_color: "#6a1b9a"
@@ -119,22 +119,22 @@ collaborators:
     cta: "math.ucsb.edu ↗"
 
   - name: "Dr. Ellinor Haglund"
-    url: "https://chemistry.rice.edu/"
+    url: "https://manoa.hawaii.edu/chem/people/ellinor-haglund/"
     logo: "hawaii-manoa.png"
     fallback_text: "UH"
     fallback_color: "#006b54"
     inst: "Rice University / University of Hawaii at Manoa, USA"
     topic: "Slipknot proteins · protein folding · biophysics · single-molecule experiments"
-    cta: "rice.edu ↗"
+    cta: "manoa.hawaii.edu ↗"
 
   - name: "Prof. Patricia Jennings"
-    url: "http://www-chem.ucsd.edu/faculty/profiles/jennings_patricia_a.html"
+    url: "https://chemistry.ucsd.edu/faculty/profiles/jennings_patricia_a.html"
     logo: "ucsd.png"
     fallback_text: "UCSD"
     fallback_color: "#0d6f7e"
     inst: "University of California San Diego, USA"
     topic: "Knotted proteins · structural biology · NMR · protein folding mechanisms"
-    cta: "chem.ucsd.edu ↗"
+    cta: "chemistry.ucsd.edu ↗"
 
   - name: "Prof. Andrzej Koliński"
     url: "http://biocomp.chem.uw.edu.pl/"
