@@ -5,7 +5,7 @@
 # title: main headline (HTML <br> tags allowed for line breaks)
 # knot_label: caption under the 3D knot animation
 hero:
-  title: "We study how geometry<br>shapes life at the<br>molecular scale"
+  title: "We study how geometry <br>shapes life at the <br>molecular scale"
   knot_label: "Trefoil knot — 3₁"
 
 # ── STATS STRIP ────────────────────────────────────────────────────────────────

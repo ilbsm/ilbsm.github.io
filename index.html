@@ -522,6 +522,50 @@ permalink: /
   text-transform: uppercase; color: rgba(175,208,238,0.55);
   font-family: 'Inter', 'Helvetica Neue', sans-serif;
 }
+@media (max-width: 640px) {
+  .lp-hero {
+    width: 100%;
+    min-height: 0;
+    margin-top: 0;
+    padding: 1.05rem 1.15rem 1.25rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.1rem;
+    border-radius: 0;
+    background:
+      radial-gradient(circle at 50% 28%, rgba(35, 128, 159, 0.28) 0%, rgba(35, 128, 159, 0.08) 34%, transparent 58%),
+      linear-gradient(145deg, #061122 0%, #07182e 58%, #0a2341 100%);
+  }
+  .lp-hero-canvas-col {
+    order: -1;
+    width: min(180px, 58vw);
+    height: 116px;
+    margin: 0 auto -0.1rem;
+    overflow: hidden;
+    background: none;
+  }
+  .lp-hero-canvas-col canvas {
+    width: 100%;
+    height: 116px;
+  }
+  .lp-hero-content {
+    width: 100%;
+    padding: 0;
+    align-items: center;
+    text-align: center;
+  }
+  .lp-hero-title {
+    max-width: 14ch;
+    font-size: clamp(1.55rem, 7.1vw, 2rem);
+    line-height: 1.12;
+    letter-spacing: 0;
+    text-wrap: balance;
+  }
+  .lp-hero-title br {
+    display: block;
+  }
+}
 
 /* ── EXPLORE NAV CARDS ── */
 .lp-explore-grid {
@@ -564,20 +608,6 @@ permalink: /
       <div>
 
         <div class="hp-title">Research Areas</div>
-      </div>
-      <div class="hp-sections" id="hp-sections-menu">
-        <button class="hp-sections-toggle" type="button" aria-haspopup="true" aria-expanded="false" onclick="hpToggleSections(event)">
-          <span>Jump to section</span>
-          <span class="hp-sections-caret" aria-hidden="true"></span>
-        </button>
-        <div class="hp-sections-menu" role="menu" aria-label="Home page sections">
-          <button class="hp-pill active" type="button" role="menuitem" data-sec="sec-research" onclick="hpNav('sec-research', this)">Research</button>
-          <button class="hp-pill" type="button" role="menuitem" data-sec="sec-pubs" onclick="hpNav('sec-pubs', this)">Publications</button>
-          <button class="hp-pill" type="button" role="menuitem" data-sec="sec-grants" onclick="hpNav('sec-grants', this)">Grants &amp; Awards</button>
-          <button class="hp-pill" type="button" role="menuitem" data-sec="sec-software" onclick="hpNav('sec-software', this)">Software</button>
-          <button class="hp-pill" type="button" role="menuitem" data-sec="sec-team" onclick="hpNav('sec-team', this)">Team</button>
-          <button class="hp-pill" type="button" role="menuitem" data-sec="sec-news" onclick="hpNav('sec-news', this)">News</button>
-        </div>
       </div>
     </div>
     <div class="hp-domains-grid">

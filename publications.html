@@ -286,6 +286,10 @@ permalink: /publications/
     .psb-chips-divider { display: none; }
   }
   @media (max-width: 700px) {
+    .pub-page,
+    .pub-layout {
+      background: #f0f2f5;
+    }
     .pub-layout,
     .psb-section,
     .pub-main {
@@ -295,7 +299,14 @@ permalink: /publications/
       box-sizing: border-box;
     }
     #pub-search-section {
-      padding: 0.55rem 0.75rem;
+      order: 1 !important;
+      position: static;
+      top: auto;
+      z-index: auto;
+      padding: 0.65rem 0.75rem 0.25rem;
+      background: #f0f2f5;
+      border-bottom: 0;
+      box-shadow: none;
     }
     .psb-search {
       padding: 0.62rem 0.8rem;
@@ -309,11 +320,21 @@ permalink: /publications/
     .psb-section {
       padding: 0.8rem 1rem;
     }
+    #pub-sort-section {
+      order: 2 !important;
+      background: #f0f2f5;
+      border-bottom: 0;
+    }
+    #pub-filter-section {
+      order: 3 !important;
+      background: #f0f2f5;
+      border-bottom: 1px solid #dfe5ee;
+    }
     .psb-section-sort {
-      padding: 0.45rem 0.75rem 0.25rem;
+      padding: 0.25rem 0.75rem;
     }
     .psb-section-filter {
-      padding: 0.25rem 0.75rem 0.55rem;
+      padding: 0.25rem 0.75rem 0.6rem;
       overflow: hidden;
     }
     #pub-sort-section .psb-toggle,
@@ -352,9 +373,11 @@ permalink: /publications/
       font-size: 0.72rem;
     }
     .pub-main {
+      order: 4 !important;
       padding: 0.65rem 0.65rem 1.6rem;
       scroll-margin-top: calc(var(--nav-h) + 72px);
       overflow-x: hidden;
+      background: #f0f2f5;
     }
     .pub-loading {
       padding: 2.6rem 0.75rem;
@@ -521,16 +544,6 @@ document.addEventListener('DOMContentLoaded', function() {
       const main = document.getElementById('pub-list-section');
       if (main) main.scrollIntoView({ behavior: 'smooth', block: 'start' });
     }, 160);
-  }
-
-  function collapseAnalyticsOnMobile() {
-    if (!window.matchMedia('(max-width: 1024px)').matches) return;
-    const analytics = document.getElementById('pub-analytics-section');
-    const header = analytics?.querySelector('.psb-toggle');
-    const body = analytics?.querySelector('.psb-body');
-    if (!header || !body) return;
-    header.classList.add('collapsed');
-    body.classList.add('collapsed');
   }
 
   async function load() {
@@ -772,7 +785,6 @@ document.addEventListener('DOMContentLoaded', function() {
     renderPubs();
     if (focusList && _allPubs.length) focusResultsOnMobile();
   };
-  collapseAnalyticsOnMobile();
   load();
 });
 </script>
