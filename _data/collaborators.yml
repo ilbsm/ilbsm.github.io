@@ -1,18 +1,3 @@
-# ============================================================
-#  COLLABORATORS DATA
-#  Edit this file to update the collaboration page — no HTML needed!
-#
-#  Fields per collaborator:
-#    name:    Full name with title
-#    url:     Link to their lab/page
-#    logo:    Filename in assets/img/collab/ (e.g. iimcb.png)
-#    fallback_text:  Short text shown if no logo (e.g. "IIMCB")
-#    fallback_color: Hex color for fallback circle
-#    inst:    Institution name
-#    topic:   Research topics
-#    cta:     Short link label used for card title/assistive text
-# ============================================================
-
 stats:
   groups: "10+"
   continents: "5"

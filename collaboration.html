@@ -8,21 +8,15 @@ permalink: /collaboration/
 {% assign data = site.data.collaborators %}
 
 <style>
-/* ── SHARED TOKENS (match sulkowska.css rpfp values exactly) ── */
 :root {
   --cl-side: 2rem;
-  --cl-transition: 180ms cubic-bezier(0.16,1,0.3,1);
-  --cl-shadow-sm: 0 1px 3px rgba(0,0,0,0.07);
-  --cl-shadow-md: 0 4px 16px rgba(0,0,0,0.09);
-  --cl-radius-lg: 0.75rem;
-  --cl-radius-xl: 1rem;
 }
 
 #page-collab {
   background: #f4f6fb;
 }
 
-#page-collab .rpfp-intro {
+#page-collab .cl-intro {
   background: #fff;
   border-bottom: 1px solid #e6ebf2;
   padding: 1rem var(--cl-side) 0.85rem;
@@ -31,12 +25,12 @@ permalink: /collaboration/
   justify-content: space-between;
   gap: 1.5rem;
 }
-#page-collab .rpfp-intro-text {
+#page-collab .cl-intro-text {
   min-width: 0;
   flex: 1;
 }
 
-#page-collab .rpfp-intro-title {
+#page-collab .cl-intro-title {
   margin: 0 0 0.35rem;
   color: #073d55;
   font-family: 'Merriweather', serif;
@@ -45,47 +39,12 @@ permalink: /collaboration/
   line-height: 1.08;
 }
 
-#page-collab .rpfp-intro-sub {
-  max-width: 1180px;
-  margin: 0;
-  color: #3c3c40;
-  font-size: 0.96rem;
-  font-weight: 600;
-  line-height: 1.65;
-}
-
-/* ── SECTION HEADER (same horizontal rhythm as rpfp-dheader) ── */
 .cl-section {
   width: 100%;
   border-bottom: 1px solid #e0e4ec;
   background: #f4f6fb;
 }
-.cl-section-head {
-  display: block;
-  padding: 0.9rem var(--cl-side) 0.6rem;
-}
-.cl-section-num {
-  display: none;
-}
-.cl-section-label {
-  display: none;
-}
-.cl-section-title {
-  font-weight: 800; font-size: 1.28rem; color: #0a1020;
-  margin-bottom: 0.22rem; line-height: 1.25;
-}
-.cl-section-sub {
-  font-size: 0.88rem; color: #8b8b8b; line-height: 1.55; max-width: 72ch;
-}
-.cl-count-chip {
-  display: inline-flex; align-items: center; justify-content: center;
-  min-width: 23px; height: 18px; padding: 0 0.42rem;
-  border-radius: 20px; background: #f0ede8;
-  font-size: 0.62rem; font-weight: 700; color: #7a7974;
-  margin-left: 0.4rem; vertical-align: middle;
-}
 
-/* ── CARD GRID (inside section, same 2rem side padding) ── */
 .cl-grid-wrap {
   padding: 0 var(--cl-side) 1.4rem;
 }
@@ -96,14 +55,14 @@ permalink: /collaboration/
 }
 .cl-card {
   display: flex; flex-direction: column;
-  border-radius: var(--cl-radius-xl); overflow: hidden;
+  border-radius: var(--radius-xl); overflow: hidden;
   background: #f9f8f5; border: 1px solid #ede9e3;
   text-decoration: none; color: inherit;
-  transition: box-shadow var(--cl-transition), transform var(--cl-transition), border-color var(--cl-transition);
+  transition: box-shadow var(--transition), transform var(--transition), border-color var(--transition);
   animation: clFadeUp 0.4s ease both;
   animation-delay: calc(var(--i, 0) * 0.04s);
 }
-.cl-card:hover { box-shadow: var(--cl-shadow-md); transform: translateY(-2px); border-color: #c8c5be; text-decoration: none; }
+.cl-card:hover { box-shadow: var(--shadow-md); transform: translateY(-2px); border-color: #c8c5be; text-decoration: none; }
 @keyframes clFadeUp { from { opacity: 0; transform: translateY(14px); } to { opacity: 1; transform: translateY(0); } }
 
 .cl-logo-wrap {
@@ -136,13 +95,12 @@ permalink: /collaboration/
 
 @media (max-width: 820px) {
   :root { --cl-side: 1rem; }
-  #page-collab .rpfp-intro {
+  #page-collab .cl-intro {
     flex-direction: column;
     gap: 0.75rem;
     padding: 1rem var(--cl-side) 0.85rem;
   }
-  #page-collab .rpfp-intro-title { font-size: 1.9rem; }
-  #page-collab .rpfp-intro-sub { font-size: 0.86rem; }
+  #page-collab .cl-intro-title { font-size: 1.9rem; }
   .cl-grid { grid-template-columns: 1fr; }
   .cl-card,
   .cl-card-body,
@@ -156,17 +114,15 @@ permalink: /collaboration/
 }
 </style>
 
-<div id="page-collab" class="page active rpfp">
+<div id="page-collab" class="page active">
 
-  <!-- HERO — identical style to Research page (.rpfp-intro) -->
-  <div class="rpfp-intro">
-    <div class="rpfp-intro-text">
-      <h1 class="rpfp-intro-title">Our International Collaborators</h1>
+  <div class="cl-intro">
+    <div class="cl-intro-text">
+      <h1 class="cl-intro-title">Our International Collaborators</h1>
       
     </div>
   </div>
 
-  <!-- COLLABORATORS SECTION — same structure as rpfp-domain -->
   <div class="cl-section" id="collaborating-groups">
     <div class="cl-grid-wrap">
       <div class="cl-grid">

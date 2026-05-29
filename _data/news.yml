@@ -1,9 +1,3 @@
-# ============================================================
-#  NEWS DATA — edit this file to add / remove / update news
-#  archive: false → shown in main news grid
-#  archive: true  → shown only when user clicks "Show archive"
-# ============================================================
-
 - slug: nsf-ncems-grant-2026
   date: "23 Feb 2026"
   title: "NSF NCEMS Working Group Grant awarded to Joanna Sulkowska"

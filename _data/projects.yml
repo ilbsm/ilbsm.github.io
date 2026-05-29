@@ -1,14 +1,7 @@
-# Projects & Software page — edit here to update everything on the /topics/ page
-# Non-coders: only edit the text fields (name, url, desc, badge, etc.)
-# Do NOT change eyebrow_icon or img_logo_html unless you know HTML/SVG
-
 hero:
   title: "Projects & Software"
   sub: "Open-source databases, servers, and tools for studying the topology of proteins, genomes, and biomolecules."
 
-# Layout: list of rows. Each row is either a single section (pair: false) or two side-by-side sections (pair: true).
-# Each section has: id, title, color, eyebrow, eyebrow_icon, knot_type, knot_color, knot_speed, knot_tilt, cards
-# Each card has: name, url, cat, desc, and image fields (img OR img_logo_html), plus optional badge/badge_color
 
 layout:
   - pair: false

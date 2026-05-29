@@ -1,11 +1,8 @@
-/* ============================================================
-   knot-premium.js — Sulkowska Lab · Premium Three.js trefoil
-   Requires three.min.js to be loaded first.
-   ============================================================ */
+/* Animated Three.js trefoil used in the home-page hero. */
 (function (global) {
   'use strict';
 
-  function PremiumKnot(canvas) {
+  function HeroKnot(canvas) {
     if (!canvas || typeof THREE === 'undefined') return;
 
     this.canvas = canvas;
@@ -38,7 +35,7 @@
     this._loop();
   }
 
-  PremiumKnot.prototype._build = function () {
+  HeroKnot.prototype._build = function () {
     var pts = [];
     var N = 450;
     for (var i = 0; i <= N; i++) {
@@ -72,7 +69,7 @@
     this.scene.add(this.knot);
   };
 
-  PremiumKnot.prototype._lights = function () {
+  HeroKnot.prototype._lights = function () {
     this.scene.add(new THREE.AmbientLight(0xb8d0e8, 0.65));
 
     var key = new THREE.DirectionalLight(0xffffff, 4.2);
@@ -96,7 +93,7 @@
     this.scene.add(top);
   };
 
-  PremiumKnot.prototype._resize = function () {
+  HeroKnot.prototype._resize = function () {
     var c = this.canvas;
     var w = c.clientWidth  || c.offsetWidth  || 480;
     var h = c.clientHeight || c.offsetHeight || 480;
@@ -106,7 +103,7 @@
     this.camera.updateProjectionMatrix();
   };
 
-  PremiumKnot.prototype._loop = function () {
+  HeroKnot.prototype._loop = function () {
     var self = this;
     (function tick() {
       requestAnimationFrame(tick);
@@ -118,6 +115,6 @@
     }());
   };
 
-  global.PremiumKnot = PremiumKnot;
+  global.HeroKnot = HeroKnot;
 
 }(window));

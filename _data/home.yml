@@ -1,15 +1,7 @@
-# Home page data — all sections in one file
-# Edit here to update any content on the home page
-
-# ── HERO BANNER ────────────────────────────────────────────────────────────────
-# title: main headline (HTML <br> tags allowed for line breaks)
-# knot_label: caption under the 3D knot animation
 hero:
   title: "We study how geometry <br>shapes life at the <br>molecular scale"
   knot_label: "Trefoil knot — 3₁"
 
-# ── STATS STRIP ────────────────────────────────────────────────────────────────
-# Fields: value (integer, counts up to this), label (shown below the number)
 stats:
   - value: 4618
     label: "citations"
@@ -22,8 +14,6 @@ stats:
   - value: 20
     label: "team members"
 
-# ── SOFTWARE & DATABASES ───────────────────────────────────────────────────────
-# Fields: name, url, color (dot color), desc (short description)
 software:
   - name: "AlphaKnot 2.0"
     url: "http://alphaknot.cent.uw.edu.pl"
@@ -65,9 +55,6 @@ software:
     color: "#ef6c00"
     desc: "Lasso topology identification — PyMOL plugin & web tool"
 
-# ── MOST-CITED PUBLICATIONS ────────────────────────────────────────────────────
-# Fields: doi (full URL), title, journal, journal_class (hpj-pnas | hpj-nar),
-#         authors, citations (number shown with "cit." label)
 pubs:
   - doi: "https://doi.org/10.1073/pnas.1207864109"
     title: "Genomics-aided structure prediction"
@@ -104,35 +91,31 @@ pubs:
     authors: "Sulkowska, Sulkowski, Szymczak, Cieplak"
     citations: 149
 
-# ── RESEARCH DOMAINS ───────────────────────────────────────────────────────────
-# Fields: num (display number), title, desc, link (anchor on topics page), accent (CSS color)
 research:
   - num: "01"
     title: "Protein Folding & Energy Landscapes"
     desc: "How knotted proteins fold and move."
-    link: "/topics/#rpfd-01"
+    link: "/research/#topic-folding"
     accent: "#1a5fa8"
 
   - num: "02"
     title: "Complex Topology: Knots, Lassos & Links"
     desc: "Molecular entanglements in proteins and RNA."
-    link: "/topics/#rpfd-03"
+    link: "/research/#topic-math"
     accent: "#01696f"
 
   - num: "03"
     title: "Drug Design & Therapeutics"
     desc: "Topology-guided targeting of proteins."
-    link: "/topics/#rpfd-04"
+    link: "/research/#topic-drug-design"
     accent: "#8a5a12"
 
   - num: "04"
     title: "Structural Bioinformatics & Databases"
     desc: "Open tools for structural analysis."
-    link: "/topics/#rpfd-02"
+    link: "/research/#topic-bioinformatics"
     accent: "#6a1b9a"
 
-# ── AWARDS & RECOGNITION ───────────────────────────────────────────────────────
-# Fields: year, title, org, new (optional boolean — shows "New" badge if true)
 awards:
   - year: 2026
     title: "NSF NCEMS Working Group"
@@ -172,8 +155,6 @@ awards:
     title: "INTER Grant Laureate"
     org: "Foundation for Polish Science (FNP)"
 
-# ── GRANTS & FUNDING ───────────────────────────────────────────────────────────
-# Fields: year, badge, title, url, external (bool), logo, logo_alt, logo_class
 grants:
   - year: "2026"
     badge: "NSF - NCEMS"
@@ -211,9 +192,6 @@ grants:
     logo_alt: "University of Warsaw"
     logo_class: "hp-grant-logo-wide"
 
-# ── TEAM: "MORE" COLLABORATOR PILL ────────────────────────────────────────────
-# Controls the last card in the Team & Collaborators strip (links to collaboration page)
-# mini_logos: up to 3 small logo images shown in the cluster (filenames from assets/img/collab/)
 collab_more:
   name: "University of Ljubljana & more"
   inst: "All international collaborations"
@@ -222,8 +200,6 @@ collab_more:
     - src: "uw.png"
     - src: "uva.svg"
 
-# ── EXPLORE THE LAB NAV CARDS ─────────────────────────────────────────────────
-# Fields: title, page (passed to show() JS function), desc, icon (inline SVG string)
 explore:
   - title: "Research Topics"
     page: "topics"

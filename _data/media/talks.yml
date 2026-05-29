@@ -1,13 +1,3 @@
-# Public Talks & Workshops — edit here to update the timeline section
-# Each entry is a year with a list of talks.
-# Talk fields:
-#   type:       Label shown above title (e.g. "Lecture", "Workshop", "Panel", "Video")
-#   color:      CSS color key: blue | purple | teal | orange | red
-#   title:      Talk/event title
-#   body:       Optional — date or venue shown below title
-#   url:        Optional — makes the card a clickable link
-#   link_label: Optional — text shown as a call-to-action (e.g. "View →", "Watch →")
-
 - year: 2018
   talks:
     - type: "Lecture"

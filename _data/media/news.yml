@@ -1,6 +1,3 @@
-# Recent News items — edit here to update the Recent News list in News & Grants section
-# Fields: source, logo (filename in assets/img/logos/media/), logo_class, url, year, title
-
 - source: "Centre of New Technologies"
   logo: "cent.webp"
   logo_class: "med-logo-xwide"

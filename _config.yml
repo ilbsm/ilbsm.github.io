@@ -1,6 +1,4 @@
-# ─────────────────────────────────────────────
 # Sulkowska Lab Jekyll site
-# ─────────────────────────────────────────────
 title: "Joanna I. Sulkowska — Interdisciplinary Laboratory of Biological Systems Modelling"
 email: "j.sulkowska@cent.uw.edu.pl"
 description: "Interdisciplinary Laboratory of Biological Systems Modelling — Centre of New Technologies, University of Warsaw. Research on protein folding, knotted proteins, drug design and structural bioinformatics."
@@ -15,7 +13,6 @@ collections:
     output: true
     permalink: /news/:path/
 
-# Folders/files to exclude from build
 exclude:
   - README.md
   - Gemfile
@@ -23,10 +20,9 @@ exclude:
   - vendor
   - .gitignore
 
-# Default front matter for pages
 defaults:
   - scope:
       path: ""
       type: "pages"
     values:
-      layout: "page"
+      layout: "default"

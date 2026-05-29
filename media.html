@@ -7,81 +7,10 @@ permalink: /media/
 
 
 <style>
-/* ── DESIGN TOKENS ── */
-:root {
-  --text-xs:   clamp(0.75rem,  0.7rem  + 0.25vw, 0.875rem);
-  --text-sm:   clamp(0.875rem, 0.8rem  + 0.35vw, 1rem);
-  --text-base: clamp(1rem,     0.95rem + 0.25vw, 1.125rem);
-  --text-lg:   clamp(1.125rem, 1rem    + 0.75vw, 1.5rem);
-  --text-xl:   clamp(1.5rem,   1.2rem  + 1.25vw, 2.25rem);
-  --space-1:0.25rem;--space-2:0.5rem;--space-3:0.75rem;--space-4:1rem;
-  --space-5:1.25rem;--space-6:1.5rem;--space-8:2rem;--space-10:2.5rem;
-  --space-12:3rem;--space-16:4rem;
-  --radius-sm:0.375rem;--radius-md:0.5rem;--radius-lg:0.75rem;--radius-xl:1rem;--radius-full:9999px;
-  --transition:180ms cubic-bezier(0.16,1,0.3,1);
-  --shadow-sm:0 1px 3px rgba(0,0,0,0.07);
-  --shadow-md:0 4px 16px rgba(0,0,0,0.09);
-  --shadow-lg:0 8px 32px rgba(0,0,0,0.13);
-}
-
-/* ── PAGE SHELL ── */
 .hp { background: #f0f2f5; min-height: 100vh; padding-bottom: var(--space-16); }
 
-/* ── SECTIONS DROPDOWN (matches home) ── */
-.hp-util-row {
-  display: none; justify-content: flex-end; align-items: flex-start;
-  height: 0; overflow: visible;
-  position: sticky; top: calc(var(--nav-h, 42px) + 0.75rem);
-  z-index: 100; pointer-events: none;
-}
-.hp-util-row .hp-sections { pointer-events: auto; }
-.hp-sections { position: relative; width: min(210px, 100%); }
-.hp-sections-toggle {
-  width: 100%; display: inline-flex; align-items: center; justify-content: space-between; gap: var(--space-2);
-  padding: 0.46rem 0.75rem; border-radius: var(--radius-md);
-  font-size: 0.82rem; font-weight: 800;
-  color: #28251d; background: #fff; border: 1px solid #d9d4cc;
-  box-shadow: var(--shadow-sm); cursor: pointer;
-  transition: border-color var(--transition), box-shadow var(--transition), color var(--transition);
-  font-family: inherit;
-}
-.hp-sections-toggle:hover, .hp-sections-toggle:focus-visible,
-.hp-sections.is-open .hp-sections-toggle {
-  border-color: #01696f; color: #01696f; box-shadow: 0 5px 18px rgba(1,105,111,0.16);
-}
-.hp-sections-caret {
-  width: 0.45rem; height: 0.45rem;
-  border-right: 2px solid currentColor; border-bottom: 2px solid currentColor;
-  transform: rotate(45deg) translateY(-1px); transition: transform var(--transition);
-}
-.hp-sections:hover .hp-sections-caret,
-.hp-sections:focus-within .hp-sections-caret,
-.hp-sections.is-open .hp-sections-caret { transform: rotate(225deg) translateY(-1px); }
-.hp-sections-menu {
-  position: absolute; right: 0; top: calc(100% + 0.35rem); width: 100%;
-  display: grid; gap: 0.12rem; padding: var(--space-2);
-  border-radius: var(--radius-lg); background: #fff; border: 1px solid #e5e0d8;
-  box-shadow: var(--shadow-lg); opacity: 0; transform: translateY(-4px);
-  pointer-events: none; transition: opacity var(--transition), transform var(--transition);
-}
-.hp-sections:hover .hp-sections-menu,
-.hp-sections:focus-within .hp-sections-menu,
-.hp-sections.is-open .hp-sections-menu { opacity: 1; transform: translateY(0); pointer-events: auto; }
-.hp-pill {
-  width: 100%; display: inline-flex; align-items: center; justify-content: flex-start; gap: var(--space-2);
-  padding: 0.42rem 0.65rem; border-radius: var(--radius-md);
-  font-size: 0.82rem; font-weight: 600;
-  color: #5f5a53; background: transparent; border: none;
-  cursor: pointer; transition: all var(--transition); white-space: nowrap;
-  text-decoration: none; font-family: inherit;
-}
-.hp-pill:hover { background: #f0ede8; color: #28251d; text-decoration: none; }
-.hp-pill.active { background: #01696f; color: #fff; font-weight: 700; }
-
-/* ── MAIN WRAPPER ── */
 .hp-wrap { max-width: none; padding: 0 var(--space-6); }
 
-/* ── SECTION CARDS (matches home exactly) ── */
 .hp-sec {
   background: white; border-radius: var(--radius-xl);
   padding: var(--space-6) var(--space-6);
@@ -96,21 +25,12 @@ permalink: /media/
 .hp-title {
   font-size: clamp(1.75rem, 1.45rem + 0.8vw, 2rem); font-weight: 700; color: #073d55; line-height: 1.2; margin-bottom: 0;
 }
-.hp-subtitle { font-size: var(--text-xs); color: #7a7974; max-width: 64ch; margin-top: 0.2rem; margin-bottom: var(--space-4); line-height: 1.55; }
 .hp-row-head {
   display: flex; align-items: flex-start; justify-content: space-between;
   gap: var(--space-4); flex-wrap: wrap;
   margin-bottom: var(--space-5); padding-bottom: var(--space-4);
   border-bottom: 1px solid #f0ede8;
 }
-.hp-see-all {
-  display: inline-flex; align-items: center; gap: 0.3rem;
-  font-size: var(--text-xs); font-weight: 600; color: #01696f;
-  text-decoration: none; transition: color var(--transition); flex-shrink: 0; padding-top: 0.2rem;
-}
-.hp-see-all:hover { color: #28251d; text-decoration: none; }
-
-/* ── GALLERY ── */
 #ms-gallery {
   padding-top: 0.75rem;
   padding-bottom: 0.75rem;
@@ -119,13 +39,6 @@ permalink: /media/
   margin-bottom: 0.4rem;
   padding-bottom: 0.25rem;
 }
-.med-filter-pills { display: flex; gap: var(--space-2); flex-wrap: wrap; margin-top: var(--space-2); }
-.med-fpill {
-  padding: var(--space-1) var(--space-3); border-radius: var(--radius-full);
-  font-size: var(--text-xs); font-weight: 500; color: #7a7974;
-  background: #f0ede8; border: none; cursor: pointer; transition: all var(--transition);
-}
-.med-fpill.active, .med-fpill:hover { background: #01696f; color: white; }
 .med-gallery-grid {
   display: grid; grid-template-columns: repeat(auto-fill, minmax(200px,1fr)); gap: 0.35rem;
 }
@@ -136,7 +49,6 @@ permalink: /media/
 .mg-caption { position: absolute; bottom: 0; left: 0; right: 0; padding: var(--space-2) var(--space-3); background: linear-gradient(transparent,rgba(0,0,0,0.6)); color: white; font-size: var(--text-xs); opacity: 0; transition: opacity 0.25s ease; pointer-events: none; }
 .mg-item:hover .mg-caption { opacity: 1; }
 .med-show-more { text-align: center; margin-top: 0.5rem; }
-/* ── SHARED BUTTON STYLE: Jump to section / Show all photos / Show archive ── */
 .med-show-btn,
 .med-archive-toggle {
   display: inline-flex; align-items: center; gap: 0.5rem;
@@ -155,7 +67,6 @@ permalink: /media/
   background: #fff;
 }
 
-/* ── LIGHTBOX ── */
 .mg-lightbox { display:none; position:fixed; inset:0; background:rgba(0,0,0,0.92); z-index:1000; align-items:center; justify-content:center; }
 .mg-lightbox.open { display:flex; }
 .mg-lb-wrap { position:relative; max-width:90vw; max-height:90vh; }
@@ -167,7 +78,6 @@ permalink: /media/
 .mg-lb-next { right:-56px; top:50%; transform:translateY(-50%); }
 .mg-lb-cap { color:rgba(255,255,255,0.75); font-size:var(--text-xs); text-align:center; margin-top:var(--space-3); }
 
-/* ── VIDEOS (white) ── */
 .med-video-section .hp-row-head {
   align-items: center;
   margin-bottom: var(--space-4);
@@ -217,7 +127,6 @@ permalink: /media/
 }
 .med-vid-bottom-row.med-archive-hidden { display: none; }
 
-/* ── SOURCE LOGO ── */
 .med-src-logo {
   display: inline-flex; align-items: center; justify-content: center;
   width: 54px; min-width: 54px; height: 32px; padding: 4px 6px;
@@ -238,7 +147,6 @@ permalink: /media/
 .med-logo-clean { background: transparent; border-color: transparent; box-shadow: none; padding: 0; }
 .med-src-name { font-size: var(--text-xs); font-weight: 600; color: #28251d; }
 
-/* ── LINK LIST (light) ── */
 .med-link-list { display: flex; flex-direction: column; gap: 2px; }
 .med-link-item {
   display: grid; grid-template-columns: auto 1fr auto;
@@ -267,7 +175,6 @@ permalink: /media/
   background: linear-gradient(90deg, #01696f 0 45%, #b8d7d8 45% 100%);
 }
 
-/* ── PAPER INTERVIEW CARDS ── */
 .med-interview-cards { display: grid; grid-template-columns: repeat(auto-fill, minmax(220px,1fr)); gap: var(--space-4); }
 .med-int-card {
   display: flex; flex-direction: column; gap: var(--space-2);
@@ -282,7 +189,6 @@ permalink: /media/
 .med-int-title { font-size: var(--text-sm); font-weight: 600; color: #28251d; line-height: 1.45; flex: 1; }
 .med-int-arrow { font-size: var(--text-xs); font-weight: 600; color: #01696f; margin-top: auto; }
 
-/* ── PRESS COVERAGE ── */
 .med-press-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(260px,1fr)); gap: 2px; }
 .med-press-item {
   display: flex; align-items: center; justify-content: space-between; gap: var(--space-3);
@@ -293,12 +199,6 @@ permalink: /media/
 .med-press-org { display: flex; align-items: center; gap: var(--space-2); font-size: var(--text-sm); color: #28251d; font-weight: 500; }
 .med-press-yr { font-size: var(--text-xs); color: #bab9b4; font-weight: 500; flex-shrink: 0; }
 
-/* ── PUBLIC TALKS TIMELINE ── */
-.med-talks-header { display: flex; align-items: flex-start; justify-content: space-between; gap: var(--space-8); flex-wrap: wrap; margin-bottom: var(--space-8); }
-.med-talks-stats { display: flex; gap: var(--space-8); flex-shrink: 0; }
-.med-tstat { text-align: right; }
-.med-tstat-n { font-size: var(--text-xl); font-weight: 800; color: #01696f; line-height: 1; }
-.med-tstat-l { font-size: var(--text-xs); color: #7a7974; margin-top: var(--space-1); }
 .med-timeline { display: flex; flex-direction: column; gap: var(--space-8); }
 .med-tl-item { display: grid; grid-template-columns: 80px 1fr; gap: var(--space-6); }
 .med-tl-year-col { display: flex; flex-direction: column; align-items: flex-end; padding-top: var(--space-1); }
@@ -318,7 +218,6 @@ permalink: /media/
 .med-tc-teal { border-left: 3px solid #01696f; } .med-tc-orange { border-left: 3px solid #da7101; }
 .med-tc-red { border-left: 3px solid #a13544; }
 
-/* ── GRANTS GRID ── */
 .med-grants-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); gap: var(--space-3); }
 .med-grant-card {
   display: flex; flex-direction: column; gap: var(--space-2);
@@ -332,7 +231,6 @@ permalink: /media/
 .med-grant-title { font-size: var(--text-sm); font-weight: 600; color: #28251d; line-height: 1.4; flex: 1; }
 .med-grant-sub { font-size: var(--text-xs); color: #9a9896; margin-top: auto; }
 
-/* Media restoration blocks */
 .med-shot-section {
   padding: 0.25rem 1.65rem 1rem;
 }
@@ -676,21 +574,6 @@ permalink: /media/
   margin-bottom: 0.26rem;
   padding-bottom: 0.21rem;
 }
-#ms-talks .med-talks-stats {
-  gap: 0.7rem;
-}
-#ms-talks .med-tstat-n {
-  color: #00696f;
-  font-size: 2.35rem;
-  font-weight: 900;
-}
-#ms-talks .med-tstat-l {
-  color: #8b8883;
-  font-size: 0.72rem;
-  font-weight: 900;
-  letter-spacing: 0.1em;
-  text-transform: uppercase;
-}
 #ms-talks .med-timeline {
   gap: 0.56rem;
 }
@@ -822,7 +705,6 @@ permalink: /media/
   }
 }
 
-/* ── FEATURED IN MARQUEE (white) ── */
 .med-feat-wrap { overflow: hidden; }
 .med-feat-label {
   font-size: var(--text-xs); font-weight: 700; letter-spacing: 0.12em;
@@ -844,7 +726,6 @@ permalink: /media/
 }
 .med-feat-item:hover { color: #5a5957; background: transparent; }
 
-/* ── VIDEO MARQUEE (white) ── */
 .med-vid-marquee-wrap { overflow: hidden; }
 .med-vid-marquee-label {
   font-size: var(--text-xs); font-weight: 700; letter-spacing: 0.12em;
@@ -877,15 +758,11 @@ permalink: /media/
 .med-vid-mini-title { font-size: 11px; line-height: 1.35; color: #9a9896; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; }
 .med-vid-mini:hover .med-vid-mini-title { color: #28251d; }
 
-/* ── RESPONSIVE ── */
 @media (max-width: 768px) {
   .med-video-grid-featured { grid-template-columns: 1fr; }
   .med-vid-bottom-row { grid-template-columns: 1fr; }
   .med-vid-yt-pill { width: 100%; }
   .med-tl-item { grid-template-columns: 56px 1fr; gap: var(--space-3); }
-  .med-talks-stats { gap: var(--space-4); }
-  .med-tstat { text-align: left; }
-  .med-talks-header { flex-direction: column; }
   .med-interview-cards { grid-template-columns: repeat(auto-fill, minmax(180px,1fr)); }
 }
 #page-media .jump-row {
@@ -908,7 +785,6 @@ permalink: /media/
     margin-bottom: 0.75rem;
   }
   .hp-wrap { padding: 0 0.75rem; }
-  .hp-sections { width: 100%; max-width: 210px; }
   .hp-title,
   .med-shot-section .hp-title,
   #ms-interviews .hp-title,
@@ -916,18 +792,12 @@ permalink: /media/
     font-size: 1.65rem;
   }
   .med-gallery-grid { grid-template-columns: repeat(2,1fr); }
-  .med-video-grid-featured {
-    gap: 0.75rem;
-  }
+  .med-video-grid-featured { gap: 0.75rem; }
   #ms-news .med-grant-card,
   #ms-interviews .med-int-card {
     min-height: auto;
   }
-}
-@media (max-width: 640px) {
-  .med-gallery-more-head {
-    display: none !important;
-  }
+  .med-gallery-more-head { display: none !important; }
   .med-gallery-more-mobile {
     display: inline-flex;
     width: 100%;
@@ -962,7 +832,6 @@ permalink: /media/
 
 <div class="hp-wrap">
 
-  <!-- ═══ GALLERY ═══ -->
   <div id="ms-gallery" class="hp-sec">
     <div class="hp-row-head">
       <div>
@@ -1046,7 +915,6 @@ permalink: /media/
     </button>
   </div>
 
-  <!-- LIGHTBOX -->
   <div class="mg-lightbox" id="mg-lightbox">
     <div class="mg-lb-wrap">
       <button class="mg-lb-close">&#10005;</button>
@@ -1058,7 +926,6 @@ permalink: /media/
   </div>
 
 
-  <!-- ═══ VIDEOS ═══ -->
   <div id="ms-videos" class="hp-sec med-video-section">
     {% assign media_videos = site.data.media.videos %}
     <div class="hp-row-head">
@@ -1114,9 +981,8 @@ permalink: /media/
       </a>
     </div>
 
-  </div><!-- end videos section -->
+  </div>
 
-  <!-- ═══ TV & RADIO ═══ -->
   <div id="ms-broadcast" class="hp-sec med-shot-section">
     <div class="hp-row-head">
       <div>
@@ -1193,10 +1059,9 @@ permalink: /media/
         </div>
       </div>
     </div>
-  </div><!-- end tv & radio section -->
+  </div>
 
 
-  <!-- ═══ NEWS & GRANTS ═══ -->
   <div id="ms-news" class="hp-sec med-shot-section">
     <div class="hp-row-head">
       <div>
@@ -1204,7 +1069,6 @@ permalink: /media/
       </div>
     </div>
 
-    <!-- Grants -->
     <div class="med-grants-label">Grants &amp; Awards</div>
     <div class="med-grants-grid">
       {% for grant in site.data.media.grants %}
@@ -1231,7 +1095,6 @@ permalink: /media/
       {% endfor %}
     </div>
 
-    <!-- News items -->
     <div class="hp-eyebrow" style="margin-bottom:var(--space-3);margin-top:var(--space-8);">Recent News</div>
     <div class="med-link-list">
       {% for item in site.data.media.news %}
@@ -1265,7 +1128,6 @@ permalink: /media/
     </div>
   </div>
 
-  <!-- ═══ PAPER INTERVIEWS ═══ -->
   <div id="ms-interviews" class="hp-sec">
     <div class="hp-row-head">
       <div>
@@ -1301,7 +1163,6 @@ permalink: /media/
     </div>
   </div>
 
-  <!-- ═══ PRESS COVERAGE ═══ -->
   <div id="ms-press" class="hp-sec">
     <div class="hp-row-head">
       <div>
@@ -1360,7 +1221,6 @@ permalink: /media/
     {% endif %}
   </div>
 
-  <!-- ═══ PUBLIC TALKS ═══ -->
   <div id="ms-talks" class="hp-sec med-shot-section">
     <div class="hp-row-head">
       <div>
@@ -1401,7 +1261,6 @@ permalink: /media/
       {% endfor %}
     </div>
   </div>
-  <!-- ═══ FEATURED IN MARQUEE ═══ -->
   <div class="hp-sec med-feat-wrap">
     <div class="med-feat-label">Featured In</div>
     <div class="med-feat-track-outer">
@@ -1416,7 +1275,6 @@ permalink: /media/
         <span class="med-feat-item"><span class="med-src-logo med-logo-wide"><img src="{{ '/assets/img/logos/media/loreal.svg' | relative_url }}" alt=""></span>L'Oréal</span>
         <span class="med-feat-item"><span class="med-src-logo"><img src="{{ '/assets/img/logos/media/fnp.svg' | relative_url }}" alt=""></span>Foundation for Polish Science</span>
         <span class="med-feat-item"><span class="med-src-logo med-logo-long"><img src="{{ '/assets/img/logos/media/business-insider.svg' | relative_url }}" alt=""></span>Business Insider</span>
-        <!-- duplicate set for seamless loop -->
         <span class="med-feat-item" aria-hidden="true"><span class="med-src-logo round"><img src="{{ '/assets/img/logos/media/polsat-news.svg' | relative_url }}" alt=""></span>Polsat News</span>
         <span class="med-feat-item" aria-hidden="true"><span class="med-src-logo med-logo-wide"><img src="{{ '/assets/img/logos/media/wyborcza.svg' | relative_url }}" alt=""></span>Gazeta Wyborcza</span>
         <span class="med-feat-item" aria-hidden="true"><span class="med-src-logo med-logo-wide"><img src="{{ '/assets/img/logos/media/tvn.svg' | relative_url }}" alt=""></span>TVN Dzień Dobry</span>
@@ -1430,7 +1288,6 @@ permalink: /media/
       </div>
     </div>
   </div>
-  <!-- ═══ VIDEO MARQUEE BAR ═══ -->
   <div class="hp-sec med-vid-marquee-wrap">
     <div class="med-vid-marquee-label">
       <a href="https://www.youtube.com/channel/UCeLQTTlftS-APrHgFL8OYEw" target="_blank" rel="noopener noreferrer" style="color:inherit;text-decoration:none;">
@@ -1598,10 +1455,9 @@ permalink: /media/
     </div>
   </div>
 
-</div><!-- /hp-wrap -->
+</div>
 
 <script>
-/* ── GALLERY FILTER + SHOW MORE ── */
 (function(){
   const grid = document.getElementById('mg-grid');
   const items = Array.from(grid.querySelectorAll('.mg-item'));
@@ -1631,27 +1487,16 @@ permalink: /media/
     });
   }
 
-  document.querySelectorAll('.med-fpill').forEach(pill => {
-    pill.addEventListener('click', () => {
-      document.querySelectorAll('.med-fpill').forEach(p => p.classList.remove('active'));
-      pill.classList.add('active');
-      showAll = false;
-      applyFilter(pill.dataset.cat);
-    });
-  });
-
   moreBtns.forEach(moreBtn => {
     moreBtn.addEventListener('click', () => {
       showAll = true;
-      const active = document.querySelector('.med-fpill.active');
-      applyFilter(active ? active.dataset.cat : 'all');
+      applyFilter('all');
       moreBtns.forEach(btn => { btn.style.display = 'none'; });
     });
   });
 
   applyFilter('all');
 
-  /* ── LIGHTBOX ── */
   const lb = document.getElementById('mg-lightbox');
   const lbImg = document.getElementById('mg-lb-img');
   const lbCap = document.getElementById('mg-lb-cap');
@@ -1691,7 +1536,6 @@ permalink: /media/
   function closeLb() { lb.classList.remove('open'); document.body.style.overflow = ''; }
 })();
 
-/* ── VIDEO ARCHIVE TOGGLE ── */
 (function () {
   const btn = document.getElementById('vid-archive-btn');
   const row = document.getElementById('vid-archive-row');
@@ -1708,7 +1552,6 @@ permalink: /media/
   });
 })();
 
-/* ── PRESS MORE TOGGLE ── */
 (function () {
   const btn = document.getElementById('press-more-btn');
   const extra = document.getElementById('press-extra');
@@ -1721,53 +1564,4 @@ permalink: /media/
   });
 })();
 
-/* ── SECTIONS DROPDOWN + SCROLL NAV ── */
-(function () {
-  const sections = ['ms-gallery','ms-videos','ms-broadcast','ms-interviews','ms-press','ms-talks','ms-news'];
-  const pills = document.querySelectorAll('.hp-pill[data-sec]');
-  const menu = document.getElementById('md-sections-menu');
-  const toggle = menu ? menu.querySelector('.hp-sections-toggle') : null;
-
-  if (menu && toggle) {
-    menu.addEventListener('mouseenter', function () { toggle.setAttribute('aria-expanded','true'); });
-    menu.addEventListener('mouseleave', function () {
-      if (!menu.classList.contains('is-open')) toggle.setAttribute('aria-expanded','false');
-    });
-  }
-
-  function onScroll() {
-    let current = sections[0];
-    sections.forEach(id => {
-      const el = document.getElementById(id);
-      if (el && el.getBoundingClientRect().top <= 160) current = id;
-    });
-    pills.forEach(p => p.classList.toggle('active', p.getAttribute('data-sec') === current));
-  }
-  window.addEventListener('scroll', onScroll, { passive: true });
-
-  window.mdToggleSections = function (event) {
-    event.stopPropagation();
-    if (!menu) return;
-    const isOpen = menu.classList.toggle('is-open');
-    if (toggle) toggle.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
-  };
-  document.addEventListener('click', function (event) {
-    if (!menu || menu.contains(event.target)) return;
-    menu.classList.remove('is-open');
-    if (toggle) toggle.setAttribute('aria-expanded','false');
-  });
-})();
-
-window.mdNav = function (id, btn) {
-  document.querySelectorAll('.hp-pill[data-sec]').forEach(p => p.classList.remove('active'));
-  if (btn) btn.classList.add('active');
-  const menu = document.getElementById('md-sections-menu');
-  if (menu) {
-    menu.classList.remove('is-open');
-    const t = menu.querySelector('.hp-sections-toggle');
-    if (t) t.setAttribute('aria-expanded','false');
-  }
-  const el = document.getElementById(id);
-  if (el) el.scrollIntoView({ behavior: 'smooth', block: 'start' });
-};
 </script>

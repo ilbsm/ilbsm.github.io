@@ -1,17 +1,3 @@
-# ============================================================
-#  GROUP MEMBERS DATA
-#  Edit this file to update the group page — no HTML needed!
-#  
-#  Fields per person:
-#    name:       Full name
-#    slug:       Photo filename without extension (in assets/img/team/)
-#    initials:   2-letter fallback if no photo
-#    color:      Fallback circle color (hex)
-#    role:       Displayed role/title
-#    detail:     Small text below role (optional)
-#    email:      Email address (optional)
-# ============================================================
-
 head:
   - name: "Joanna I. Sulkowska"
     slug: "joannas"

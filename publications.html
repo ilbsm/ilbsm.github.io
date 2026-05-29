@@ -6,8 +6,7 @@ permalink: /publications/
 ---
 
 <style>
-  /* ── Page shell ── */
-  :root { --nav-h: 42px; --sidebar-w: 290px; }
+  :root { --sidebar-w: 290px; }
   .pub-page {
     background: #f0f2f5;
     min-height: 100vh;
@@ -21,7 +20,6 @@ permalink: /publications/
   }
   @keyframes pub-pulse { 0%,100%{opacity:1} 50%{opacity:0.35} }
 
-  /* ── Two-column layout ── */
   .pub-layout {
     width: 100%;
     max-width: 100%;
@@ -32,7 +30,6 @@ permalink: /publications/
     overflow-x: hidden;
   }
 
-  /* ── Sidebar ── */
   .pub-sidebar {
     position: sticky;
     top: var(--nav-h);
@@ -45,11 +42,9 @@ permalink: /publications/
   .pub-sidebar::-webkit-scrollbar { width: 4px; }
   .pub-sidebar::-webkit-scrollbar-thumb { background: #dde1e9; border-radius: 2px; }
 
-  /* Sidebar sections */
   .psb-section { border-bottom: 1px solid #f0f2f5; padding: 1rem 1.2rem; }
   .psb-section:last-child { border-bottom: none; }
 
-  /* Stats in sidebar */
   .psb-stats { display: grid; grid-template-columns: 1fr 1fr; gap: 0.6rem; }
   .psb-stat { background: #f7f8fc; border-radius: 8px; padding: 0.6rem 0.75rem; }
   .psb-stat-n {
@@ -63,7 +58,6 @@ permalink: /publications/
   .psb-stat.live-stat { grid-column: span 2; background: #e8f5e9; }
   .psb-stat.live-stat .psb-stat-n { font-size: 0.8rem; color: #2e7d32; font-family: inherit; }
 
-  /* Section toggle headers — field-label style */
   .psb-toggle {
     display: flex; justify-content: space-between; align-items: center;
     font-size: 0.68rem; font-weight: 400; text-transform: uppercase;
@@ -78,7 +72,6 @@ permalink: /publications/
   .psb-body { overflow: hidden; transition: max-height 0.25s ease; }
   .psb-body.collapsed { max-height: 0 !important; }
 
-  /* Tighter Sort + Filter sections */
   .psb-section-sort  { border-bottom: none; padding: 0.75rem 1.2rem 0.4rem; }
   .psb-section-filter { border-bottom: 1px solid #f0f2f5; padding: 0.4rem 1.2rem 0.75rem; }
   .psb-live-section { padding: 0.55rem 1.2rem; }
@@ -98,7 +91,6 @@ permalink: /publications/
     white-space: nowrap;
   }
 
-  /* Search in sidebar */
   .psb-search {
     display: flex; align-items: center; gap: 0.5rem;
     padding: 0.5rem 0.75rem; background: #f5f7fa;
@@ -110,7 +102,6 @@ permalink: /publications/
     min-width: 0;
   }
 
-  /* Custom select — no browser chrome */
   .psb-sort-wrap { position: relative; }
   .psb-sort {
     width: 100%; font-size: 0.82rem; padding: 0.5rem 2rem 0.5rem 0.75rem;
@@ -126,7 +117,6 @@ permalink: /publications/
     top: 50%; transform: translateY(-50%); color: #aaa;
   }
 
-  /* Pill filter chips */
   .psb-chips { display: flex; flex-direction: column; gap: 0.3rem; }
   .pchip {
     font-size: 0.77rem; font-weight: 500;
@@ -139,7 +129,6 @@ permalink: /publications/
   .pchip.active { background: #1a73e8; border-color: #1a73e8; color: #fff; }
   .psb-chips-divider { height: 1px; background: #f0f2f5; margin: 0.25rem 0; }
 
-  /* Scholar link */
   .psb-scholar {
     display: block; text-align: center; font-size: 0.78rem;
     font-weight: 700; color: #1a73e8; text-decoration: none;
@@ -148,7 +137,6 @@ permalink: /publications/
   }
   .psb-scholar:hover { background: #1a73e8; color: #fff; text-decoration: none; }
 
-  /* ── Charts inside sidebar ── */
   .bar-chart-wrap { display: flex; flex-direction: column; gap: 0.2rem; }
   .bar-chart {
     display: grid;
@@ -213,7 +201,6 @@ permalink: /publications/
   }
   @keyframes shimmer { 0%{background-position:200% 0} 100%{background-position:-200% 0} }
 
-  /* ── Main content area ── */
   .pub-main {
     width: 100%;
     max-width: 100%;
@@ -249,7 +236,6 @@ permalink: /publications/
 
   .pub-error { padding: 1.2rem; border-radius: 8px; background: #fff3e0; border-left: 4px solid #f57c00; color: #e65100; font-size: 0.88rem; }
 
-  /* ── Responsive: collapse to single column ── */
   @media (max-width: 1024px) {
     .pub-layout {
       display: flex;
@@ -423,13 +409,10 @@ permalink: /publications/
 
 <div id="page-publications" class="page active pub-page">
 
-  <!-- Two-column layout -->
   <div class="pub-layout">
 
-    <!-- ── Sidebar ── -->
     <aside class="pub-sidebar">
 
-      <!-- Search -->
       <div class="psb-section" id="pub-search-section">
         <div class="psb-search">
           <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#aaa" stroke-width="2.5"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
@@ -437,7 +420,6 @@ permalink: /publications/
         </div>
       </div>
 
-      <!-- Sort -->
       <div class="psb-section psb-section-sort" id="pub-sort-section">
         <div class="psb-toggle" onclick="pubToggle(this)">
           Sort
@@ -456,7 +438,6 @@ permalink: /publications/
         </div>
       </div>
 
-      <!-- Filters -->
       <div class="psb-section psb-section-filter" id="pub-filter-section">
         <div class="psb-toggle" onclick="pubToggle(this)">
           Filter
@@ -481,7 +462,6 @@ permalink: /publications/
         <div class="psb-live-status"><span class="ps-dot"></span> Live via OpenAlex</div>
       </div>
 
-      <!-- Analytics -->
       <div class="psb-section" id="pub-analytics-section">
         <div class="psb-toggle" onclick="pubToggle(this)">
           Analytics <span class="psb-toggle-arrow">▾</span>
@@ -506,7 +486,6 @@ permalink: /publications/
         </div>
       </div>
 
-      <!-- Scholar link -->
       <div class="psb-section" id="pub-scholar-section">
         <a class="psb-scholar" href="https://scholar.google.com/citations?user=BVBwiyAAAAAJ" target="_blank">
           Google Scholar ↗
@@ -515,7 +494,6 @@ permalink: /publications/
 
     </aside>
 
-    <!-- ── Main list ── -->
     <main class="pub-main" id="pub-list-section">
       <div class="pub-result-bar" id="pub-result-bar">
         Showing <strong id="pub-result-n">0</strong> publications
@@ -580,7 +558,7 @@ document.addEventListener('DOMContentLoaded', function() {
       document.getElementById('pub-loading').style.display = 'none';
       const err = document.getElementById('pub-error');
       err.style.display = 'block';
-      err.innerHTML = `<strong>Could not load live data</strong> — ${e.message}. <a href="https://jsulkowska.cent.uw.edu.pl/publications/" target="_blank">View on original website →</a>`;
+      err.innerHTML = `<strong>Could not load live data</strong> — ${e.message}. <a href="https://scholar.google.com/citations?user=BVBwiyAAAAAJ" target="_blank" rel="noopener noreferrer">View Google Scholar</a>`;
     }
   }
 

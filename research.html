@@ -1,6 +1,6 @@
 ---
 layout: default
-title: "Research - Sulkowska Lab"
+title: "Research — Sulkowska Lab"
 description: "Research topics: protein folding, knotted proteins, drug design, structural bioinformatics, and funded projects."
 permalink: /research/
 ---
@@ -40,20 +40,6 @@ permalink: /research/
   font-size: 0.98rem;
   line-height: 1.42;
 }
-.rx-jump {
-  width: 100%;
-  margin-top: 0.2rem;
-  padding: 0.72rem 0.8rem;
-  border: 1px solid #d8d2cb;
-  border-radius: 8px;
-  background: #fff;
-  color: #3d342c;
-  font: inherit;
-  font-size: 0.82rem;
-  font-weight: 700;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
-}
-
 .rx-domain {
   --accent: #1a73e8;
   position: relative;
@@ -324,10 +310,10 @@ permalink: /research/
   white-space: nowrap;
 }
 
-.rpfp-pj-pnas { background: #e3f2fd; color: #1565c0; }
-.rpfp-pj-nar { background: #e8f5e9; color: #1b5e20; }
-.rpfp-pj-ps { background: #f3e5f5; color: #4a148c; }
-.rpfp-pj-bib { background: #fff3e0; color: #bf360c; }
+.rx-journal-pnas { background: #e3f2fd; color: #1565c0; }
+.rx-journal-nar { background: #e8f5e9; color: #1b5e20; }
+.rx-journal-ps { background: #f3e5f5; color: #4a148c; }
+.rx-journal-bib { background: #fff3e0; color: #bf360c; }
 
 .rx-projects {
   padding: 1.4rem 5.7vw 1.75rem;
@@ -410,13 +396,13 @@ permalink: /research/
   text-transform: uppercase;
   white-space: nowrap;
 }
-.rpfp-fb-cost { background: #1565c0; color: #fff; }
-.rpfp-fb-mnisw { background: #6a1b9a; color: #fff; }
-.rpfp-fb-ncn { background: #c0392b; color: #fff; }
-.rpfp-fb-embo { background: #0a3e6e; color: #fff; }
-.rpfp-fb-fnp { background: #1a5276; color: #fff; }
-.rpfp-fb-uw { background: #4a148c; color: #fff; }
-.rpfp-fb-icm { background: #2e7d32; color: #fff; }
+.rx-funder-cost { background: #1565c0; color: #fff; }
+.rx-funder-mnisw { background: #6a1b9a; color: #fff; }
+.rx-funder-ncn { background: #c0392b; color: #fff; }
+.rx-funder-embo { background: #0a3e6e; color: #fff; }
+.rx-funder-fnp { background: #1a5276; color: #fff; }
+.rx-funder-uw { background: #4a148c; color: #fff; }
+.rx-funder-icm { background: #2e7d32; color: #fff; }
 .rx-project-meta {
   min-width: 0;
   color: #b1b1b1;
@@ -879,18 +865,6 @@ function rxPaperToggle(id, button) {
   if (open) panel.removeAttribute('hidden');
   else panel.setAttribute('hidden', '');
   if (button) button.setAttribute('aria-expanded', open ? 'true' : 'false');
-}
-
-function rxJump(id) {
-  if (!id) return;
-  var section = document.getElementById(id);
-  if (!section) return;
-  if (section.classList.contains('rx-domain')) {
-    section.classList.add('open');
-    var button = section.querySelector('.rx-domain-head');
-    if (button) button.setAttribute('aria-expanded', 'true');
-  }
-  section.scrollIntoView({ behavior: 'smooth', block: 'start' });
 }
 
 function rxOpenProject(button) {
