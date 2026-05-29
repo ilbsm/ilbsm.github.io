@@ -263,7 +263,7 @@ permalink: /contact/
 
 .cp-bottom-grid {
   display: grid;
-  grid-template-columns: minmax(0, 2.25fr) minmax(320px, 0.95fr);
+  grid-template-columns: minmax(0, 1.35fr) minmax(420px, 1.1fr);
   gap: 0.82rem;
   align-items: start;
 }
@@ -306,6 +306,7 @@ permalink: /contact/
 .cp-fb-head {
   justify-content: space-between;
   color: #20313d;
+  padding: 0.72rem 0.95rem;
 }
 
 .cp-fb-title {
@@ -313,19 +314,21 @@ permalink: /contact/
   min-width: 0;
   align-items: center;
   gap: 0.55rem;
+  font-size: 1rem;
+  line-height: 1.25;
 }
 
 .cp-fb-mark {
   display: inline-flex;
-  width: 28px;
-  height: 28px;
-  flex: 0 0 28px;
+  width: 36px;
+  height: 36px;
+  flex: 0 0 36px;
   align-items: center;
   justify-content: center;
-  border-radius: 8px;
+  border-radius: 11px;
   background: #2f77a4;
   color: #fff;
-  font-size: 1rem;
+  font-size: 1.3rem;
   font-weight: 900;
   line-height: 1;
 }
@@ -335,23 +338,23 @@ permalink: /contact/
   flex: 0 0 auto;
   align-items: center;
   gap: 0.32rem;
-  padding: 0.34rem 0.64rem;
+  padding: 0.46rem 0.76rem;
   border: 1px solid #d9e4ec;
   border-radius: 999px;
   background: #fff;
   color: #2d7c84;
-  font-size: 0.73rem;
+  font-size: 0.82rem;
   font-weight: 800;
 }
 
 .cp-fb-frame-wrap {
-  height: 700px;
+  height: 780px;
   overflow: hidden;
   background: #f8fafc;
 }
 
 .cp-fb-frame {
-  height: 700px;
+  height: 780px;
 }
 
 @media (max-width: 1020px) {
@@ -402,10 +405,28 @@ permalink: /contact/
     width: 100%;
   }
 
-  .cp-map-frame,
+  .cp-map-frame {
+    height: 280px;
+  }
+
+  .cp-fb-head {
+    align-items: flex-start;
+    gap: 0.75rem;
+    padding: 0.8rem 0.9rem;
+  }
+
+  .cp-fb-title {
+    font-size: 0.95rem;
+  }
+
+  .cp-fb-open {
+    padding: 0.42rem 0.68rem;
+    font-size: 0.78rem;
+  }
+
   .cp-fb-frame-wrap,
   .cp-fb-frame {
-    height: 280px;
+    height: 590px;
   }
 }
 </style>
@@ -546,7 +567,7 @@ permalink: /contact/
             <iframe
               class="cp-fb-frame"
               title="Sulkowska Lab on Facebook"
-              src="https://www.facebook.com/plugins/page.php?href=https%3A%2F%2Fwww.facebook.com%2FSulkowskaLab%2F&tabs=timeline&width=500&height=700&small_header=true&adapt_container_width=true&hide_cover=false&show_facepile=true"
+              src="https://www.facebook.com/plugins/page.php?href=https%3A%2F%2Fwww.facebook.com%2FSulkowskaLab%2F&tabs=timeline&width=500&height=780&small_header=false&adapt_container_width=true&hide_cover=false&show_facepile=true"
               scrolling="no"
               allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share"
               allowfullscreen></iframe>

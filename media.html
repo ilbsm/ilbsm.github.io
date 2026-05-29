@@ -888,8 +888,17 @@ permalink: /media/
   .med-interview-cards { grid-template-columns: repeat(auto-fill, minmax(180px,1fr)); }
 }
 #page-media .jump-row {
-  position: static;
+  position: relative;
   top: auto;
+  z-index: 3500;
+  overflow: visible;
+}
+#page-media .jump-row-inner,
+#page-media .jump-nav {
+  overflow: visible;
+}
+#page-media .jump-menu {
+  z-index: 3600;
 }
 @media (max-width: 640px) {
   .hp-sec {

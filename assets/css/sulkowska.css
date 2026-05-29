@@ -2517,33 +2517,34 @@
     font-size: 0.78rem;
   }
   .jump-menu {
-    position: static;
-    display: none;
+    position: absolute;
+    display: grid;
+    top: calc(100% + 0.35rem);
     left: 0;
     right: auto;
     width: 100%;
     max-width: 100%;
     max-height: min(36dvh, 220px);
-    margin-top: 0.35rem;
+    margin-top: 0;
     gap: 0.06rem;
     padding: 0.32rem;
     border-radius: 9px;
     box-shadow: 0 12px 30px rgba(13, 43, 51, 0.16);
-    transform: none;
-    transform-origin: top;
+    transform: translateY(-6px) scale(0.98);
+    transform-origin: top right;
   }
   .jump-nav.is-open .jump-menu {
     display: grid;
-    transform: none;
+    transform: translateY(0) scale(1);
   }
   .jump-nav.jump-up .jump-menu {
-    top: auto;
+    top: calc(100% + 0.35rem);
     bottom: auto;
-    transform: none;
-    transform-origin: top;
+    transform: translateY(-6px) scale(0.98);
+    transform-origin: top right;
   }
   .jump-nav.is-open.jump-up .jump-menu {
-    transform: none;
+    transform: translateY(0) scale(1);
   }
   .jump-option {
     min-height: 32px;
