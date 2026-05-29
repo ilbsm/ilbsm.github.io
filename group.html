@@ -189,6 +189,13 @@ permalink: /group/
   gap: var(--space-4); flex-wrap: wrap; margin-bottom: var(--space-5);
   padding-bottom: var(--space-4); border-bottom: 1px solid #f0ede8;
 }
+.grp-sec-header-jump {
+  align-items: center;
+}
+.grp-sec-header-jump .jump-nav {
+  flex: 0 0 230px;
+  margin-left: auto;
+}
 .grp-count-badge {
   display: inline-flex; align-items: center; justify-content: center;
   min-width: 28px; height: 20px; padding: 0 var(--space-2);
@@ -357,6 +364,13 @@ permalink: /group/
     margin-bottom: 0.9rem;
     padding-bottom: 0.75rem;
   }
+  .grp-sec-header-jump {
+    align-items: flex-start;
+  }
+  .grp-sec-header-jump .jump-nav {
+    flex: 0 0 min(220px, 100%);
+    margin-left: 0;
+  }
   .grp-title {
     font-size: 1.45rem;
   }
@@ -398,7 +412,7 @@ permalink: /group/
 
 /* ── PRINT ── */
 @media print {
-  .grp-pghead, .grp-nav, .grp-join { display: none; }
+  .grp-pghead, .grp-nav, .grp-join, .grp-sec-header .jump-nav { display: none; }
   .grp { background: white; }
   .grp-sec { box-shadow: none; border: 1px solid #ddd; break-inside: avoid; }
   .grp-card { animation: none; }
@@ -407,27 +421,6 @@ permalink: /group/
 </style>
 
 <div id="page-group" class="page active grp">
-
-<div class="jump-row">
-  <div class="jump-row-inner">
-    <div class="jump-nav" data-jump-nav>
-      <button class="jump-toggle" type="button" aria-haspopup="true" aria-expanded="false">
-        <span>Jump to section</span>
-        <span class="jump-caret" aria-hidden="true"></span>
-      </button>
-      <div class="jump-menu" role="menu" aria-label="Group page sections">
-        <button class="jump-option active" type="button" role="menuitem" data-jump-target="grp-senior">Senior</button>
-        <button class="jump-option" type="button" role="menuitem" data-jump-target="grp-postdocs">Postdocs</button>
-        <button class="jump-option" type="button" role="menuitem" data-jump-target="grp-phd">PhD</button>
-        <button class="jump-option" type="button" role="menuitem" data-jump-target="grp-tech">Tech &amp; Interns</button>
-        <button class="jump-option" type="button" role="menuitem" data-jump-target="grp-msc">MSc</button>
-        <button class="jump-option" type="button" role="menuitem" data-jump-target="grp-bsc">Undergrads</button>
-        <button class="jump-option" type="button" role="menuitem" data-jump-target="grp-join">Join</button>
-        <button class="jump-option" type="button" role="menuitem" data-jump-target="grp-alumni">Alumni</button>
-      </div>
-    </div>
-  </div>
-</div>
 
 <div class="grp-wrap">
 
@@ -443,11 +436,29 @@ permalink: /group/
 
     {% if members and members.size > 0 %}
     <div class="grp-sec" id="{{ anchor }}">
-      <div class="grp-sec-header">
+      <div class="grp-sec-header{% if anchor == 'grp-senior' %} grp-sec-header-jump{% endif %}">
         <div>
         
           <div class="grp-title">{{ label }} <span class="grp-count-badge">{{ members.size }}</span></div>
         </div>
+        {% if anchor == 'grp-senior' %}
+        <div class="jump-nav" data-jump-nav>
+          <button class="jump-toggle" type="button" aria-haspopup="true" aria-expanded="false">
+            <span>Jump to section</span>
+            <span class="jump-caret" aria-hidden="true"></span>
+          </button>
+          <div class="jump-menu" role="menu" aria-label="Group page sections">
+            <button class="jump-option active" type="button" role="menuitem" data-jump-target="grp-senior">Senior</button>
+            <button class="jump-option" type="button" role="menuitem" data-jump-target="grp-postdocs">Postdocs</button>
+            <button class="jump-option" type="button" role="menuitem" data-jump-target="grp-phd">PhD</button>
+            <button class="jump-option" type="button" role="menuitem" data-jump-target="grp-tech">Tech &amp; Interns</button>
+            <button class="jump-option" type="button" role="menuitem" data-jump-target="grp-msc">MSc</button>
+            <button class="jump-option" type="button" role="menuitem" data-jump-target="grp-bsc">Undergrads</button>
+            <button class="jump-option" type="button" role="menuitem" data-jump-target="grp-join">Join</button>
+            <button class="jump-option" type="button" role="menuitem" data-jump-target="grp-alumni">Alumni</button>
+          </div>
+        </div>
+        {% endif %}
       </div>
       <div class="grp-grid">
         {% for m in members %}

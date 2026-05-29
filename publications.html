@@ -10,60 +10,6 @@ permalink: /publications/
   :root { --nav-h: 42px; --sidebar-w: 290px; }
   .pub-page { background: #f0f2f5; min-height: 100vh; }
 
-  /* ── Compact page header ── */
-  .pub-pghead {
-    background: linear-gradient(90deg, #0a1020 0%, #0f1a2e 100%);
-    border-bottom: 1px solid rgba(255,255,255,0.07);
-    padding: 0.65rem 1.5rem;
-    position: sticky;
-    top: var(--nav-h);
-    z-index: 100;
-  }
-  .pub-pghead-inner {
-    width: 100%;
-    display: flex; align-items: center; gap: 0; flex-wrap: wrap;
-  }
-  .pub-pghead-eyebrow {
-    font-size: 0.58rem; font-weight: 800; letter-spacing: 0.2em;
-    text-transform: uppercase; color: #4db8e8; line-height: 1;
-    margin-bottom: 0.15rem;
-  }
-  .pub-pghead-title {
-    font-family: 'Merriweather', serif; font-size: 1rem;
-    font-weight: 900; color: #fff; margin: 0;
-  }
-  .pub-pghead-divider {
-    width: 1px; height: 28px; background: rgba(255,255,255,0.15);
-    margin: 0 1rem; flex-shrink: 0;
-  }
-  /* Inline stats in top bar */
-  .pub-pghead-stats {
-    display: flex; align-items: center; gap: 0;
-  }
-  .pub-pghead-stat {
-    display: flex; flex-direction: column; align-items: center;
-    padding: 0 0.85rem;
-    border-right: 1px solid rgba(255,255,255,0.12);
-  }
-  .pub-pghead-stat:last-child { border-right: none; }
-  .pub-pghead-stat-n {
-    font-size: 0.92rem; font-weight: 700; color: #fff; line-height: 1;
-  }
-  .pub-pghead-stat-l {
-    font-size: 0.58rem; color: rgba(255,255,255,0.4);
-    text-transform: lowercase; margin-top: 0.1rem; letter-spacing: 0.02em;
-  }
-  .pub-pghead-sub {
-    font-size: 0.76rem; color: rgba(255,255,255,0.45);
-    flex: 1; min-width: 0; margin-left: 1rem;
-  }
-  .pub-pghead-live {
-    display: flex; align-items: center; gap: 0.4rem;
-    font-size: 0.7rem; font-weight: 700; color: #4caf50;
-    white-space: nowrap; margin-left: 1rem;
-    padding-left: 1rem;
-    border-left: 1px solid rgba(255,255,255,0.12);
-  }
   .ps-dot {
     width: 7px; height: 7px; border-radius: 50%;
     background: #4caf50; animation: pub-pulse 2s infinite;
@@ -82,8 +28,8 @@ permalink: /publications/
   /* ── Sidebar ── */
   .pub-sidebar {
     position: sticky;
-    top: calc(var(--nav-h) + 57px);
-    height: calc(100vh - var(--nav-h) - 57px);
+    top: var(--nav-h);
+    height: calc(100vh - var(--nav-h));
     overflow-y: auto;
     background: #fff;
     border-right: 1px solid #e0e4ec;
@@ -128,6 +74,22 @@ permalink: /publications/
   /* Tighter Sort + Filter sections */
   .psb-section-sort  { border-bottom: none; padding: 0.75rem 1.2rem 0.4rem; }
   .psb-section-filter { border-bottom: 1px solid #f0f2f5; padding: 0.4rem 1.2rem 0.75rem; }
+  .psb-live-section { padding: 0.55rem 1.2rem; }
+  .psb-live-status {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.42rem;
+    min-height: 28px;
+    padding: 0.32rem 0.62rem;
+    border: 1px solid #d8eadc;
+    border-radius: 999px;
+    background: #f3fbf4;
+    color: #2e7d32;
+    font-size: 0.68rem;
+    font-weight: 800;
+    line-height: 1;
+    white-space: nowrap;
+  }
 
   /* Search in sidebar */
   .psb-search {
@@ -180,15 +142,25 @@ permalink: /publications/
   .psb-scholar:hover { background: #1a73e8; color: #fff; text-decoration: none; }
 
   /* ── Charts inside sidebar ── */
-  .bar-chart-wrap { display: flex; flex-direction: column; gap: 0; }
-  .bar-chart { display: flex; align-items: flex-end; gap: 2px; height: 80px; }
-  .bar-col { flex: 1; min-width: 8px; height: 100%; display: flex; align-items: flex-end; }
+  .bar-chart-wrap { display: flex; flex-direction: column; gap: 0.2rem; }
+  .bar-chart {
+    display: grid;
+    grid-auto-flow: column;
+    grid-auto-columns: minmax(0, 1fr);
+    align-items: end;
+    gap: 2px;
+    height: 80px;
+    padding: 0 1px;
+  }
+  .bar-col { min-width: 0; height: 100%; display: flex; align-items: flex-end; }
   .bar-fill {
     width: 100%; background: #1a73e8; border-radius: 2px 2px 0 0;
     min-height: 2px; cursor: default; position: relative;
     transition: background 0.15s;
   }
+  .bar-fill.is-empty { min-height: 0; background: transparent; }
   .bar-fill:hover { background: #4db8e8; }
+  .bar-fill.is-empty:hover { background: transparent; }
   .bar-fill:hover::after {
     content: attr(data-tip); position: absolute; bottom: calc(100% + 4px);
     left: 50%; transform: translateX(-50%);
@@ -196,8 +168,24 @@ permalink: /publications/
     padding: 2px 6px; border-radius: 4px; white-space: nowrap;
     pointer-events: none; z-index: 20;
   }
-  .bar-years { display: flex; gap: 2px; margin-top: 3px; }
-  .bar-year-lbl { flex: 1; min-width: 8px; font-size: 0.44rem; color: #bbb; text-align: center; overflow: hidden; white-space: nowrap; line-height: 1.2; }
+  .bar-axis {
+    position: relative;
+    height: 17px;
+    margin-top: 1px;
+    border-top: 1px solid #edf0f4;
+  }
+  .bar-axis-label {
+    position: absolute;
+    top: 3px;
+    transform: translateX(-50%);
+    color: #aeb4bd;
+    font-size: 0.52rem;
+    font-weight: 700;
+    line-height: 1;
+    white-space: nowrap;
+  }
+  .bar-axis-label.edge-start { transform: translateX(0); }
+  .bar-axis-label.edge-end { transform: translateX(-100%); }
 
   .hbar-row { display: flex; align-items: center; gap: 0.5rem; margin-bottom: 0.45rem; }
   .hbar-label { font-size: 0.68rem; color: #555; width: 90px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; flex-shrink: 0; }
@@ -205,7 +193,8 @@ permalink: /publications/
   .hbar-fill { height: 100%; background: #1a73e8; border-radius: 3px; }
   .hbar-val { font-size: 0.66rem; font-weight: 700; color: #1a73e8; width: 18px; text-align: right; flex-shrink: 0; }
 
-  .donut-wrap { display: flex; align-items: center; gap: 0.8rem; }
+  .donut-wrap { display: flex; align-items: center; gap: 0.7rem; overflow: visible; }
+  .donut-svg { display: block; flex: 0 0 auto; overflow: visible; }
   .donut-legend { display: flex; flex-direction: column; gap: 0.3rem; }
   .donut-leg-item { display: flex; align-items: center; gap: 0.35rem; font-size: 0.67rem; color: #555; }
   .donut-dot { width: 8px; height: 8px; border-radius: 50%; flex-shrink: 0; }
@@ -259,20 +248,6 @@ permalink: /publications/
     .pub-main { padding: 1rem 1rem 3rem; }
   }
   @media (max-width: 700px) {
-    .pub-pghead {
-      padding: 0.55rem 1rem;
-    }
-    .pub-pghead-title {
-      font-size: 0.95rem;
-    }
-    .pub-pghead-stats { display: none; }
-    .pub-pghead-divider { display: none; }
-    .pub-pghead-sub { display: none; }
-    .pub-pghead-live {
-      margin-left: auto;
-      padding-left: 0.7rem;
-      font-size: 0.66rem;
-    }
     .psb-section {
       padding: 0.8rem 1rem;
     }
@@ -292,33 +267,6 @@ permalink: /publications/
 </style>
 
 <div id="page-publications" class="page active pub-page">
-
-  <!-- Compact sticky page header -->
-  <div class="pub-pghead">
-    <div class="pub-pghead-inner">
-      <div>
-        <div class="pub-pghead-eyebrow">Research Output</div>
-        <h1 class="pub-pghead-title">Publications</h1>
-      </div>
-      <div class="pub-pghead-divider"></div>
-      <div class="pub-pghead-stats">
-        <div class="pub-pghead-stat">
-          <span class="pub-pghead-stat-n" id="ps-count">—</span>
-          <span class="pub-pghead-stat-l">publications</span>
-        </div>
-        <div class="pub-pghead-stat">
-          <span class="pub-pghead-stat-n" id="ps-cites">—</span>
-          <span class="pub-pghead-stat-l">citations</span>
-        </div>
-        <div class="pub-pghead-stat">
-          <span class="pub-pghead-stat-n" id="ps-h">—</span>
-          <span class="pub-pghead-stat-l">h-index</span>
-        </div>
-      </div>
-      <p class="pub-pghead-sub"></p>
-      <div class="pub-pghead-live"><span class="ps-dot"></span> Live via OpenAlex</div>
-    </div>
-  </div>
 
   <!-- Two-column layout -->
   <div class="pub-layout">
@@ -372,6 +320,10 @@ permalink: /publications/
             <button class="pchip"        data-filter="oa"       onclick="pubChip(this)">Open Access only</button>
           </div>
         </div>
+      </div>
+
+      <div class="psb-section psb-live-section" aria-label="Live publication data source">
+        <div class="psb-live-status"><span class="ps-dot"></span> Live via OpenAlex</div>
       </div>
 
       <!-- Analytics -->
@@ -439,9 +391,6 @@ document.addEventListener('DOMContentLoaded', function() {
       if (ad.results?.length) {
         const best = ad.results.sort((a,b) => b.cited_by_count - a.cited_by_count)[0];
         authorId = best.id.replace('https://openalex.org/', '');
-        document.getElementById('ps-count').textContent = best.works_count?.toLocaleString() || '–';
-        document.getElementById('ps-cites').textContent = best.cited_by_count?.toLocaleString() || '–';
-        document.getElementById('ps-h').textContent     = best.summary_stats?.h_index || '–';
       }
 
       let works = [], cursor = '*';
@@ -473,23 +422,45 @@ document.addEventListener('DOMContentLoaded', function() {
   function renderCharts(works) {
     // Bar chart: publications per year
     const yearMap = {};
-    works.forEach(w => { const y = w.publication_year; if (y) yearMap[y] = (yearMap[y]||0)+1; });
+    const chartStartYear = 2005;
+    const currentYear = new Date().getFullYear();
+    works.forEach(w => {
+      const y = Number(w.publication_year);
+      if (y && y >= chartStartYear && y <= currentYear) yearMap[y] = (yearMap[y]||0)+1;
+    });
     const years = Object.keys(yearMap).map(Number).sort((a,b)=>a-b);
-    const maxCount = Math.max(...Object.values(yearMap));
     const barEl = document.getElementById('chart-year');
     barEl.className = 'bar-chart-wrap';
-    const showEvery = Math.max(1, Math.ceil(years.length / 7));
-    barEl.innerHTML = `
-      <div class="bar-chart">
-        ${years.map(y => `
+    if (!years.length) {
+      barEl.innerHTML = '<div style="font-size:0.7rem;color:#999">No year data available</div>';
+    } else {
+      const minYear = years[0];
+      const maxYear = years[years.length - 1];
+      const maxCount = Math.max(...Object.values(yearMap));
+      const allYears = Array.from({ length: maxYear - minYear + 1 }, (_, i) => minYear + i);
+      const tickYears = [minYear];
+      for (let y = Math.ceil(minYear / 5) * 5; y <= maxYear; y += 5) {
+        if (y > minYear + 2 && y < maxYear - 2) tickYears.push(y);
+      }
+      if (maxYear !== minYear) tickYears.push(maxYear);
+      const axisLabels = [...new Set(tickYears)].sort((a, b) => a - b).map(y => {
+        const pos = maxYear === minYear ? 50 : ((y - minYear) / (maxYear - minYear)) * 100;
+        const edge = pos <= 1 ? ' edge-start' : (pos >= 99 ? ' edge-end' : '');
+        return `<span class="bar-axis-label${edge}" style="left:${pos}%">${y}</span>`;
+      }).join('');
+      barEl.innerHTML = `
+        <div class="bar-chart">
+          ${allYears.map(y => {
+            const count = yearMap[y] || 0;
+            const h = count ? Math.max(4, Math.round((count / maxCount) * 100)) : 0;
+            return `
           <div class="bar-col">
-            <div class="bar-fill" style="height:${Math.round((yearMap[y]/maxCount)*100)}%" data-tip="${y}: ${yearMap[y]}"></div>
-          </div>`).join('')}
-      </div>
-      <div class="bar-years">
-        ${years.map((y, i) => `
-          <div class="bar-year-lbl">${(i === 0 || i === years.length-1 || i % showEvery === 0) ? y : ''}</div>`).join('')}
-      </div>`;
+            <div class="bar-fill${count ? '' : ' is-empty'}" style="height:${h}%" data-tip="${y}: ${count}"></div>
+          </div>`;
+          }).join('')}
+        </div>
+        <div class="bar-axis">${axisLabels}</div>`;
+    }
 
     // Horizontal bars: top journals
     const jMap = {};
@@ -525,18 +496,21 @@ document.addEventListener('DOMContentLoaded', function() {
       const start = cum; cum += pct;
       return { pct, start, color: t.color, label: t.label, count };
     });
-    const r = 34, cx = 40, cy = 40, strokeW = 15;
+    const donutSize = 92, r = 31, cx = 46, cy = 46, strokeW = 14;
     const circ = 2 * Math.PI * r;
-    const svgPaths = segments.map(s => {
+    const svgPaths = segments.filter(s => s.pct > 0).map(s => {
       const dash = s.pct * circ;
       const offset = circ - s.start * circ;
-      return `<circle cx="${cx}" cy="${cy}" r="${r}" fill="none" stroke="${s.color}" stroke-width="${strokeW}" stroke-dasharray="${dash} ${circ-dash}" stroke-dashoffset="${offset}" transform="rotate(-90 ${cx} ${cy})"/>`;
+      return `<circle cx="${cx}" cy="${cy}" r="${r}" fill="none" stroke="${s.color}" stroke-width="${strokeW}" stroke-dasharray="${dash} ${Math.max(0, circ-dash)}" stroke-dashoffset="${offset}" stroke-linecap="butt" transform="rotate(-90 ${cx} ${cy})"/>`;
     }).join('');
     document.getElementById('chart-cites').className = 'donut-wrap';
     document.getElementById('chart-cites').innerHTML = `
-      <svg width="80" height="80" viewBox="0 0 80 80" style="flex-shrink:0">${svgPaths}
-        <text x="40" y="37" text-anchor="middle" font-size="10" font-weight="700" fill="#0a1020">${total}</text>
-        <text x="40" y="48" text-anchor="middle" font-size="6.5" fill="#888">papers</text>
+      <svg class="donut-svg" width="${donutSize}" height="${donutSize}" viewBox="0 0 ${donutSize} ${donutSize}" aria-label="Citation tiers donut chart">
+        <circle cx="${cx}" cy="${cy}" r="${r}" fill="none" stroke="#e8edf4" stroke-width="${strokeW}"/>
+        ${svgPaths}
+        <circle cx="${cx}" cy="${cy}" r="${r - (strokeW / 2) - 1}" fill="#fff"/>
+        <text x="${cx}" y="${cy - 3}" text-anchor="middle" font-size="10" font-weight="700" fill="#0a1020">${total}</text>
+        <text x="${cx}" y="${cy + 8}" text-anchor="middle" font-size="6.5" fill="#888">papers</text>
       </svg>
       <div class="donut-legend">${segments.map(s=>`
         <div class="donut-leg-item">
