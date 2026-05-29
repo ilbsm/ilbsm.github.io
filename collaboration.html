@@ -134,7 +134,7 @@ permalink: /collaboration/
   .cl-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
 }
 
-@media (max-width: 640px) {
+@media (max-width: 820px) {
   :root { --cl-side: 1rem; }
   #page-collab .rpfp-intro {
     flex-direction: column;
@@ -145,6 +145,14 @@ permalink: /collaboration/
   #page-collab .rpfp-intro-sub { font-size: 0.86rem; }
   #page-collab .jump-nav { width: 100%; max-width: 230px; margin-left: auto; }
   .cl-grid { grid-template-columns: 1fr; }
+  .cl-card,
+  .cl-card-body,
+  .cl-card-name,
+  .cl-card-inst,
+  .cl-card-topic {
+    min-width: 0;
+    overflow-wrap: anywhere;
+  }
   .cl-logo-wrap { height: 64px; }
 }
 </style>
@@ -155,7 +163,7 @@ permalink: /collaboration/
   <div class="rpfp-intro">
     <div class="rpfp-intro-text">
       <h1 class="rpfp-intro-title">Our International Collaborators</h1>
-      <p class="rpfp-intro-sub">An international network of physicists, mathematicians, and biologists united by one question: what does topology do inside a living cell?</p>
+      
     </div>
     <div class="jump-nav" data-jump-nav style="flex-shrink:0;margin-top:0.25rem">
       <button class="jump-toggle" type="button" aria-haspopup="true" aria-expanded="false">
