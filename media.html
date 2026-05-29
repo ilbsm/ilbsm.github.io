@@ -469,6 +469,23 @@ permalink: /media/
   transform: none;
   box-shadow: 0 2px 9px rgba(13,43,51,0.07);
 }
+#ms-news .med-grant-card-empty,
+#ms-interviews .med-int-card-empty,
+#ms-press .med-press-item-empty {
+  cursor: default;
+}
+#ms-news .med-grant-card-empty:hover,
+#ms-interviews .med-int-card-empty:hover {
+  transform: none;
+  box-shadow: none;
+}
+#ms-news > .med-link-list .med-link-item-empty:hover,
+#ms-press .med-press-item-empty:hover {
+  background: #fbfaf8;
+  border-color: #d9d4cc;
+  box-shadow: none;
+  text-decoration: none;
+}
 #ms-news .med-grant-funder {
   margin-bottom: 0.45rem;
 }
@@ -1162,8 +1179,12 @@ permalink: /media/
     <div class="med-grants-label">Grants &amp; Awards</div>
     <div class="med-grants-grid">
       {% for grant in site.data.media.grants %}
-      {% assign grant_url = grant.url %}
+      {% assign grant_url = grant.url | default: "" | strip %}
+      {% if grant_url != "" %}
       <a class="med-grant-card" href="{% if grant_url contains 'http' %}{{ grant_url }}{% else %}{{ grant_url | relative_url }}{% endif %}" target="_blank" rel="noopener noreferrer">
+      {% else %}
+      <div class="med-grant-card med-grant-card-empty">
+      {% endif %}
         <div class="med-grant-funder">
           <span class="med-src-logo {{ grant.logo_class }}">
             {% if grant.logo %}
@@ -1173,7 +1194,11 @@ permalink: /media/
         </div>
         <div class="med-grant-title">{{ grant.title }}</div>
         <div class="med-grant-sub">{{ grant.sub }}</div>
+      {% if grant_url != "" %}
       </a>
+      {% else %}
+      </div>
+      {% endif %}
       {% endfor %}
     </div>
 
@@ -1181,7 +1206,12 @@ permalink: /media/
     <div class="hp-eyebrow" style="margin-bottom:var(--space-3);margin-top:var(--space-8);">Recent News</div>
     <div class="med-link-list">
       {% for item in site.data.media.news %}
-      <a class="med-link-item" href="{{ item.url }}" target="_blank" rel="noopener noreferrer">
+      {% assign item_url = item.url | default: "" | strip %}
+      {% if item_url != "" %}
+      <a class="med-link-item" href="{{ item_url }}" target="_blank" rel="noopener noreferrer">
+      {% else %}
+      <div class="med-link-item med-link-item-empty">
+      {% endif %}
         <div class="med-li-left">
           <div class="med-li-source">
             <span class="med-src-logo {{ item.logo_class }}">
@@ -1194,8 +1224,14 @@ permalink: /media/
           <span class="med-li-year">{{ item.year }}</span>
         </div>
         <div class="med-li-title">{{ item.title }}</div>
+        {% if item_url != "" %}
         <svg class="med-li-arrow" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><line x1="7" y1="17" x2="17" y2="7"/><polyline points="7 7 17 7 17 17"/></svg>
+        {% endif %}
+      {% if item_url != "" %}
       </a>
+      {% else %}
+      </div>
+      {% endif %}
       {% endfor %}
     </div>
   </div>
@@ -1210,7 +1246,12 @@ permalink: /media/
     </div>
     <div class="med-interview-cards">
       {% for item in site.data.media.interviews %}
-      <a class="med-int-card" href="{{ item.url }}" target="_blank" rel="noopener noreferrer">
+      {% assign item_url = item.url | default: "" | strip %}
+      {% if item_url != "" %}
+      <a class="med-int-card" href="{{ item_url }}" target="_blank" rel="noopener noreferrer">
+      {% else %}
+      <div class="med-int-card med-int-card-empty">
+      {% endif %}
         <div class="med-int-source">
           {% if item.logo %}
           <span class="med-src-logo {{ item.logo_class }}"><img src="{{ '/assets/img/logos/media/' | append: item.logo | relative_url }}" alt="{{ item.source }} logo"></span>
@@ -1219,8 +1260,14 @@ permalink: /media/
           <span class="med-int-year">{{ item.year }}</span>
         </div>
         <div class="med-int-title">{{ item.title }}</div>
+        {% if item_url != "" %}
         <div class="med-int-arrow">Read →</div>
+        {% endif %}
+      {% if item_url != "" %}
       </a>
+      {% else %}
+      </div>
+      {% endif %}
       {% endfor %}
     </div>
   </div>
@@ -1239,13 +1286,22 @@ permalink: /media/
 
     <div class="med-press-grid">
       {% for item in press_main %}
-      <a class="med-press-item" href="{{ item.url }}" target="_blank" rel="noopener noreferrer">
+      {% assign item_url = item.url | default: "" | strip %}
+      {% if item_url != "" %}
+      <a class="med-press-item" href="{{ item_url }}" target="_blank" rel="noopener noreferrer">
+      {% else %}
+      <div class="med-press-item med-press-item-empty">
+      {% endif %}
         <span class="med-press-org">
           <span class="med-src-logo {{ item.logo_class }}"><img src="{{ '/assets/img/logos/media/' | append: item.logo | relative_url }}" alt="{{ item.org }} logo"></span>
           {{ item.org }}
         </span>
         <span class="med-press-yr">{{ item.year }}</span>
+      {% if item_url != "" %}
       </a>
+      {% else %}
+      </div>
+      {% endif %}
       {% endfor %}
     </div>
 
@@ -1253,10 +1309,19 @@ permalink: /media/
     <div id="press-extra" style="display:none">
       <div class="med-press-grid" style="margin-top:2px">
         {% for item in press_more %}
-        <a class="med-press-item" href="{{ item.url }}" target="_blank" rel="noopener noreferrer">
+        {% assign item_url = item.url | default: "" | strip %}
+        {% if item_url != "" %}
+        <a class="med-press-item" href="{{ item_url }}" target="_blank" rel="noopener noreferrer">
+        {% else %}
+        <div class="med-press-item med-press-item-empty">
+        {% endif %}
           <span class="med-press-org">{{ item.org }}</span>
           <span class="med-press-yr">{{ item.year }}</span>
+        {% if item_url != "" %}
         </a>
+        {% else %}
+        </div>
+        {% endif %}
         {% endfor %}
       </div>
     </div>
@@ -1282,8 +1347,9 @@ permalink: /media/
         </div>
         <div class="med-tl-cards">
           {% for talk in year_block.talks %}
-          {% if talk.url %}
-          <a class="med-tl-card med-tc-{{ talk.color | default: 'teal' }}" href="{{ talk.url }}" target="_blank" rel="noopener noreferrer">
+          {% assign talk_url = talk.url | default: "" | strip %}
+          {% if talk_url != "" %}
+          <a class="med-tl-card med-tc-{{ talk.color | default: 'teal' }}" href="{{ talk_url }}" target="_blank" rel="noopener noreferrer">
           {% else %}
           <div class="med-tl-card med-tc-{{ talk.color | default: 'teal' }}">
           {% endif %}
@@ -1292,10 +1358,10 @@ permalink: /media/
             {% if talk.body %}
             <div class="med-tc-body">{{ talk.body }}</div>
             {% endif %}
-            {% if talk.link_label %}
+            {% if talk.link_label and talk_url != "" %}
             <div class="med-tc-link">{{ talk.link_label }}</div>
             {% endif %}
-          {% if talk.url %}
+          {% if talk_url != "" %}
           </a>
           {% else %}
           </div>

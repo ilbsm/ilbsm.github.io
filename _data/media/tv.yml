@@ -5,14 +5,14 @@
 - source: "Polsat News"
   logo: "polsat-news.svg"
   logo_class: "round"
-  url: ""
+  url: "https://www.polsatnews.pl/wiadomosc/2017-03-13/polka-w-elitarnym-gronie-wschodzacych-talentow-nauki-wybrana-przez-unesco/"
   year: 2017
   title: 'Polka w elitarnym gronie "kobiet, które mogą zmienić świat". Wybrana przez UNESCO'
 
 - source: "Onet"
   logo: "onet.svg"
   logo_class: "med-logo-wide"
-  url: ""
+  url: "https://kobieta.onet.pl/polska-badaczka-w-gronie-kobiet-ktore-moga-zmienic-swiat/m262ke7"
   year: 2017
   title: "TV Interview"
 

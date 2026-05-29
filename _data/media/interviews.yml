@@ -4,7 +4,7 @@
 - source: "Onet.pl"
   logo: "onet.svg"
   logo_class: "med-logo-wide"
-  url: "https://kobieta.onet.pl"
+  url: "https://kobieta.onet.pl/musialam-sie-wykazac-dwa-razy-bardziej-niz-mezczyzni-kulisy-swiata-nauk-scislych/gfrfrz9"
   year: 2018
   title: '"Musiałam się wykazać dwa razy bardziej niż mężczyźni". Kulisy świata nauk ścisłych'
 
@@ -18,16 +18,16 @@
 - source: "Wyborcza Gazeta"
   logo: "wyborcza.svg"
   logo_class: "med-logo-wide"
-  url: "https://wyborcza.pl"
+  url: "https://weekend.gazeta.pl/weekend/7,177344,23724481,polka-wsrod-najbardziej-obiecujacych-badaczek-swiata-to.html"
   year: 2017
   title: "Full feature article"
 
 - source: "Magiel"
-  url: "https://jsulkowska.cent.uw.edu.pl/paper/"
+  url: ""
   year: 2017
   title: 'Niezależny Miesięcznik Studentów — "Było sobie białko"'
 
 - source: "Przegląd Urologiczny"
-  url: "https://jsulkowska.cent.uw.edu.pl/paper/"
+  url: ""
   year: 2017
   title: "Interview on protein topology research"

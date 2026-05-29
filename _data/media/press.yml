@@ -5,57 +5,57 @@
 - org: "Gazeta Wyborcza"
   logo: "wyborcza.svg"
   logo_class: "med-logo-wide med-logo-compact"
-  url: "https://wyborcza.pl"
+  url: "https://wyborcza.pl/Jutronauci/7,160052,22320870,joanna-sulkowska.html"
   year: 2017
 
 - org: "PAP — Polska Agencja Prasowa"
   logo: "pap.svg"
   logo_class: "med-logo-compact"
-  url: "https://www.pap.pl"
+  url: "https://naukawpolsce.pl/aktualnosci/news%2C413416%2Cpolska-badaczka-w-gronie-kobiet-ktore-moga-zmienic-swiat.html"
   year: 2017
 
 - org: "Focus"
-  url: "https://www.focus.pl"
+  url: "https://www.focus.pl/artykul/duma-nas-rozpiera-polska-badaczka-w-gronie-kobiet-ktre-mog-zmieni-wiat"
   year: 2017
 
 - org: "Puls Biznesu"
-  url: "https://www.pb.pl"
+  url: "https://www.pb.pl/polka-na-liscie-naukowcow-ktorzy-zmienia-swiat-856290"
   year: 2017
 
 - org: "Na Mazowszu"
-  url: "https://namazowszu.pl"
+  url: ""
   year: 2017
 
 - org: "Polsat News"
   logo: "polsat-news.svg"
   logo_class: "med-logo-compact"
-  url: "https://www.polsatnews.pl"
+  url: "https://www.polsatnews.pl/wiadomosc/2017-03-13/polka-w-elitarnym-gronie-wschodzacych-talentow-nauki-wybrana-przez-unesco/"
   year: 2017
   more: true
 
 - org: "Sukces jest kobietą"
-  url: "https://sukces.pl"
+  url: "https://www.sukcesjestkobieta.pl/polska-badaczka-moze-zmienic-swiat/"
   year: 2017
   more: true
 
 - org: "Forum Akademickie"
-  url: "https://forumakademickie.pl"
+  url: ""
   year: 2017
   more: true
 
 - org: "Nauka Online"
-  url: "https://nauka.uw.edu.pl"
+  url: ""
   year: 2014
   more: true
 
 - org: "Biotechnologia.pl"
-  url: "https://www.biotechnologia.pl"
+  url: ""
   year: 2013
   more: true
 
 - org: "PAP — Zagadka związanych białek"
   logo: "pap.svg"
   logo_class: "med-logo-compact"
-  url: "https://www.pap.pl"
+  url: "https://naukawpolsce.pl/aktualnosci/news%2C397925%2Cpolska-badaczka-chce-rozwiazac-zagadke-zwiazanych-bialek.html"
   year: 2013
   more: true
