@@ -137,8 +137,7 @@ permalink: /media/
 .med-show-more { text-align: center; margin-top: 0.5rem; }
 /* ── SHARED BUTTON STYLE: Jump to section / Show all photos / Show archive ── */
 .med-show-btn,
-.med-archive-toggle,
-.jump-toggle {
+.med-archive-toggle {
   display: inline-flex; align-items: center; gap: 0.5rem;
   min-height: 34px; padding: 0.42rem 0.75rem;
   border-radius: 8px;
@@ -149,10 +148,7 @@ permalink: /media/
   white-space: nowrap;
 }
 .med-show-btn:hover,
-.med-archive-toggle:hover,
-.jump-toggle:hover,
-.jump-toggle:focus-visible,
-.jump-nav.is-open .jump-toggle {
+.med-archive-toggle:hover {
   border-color: #01696f; color: #01696f;
   box-shadow: 0 6px 18px rgba(1,105,111,0.14);
   background: #fff;
@@ -378,6 +374,14 @@ permalink: /media/
 #ms-broadcast .med-link-item:hover {
   background: #fff;
   border-color: #d5cbc1;
+  box-shadow: none;
+}
+#ms-broadcast .med-link-item-empty {
+  cursor: default;
+}
+#ms-broadcast .med-link-item-empty:hover {
+  background: #fbfaf8;
+  border-color: #e5dfd8;
   box-shadow: none;
 }
 #ms-broadcast .med-li-left,
@@ -1077,8 +1081,12 @@ permalink: /media/
         <div class="med-broadcast-col-label">TV Interviews</div>
         <div class="med-link-list">
           {% for item in site.data.media.tv %}
-          {% assign item_url = item.url | default: "#" %}
+          {% assign item_url = item.url | default: "" | strip %}
+          {% if item_url != "" %}
           <a class="med-link-item" href="{{ item_url }}" target="_blank" rel="noopener noreferrer">
+          {% else %}
+          <div class="med-link-item med-link-item-empty">
+          {% endif %}
             <div class="med-li-left">
               <div class="med-li-source">
                 <span class="med-src-logo {{ item.logo_class }}">
@@ -1092,8 +1100,14 @@ permalink: /media/
               </div>
             </div>
             <div class="med-li-title">{{ item.title }}</div>
+            {% if item_url != "" %}
             <svg class="med-li-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><line x1="7" y1="17" x2="17" y2="7"/><polyline points="7 7 17 7 17 17"/></svg>
+            {% endif %}
+          {% if item_url != "" %}
           </a>
+          {% else %}
+          </div>
+          {% endif %}
           {% endfor %}
         </div>
       </div>
@@ -1101,8 +1115,12 @@ permalink: /media/
         <div class="med-broadcast-col-label">Radio Interviews</div>
         <div class="med-link-list">
           {% for item in site.data.media.radio %}
-          {% assign item_url = item.url | default: "#" %}
+          {% assign item_url = item.url | default: "" | strip %}
+          {% if item_url != "" %}
           <a class="med-link-item" href="{{ item_url }}" target="_blank" rel="noopener noreferrer">
+          {% else %}
+          <div class="med-link-item med-link-item-empty">
+          {% endif %}
             <div class="med-li-left">
               <div class="med-li-source">
                 <span class="med-src-logo {{ item.logo_class }}">
@@ -1116,8 +1134,14 @@ permalink: /media/
               </div>
             </div>
             <div class="med-li-title">{{ item.title }}</div>
+            {% if item_url != "" %}
             <svg class="med-li-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><line x1="7" y1="17" x2="17" y2="7"/><polyline points="7 7 17 7 17 17"/></svg>
+            {% endif %}
+          {% if item_url != "" %}
           </a>
+          {% else %}
+          </div>
+          {% endif %}
           {% endfor %}
         </div>
       </div>

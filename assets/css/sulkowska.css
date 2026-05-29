@@ -2365,7 +2365,7 @@
 .jump-row {
   position: sticky;
   top: var(--nav-h, 42px);
-  z-index: 95;
+  z-index: 260;
   display: flex;
   justify-content: center;
   padding: 0.48rem 1.5rem;
@@ -2383,6 +2383,11 @@
 .jump-nav {
   position: relative;
   width: min(230px, 100%);
+  z-index: 40;
+  isolation: isolate;
+}
+.jump-nav.is-open {
+  z-index: 3200;
 }
 .jump-toggle {
   width: 100%;
@@ -2394,7 +2399,7 @@
   padding: 0.42rem 0.75rem;
   border: 1px solid #d8d2cb;
   border-radius: 8px;
-  background: #fff;
+  background: linear-gradient(180deg, #fff 0%, #fbfaf8 100%);
   box-shadow: 0 1px 4px rgba(13, 43, 51, 0.07);
   color: #302d28;
   cursor: pointer;
@@ -2402,14 +2407,19 @@
   font-size: 0.82rem;
   font-weight: 800;
   line-height: 1.2;
-  transition: border-color 180ms cubic-bezier(0.16,1,0.3,1), box-shadow 180ms cubic-bezier(0.16,1,0.3,1), color 180ms cubic-bezier(0.16,1,0.3,1);
+  white-space: nowrap;
+  user-select: none;
+  -webkit-tap-highlight-color: transparent;
+  transition: background 170ms cubic-bezier(0.16,1,0.3,1), border-color 170ms cubic-bezier(0.16,1,0.3,1), box-shadow 170ms cubic-bezier(0.16,1,0.3,1), color 170ms cubic-bezier(0.16,1,0.3,1);
 }
 .jump-toggle:hover,
 .jump-toggle:focus-visible,
 .jump-nav.is-open .jump-toggle {
   border-color: #01696f;
   color: #01696f;
+  background: #fff;
   box-shadow: 0 6px 18px rgba(1, 105, 111, 0.14);
+  outline: none;
 }
 .jump-caret {
   width: 0.45rem;
@@ -2427,26 +2437,39 @@
   position: absolute;
   top: calc(100% + 0.36rem);
   right: 0;
-  width: 100%;
+  z-index: 3200;
+  min-width: 100%;
+  width: max-content;
+  max-width: min(420px, calc(100vw - 2rem));
   max-height: min(62vh, 430px);
   overflow-y: auto;
+  overscroll-behavior: contain;
   display: grid;
   gap: 0.12rem;
   padding: 0.45rem;
   border: 1px solid #e5e0d8;
   border-radius: 10px;
   background: #fff;
-  box-shadow: 0 10px 30px rgba(13, 43, 51, 0.13);
+  box-shadow: 0 18px 44px rgba(13, 43, 51, 0.18);
   opacity: 0;
+  visibility: hidden;
   pointer-events: none;
-  transform: translateY(-6px) scale(0.98);
+  transform: translateY(-8px) scale(0.98);
   transform-origin: top right;
-  transition: opacity 180ms cubic-bezier(0.16,1,0.3,1), transform 180ms cubic-bezier(0.16,1,0.3,1);
+  transition: opacity 170ms cubic-bezier(0.16,1,0.3,1), transform 170ms cubic-bezier(0.16,1,0.3,1), visibility 0s linear 170ms;
+}
+.jump-nav.jump-up .jump-menu {
+  top: auto;
+  bottom: calc(100% + 0.36rem);
+  transform: translateY(8px) scale(0.98);
+  transform-origin: bottom right;
 }
 .jump-nav.is-open .jump-menu {
   opacity: 1;
+  visibility: visible;
   pointer-events: auto;
   transform: translateY(0) scale(1);
+  transition-delay: 0s;
 }
 .jump-option {
   width: 100%;
@@ -2465,12 +2488,14 @@
   line-height: 1.2;
   text-align: left;
   white-space: normal;
-  transition: background 180ms cubic-bezier(0.16,1,0.3,1), color 180ms cubic-bezier(0.16,1,0.3,1);
+  -webkit-tap-highlight-color: transparent;
+  transition: background 150ms cubic-bezier(0.16,1,0.3,1), color 150ms cubic-bezier(0.16,1,0.3,1), transform 150ms cubic-bezier(0.16,1,0.3,1);
 }
 .jump-option:hover,
 .jump-option:focus-visible {
   background: #f0ede8;
   color: #28251d;
+  outline: none;
 }
 .jump-option.active {
   background: #01696f;
@@ -2480,9 +2505,27 @@
 @media (max-width: 640px) {
   .jump-row {
     padding: 0.45rem 1rem;
+    z-index: 300;
   }
   .jump-nav {
-    width: min(220px, 100%);
+    width: min(250px, 100%);
+  }
+  .jump-toggle {
+    min-height: 40px;
+    padding: 0.52rem 0.8rem;
+    font-size: 0.86rem;
+  }
+  .jump-menu {
+    width: min(360px, calc(100vw - 1.5rem));
+    max-width: calc(100vw - 1.5rem);
+    max-height: min(70dvh, 430px);
+    padding: 0.55rem;
+    border-radius: 12px;
+  }
+  .jump-option {
+    min-height: 42px;
+    padding: 0.62rem 0.72rem;
+    font-size: 0.88rem;
   }
 }
 @media print {

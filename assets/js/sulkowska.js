@@ -748,8 +748,74 @@ window.show = function(name) {
   function closeNav(nav) {
     if (!nav) return;
     nav.classList.remove('is-open');
+    nav.classList.remove('jump-up');
     const toggle = nav.querySelector('.jump-toggle');
     if (toggle) toggle.setAttribute('aria-expanded', 'false');
+    const menu = nav.querySelector('.jump-menu');
+    if (menu) {
+      menu.style.position = '';
+      menu.style.left = '';
+      menu.style.right = '';
+      menu.style.top = '';
+      menu.style.bottom = '';
+      menu.style.width = '';
+      menu.style.maxHeight = '';
+    }
+  }
+
+  function closeOtherNavs(current) {
+    document.querySelectorAll('[data-jump-nav].is-open').forEach(nav => {
+      if (nav !== current) closeNav(nav);
+    });
+  }
+
+  function positionMenu(nav) {
+    if (!nav || !nav.classList.contains('is-open')) return;
+    const toggle = nav.querySelector('.jump-toggle');
+    const menu = nav.querySelector('.jump-menu');
+    if (!toggle || !menu) return;
+
+    menu.style.position = '';
+    menu.style.left = '';
+    menu.style.right = '';
+    menu.style.top = '';
+    menu.style.bottom = '';
+    menu.style.width = '';
+    menu.style.maxHeight = '';
+    nav.classList.remove('jump-up');
+
+    const toggleRect = toggle.getBoundingClientRect();
+    const viewportW = window.innerWidth || document.documentElement.clientWidth;
+    const viewportH = window.innerHeight || document.documentElement.clientHeight;
+
+    if (viewportW <= 640) {
+      const pad = 12;
+      const width = Math.min(360, viewportW - pad * 2);
+      const menuHeight = Math.min(menu.scrollHeight || 0, 430, Math.max(220, viewportH - pad * 2));
+      const left = Math.max(pad, Math.min(toggleRect.left, viewportW - width - pad));
+      let top = toggleRect.bottom + 8;
+      if (top + menuHeight > viewportH - pad) {
+        top = Math.max(navHeight() + pad, viewportH - menuHeight - pad);
+      }
+
+      menu.style.position = 'fixed';
+      menu.style.left = left + 'px';
+      menu.style.right = 'auto';
+      menu.style.top = top + 'px';
+      menu.style.bottom = 'auto';
+      menu.style.width = width + 'px';
+      menu.style.maxHeight = Math.max(180, viewportH - top - pad) + 'px';
+      return;
+    }
+
+    const menuHeight = Math.min(menu.scrollHeight || 0, viewportH * 0.62, 430);
+    if (viewportH - toggleRect.bottom < menuHeight + 16 && toggleRect.top > menuHeight + 16) {
+      nav.classList.add('jump-up');
+    }
+  }
+
+  function positionOpenMenus() {
+    document.querySelectorAll('[data-jump-nav].is-open').forEach(positionMenu);
   }
 
   window.labJumpTo = function (id, trigger) {
@@ -776,7 +842,13 @@ window.show = function(name) {
 
   function initJumpNavs() {
     updateNavHeight();
-    window.addEventListener('resize', updateNavHeight);
+    window.addEventListener('resize', function () {
+      updateNavHeight();
+      positionOpenMenus();
+    });
+    if (window.visualViewport) {
+      window.visualViewport.addEventListener('resize', positionOpenMenus);
+    }
     window.setTimeout(updateNavHeight, 250);
 
     document.querySelectorAll('[data-jump-nav]').forEach(nav => {
@@ -788,9 +860,17 @@ window.show = function(name) {
 
       if (toggle) {
         toggle.addEventListener('click', event => {
+          event.preventDefault();
           event.stopPropagation();
-          const isOpen = nav.classList.toggle('is-open');
-          toggle.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
+          const willOpen = !nav.classList.contains('is-open');
+          closeOtherNavs(nav);
+          nav.classList.toggle('is-open', willOpen);
+          toggle.setAttribute('aria-expanded', willOpen ? 'true' : 'false');
+          if (willOpen) {
+            window.requestAnimationFrame(() => positionMenu(nav));
+          } else {
+            closeNav(nav);
+          }
         });
       }
 
