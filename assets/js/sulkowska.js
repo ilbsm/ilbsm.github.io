@@ -804,7 +804,7 @@ window.show = function(name) {
       menu.style.top = top + 'px';
       menu.style.bottom = 'auto';
       menu.style.width = width + 'px';
-      menu.style.maxHeight = Math.max(180, viewportH - top - pad) + 'px';
+      menu.style.maxHeight = Math.max(160, Math.min(menuHeight, viewportH - top - pad)) + 'px';
       return;
     }
 
