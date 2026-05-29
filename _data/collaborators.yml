@@ -47,7 +47,7 @@ collaborators:
     cta: "utdallas.edu ↗"
 
   - name: "Prof. Terence Hwa"
-    url: "http://hwalab.ucsd.edu/"
+    url: "https://biology.ucsd.edu/research/faculty/thwa"
     logo: "ucsd.png"
     fallback_text: "UCSD"
     fallback_color: "#0d6f7e"
@@ -110,7 +110,7 @@ collaborators:
     cta: "unil.ch ↗"
 
   - name: "Prof. Kenneth Millett"
-    url: "http://www.math.ucsb.edu/~millett/"
+    url: "https://www.math.ucsb.edu/people/kenneth-millett"
     logo: "ucsb.png"
     fallback_text: "UCSB"
     fallback_color: "#003660"

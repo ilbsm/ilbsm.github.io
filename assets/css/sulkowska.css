@@ -1790,8 +1790,8 @@
     .mg-item.mg-hidden { display: none; }
 
     /* show only first 20 by default */
-    .med-gallery-grid .mg-item:nth-child(n+21) { display: none; }
-    .med-gallery-grid.show-all .mg-item:nth-child(n+21) { display: block !important; }
+    .med-gallery-grid .mg-item:nth-child(n+15) { display: none; }
+    .med-gallery-grid.show-all .mg-item:nth-child(n+15) { display: block !important; }
     .med-gallery-grid.show-all .mg-item.mg-hidden { display: none !important; }
 
     .med-show-more { display: flex; justify-content: center; padding: 1.2rem 0 2rem; background: #fff; border-bottom: 1px solid #e8ebf0; }

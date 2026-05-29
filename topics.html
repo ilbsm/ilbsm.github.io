@@ -132,7 +132,7 @@ permalink: /topics/
   background: var(--card-bg, #fff);
 }
 .tp-card-img.tp-dark {
-  background: #111827;
+  background: #000;
 }
 .tp-card-img img {
   display: block;
@@ -141,6 +141,10 @@ permalink: /topics/
   object-fit: contain;
   padding: 0.35rem;
   transition: transform 0.2s ease;
+}
+.tp-card-img.tp-dark img {
+  object-fit: cover;
+  padding: 0;
 }
 .tp-logo {
   display: flex;

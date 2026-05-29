@@ -111,6 +111,14 @@ permalink: /media/
 .hp-see-all:hover { color: #28251d; text-decoration: none; }
 
 /* ── GALLERY ── */
+#ms-gallery {
+  padding-top: 0.75rem;
+  padding-bottom: 0.75rem;
+}
+#ms-gallery .hp-row-head {
+  margin-bottom: 0.4rem;
+  padding-bottom: 0.25rem;
+}
 .med-filter-pills { display: flex; gap: var(--space-2); flex-wrap: wrap; margin-top: var(--space-2); }
 .med-fpill {
   padding: var(--space-1) var(--space-3); border-radius: var(--radius-full);
@@ -119,21 +127,36 @@ permalink: /media/
 }
 .med-fpill.active, .med-fpill:hover { background: #01696f; color: white; }
 .med-gallery-grid {
-  display: grid; grid-template-columns: repeat(auto-fill, minmax(200px,1fr)); gap: var(--space-3);
+  display: grid; grid-template-columns: repeat(auto-fill, minmax(200px,1fr)); gap: 0.35rem;
 }
 .mg-item { position: relative; overflow: hidden; border-radius: var(--radius-md); aspect-ratio: 4/3; cursor: pointer; background: #f0ede8; }
 .mg-item img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.4s ease; }
 .mg-item:hover img { transform: scale(1.04); }
 .mg-caption { position: absolute; bottom: 0; left: 0; right: 0; padding: var(--space-2) var(--space-3); background: linear-gradient(transparent,rgba(0,0,0,0.6)); color: white; font-size: var(--text-xs); opacity: 0; transition: opacity 0.25s ease; pointer-events: none; }
 .mg-item:hover .mg-caption { opacity: 1; }
-.med-show-more { text-align: center; margin-top: var(--space-8); }
-.med-show-btn {
-  display: inline-flex; align-items: center; gap: var(--space-2);
-  padding: var(--space-3) var(--space-6); border-radius: var(--radius-full);
-  background: transparent; border: 1px solid #d4d1ca; color: #5a5957;
-  font-size: var(--text-sm); font-weight: 500; cursor: pointer; transition: all var(--transition);
+.med-show-more { text-align: center; margin-top: 0.5rem; }
+/* ── SHARED BUTTON STYLE: Jump to section / Show all photos / Show archive ── */
+.med-show-btn,
+.med-archive-toggle,
+.jump-toggle {
+  display: inline-flex; align-items: center; gap: 0.5rem;
+  min-height: 34px; padding: 0.42rem 0.75rem;
+  border-radius: 8px;
+  background: #fff; border: 1px solid #d8d2cb; color: #302d28;
+  font-family: inherit; font-size: 0.82rem; font-weight: 800;
+  cursor: pointer; box-shadow: 0 1px 4px rgba(13,43,51,0.07);
+  transition: border-color var(--transition), box-shadow var(--transition), color var(--transition);
+  white-space: nowrap;
 }
-.med-show-btn:hover { background: #28251d; color: white; border-color: #28251d; }
+.med-show-btn:hover,
+.med-archive-toggle:hover,
+.jump-toggle:hover,
+.jump-toggle:focus-visible,
+.jump-nav.is-open .jump-toggle {
+  border-color: #01696f; color: #01696f;
+  box-shadow: 0 6px 18px rgba(1,105,111,0.14);
+  background: #fff;
+}
 
 /* ── LIGHTBOX ── */
 .mg-lightbox { display:none; position:fixed; inset:0; background:rgba(0,0,0,0.92); z-index:1000; align-items:center; justify-content:center; }
@@ -168,16 +191,6 @@ permalink: /media/
 .med-vid-info { padding: 0.72rem 0.9rem 0.8rem; flex:1; display:flex; flex-direction:column; gap: 0.45rem; }
 .med-vid-t { font-size: 1rem; font-weight: 800; color: #322f2b; line-height: 1.25; }
 .med-vid-s { font-size: 0.9rem; color: #9a9896; display: flex; align-items: center; gap: var(--space-2); line-height:1.35; }
-.med-archive-toggle {
-  display: inline-flex; align-items: center; gap: 0.55rem;
-  min-height: 34px; padding: 0.35rem 1rem;
-  border-radius: var(--radius-full);
-  border: 1px solid #d9d4cc; background: #f0ede8; color: #5b5752;
-  font-family: inherit; font-size: 0.88rem; font-weight: 800;
-  cursor: pointer; box-shadow: 0 1px 3px rgba(0,0,0,0.05);
-  transition: background var(--transition), border-color var(--transition), color var(--transition);
-}
-.med-archive-toggle:hover { background: #e9e5df; border-color: #cfc8bf; color: #33302d; }
 .med-archive-toggle svg { transition: transform var(--transition); }
 .med-archive-toggle.is-closed svg { transform: rotate(180deg); }
 .med-vid-archive { display: flex; flex-direction: column; gap: 0.42rem; }
@@ -419,8 +432,16 @@ permalink: /media/
   color: #b6b6b2;
 }
 
+#ms-news {
+  padding-top: 0.75rem;
+  padding-bottom: 0.75rem;
+}
+#ms-news .hp-row-head {
+  margin-bottom: 0.42rem;
+  padding-bottom: 0.28rem;
+}
 #ms-news .med-grants-label {
-  margin: 0.1rem 0 1rem;
+  margin: 0.05rem 0 0.5rem;
   color: #00696f;
   font-size: 0.84rem;
   font-weight: 900;
@@ -429,14 +450,12 @@ permalink: /media/
 }
 #ms-news .med-grants-grid {
   grid-template-columns: repeat(6, minmax(0, 1fr));
-  grid-auto-rows: 1fr;
-  gap: 0.75rem;
+  gap: 0.38rem;
 }
 #ms-news .med-grant-card {
   box-sizing: border-box;
-  min-height: 218px;
   height: 100%;
-  padding: 1.15rem 1.05rem 1.1rem;
+  padding: 0.55rem 0.55rem 0.55rem;
   border-color: #d9d4cc;
   border-radius: 10px;
   background: #fbfaf8;
@@ -447,8 +466,7 @@ permalink: /media/
   box-shadow: 0 2px 9px rgba(13,43,51,0.07);
 }
 #ms-news .med-grant-funder {
-  min-height: 34px;
-  margin-bottom: 0.95rem;
+  margin-bottom: 0.45rem;
 }
 #ms-news .med-grant-title {
   font-size: 1rem;
@@ -459,7 +477,7 @@ permalink: /media/
   color: #95918d;
   font-size: 0.88rem;
   line-height: 1.55;
-  margin-top: auto;
+  margin-top: 0.3rem;
 }
 #ms-news .med-src-logo {
   height: 27px;
@@ -471,18 +489,18 @@ permalink: /media/
   height: 33px;
 }
 #ms-news .hp-eyebrow {
-  margin: 2.65rem 0 0.75rem;
+  margin: 1.3rem 0 0.38rem;
   color: #00696f;
   font-size: 0.84rem;
   font-weight: 900;
 }
 #ms-news > .med-link-list {
-  gap: 0.55rem;
+  gap: 0.28rem;
 }
 #ms-news > .med-link-list .med-link-item {
   grid-template-columns: minmax(320px, 430px) minmax(0, 1fr) auto;
-  min-height: 59px;
-  padding: 0.55rem 0.9rem;
+  min-height: 30px;
+  padding: 0.28rem 0.6rem;
   border: 1px solid #e5dfd8;
   border-radius: 8px;
   background: #fbfaf8;
@@ -498,7 +516,7 @@ permalink: /media/
   display: grid;
   grid-template-columns: minmax(0, 1fr) auto;
   align-items: center;
-  gap: 0.9rem;
+  gap: 0.45rem;
   min-width: 0;
 }
 #ms-news > .med-link-list .med-li-source {
@@ -535,10 +553,14 @@ permalink: /media/
 #ms-press .hp-eyebrow {
   display: none;
 }
+#ms-interviews {
+  padding-top: 0.75rem;
+  padding-bottom: 0.75rem;
+}
 #ms-interviews .hp-row-head,
 #ms-press .hp-row-head {
-  margin-bottom: 0.85rem;
-  padding-bottom: 0.55rem;
+  margin-bottom: 0.42rem;
+  padding-bottom: 0.28rem;
   border-bottom: 1px solid #eee9e2;
 }
 #ms-interviews .hp-title,
@@ -550,11 +572,10 @@ permalink: /media/
 }
 #ms-interviews .med-interview-cards {
   grid-template-columns: repeat(5, minmax(0, 1fr));
-  gap: 1rem;
+  gap: 0.5rem;
 }
 #ms-interviews .med-int-card {
-  min-height: 230px;
-  padding: 1.45rem 1.55rem;
+  padding: 0.7rem 0.8rem;
   border-color: #d9d4cc;
   border-radius: 10px;
   background: #fbfaf8;
@@ -565,9 +586,10 @@ permalink: /media/
   box-shadow: 0 2px 9px rgba(13,43,51,0.07);
 }
 #ms-interviews .med-int-source {
-  min-height: 34px;
-  gap: 0.75rem;
+  gap: 0.5rem;
   align-items: center;
+  flex-wrap: nowrap;
+  margin-bottom: 0.35rem;
 }
 #ms-interviews .med-int-source .med-src-name {
   color: #332f2b;
@@ -578,12 +600,14 @@ permalink: /media/
 #ms-interviews .med-int-year {
   color: #b1afab;
   font-size: 0.9rem;
+  margin-left: auto;
+  flex-shrink: 0;
 }
 #ms-interviews .med-int-title {
   color: #28251d;
   font-size: 1rem;
   font-weight: 800;
-  line-height: 1.4;
+  line-height: 1.3;
 }
 #ms-interviews .med-int-arrow {
   display: none;
@@ -621,12 +645,17 @@ permalink: /media/
 }
 .med-press-more-btn:hover { background: #01696f; color: #fff; }
 
+#ms-talks {
+  padding-top: 0.8rem;
+  padding-bottom: 0.8rem;
+}
 #ms-talks .hp-row-head {
   align-items: flex-start;
-  margin-bottom: 0.75rem;
+  margin-bottom: 0.35rem;
+  padding-bottom: 0.28rem;
 }
 #ms-talks .med-talks-stats {
-  gap: 1.35rem;
+  gap: 0.7rem;
 }
 #ms-talks .med-tstat-n {
   color: #00696f;
@@ -641,14 +670,14 @@ permalink: /media/
   text-transform: uppercase;
 }
 #ms-talks .med-timeline {
-  gap: 2rem;
+  gap: 0.75rem;
 }
 #ms-talks .med-tl-item {
   grid-template-columns: 52px 1fr;
-  gap: 0.7rem;
+  gap: 0.4rem;
 }
 #ms-talks .med-tl-year-col {
-  padding-top: 0.35rem;
+  padding-top: 0.12rem;
 }
 #ms-talks .med-tl-year {
   display: inline-block;
@@ -662,11 +691,11 @@ permalink: /media/
   display: none;
 }
 #ms-talks .med-tl-cards {
-  gap: 0.35rem;
+  gap: 0.18rem;
 }
 #ms-talks .med-tl-card {
-  min-height: 60px;
-  padding: 0.65rem 0.75rem;
+  min-height: 30px;
+  padding: 0.3rem 0.5rem;
   border-radius: 10px;
   border-color: #e5dfd8;
   background: #fbfaf8;
@@ -677,13 +706,13 @@ permalink: /media/
   border-color: #d5cbc1;
 }
 #ms-talks .med-tc-tag {
-  margin-bottom: 0.28rem;
+  margin-bottom: 0.1rem;
   font-size: 0.84rem;
   font-weight: 900;
   letter-spacing: 0.12em;
 }
 #ms-talks .med-tc-title {
-  margin-bottom: 0.12rem;
+  margin-bottom: 0.05rem;
   font-size: 0.98rem;
   font-weight: 800;
   line-height: 1.25;
@@ -693,7 +722,7 @@ permalink: /media/
   font-size: 0.86rem;
 }
 #ms-talks .med-tc-link {
-  margin-top: 0.35rem;
+  margin-top: 0.15rem;
   font-size: 0.86rem;
   font-weight: 800;
 }
@@ -874,6 +903,10 @@ permalink: /media/
       <div>
         <div class="hp-title">Lab Gallery</div>
       </div>
+      <button class="med-show-btn" id="med-more-btn" style="flex-shrink:0">
+        Show all 65 photos
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><polyline points="6 9 12 15 18 9"/></svg>
+      </button>
     </div>
     <div class="med-gallery-grid" id="mg-grid">
       <div class="mg-item" data-cat="group"><img src="{{ '/assets/img/media/gallery/72eECOe.jpeg' | relative_url }}" alt="Lab members — group photo" loading="lazy"/><div class="mg-caption">Lab members — group photo</div></div>
@@ -941,12 +974,6 @@ permalink: /media/
       <div class="mg-item" data-cat="kfnd"><img src="{{ '/assets/img/media/gallery/jWKKlvr.jpeg' | relative_url }}" alt="Science outreach" loading="lazy"/><div class="mg-caption">Science outreach</div></div>
       <div class="mg-item" data-cat="kfnd"><img src="{{ '/assets/img/media/gallery/pwdk6Nm.jpeg' | relative_url }}" alt="Young scientists" loading="lazy"/><div class="mg-caption">Young scientists</div></div>
       <div class="mg-item" data-cat="kfnd"><img src="{{ '/assets/img/media/gallery/EZVYtPT.jpeg' | relative_url }}" alt="Children's Fund activity" loading="lazy"/><div class="mg-caption">Children's Fund activity</div></div>
-    </div>
-    <div class="med-show-more">
-      <button class="med-show-btn" id="med-more-btn">
-        Show all 65 photos
-        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><polyline points="6 9 12 15 18 9"/></svg>
-      </button>
     </div>
   </div>
 
@@ -1146,8 +1173,8 @@ permalink: /media/
           <span class="med-src-logo {{ item.logo_class }}"><img src="{{ '/assets/img/logos/media/' | append: item.logo | relative_url }}" alt="{{ item.source }} logo"></span>
           {% endif %}
           <span class="med-src-name">{{ item.source }}</span>
+          <span class="med-int-year">{{ item.year }}</span>
         </div>
-        <div class="med-int-year">{{ item.year }}</div>
         <div class="med-int-title">{{ item.title }}</div>
         <div class="med-int-arrow">Read →</div>
       </a>
@@ -1201,10 +1228,6 @@ permalink: /media/
     <div class="hp-row-head">
       <div>
         <div class="hp-title">Public Talks &amp; Workshops</div>
-      </div>
-      <div class="med-talks-stats">
-        <div class="med-tstat"><div class="med-tstat-n">11+</div><div class="med-tstat-l">Years</div></div>
-        <div class="med-tstat"><div class="med-tstat-n">500+</div><div class="med-tstat-l">Kids</div></div>
       </div>
     </div>
     <div class="med-timeline">

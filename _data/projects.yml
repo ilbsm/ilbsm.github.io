@@ -75,8 +75,8 @@ layout:
           - name: "Topoly"
             url: "http://topoly.cent.uw.edu.pl"
             cat: "plugin"
-            img_bg: "#eef4f8"
-            img_logo_html: '<span style="font-size:2rem;font-weight:900;color:#1e6e8a;font-family:Merriweather,serif;letter-spacing:-2px">Topoly</span><span style="font-size:0.6rem;color:#9e9e9e;letter-spacing:0.1em;text-transform:uppercase">Python Package</span>'
+            img_bg: "#0b1f2e"
+            img_logo_html: '<svg viewBox="0 0 120 80" width="90" height="60" fill="none" stroke="rgba(255,255,255,0.12)" stroke-width="2.5" stroke-linecap="round" style="position:absolute;top:12px;right:12px"><path d="M30 20 Q60 5 90 20 Q105 35 90 50 Q60 65 30 50 Q15 35 30 20Z"/><path d="M45 28 Q60 18 75 28 Q82 38 75 48 Q60 58 45 48 Q38 38 45 28Z"/></svg><span style="font-size:2.4rem;font-weight:900;color:#fff;font-family:Merriweather,serif;letter-spacing:-2px;line-height:1">Topoly</span><span style="font-size:0.6rem;color:rgba(255,255,255,0.4);letter-spacing:0.15em;text-transform:uppercase;margin-top:0.3rem">Python Package</span>'
             badge: "Package"
             badge_color: "#1e6e8a"
             desc: "Knot invariants (Alexander, Jones, HOMFLY) for polymers."
