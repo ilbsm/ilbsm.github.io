@@ -794,7 +794,7 @@ window.show = function(name) {
       const pad = 12;
       const availableBelow = viewportH - toggleRect.bottom - pad;
       const preferredHeight = availableBelow > 150 ? availableBelow : viewportH * 0.42;
-      menu.style.maxHeight = Math.max(140, Math.min(245, preferredHeight)) + 'px';
+      menu.style.maxHeight = Math.max(130, Math.min(220, preferredHeight)) + 'px';
       return;
     }
 

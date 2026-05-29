@@ -8,7 +8,12 @@ permalink: /publications/
 <style>
   /* ── Page shell ── */
   :root { --nav-h: 42px; --sidebar-w: 290px; }
-  .pub-page { background: #f0f2f5; min-height: 100vh; }
+  .pub-page {
+    background: #f0f2f5;
+    min-height: 100vh;
+    max-width: 100%;
+    overflow-x: hidden;
+  }
 
   .ps-dot {
     width: 7px; height: 7px; border-radius: 50%;
@@ -19,10 +24,12 @@ permalink: /publications/
   /* ── Two-column layout ── */
   .pub-layout {
     width: 100%;
+    max-width: 100%;
     display: grid;
     grid-template-columns: var(--sidebar-w) 1fr;
     gap: 0;
     align-items: start;
+    overflow-x: hidden;
   }
 
   /* ── Sidebar ── */
@@ -207,7 +214,13 @@ permalink: /publications/
   @keyframes shimmer { 0%{background-position:200% 0} 100%{background-position:-200% 0} }
 
   /* ── Main content area ── */
-  .pub-main { padding: 1.2rem 1.5rem 4rem; min-width: 0; }
+  .pub-main {
+    width: 100%;
+    max-width: 100%;
+    padding: 1.2rem 1.5rem 4rem;
+    min-width: 0;
+    box-sizing: border-box;
+  }
 
   .pub-result-bar {
     font-size: 0.76rem; color: #888; margin-bottom: 0.75rem;
@@ -241,6 +254,7 @@ permalink: /publications/
     .pub-layout {
       display: flex;
       flex-direction: column;
+      min-width: 0;
     }
     .pub-sidebar {
       display: contents;
@@ -259,6 +273,8 @@ permalink: /publications/
     #pub-sort-section { order: 2; background: #fff; }
     #pub-filter-section { order: 3; background: #fff; }
     .pub-main {
+      width: 100%;
+      max-width: 100%;
       order: 4;
       padding: 1rem 1rem 3rem;
       scroll-margin-top: calc(var(--nav-h) + 78px);
@@ -270,6 +286,14 @@ permalink: /publications/
     .psb-chips-divider { display: none; }
   }
   @media (max-width: 700px) {
+    .pub-layout,
+    .psb-section,
+    .pub-main {
+      width: 100%;
+      max-width: 100%;
+      min-width: 0;
+      box-sizing: border-box;
+    }
     #pub-search-section {
       padding: 0.55rem 0.75rem;
     }
@@ -290,6 +314,7 @@ permalink: /publications/
     }
     .psb-section-filter {
       padding: 0.25rem 0.75rem 0.55rem;
+      overflow: hidden;
     }
     #pub-sort-section .psb-toggle,
     #pub-filter-section .psb-toggle {
@@ -306,9 +331,13 @@ permalink: /publications/
       background: #fff;
     }
     .psb-chips {
+      width: 100%;
+      max-width: 100%;
+      min-width: 0;
       flex-wrap: nowrap;
       gap: 0.42rem;
       overflow-x: auto;
+      overflow-y: hidden;
       padding: 0.1rem 0 0.22rem;
       -webkit-overflow-scrolling: touch;
       scrollbar-width: none;
@@ -325,6 +354,11 @@ permalink: /publications/
     .pub-main {
       padding: 0.65rem 0.65rem 1.6rem;
       scroll-margin-top: calc(var(--nav-h) + 72px);
+      overflow-x: hidden;
+    }
+    .pub-loading {
+      padding: 2.6rem 0.75rem;
+      text-align: center;
     }
     .pub-result-bar {
       width: max-content;

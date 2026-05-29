@@ -2508,8 +2508,8 @@
     z-index: 300;
   }
   .jump-nav {
-    width: min(210px, 100%);
-    max-width: min(210px, 100%);
+    width: min(210px, calc(100% - 0.5rem));
+    max-width: min(210px, calc(100% - 0.5rem));
   }
   .jump-toggle {
     min-height: 36px;
@@ -2517,24 +2517,33 @@
     font-size: 0.78rem;
   }
   .jump-menu {
+    position: static;
+    display: none;
     left: 0;
     right: auto;
     width: 100%;
     max-width: 100%;
-    max-height: min(44dvh, 245px);
+    max-height: min(36dvh, 220px);
+    margin-top: 0.35rem;
     gap: 0.06rem;
     padding: 0.32rem;
     border-radius: 9px;
     box-shadow: 0 12px 30px rgba(13, 43, 51, 0.16);
+    transform: none;
+    transform-origin: top;
+  }
+  .jump-nav.is-open .jump-menu {
+    display: grid;
+    transform: none;
   }
   .jump-nav.jump-up .jump-menu {
-    top: calc(100% + 0.36rem);
+    top: auto;
     bottom: auto;
-    transform: translateY(-8px) scale(0.98);
-    transform-origin: top right;
+    transform: none;
+    transform-origin: top;
   }
   .jump-nav.is-open.jump-up .jump-menu {
-    transform: translateY(0) scale(1);
+    transform: none;
   }
   .jump-option {
     min-height: 32px;
