@@ -142,7 +142,7 @@ layout:
         knot_tilt: 0.4
         cards:
           - name: "BSDB — Bio-molecule Stretching Database"
-            url: "http://jowisz.ifpan.edu.pl/BSDB/"
+            url: "https://pmc.ncbi.nlm.nih.gov/articles/PMC3013760/"
             cat: "database"
             img: "/assets/img/software/bsdb-stretch.png"
             img_alt: "BSDB"
@@ -151,7 +151,7 @@ layout:
             desc: "Force-extension data from coarse-grained simulations."
 
           - name: "Genus for Biomolecules"
-            url: "http://genus.fuw.edu.pl"
+            url: "https://genus.fuw.edu.pl/"
             cat: "database server"
             img: "/assets/img/software/genus.png"
             img_alt: "Genus"
@@ -211,14 +211,14 @@ layout:
         knot_tilt: 0.3
         cards:
           - name: "Horda Cluster"
-            url: "https://horda.cent.uw.edu.pl"
+            url: "https://ilbsm.github.io/horda/"
             cat: "server"
             img_bg: "#1c313a"
             img_logo_html: '<span style="font-size:1.8rem;font-weight:900;color:#fff;letter-spacing:-1px;font-family:Merriweather,serif">HORDA</span><span style="font-size:0.58rem;color:rgba(255,255,255,0.4);letter-spacing:0.15em;text-transform:uppercase">HPC Cluster · CeNT UW</span>'
             desc: "Primary HPC cluster for large-scale topology simulations."
 
           - name: "LSSCB Cluster"
-            url: "https://cent.uw.edu.pl"
+            url: "https://lsscb.cent.uw.edu.pl"
             cat: "server"
             img_bg: "#263238"
             img_logo_html: '<span style="font-size:1.8rem;font-weight:900;color:#fff;letter-spacing:-1px;font-family:Arial">C<span style="color:#4fc3f7;font-size:0.8em">e</span>NT</span><span style="font-size:0.58rem;color:rgba(255,255,255,0.4);letter-spacing:0.15em;text-transform:uppercase">LSSCB Cluster</span>'
