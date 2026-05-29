@@ -223,3 +223,28 @@ layout:
             img_bg: "#263238"
             img_logo_html: '<span style="font-size:1.8rem;font-weight:900;color:#fff;letter-spacing:-1px;font-family:Arial">C<span style="color:#4fc3f7;font-size:0.8em">e</span>NT</span><span style="font-size:0.58rem;color:rgba(255,255,255,0.4);letter-spacing:0.15em;text-transform:uppercase">LSSCB Cluster</span>'
             desc: "Shared HPC infrastructure for structural bioinformatics."
+
+        resources:
+          title: "HORDA resources"
+          intro: "HORDA supports large-scale topology simulations, molecular modelling, and analysis workflows used across lab research projects."
+          url: "https://ilbsm.github.io/horda/"
+          stats:
+            - value: "228"
+              label: "physical CPUs"
+              sub: "348 virtual CPUs"
+            - value: "22"
+              label: "GPUs"
+            - value: "736 GB"
+              label: "RAM"
+            - value: "around 45 TB"
+              label: "shared storage"
+          software:
+            - "Amber 18 (with AmberTools)"
+            - "CUDA 11.5"
+            - "CUDA 12.2"
+            - "Gromacs 2023.1"
+            - "Gromacs with CP2K 2023.1"
+            - "Python 3.9"
+            - "Python 3.10"
+            - "Python 3.11"
+            - "SageMath 9.5-4"

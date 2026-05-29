@@ -179,10 +179,121 @@ permalink: /topics/
   font-size: 0.78rem;
   line-height: 1.45;
 }
+.tp-resource-panel {
+  display: grid;
+  grid-template-columns: minmax(0, 0.9fr) minmax(0, 1.4fr);
+  gap: 0.95rem;
+  margin: -0.35rem var(--tp-side) 1.25rem;
+  padding: 1rem;
+  border: 1px solid #dfe6ee;
+  border-left: 4px solid var(--section-color, var(--tp-teal));
+  border-radius: 10px;
+  background: #fff;
+  box-shadow: 0 4px 18px rgba(13, 43, 51, 0.06);
+}
+.tp-resource-copy {
+  min-width: 0;
+}
+.tp-resource-kicker {
+  color: var(--section-color, var(--tp-teal));
+  font-size: 0.68rem;
+  font-weight: 900;
+  letter-spacing: 0.13em;
+  text-transform: uppercase;
+}
+.tp-resource-copy p {
+  margin: 0.35rem 0 0.7rem;
+  color: #4b5563;
+  font-size: 0.82rem;
+  line-height: 1.55;
+}
+.tp-resource-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  min-height: 30px;
+  padding: 0.34rem 0.65rem;
+  border: 1px solid color-mix(in srgb, var(--section-color, var(--tp-teal)) 34%, #d7e1ea);
+  border-radius: 999px;
+  color: var(--section-color, var(--tp-teal));
+  background: color-mix(in srgb, var(--section-color, var(--tp-teal)) 8%, #fff);
+  font-size: 0.72rem;
+  font-weight: 850;
+  text-decoration: none;
+}
+.tp-resource-link:hover {
+  color: #fff;
+  background: var(--section-color, var(--tp-teal));
+  text-decoration: none;
+}
+.tp-resource-stats {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 0.45rem;
+}
+.tp-resource-stat {
+  min-width: 0;
+  padding: 0.58rem 0.65rem;
+  border-radius: 8px;
+  background: #f5f7fb;
+  border: 1px solid #e5ebf2;
+}
+.tp-resource-stat strong {
+  display: block;
+  color: #101827;
+  font-size: 0.98rem;
+  font-weight: 900;
+  line-height: 1.05;
+}
+.tp-resource-stat span {
+  display: block;
+  margin-top: 0.18rem;
+  color: #667085;
+  font-size: 0.62rem;
+  font-weight: 800;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+.tp-resource-stat small {
+  display: block;
+  margin-top: 0.12rem;
+  color: #8a93a0;
+  font-size: 0.64rem;
+  line-height: 1.25;
+}
+.tp-software-title {
+  margin: 0.75rem 0 0.4rem;
+  color: #667085;
+  font-size: 0.66rem;
+  font-weight: 900;
+  letter-spacing: 0.13em;
+  text-transform: uppercase;
+}
+.tp-software-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.32rem;
+}
+.tp-software-chip {
+  display: inline-flex;
+  align-items: center;
+  min-height: 25px;
+  padding: 0.22rem 0.52rem;
+  border-radius: 999px;
+  background: #eef4fb;
+  border: 1px solid #dbe6f2;
+  color: #344054;
+  font-size: 0.68rem;
+  font-weight: 750;
+  line-height: 1.15;
+}
 
 @media (max-width: 980px) {
   .tp-grid {
     grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+  .tp-resource-panel {
+    grid-template-columns: 1fr;
   }
 }
 @media (max-width: 640px) {
@@ -221,6 +332,17 @@ permalink: /topics/
   }
   .tp-card-img {
     height: min(205px, 52vw);
+  }
+  .tp-resource-panel {
+    gap: 0.75rem;
+    margin: -0.25rem var(--tp-side) 0.95rem;
+    padding: 0.85rem;
+  }
+  .tp-resource-stats {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+  .tp-software-list {
+    gap: 0.28rem;
   }
 }
 </style>
@@ -274,6 +396,32 @@ permalink: /topics/
         </a>
         {% endfor %}
       </div>
+      {% if section.resources %}
+      <div class="tp-resource-panel" style="--section-color: {{ section.color }}">
+        <div class="tp-resource-copy">
+          <div class="tp-resource-kicker">{{ section.resources.title }}</div>
+          <p>{{ section.resources.intro }}</p>
+          <a class="tp-resource-link" href="{{ section.resources.url }}" target="_blank" rel="noopener noreferrer">View available resources &#8594;</a>
+        </div>
+        <div>
+          <div class="tp-resource-stats">
+            {% for stat in section.resources.stats %}
+            <div class="tp-resource-stat">
+              <strong>{{ stat.value }}</strong>
+              <span>{{ stat.label }}</span>
+              {% if stat.sub %}<small>{{ stat.sub }}</small>{% endif %}
+            </div>
+            {% endfor %}
+          </div>
+          <div class="tp-software-title">Available software</div>
+          <div class="tp-software-list">
+            {% for software in section.resources.software %}
+            <span class="tp-software-chip">{{ software }}</span>
+            {% endfor %}
+          </div>
+        </div>
+      </div>
+      {% endif %}
     </section>
     {% endfor %}
   {% endfor %}
