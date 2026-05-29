@@ -7,7 +7,7 @@ permalink: /publications/
 
 <style>
   /* ── Page shell ── */
-  :root { --nav-h: 42px; --sidebar-w: 290px; --jump-row-h: 45px; }
+  :root { --nav-h: 42px; --sidebar-w: 290px; }
   .pub-page { background: #f0f2f5; min-height: 100vh; }
 
   /* ── Compact page header ── */
@@ -82,8 +82,8 @@ permalink: /publications/
   /* ── Sidebar ── */
   .pub-sidebar {
     position: sticky;
-    top: calc(var(--nav-h) + 57px + var(--jump-row-h));
-    height: calc(100vh - var(--nav-h) - 57px - var(--jump-row-h));
+    top: calc(var(--nav-h) + 57px);
+    height: calc(100vh - var(--nav-h) - 57px);
     overflow-y: auto;
     background: #fff;
     border-right: 1px solid #e0e4ec;
@@ -91,7 +91,6 @@ permalink: /publications/
   }
   .pub-sidebar::-webkit-scrollbar { width: 4px; }
   .pub-sidebar::-webkit-scrollbar-thumb { background: #dde1e9; border-radius: 2px; }
-  .pub-page .jump-row { top: calc(var(--nav-h) + 57px); }
 
   /* Sidebar sections */
   .psb-section { border-bottom: 1px solid #f0f2f5; padding: 1rem 1.2rem; }
@@ -318,24 +317,6 @@ permalink: /publications/
       </div>
       <p class="pub-pghead-sub"></p>
       <div class="pub-pghead-live"><span class="ps-dot"></span> Live via OpenAlex</div>
-    </div>
-  </div>
-
-  <div class="jump-row">
-    <div class="jump-row-inner">
-      <div class="jump-nav" data-jump-nav>
-        <button class="jump-toggle" type="button" aria-haspopup="true" aria-expanded="false">
-          <span>Jump to section</span>
-          <span class="jump-caret" aria-hidden="true"></span>
-        </button>
-        <div class="jump-menu" role="menu" aria-label="Publications page sections">
-          <button class="jump-option active" type="button" role="menuitem" data-jump-target="pub-list-section">Papers</button>
-          <button class="jump-option" type="button" role="menuitem" data-jump-target="pub-search-section">Search</button>
-          <button class="jump-option" type="button" role="menuitem" data-jump-target="pub-sort-section">Sort</button>
-          <button class="jump-option" type="button" role="menuitem" data-jump-target="pub-filter-section">Filter</button>
-          <button class="jump-option" type="button" role="menuitem" data-jump-target="pub-analytics-section">Analytics</button>
-        </div>
-      </div>
     </div>
   </div>
 

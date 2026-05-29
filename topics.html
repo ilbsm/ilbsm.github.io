@@ -22,6 +22,14 @@ permalink: /topics/
   padding: 1rem 1.75rem 1.3rem;
   background: #fff;
 }
+.tp-hero-copy {
+  min-width: 0;
+  flex: 1;
+}
+.tp-hero .jump-nav {
+  flex: 0 0 230px;
+  margin-top: 0.3rem;
+}
 .tp-hero-title {
   margin: 0 0 0.35rem;
   color: #073f55;
@@ -35,28 +43,6 @@ permalink: /topics/
   color: #3f3f46;
   font-size: 0.96rem;
   line-height: 1.65;
-}
-.tp-jumpbar {
-  display: flex;
-  justify-content: flex-end;
-  align-items: center;
-  min-height: 56px;
-  padding: 0 1.5rem;
-  border-top: 1px solid #dedede;
-  border-bottom: 1px solid #dedede;
-  background: #fff;
-}
-.tp-jump {
-  width: 210px;
-  padding: 0.66rem 0.8rem;
-  border: 1px solid #d8d2cb;
-  border-radius: 12px;
-  background: #fff;
-  color: #332f2b;
-  box-shadow: 0 2px 7px rgba(0, 0, 0, 0.07);
-  font: inherit;
-  font-size: 0.83rem;
-  font-weight: 800;
 }
 .tp-section {
   border-top: 3px solid var(--section-color, var(--tp-teal));
@@ -204,7 +190,16 @@ permalink: /topics/
     --tp-side: 0.85rem;
   }
   .tp-hero {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 0.95rem;
     padding: 1.25rem 1.1rem 1.35rem;
+  }
+  .tp-hero .jump-nav {
+    width: min(230px, 100%);
+    flex: none;
+    align-self: flex-end;
+    margin-top: 0;
   }
   .tp-hero-title {
     font-size: 2.25rem;
@@ -231,31 +226,26 @@ permalink: /topics/
 
 <div id="page-topics" class="page active tp-page">
   <section class="tp-hero" aria-labelledby="tp-title">
-    <div>
+    <div class="tp-hero-copy">
       <h1 class="tp-hero-title" id="tp-title">{{ data.hero.title }}</h1>
       <p class="tp-hero-sub">{{ data.hero.sub }}</p>
     </div>
-  </section>
-
-  <div class="jump-row">
-    <div class="jump-row-inner">
-      <div class="jump-nav" data-jump-nav>
-        <button class="jump-toggle" type="button" aria-haspopup="true" aria-expanded="false">
-          <span>Jump to section</span>
-          <span class="jump-caret" aria-hidden="true"></span>
-        </button>
-        <div class="jump-menu" role="menu" aria-label="Projects and software sections">
-          {% assign first_section = true %}
-          {% for row in data.layout %}
-            {% for section in row.sections %}
-            <button class="jump-option{% if first_section %} active{% endif %}" type="button" role="menuitem" data-jump-target="{{ section.id }}">{{ section.title }}</button>
-            {% assign first_section = false %}
-            {% endfor %}
+    <div class="jump-nav" data-jump-nav>
+      <button class="jump-toggle" type="button" aria-haspopup="true" aria-expanded="false">
+        <span>Jump to section</span>
+        <span class="jump-caret" aria-hidden="true"></span>
+      </button>
+      <div class="jump-menu" role="menu" aria-label="Projects and software sections">
+        {% assign first_section = true %}
+        {% for row in data.layout %}
+          {% for section in row.sections %}
+          <button class="jump-option{% if first_section %} active{% endif %}" type="button" role="menuitem" data-jump-target="{{ section.id }}">{{ section.title }}</button>
+          {% assign first_section = false %}
           {% endfor %}
-        </div>
+        {% endfor %}
       </div>
     </div>
-  </div>
+  </section>
 
   {% for row in data.layout %}
     {% for section in row.sections %}
