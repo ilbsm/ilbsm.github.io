@@ -263,12 +263,13 @@ permalink: /contact/
 
 .cp-bottom-grid {
   display: grid;
-  grid-template-columns: minmax(0, 1.35fr) minmax(420px, 1.1fr);
+  grid-template-columns: minmax(0, 1.35fr) minmax(320px, 1.1fr);
   gap: 0.82rem;
   align-items: start;
 }
 
 .cp-panel {
+  min-width: 0;
   overflow: hidden;
   border: 1px solid #d7e0e8;
   border-radius: 13px;
@@ -348,13 +349,14 @@ permalink: /contact/
 }
 
 .cp-fb-frame-wrap {
+  position: relative;
   height: 780px;
   overflow: hidden;
   background: #f8fafc;
 }
 
 .cp-fb-frame {
-  height: 780px;
+  height: 100%;
 }
 
 @media (max-width: 1020px) {
@@ -416,7 +418,14 @@ permalink: /contact/
   }
 
   .cp-fb-title {
+    flex: 1 1 auto;
     font-size: 0.95rem;
+  }
+
+  .cp-fb-title span:last-child {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
   }
 
   .cp-fb-open {
@@ -567,7 +576,8 @@ permalink: /contact/
             <iframe
               class="cp-fb-frame"
               title="Sulkowska Lab on Facebook"
-              src="https://www.facebook.com/plugins/page.php?href=https%3A%2F%2Fwww.facebook.com%2FSulkowskaLab%2F&tabs=timeline&width=500&height=780&small_header=false&adapt_container_width=true&hide_cover=false&show_facepile=true"
+              data-page-url="https://www.facebook.com/SulkowskaLab/"
+              loading="lazy"
               scrolling="no"
               allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share"
               allowfullscreen></iframe>
@@ -629,5 +639,49 @@ permalink: /contact/
       });
     }
   });
+})();
+
+(function() {
+  var frame = document.querySelector('.cp-fb-frame');
+  var wrap = document.querySelector('.cp-fb-frame-wrap');
+  if (!frame || !wrap) return;
+
+  var lastWidth = 0;
+  var lastHeight = 0;
+  var pageUrl = frame.getAttribute('data-page-url') || 'https://www.facebook.com/SulkowskaLab/';
+
+  function frameHeight() {
+    return window.matchMedia('(max-width: 680px)').matches ? 590 : 780;
+  }
+
+  function renderFacebookFrame() {
+    var width = Math.max(280, Math.min(500, Math.floor(wrap.clientWidth || 500)));
+    var height = frameHeight();
+    if (Math.abs(width - lastWidth) < 8 && height === lastHeight && frame.src) {
+      wrap.style.height = height + 'px';
+      frame.height = String(height);
+      return;
+    }
+    lastWidth = width;
+    lastHeight = height;
+    wrap.style.height = height + 'px';
+    frame.width = String(width);
+    frame.height = String(height);
+    frame.src = 'https://www.facebook.com/plugins/page.php'
+      + '?href=' + encodeURIComponent(pageUrl)
+      + '&tabs=timeline'
+      + '&width=' + width
+      + '&height=' + height
+      + '&small_header=true'
+      + '&adapt_container_width=true'
+      + '&hide_cover=false'
+      + '&show_facepile=false';
+  }
+
+  renderFacebookFrame();
+  window.addEventListener('resize', renderFacebookFrame);
+  if ('ResizeObserver' in window) {
+    new ResizeObserver(renderFacebookFrame).observe(wrap);
+  }
 })();
 </script>
