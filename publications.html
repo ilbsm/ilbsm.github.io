@@ -223,16 +223,226 @@ permalink: /publications/
   .pub-item {
     display: grid; grid-template-columns: auto 1fr auto; gap: 0.5rem 0.9rem;
     padding: 0.8rem 1rem; background: #fff; border-radius: 8px;
-    border: 1px solid #e4e8f0; text-decoration: none; color: inherit;
+    border: 1px solid #e4e8f0; color: inherit;
     transition: box-shadow 0.18s, border-color 0.15s;
   }
-  .pub-item:hover { box-shadow: 0 3px 12px rgba(0,0,0,0.07); border-color: #b8d0f7; text-decoration: none; }
+  .pub-item:hover { box-shadow: 0 3px 12px rgba(0,0,0,0.07); border-color: #b8d0f7; }
   .pub-num { font-size: 0.72rem; font-weight: 800; color: #bbb; padding-top: 2px; min-width: 24px; }
   .pub-body { min-width: 0; }
-  .pub-title { font-size: 0.88rem; font-weight: 700; color: #0a1020; line-height: 1.4; margin-bottom: 0.2rem; }
+  .pub-title { margin-bottom: 0.2rem; }
+  .pub-title-link {
+    color: #0a1020;
+    font-size: 0.88rem;
+    font-weight: 700;
+    line-height: 1.4;
+    text-decoration: none;
+  }
+  .pub-title-link:hover { color: #1a73e8; text-decoration: none; }
   .pub-meta { font-size: 0.74rem; color: #888; line-height: 1.45; }
   .pub-meta em { color: #1a73e8; font-style: normal; font-weight: 600; }
   .pub-cites { font-size: 0.7rem; font-weight: 700; color: #1a73e8; white-space: nowrap; padding-top: 2px; }
+  .pub-actions {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 0.35rem;
+    margin-top: 0.45rem;
+  }
+  .pub-action,
+  .pub-mini-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.25rem;
+    min-height: 26px;
+    padding: 0.24rem 0.55rem;
+    border: 1px solid #dde5ef;
+    border-radius: 999px;
+    background: #f8fbff;
+    color: #4c596a;
+    font: inherit;
+    font-size: 0.68rem;
+    font-weight: 800;
+    line-height: 1;
+    text-decoration: none;
+    cursor: pointer;
+    transition: background 0.16s ease, border-color 0.16s ease, color 0.16s ease, box-shadow 0.16s ease;
+  }
+  .pub-action:hover,
+  .pub-mini-link:hover,
+  .pub-action[aria-expanded="true"] {
+    background: #edf5ff;
+    border-color: #b9d5fb;
+    color: #1a73e8;
+    text-decoration: none;
+  }
+  .pub-action[aria-expanded="true"] {
+    box-shadow: inset 0 0 0 1px rgba(26,115,232,0.08);
+  }
+  .pub-action-count {
+    color: inherit;
+    opacity: 0.72;
+  }
+  .pub-panel {
+    grid-column: 1 / -1;
+    margin-top: 0.6rem;
+    padding: 0.7rem;
+    border: 1px solid #e2e8f2;
+    border-radius: 8px;
+    background: #fbfcff;
+  }
+  .pub-panel[hidden] { display: none; }
+  .pub-panel-title {
+    margin-bottom: 0.45rem;
+    color: #6f7b8b;
+    font-size: 0.66rem;
+    font-weight: 900;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+  }
+  .pub-panel-note,
+  .pub-panel-loading {
+    color: #7a8492;
+    font-size: 0.74rem;
+    line-height: 1.45;
+  }
+  .pub-citing-list {
+    display: flex;
+    flex-direction: column;
+    gap: 0.4rem;
+  }
+  .pub-citing-item {
+    display: block;
+    padding: 0.52rem 0.6rem;
+    border: 1px solid #edf1f6;
+    border-radius: 7px;
+    background: #fff;
+    color: inherit;
+    text-decoration: none;
+    transition: border-color 0.15s ease, box-shadow 0.15s ease;
+  }
+  .pub-citing-item:hover {
+    border-color: #c5dcfb;
+    box-shadow: 0 2px 9px rgba(10,16,32,0.06);
+    text-decoration: none;
+  }
+  .pub-citing-title {
+    color: #172033;
+    font-size: 0.76rem;
+    font-weight: 800;
+    line-height: 1.35;
+  }
+  .pub-citing-meta {
+    margin-top: 0.14rem;
+    color: #828b98;
+    font-size: 0.68rem;
+    line-height: 1.35;
+  }
+  .pub-figures {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(180px, 260px));
+    gap: 0.58rem;
+  }
+  .pub-figure-thumb {
+    display: grid;
+    grid-template-rows: 118px auto;
+    min-width: 0;
+    padding: 0;
+    border: 1px solid #dfe6f1;
+    border-radius: 8px;
+    overflow: hidden;
+    background: #fff;
+    color: inherit;
+    cursor: zoom-in;
+    text-align: left;
+    transition: border-color 0.16s ease, box-shadow 0.16s ease, transform 0.16s ease;
+  }
+  .pub-figure-thumb:hover {
+    border-color: #b9d5fb;
+    box-shadow: 0 7px 18px rgba(10,16,32,0.12);
+    transform: translateY(-1px);
+  }
+  .pub-figure-thumb img {
+    width: 100%;
+    height: 118px;
+    object-fit: contain;
+    background: #f2f5f9;
+  }
+  .pub-figure-caption {
+    padding: 0.38rem 0.48rem;
+    color: #556172;
+    font-size: 0.68rem;
+    font-weight: 700;
+    line-height: 1.25;
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+  }
+  .pub-lightbox {
+    position: fixed;
+    inset: 0;
+    z-index: 2000;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: clamp(1rem, 4vw, 3rem);
+    background: rgba(10, 16, 32, 0.72);
+  }
+  .pub-lightbox[hidden] { display: none; }
+  .pub-lightbox-card {
+    position: relative;
+    width: min(1100px, 100%);
+    max-height: min(86vh, 900px);
+    display: grid;
+    grid-template-rows: minmax(0, 1fr) auto;
+    overflow: hidden;
+    border-radius: 10px;
+    background: #fff;
+    box-shadow: 0 20px 70px rgba(0,0,0,0.36);
+  }
+  .pub-lightbox-img {
+    display: block;
+    width: 100%;
+    max-height: calc(86vh - 72px);
+    object-fit: contain;
+    background: #f4f6fa;
+  }
+  .pub-lightbox-caption {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 0.8rem;
+    padding: 0.75rem 1rem;
+    color: #3f4651;
+    font-size: 0.84rem;
+    font-weight: 700;
+  }
+  .pub-lightbox-caption span {
+    min-width: 0;
+  }
+  .pub-lightbox-source {
+    flex: 0 0 auto;
+    color: #1a73e8;
+    font-size: 0.72rem;
+    font-weight: 900;
+    text-decoration: none;
+    white-space: nowrap;
+  }
+  .pub-lightbox-source:hover { text-decoration: underline; }
+  .pub-lightbox-close {
+    position: absolute;
+    top: 0.55rem;
+    right: 0.55rem;
+    width: 34px;
+    height: 34px;
+    border: 1px solid rgba(255,255,255,0.4);
+    border-radius: 999px;
+    background: rgba(10,16,32,0.78);
+    color: #fff;
+    cursor: pointer;
+    font-size: 1.25rem;
+    line-height: 1;
+  }
 
   .pub-error { padding: 1.2rem; border-radius: 8px; background: #fff3e0; border-left: 4px solid #f57c00; color: #e65100; font-size: 0.88rem; }
 
@@ -388,6 +598,9 @@ permalink: /publications/
     .pub-title {
       font-size: 0.84rem;
     }
+    .pub-title-link {
+      font-size: 0.84rem;
+    }
     .pub-meta {
       font-size: 0.7rem;
     }
@@ -398,6 +611,41 @@ permalink: /publications/
       padding: 0.12rem 0.42rem;
       border-radius: 999px;
       background: #edf5ff;
+    }
+    .pub-actions {
+      gap: 0.28rem;
+      margin-top: 0.42rem;
+    }
+    .pub-action,
+    .pub-mini-link {
+      min-height: 28px;
+      padding: 0.28rem 0.5rem;
+      font-size: 0.64rem;
+    }
+    .pub-panel {
+      padding: 0.58rem;
+      border-radius: 9px;
+    }
+    .pub-figures {
+      grid-template-columns: minmax(0, 1fr);
+    }
+    .pub-figure-thumb {
+      grid-template-rows: 150px auto;
+    }
+    .pub-figure-thumb img {
+      height: 150px;
+    }
+    .pub-lightbox {
+      padding: 0.65rem;
+    }
+    .pub-lightbox-card {
+      max-height: 88vh;
+    }
+    .pub-lightbox-caption {
+      align-items: flex-start;
+      flex-direction: column;
+      gap: 0.35rem;
+      font-size: 0.76rem;
     }
     .psb-live-section,
     #pub-analytics-section,
@@ -510,10 +758,24 @@ permalink: /publications/
 
 </div>
 
+<div class="pub-lightbox" id="pub-lightbox" hidden onclick="pubCloseFigure(event)">
+  <div class="pub-lightbox-card" role="dialog" aria-modal="true" aria-label="Publication figure">
+    <button class="pub-lightbox-close" type="button" aria-label="Close figure" onclick="pubCloseFigure(event)">&times;</button>
+    <img class="pub-lightbox-img" id="pub-lightbox-img" src="" alt="">
+    <div class="pub-lightbox-caption">
+      <span id="pub-lightbox-caption"></span>
+      <a class="pub-lightbox-source" id="pub-lightbox-source" href="#" target="_blank" rel="noopener noreferrer" hidden>Open at source</a>
+    </div>
+  </div>
+</div>
+
 <script>
 document.addEventListener('DOMContentLoaded', function() {
   let _allPubs = [], _loaded = false;
   let _resultScrollTimer = null;
+  const SITE_BASEURL = '{{ site.baseurl }}';
+  const PUB_FIGURE_ENTRIES = {{ site.data.publication_figures | jsonify }};
+  const _citingCache = new Map();
 
   function focusResultsOnMobile() {
     if (!window.matchMedia('(max-width: 700px)').matches) return;
@@ -665,6 +927,71 @@ document.addEventListener('DOMContentLoaded', function() {
 
   const CJK_RE = /[　-鿿豈-﫿]+/g;
 
+  function escapeHtml(raw) {
+    return String(raw ?? '').replace(/[&<>"']/g, ch => ({
+      '&': '&amp;',
+      '<': '&lt;',
+      '>': '&gt;',
+      '"': '&quot;',
+      "'": '&#39;'
+    }[ch]));
+  }
+
+  function escapeAttr(raw) {
+    return escapeHtml(raw).replace(/`/g, '&#96;');
+  }
+
+  function normaliseDoi(raw) {
+    return String(raw || '')
+      .trim()
+      .toLowerCase()
+      .replace(/^https?:\/\/(dx\.)?doi\.org\//, '')
+      .replace(/^doi:/, '')
+      .replace(/\/$/, '');
+  }
+
+  function openAlexKey(work) {
+    return String(work?.id || '').replace('https://openalex.org/', '');
+  }
+
+  function domId(raw, fallback) {
+    const id = String(raw || fallback || '')
+      .toLowerCase()
+      .replace(/[^a-z0-9_-]+/g, '-')
+      .replace(/^-+|-+$/g, '');
+    return id || String(fallback || 'pub-item');
+  }
+
+  function assetUrl(path) {
+    const src = String(path || '');
+    if (/^https?:\/\//i.test(src)) return src;
+    const cleanBase = SITE_BASEURL.replace(/\/$/, '');
+    const cleanPath = src.startsWith('/') ? src : `/${src}`;
+    return `${cleanBase}${cleanPath}`;
+  }
+
+  function figuresForWork(work) {
+    const doi = normaliseDoi(work?.doi);
+    const title = String(work?.title || '').toLowerCase();
+    const exact = PUB_FIGURE_ENTRIES.filter(entry => entry.doi && normaliseDoi(entry.doi) === doi);
+    const fallback = exact.length ? [] : PUB_FIGURE_ENTRIES.filter(entry => {
+      const match = String(entry.match || '').toLowerCase().trim();
+      return match && title.includes(match);
+    });
+    const seen = new Set();
+    return exact.concat(fallback).flatMap(entry => (entry.figures || []).map(fig => ({
+      img: assetUrl(fig.img),
+      href: fig.href || '',
+      alt: fig.alt || entry.label || 'Publication figure',
+      caption: fig.caption || entry.label || 'Publication figure'
+    }))).filter(fig => {
+      const key = `${fig.img}|${fig.caption}`;
+      if (seen.has(key)) return false;
+      seen.add(key);
+      return true;
+    });
+  }
+
   function cleanTitle(raw) {
     if (!raw) return 'Untitled';
     const tmp = document.createElement('div');
@@ -674,14 +1001,115 @@ document.addEventListener('DOMContentLoaded', function() {
       .replace(/\s*\([^)]*[　-鿿][^)]*\)/g, '') // remove CJK parentheticals
       .replace(CJK_RE, '')                      // remove remaining CJK/Japanese
       .replace(/\s+/g, ' ').trim();
-    return (text || 'Untitled').replace(/&/g,'&amp;').replace(/</g,'&lt;');
+    return escapeHtml(text || 'Untitled');
   }
 
   function cleanJournal(raw) {
     if (!raw) return '';
     const cleaned = raw.replace(CJK_RE, '').replace(/\s+/g, ' ').trim();
-    return cleaned.replace(/&/g,'&amp;').replace(/</g,'&lt;');
+    return escapeHtml(cleaned);
   }
+
+  function workUrl(work) {
+    if (work?.doi) return `https://doi.org/${normaliseDoi(work.doi)}`;
+    return work?.id || '#';
+  }
+
+  async function getCitingPapers(workId) {
+    if (_citingCache.has(workId)) return _citingCache.get(workId);
+    const url = `https://api.openalex.org/works?filter=cites:${encodeURIComponent(workId)}&sort=publication_date:desc&per-page=8&mailto=contact@lab.uw.edu.pl`;
+    const res = await fetch(url);
+    if (!res.ok) throw new Error(`OpenAlex returned ${res.status}`);
+    const data = await res.json();
+    const papers = data.results || [];
+    _citingCache.set(workId, papers);
+    return papers;
+  }
+
+  function renderCitingPapers(papers, workId) {
+    if (!papers.length) {
+      return '<div class="pub-panel-title">Citing papers</div><div class="pub-panel-note">OpenAlex has not listed citing papers for this publication yet.</div>';
+    }
+    return `
+      <div class="pub-panel-title">Recent citing papers from OpenAlex</div>
+      <div class="pub-citing-list">
+        ${papers.map(paper => {
+          const authors = escapeHtml((paper.authorships || []).slice(0, 3).map(a => a.author?.display_name || '').filter(Boolean).join(', '));
+          const more = (paper.authorships || []).length > 3 ? ' et al.' : '';
+          const journal = cleanJournal(paper.primary_location?.source?.display_name || '');
+          const year = paper.publication_year || '';
+          const cites = paper.cited_by_count || 0;
+          return `<a class="pub-citing-item" href="${escapeAttr(workUrl(paper))}" target="_blank" rel="noopener noreferrer">
+            <div class="pub-citing-title">${cleanTitle(paper.title)}</div>
+            <div class="pub-citing-meta">${authors}${more}${authors ? ' · ' : ''}${journal || 'OpenAlex'}${year ? ` · ${year}` : ''} · ${cites.toLocaleString()} cit.</div>
+          </a>`;
+        }).join('')}
+      </div>`;
+  }
+
+  window.pubTogglePanel = function(panelId, btn) {
+    const panel = document.getElementById(panelId);
+    if (!panel) return;
+    const shouldOpen = panel.hidden;
+    panel.hidden = !shouldOpen;
+    btn.setAttribute('aria-expanded', shouldOpen ? 'true' : 'false');
+  };
+
+  window.pubToggleCitations = async function(panelId, workId, btn) {
+    const panel = document.getElementById(panelId);
+    if (!panel) return;
+    const shouldOpen = panel.hidden;
+    panel.hidden = !shouldOpen;
+    btn.setAttribute('aria-expanded', shouldOpen ? 'true' : 'false');
+    if (!shouldOpen || panel.dataset.loaded === 'true') return;
+
+    panel.innerHTML = '<div class="pub-panel-loading">Loading citing papers from OpenAlex...</div>';
+    try {
+      const papers = await getCitingPapers(workId);
+      panel.innerHTML = renderCitingPapers(papers, workId);
+      panel.dataset.loaded = 'true';
+    } catch (error) {
+      panel.innerHTML = `<div class="pub-panel-title">Citing papers</div><div class="pub-panel-note">Could not load citing papers right now. <a href="https://openalex.org/${escapeAttr(workId)}" target="_blank" rel="noopener noreferrer">Open this work in OpenAlex</a>.</div>`;
+    }
+  };
+
+  window.pubOpenFigure = function(btn) {
+    const box = document.getElementById('pub-lightbox');
+    const img = document.getElementById('pub-lightbox-img');
+    const caption = document.getElementById('pub-lightbox-caption');
+    const source = document.getElementById('pub-lightbox-source');
+    if (!box || !img || !caption || !source) return;
+    img.src = btn.dataset.img || '';
+    img.alt = btn.dataset.alt || '';
+    caption.textContent = btn.dataset.caption || btn.dataset.alt || 'Publication figure';
+    if (btn.dataset.href) {
+      source.href = btn.dataset.href;
+      source.hidden = false;
+    } else {
+      source.hidden = true;
+      source.removeAttribute('href');
+    }
+    box.hidden = false;
+    document.body.style.overflow = 'hidden';
+  };
+
+  window.pubCloseFigure = function(event) {
+    if (event) {
+      const isBackdrop = event.target?.id === 'pub-lightbox';
+      const isClose = event.target?.closest?.('.pub-lightbox-close');
+      if (!isBackdrop && !isClose) return;
+      event.stopPropagation();
+    }
+    const box = document.getElementById('pub-lightbox');
+    const img = document.getElementById('pub-lightbox-img');
+    if (box) box.hidden = true;
+    if (img) img.src = '';
+    document.body.style.overflow = '';
+  };
+
+  document.addEventListener('keydown', event => {
+    if (event.key === 'Escape') window.pubCloseFigure();
+  });
 
   let _activeChip = 'all';
 
@@ -736,22 +1164,55 @@ document.addEventListener('DOMContentLoaded', function() {
     document.getElementById('page-publications')?.classList.toggle('pub-searching', q.trim().length > 0);
 
     const html = list.map((w, i) => {
-      const auths  = (w.authorships||[]).slice(0,5).map(a=>a.author?.display_name||'').join(', ');
+      const auths  = escapeHtml((w.authorships||[]).slice(0,5).map(a=>a.author?.display_name||'').filter(Boolean).join(', '));
       const more   = (w.authorships||[]).length > 5 ? ' et al.' : '';
       const journal = cleanJournal(w.primary_location?.source?.display_name || '');
       const year   = w.publication_year || '';
-      const url    = w.doi ? 'https://doi.org/'+w.doi.replace('https://doi.org/','') : (w.id||'#');
+      const url    = workUrl(w);
       const cites  = w.cited_by_count || 0;
+      const workId = openAlexKey(w);
+      const itemId = domId(workId || normaliseDoi(w.doi), `pub-${i}`);
+      const citingPanelId = `${itemId}-citing`;
+      const figurePanelId = `${itemId}-figures`;
+      const figures = figuresForWork(w);
+      const externalLabel = w.doi ? 'DOI ↗' : 'OpenAlex ↗';
       const oaBadge = w.open_access?.is_oa
         ? ' <span style="font-size:0.65rem;font-weight:700;color:#2e7d32;background:#e8f5e9;padding:1px 5px;border-radius:8px;margin-left:3px">OA</span>' : '';
-      return `<a class="pub-item" href="${url}" target="_blank">
+      const citingAction = workId && cites > 0
+        ? `<button class="pub-action" type="button" aria-expanded="false" aria-controls="${citingPanelId}" onclick="pubToggleCitations('${citingPanelId}', '${workId}', this)">Citing papers <span class="pub-action-count">${cites.toLocaleString()}</span></button>`
+        : '';
+      const figureAction = figures.length
+        ? `<button class="pub-action" type="button" aria-expanded="false" aria-controls="${figurePanelId}" onclick="pubTogglePanel('${figurePanelId}', this)">Figures <span class="pub-action-count">${figures.length}</span></button>`
+        : '';
+      const citingPanel = citingAction
+        ? `<div class="pub-panel pub-citing-panel" id="${citingPanelId}" hidden></div>`
+        : '';
+      const figurePanel = figures.length
+        ? `<div class="pub-panel pub-figure-panel" id="${figurePanelId}" hidden>
+            <div class="pub-panel-title">Figures</div>
+            <div class="pub-figures">
+              ${figures.map(fig => `<button class="pub-figure-thumb" type="button" data-img="${escapeAttr(fig.img)}" data-href="${escapeAttr(fig.href)}" data-alt="${escapeAttr(fig.alt)}" data-caption="${escapeAttr(fig.caption)}" onclick="pubOpenFigure(this)">
+                <img src="${escapeAttr(fig.img)}" alt="${escapeAttr(fig.alt)}" loading="lazy">
+                <span class="pub-figure-caption">${escapeHtml(fig.caption)}</span>
+              </button>`).join('')}
+            </div>
+          </div>`
+        : '';
+      return `<article class="pub-item">
         <div class="pub-num">${i+1}</div>
         <div class="pub-body">
-          <div class="pub-title">${cleanTitle(w.title)}${oaBadge}</div>
-          <div class="pub-meta">${auths}${more} · <em>${journal||'—'}</em> · ${year}</div>
+          <div class="pub-title"><a class="pub-title-link" href="${escapeAttr(url)}" target="_blank" rel="noopener noreferrer">${cleanTitle(w.title)}${oaBadge}</a></div>
+          <div class="pub-meta">${auths || 'Unknown authors'}${more} · <em>${journal||'—'}</em> · ${year}</div>
+          <div class="pub-actions">
+            ${citingAction}
+            ${figureAction}
+            <a class="pub-mini-link" href="${escapeAttr(url)}" target="_blank" rel="noopener noreferrer">${externalLabel}</a>
+          </div>
+          ${citingPanel}
+          ${figurePanel}
         </div>
         <div class="pub-cites">${cites.toLocaleString()} cit.</div>
-      </a>`;
+      </article>`;
     }).join('');
 
     const lst = document.getElementById('pub-list');
