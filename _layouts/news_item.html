@@ -1,31 +1,23 @@
 ---
 layout: default
 ---
-<div style="max-width:780px; margin:0 auto; padding:2.5rem 1.5rem 5rem;">
+<article class="news-detail">
 
-  <a href="{{ '/#sec-news' | relative_url }}" style="display:inline-flex;align-items:center;gap:.4rem;
-     font-size:.8rem;font-weight:700;color:#01696f;text-decoration:none;
-     margin-bottom:2rem;padding:.35rem .85rem;border-radius:999px;
-     background:#e0f2f1;">← Back to News</a>
+  <a class="news-back" href="{{ '/#sec-news' | relative_url }}">← Back to News</a>
 
-  <div style="background:#fff;border-radius:.75rem;
-              box-shadow:0 4px 16px rgba(0,0,0,.09);
-              padding:2.5rem 2.5rem 3rem;">
+  <div class="news-card">
 
-    <div style="font-size:.72rem;font-weight:700;letter-spacing:.1em;
-                text-transform:uppercase;color:#9a9896;margin-bottom:.5rem;">
+    <div class="news-date">
       {{ page.date }}
     </div>
 
-    <h1 style="font-size:clamp(1.3rem,1rem + 1.5vw,1.9rem);font-weight:800;
-               color:#28251d;line-height:1.25;margin:0 0 1.5rem;
-               padding-bottom:1.25rem;border-bottom:2px solid #e8e5e0;">
+    <h1 class="news-title">
       {{ page.title }}
     </h1>
 
-    <div style="font-size:1rem;color:#3a3835;line-height:1.8;">
+    <div class="news-body">
       {{ page.body }}
     </div>
 
   </div>
-</div>
+</article>

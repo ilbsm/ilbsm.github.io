@@ -13,7 +13,7 @@ permalink: /collaboration/
 }
 
 #page-collab {
-  background: #f4f6fb;
+  background: #e8f1fb;
 }
 
 #page-collab .cl-intro {
@@ -42,7 +42,7 @@ permalink: /collaboration/
 .cl-section {
   width: 100%;
   border-bottom: 1px solid #e0e4ec;
-  background: #f4f6fb;
+  background: #e8f1fb;
 }
 
 .cl-grid-wrap {
@@ -81,7 +81,7 @@ permalink: /collaboration/
   padding: 0.65rem 0.85rem 0.75rem; flex: 1;
   display: flex; flex-direction: column; gap: 0.1rem;
 }
-.cl-card-name  { font-weight: 800; font-size: 0.88rem; color: #0a1020; line-height: 1.3; }
+.cl-card-name  { font-weight: 800; font-size: 0.88rem; color: #1f2d4f; line-height: 1.3; }
 .cl-card-inst  { font-size: 0.75rem; color: #9a9896; line-height: 1.45; margin-top: 0.08rem; }
 .cl-card-topic { font-size: 0.76rem; color: #666; line-height: 1.5; flex: 1; margin-top: 0.35rem; }
 
@@ -128,7 +128,6 @@ permalink: /collaboration/
       <div class="cl-grid">
         {% for c in data.collaborators %}
         <a class="cl-card" href="{{ c.url }}" target="_blank" rel="noopener noreferrer" style="--i:{{ forloop.index0 }}"
-           aria-label="Open {{ c.name }} collaborator page{% if c.cta %}: {{ c.cta }}{% endif %}"
            title="{% if c.cta %}{{ c.cta }}{% else %}{{ c.url }}{% endif %}">
           <div class="cl-logo-wrap">
             <img src="{{ '/assets/img/collab/' | append: c.logo | relative_url }}" alt="{{ c.fallback_text }} logo" loading="lazy"

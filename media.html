@@ -7,7 +7,7 @@ permalink: /media/
 
 
 <style>
-.hp { background: #f0f2f5; min-height: 100vh; padding-bottom: var(--space-16); }
+.hp { background: #d9e9f7; min-height: 100vh; padding-bottom: var(--space-16); }
 
 .hp-wrap { max-width: none; padding: 0 var(--space-6); }
 
@@ -20,10 +20,10 @@ permalink: /media/
 }
 .hp-eyebrow {
   font-size: var(--text-xs); font-weight: 700; letter-spacing: 0.1em;
-  text-transform: uppercase; color: #01696f; margin-bottom: var(--space-2);
+  text-transform: uppercase; color: #335fa8; margin-bottom: var(--space-2);
 }
 .hp-title {
-  font-size: clamp(1.75rem, 1.45rem + 0.8vw, 2rem); font-weight: 700; color: #073d55; line-height: 1.2; margin-bottom: 0;
+  font-size: clamp(1.75rem, 1.45rem + 0.8vw, 2rem); font-weight: 700; color: #073d55; line-height: 1.2; margin: 0;
 }
 .hp-row-head {
   display: flex; align-items: flex-start; justify-content: space-between;
@@ -56,14 +56,14 @@ permalink: /media/
   border-radius: 8px;
   background: #fff; border: 1px solid #d8d2cb; color: #302d28;
   font-family: inherit; font-size: 0.82rem; font-weight: 800;
-  cursor: pointer; box-shadow: 0 1px 4px rgba(13,43,51,0.07);
+  cursor: pointer; box-shadow: 0 1px 4px rgba(31,45,79,0.07);
   transition: border-color var(--transition), box-shadow var(--transition), color var(--transition);
   white-space: nowrap;
 }
 .med-show-btn:hover,
 .med-archive-toggle:hover {
-  border-color: #01696f; color: #01696f;
-  box-shadow: 0 6px 18px rgba(1,105,111,0.14);
+  border-color: #335fa8; color: #335fa8;
+  box-shadow: 0 6px 18px rgba(36,68,142,0.14);
   background: #fff;
 }
 
@@ -71,7 +71,7 @@ permalink: /media/
 .mg-lightbox.open { display:flex; }
 .mg-lb-wrap { position:relative; max-width:90vw; max-height:90vh; }
 .mg-lb-wrap img { max-width:90vw; max-height:86vh; border-radius:var(--radius-md); object-fit:contain; }
-.mg-lb-close,.mg-lb-prev,.mg-lb-next { position:absolute; background:rgba(255,255,255,0.12); border:none; color:white; border-radius:var(--radius-full); cursor:pointer; transition:background var(--transition); font-size:1.2rem; width:40px; height:40px; display:flex; align-items:center; justify-content:center; }
+.mg-lb-close,.mg-lb-prev,.mg-lb-next { position:absolute; background:rgba(255,255,255,0.12); border:none; color:white; border-radius:var(--radius-full); cursor:pointer; transition:background var(--transition); font-family: inherit; font-size:0.78rem; font-weight:800; min-width:40px; height:40px; padding:0 0.85rem; display:flex; align-items:center; justify-content:center; }
 .mg-lb-close:hover,.mg-lb-prev:hover,.mg-lb-next:hover { background:rgba(255,255,255,0.28); }
 .mg-lb-close { top:-50px; right:0; }
 .mg-lb-prev { left:-56px; top:50%; transform:translateY(-50%); }
@@ -130,8 +130,8 @@ permalink: /media/
 .med-src-logo {
   display: inline-flex; align-items: center; justify-content: center;
   width: 54px; min-width: 54px; height: 32px; padding: 4px 6px;
-  border-radius: 7px; background: #fff; border: 1px solid rgba(1,105,111,0.12);
-  box-shadow: 0 2px 8px rgba(13,43,51,0.06);
+  border-radius: 7px; background: #fff; border: 1px solid rgba(36,68,142,0.12);
+  box-shadow: 0 2px 8px rgba(31,45,79,0.06);
   overflow: hidden; flex-shrink: 0; line-height: 1;
 }
 .med-src-logo.round { border-radius: var(--radius-full); width: 34px; min-width: 34px; height: 34px; padding: 5px; }
@@ -141,8 +141,8 @@ permalink: /media/
 .med-logo-xwide { width: 96px; min-width: 96px; }
 .med-logo-long { width: 118px; min-width: 118px; }
 .med-logo-tall { height: 38px; }
-.med-logo-dark { background: #111624; border-color: #111624; }
-.med-logo-blue { background: #005ca8; border-color: #005ca8; }
+.med-logo-dark { background: #1f2d4f; border-color: #1f2d4f; }
+.med-logo-db { background: #335fa8; border-color: #335fa8; }
 .med-logo-red { background: #e0001a; border-color: #e0001a; }
 .med-logo-clean { background: transparent; border-color: transparent; box-shadow: none; padding: 0; }
 .med-src-name { font-size: var(--text-xs); font-weight: 600; color: #28251d; }
@@ -156,13 +156,13 @@ permalink: /media/
   transition: background var(--transition), border-color var(--transition), box-shadow var(--transition);
   border: 1px solid transparent;
 }
-.med-link-item:hover { background: #f7fbfb; border-color: rgba(1,105,111,0.14); box-shadow: 0 8px 18px rgba(13,43,51,0.06); }
+.med-link-item:hover { background: #f7fafd; border-color: rgba(36,68,142,0.14); box-shadow: 0 8px 18px rgba(31,45,79,0.06); }
 .med-li-left { display: flex; align-items: center; gap: var(--space-3); min-width: 0; }
 .med-li-source { display: flex; align-items: center; gap: var(--space-2); white-space: nowrap; }
 .med-li-year { font-size: var(--text-xs); color: #bab9b4; font-weight: 500; padding: 2px 7px; background: #f0ede8; border-radius: var(--radius-full); }
 .med-li-title { font-size: var(--text-sm); color: #28251d; line-height: 1.4; min-width: 0; }
 .med-li-arrow { color: #bab9b4; flex-shrink: 0; transition: color var(--transition), transform var(--transition); }
-.med-link-item:hover .med-li-arrow { color: #01696f; transform: translate(2px,-2px); }
+.med-link-item:hover .med-li-arrow { color: #335fa8; transform: translate(2px,-2px); }
 .med-tv-radio-grid { display: grid; grid-template-columns: 1fr 1fr; gap: var(--space-8); }
 @media (max-width: 640px) { .med-tv-radio-grid { grid-template-columns: 1fr; gap: var(--space-6); } }
 .med-broadcast-col-label {
@@ -172,7 +172,7 @@ permalink: /media/
 }
 .med-broadcast-col-label::before {
   content: ""; width: 20px; height: 8px; border-radius: var(--radius-full);
-  background: linear-gradient(90deg, #01696f 0 45%, #b8d7d8 45% 100%);
+  background: linear-gradient(90deg, #335fa8 0 45%, #b8d7d8 45% 100%);
 }
 
 .med-interview-cards { display: grid; grid-template-columns: repeat(auto-fill, minmax(220px,1fr)); gap: var(--space-4); }
@@ -187,7 +187,7 @@ permalink: /media/
 .med-int-source { display: flex; align-items: center; gap: var(--space-2); }
 .med-int-year { font-size: var(--text-xs); color: #bab9b4; font-weight: 500; }
 .med-int-title { font-size: var(--text-sm); font-weight: 600; color: #28251d; line-height: 1.45; flex: 1; }
-.med-int-arrow { font-size: var(--text-xs); font-weight: 600; color: #01696f; margin-top: auto; }
+.med-int-arrow { font-size: var(--text-xs); font-weight: 600; color: #335fa8; margin-top: auto; }
 
 .med-press-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(260px,1fr)); gap: 2px; }
 .med-press-item {
@@ -210,12 +210,12 @@ permalink: /media/
 .med-tc-tag { font-size: var(--text-xs); font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em; margin-bottom: var(--space-2); }
 .med-tc-title { font-size: var(--text-sm); font-weight: 600; color: #28251d; line-height: 1.45; margin-bottom: var(--space-1); }
 .med-tc-body { font-size: var(--text-xs); color: #7a7974; line-height: 1.5; }
-.med-tc-link { font-size: var(--text-xs); font-weight: 600; color: #01696f; margin-top: var(--space-2); }
-.med-tc-blue .med-tc-tag { color: #006494; } .med-tc-purple .med-tc-tag { color: #7a39bb; }
-.med-tc-teal .med-tc-tag { color: #01696f; } .med-tc-orange .med-tc-tag { color: #da7101; }
+.med-tc-link { font-size: var(--text-xs); font-weight: 600; color: #335fa8; margin-top: var(--space-2); }
+.med-tc-cyan .med-tc-tag { color: #335fa8; } .med-tc-purple .med-tc-tag { color: #7a39bb; }
+.med-tc-orange .med-tc-tag { color: #da7101; }
 .med-tc-red .med-tc-tag { color: #a13544; }
-.med-tc-blue { border-left: 3px solid #006494; } .med-tc-purple { border-left: 3px solid #7a39bb; }
-.med-tc-teal { border-left: 3px solid #01696f; } .med-tc-orange { border-left: 3px solid #da7101; }
+.med-tc-cyan { border-left: 3px solid #335fa8; } .med-tc-purple { border-left: 3px solid #7a39bb; }
+.med-tc-orange { border-left: 3px solid #da7101; }
 .med-tc-red { border-left: 3px solid #a13544; }
 
 .med-grants-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); gap: var(--space-3); }
@@ -305,7 +305,7 @@ permalink: /media/
   padding: 3px 6px;
   border-color: #e6edf0;
   border-radius: 6px;
-  box-shadow: 0 1px 4px rgba(13,43,51,0.05);
+  box-shadow: 0 1px 4px rgba(31,45,79,0.05);
 }
 #ms-broadcast .med-src-logo.round {
   width: 54px;
@@ -314,7 +314,7 @@ permalink: /media/
   padding: 6px;
 }
 .med-logo-tok-text {
-  color: #2515a8;
+  color: #24448e;
   font-size: 0.68rem;
   font-weight: 900;
   letter-spacing: 0;
@@ -345,7 +345,7 @@ permalink: /media/
 }
 #ms-news .med-grants-label {
   margin: 0.05rem 0 0.5rem;
-  color: #00696f;
+  color: #335fa8;
   font-size: 0.84rem;
   font-weight: 900;
   letter-spacing: 0.12em;
@@ -366,7 +366,7 @@ permalink: /media/
 }
 #ms-news .med-grant-card:hover {
   transform: none;
-  box-shadow: 0 2px 9px rgba(13,43,51,0.07);
+  box-shadow: 0 2px 9px rgba(31,45,79,0.07);
 }
 #ms-news .med-grant-card-empty,
 #ms-interviews .med-int-card-empty,
@@ -401,7 +401,7 @@ permalink: /media/
 }
 #ms-news .med-src-logo {
   height: 27px;
-  box-shadow: 0 1px 5px rgba(13,43,51,0.05);
+  box-shadow: 0 1px 5px rgba(31,45,79,0.05);
 }
 #ms-news .med-src-logo.round {
   width: 33px;
@@ -410,7 +410,7 @@ permalink: /media/
 }
 #ms-news .hp-eyebrow {
   margin: 1.3rem 0 0.38rem;
-  color: #00696f;
+  color: #335fa8;
   font-size: 0.84rem;
   font-weight: 900;
 }
@@ -503,7 +503,7 @@ permalink: /media/
 }
 #ms-interviews .med-int-card:hover {
   transform: none;
-  box-shadow: 0 2px 9px rgba(13,43,51,0.07);
+  box-shadow: 0 2px 9px rgba(31,45,79,0.07);
 }
 #ms-interviews .med-int-source {
   gap: 0.5rem;
@@ -558,12 +558,12 @@ permalink: /media/
   margin-top: 0.75rem;
   display: inline-flex; align-items: center; gap: 0.35rem;
   font-family: inherit; font-size: 0.8rem; font-weight: 700;
-  color: #01696f; background: none;
-  border: 1.5px solid #01696f; border-radius: 20px;
+  color: #335fa8; background: none;
+  border: 1.5px solid #335fa8; border-radius: 20px;
   padding: 0.38rem 1rem; cursor: pointer;
   transition: background 0.18s, color 0.18s;
 }
-.med-press-more-btn:hover { background: #01696f; color: #fff; }
+.med-press-more-btn:hover { background: #335fa8; color: #fff; }
 
 #ms-talks {
   padding-top: 0.6rem;
@@ -632,31 +632,29 @@ permalink: /media/
   font-size: 0.86rem;
   font-weight: 800;
 }
-#ms-talks .med-tc-blue .med-tc-tag,
 #ms-talks .med-tc-purple .med-tc-tag {
-  color: #3a6e9a;
+  color: #335fa8;
 }
-#ms-talks .med-tc-teal .med-tc-tag {
-  color: #257f80;
+#ms-talks .med-tc-cyan .med-tc-tag {
+  color: #4d7fb0;
 }
 #ms-talks .med-tc-orange .med-tc-tag {
-  color: #667f70;
+  color: #57779c;
 }
 #ms-talks .med-tc-red .med-tc-tag {
-  color: #5e789e;
+  color: #57779c;
 }
-#ms-talks .med-tc-blue,
 #ms-talks .med-tc-purple {
-  border-left-color: #3a6e9a;
+  border-left-color: #335fa8;
 }
-#ms-talks .med-tc-teal {
-  border-left-color: #257f80;
+#ms-talks .med-tc-cyan {
+  border-left-color: #4d7fb0;
 }
 #ms-talks .med-tc-orange {
-  border-left-color: #667f70;
+  border-left-color: #57779c;
 }
 #ms-talks .med-tc-red {
-  border-left-color: #5e789e;
+  border-left-color: #57779c;
 }
 #ms-talks .med-tc-purple .med-tc-link {
   color: #7b1fa2;
@@ -808,25 +806,12 @@ permalink: /media/
 </style>
 
 <div id="page-media" class="page active hp">
+<h1 class="visually-hidden">Media</h1>
 
 
 <div class="jump-row">
   <div class="jump-row-inner">
-    <div class="jump-nav" data-jump-nav>
-      <button class="jump-toggle" type="button" aria-haspopup="true" aria-expanded="false">
-        <span>Jump to section</span>
-        <span class="jump-caret" aria-hidden="true"></span>
-      </button>
-      <div class="jump-menu" role="menu" aria-label="Media page sections">
-        <button class="jump-option active" type="button" role="menuitem" data-jump-target="ms-gallery">Gallery</button>
-        <button class="jump-option" type="button" role="menuitem" data-jump-target="ms-videos">Videos</button>
-        <button class="jump-option" type="button" role="menuitem" data-jump-target="ms-broadcast">TV &amp; Radio</button>
-        <button class="jump-option" type="button" role="menuitem" data-jump-target="ms-interviews">Interviews</button>
-        <button class="jump-option" type="button" role="menuitem" data-jump-target="ms-press">Press</button>
-        <button class="jump-option" type="button" role="menuitem" data-jump-target="ms-talks">Public Talks</button>
-        <button class="jump-option" type="button" role="menuitem" data-jump-target="ms-news">News &amp; Grants</button>
-      </div>
-    </div>
+    {% include jump_nav.html items=site.data.page_sections.media %}
   </div>
 </div>
 
@@ -835,9 +820,9 @@ permalink: /media/
   <div id="ms-gallery" class="hp-sec">
     <div class="hp-row-head">
       <div>
-        <div class="hp-title">Lab Gallery</div>
+        <h2 class="hp-title">Lab Gallery</h2>
       </div>
-      <button class="med-show-btn med-gallery-more-head" id="med-more-btn" data-med-more style="flex-shrink:0">
+      <button class="med-show-btn med-gallery-more-head" id="med-more-btn" data-med-more type="button" style="flex-shrink:0">
         Show all 65 photos
         <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><polyline points="6 9 12 15 18 9"/></svg>
       </button>
@@ -863,7 +848,7 @@ permalink: /media/
       <div class="mg-item" data-cat="group"><img src="{{ '/assets/img/media/gallery/wse8hJq.jpeg' | relative_url }}" alt="Team" loading="lazy"/><div class="mg-caption">Team</div></div>
       <div class="mg-item" data-cat="conf"><img src="{{ '/assets/img/media/gallery/leXzRKe.jpeg' | relative_url }}" alt="San Sebastián — Eutopia-2" loading="lazy"/><div class="mg-caption">San Sebastián — Eutopia-2</div></div>
       <div class="mg-item" data-cat="conf"><img src="{{ '/assets/img/media/gallery/e8qGQU5.jpeg' | relative_url }}" alt="Conference presentation" loading="lazy"/><div class="mg-caption">Conference presentation</div></div>
-      <div class="mg-item" data-cat="conf"><img src="{{ '/assets/img/media/gallery/azVpQn2.jpeg' | relative_url }}" alt="Bulgaria workshop 2021" loading="lazy"/><div class="mg-caption">Bulgaria workshop 2021</div></div>
+      <div class="mg-item" data-cat="conf"><img src="{{ '/assets/img/media/gallery/azVpQn2.jpeg' | relative_url }}" alt="Sofia workshop 2021" loading="lazy"/><div class="mg-caption">Sofia workshop 2021</div></div>
       <div class="mg-item" data-cat="conf"><img src="{{ '/assets/img/media/gallery/2a8mLXc.jpeg' | relative_url }}" alt="Conference talk" loading="lazy"/><div class="mg-caption">Conference talk</div></div>
       <div class="mg-item" data-cat="conf"><img src="{{ '/assets/img/media/gallery/X1AHi2f.jpeg' | relative_url }}" alt="Poster session" loading="lazy"/><div class="mg-caption">Poster session</div></div>
       <div class="mg-item" data-cat="conf"><img src="{{ '/assets/img/media/gallery/9j2Qfrq.jpeg' | relative_url }}" alt="International meeting" loading="lazy"/><div class="mg-caption">International meeting</div></div>
@@ -917,10 +902,10 @@ permalink: /media/
 
   <div class="mg-lightbox" id="mg-lightbox">
     <div class="mg-lb-wrap">
-      <button class="mg-lb-close">&#10005;</button>
-      <button class="mg-lb-prev">&#8592;</button>
+      <button class="mg-lb-close" type="button">Close</button>
+      <button class="mg-lb-prev" type="button">Previous</button>
       <img id="mg-lb-img" src="" alt=""/>
-      <button class="mg-lb-next">&#8594;</button>
+      <button class="mg-lb-next" type="button">Next</button>
       <div class="mg-lb-cap" id="mg-lb-cap"></div>
     </div>
   </div>
@@ -930,13 +915,12 @@ permalink: /media/
     {% assign media_videos = site.data.media.videos %}
     <div class="hp-row-head">
       <div>
-        <div class="hp-title">Videos</div>
+        <h2 class="hp-title">Videos</h2>
       </div>
       <button class="med-archive-toggle is-closed" id="vid-archive-btn" type="button"
-              aria-expanded="false" aria-controls="vid-archive-row"
               data-count="{{ media_videos.archive | size }}">
         <span class="med-archive-label">Show archive</span>
-        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="6 15 12 9 18 15"></polyline></svg>
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 15 12 9 18 15"></polyline></svg>
       </button>
     </div>
 
@@ -986,7 +970,7 @@ permalink: /media/
   <div id="ms-broadcast" class="hp-sec med-shot-section">
     <div class="hp-row-head">
       <div>
-        <div class="hp-title">TV &amp; Radio</div>
+        <h2 class="hp-title">TV &amp; Radio</h2>
       </div>
     </div>
     <div class="med-tv-radio-grid">
@@ -1065,7 +1049,7 @@ permalink: /media/
   <div id="ms-news" class="hp-sec med-shot-section">
     <div class="hp-row-head">
       <div>
-        <div class="hp-title">News &amp; Grants</div>
+        <h2 class="hp-title">News &amp; Grants</h2>
       </div>
     </div>
 
@@ -1132,7 +1116,7 @@ permalink: /media/
     <div class="hp-row-head">
       <div>
         <div class="hp-eyebrow">Print</div>
-        <div class="hp-title">Paper Interviews</div>
+        <h2 class="hp-title">Paper Interviews</h2>
       </div>
     </div>
     <div class="med-interview-cards">
@@ -1167,7 +1151,7 @@ permalink: /media/
     <div class="hp-row-head">
       <div>
         <div class="hp-eyebrow">Coverage</div>
-        <div class="hp-title">Press Coverage</div>
+        <h2 class="hp-title">Press Coverage</h2>
       </div>
     </div>
 
@@ -1224,7 +1208,7 @@ permalink: /media/
   <div id="ms-talks" class="hp-sec med-shot-section">
     <div class="hp-row-head">
       <div>
-        <div class="hp-title">Public Talks &amp; Workshops</div>
+        <h2 class="hp-title">Public Talks &amp; Workshops</h2>
       </div>
     </div>
     <div class="med-timeline">
@@ -1238,9 +1222,9 @@ permalink: /media/
           {% for talk in year_block.talks %}
           {% assign talk_url = talk.url | default: "" | strip %}
           {% if talk_url != "" %}
-          <a class="med-tl-card med-tc-{{ talk.color | default: 'teal' }}" href="{{ talk_url }}" target="_blank" rel="noopener noreferrer">
+          <a class="med-tl-card med-tc-{{ talk.color | default: 'cyan' }}" href="{{ talk_url }}" target="_blank" rel="noopener noreferrer">
           {% else %}
-          <div class="med-tl-card med-tc-{{ talk.color | default: 'teal' }}">
+          <div class="med-tl-card med-tc-{{ talk.color | default: 'cyan' }}">
           {% endif %}
             <div class="med-tc-tag">{{ talk.type }}</div>
             <div class="med-tc-title">{{ talk.title }}</div>
@@ -1275,16 +1259,16 @@ permalink: /media/
         <span class="med-feat-item"><span class="med-src-logo med-logo-wide"><img src="{{ '/assets/img/logos/media/loreal.svg' | relative_url }}" alt=""></span>L'Oréal</span>
         <span class="med-feat-item"><span class="med-src-logo"><img src="{{ '/assets/img/logos/media/fnp.svg' | relative_url }}" alt=""></span>Foundation for Polish Science</span>
         <span class="med-feat-item"><span class="med-src-logo med-logo-long"><img src="{{ '/assets/img/logos/media/business-insider.svg' | relative_url }}" alt=""></span>Business Insider</span>
-        <span class="med-feat-item" aria-hidden="true"><span class="med-src-logo round"><img src="{{ '/assets/img/logos/media/polsat-news.svg' | relative_url }}" alt=""></span>Polsat News</span>
-        <span class="med-feat-item" aria-hidden="true"><span class="med-src-logo med-logo-wide"><img src="{{ '/assets/img/logos/media/wyborcza.svg' | relative_url }}" alt=""></span>Gazeta Wyborcza</span>
-        <span class="med-feat-item" aria-hidden="true"><span class="med-src-logo med-logo-wide"><img src="{{ '/assets/img/logos/media/tvn.svg' | relative_url }}" alt=""></span>TVN Dzień Dobry</span>
-        <span class="med-feat-item" aria-hidden="true"><span class="med-src-logo med-logo-wide med-logo-tok-text">TOK FM</span>TOK FM</span>
-        <span class="med-feat-item" aria-hidden="true"><span class="med-src-logo med-logo-wide"><img src="{{ '/assets/img/logos/media/pap.svg' | relative_url }}" alt=""></span>Polska Agencja Prasowa</span>
-        <span class="med-feat-item" aria-hidden="true"><span class="med-src-logo med-logo-wide"><img src="{{ '/assets/img/logos/media/unesco.svg' | relative_url }}" alt=""></span>UNESCO</span>
-        <span class="med-feat-item" aria-hidden="true"><span class="med-src-logo med-logo-wide"><img src="{{ '/assets/img/logos/media/embo.png' | relative_url }}" alt=""></span>EMBO</span>
-        <span class="med-feat-item" aria-hidden="true"><span class="med-src-logo med-logo-wide"><img src="{{ '/assets/img/logos/media/loreal.svg' | relative_url }}" alt=""></span>L'Oréal</span>
-        <span class="med-feat-item" aria-hidden="true"><span class="med-src-logo"><img src="{{ '/assets/img/logos/media/fnp.svg' | relative_url }}" alt=""></span>Foundation for Polish Science</span>
-        <span class="med-feat-item" aria-hidden="true"><span class="med-src-logo med-logo-long"><img src="{{ '/assets/img/logos/media/business-insider.svg' | relative_url }}" alt=""></span>Business Insider</span>
+        <span class="med-feat-item" inert><span class="med-src-logo round"><img src="{{ '/assets/img/logos/media/polsat-news.svg' | relative_url }}" alt=""></span>Polsat News</span>
+        <span class="med-feat-item" inert><span class="med-src-logo med-logo-wide"><img src="{{ '/assets/img/logos/media/wyborcza.svg' | relative_url }}" alt=""></span>Gazeta Wyborcza</span>
+        <span class="med-feat-item" inert><span class="med-src-logo med-logo-wide"><img src="{{ '/assets/img/logos/media/tvn.svg' | relative_url }}" alt=""></span>TVN Dzień Dobry</span>
+        <span class="med-feat-item" inert><span class="med-src-logo med-logo-wide med-logo-tok-text">TOK FM</span>TOK FM</span>
+        <span class="med-feat-item" inert><span class="med-src-logo med-logo-wide"><img src="{{ '/assets/img/logos/media/pap.svg' | relative_url }}" alt=""></span>Polska Agencja Prasowa</span>
+        <span class="med-feat-item" inert><span class="med-src-logo med-logo-wide"><img src="{{ '/assets/img/logos/media/unesco.svg' | relative_url }}" alt=""></span>UNESCO</span>
+        <span class="med-feat-item" inert><span class="med-src-logo med-logo-wide"><img src="{{ '/assets/img/logos/media/embo.png' | relative_url }}" alt=""></span>EMBO</span>
+        <span class="med-feat-item" inert><span class="med-src-logo med-logo-wide"><img src="{{ '/assets/img/logos/media/loreal.svg' | relative_url }}" alt=""></span>L'Oréal</span>
+        <span class="med-feat-item" inert><span class="med-src-logo"><img src="{{ '/assets/img/logos/media/fnp.svg' | relative_url }}" alt=""></span>Foundation for Polish Science</span>
+        <span class="med-feat-item" inert><span class="med-src-logo med-logo-long"><img src="{{ '/assets/img/logos/media/business-insider.svg' | relative_url }}" alt=""></span>Business Insider</span>
       </div>
     </div>
   </div>
@@ -1374,77 +1358,77 @@ permalink: /media/
           </div>
           <div class="med-vid-mini-title">PyLink — a PyMOL plugin to identify links · 03 Macrolinks</div>
         </a>
-        <a class="med-vid-mini" href="https://www.youtube.com/watch?v=IzSGDfc1vAY" target="_blank" rel="noopener noreferrer" aria-hidden="true" tabindex="-1">
+        <a class="med-vid-mini" href="https://www.youtube.com/watch?v=IzSGDfc1vAY" target="_blank" rel="noopener noreferrer" inert tabindex="-1">
           <div class="med-vid-mini-thumb-wrap">
             <img class="med-vid-mini-thumb" src="https://i.ytimg.com/vi/IzSGDfc1vAY/mqdefault.jpg" alt="Knot_pull — python package for biopolymer smoothing and knot detection" loading="lazy" onerror="this.closest('.med-vid-mini-thumb-wrap').style.background='#222'"/>
             <div class="med-vid-mini-play"><svg width="24" height="24" viewBox="0 0 24 24" fill="white"><polygon points="5 3 19 12 5 21 5 3"/></svg></div>
           </div>
           <div class="med-vid-mini-title">Knot_pull — python package for biopolymer smoothing and knot detection</div>
         </a>
-        <a class="med-vid-mini" href="https://www.youtube.com/watch?v=Vb8Vut_VD2M" target="_blank" rel="noopener noreferrer" aria-hidden="true" tabindex="-1">
+        <a class="med-vid-mini" href="https://www.youtube.com/watch?v=Vb8Vut_VD2M" target="_blank" rel="noopener noreferrer" inert tabindex="-1">
           <div class="med-vid-mini-thumb-wrap">
             <img class="med-vid-mini-thumb" src="https://i.ytimg.com/vi/Vb8Vut_VD2M/mqdefault.jpg" alt="Statistical properties of lasso-shape polymers and their implications" loading="lazy" onerror="this.closest('.med-vid-mini-thumb-wrap').style.background='#222'"/>
             <div class="med-vid-mini-play"><svg width="24" height="24" viewBox="0 0 24 24" fill="white"><polygon points="5 3 19 12 5 21 5 3"/></svg></div>
           </div>
           <div class="med-vid-mini-title">Statistical properties of lasso-shape polymers and their implications</div>
         </a>
-        <a class="med-vid-mini" href="https://www.youtube.com/watch?v=ZRy_fPVBLc4" target="_blank" rel="noopener noreferrer" aria-hidden="true" tabindex="-1">
+        <a class="med-vid-mini" href="https://www.youtube.com/watch?v=ZRy_fPVBLc4" target="_blank" rel="noopener noreferrer" inert tabindex="-1">
           <div class="med-vid-mini-thumb-wrap">
             <img class="med-vid-mini-thumb" src="https://i.ytimg.com/vi/ZRy_fPVBLc4/mqdefault.jpg" alt="Topological knots and links in proteins" loading="lazy" onerror="this.closest('.med-vid-mini-thumb-wrap').style.background='#222'"/>
             <div class="med-vid-mini-play"><svg width="24" height="24" viewBox="0 0 24 24" fill="white"><polygon points="5 3 19 12 5 21 5 3"/></svg></div>
           </div>
           <div class="med-vid-mini-title">Topological knots and links in proteins</div>
         </a>
-        <a class="med-vid-mini" href="https://www.youtube.com/watch?v=H1zCl0YJVGc" target="_blank" rel="noopener noreferrer" aria-hidden="true" tabindex="-1">
+        <a class="med-vid-mini" href="https://www.youtube.com/watch?v=H1zCl0YJVGc" target="_blank" rel="noopener noreferrer" inert tabindex="-1">
           <div class="med-vid-mini-thumb-wrap">
             <img class="med-vid-mini-thumb" src="https://i.ytimg.com/vi/H1zCl0YJVGc/mqdefault.jpg" alt="GapRepairer — repair protein structures and their topology" loading="lazy" onerror="this.closest('.med-vid-mini-thumb-wrap').style.background='#222'"/>
             <div class="med-vid-mini-play"><svg width="24" height="24" viewBox="0 0 24 24" fill="white"><polygon points="5 3 19 12 5 21 5 3"/></svg></div>
           </div>
           <div class="med-vid-mini-title">GapRepairer — repair protein structures and their topology</div>
         </a>
-        <a class="med-vid-mini" href="https://www.youtube.com/watch?v=1sKe2alsJGQ" target="_blank" rel="noopener noreferrer" aria-hidden="true" tabindex="-1">
+        <a class="med-vid-mini" href="https://www.youtube.com/watch?v=1sKe2alsJGQ" target="_blank" rel="noopener noreferrer" inert tabindex="-1">
           <div class="med-vid-mini-thumb-wrap">
             <img class="med-vid-mini-thumb" src="https://i.ytimg.com/vi/1sKe2alsJGQ/mqdefault.jpg" alt="Protein Knotting by Active Threading of Nascent Polypeptide Chain" loading="lazy" onerror="this.closest('.med-vid-mini-thumb-wrap').style.background='#222'"/>
             <div class="med-vid-mini-play"><svg width="24" height="24" viewBox="0 0 24 24" fill="white"><polygon points="5 3 19 12 5 21 5 3"/></svg></div>
           </div>
           <div class="med-vid-mini-title">Protein Knotting by Active Threading of Nascent Polypeptide Chain</div>
         </a>
-        <a class="med-vid-mini" href="https://www.youtube.com/watch?v=tw6e7Z8_5_o" target="_blank" rel="noopener noreferrer" aria-hidden="true" tabindex="-1">
+        <a class="med-vid-mini" href="https://www.youtube.com/watch?v=tw6e7Z8_5_o" target="_blank" rel="noopener noreferrer" inert tabindex="-1">
           <div class="med-vid-mini-thumb-wrap">
             <img class="med-vid-mini-thumb" src="https://i.ytimg.com/vi/tw6e7Z8_5_o/mqdefault.jpg" alt="PyLasso — a PyMOL plugin to identify lassos · 01 Basics" loading="lazy" onerror="this.closest('.med-vid-mini-thumb-wrap').style.background='#222'"/>
             <div class="med-vid-mini-play"><svg width="24" height="24" viewBox="0 0 24 24" fill="white"><polygon points="5 3 19 12 5 21 5 3"/></svg></div>
           </div>
           <div class="med-vid-mini-title">PyLasso — a PyMOL plugin to identify lassos · 01 Basics</div>
         </a>
-        <a class="med-vid-mini" href="https://www.youtube.com/watch?v=8_oMoXJ_O8c" target="_blank" rel="noopener noreferrer" aria-hidden="true" tabindex="-1">
+        <a class="med-vid-mini" href="https://www.youtube.com/watch?v=8_oMoXJ_O8c" target="_blank" rel="noopener noreferrer" inert tabindex="-1">
           <div class="med-vid-mini-thumb-wrap">
             <img class="med-vid-mini-thumb" src="https://i.ytimg.com/vi/8_oMoXJ_O8c/mqdefault.jpg" alt="PyLasso — a PyMOL plugin to identify lassos · 02 Trajectory" loading="lazy" onerror="this.closest('.med-vid-mini-thumb-wrap').style.background='#222'"/>
             <div class="med-vid-mini-play"><svg width="24" height="24" viewBox="0 0 24 24" fill="white"><polygon points="5 3 19 12 5 21 5 3"/></svg></div>
           </div>
           <div class="med-vid-mini-title">PyLasso — a PyMOL plugin to identify lassos · 02 Trajectory</div>
         </a>
-        <a class="med-vid-mini" href="https://www.youtube.com/watch?v=zeOaXv9FASM" target="_blank" rel="noopener noreferrer" aria-hidden="true" tabindex="-1">
+        <a class="med-vid-mini" href="https://www.youtube.com/watch?v=zeOaXv9FASM" target="_blank" rel="noopener noreferrer" inert tabindex="-1">
           <div class="med-vid-mini-thumb-wrap">
             <img class="med-vid-mini-thumb" src="https://i.ytimg.com/vi/zeOaXv9FASM/mqdefault.jpg" alt="PyLasso — a PyMOL plugin to identify lassos · 03 NMR" loading="lazy" onerror="this.closest('.med-vid-mini-thumb-wrap').style.background='#222'"/>
             <div class="med-vid-mini-play"><svg width="24" height="24" viewBox="0 0 24 24" fill="white"><polygon points="5 3 19 12 5 21 5 3"/></svg></div>
           </div>
           <div class="med-vid-mini-title">PyLasso — a PyMOL plugin to identify lassos · 03 NMR</div>
         </a>
-        <a class="med-vid-mini" href="https://www.youtube.com/watch?v=Q60c-8BUVAo" target="_blank" rel="noopener noreferrer" aria-hidden="true" tabindex="-1">
+        <a class="med-vid-mini" href="https://www.youtube.com/watch?v=Q60c-8BUVAo" target="_blank" rel="noopener noreferrer" inert tabindex="-1">
           <div class="med-vid-mini-thumb-wrap">
             <img class="med-vid-mini-thumb" src="https://i.ytimg.com/vi/Q60c-8BUVAo/mqdefault.jpg" alt="PyLink — a PyMOL plugin to identify links · 01 Deterministic" loading="lazy" onerror="this.closest('.med-vid-mini-thumb-wrap').style.background='#222'"/>
             <div class="med-vid-mini-play"><svg width="24" height="24" viewBox="0 0 24 24" fill="white"><polygon points="5 3 19 12 5 21 5 3"/></svg></div>
           </div>
           <div class="med-vid-mini-title">PyLink — a PyMOL plugin to identify links · 01 Deterministic</div>
         </a>
-        <a class="med-vid-mini" href="https://www.youtube.com/watch?v=8_oMoXJ_O8c" target="_blank" rel="noopener noreferrer" aria-hidden="true" tabindex="-1">
+        <a class="med-vid-mini" href="https://www.youtube.com/watch?v=8_oMoXJ_O8c" target="_blank" rel="noopener noreferrer" inert tabindex="-1">
           <div class="med-vid-mini-thumb-wrap">
             <img class="med-vid-mini-thumb" src="https://i.ytimg.com/vi/8_oMoXJ_O8c/mqdefault.jpg" alt="PyLink — a PyMOL plugin to identify links · 02 Probabilistic" loading="lazy" onerror="this.closest('.med-vid-mini-thumb-wrap').style.background='#222'"/>
             <div class="med-vid-mini-play"><svg width="24" height="24" viewBox="0 0 24 24" fill="white"><polygon points="5 3 19 12 5 21 5 3"/></svg></div>
           </div>
           <div class="med-vid-mini-title">PyLink — a PyMOL plugin to identify links · 02 Probabilistic</div>
         </a>
-        <a class="med-vid-mini" href="https://www.youtube.com/watch?v=0TJN7L2NvDo" target="_blank" rel="noopener noreferrer" aria-hidden="true" tabindex="-1">
+        <a class="med-vid-mini" href="https://www.youtube.com/watch?v=0TJN7L2NvDo" target="_blank" rel="noopener noreferrer" inert tabindex="-1">
           <div class="med-vid-mini-thumb-wrap">
             <img class="med-vid-mini-thumb" src="https://i.ytimg.com/vi/0TJN7L2NvDo/mqdefault.jpg" alt="PyLink — a PyMOL plugin to identify links · 03 Macrolinks" loading="lazy" onerror="this.closest('.med-vid-mini-thumb-wrap').style.background='#222'"/>
             <div class="med-vid-mini-play"><svg width="24" height="24" viewBox="0 0 24 24" fill="white"><polygon points="5 3 19 12 5 21 5 3"/></svg></div>
@@ -1547,7 +1531,6 @@ permalink: /media/
     const isHidden = row.classList.contains('med-archive-hidden');
     row.classList.toggle('med-archive-hidden', !isHidden);
     btn.classList.toggle('is-closed', !isHidden);
-    btn.setAttribute('aria-expanded', isHidden ? 'true' : 'false');
     if (label) label.textContent = isHidden ? 'Hide archive' : 'Show archive (' + count + ' videos)';
   });
 })();

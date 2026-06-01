@@ -6,7 +6,7 @@ domains:
 
   - id:     "topic-folding"
     number: "01"
-    color:  "#1a73e8"
+    color:  "#4d7fb0"
     alt:    false
     title:  "Protein Folding & Energy Landscapes"
     layout: "right"
@@ -48,7 +48,7 @@ domains:
 
   - id:     "topic-bioinformatics"
     number: "02"
-    color:  "#26a69a"
+    color:  "#4d7fb0"
     alt:    true
     title:  "Bioinformatics & Structure Prediction"
     layout: "left"
@@ -113,7 +113,7 @@ domains:
         caption: "Seifert surface · topological linking"
 
     text: |
-      <p>Classifying protein topology requires rigorous mathematics: we develop <strong>knot invariants</strong> — Alexander, Jones, and HOMFLY polynomials — that uniquely identify knot types in open-chain biomolecules. We extend these tools to <strong>Seifert surfaces</strong> and <strong>genus theory</strong>, capturing topological complexity in both proteins and nucleic acids. Our open-source Topoly Python package makes all invariants freely accessible to the community.</p>
+      <p>Classifying protein topology requires rigorous mathematics: we develop <strong>knot polynomials</strong> — Alexander, Jones, and HOMFLY methods — that uniquely identify knot types in open-chain biomolecules. We extend these tools to <strong>Seifert surfaces</strong> and <strong>genus theory</strong>, capturing topological complexity in both proteins and nucleic acids. Our open-source Topoly Python package makes these tools freely accessible to the community.</p>
 
     papers:
       - journal: "PNAS 2012"

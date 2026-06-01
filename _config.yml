@@ -2,10 +2,18 @@
 title: "Joanna I. Sulkowska — Interdisciplinary Laboratory of Biological Systems Modelling"
 email: "j.sulkowska@cent.uw.edu.pl"
 description: "Interdisciplinary Laboratory of Biological Systems Modelling — Centre of New Technologies, University of Warsaw. Research on protein folding, knotted proteins, drug design and structural bioinformatics."
+
+# Use an empty baseurl for a root-domain GitHub Pages site. Set this to
+# "/repo-name" only if deploying under a project subpath.
 baseurl: ""
+
+# Canonical production origin used by Jekyll URL helpers and metadata.
 url: "https://jsulkowska.cent.uw.edu.pl"
 
 markdown: kramdown
+
+# The site currently builds without Jekyll plugins, which keeps GitHub Pages
+# deployment simple.
 plugins: []
 
 collections:
@@ -13,10 +21,13 @@ collections:
     output: true
     permalink: /news/:path/
 
+# Keep generated files, local caches, and dependency files out of the site
+# output. This list does not affect Git tracking.
 exclude:
   - README.md
   - Gemfile
   - Gemfile.lock
+  - scripts
   - vendor
   - .gitignore
 

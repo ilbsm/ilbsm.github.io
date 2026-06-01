@@ -17,22 +17,22 @@ stats:
 software:
   - name: "AlphaKnot 2.0"
     url: "http://alphaknot.cent.uw.edu.pl"
-    color: "#1a73e8"
+    color: "#4d7fb0"
     desc: "Knotting analysis of AlphaFold models at proteome scale"
 
   - name: "KnotProt 2.0"
     url: "http://knotprot.cent.uw.edu.pl"
-    color: "#0d47a1"
+    color: "#24448e"
     desc: "Database of knotted & slipknotted proteins from PDB"
 
   - name: "AlphaLasso"
     url: "http://alphalasso.cent.uw.edu.pl"
-    color: "#26a69a"
+    color: "#4d7fb0"
     desc: "Lasso motifs in AlphaFold structures — server & database"
 
   - name: "LassoProt"
     url: "http://lassoprot.cent.uw.edu.pl"
-    color: "#00695c"
+    color: "#335fa8"
     desc: "Lasso topology protein database classified by piercing number"
 
   - name: "Topoly"
@@ -96,13 +96,13 @@ research:
     title: "Protein Folding & Energy Landscapes"
     desc: "How knotted proteins fold and move."
     link: "/research/#topic-folding"
-    accent: "#1a5fa8"
+    accent: "#335fa8"
 
   - num: "02"
     title: "Complex Topology: Knots, Lassos & Links"
     desc: "Molecular entanglements in proteins and RNA."
     link: "/research/#topic-math"
-    accent: "#01696f"
+    accent: "#335fa8"
 
   - num: "03"
     title: "Drug Design & Therapeutics"

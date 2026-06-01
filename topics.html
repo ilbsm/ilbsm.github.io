@@ -10,8 +10,8 @@ permalink: /topics/
 <style>
 .tp-page {
   --tp-side: 14px;
-  --tp-teal: #0b7074;
-  background: #f7f8fc;
+  --tp-default: #335fa8;
+  background: #e8f1fb;
   color: #101827;
 }
 .tp-hero {
@@ -45,7 +45,7 @@ permalink: /topics/
   line-height: 1.42;
 }
 .tp-section {
-  border-top: 3px solid var(--section-color, var(--tp-teal));
+  border-top: 3px solid var(--section-color, var(--tp-default));
   scroll-margin-top: 70px;
 }
 .tp-section-head {
@@ -68,10 +68,10 @@ permalink: /topics/
   gap: 0.3rem;
   min-height: 23px;
   padding: 0.2rem 0.62rem;
-  border: 1px solid color-mix(in srgb, var(--section-color, var(--tp-teal)) 28%, #c8d4dd);
+  border: 1px solid color-mix(in srgb, var(--section-color, var(--tp-default)) 28%, #c8d4dd);
   border-radius: 999px;
-  background: color-mix(in srgb, var(--section-color, var(--tp-teal)) 12%, #fff);
-  color: var(--section-color, var(--tp-teal));
+  background: color-mix(in srgb, var(--section-color, var(--tp-default)) 12%, #fff);
+  color: var(--section-color, var(--tp-default));
   font-size: 0.58rem;
   font-weight: 800;
   letter-spacing: 0.14em;
@@ -88,7 +88,7 @@ permalink: /topics/
   grid-template-columns: repeat(3, minmax(0, 1fr));
   gap: 1rem 0.9rem;
   padding: 0.6rem var(--tp-side) 1.25rem;
-  background: #f7f8fc;
+  background: #e8f1fb;
 }
 .tp-card {
   display: block;
@@ -100,7 +100,7 @@ permalink: /topics/
   text-decoration: none;
 }
 .tp-card:hover .tp-card-title {
-  color: var(--section-color, var(--tp-teal));
+  color: var(--section-color, var(--tp-default));
 }
 .tp-card:hover .tp-card-img img,
 .tp-card:hover .tp-logo {
@@ -186,7 +186,7 @@ permalink: /topics/
   margin: -0.35rem var(--tp-side) 1.25rem;
   padding: 1rem;
   border: 1px solid #dfe6ee;
-  border-left: 4px solid var(--section-color, var(--tp-teal));
+  border-left: 4px solid var(--section-color, var(--tp-default));
   border-radius: 10px;
   background: #fff;
   box-shadow: 0 4px 18px rgba(13, 43, 51, 0.06);
@@ -195,7 +195,7 @@ permalink: /topics/
   min-width: 0;
 }
 .tp-resource-kicker {
-  color: var(--section-color, var(--tp-teal));
+  color: var(--section-color, var(--tp-default));
   font-size: 0.68rem;
   font-weight: 900;
   letter-spacing: 0.13em;
@@ -213,17 +213,17 @@ permalink: /topics/
   gap: 0.35rem;
   min-height: 30px;
   padding: 0.34rem 0.65rem;
-  border: 1px solid color-mix(in srgb, var(--section-color, var(--tp-teal)) 34%, #d7e1ea);
+  border: 1px solid color-mix(in srgb, var(--section-color, var(--tp-default)) 34%, #d7e1ea);
   border-radius: 999px;
-  color: var(--section-color, var(--tp-teal));
-  background: color-mix(in srgb, var(--section-color, var(--tp-teal)) 8%, #fff);
+  color: var(--section-color, var(--tp-default));
+  background: color-mix(in srgb, var(--section-color, var(--tp-default)) 8%, #fff);
   font-size: 0.72rem;
   font-weight: 850;
   text-decoration: none;
 }
 .tp-resource-link:hover {
   color: #fff;
-  background: var(--section-color, var(--tp-teal));
+  background: var(--section-color, var(--tp-default));
   text-decoration: none;
 }
 .tp-resource-stats {
@@ -348,26 +348,12 @@ permalink: /topics/
 </style>
 
 <div id="page-topics" class="page active tp-page">
-  <section class="tp-hero" aria-labelledby="tp-title">
+  <section class="tp-hero">
     <div class="tp-hero-copy">
       <h1 class="tp-hero-title" id="tp-title">{{ data.hero.title }}</h1>
       <p class="tp-hero-sub">{{ data.hero.sub }}</p>
     </div>
-    <div class="jump-nav" data-jump-nav>
-      <button class="jump-toggle" type="button" aria-haspopup="true" aria-expanded="false">
-        <span>Jump to section</span>
-        <span class="jump-caret" aria-hidden="true"></span>
-      </button>
-      <div class="jump-menu" role="menu" aria-label="Projects and software sections">
-        {% assign first_section = true %}
-        {% for row in data.layout %}
-          {% for section in row.sections %}
-          <button class="jump-option{% if first_section %} active{% endif %}" type="button" role="menuitem" data-jump-target="{{ section.id }}">{{ section.title }}</button>
-          {% assign first_section = false %}
-          {% endfor %}
-        {% endfor %}
-      </div>
-    </div>
+    {% include jump_nav.html groups=data.layout %}
   </section>
 
   {% for row in data.layout %}

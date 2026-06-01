@@ -83,8 +83,6 @@
     function closeNav(nav) {
       if (!nav) return;
       nav.classList.remove("is-open", "jump-up");
-      var toggle = nav.querySelector(".jump-toggle");
-      if (toggle) toggle.setAttribute("aria-expanded", "false");
       resetMenuStyles(nav.querySelector(".jump-menu"));
     }
 
@@ -131,8 +129,6 @@
 
       if (target.classList.contains("rx-domain")) {
         target.classList.add("open");
-        var head = target.querySelector(".rx-domain-head");
-        if (head) head.setAttribute("aria-expanded", "true");
       }
 
       var top = target.getBoundingClientRect().top + window.pageYOffset - jumpOffset();
@@ -168,7 +164,6 @@
           var willOpen = !nav.classList.contains("is-open");
           closeOtherNavs(nav);
           nav.classList.toggle("is-open", willOpen);
-          toggle.setAttribute("aria-expanded", willOpen ? "true" : "false");
           if (willOpen) window.requestAnimationFrame(function () { positionMenu(nav); });
           else closeNav(nav);
         });

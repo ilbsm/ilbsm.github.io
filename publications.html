@@ -8,7 +8,7 @@ permalink: /publications/
 <style>
   :root { --sidebar-w: 290px; }
   .pub-page {
-    background: #f0f2f5;
+    background: #d9e9f7;
     min-height: 100vh;
     max-width: 100%;
     overflow-x: hidden;
@@ -16,7 +16,7 @@ permalink: /publications/
 
   .ps-dot {
     width: 7px; height: 7px; border-radius: 50%;
-    background: #4caf50; animation: pub-pulse 2s infinite;
+    background: #4d7fb0; animation: pub-pulse 2s infinite;
   }
   @keyframes pub-pulse { 0%,100%{opacity:1} 50%{opacity:0.35} }
 
@@ -42,21 +42,21 @@ permalink: /publications/
   .pub-sidebar::-webkit-scrollbar { width: 4px; }
   .pub-sidebar::-webkit-scrollbar-thumb { background: #dde1e9; border-radius: 2px; }
 
-  .psb-section { border-bottom: 1px solid #f0f2f5; padding: 1rem 1.2rem; }
+  .psb-section { border-bottom: 1px solid #d9e9f7; padding: 1rem 1.2rem; }
   .psb-section:last-child { border-bottom: none; }
 
   .psb-stats { display: grid; grid-template-columns: 1fr 1fr; gap: 0.6rem; }
-  .psb-stat { background: #f7f8fc; border-radius: 8px; padding: 0.6rem 0.75rem; }
+  .psb-stat { background: #e8f1fb; border-radius: 8px; padding: 0.6rem 0.75rem; }
   .psb-stat-n {
     font-family: 'Merriweather', serif; font-size: 1.3rem;
-    font-weight: 900; color: #1a73e8; line-height: 1;
+    font-weight: 900; color: #335fa8; line-height: 1;
   }
   .psb-stat-l {
     font-size: 0.65rem; font-weight: 700; text-transform: uppercase;
     letter-spacing: 0.08em; color: #aaa; margin-top: 0.2rem;
   }
-  .psb-stat.live-stat { grid-column: span 2; background: #e8f5e9; }
-  .psb-stat.live-stat .psb-stat-n { font-size: 0.8rem; color: #2e7d32; font-family: inherit; }
+  .psb-stat.live-stat { grid-column: span 2; background: #d9e9f7; }
+  .psb-stat.live-stat .psb-stat-n { font-size: 0.8rem; color: #4d7fb0; font-family: inherit; }
 
   .psb-toggle {
     display: flex; justify-content: space-between; align-items: center;
@@ -73,7 +73,7 @@ permalink: /publications/
   .psb-body.collapsed { max-height: 0 !important; }
 
   .psb-section-sort  { border-bottom: none; padding: 0.75rem 1.2rem 0.4rem; }
-  .psb-section-filter { border-bottom: 1px solid #f0f2f5; padding: 0.4rem 1.2rem 0.75rem; }
+  .psb-section-filter { border-bottom: 1px solid #d9e9f7; padding: 0.4rem 1.2rem 0.75rem; }
   .psb-live-section { padding: 0.55rem 1.2rem; }
   .psb-live-status {
     display: inline-flex;
@@ -81,14 +81,25 @@ permalink: /publications/
     gap: 0.42rem;
     min-height: 28px;
     padding: 0.32rem 0.62rem;
-    border: 1px solid #d8eadc;
+    border: 1px solid #c5d7ef;
     border-radius: 999px;
-    background: #f3fbf4;
-    color: #2e7d32;
+    background: #eef4fb;
+    color: #4d7fb0;
     font-size: 0.68rem;
     font-weight: 800;
     line-height: 1;
     white-space: nowrap;
+  }
+
+  .psb-filter-label {
+    display: block;
+    margin-bottom: 0.35rem;
+    color: #9aa4b2;
+    font-size: 0.66rem;
+    font-weight: 900;
+    letter-spacing: 0.1em;
+    line-height: 1;
+    text-transform: uppercase;
   }
 
   .psb-search {
@@ -106,12 +117,12 @@ permalink: /publications/
   .psb-sort {
     width: 100%; font-size: 0.82rem; padding: 0.5rem 2rem 0.5rem 0.75rem;
     border: 1px solid rgba(0,0,0,0.12); border-radius: 6px;
-    background: #f7f8fc; cursor: pointer; color: #333;
+    background: #e8f1fb; cursor: pointer; color: #333;
     appearance: none; -webkit-appearance: none;
     outline: none;
     transition: border-color 0.15s;
   }
-  .psb-sort:focus { border-color: #1a73e8; }
+  .psb-sort:focus { border-color: #335fa8; }
   .psb-sort-chevron {
     pointer-events: none; position: absolute; right: 0.6rem;
     top: 50%; transform: translateY(-50%); color: #aaa;
@@ -125,17 +136,17 @@ permalink: /publications/
     color: #555; cursor: pointer; text-align: left;
     transition: background 0.15s ease, color 0.15s ease, border-color 0.15s ease;
   }
-  .pchip:hover { background: #eef2ff; color: #1a73e8; border-color: rgba(26,115,232,0.3); }
-  .pchip.active { background: #1a73e8; border-color: #1a73e8; color: #fff; }
-  .psb-chips-divider { height: 1px; background: #f0f2f5; margin: 0.25rem 0; }
+  .pchip:hover { background: #d9e9f7; color: #335fa8; border-color: rgba(51,95,168,0.3); }
+  .pchip.active { background: #335fa8; border-color: #335fa8; color: #fff; }
+  .psb-chips-divider { height: 1px; background: #d9e9f7; margin: 0.25rem 0; }
 
   .psb-scholar {
     display: block; text-align: center; font-size: 0.78rem;
-    font-weight: 700; color: #1a73e8; text-decoration: none;
-    padding: 0.5rem; border: 1.5px solid #1a73e8; border-radius: 6px;
+    font-weight: 700; color: #335fa8; text-decoration: none;
+    padding: 0.5rem; border: 1.5px solid #335fa8; border-radius: 6px;
     transition: background 0.18s, color 0.18s;
   }
-  .psb-scholar:hover { background: #1a73e8; color: #fff; text-decoration: none; }
+  .psb-scholar:hover { background: #335fa8; color: #fff; text-decoration: none; }
 
   .bar-chart-wrap { display: flex; flex-direction: column; gap: 0.2rem; }
   .bar-chart {
@@ -149,17 +160,17 @@ permalink: /publications/
   }
   .bar-col { min-width: 0; height: 100%; display: flex; align-items: flex-end; }
   .bar-fill {
-    width: 100%; background: #1a73e8; border-radius: 2px 2px 0 0;
+    width: 100%; background: #335fa8; border-radius: 2px 2px 0 0;
     min-height: 2px; cursor: default; position: relative;
     transition: background 0.15s;
   }
   .bar-fill.is-empty { min-height: 0; background: transparent; }
-  .bar-fill:hover { background: #4db8e8; }
+  .bar-fill:hover { background: #4d7fb0; }
   .bar-fill.is-empty:hover { background: transparent; }
   .bar-fill:hover::after {
     content: attr(data-tip); position: absolute; bottom: calc(100% + 4px);
     left: 50%; transform: translateX(-50%);
-    background: #0a1020; color: #fff; font-size: 0.62rem; font-weight: 700;
+    background: #1f2d4f; color: #fff; font-size: 0.62rem; font-weight: 700;
     padding: 2px 6px; border-radius: 4px; white-space: nowrap;
     pointer-events: none; z-index: 20;
   }
@@ -185,8 +196,8 @@ permalink: /publications/
   .hbar-row { display: flex; align-items: center; gap: 0.5rem; margin-bottom: 0.45rem; }
   .hbar-label { font-size: 0.68rem; color: #555; width: 90px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; flex-shrink: 0; }
   .hbar-track { flex: 1; background: #e8ebf0; border-radius: 3px; height: 6px; overflow: hidden; }
-  .hbar-fill { height: 100%; background: #1a73e8; border-radius: 3px; }
-  .hbar-val { font-size: 0.66rem; font-weight: 700; color: #1a73e8; width: 18px; text-align: right; flex-shrink: 0; }
+  .hbar-fill { height: 100%; background: #335fa8; border-radius: 3px; }
+  .hbar-val { font-size: 0.66rem; font-weight: 700; color: #335fa8; width: 18px; text-align: right; flex-shrink: 0; }
 
   .donut-wrap { display: flex; align-items: center; gap: 0.7rem; overflow: visible; }
   .donut-svg { display: block; flex: 0 0 auto; overflow: visible; }
@@ -216,7 +227,7 @@ permalink: /publications/
   .pub-result-bar strong { color: #333; }
 
   .pub-loading { display: flex; flex-direction: column; align-items: center; gap: 1rem; padding: 4rem 0; color: #888; font-size: 0.88rem; }
-  .pub-spinner { width: 30px; height: 30px; border: 3px solid #e0e4ec; border-top-color: #1a73e8; border-radius: 50%; animation: spin 0.8s linear infinite; }
+  .pub-spinner { width: 30px; height: 30px; border: 3px solid #e0e4ec; border-top-color: #335fa8; border-radius: 50%; animation: spin 0.8s linear infinite; }
   @keyframes spin { to { transform: rotate(360deg); } }
 
   .pub-list { display: flex; flex-direction: column; gap: 0.5rem; }
@@ -231,16 +242,16 @@ permalink: /publications/
   .pub-body { min-width: 0; }
   .pub-title { margin-bottom: 0.2rem; }
   .pub-title-link {
-    color: #0a1020;
+    color: #1f2d4f;
     font-size: 0.88rem;
     font-weight: 700;
     line-height: 1.4;
     text-decoration: none;
   }
-  .pub-title-link:hover { color: #1a73e8; text-decoration: none; }
+  .pub-title-link:hover { color: #335fa8; text-decoration: none; }
   .pub-meta { font-size: 0.74rem; color: #888; line-height: 1.45; }
-  .pub-meta em { color: #1a73e8; font-style: normal; font-weight: 600; }
-  .pub-cites { font-size: 0.7rem; font-weight: 700; color: #1a73e8; white-space: nowrap; padding-top: 2px; }
+  .pub-meta em { color: #335fa8; font-style: normal; font-weight: 600; }
+  .pub-cites { font-size: 0.7rem; font-weight: 700; color: #335fa8; white-space: nowrap; padding-top: 2px; }
   .pub-actions {
     display: flex;
     align-items: center;
@@ -269,14 +280,14 @@ permalink: /publications/
   }
   .pub-action:hover,
   .pub-mini-link:hover,
-  .pub-action[aria-expanded="true"] {
+  .pub-action.is-open {
     background: #edf5ff;
     border-color: #b9d5fb;
-    color: #1a73e8;
+    color: #335fa8;
     text-decoration: none;
   }
-  .pub-action[aria-expanded="true"] {
-    box-shadow: inset 0 0 0 1px rgba(26,115,232,0.08);
+  .pub-action.is-open {
+    box-shadow: inset 0 0 0 1px rgba(51,95,168,0.08);
   }
   .pub-action-count {
     color: inherit;
@@ -382,13 +393,26 @@ permalink: /publications/
     position: fixed;
     inset: 0;
     z-index: 2000;
-    display: flex;
     align-items: center;
+    border: 0;
+    background: transparent;
     justify-content: center;
+    margin: 0;
+    max-height: none;
+    max-width: none;
     padding: clamp(1rem, 4vw, 3rem);
+    width: 100%;
+    height: 100%;
+  }
+  .pub-lightbox::backdrop {
     background: rgba(10, 16, 32, 0.72);
   }
-  .pub-lightbox[hidden] { display: none; }
+  .pub-lightbox:not([open]) {
+    display: none;
+  }
+  .pub-lightbox[open] {
+    display: flex;
+  }
   .pub-lightbox-card {
     position: relative;
     width: min(1100px, 100%);
@@ -422,7 +446,7 @@ permalink: /publications/
   }
   .pub-lightbox-source {
     flex: 0 0 auto;
-    color: #1a73e8;
+    color: #335fa8;
     font-size: 0.72rem;
     font-weight: 900;
     text-decoration: none;
@@ -433,15 +457,16 @@ permalink: /publications/
     position: absolute;
     top: 0.55rem;
     right: 0.55rem;
-    width: 34px;
-    height: 34px;
     border: 1px solid rgba(255,255,255,0.4);
-    border-radius: 999px;
-    background: rgba(10,16,32,0.78);
+    border-radius: 6px;
+    background: rgba(6,63,63,0.78);
     color: #fff;
     cursor: pointer;
-    font-size: 1.25rem;
+    font: inherit;
+    font-size: 0.72rem;
+    font-weight: 900;
     line-height: 1;
+    padding: 0.55rem 0.7rem;
   }
 
   .pub-error { padding: 1.2rem; border-radius: 8px; background: #fff3e0; border-left: 4px solid #f57c00; color: #e65100; font-size: 0.88rem; }
@@ -484,7 +509,7 @@ permalink: /publications/
   @media (max-width: 700px) {
     .pub-page,
     .pub-layout {
-      background: #f0f2f5;
+      background: #d9e9f7;
     }
     .pub-layout,
     .psb-section,
@@ -500,7 +525,7 @@ permalink: /publications/
       top: auto;
       z-index: auto;
       padding: 0.65rem 0.75rem 0.25rem;
-      background: #f0f2f5;
+      background: #d9e9f7;
       border-bottom: 0;
       box-shadow: none;
     }
@@ -518,12 +543,12 @@ permalink: /publications/
     }
     #pub-sort-section {
       order: 2 !important;
-      background: #f0f2f5;
+      background: #d9e9f7;
       border-bottom: 0;
     }
     #pub-filter-section {
       order: 3 !important;
-      background: #f0f2f5;
+      background: #d9e9f7;
       border-bottom: 1px solid #dfe5ee;
     }
     .psb-section-sort {
@@ -573,7 +598,7 @@ permalink: /publications/
       padding: 0.65rem 0.65rem 1.6rem;
       scroll-margin-top: calc(var(--nav-h) + 72px);
       overflow-x: hidden;
-      background: #f0f2f5;
+      background: #d9e9f7;
     }
     .pub-loading {
       padding: 2.6rem 0.75rem;
@@ -656,12 +681,14 @@ permalink: /publications/
 </style>
 
 <div id="page-publications" class="page active pub-page">
+  <h1 class="visually-hidden">Publications</h1>
 
   <div class="pub-layout">
 
     <aside class="pub-sidebar">
 
       <div class="psb-section" id="pub-search-section">
+        <label class="psb-filter-label" for="pub-search-input">Search</label>
         <div class="psb-search">
           <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#aaa" stroke-width="2.5"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
           <input type="text" id="pub-search-input" placeholder="Title, author, journal…" oninput="pubFilter(true)"/>
@@ -675,6 +702,7 @@ permalink: /publications/
         </div>
         <div class="psb-body" style="max-height:200px">
           <div class="psb-sort-wrap">
+            <label class="visually-hidden" for="pub-sort-select">Sort publications</label>
             <select id="pub-sort-select" class="psb-sort" onchange="pubFilter(true)">
               <option value="cites">Most cited</option>
               <option value="year-desc">Newest first</option>
@@ -693,20 +721,20 @@ permalink: /publications/
         </div>
         <div class="psb-body" style="max-height:400px">
           <div class="psb-chips">
-            <button class="pchip active" data-filter="all"      onclick="pubChip(this)">All papers</button>
-            <button class="pchip"        data-filter="cited50"  onclick="pubChip(this)">50+ citations</button>
-            <button class="pchip"        data-filter="cited100" onclick="pubChip(this)">100+ citations</button>
+            <button class="pchip active" type="button" data-filter="all"      onclick="pubChip(this)">All papers</button>
+            <button class="pchip"        type="button" data-filter="cited50"  onclick="pubChip(this)">50+ citations</button>
+            <button class="pchip"        type="button" data-filter="cited100" onclick="pubChip(this)">100+ citations</button>
             <div class="psb-chips-divider"></div>
-            <button class="pchip"        data-filter="2020s"    onclick="pubChip(this)">2020s</button>
-            <button class="pchip"        data-filter="2010s"    onclick="pubChip(this)">2010s</button>
-            <button class="pchip"        data-filter="pre2010"  onclick="pubChip(this)">Before 2010</button>
+            <button class="pchip"        type="button" data-filter="2020s"    onclick="pubChip(this)">2020s</button>
+            <button class="pchip"        type="button" data-filter="2010s"    onclick="pubChip(this)">2010s</button>
+            <button class="pchip"        type="button" data-filter="pre2010"  onclick="pubChip(this)">Before 2010</button>
             <div class="psb-chips-divider"></div>
-            <button class="pchip"        data-filter="oa"       onclick="pubChip(this)">Open Access only</button>
+            <button class="pchip"        type="button" data-filter="oa"       onclick="pubChip(this)">Open Access only</button>
           </div>
         </div>
       </div>
 
-      <div class="psb-section psb-live-section" aria-label="Live publication data source">
+      <div class="psb-section psb-live-section">
         <div class="psb-live-status"><span class="ps-dot"></span> Live via OpenAlex</div>
       </div>
 
@@ -735,14 +763,14 @@ permalink: /publications/
       </div>
 
       <div class="psb-section" id="pub-scholar-section">
-        <a class="psb-scholar" href="https://scholar.google.com/citations?user=BVBwiyAAAAAJ" target="_blank">
+        <a class="psb-scholar" href="https://scholar.google.com/citations?user=BVBwiyAAAAAJ" target="_blank" rel="noopener noreferrer">
           Google Scholar ↗
         </a>
       </div>
 
     </aside>
 
-    <main class="pub-main" id="pub-list-section">
+    <section class="pub-main" id="pub-list-section">
       <div class="pub-result-bar" id="pub-result-bar">
         Showing <strong id="pub-result-n">0</strong> publications
       </div>
@@ -752,22 +780,22 @@ permalink: /publications/
       </div>
       <div id="pub-list" class="pub-list" style="display:none"></div>
       <div id="pub-error" class="pub-error" style="display:none"></div>
-    </main>
+    </section>
 
   </div>
 
 </div>
 
-<div class="pub-lightbox" id="pub-lightbox" hidden onclick="pubCloseFigure(event)">
-  <div class="pub-lightbox-card" role="dialog" aria-modal="true" aria-label="Publication figure">
-    <button class="pub-lightbox-close" type="button" aria-label="Close figure" onclick="pubCloseFigure(event)">&times;</button>
+<dialog class="pub-lightbox" id="pub-lightbox" onclick="pubCloseFigure(event)">
+  <div class="pub-lightbox-card">
+    <button class="pub-lightbox-close" type="button" onclick="pubCloseFigure(event)">Close</button>
     <img class="pub-lightbox-img" id="pub-lightbox-img" src="" alt="">
     <div class="pub-lightbox-caption">
       <span id="pub-lightbox-caption"></span>
       <a class="pub-lightbox-source" id="pub-lightbox-source" href="#" target="_blank" rel="noopener noreferrer" hidden>Open at source</a>
     </div>
   </div>
-</div>
+</dialog>
 
 <script>
 document.addEventListener('DOMContentLoaded', function() {
@@ -886,10 +914,10 @@ document.addEventListener('DOMContentLoaded', function() {
 
     // Donut: citation tiers
     const tiers = [
-      { label: '100+ cit.',  color: '#0d47a1', min: 100 },
-      { label: '50–99',      color: '#1a73e8', min: 50  },
-      { label: '10–49',      color: '#4db8e8', min: 10  },
-      { label: '1–9',        color: '#a8d5f0', min: 1   },
+      { label: '100+ cit.',  color: '#24448e', min: 100 },
+      { label: '50–99',      color: '#335fa8', min: 50  },
+      { label: '10–49',      color: '#4d7fb0', min: 10  },
+      { label: '1–9',        color: '#c7d9f2', min: 1   },
       { label: '0 cit.',     color: '#e0e4ec', min: 0   },
     ];
     const total = works.length || 1;
@@ -910,11 +938,12 @@ document.addEventListener('DOMContentLoaded', function() {
     }).join('');
     document.getElementById('chart-cites').className = 'donut-wrap';
     document.getElementById('chart-cites').innerHTML = `
-      <svg class="donut-svg" width="${donutSize}" height="${donutSize}" viewBox="0 0 ${donutSize} ${donutSize}" aria-label="Citation tiers donut chart">
+      <svg class="donut-svg" width="${donutSize}" height="${donutSize}" viewBox="0 0 ${donutSize} ${donutSize}">
+        <title>Citation tiers donut chart</title>
         <circle cx="${cx}" cy="${cy}" r="${r}" fill="none" stroke="#e8edf4" stroke-width="${strokeW}"/>
         ${svgPaths}
         <circle cx="${cx}" cy="${cy}" r="${r - (strokeW / 2) - 1}" fill="#fff"/>
-        <text x="${cx}" y="${cy - 3}" text-anchor="middle" font-size="10" font-weight="700" fill="#0a1020">${total}</text>
+        <text x="${cx}" y="${cy - 3}" text-anchor="middle" font-size="10" font-weight="700" fill="#1f2d4f">${total}</text>
         <text x="${cx}" y="${cy + 8}" text-anchor="middle" font-size="6.5" fill="#888">papers</text>
       </svg>
       <div class="donut-legend">${segments.map(s=>`
@@ -1052,7 +1081,7 @@ document.addEventListener('DOMContentLoaded', function() {
     if (!panel) return;
     const shouldOpen = panel.hidden;
     panel.hidden = !shouldOpen;
-    btn.setAttribute('aria-expanded', shouldOpen ? 'true' : 'false');
+    btn.classList.toggle('is-open', shouldOpen);
   };
 
   window.pubToggleCitations = async function(panelId, workId, btn) {
@@ -1060,7 +1089,7 @@ document.addEventListener('DOMContentLoaded', function() {
     if (!panel) return;
     const shouldOpen = panel.hidden;
     panel.hidden = !shouldOpen;
-    btn.setAttribute('aria-expanded', shouldOpen ? 'true' : 'false');
+    btn.classList.toggle('is-open', shouldOpen);
     if (!shouldOpen || panel.dataset.loaded === 'true') return;
 
     panel.innerHTML = '<div class="pub-panel-loading">Loading citing papers from OpenAlex...</div>';
@@ -1089,7 +1118,8 @@ document.addEventListener('DOMContentLoaded', function() {
       source.hidden = true;
       source.removeAttribute('href');
     }
-    box.hidden = false;
+    if (typeof box.showModal === 'function') box.showModal();
+    else box.setAttribute('open', '');
     document.body.style.overflow = 'hidden';
   };
 
@@ -1102,13 +1132,18 @@ document.addEventListener('DOMContentLoaded', function() {
     }
     const box = document.getElementById('pub-lightbox');
     const img = document.getElementById('pub-lightbox-img');
-    if (box) box.hidden = true;
+    if (box && typeof box.close === 'function' && box.open) box.close();
+    else if (box) box.removeAttribute('open');
     if (img) img.src = '';
     document.body.style.overflow = '';
   };
 
   document.addEventListener('keydown', event => {
     if (event.key === 'Escape') window.pubCloseFigure();
+  });
+
+  document.getElementById('pub-lightbox')?.addEventListener('close', () => {
+    document.body.style.overflow = '';
   });
 
   let _activeChip = 'all';
@@ -1177,12 +1212,12 @@ document.addEventListener('DOMContentLoaded', function() {
       const figures = figuresForWork(w);
       const externalLabel = w.doi ? 'DOI ↗' : 'OpenAlex ↗';
       const oaBadge = w.open_access?.is_oa
-        ? ' <span style="font-size:0.65rem;font-weight:700;color:#2e7d32;background:#e8f5e9;padding:1px 5px;border-radius:8px;margin-left:3px">OA</span>' : '';
+        ? ' <span style="font-size:0.65rem;font-weight:700;color:#4d7fb0;background:#d9e9f7;padding:1px 5px;border-radius:8px;margin-left:3px">OA</span>' : '';
       const citingAction = workId && cites > 0
-        ? `<button class="pub-action" type="button" aria-expanded="false" aria-controls="${citingPanelId}" onclick="pubToggleCitations('${citingPanelId}', '${workId}', this)">Citing papers <span class="pub-action-count">${cites.toLocaleString()}</span></button>`
+        ? `<button class="pub-action" type="button" onclick="pubToggleCitations('${citingPanelId}', '${workId}', this)">Citing papers <span class="pub-action-count">${cites.toLocaleString()}</span></button>`
         : '';
       const figureAction = figures.length
-        ? `<button class="pub-action" type="button" aria-expanded="false" aria-controls="${figurePanelId}" onclick="pubTogglePanel('${figurePanelId}', this)">Figures <span class="pub-action-count">${figures.length}</span></button>`
+        ? `<button class="pub-action" type="button" onclick="pubTogglePanel('${figurePanelId}', this)">Figures <span class="pub-action-count">${figures.length}</span></button>`
         : '';
       const citingPanel = citingAction
         ? `<div class="pub-panel pub-citing-panel" id="${citingPanelId}" hidden></div>`

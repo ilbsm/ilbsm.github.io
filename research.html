@@ -10,8 +10,8 @@ permalink: /research/
 
 <style>
 .rx-page {
-  background: #f7f8fc;
-  color: #0f172a;
+  background: #e8f1fb;
+  color: #1f2d4f;
 }
 .rx-intro {
   padding: 1rem 1.5rem 1.05rem;
@@ -41,7 +41,7 @@ permalink: /research/
   line-height: 1.42;
 }
 .rx-domain {
-  --accent: #1a73e8;
+  --accent: #335fa8;
   position: relative;
   border-top: 3px solid var(--accent);
   border-bottom: 1px solid #dde2ea;
@@ -240,7 +240,7 @@ permalink: /research/
   font-size: 0.9rem;
   line-height: 1;
 }
-.rx-paper-toggle[aria-expanded="true"]::after {
+.rx-paper-toggle.is-open::after {
   content: "\2304";
   transform: translateY(-2px);
 }
@@ -289,7 +289,7 @@ permalink: /research/
 .rx-paper-title {
   grid-column: 2;
   grid-row: 1;
-  color: #111827;
+  color: #1f2d4f;
   font-size: 0.82rem;
   font-weight: 800;
   line-height: 1.35;
@@ -304,21 +304,21 @@ permalink: /research/
 .rx-paper-cites {
   grid-column: 3;
   grid-row: 1;
-  color: #1a73e8;
+  color: #335fa8;
   font-size: 0.72rem;
   font-weight: 800;
   white-space: nowrap;
 }
 
-.rx-journal-pnas { background: #e3f2fd; color: #1565c0; }
-.rx-journal-nar { background: #e8f5e9; color: #1b5e20; }
+.rx-journal-pnas { background: #d9e9f7; color: #24448e; }
+.rx-journal-nar { background: #d9e9f7; color: #335fa8; }
 .rx-journal-ps { background: #f3e5f5; color: #4a148c; }
 .rx-journal-bib { background: #fff3e0; color: #bf360c; }
 
 .rx-projects {
   padding: 1.4rem 5.7vw 1.75rem;
   border-top: 1px solid #e0e4ec;
-  background: #f7f8fc;
+  background: #e8f1fb;
   scroll-margin-top: 68px;
 }
 .rx-section-label {
@@ -396,13 +396,13 @@ permalink: /research/
   text-transform: uppercase;
   white-space: nowrap;
 }
-.rx-funder-cost { background: #1565c0; color: #fff; }
+.rx-funder-cost { background: #335fa8; color: #fff; }
 .rx-funder-mnisw { background: #6a1b9a; color: #fff; }
 .rx-funder-ncn { background: #c0392b; color: #fff; }
-.rx-funder-embo { background: #0a3e6e; color: #fff; }
-.rx-funder-fnp { background: #1a5276; color: #fff; }
+.rx-funder-embo { background: #24448e; color: #fff; }
+.rx-funder-fnp { background: #335fa8; color: #fff; }
 .rx-funder-uw { background: #4a148c; color: #fff; }
-.rx-funder-icm { background: #2e7d32; color: #fff; }
+.rx-funder-icm { background: #4d7fb0; color: #fff; }
 .rx-project-meta {
   min-width: 0;
   color: #b1b1b1;
@@ -415,7 +415,7 @@ permalink: /research/
 }
 .rx-project-title {
   margin-bottom: 0.2rem;
-  color: #111827;
+  color: #1f2d4f;
   font-size: 0.86rem;
   font-weight: 800;
   line-height: 1.32;
@@ -439,7 +439,7 @@ permalink: /research/
   gap: 2.4rem;
   align-items: center;
   padding: 2.35rem 5.7vw;
-  background: linear-gradient(135deg, #0a1020 0%, #0f1a2e 100%);
+  background: linear-gradient(135deg, #24448e 0%, #24448e 58%, #337caf 100%);
 }
 .rx-join h2 {
   margin: 0 0 0.6rem;
@@ -467,14 +467,14 @@ permalink: /research/
   display: inline-block;
   padding: 0.7rem 1.25rem;
   border-radius: 6px;
-  background: #1a73e8;
+  background: #335fa8;
   color: #fff;
   font-size: 0.85rem;
   font-weight: 800;
   text-decoration: none;
 }
 .rx-join-cta:hover {
-  background: #1558c0;
+  background: #0b7f79;
   text-decoration: none;
 }
 .rx-positions {
@@ -501,18 +501,26 @@ permalink: /research/
   position: fixed;
   inset: 0;
   z-index: 5000;
-  display: none;
   align-items: center;
+  border: 0;
+  background: transparent;
+  color: inherit;
   justify-content: center;
+  margin: 0;
+  max-height: none;
+  max-width: none;
   padding: 1.5rem;
+  width: 100%;
+  height: 100%;
 }
-.rx-modal.open {
+.rx-modal:not([open]) {
+  display: none;
+}
+.rx-modal[open] {
   display: flex;
 }
-.rx-modal-backdrop {
-  position: absolute;
-  inset: 0;
-  background: rgba(8, 13, 25, 0.68);
+.rx-modal::backdrop {
+  background: rgba(6, 63, 63, 0.68);
 }
 .rx-modal-panel {
   position: relative;
@@ -528,16 +536,17 @@ permalink: /research/
   position: sticky;
   top: 0.65rem;
   float: right;
-  width: 38px;
-  height: 38px;
   margin: 0.65rem 0.65rem 0 0;
   border: 1px solid #dbe1ea;
-  border-radius: 999px;
+  border-radius: 6px;
   background: #fff;
   color: #4b5563;
   cursor: pointer;
-  font-size: 1.3rem;
+  font: inherit;
+  font-size: 0.76rem;
+  font-weight: 800;
   line-height: 1;
+  padding: 0.55rem 0.7rem;
   z-index: 2;
 }
 .rx-modal-image {
@@ -572,7 +581,7 @@ permalink: /research/
 .rx-modal h2 {
   clear: none;
   margin: 0 0 0.5rem;
-  color: #0f172a;
+  color: #1f2d4f;
   font-size: 1.2rem;
   line-height: 1.32;
 }
@@ -606,14 +615,14 @@ permalink: /research/
   display: inline-flex;
   padding: 0.35rem 0.7rem;
   border-radius: 999px;
-  background: #eef5ff;
-  color: #1a5fb4;
+  background: #d9e9f7;
+  color: #24448e;
   font-size: 0.78rem;
   font-weight: 700;
   text-decoration: none;
 }
 .rx-detail-links a:hover {
-  background: #dcecff;
+  background: #c8dff3;
   text-decoration: none;
 }
 
@@ -692,37 +701,27 @@ body.rx-modal-lock {
 </style>
 
 <div id="page-research" class="page active rx-page">
-  <section class="rx-intro" aria-labelledby="rx-title">
+  <section class="rx-intro">
     <div class="rx-intro-copy">
       <h1 id="rx-title">{{ research.hero.title }}</h1>
       {% if research.hero.sub %}
       <p>{{ research.hero.sub }}</p>
       {% endif %}
     </div>
-    <div class="jump-nav" data-jump-nav style="flex-shrink:0;margin-top:0.25rem">
-      <button class="jump-toggle" type="button" aria-haspopup="true" aria-expanded="false">
-        <span>Jump to section</span>
-        <span class="jump-caret" aria-hidden="true"></span>
-      </button>
-      <div class="jump-menu" role="menu" aria-label="Research page sections">
-        {% for domain in research.domains %}
-        <button class="jump-option{% if forloop.first %} active{% endif %}" type="button" role="menuitem" data-jump-target="{{ domain.id }}">{{ domain.number }} - {{ domain.title }}</button>
-        {% endfor %}
-        <button class="jump-option" type="button" role="menuitem" data-jump-target="funded-projects">Funded projects</button>
-      </div>
-    </div>
+    {% include jump_nav.html items=research.domains number=true extra_target="funded-projects" extra_label="Funded projects" style="flex-shrink:0;margin-top:0.25rem" %}
   </section>
 
   {% for domain in research.domains %}
   {% assign figure_count = domain.figures | size %}
   {% assign domain_is_first = forloop.first %}
   <section class="rx-domain{% if domain.alt %} rx-domain-alt{% endif %} open" id="{{ domain.id }}" style="--accent: {{ domain.color }}">
-    <button class="rx-domain-head" type="button" onclick="rxDomainToggle('{{ domain.id }}')" aria-expanded="true" aria-controls="{{ domain.id }}-body">
+    <h2 class="visually-hidden">{{ domain.title }}</h2>
+    <button class="rx-domain-head" type="button" onclick="rxDomainToggle('{{ domain.id }}')">
       <span class="rx-domain-titleline">
         <span class="rx-domain-num">{{ domain.number }}</span>
         <span class="rx-domain-title">{{ domain.title }}</span>
       </span>
-      <svg class="rx-chevron" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="6 9 12 15 18 9"></polyline></svg>
+      <svg class="rx-chevron" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"></polyline></svg>
     </button>
 
     <div class="rx-domain-body" id="{{ domain.id }}-body">
@@ -745,7 +744,7 @@ body.rx-modal-lock {
       <div class="rx-domain-copy">
         {{ domain.text }}
         {% if domain.papers %}
-        <button class="rx-paper-toggle" type="button" aria-expanded="false" aria-controls="{{ domain.id }}-papers" onclick="rxPaperToggle('{{ domain.id }}-papers', this)">Featured Papers</button>
+        <button class="rx-paper-toggle" type="button" onclick="rxPaperToggle('{{ domain.id }}-papers', this)">Featured Papers</button>
         <div class="rx-papers" id="{{ domain.id }}-papers" hidden>
           {% for paper in domain.papers %}
           <a class="rx-paper" href="{{ paper.url }}" target="_blank" rel="noopener noreferrer">
@@ -762,8 +761,8 @@ body.rx-modal-lock {
   </section>
   {% endfor %}
 
-  <section class="rx-projects" id="funded-projects" aria-labelledby="rx-projects-title">
-    <div class="rx-section-label" id="rx-projects-title">Funded Research Projects</div>
+  <section class="rx-projects" id="funded-projects">
+    <h2 class="rx-section-label" id="rx-projects-title">Funded Research Projects</h2>
     <div class="rx-project-grid">
       {% for project in funded_projects %}
       <button class="rx-project-card" type="button"
@@ -815,10 +814,9 @@ body.rx-modal-lock {
   </section>
 </div>
 
-<div class="rx-modal" id="rx-project-modal" aria-hidden="true">
-  <div class="rx-modal-backdrop" onclick="rxCloseProject()" aria-hidden="true"></div>
-  <section class="rx-modal-panel" role="dialog" aria-modal="true" aria-labelledby="rx-modal-title">
-    <button class="rx-modal-close" type="button" onclick="rxCloseProject()" aria-label="Close project details">&times;</button>
+<dialog class="rx-modal" id="rx-project-modal">
+  <section class="rx-modal-panel">
+    <button class="rx-modal-close" type="button" onclick="rxCloseProject()">Close</button>
     <div class="rx-modal-image"><img id="rx-modal-image" src="" alt=""></div>
     <div class="rx-modal-content">
       <div class="rx-modal-kicker">
@@ -831,7 +829,7 @@ body.rx-modal-lock {
       <div class="rx-modal-detail" id="rx-modal-detail"></div>
     </div>
   </section>
-</div>
+</dialog>
 
 <div hidden>
   {% for project in funded_projects %}
@@ -854,8 +852,6 @@ function rxDomainToggle(id) {
   if (!section) return;
   var open = !section.classList.contains('open');
   section.classList.toggle('open', open);
-  var button = section.querySelector('.rx-domain-head');
-  if (button) button.setAttribute('aria-expanded', open ? 'true' : 'false');
 }
 
 function rxPaperToggle(id, button) {
@@ -864,7 +860,7 @@ function rxPaperToggle(id, button) {
   var open = panel.hasAttribute('hidden');
   if (open) panel.removeAttribute('hidden');
   else panel.setAttribute('hidden', '');
-  if (button) button.setAttribute('aria-expanded', open ? 'true' : 'false');
+  if (button) button.classList.toggle('is-open', open);
 }
 
 function rxOpenProject(button) {
@@ -887,20 +883,28 @@ function rxOpenProject(button) {
   image.src = button.dataset.image || '';
   image.alt = button.dataset.alt || '';
 
-  modal.classList.add('open');
-  modal.setAttribute('aria-hidden', 'false');
+  if (typeof modal.showModal === 'function') modal.showModal();
+  else modal.setAttribute('open', '');
   document.body.classList.add('rx-modal-lock');
 }
 
 function rxCloseProject() {
   var modal = document.getElementById('rx-project-modal');
   if (!modal) return;
-  modal.classList.remove('open');
-  modal.setAttribute('aria-hidden', 'true');
+  if (typeof modal.close === 'function' && modal.open) modal.close();
+  else modal.removeAttribute('open');
   document.body.classList.remove('rx-modal-lock');
 }
 
 document.addEventListener('keydown', function(event) {
   if (event.key === 'Escape') rxCloseProject();
+});
+
+document.getElementById('rx-project-modal')?.addEventListener('click', function(event) {
+  if (event.target === this) rxCloseProject();
+});
+
+document.getElementById('rx-project-modal')?.addEventListener('close', function() {
+  document.body.classList.remove('rx-modal-lock');
 });
 </script>

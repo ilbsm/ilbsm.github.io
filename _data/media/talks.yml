@@ -1,7 +1,7 @@
 - year: 2018
   talks:
     - type: "Lecture"
-      color: "blue"
+      color: "cyan"
       title: "Scientific Cafeteria — Polish Academy of Sciences"
 
 - year: 2017
@@ -11,11 +11,11 @@
       title: "Fundacja Uniwersytet Dzieci — protein knots and drug design"
       body: "28 Oct 2017"
     - type: "Invited"
-      color: "teal"
+      color: "cyan"
       title: "Polish Children's Fund — protein topology"
       body: "Apr-May · Serock"
     - type: "Workshop"
-      color: "teal"
+      color: "cyan"
       title: "DOKO — biological molecular machines"
       body: "8 Apr · Warsaw"
 
@@ -26,7 +26,7 @@
       title: "Polish Biochemistry Congress — Women in Science"
       body: "Wrocław"
     - type: "Workshop"
-      color: "teal"
+      color: "cyan"
       title: "Polish Children's Fund — Biophysics"
     - type: "Panel"
       color: "orange"
@@ -35,7 +35,7 @@
 - year: 2014
   talks:
     - type: "Public talk"
-      color: "blue"
+      color: "cyan"
       title: "Entanglement in Biology"
       body: "University of Warsaw"
 
@@ -51,5 +51,5 @@
 - year: 2007
   talks:
     - type: "Workshop"
-      color: "teal"
+      color: "cyan"
       title: "Polish Children's Fund — Biophysics"

@@ -1,0 +1,30 @@
+<div class="jump-nav{% if include.class %} {{ include.class }}{% endif %}" data-jump-nav{% if include.style %} style="{{ include.style }}"{% endif %}>
+  <button class="jump-toggle" type="button">
+    <span>Jump to section</span>
+    <span class="jump-caret"></span>
+  </button>
+  <div class="jump-menu">
+    {% assign jump_active_set = false %}
+    {% if include.items %}
+      {% for item in include.items %}
+        {% assign jump_target = item.target | default: item.id %}
+        {% assign jump_label = item.label | default: item.title | default: item.name %}
+        <button class="jump-option{% unless jump_active_set %} active{% endunless %}" type="button" data-jump-target="{{ jump_target }}">{% if include.number and item.number %}{{ item.number }} - {% endif %}{{ jump_label }}</button>
+        {% assign jump_active_set = true %}
+      {% endfor %}
+    {% endif %}
+    {% if include.groups %}
+      {% for group in include.groups %}
+        {% for item in group.sections %}
+          {% assign jump_target = item.target | default: item.id %}
+          {% assign jump_label = item.label | default: item.title | default: item.name %}
+          <button class="jump-option{% unless jump_active_set %} active{% endunless %}" type="button" data-jump-target="{{ jump_target }}">{{ jump_label }}</button>
+          {% assign jump_active_set = true %}
+        {% endfor %}
+      {% endfor %}
+    {% endif %}
+    {% if include.extra_target and include.extra_label %}
+      <button class="jump-option{% unless jump_active_set %} active{% endunless %}" type="button" data-jump-target="{{ include.extra_target }}">{{ include.extra_label }}</button>
+    {% endif %}
+  </div>
+</div>
