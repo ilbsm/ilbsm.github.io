@@ -28,7 +28,7 @@ The static output is written to `_site/`. Do not edit `_site/` directly; it is g
 
 The repository remote is `https://github.com/ilbsm/ilbsm.github.io.git`. The expected host is GitHub Pages from the `main` branch because this is an organization pages repo. Confirm the Pages settings in GitHub before handoff.
 
-No env vars are required for the Jekyll build. The publications page fetches OpenAlex data in the browser and passes `contact@lab.uw.edu.pl` in the OpenAlex query string.
+No env vars are required for the Jekyll build. Publication data is stored locally in `_data/publications.json`; the browser does not fetch OpenAlex directly.
 
 ## Structure
 
@@ -41,7 +41,7 @@ _includes/nav.html          Primary navigation
 _includes/slideshow.html    Shared top banner
 _includes/footer.html       Site footer
 _includes/jump_nav.html     Reusable section jump menu
-_data/                      Editable YAML content
+_data/                      Editable YAML/JSON content
 _news/                      News collection items
 assets/css/sulkowska.css    Shared CSS
 assets/js/sulkowska.js      Shared banner and jump-menu behavior
@@ -61,12 +61,12 @@ Most content changes should happen in `_data/`:
 - Research topics: `_data/topics.yml`
 - Funded projects: `_data/research_projects.yml`
 - Projects and software: `_data/projects.yml`
-- Media lists: `_data/media/*.yml`
+- Media lists and gallery data: `_data/media/*`
 - News summaries: `_data/news.yml`
 
 Long-form news items live in `_news/` and use `layout: news_item`.
 
-Publication figure data lives in `_data/publication_figures.yml` and can be rebuilt with:
+Publication data and figure metadata live in `_data/publications.json` and `_data/publication_figures.yml`. They can be rebuilt with:
 
 ```bash
 python3 scripts/update_publication_figures.py
@@ -97,5 +97,5 @@ The repo does not contain DNS ownership records, registrar access notes, or SSL 
 ## Known Issues
 
 - Several pages still keep page-specific CSS in their HTML files. This is workable for handoff, but a future style pass should move repeated rules to shared CSS or Sass partials.
-- Publications depend on client-side OpenAlex fetches. If OpenAlex is down, the page shows an error and links users to Google Scholar.
+- Publication data is local, so the page continues to render if OpenAlex is temporarily unavailable. Refresh `_data/publications.json` periodically with the maintenance script.
 - `Gemfile.lock` exists locally and `.gitignore` now allows it to be tracked; include it in the next commit.

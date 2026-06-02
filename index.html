@@ -253,6 +253,14 @@ permalink: /
 .hp-news-archive.open { display: block; }
 .hp-awards-list { display: none; }
 .hp-awards-list.open { display: block; }
+.hp-awards-pubs { margin-top: 0.6rem; }
+.hp-award-year {
+  color: #4d7fb0;
+  font-family: inherit;
+  font-size: var(--text-xs);
+  font-weight: 800;
+  min-width: 32px;
+}
 .hp-news-archive-grid {
   display: grid; grid-template-columns: repeat(auto-fill, minmax(195px, 1fr)); gap: 0.55rem;
   align-items: start;
@@ -525,15 +533,15 @@ permalink: /
       </a>
       {% endfor %}
     </div>
-    <button class="hp-news-archive-toggle" type="button" onclick="toggleAwards(this)">
+    <button class="hp-news-archive-toggle" id="awards-toggle" type="button">
       <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
       Awards &amp; Recognition
     </button>
     <div class="hp-awards-list" id="awards-list">
-      <div class="hp-pubs" style="margin-top:0.6rem">
+      <div class="hp-pubs hp-awards-pubs">
         {% for award in site.data.home.awards %}
         <div class="hp-pub{% if award.new %} hp-award-new{% endif %}">
-          <div class="hp-pub-rank" style="font-size:var(--text-xs);color:#4d7fb0;font-family:inherit;font-weight:800;min-width:32px;">{{ award.year }}</div>
+          <div class="hp-pub-rank hp-award-year">{{ award.year }}</div>
           <div class="hp-pub-body"><div class="hp-pub-title">{{ award.title }}</div><div class="hp-pub-meta">{{ award.org }}</div></div>
           {% if award.new %}<span class="hp-award-badge">New</span>{% endif %}
         </div>
@@ -582,8 +590,7 @@ permalink: /
           {% assign collab_logo_lc = collab_logo | downcase %}
           {% assign collab_logo_prefix = collab_logo_lc | slice: 0, 2 %}
           {% unless collab_logo_lc contains "://" or collab_logo_prefix == "//" or collab_logo_lc contains "data:" %}
-          <img src="{{ '/assets/images/collab/' | append: c.logo | relative_url }}" alt="{{ c.fallback_text }} logo" loading="lazy"
-               onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
+          <img src="{{ '/assets/images/collab/' | append: c.logo | relative_url }}" alt="{{ c.fallback_text }} logo" loading="lazy" data-fallback-image>
           {% endunless %}
           <span class="hp-collab-fallback" style="background:{{ c.fallback_color }}">{{ c.fallback_text }}</span>
         </div>
@@ -635,7 +642,7 @@ permalink: /
       {% endfor %}
     </div>
 
-    <button class="hp-news-archive-toggle" type="button" onclick="toggleArchive(this)">
+    <button class="hp-news-archive-toggle" id="news-archive-toggle" type="button">
       Archive
     </button>
 
@@ -672,25 +679,6 @@ permalink: /
   </div>
 
 
-  <script>
-  function toggleArchive(btn) {
-    var archive = document.getElementById('news-archive');
-    var isOpen = archive.classList.toggle('open');
-    btn.innerHTML = isOpen
-      ? 'Hide archive'
-      : 'Archive';
-  }
-  function toggleAwards(btn) {
-    var list = document.getElementById('awards-list');
-    var isOpen = list.classList.toggle('open');
-    var chevron = btn.querySelector('svg');
-    if (chevron) chevron.style.transform = isOpen ? 'rotate(180deg)' : '';
-    btn.childNodes[btn.childNodes.length - 1].textContent = isOpen
-      ? ' Hide Awards & Recognition'
-      : ' Awards & Recognition';
-  }
-  </script>
-
 </div>
 </div>
 
@@ -698,6 +686,28 @@ permalink: /
 <script src="{{ '/assets/js/hero-knot.js' | relative_url }}"></script>
 <script>
 (function () {
+  var archiveBtn = document.getElementById('news-archive-toggle');
+  var archive = document.getElementById('news-archive');
+  if (archiveBtn && archive) {
+    archiveBtn.addEventListener('click', function () {
+      var isOpen = archive.classList.toggle('open');
+      archiveBtn.textContent = isOpen ? 'Hide archive' : 'Archive';
+    });
+  }
+
+  var awardsBtn = document.getElementById('awards-toggle');
+  var awardsList = document.getElementById('awards-list');
+  if (awardsBtn && awardsList) {
+    awardsBtn.addEventListener('click', function () {
+      var isOpen = awardsList.classList.toggle('open');
+      var chevron = awardsBtn.querySelector('svg');
+      if (chevron) chevron.style.transform = isOpen ? 'rotate(180deg)' : '';
+      awardsBtn.childNodes[awardsBtn.childNodes.length - 1].textContent = isOpen
+        ? ' Hide Awards & Recognition'
+        : ' Awards & Recognition';
+    });
+  }
+
   function animateCount(el) {
     const target = parseInt(el.dataset.count, 10);
     const dur = 1600;

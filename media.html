@@ -42,11 +42,11 @@ permalink: /media/
 .med-gallery-grid {
   display: grid; grid-template-columns: repeat(auto-fill, minmax(200px,1fr)); gap: 0.35rem;
 }
+.med-gallery-more-head { flex-shrink: 0; }
 .med-gallery-more-mobile { display: none; }
 .mg-item { position: relative; overflow: hidden; border-radius: var(--radius-md); aspect-ratio: 4/3; cursor: pointer; background: #f0ede8; }
 .mg-item img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.4s ease; }
 .mg-item:hover img { transform: scale(1.04); }
-.mg-caption { display: none; }
 .med-show-more { text-align: center; margin-top: 0.5rem; }
 .med-show-btn,
 .med-archive-toggle {
@@ -137,6 +137,8 @@ permalink: /media/
   white-space: nowrap; align-self: start;
 }
 .med-vid-yt-pill:hover { box-shadow: var(--shadow-sm); border-color: #c8c5be; }
+.med-vid-pill-title { font-size:var(--text-sm);font-weight:600;color:#28251d;line-height:1.3; }
+.med-vid-pill-sub { font-size:var(--text-xs);color:#797876;margin-top:2px; }
 .med-vid-bottom-row {
   display: grid; grid-template-columns: 1fr auto; gap: var(--space-4); align-items: start;
   padding-top: var(--space-4); border-top: 1px solid #f0ede8;
@@ -430,6 +432,10 @@ permalink: /media/
   font-size: 0.84rem;
   font-weight: 900;
 }
+.med-news-recent-heading {
+  margin-bottom: var(--space-3);
+  margin-top: var(--space-8);
+}
 #ms-news > .med-link-list {
   gap: 0.28rem;
 }
@@ -580,6 +586,9 @@ permalink: /media/
   transition: background 0.18s, color 0.18s;
 }
 .med-press-more-btn:hover { background: #335fa8; color: #fff; }
+.med-press-extra { display: none; }
+.med-press-extra.is-open { display: block; }
+.med-press-extra-grid { margin-top: 2px; }
 
 #ms-talks {
   padding-top: 0.6rem;
@@ -745,6 +754,14 @@ permalink: /media/
   font-size: var(--text-xs); font-weight: 700; letter-spacing: 0.12em;
   text-transform: uppercase; color: #bab9b4; margin-bottom: var(--space-4);
 }
+.med-vid-channel-link {
+  color: inherit;
+  text-decoration: none;
+}
+.med-vid-channel-icon {
+  margin-right: 5px;
+  vertical-align: middle;
+}
 .med-vid-marquee-outer { overflow: hidden; }
 .med-vid-marquee-track {
   display: flex; gap: var(--space-4);
@@ -865,84 +882,25 @@ permalink: /media/
 <div class="hp-wrap">
 
   <div id="ms-gallery" class="hp-sec">
+    {% assign gallery_count = site.data.media.gallery | size %}
     <div class="hp-row-head">
       <div>
         <h2 class="hp-title">Lab Gallery</h2>
       </div>
-      <button class="med-show-btn med-gallery-more-head" id="med-more-btn" data-med-more type="button" style="flex-shrink:0">
-        Show all 65 photos
+      <button class="med-show-btn med-gallery-more-head" id="med-more-btn" data-med-more type="button">
+        Show all {{ gallery_count }} photos
         <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><polyline points="6 9 12 15 18 9"/></svg>
       </button>
     </div>
     <div class="med-gallery-grid" id="mg-grid">
-      <div class="mg-item" data-cat="group"><img src="{{ '/assets/images/media/gallery/72eECOe.jpeg' | relative_url }}" alt="Lab members — group photo" loading="lazy"/><div class="mg-caption">Lab members — group photo</div></div>
-      <div class="mg-item" data-cat="group"><img src="{{ '/assets/images/media/gallery/bg6fQOH.jpeg' | relative_url }}" alt="Lab gathering" loading="lazy"/><div class="mg-caption">Lab gathering</div></div>
-      <div class="mg-item" data-cat="group"><img src="{{ '/assets/images/media/gallery/Yf5CkxL.jpeg' | relative_url }}" alt="Lab meeting" loading="lazy"/><div class="mg-caption">Lab meeting</div></div>
-      <div class="mg-item" data-cat="group"><img src="{{ '/assets/images/media/gallery/FBUwdRU.jpeg' | relative_url }}" alt="Team at CeNT" loading="lazy"/><div class="mg-caption">Team at CeNT</div></div>
-      <div class="mg-item" data-cat="group"><img src="{{ '/assets/images/media/gallery/upIza2H.jpeg' | relative_url }}" alt="Lab members" loading="lazy"/><div class="mg-caption">Lab members</div></div>
-      <div class="mg-item" data-cat="group"><img src="{{ '/assets/images/media/gallery/gCyo6II.jpeg' | relative_url }}" alt="Lab at work" loading="lazy"/><div class="mg-caption">Lab at work</div></div>
-      <div class="mg-item" data-cat="group"><img src="{{ '/assets/images/media/gallery/Ftc6Frx.jpeg' | relative_url }}" alt="Lab social event" loading="lazy"/><div class="mg-caption">Lab social event</div></div>
-      <div class="mg-item" data-cat="group"><img src="{{ '/assets/images/media/gallery/KOV9l7B.png' | relative_url }}" alt="Adam Stasiulewicz PhD defense" loading="lazy"/><div class="mg-caption">Adam Stasiulewicz PhD defense</div></div>
-      <div class="mg-item" data-cat="group"><img src="{{ '/assets/images/media/gallery/3h9RGF1.jpeg' | relative_url }}" alt="Group photo outdoors" loading="lazy"/><div class="mg-caption">Group photo outdoors</div></div>
-      <div class="mg-item" data-cat="group"><img src="{{ '/assets/images/media/gallery/7Z1NE9M.jpeg' | relative_url }}" alt="Lab meeting — Teatr Nowy" loading="lazy"/><div class="mg-caption">Lab meeting — Teatr Nowy</div></div>
-      <div class="mg-item" data-cat="group"><img src="{{ '/assets/images/media/gallery/GzPEZ6J.jpeg' | relative_url }}" alt="TrmD inhibitors — wet lab" loading="lazy"/><div class="mg-caption">TrmD inhibitors — wet lab</div></div>
-      <div class="mg-item" data-cat="group"><img src="{{ '/assets/images/media/gallery/iwDwR4k.jpeg' | relative_url }}" alt="Lab life — miscellaneous" loading="lazy"/><div class="mg-caption">Lab life — miscellaneous</div></div>
-      <div class="mg-item" data-cat="group"><img src="{{ '/assets/images/media/gallery/FXLBMFD.jpeg' | relative_url }}" alt="Lab celebration" loading="lazy"/><div class="mg-caption">Lab celebration</div></div>
-      <div class="mg-item" data-cat="group"><img src="{{ '/assets/images/media/gallery/uHnbEK3.jpeg' | relative_url }}" alt="Lab members" loading="lazy"/><div class="mg-caption">Lab members</div></div>
-      <div class="mg-item" data-cat="group"><img src="{{ '/assets/images/media/gallery/8zPFRK2.jpeg' | relative_url }}" alt="Group photo" loading="lazy"/><div class="mg-caption">Group photo</div></div>
-      <div class="mg-item" data-cat="group"><img src="{{ '/assets/images/media/gallery/boOgt0G.jpeg' | relative_url }}" alt="Group outing" loading="lazy"/><div class="mg-caption">Group outing</div></div>
-      <div class="mg-item" data-cat="group"><img src="{{ '/assets/images/media/gallery/D8f81Pn.jpeg' | relative_url }}" alt="Lab social" loading="lazy"/><div class="mg-caption">Lab social</div></div>
-      <div class="mg-item" data-cat="group"><img src="{{ '/assets/images/media/gallery/wse8hJq.jpeg' | relative_url }}" alt="Team" loading="lazy"/><div class="mg-caption">Team</div></div>
-      <div class="mg-item" data-cat="conf"><img src="{{ '/assets/images/media/gallery/leXzRKe.jpeg' | relative_url }}" alt="San Sebastián — Eutopia-2" loading="lazy"/><div class="mg-caption">San Sebastián — Eutopia-2</div></div>
-      <div class="mg-item" data-cat="conf"><img src="{{ '/assets/images/media/gallery/e8qGQU5.jpeg' | relative_url }}" alt="Conference presentation" loading="lazy"/><div class="mg-caption">Conference presentation</div></div>
-      <div class="mg-item" data-cat="conf"><img src="{{ '/assets/images/media/gallery/azVpQn2.jpeg' | relative_url }}" alt="Sofia workshop 2021" loading="lazy"/><div class="mg-caption">Sofia workshop 2021</div></div>
-      <div class="mg-item" data-cat="conf"><img src="{{ '/assets/images/media/gallery/2a8mLXc.jpeg' | relative_url }}" alt="Conference talk" loading="lazy"/><div class="mg-caption">Conference talk</div></div>
-      <div class="mg-item" data-cat="conf"><img src="{{ '/assets/images/media/gallery/X1AHi2f.jpeg' | relative_url }}" alt="Poster session" loading="lazy"/><div class="mg-caption">Poster session</div></div>
-      <div class="mg-item" data-cat="conf"><img src="{{ '/assets/images/media/gallery/9j2Qfrq.jpeg' | relative_url }}" alt="International meeting" loading="lazy"/><div class="mg-caption">International meeting</div></div>
-      <div class="mg-item" data-cat="conf"><img src="{{ '/assets/images/media/gallery/5w3IANU.jpeg' | relative_url }}" alt="Conference networking" loading="lazy"/><div class="mg-caption">Conference networking</div></div>
-      <div class="mg-item" data-cat="conf"><img src="{{ '/assets/images/media/gallery/A05S51P.jpeg' | relative_url }}" alt="Scientific workshop" loading="lazy"/><div class="mg-caption">Scientific workshop</div></div>
-      <div class="mg-item" data-cat="conf"><img src="{{ '/assets/images/media/gallery/srOe36v.jpeg' | relative_url }}" alt="Conference group" loading="lazy"/><div class="mg-caption">Conference group</div></div>
-      <div class="mg-item" data-cat="conf"><img src="{{ '/assets/images/media/gallery/8ZerPF5.jpeg' | relative_url }}" alt="Conference" loading="lazy"/><div class="mg-caption">Conference</div></div>
-      <div class="mg-item" data-cat="conf"><img src="{{ '/assets/images/media/gallery/lmyYTI6.jpeg' | relative_url }}" alt="Workshop" loading="lazy"/><div class="mg-caption">Workshop</div></div>
-      <div class="mg-item" data-cat="conf"><img src="{{ '/assets/images/media/gallery/CSNpH97.jpeg' | relative_url }}" alt="Scientific meeting" loading="lazy"/><div class="mg-caption">Scientific meeting</div></div>
-      <div class="mg-item" data-cat="conf"><img src="{{ '/assets/images/media/gallery/yn3ABXv.jpeg' | relative_url }}" alt="Scientific gathering" loading="lazy"/><div class="mg-caption">Scientific gathering</div></div>
-      <div class="mg-item" data-cat="ourconf"><img src="{{ '/assets/images/media/gallery/3QE20KI.jpeg' | relative_url }}" alt="Protein DICES 2025" loading="lazy"/><div class="mg-caption">Protein DICES 2025</div></div>
-      <div class="mg-item" data-cat="ourconf"><img src="{{ '/assets/images/media/gallery/fnbO3P0.jpeg' | relative_url }}" alt="Organized workshop" loading="lazy"/><div class="mg-caption">Organized workshop</div></div>
-      <div class="mg-item" data-cat="ourconf"><img src="{{ '/assets/images/media/gallery/ILNsbtO.jpeg' | relative_url }}" alt="Lab-organized workshop" loading="lazy"/><div class="mg-caption">Lab-organized workshop</div></div>
-      <div class="mg-item" data-cat="ourconf"><img src="{{ '/assets/images/media/gallery/ucuDeWF.jpeg' | relative_url }}" alt="Workshop speakers" loading="lazy"/><div class="mg-caption">Workshop speakers</div></div>
-      <div class="mg-item" data-cat="ourconf"><img src="{{ '/assets/images/media/gallery/FDffXls.jpeg' | relative_url }}" alt="Conference opening" loading="lazy"/><div class="mg-caption">Conference opening</div></div>
-      <div class="mg-item" data-cat="ourconf"><img src="{{ '/assets/images/media/gallery/XaRUA0P.jpeg' | relative_url }}" alt="Workshop participants" loading="lazy"/><div class="mg-caption">Workshop participants</div></div>
-      <div class="mg-item" data-cat="ourconf"><img src="{{ '/assets/images/media/gallery/8gz5gsI.jpeg' | relative_url }}" alt="Symposium" loading="lazy"/><div class="mg-caption">Symposium</div></div>
-      <div class="mg-item" data-cat="kfnd"><img src="{{ '/assets/images/media/gallery/LUyk3jp.jpeg' | relative_url }}" alt="Polish Children's Fund — workshop" loading="lazy"/><div class="mg-caption">Polish Children's Fund — workshop</div></div>
-      <div class="mg-item" data-cat="kfnd"><img src="{{ '/assets/images/media/gallery/4UWYf9v.jpeg' | relative_url }}" alt="Biophysics for talented youths" loading="lazy"/><div class="mg-caption">Biophysics for talented youths</div></div>
-      <div class="mg-item" data-cat="kfnd"><img src="{{ '/assets/images/media/gallery/4dgy6Tq.jpeg' | relative_url }}" alt="Science workshop" loading="lazy"/><div class="mg-caption">Science workshop</div></div>
-      <div class="mg-item" data-cat="kfnd"><img src="{{ '/assets/images/media/gallery/XW55Jnp.jpeg' | relative_url }}" alt="Children's Fund workshop 2016" loading="lazy"/><div class="mg-caption">Children's Fund workshop 2016</div></div>
-      <div class="mg-item" data-cat="kfnd"><img src="{{ '/assets/images/media/gallery/eHXcKmC.jpeg' | relative_url }}" alt="Workshop with students" loading="lazy"/><div class="mg-caption">Workshop with students</div></div>
-      <div class="mg-item" data-cat="kfnd"><img src="{{ '/assets/images/media/gallery/xuEOB26.jpeg' | relative_url }}" alt="Science outreach" loading="lazy"/><div class="mg-caption">Science outreach</div></div>
-      <div class="mg-item" data-cat="kfnd"><img src="{{ '/assets/images/media/gallery/UXkGDg3.jpeg' | relative_url }}" alt="Young scientists workshop" loading="lazy"/><div class="mg-caption">Young scientists workshop</div></div>
-      <div class="mg-item" data-cat="kfnd"><img src="{{ '/assets/images/media/gallery/uJuGz7U.jpeg' | relative_url }}" alt="Polish Children's Fund 2017" loading="lazy"/><div class="mg-caption">Polish Children's Fund 2017</div></div>
-      <div class="mg-item" data-cat="kfnd"><img src="{{ '/assets/images/media/gallery/85Z2QG6.jpeg' | relative_url }}" alt="Outreach activity" loading="lazy"/><div class="mg-caption">Outreach activity</div></div>
-      <div class="mg-item" data-cat="kfnd"><img src="{{ '/assets/images/media/gallery/toyimyG.jpeg' | relative_url }}" alt="DOKO — workshops for children" loading="lazy"/><div class="mg-caption">DOKO — workshops for children</div></div>
-      <div class="mg-item" data-cat="kfnd"><img src="{{ '/assets/images/media/gallery/cRYQnJe.jpeg' | relative_url }}" alt="Children's Fund — Serock" loading="lazy"/><div class="mg-caption">Children's Fund — Serock</div></div>
-      <div class="mg-item" data-cat="kfnd"><img src="{{ '/assets/images/media/gallery/x98ooAO.jpeg' | relative_url }}" alt="Science cafeteria — PAN" loading="lazy"/><div class="mg-caption">Science cafeteria — PAN</div></div>
-      <div class="mg-item" data-cat="kfnd"><img src="{{ '/assets/images/media/gallery/5XSbg3x.jpeg' | relative_url }}" alt="Universytet Dzieci lecture" loading="lazy"/><div class="mg-caption">Universytet Dzieci lecture</div></div>
-      <div class="mg-item" data-cat="kfnd"><img src="{{ '/assets/images/media/gallery/U0eIPNW.jpeg' | relative_url }}" alt="Children's Fund 2007" loading="lazy"/><div class="mg-caption">Children's Fund 2007</div></div>
-      <div class="mg-item" data-cat="kfnd"><img src="{{ '/assets/images/media/gallery/4Ql2ZqD.jpeg' | relative_url }}" alt="Science for children" loading="lazy"/><div class="mg-caption">Science for children</div></div>
-      <div class="mg-item" data-cat="kfnd"><img src="{{ '/assets/images/media/gallery/vjJrgVS.jpeg' | relative_url }}" alt="Workshop activity" loading="lazy"/><div class="mg-caption">Workshop activity</div></div>
-      <div class="mg-item" data-cat="kfnd"><img src="{{ '/assets/images/media/gallery/j0OpJNv.jpeg' | relative_url }}" alt="Young researchers" loading="lazy"/><div class="mg-caption">Young researchers</div></div>
-      <div class="mg-item" data-cat="kfnd"><img src="{{ '/assets/images/media/gallery/VyogMfM.jpeg' | relative_url }}" alt="Biophysics workshop" loading="lazy"/><div class="mg-caption">Biophysics workshop</div></div>
-      <div class="mg-item" data-cat="kfnd"><img src="{{ '/assets/images/media/gallery/iPwWCft.jpeg' | relative_url }}" alt="Outreach" loading="lazy"/><div class="mg-caption">Outreach</div></div>
-      <div class="mg-item" data-cat="kfnd"><img src="{{ '/assets/images/media/gallery/ItFPGjp.jpeg' | relative_url }}" alt="Children's science day" loading="lazy"/><div class="mg-caption">Children's science day</div></div>
-      <div class="mg-item" data-cat="kfnd"><img src="{{ '/assets/images/media/gallery/XuLKKDU.jpeg' | relative_url }}" alt="Outreach 2018" loading="lazy"/><div class="mg-caption">Outreach 2018</div></div>
-      <div class="mg-item" data-cat="kfnd"><img src="{{ '/assets/images/media/gallery/9yWQ1ZA.jpeg' | relative_url }}" alt="Science cafeteria" loading="lazy"/><div class="mg-caption">Science cafeteria</div></div>
-      <div class="mg-item" data-cat="kfnd"><img src="{{ '/assets/images/media/gallery/fEKhZYl.jpeg' | relative_url }}" alt="Children's Fund activity" loading="lazy"/><div class="mg-caption">Children's Fund activity</div></div>
-      <div class="mg-item" data-cat="kfnd"><img src="{{ '/assets/images/media/gallery/looiWL6.jpeg' | relative_url }}" alt="Polish Children's Fund" loading="lazy"/><div class="mg-caption">Polish Children's Fund</div></div>
-      <div class="mg-item" data-cat="kfnd"><img src="{{ '/assets/images/media/gallery/jWKKlvr.jpeg' | relative_url }}" alt="Science outreach" loading="lazy"/><div class="mg-caption">Science outreach</div></div>
-      <div class="mg-item" data-cat="kfnd"><img src="{{ '/assets/images/media/gallery/pwdk6Nm.jpeg' | relative_url }}" alt="Young scientists" loading="lazy"/><div class="mg-caption">Young scientists</div></div>
-      <div class="mg-item" data-cat="kfnd"><img src="{{ '/assets/images/media/gallery/EZVYtPT.jpeg' | relative_url }}" alt="Children's Fund activity" loading="lazy"/><div class="mg-caption">Children's Fund activity</div></div>
+      {% for photo in site.data.media.gallery %}
+      <div class="mg-item" data-cat="{{ photo.category }}">
+        <img src="{{ '/assets/images/media/gallery/' | append: photo.file | relative_url }}" alt="{{ photo.alt | escape }}" loading="lazy"/>
+      </div>
+      {% endfor %}
     </div>
     <button class="med-show-btn med-gallery-more-mobile" data-med-more type="button">
-      Show all 65 photos
+      Show all {{ gallery_count }} photos
       <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><polyline points="6 9 12 15 18 9"/></svg>
     </button>
   </div>
@@ -1012,8 +970,8 @@ permalink: /media/
       <a class="med-vid-yt-pill" href="{{ media_videos.youtube_channel }}" target="_blank" rel="noopener noreferrer">
         <svg width="36" height="36" viewBox="0 0 24 24" fill="#e53935"><path d="M21.582,6.186c-0.23-0.86-0.908-1.538-1.768-1.768C18.254,4,12,4,12,4S5.746,4,4.186,4.418c-0.86,0.23-1.538,0.908-1.768,1.768C2,7.746,2,12,2,12s0,4.254,0.418,5.814c0.23,0.86,0.908,1.538,1.768,1.768C5.746,20,12,20,12,20s6.254,0,7.814-0.418c0.861-0.23,1.538-0.908,1.768-1.768C22,16.254,22,12,22,12S22,7.746,21.582,6.186z M10,15.464V8.536L16,12L10,15.464z"/></svg>
         <div>
-          <div style="font-size:var(--text-sm);font-weight:600;color:#28251d;line-height:1.3;">Sulkowska Lab YouTube</div>
-          <div style="font-size:var(--text-xs);color:#797876;margin-top:2px;">Subscribe for all videos →</div>
+          <div class="med-vid-pill-title">Sulkowska Lab YouTube</div>
+          <div class="med-vid-pill-sub">Subscribe for all videos →</div>
         </div>
       </a>
     </div>
@@ -1132,7 +1090,7 @@ permalink: /media/
       {% endfor %}
     </div>
 
-    <div class="hp-eyebrow" style="margin-bottom:var(--space-3);margin-top:var(--space-8);">Recent News</div>
+    <div class="hp-eyebrow med-news-recent-heading">Recent News</div>
     <div class="med-link-list">
       {% for item in site.data.media.news %}
       {% assign item_url = item.url | default: "" | strip %}
@@ -1233,8 +1191,8 @@ permalink: /media/
     </div>
 
     {% if press_more.size > 0 %}
-    <div id="press-extra" style="display:none">
-      <div class="med-press-grid" style="margin-top:2px">
+    <div class="med-press-extra" id="press-extra">
+      <div class="med-press-grid med-press-extra-grid">
         {% for item in press_more %}
         {% assign item_url = item.url | default: "" | strip %}
         {% if item_url != "" %}
@@ -1299,195 +1257,47 @@ permalink: /media/
     </div>
   </div>
   <div class="hp-sec med-feat-wrap">
+    {% assign featured_outlets = site.data.media.featured %}
     <div class="med-feat-label">Featured In</div>
     <div class="med-feat-track-outer">
       <div class="med-feat-track">
-        <span class="med-feat-item"><span class="med-src-logo round"><img src="{{ '/assets/images/logos/media/polsat-news.svg' | relative_url }}" alt=""></span>Polsat News</span>
-        <span class="med-feat-item"><span class="med-src-logo med-logo-wide"><img src="{{ '/assets/images/logos/media/wyborcza.svg' | relative_url }}" alt=""></span>Gazeta Wyborcza</span>
-        <span class="med-feat-item"><span class="med-src-logo med-logo-wide"><img src="{{ '/assets/images/logos/media/tvn.svg' | relative_url }}" alt=""></span>TVN Dzień Dobry</span>
-        <span class="med-feat-item"><span class="med-src-logo med-logo-wide med-logo-tok-text">TOK FM</span>TOK FM</span>
-        <span class="med-feat-item"><span class="med-src-logo med-logo-wide"><img src="{{ '/assets/images/logos/media/pap.svg' | relative_url }}" alt=""></span>Polska Agencja Prasowa</span>
-        <span class="med-feat-item"><span class="med-src-logo med-logo-wide"><img src="{{ '/assets/images/logos/media/unesco.svg' | relative_url }}" alt=""></span>UNESCO</span>
-        <span class="med-feat-item"><span class="med-src-logo med-logo-wide"><img src="{{ '/assets/images/logos/media/embo.png' | relative_url }}" alt=""></span>EMBO</span>
-        <span class="med-feat-item"><span class="med-src-logo med-logo-wide"><img src="{{ '/assets/images/logos/media/loreal.svg' | relative_url }}" alt=""></span>L'Oréal</span>
-        <span class="med-feat-item"><span class="med-src-logo"><img src="{{ '/assets/images/logos/media/fnp.svg' | relative_url }}" alt=""></span>Foundation for Polish Science</span>
-        <span class="med-feat-item"><span class="med-src-logo med-logo-long"><img src="{{ '/assets/images/logos/media/business-insider.svg' | relative_url }}" alt=""></span>Business Insider</span>
-        <span class="med-feat-item" inert><span class="med-src-logo round"><img src="{{ '/assets/images/logos/media/polsat-news.svg' | relative_url }}" alt=""></span>Polsat News</span>
-        <span class="med-feat-item" inert><span class="med-src-logo med-logo-wide"><img src="{{ '/assets/images/logos/media/wyborcza.svg' | relative_url }}" alt=""></span>Gazeta Wyborcza</span>
-        <span class="med-feat-item" inert><span class="med-src-logo med-logo-wide"><img src="{{ '/assets/images/logos/media/tvn.svg' | relative_url }}" alt=""></span>TVN Dzień Dobry</span>
-        <span class="med-feat-item" inert><span class="med-src-logo med-logo-wide med-logo-tok-text">TOK FM</span>TOK FM</span>
-        <span class="med-feat-item" inert><span class="med-src-logo med-logo-wide"><img src="{{ '/assets/images/logos/media/pap.svg' | relative_url }}" alt=""></span>Polska Agencja Prasowa</span>
-        <span class="med-feat-item" inert><span class="med-src-logo med-logo-wide"><img src="{{ '/assets/images/logos/media/unesco.svg' | relative_url }}" alt=""></span>UNESCO</span>
-        <span class="med-feat-item" inert><span class="med-src-logo med-logo-wide"><img src="{{ '/assets/images/logos/media/embo.png' | relative_url }}" alt=""></span>EMBO</span>
-        <span class="med-feat-item" inert><span class="med-src-logo med-logo-wide"><img src="{{ '/assets/images/logos/media/loreal.svg' | relative_url }}" alt=""></span>L'Oréal</span>
-        <span class="med-feat-item" inert><span class="med-src-logo"><img src="{{ '/assets/images/logos/media/fnp.svg' | relative_url }}" alt=""></span>Foundation for Polish Science</span>
-        <span class="med-feat-item" inert><span class="med-src-logo med-logo-long"><img src="{{ '/assets/images/logos/media/business-insider.svg' | relative_url }}" alt=""></span>Business Insider</span>
+        {% for pass in (1..2) %}
+        {% for outlet in featured_outlets %}
+        <span class="med-feat-item"{% if pass > 1 %} inert{% endif %}>
+          <span class="med-src-logo {{ outlet.logo_class }}">
+            {% if outlet.logo %}
+            <img src="{{ '/assets/images/logos/media/' | append: outlet.logo | relative_url }}" alt="">
+            {% elsif outlet.logo_text %}
+            {{ outlet.logo_text }}
+            {% endif %}
+          </span>
+          {{ outlet.name }}
+        </span>
+        {% endfor %}
+        {% endfor %}
       </div>
     </div>
   </div>
   <div class="hp-sec med-vid-marquee-wrap">
     <div class="med-vid-marquee-label">
-      <a href="https://www.youtube.com/channel/UCeLQTTlftS-APrHgFL8OYEw" target="_blank" rel="noopener noreferrer" style="color:inherit;text-decoration:none;">
-        <svg width="12" height="12" viewBox="0 0 24 24" fill="#e53935" style="vertical-align:middle;margin-right:5px;"><path d="M21.582,6.186c-0.23-0.86-0.908-1.538-1.768-1.768C18.254,4,12,4,12,4S5.746,4,4.186,4.418c-0.86,0.23-1.538,0.908-1.768,1.768C2,7.746,2,12,2,12s0,4.254,0.418,5.814c0.23,0.86,0.908,1.538,1.768,1.768C5.746,20,12,20,12,20s6.254,0,7.814-0.418c0.861-0.23,1.538-0.908,1.768-1.768C22,16.254,22,12,22,12S22,7.746,21.582,6.186z M10,15.464V8.536L16,12L10,15.464z"/></svg>
+      <a class="med-vid-channel-link" href="{{ media_videos.youtube_channel }}" target="_blank" rel="noopener noreferrer">
+        <svg class="med-vid-channel-icon" width="12" height="12" viewBox="0 0 24 24" fill="#e53935"><path d="M21.582,6.186c-0.23-0.86-0.908-1.538-1.768-1.768C18.254,4,12,4,12,4S5.746,4,4.186,4.418c-0.86,0.23-1.538,0.908-1.768,1.768C2,7.746,2,12,2,12s0,4.254,0.418,5.814c0.23,0.86,0.908,1.538,1.768,1.768C5.746,20,12,20,12,20s6.254,0,7.814-0.418c0.861-0.23,1.538-0.908,1.768-1.768C22,16.254,22,12,22,12S22,7.746,21.582,6.186z M10,15.464V8.536L16,12L10,15.464z"/></svg>
         ILBSM CENT Channel
       </a>
     </div>
     <div class="med-vid-marquee-outer">
       <div class="med-vid-marquee-track">
-        <a class="med-vid-mini" href="https://www.youtube.com/watch?v=IzSGDfc1vAY" target="_blank" rel="noopener noreferrer">
+        {% for pass in (1..2) %}
+        {% for video in media_videos.marquee %}
+        <a class="med-vid-mini" href="https://www.youtube.com/watch?v={{ video.id }}" target="_blank" rel="noopener noreferrer"{% if pass > 1 %} inert tabindex="-1"{% endif %}>
           <div class="med-vid-mini-thumb-wrap">
-            <img class="med-vid-mini-thumb" src="https://i.ytimg.com/vi/IzSGDfc1vAY/mqdefault.jpg" alt="Knot_pull — python package for biopolymer smoothing and knot detection" loading="lazy" onerror="this.closest('.med-vid-mini-thumb-wrap').style.background='#222'"/>
+            <img class="med-vid-mini-thumb" src="https://i.ytimg.com/vi/{{ video.id }}/mqdefault.jpg" alt="{{ video.title | escape }}" loading="lazy"/>
             <div class="med-vid-mini-play"><svg width="24" height="24" viewBox="0 0 24 24" fill="white"><polygon points="5 3 19 12 5 21 5 3"/></svg></div>
           </div>
-          <div class="med-vid-mini-title">Knot_pull — python package for biopolymer smoothing and knot detection</div>
+          <div class="med-vid-mini-title">{{ video.title }}</div>
         </a>
-        <a class="med-vid-mini" href="https://www.youtube.com/watch?v=Vb8Vut_VD2M" target="_blank" rel="noopener noreferrer">
-          <div class="med-vid-mini-thumb-wrap">
-            <img class="med-vid-mini-thumb" src="https://i.ytimg.com/vi/Vb8Vut_VD2M/mqdefault.jpg" alt="Statistical properties of lasso-shape polymers and their implications" loading="lazy" onerror="this.closest('.med-vid-mini-thumb-wrap').style.background='#222'"/>
-            <div class="med-vid-mini-play"><svg width="24" height="24" viewBox="0 0 24 24" fill="white"><polygon points="5 3 19 12 5 21 5 3"/></svg></div>
-          </div>
-          <div class="med-vid-mini-title">Statistical properties of lasso-shape polymers and their implications</div>
-        </a>
-        <a class="med-vid-mini" href="https://www.youtube.com/watch?v=ZRy_fPVBLc4" target="_blank" rel="noopener noreferrer">
-          <div class="med-vid-mini-thumb-wrap">
-            <img class="med-vid-mini-thumb" src="https://i.ytimg.com/vi/ZRy_fPVBLc4/mqdefault.jpg" alt="Topological knots and links in proteins" loading="lazy" onerror="this.closest('.med-vid-mini-thumb-wrap').style.background='#222'"/>
-            <div class="med-vid-mini-play"><svg width="24" height="24" viewBox="0 0 24 24" fill="white"><polygon points="5 3 19 12 5 21 5 3"/></svg></div>
-          </div>
-          <div class="med-vid-mini-title">Topological knots and links in proteins</div>
-        </a>
-        <a class="med-vid-mini" href="https://www.youtube.com/watch?v=H1zCl0YJVGc" target="_blank" rel="noopener noreferrer">
-          <div class="med-vid-mini-thumb-wrap">
-            <img class="med-vid-mini-thumb" src="https://i.ytimg.com/vi/H1zCl0YJVGc/mqdefault.jpg" alt="GapRepairer — repair protein structures and their topology" loading="lazy" onerror="this.closest('.med-vid-mini-thumb-wrap').style.background='#222'"/>
-            <div class="med-vid-mini-play"><svg width="24" height="24" viewBox="0 0 24 24" fill="white"><polygon points="5 3 19 12 5 21 5 3"/></svg></div>
-          </div>
-          <div class="med-vid-mini-title">GapRepairer — repair protein structures and their topology</div>
-        </a>
-        <a class="med-vid-mini" href="https://www.youtube.com/watch?v=1sKe2alsJGQ" target="_blank" rel="noopener noreferrer">
-          <div class="med-vid-mini-thumb-wrap">
-            <img class="med-vid-mini-thumb" src="https://i.ytimg.com/vi/1sKe2alsJGQ/mqdefault.jpg" alt="Protein Knotting by Active Threading of Nascent Polypeptide Chain" loading="lazy" onerror="this.closest('.med-vid-mini-thumb-wrap').style.background='#222'"/>
-            <div class="med-vid-mini-play"><svg width="24" height="24" viewBox="0 0 24 24" fill="white"><polygon points="5 3 19 12 5 21 5 3"/></svg></div>
-          </div>
-          <div class="med-vid-mini-title">Protein Knotting by Active Threading of Nascent Polypeptide Chain</div>
-        </a>
-        <a class="med-vid-mini" href="https://www.youtube.com/watch?v=tw6e7Z8_5_o" target="_blank" rel="noopener noreferrer">
-          <div class="med-vid-mini-thumb-wrap">
-            <img class="med-vid-mini-thumb" src="https://i.ytimg.com/vi/tw6e7Z8_5_o/mqdefault.jpg" alt="PyLasso — a PyMOL plugin to identify lassos · 01 Basics" loading="lazy" onerror="this.closest('.med-vid-mini-thumb-wrap').style.background='#222'"/>
-            <div class="med-vid-mini-play"><svg width="24" height="24" viewBox="0 0 24 24" fill="white"><polygon points="5 3 19 12 5 21 5 3"/></svg></div>
-          </div>
-          <div class="med-vid-mini-title">PyLasso — a PyMOL plugin to identify lassos · 01 Basics</div>
-        </a>
-        <a class="med-vid-mini" href="https://www.youtube.com/watch?v=8_oMoXJ_O8c" target="_blank" rel="noopener noreferrer">
-          <div class="med-vid-mini-thumb-wrap">
-            <img class="med-vid-mini-thumb" src="https://i.ytimg.com/vi/8_oMoXJ_O8c/mqdefault.jpg" alt="PyLasso — a PyMOL plugin to identify lassos · 02 Trajectory" loading="lazy" onerror="this.closest('.med-vid-mini-thumb-wrap').style.background='#222'"/>
-            <div class="med-vid-mini-play"><svg width="24" height="24" viewBox="0 0 24 24" fill="white"><polygon points="5 3 19 12 5 21 5 3"/></svg></div>
-          </div>
-          <div class="med-vid-mini-title">PyLasso — a PyMOL plugin to identify lassos · 02 Trajectory</div>
-        </a>
-        <a class="med-vid-mini" href="https://www.youtube.com/watch?v=zeOaXv9FASM" target="_blank" rel="noopener noreferrer">
-          <div class="med-vid-mini-thumb-wrap">
-            <img class="med-vid-mini-thumb" src="https://i.ytimg.com/vi/zeOaXv9FASM/mqdefault.jpg" alt="PyLasso — a PyMOL plugin to identify lassos · 03 NMR" loading="lazy" onerror="this.closest('.med-vid-mini-thumb-wrap').style.background='#222'"/>
-            <div class="med-vid-mini-play"><svg width="24" height="24" viewBox="0 0 24 24" fill="white"><polygon points="5 3 19 12 5 21 5 3"/></svg></div>
-          </div>
-          <div class="med-vid-mini-title">PyLasso — a PyMOL plugin to identify lassos · 03 NMR</div>
-        </a>
-        <a class="med-vid-mini" href="https://www.youtube.com/watch?v=Q60c-8BUVAo" target="_blank" rel="noopener noreferrer">
-          <div class="med-vid-mini-thumb-wrap">
-            <img class="med-vid-mini-thumb" src="https://i.ytimg.com/vi/Q60c-8BUVAo/mqdefault.jpg" alt="PyLink — a PyMOL plugin to identify links · 01 Deterministic" loading="lazy" onerror="this.closest('.med-vid-mini-thumb-wrap').style.background='#222'"/>
-            <div class="med-vid-mini-play"><svg width="24" height="24" viewBox="0 0 24 24" fill="white"><polygon points="5 3 19 12 5 21 5 3"/></svg></div>
-          </div>
-          <div class="med-vid-mini-title">PyLink — a PyMOL plugin to identify links · 01 Deterministic</div>
-        </a>
-        <a class="med-vid-mini" href="https://www.youtube.com/watch?v=8_oMoXJ_O8c" target="_blank" rel="noopener noreferrer">
-          <div class="med-vid-mini-thumb-wrap">
-            <img class="med-vid-mini-thumb" src="https://i.ytimg.com/vi/8_oMoXJ_O8c/mqdefault.jpg" alt="PyLink — a PyMOL plugin to identify links · 02 Probabilistic" loading="lazy" onerror="this.closest('.med-vid-mini-thumb-wrap').style.background='#222'"/>
-            <div class="med-vid-mini-play"><svg width="24" height="24" viewBox="0 0 24 24" fill="white"><polygon points="5 3 19 12 5 21 5 3"/></svg></div>
-          </div>
-          <div class="med-vid-mini-title">PyLink — a PyMOL plugin to identify links · 02 Probabilistic</div>
-        </a>
-        <a class="med-vid-mini" href="https://www.youtube.com/watch?v=0TJN7L2NvDo" target="_blank" rel="noopener noreferrer">
-          <div class="med-vid-mini-thumb-wrap">
-            <img class="med-vid-mini-thumb" src="https://i.ytimg.com/vi/0TJN7L2NvDo/mqdefault.jpg" alt="PyLink — a PyMOL plugin to identify links · 03 Macrolinks" loading="lazy" onerror="this.closest('.med-vid-mini-thumb-wrap').style.background='#222'"/>
-            <div class="med-vid-mini-play"><svg width="24" height="24" viewBox="0 0 24 24" fill="white"><polygon points="5 3 19 12 5 21 5 3"/></svg></div>
-          </div>
-          <div class="med-vid-mini-title">PyLink — a PyMOL plugin to identify links · 03 Macrolinks</div>
-        </a>
-        <a class="med-vid-mini" href="https://www.youtube.com/watch?v=IzSGDfc1vAY" target="_blank" rel="noopener noreferrer" inert tabindex="-1">
-          <div class="med-vid-mini-thumb-wrap">
-            <img class="med-vid-mini-thumb" src="https://i.ytimg.com/vi/IzSGDfc1vAY/mqdefault.jpg" alt="Knot_pull — python package for biopolymer smoothing and knot detection" loading="lazy" onerror="this.closest('.med-vid-mini-thumb-wrap').style.background='#222'"/>
-            <div class="med-vid-mini-play"><svg width="24" height="24" viewBox="0 0 24 24" fill="white"><polygon points="5 3 19 12 5 21 5 3"/></svg></div>
-          </div>
-          <div class="med-vid-mini-title">Knot_pull — python package for biopolymer smoothing and knot detection</div>
-        </a>
-        <a class="med-vid-mini" href="https://www.youtube.com/watch?v=Vb8Vut_VD2M" target="_blank" rel="noopener noreferrer" inert tabindex="-1">
-          <div class="med-vid-mini-thumb-wrap">
-            <img class="med-vid-mini-thumb" src="https://i.ytimg.com/vi/Vb8Vut_VD2M/mqdefault.jpg" alt="Statistical properties of lasso-shape polymers and their implications" loading="lazy" onerror="this.closest('.med-vid-mini-thumb-wrap').style.background='#222'"/>
-            <div class="med-vid-mini-play"><svg width="24" height="24" viewBox="0 0 24 24" fill="white"><polygon points="5 3 19 12 5 21 5 3"/></svg></div>
-          </div>
-          <div class="med-vid-mini-title">Statistical properties of lasso-shape polymers and their implications</div>
-        </a>
-        <a class="med-vid-mini" href="https://www.youtube.com/watch?v=ZRy_fPVBLc4" target="_blank" rel="noopener noreferrer" inert tabindex="-1">
-          <div class="med-vid-mini-thumb-wrap">
-            <img class="med-vid-mini-thumb" src="https://i.ytimg.com/vi/ZRy_fPVBLc4/mqdefault.jpg" alt="Topological knots and links in proteins" loading="lazy" onerror="this.closest('.med-vid-mini-thumb-wrap').style.background='#222'"/>
-            <div class="med-vid-mini-play"><svg width="24" height="24" viewBox="0 0 24 24" fill="white"><polygon points="5 3 19 12 5 21 5 3"/></svg></div>
-          </div>
-          <div class="med-vid-mini-title">Topological knots and links in proteins</div>
-        </a>
-        <a class="med-vid-mini" href="https://www.youtube.com/watch?v=H1zCl0YJVGc" target="_blank" rel="noopener noreferrer" inert tabindex="-1">
-          <div class="med-vid-mini-thumb-wrap">
-            <img class="med-vid-mini-thumb" src="https://i.ytimg.com/vi/H1zCl0YJVGc/mqdefault.jpg" alt="GapRepairer — repair protein structures and their topology" loading="lazy" onerror="this.closest('.med-vid-mini-thumb-wrap').style.background='#222'"/>
-            <div class="med-vid-mini-play"><svg width="24" height="24" viewBox="0 0 24 24" fill="white"><polygon points="5 3 19 12 5 21 5 3"/></svg></div>
-          </div>
-          <div class="med-vid-mini-title">GapRepairer — repair protein structures and their topology</div>
-        </a>
-        <a class="med-vid-mini" href="https://www.youtube.com/watch?v=1sKe2alsJGQ" target="_blank" rel="noopener noreferrer" inert tabindex="-1">
-          <div class="med-vid-mini-thumb-wrap">
-            <img class="med-vid-mini-thumb" src="https://i.ytimg.com/vi/1sKe2alsJGQ/mqdefault.jpg" alt="Protein Knotting by Active Threading of Nascent Polypeptide Chain" loading="lazy" onerror="this.closest('.med-vid-mini-thumb-wrap').style.background='#222'"/>
-            <div class="med-vid-mini-play"><svg width="24" height="24" viewBox="0 0 24 24" fill="white"><polygon points="5 3 19 12 5 21 5 3"/></svg></div>
-          </div>
-          <div class="med-vid-mini-title">Protein Knotting by Active Threading of Nascent Polypeptide Chain</div>
-        </a>
-        <a class="med-vid-mini" href="https://www.youtube.com/watch?v=tw6e7Z8_5_o" target="_blank" rel="noopener noreferrer" inert tabindex="-1">
-          <div class="med-vid-mini-thumb-wrap">
-            <img class="med-vid-mini-thumb" src="https://i.ytimg.com/vi/tw6e7Z8_5_o/mqdefault.jpg" alt="PyLasso — a PyMOL plugin to identify lassos · 01 Basics" loading="lazy" onerror="this.closest('.med-vid-mini-thumb-wrap').style.background='#222'"/>
-            <div class="med-vid-mini-play"><svg width="24" height="24" viewBox="0 0 24 24" fill="white"><polygon points="5 3 19 12 5 21 5 3"/></svg></div>
-          </div>
-          <div class="med-vid-mini-title">PyLasso — a PyMOL plugin to identify lassos · 01 Basics</div>
-        </a>
-        <a class="med-vid-mini" href="https://www.youtube.com/watch?v=8_oMoXJ_O8c" target="_blank" rel="noopener noreferrer" inert tabindex="-1">
-          <div class="med-vid-mini-thumb-wrap">
-            <img class="med-vid-mini-thumb" src="https://i.ytimg.com/vi/8_oMoXJ_O8c/mqdefault.jpg" alt="PyLasso — a PyMOL plugin to identify lassos · 02 Trajectory" loading="lazy" onerror="this.closest('.med-vid-mini-thumb-wrap').style.background='#222'"/>
-            <div class="med-vid-mini-play"><svg width="24" height="24" viewBox="0 0 24 24" fill="white"><polygon points="5 3 19 12 5 21 5 3"/></svg></div>
-          </div>
-          <div class="med-vid-mini-title">PyLasso — a PyMOL plugin to identify lassos · 02 Trajectory</div>
-        </a>
-        <a class="med-vid-mini" href="https://www.youtube.com/watch?v=zeOaXv9FASM" target="_blank" rel="noopener noreferrer" inert tabindex="-1">
-          <div class="med-vid-mini-thumb-wrap">
-            <img class="med-vid-mini-thumb" src="https://i.ytimg.com/vi/zeOaXv9FASM/mqdefault.jpg" alt="PyLasso — a PyMOL plugin to identify lassos · 03 NMR" loading="lazy" onerror="this.closest('.med-vid-mini-thumb-wrap').style.background='#222'"/>
-            <div class="med-vid-mini-play"><svg width="24" height="24" viewBox="0 0 24 24" fill="white"><polygon points="5 3 19 12 5 21 5 3"/></svg></div>
-          </div>
-          <div class="med-vid-mini-title">PyLasso — a PyMOL plugin to identify lassos · 03 NMR</div>
-        </a>
-        <a class="med-vid-mini" href="https://www.youtube.com/watch?v=Q60c-8BUVAo" target="_blank" rel="noopener noreferrer" inert tabindex="-1">
-          <div class="med-vid-mini-thumb-wrap">
-            <img class="med-vid-mini-thumb" src="https://i.ytimg.com/vi/Q60c-8BUVAo/mqdefault.jpg" alt="PyLink — a PyMOL plugin to identify links · 01 Deterministic" loading="lazy" onerror="this.closest('.med-vid-mini-thumb-wrap').style.background='#222'"/>
-            <div class="med-vid-mini-play"><svg width="24" height="24" viewBox="0 0 24 24" fill="white"><polygon points="5 3 19 12 5 21 5 3"/></svg></div>
-          </div>
-          <div class="med-vid-mini-title">PyLink — a PyMOL plugin to identify links · 01 Deterministic</div>
-        </a>
-        <a class="med-vid-mini" href="https://www.youtube.com/watch?v=8_oMoXJ_O8c" target="_blank" rel="noopener noreferrer" inert tabindex="-1">
-          <div class="med-vid-mini-thumb-wrap">
-            <img class="med-vid-mini-thumb" src="https://i.ytimg.com/vi/8_oMoXJ_O8c/mqdefault.jpg" alt="PyLink — a PyMOL plugin to identify links · 02 Probabilistic" loading="lazy" onerror="this.closest('.med-vid-mini-thumb-wrap').style.background='#222'"/>
-            <div class="med-vid-mini-play"><svg width="24" height="24" viewBox="0 0 24 24" fill="white"><polygon points="5 3 19 12 5 21 5 3"/></svg></div>
-          </div>
-          <div class="med-vid-mini-title">PyLink — a PyMOL plugin to identify links · 02 Probabilistic</div>
-        </a>
-        <a class="med-vid-mini" href="https://www.youtube.com/watch?v=0TJN7L2NvDo" target="_blank" rel="noopener noreferrer" inert tabindex="-1">
-          <div class="med-vid-mini-thumb-wrap">
-            <img class="med-vid-mini-thumb" src="https://i.ytimg.com/vi/0TJN7L2NvDo/mqdefault.jpg" alt="PyLink — a PyMOL plugin to identify links · 03 Macrolinks" loading="lazy" onerror="this.closest('.med-vid-mini-thumb-wrap').style.background='#222'"/>
-            <div class="med-vid-mini-play"><svg width="24" height="24" viewBox="0 0 24 24" fill="white"><polygon points="5 3 19 12 5 21 5 3"/></svg></div>
-          </div>
-          <div class="med-vid-mini-title">PyLink — a PyMOL plugin to identify links · 03 Macrolinks</div>
-        </a>
+        {% endfor %}
+        {% endfor %}
       </div>
     </div>
   </div>
@@ -1594,8 +1404,8 @@ permalink: /media/
   if (!btn || !extra) return;
   const count = btn.textContent.match(/\d+/)?.[0] || '';
   btn.addEventListener('click', () => {
-    const isHidden = extra.style.display === 'none';
-    extra.style.display = isHidden ? 'block' : 'none';
+    const isHidden = !extra.classList.contains('is-open');
+    extra.classList.toggle('is-open', isHidden);
     btn.textContent = isHidden ? '− Hide extra outlets' : '+ ' + count + ' more outlets';
   });
 })();

@@ -73,9 +73,21 @@
     });
   }
 
+  function initImageFallbacks() {
+    document.querySelectorAll("img[data-fallback-image]").forEach(function (img) {
+      if (img.dataset.fallbackReady) return;
+      img.dataset.fallbackReady = "true";
+
+      img.addEventListener("error", function () {
+        var fallback = img.nextElementSibling;
+        img.style.display = "none";
+        if (fallback) fallback.style.display = "flex";
+      });
+    });
+  }
+
   function initSlideshow() {
     var slides = Array.prototype.slice.call(document.querySelectorAll(".hero-slide"));
-    var dots = Array.prototype.slice.call(document.querySelectorAll(".slide-dot"));
     var current = slides.findIndex(function (slide) {
       return slide.classList.contains("active");
     });
@@ -89,9 +101,6 @@
       slides.forEach(function (slide, i) {
         slide.classList.toggle("active", i === current);
       });
-      dots.forEach(function (dot, i) {
-        dot.classList.toggle("active", i === current);
-      });
     }
 
     function startAuto() {
@@ -101,12 +110,6 @@
         }, 5000);
       }
     }
-
-    window.goSlide = function (index) {
-      if (timer) window.clearInterval(timer);
-      setSlide(index);
-      startAuto();
-    };
 
     setSlide(current);
     startAuto();
@@ -195,7 +198,7 @@
       document.querySelectorAll("[data-jump-nav].is-open").forEach(positionMenu);
     }
 
-    window.labJumpTo = function (id, trigger) {
+    function labJumpTo(id, trigger) {
       var target = id ? document.getElementById(id) : null;
       if (!target) return;
 
@@ -212,7 +215,7 @@
         setActive(nav, id);
         closeNav(nav);
       }
-    };
+    }
 
     updateNavHeight();
     window.addEventListener("resize", function () {
@@ -243,7 +246,7 @@
 
       options.forEach(function (option) {
         option.addEventListener("click", function () {
-          window.labJumpTo(option.dataset.jumpTarget, option);
+          labJumpTo(option.dataset.jumpTarget, option);
         });
       });
     });
@@ -285,7 +288,7 @@
     if (location.hash) {
       var id = location.hash.slice(1);
       if (document.getElementById(id)) {
-        window.setTimeout(function () { window.labJumpTo(id); }, 180);
+        window.setTimeout(function () { labJumpTo(id); }, 180);
       }
     }
   }
@@ -293,11 +296,13 @@
   if (document.readyState === "loading") {
     document.addEventListener("DOMContentLoaded", function () {
       initAssetGuard();
+      initImageFallbacks();
       initSlideshow();
       initJumpNavs();
     });
   } else {
     initAssetGuard();
+    initImageFallbacks();
     initSlideshow();
     initJumpNavs();
   }

@@ -34,3 +34,37 @@ archive:
 
   - url: "https://jsulkowska.cent.uw.edu.pl/movies/"
     title: "Biological Diffusion & Brownian Dynamics Brainstorm 2 — 2010"
+
+marquee:
+  - id: "IzSGDfc1vAY"
+    title: "Knot_pull — python package for biopolymer smoothing and knot detection"
+
+  - id: "Vb8Vut_VD2M"
+    title: "Statistical properties of lasso-shape polymers and their implications"
+
+  - id: "ZRy_fPVBLc4"
+    title: "Topological knots and links in proteins"
+
+  - id: "H1zCl0YJVGc"
+    title: "GapRepairer — repair protein structures and their topology"
+
+  - id: "1sKe2alsJGQ"
+    title: "Protein Knotting by Active Threading of Nascent Polypeptide Chain"
+
+  - id: "tw6e7Z8_5_o"
+    title: "PyLasso — a PyMOL plugin to identify lassos · 01 Basics"
+
+  - id: "8_oMoXJ_O8c"
+    title: "PyLasso — a PyMOL plugin to identify lassos · 02 Trajectory"
+
+  - id: "zeOaXv9FASM"
+    title: "PyLasso — a PyMOL plugin to identify lassos · 03 NMR"
+
+  - id: "Q60c-8BUVAo"
+    title: "PyLink — a PyMOL plugin to identify links · 01 Deterministic"
+
+  - id: "8_oMoXJ_O8c"
+    title: "PyLink — a PyMOL plugin to identify links · 02 Probabilistic"
+
+  - id: "0TJN7L2NvDo"
+    title: "PyLink — a PyMOL plugin to identify links · 03 Macrolinks"

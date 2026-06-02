@@ -134,8 +134,7 @@ permalink: /collaboration/
             {% assign collab_logo_lc = collab_logo | downcase %}
             {% assign collab_logo_prefix = collab_logo_lc | slice: 0, 2 %}
             {% unless collab_logo_lc contains "://" or collab_logo_prefix == "//" or collab_logo_lc contains "data:" %}
-            <img src="{{ '/assets/images/collab/' | append: c.logo | relative_url }}" alt="{{ c.fallback_text }} logo" loading="lazy"
-                 onerror="this.style.display='none';this.nextElementSibling.style.display='flex'"/>
+            <img src="{{ '/assets/images/collab/' | append: c.logo | relative_url }}" alt="{{ c.fallback_text }} logo" loading="lazy" data-fallback-image/>
             {% endunless %}
             <div class="cl-logo-fallback" style="background:{{ c.fallback_color }}">{{ c.fallback_text }}</div>
           </div>

@@ -1,0 +1,38 @@
+- name: "Polsat News"
+  logo: "polsat-news.svg"
+  logo_class: "round"
+
+- name: "Gazeta Wyborcza"
+  logo: "wyborcza.svg"
+  logo_class: "med-logo-wide"
+
+- name: "TVN Dzień Dobry"
+  logo: "tvn.svg"
+  logo_class: "med-logo-wide"
+
+- name: "TOK FM"
+  logo_text: "TOK FM"
+  logo_class: "med-logo-wide med-logo-tok-text"
+
+- name: "Polska Agencja Prasowa"
+  logo: "pap.svg"
+  logo_class: "med-logo-wide"
+
+- name: "UNESCO"
+  logo: "unesco.svg"
+  logo_class: "med-logo-wide"
+
+- name: "EMBO"
+  logo: "embo.png"
+  logo_class: "med-logo-wide"
+
+- name: "L'Oréal"
+  logo: "loreal.svg"
+  logo_class: "med-logo-wide"
+
+- name: "Foundation for Polish Science"
+  logo: "fnp.svg"
+
+- name: "Business Insider"
+  logo: "business-insider.svg"
+  logo_class: "med-logo-long"

@@ -14,7 +14,7 @@ from pathlib import Path
 ROOT = Path(__file__).resolve().parents[1]
 OUT = ROOT / "_data" / "publication_figures.yml"
 PUBS_OUT = ROOT / "_data" / "publications.json"
-MAILTO = "contact@lab.uw.edu.pl"
+MAILTO = "j.sulkowska@cent.uw.edu.pl"
 AUTHOR_SEARCH = (
     "https://api.openalex.org/authors?"
     "search=Joanna+Sulkowska&filter=last_known_institutions.country_code:PL"

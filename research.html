@@ -716,7 +716,7 @@ body.rx-modal-lock {
   {% assign domain_is_first = forloop.first %}
   <section class="rx-domain{% if domain.alt %} rx-domain-alt{% endif %} open" id="{{ domain.id }}" style="--accent: {{ domain.color }}">
     <h2 class="visually-hidden">{{ domain.title }}</h2>
-    <button class="rx-domain-head" type="button" onclick="rxDomainToggle('{{ domain.id }}')">
+    <button class="rx-domain-head" type="button" data-rx-domain-toggle="{{ domain.id }}">
       <span class="rx-domain-titleline">
         <span class="rx-domain-num">{{ domain.number }}</span>
         <span class="rx-domain-title">{{ domain.title }}</span>
@@ -754,7 +754,7 @@ body.rx-modal-lock {
       <div class="rx-domain-copy">
         {{ domain.text }}
         {% if domain.papers %}
-        <button class="rx-paper-toggle" type="button" onclick="rxPaperToggle('{{ domain.id }}-papers', this)">Featured Papers</button>
+        <button class="rx-paper-toggle" type="button" data-rx-paper-toggle="{{ domain.id }}-papers">Featured Papers</button>
         <div class="rx-papers" id="{{ domain.id }}-papers" hidden>
           {% for paper in domain.papers %}
           <a class="rx-paper" href="{{ paper.url }}" target="_blank" rel="noopener noreferrer">
@@ -783,7 +783,7 @@ body.rx-modal-lock {
       {% assign project_image_is_local = false %}
       {% endif %}
       <button class="rx-project-card" type="button"
-              onclick="rxOpenProject(this)"
+              data-rx-project-card
               data-project-id="{{ project.id | escape }}"
               data-title="{{ project.title | escape }}"
               data-badge="{{ project.badge | escape }}"
@@ -835,7 +835,7 @@ body.rx-modal-lock {
 
 <dialog class="rx-modal" id="rx-project-modal">
   <section class="rx-modal-panel">
-    <button class="rx-modal-close" type="button" onclick="rxCloseProject()">Close</button>
+    <button class="rx-modal-close" type="button" data-rx-close-project>Close</button>
     <div class="rx-modal-image"><img id="rx-modal-image" src="" alt=""></div>
     <div class="rx-modal-content">
       <div class="rx-modal-kicker">
@@ -866,69 +866,87 @@ body.rx-modal-lock {
 </div>
 
 <script>
-function rxDomainToggle(id) {
-  var section = document.getElementById(id);
-  if (!section) return;
-  var open = !section.classList.contains('open');
-  section.classList.toggle('open', open);
-}
-
-function rxPaperToggle(id, button) {
-  var panel = document.getElementById(id);
-  if (!panel) return;
-  var open = panel.hasAttribute('hidden');
-  if (open) panel.removeAttribute('hidden');
-  else panel.setAttribute('hidden', '');
-  if (button) button.classList.toggle('is-open', open);
-}
-
-function rxOpenProject(button) {
+(function () {
   var modal = document.getElementById('rx-project-modal');
-  if (!modal || !button) return;
-  var detail = document.getElementById('rx-project-detail-' + button.dataset.projectId);
-  var image = document.getElementById('rx-modal-image');
-  var badge = document.getElementById('rx-modal-badge');
-  var polish = button.dataset.polishTitle || '';
 
-  document.getElementById('rx-modal-title').textContent = button.dataset.title || '';
-  document.getElementById('rx-modal-meta').textContent = button.dataset.meta || '';
-  document.getElementById('rx-modal-summary').textContent = button.dataset.summary || '';
-  document.getElementById('rx-modal-polish').textContent = polish;
-  document.getElementById('rx-modal-polish').style.display = polish ? '' : 'none';
-  document.getElementById('rx-modal-detail').innerHTML = detail ? detail.innerHTML : '';
-
-  badge.className = 'rx-modal-badge ' + (button.dataset.badgeClass || '');
-  badge.textContent = button.dataset.badge || '';
-  if (button.dataset.image && !/^(?:https?:)?\/\//i.test(button.dataset.image) && !/^data:/i.test(button.dataset.image)) {
-    image.src = button.dataset.image;
-    image.alt = button.dataset.alt || '';
-  } else {
-    image.removeAttribute('src');
-    image.alt = '';
+  function toggleDomain(button) {
+    var section = document.getElementById(button.dataset.rxDomainToggle);
+    if (!section) return;
+    section.classList.toggle('open', !section.classList.contains('open'));
   }
 
-  if (typeof modal.showModal === 'function') modal.showModal();
-  else modal.setAttribute('open', '');
-  document.body.classList.add('rx-modal-lock');
-}
+  function togglePapers(button) {
+    var panel = document.getElementById(button.dataset.rxPaperToggle);
+    if (!panel) return;
+    var open = panel.hasAttribute('hidden');
+    if (open) panel.removeAttribute('hidden');
+    else panel.setAttribute('hidden', '');
+    button.classList.toggle('is-open', open);
+  }
 
-function rxCloseProject() {
-  var modal = document.getElementById('rx-project-modal');
-  if (!modal) return;
-  if (typeof modal.close === 'function' && modal.open) modal.close();
-  else modal.removeAttribute('open');
-  document.body.classList.remove('rx-modal-lock');
-}
+  function openProject(button) {
+    if (!modal || !button) return;
+    var detail = document.getElementById('rx-project-detail-' + button.dataset.projectId);
+    var image = document.getElementById('rx-modal-image');
+    var badge = document.getElementById('rx-modal-badge');
+    var polish = button.dataset.polishTitle || '';
 
-document.addEventListener('keydown', function(event) {
-  if (event.key === 'Escape') rxCloseProject();
-});
+    document.getElementById('rx-modal-title').textContent = button.dataset.title || '';
+    document.getElementById('rx-modal-meta').textContent = button.dataset.meta || '';
+    document.getElementById('rx-modal-summary').textContent = button.dataset.summary || '';
+    document.getElementById('rx-modal-polish').textContent = polish;
+    document.getElementById('rx-modal-polish').style.display = polish ? '' : 'none';
+    document.getElementById('rx-modal-detail').innerHTML = detail ? detail.innerHTML : '';
 
-document.getElementById('rx-project-modal')?.addEventListener('click', function(event) {
-  if (event.target === this) rxCloseProject();
-});
+    badge.className = 'rx-modal-badge ' + (button.dataset.badgeClass || '');
+    badge.textContent = button.dataset.badge || '';
+    if (button.dataset.image && !/^(?:https?:)?\/\//i.test(button.dataset.image) && !/^data:/i.test(button.dataset.image)) {
+      image.src = button.dataset.image;
+      image.alt = button.dataset.alt || '';
+    } else {
+      image.removeAttribute('src');
+      image.alt = '';
+    }
 
-document.getElementById('rx-project-modal')?.addEventListener('close', function() {
-  document.body.classList.remove('rx-modal-lock');
-});
+    if (typeof modal.showModal === 'function') modal.showModal();
+    else modal.setAttribute('open', '');
+    document.body.classList.add('rx-modal-lock');
+  }
+
+  function closeProject() {
+    if (!modal) return;
+    if (typeof modal.close === 'function' && modal.open) modal.close();
+    else modal.removeAttribute('open');
+    document.body.classList.remove('rx-modal-lock');
+  }
+
+  document.querySelectorAll('[data-rx-domain-toggle]').forEach(function (button) {
+    button.addEventListener('click', function () { toggleDomain(button); });
+  });
+
+  document.querySelectorAll('[data-rx-paper-toggle]').forEach(function (button) {
+    button.addEventListener('click', function () { togglePapers(button); });
+  });
+
+  document.querySelectorAll('[data-rx-project-card]').forEach(function (button) {
+    button.addEventListener('click', function () { openProject(button); });
+  });
+
+  document.querySelectorAll('[data-rx-close-project]').forEach(function (button) {
+    button.addEventListener('click', closeProject);
+  });
+
+  document.addEventListener('keydown', function(event) {
+    if (event.key === 'Escape') closeProject();
+  });
+
+  if (modal) {
+    modal.addEventListener('click', function(event) {
+      if (event.target === modal) closeProject();
+    });
+    modal.addEventListener('close', function() {
+      document.body.classList.remove('rx-modal-lock');
+    });
+  }
+}());
 </script>

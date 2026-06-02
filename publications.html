@@ -691,19 +691,19 @@ permalink: /publications/
         <label class="psb-filter-label" for="pub-search-input">Search</label>
         <div class="psb-search">
           <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#aaa" stroke-width="2.5"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
-          <input type="text" id="pub-search-input" placeholder="Title, author, journal…" oninput="pubFilter(true)"/>
+          <input type="text" id="pub-search-input" placeholder="Title, author, journal…"/>
         </div>
       </div>
 
       <div class="psb-section psb-section-sort" id="pub-sort-section">
-        <div class="psb-toggle" onclick="pubToggle(this)">
+        <div class="psb-toggle" data-pub-sidebar-toggle>
           Sort
           <span class="psb-toggle-arrow"><svg width="10" height="10" viewBox="0 0 10 10" fill="none"><path d="M2 3.5L5 6.5L8 3.5" stroke="#ccc" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
         </div>
         <div class="psb-body" style="max-height:200px">
           <div class="psb-sort-wrap">
             <label class="visually-hidden" for="pub-sort-select">Sort publications</label>
-            <select id="pub-sort-select" class="psb-sort" onchange="pubFilter(true)">
+            <select id="pub-sort-select" class="psb-sort">
               <option value="cites">Most cited</option>
               <option value="year-desc">Newest first</option>
               <option value="year-asc">Oldest first</option>
@@ -715,21 +715,21 @@ permalink: /publications/
       </div>
 
       <div class="psb-section psb-section-filter" id="pub-filter-section">
-        <div class="psb-toggle" onclick="pubToggle(this)">
+        <div class="psb-toggle" data-pub-sidebar-toggle>
           Filter
           <span class="psb-toggle-arrow"><svg width="10" height="10" viewBox="0 0 10 10" fill="none"><path d="M2 3.5L5 6.5L8 3.5" stroke="#ccc" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
         </div>
         <div class="psb-body" style="max-height:400px">
           <div class="psb-chips">
-            <button class="pchip active" type="button" data-filter="all"      onclick="pubChip(this)">All papers</button>
-            <button class="pchip"        type="button" data-filter="cited50"  onclick="pubChip(this)">50+ citations</button>
-            <button class="pchip"        type="button" data-filter="cited100" onclick="pubChip(this)">100+ citations</button>
+            <button class="pchip active" type="button" data-filter="all">All papers</button>
+            <button class="pchip"        type="button" data-filter="cited50">50+ citations</button>
+            <button class="pchip"        type="button" data-filter="cited100">100+ citations</button>
             <div class="psb-chips-divider"></div>
-            <button class="pchip"        type="button" data-filter="2020s"    onclick="pubChip(this)">2020s</button>
-            <button class="pchip"        type="button" data-filter="2010s"    onclick="pubChip(this)">2010s</button>
-            <button class="pchip"        type="button" data-filter="pre2010"  onclick="pubChip(this)">Before 2010</button>
+            <button class="pchip"        type="button" data-filter="2020s">2020s</button>
+            <button class="pchip"        type="button" data-filter="2010s">2010s</button>
+            <button class="pchip"        type="button" data-filter="pre2010">Before 2010</button>
             <div class="psb-chips-divider"></div>
-            <button class="pchip"        type="button" data-filter="oa"       onclick="pubChip(this)">Open Access only</button>
+            <button class="pchip"        type="button" data-filter="oa">Open Access only</button>
           </div>
         </div>
       </div>
@@ -739,7 +739,7 @@ permalink: /publications/
       </div>
 
       <div class="psb-section" id="pub-analytics-section">
-        <div class="psb-toggle" onclick="pubToggle(this)">
+        <div class="psb-toggle" data-pub-sidebar-toggle>
           Analytics <span class="psb-toggle-arrow">▾</span>
         </div>
         <div class="psb-body" style="max-height:700px">
@@ -786,9 +786,9 @@ permalink: /publications/
 
 </div>
 
-<dialog class="pub-lightbox" id="pub-lightbox" onclick="pubCloseFigure(event)">
+<dialog class="pub-lightbox" id="pub-lightbox">
   <div class="pub-lightbox-card">
-    <button class="pub-lightbox-close" type="button" onclick="pubCloseFigure(event)">Close</button>
+    <button class="pub-lightbox-close" type="button" data-pub-lightbox-close>Close</button>
     <img class="pub-lightbox-img" id="pub-lightbox-img" src="" alt="">
     <div class="pub-lightbox-caption">
       <span id="pub-lightbox-caption"></span>
@@ -1027,15 +1027,15 @@ document.addEventListener('DOMContentLoaded', function() {
     return work?.id || '#';
   }
 
-  window.pubTogglePanel = function(panelId, btn) {
+  function toggleFigurePanel(panelId, btn) {
     const panel = document.getElementById(panelId);
     if (!panel) return;
     const shouldOpen = panel.hidden;
     panel.hidden = !shouldOpen;
     btn.classList.toggle('is-open', shouldOpen);
-  };
+  }
 
-  window.pubOpenFigure = function(btn) {
+  function openFigure(btn) {
     const box = document.getElementById('pub-lightbox');
     const img = document.getElementById('pub-lightbox-img');
     const caption = document.getElementById('pub-lightbox-caption');
@@ -1056,9 +1056,9 @@ document.addEventListener('DOMContentLoaded', function() {
     if (typeof box.showModal === 'function') box.showModal();
     else box.setAttribute('open', '');
     document.body.style.overflow = 'hidden';
-  };
+  }
 
-  window.pubCloseFigure = function(event) {
+  function closeFigure(event) {
     if (event) {
       const isBackdrop = event.target?.id === 'pub-lightbox';
       const isClose = event.target?.closest?.('.pub-lightbox-close');
@@ -1071,31 +1071,51 @@ document.addEventListener('DOMContentLoaded', function() {
     else if (box) box.removeAttribute('open');
     if (img) img.src = '';
     document.body.style.overflow = '';
-  };
+  }
 
   document.addEventListener('keydown', event => {
-    if (event.key === 'Escape') window.pubCloseFigure();
+    if (event.key === 'Escape') closeFigure();
   });
 
+  document.getElementById('pub-lightbox')?.addEventListener('click', closeFigure);
+  document.querySelector('[data-pub-lightbox-close]')?.addEventListener('click', closeFigure);
   document.getElementById('pub-lightbox')?.addEventListener('close', () => {
     document.body.style.overflow = '';
   });
 
   let _activeChip = 'all';
 
-  window.pubToggle = function(header) {
+  function toggleSidebarSection(header) {
     header.classList.toggle('collapsed');
     const body = header.nextElementSibling;
     body.classList.toggle('collapsed');
-  };
+  }
 
-  window.pubChip = function(btn) {
+  function selectChip(btn) {
     document.querySelectorAll('.pchip').forEach(c => c.classList.remove('active'));
     btn.classList.add('active');
     _activeChip = btn.dataset.filter;
     renderPubs();
     focusResultsOnMobile();
-  };
+  }
+
+  document.getElementById('pub-search-input')?.addEventListener('input', () => filterPubs(true));
+  document.getElementById('pub-sort-select')?.addEventListener('change', () => filterPubs(true));
+  document.querySelectorAll('[data-pub-sidebar-toggle]').forEach(header => {
+    header.addEventListener('click', () => toggleSidebarSection(header));
+  });
+  document.querySelectorAll('.pchip[data-filter]').forEach(btn => {
+    btn.addEventListener('click', () => selectChip(btn));
+  });
+  document.addEventListener('click', event => {
+    const panelButton = event.target.closest('[data-pub-toggle-panel]');
+    if (panelButton) {
+      toggleFigurePanel(panelButton.dataset.pubTogglePanel, panelButton);
+      return;
+    }
+    const figureButton = event.target.closest('[data-pub-figure-thumb]');
+    if (figureButton) openFigure(figureButton);
+  });
 
   function renderPubs() {
     if (!_allPubs.length) return;
@@ -1148,13 +1168,13 @@ document.addEventListener('DOMContentLoaded', function() {
       const oaBadge = w.open_access?.is_oa
         ? ' <span style="font-size:0.65rem;font-weight:700;color:#4d7fb0;background:#d9e9f7;padding:1px 5px;border-radius:8px;margin-left:3px">OA</span>' : '';
       const figureAction = figures.length
-        ? `<button class="pub-action" type="button" onclick="pubTogglePanel('${figurePanelId}', this)">Figures <span class="pub-action-count">${figures.length}</span></button>`
+        ? `<button class="pub-action" type="button" data-pub-toggle-panel="${escapeAttr(figurePanelId)}">Figures <span class="pub-action-count">${figures.length}</span></button>`
         : '';
       const figurePanel = figures.length
         ? `<div class="pub-panel pub-figure-panel" id="${figurePanelId}" hidden>
             <div class="pub-panel-title">Figures</div>
             <div class="pub-figures">
-              ${figures.map(fig => `<button class="pub-figure-thumb" type="button" data-img="${escapeAttr(fig.img)}" data-href="${escapeAttr(fig.href)}" data-alt="${escapeAttr(fig.alt)}" data-caption="${escapeAttr(fig.caption)}" onclick="pubOpenFigure(this)">
+              ${figures.map(fig => `<button class="pub-figure-thumb" type="button" data-pub-figure-thumb data-img="${escapeAttr(fig.img)}" data-href="${escapeAttr(fig.href)}" data-alt="${escapeAttr(fig.alt)}" data-caption="${escapeAttr(fig.caption)}">
                 <img src="${escapeAttr(fig.img)}" alt="${escapeAttr(fig.alt)}" loading="lazy">
                 <span class="pub-figure-caption">${escapeHtml(fig.caption)}</span>
               </button>`).join('')}
@@ -1181,10 +1201,10 @@ document.addEventListener('DOMContentLoaded', function() {
     lst.innerHTML = html || '<div style="padding:2rem;text-align:center;color:#888">No publications match this filter.</div>';
   }
 
-  window.pubFilter = function(focusList) {
+  function filterPubs(focusList) {
     renderPubs();
     if (focusList && _allPubs.length) focusResultsOnMobile();
-  };
+  }
   load();
 });
 </script>
