@@ -293,17 +293,665 @@
     }
   }
 
+  function initPublicationsPage() {
+    var page = document.getElementById("page-publications");
+    if (!page || page.dataset.publicationsReady) return;
+    page.dataset.publicationsReady = "true";
+
+    var allPubs = [];
+    var loaded = false;
+    var activeChip = "all";
+    var resultScrollTimer = null;
+    var cjkRe = /[\u3000-\u9fff\uf900-\ufaff]+/g;
+    var cjkParenRe = new RegExp("\\s*\\([^)]*[\\u3000-\\u9fff\\uf900-\\ufaff][^)]*\\)", "g");
+    var dataTemplate = document.getElementById("pub-publications-data");
+    var figureTemplate = document.getElementById("pub-figures-data");
+    var siteBaseurl = dataTemplate ? dataTemplate.dataset.siteBaseurl || "" : "";
+    var localPublications = readJsonTemplate(dataTemplate, []);
+    var figureEntries = readJsonTemplate(figureTemplate, []);
+
+    function byId(id) {
+      return id ? document.getElementById(id) : null;
+    }
+
+    function readJsonTemplate(template, fallback) {
+      if (!template) return fallback;
+      try {
+        return JSON.parse(template.textContent || "[]");
+      } catch (error) {
+        return fallback;
+      }
+    }
+
+    function escapeHtml(raw) {
+      return String(raw == null ? "" : raw).replace(/[&<>"']/g, function (ch) {
+        return {
+          "&": "&amp;",
+          "<": "&lt;",
+          ">": "&gt;",
+          "\"": "&quot;",
+          "'": "&#39;"
+        }[ch];
+      });
+    }
+
+    function escapeAttr(raw) {
+      return escapeHtml(raw).replace(/`/g, "&#96;");
+    }
+
+    function normaliseDoi(raw) {
+      return String(raw || "")
+        .trim()
+        .toLowerCase()
+        .replace(/^https?:\/\/(dx\.)?doi\.org\//, "")
+        .replace(/^doi:/, "")
+        .replace(/\/$/, "");
+    }
+
+    function openAlexKey(work) {
+      return String(work && work.id || "").replace("https://openalex.org/", "");
+    }
+
+    function domId(raw, fallback) {
+      var id = String(raw || fallback || "")
+        .toLowerCase()
+        .replace(/[^a-z0-9_-]+/g, "-")
+        .replace(/^-+|-+$/g, "");
+      return id || String(fallback || "pub-item");
+    }
+
+    function sourceName(work) {
+      var location = work && work.primary_location;
+      var source = location && location.source;
+      return source && source.display_name || "";
+    }
+
+    function authorsFor(work) {
+      return (work && work.authorships || [])
+        .slice(0, 5)
+        .map(function (item) {
+          return item && item.author && item.author.display_name || "";
+        })
+        .filter(Boolean)
+        .join(", ");
+    }
+
+    function assetUrl(path) {
+      var src = String(path || "").trim();
+      if (!src || /^(?:https?:)?\/\//i.test(src) || /^data:/i.test(src)) return "";
+      var cleanBase = siteBaseurl.replace(/\/$/, "");
+      var cleanPath = src.charAt(0) === "/" ? src : "/" + src;
+      if (cleanPath.indexOf("/assets/images/") !== 0) return "";
+      return cleanBase + cleanPath;
+    }
+
+    function figuresForWork(work) {
+      var doi = normaliseDoi(work && work.doi);
+      var title = String(work && work.title || "").toLowerCase();
+      var exact = figureEntries.filter(function (entry) {
+        return entry.doi && normaliseDoi(entry.doi) === doi;
+      });
+      var fallback = exact.length ? [] : figureEntries.filter(function (entry) {
+        var match = String(entry.match || "").toLowerCase().trim();
+        return match && title.indexOf(match) !== -1;
+      });
+      var seen = {};
+
+      return exact.concat(fallback).reduce(function (items, entry) {
+        (entry.figures || []).forEach(function (fig) {
+          var item = {
+            img: assetUrl(fig.img),
+            href: fig.href || "",
+            alt: fig.alt || entry.label || "Publication figure",
+            caption: fig.caption || entry.label || "Publication figure"
+          };
+          var key = item.img + "|" + item.caption;
+          if (item.img && !seen[key]) {
+            seen[key] = true;
+            items.push(item);
+          }
+        });
+        return items;
+      }, []);
+    }
+
+    function cleanTitle(raw) {
+      if (!raw) return "Untitled";
+      var tmp = document.createElement("div");
+      tmp.innerHTML = raw;
+      var text = (tmp.textContent || tmp.innerText || "")
+        .replace(/\$([^$]+)\$/g, "$1")
+        .replace(cjkParenRe, "")
+        .replace(cjkRe, "")
+        .replace(/\s+/g, " ")
+        .trim();
+      return escapeHtml(text || "Untitled");
+    }
+
+    function cleanJournal(raw) {
+      if (!raw) return "";
+      return escapeHtml(String(raw).replace(cjkRe, "").replace(/\s+/g, " ").trim());
+    }
+
+    function workUrl(work) {
+      if (work && work.doi) return "https://doi.org/" + normaliseDoi(work.doi);
+      return work && work.id || "#";
+    }
+
+    function focusResultsOnMobile() {
+      if (!window.matchMedia("(max-width: 700px)").matches) return;
+      clearTimeout(resultScrollTimer);
+      resultScrollTimer = window.setTimeout(function () {
+        var main = byId("pub-list-section");
+        if (main) main.scrollIntoView({ behavior: "smooth", block: "start" });
+      }, 160);
+    }
+
+    function setHidden(id, hidden) {
+      var node = byId(id);
+      if (node) node.hidden = hidden;
+      return node;
+    }
+
+    function renderYearChart(container, works) {
+      var yearMap = {};
+      var chartStartYear = 2005;
+      var currentYear = new Date().getFullYear();
+      var years;
+      var minYear;
+      var maxYear;
+      var maxCount;
+      var allYears;
+      var tickYears;
+      var chart;
+      var axis;
+
+      works.forEach(function (work) {
+        var year = Number(work.publication_year);
+        if (year && year >= chartStartYear && year <= currentYear) {
+          yearMap[year] = (yearMap[year] || 0) + 1;
+        }
+      });
+
+      years = Object.keys(yearMap).map(Number).sort(function (a, b) { return a - b; });
+      container.className = "bar-chart-wrap";
+      container.innerHTML = "";
+
+      if (!years.length) {
+        container.innerHTML = '<div class="pub-panel-note">No year data available</div>';
+        return;
+      }
+
+      minYear = years[0];
+      maxYear = years[years.length - 1];
+      maxCount = Math.max.apply(Math, Object.keys(yearMap).map(function (year) { return yearMap[year]; }));
+      allYears = Array.from({ length: maxYear - minYear + 1 }, function (_, i) { return minYear + i; });
+      tickYears = [minYear];
+
+      for (var year = Math.ceil(minYear / 5) * 5; year <= maxYear; year += 5) {
+        if (year > minYear + 2 && year < maxYear - 2) tickYears.push(year);
+      }
+      if (maxYear !== minYear) tickYears.push(maxYear);
+
+      chart = document.createElement("div");
+      chart.className = "bar-chart";
+      allYears.forEach(function (year) {
+        var count = yearMap[year] || 0;
+        var height = count ? Math.max(4, Math.round((count / maxCount) * 100)) : 0;
+        var col = document.createElement("div");
+        var fill = document.createElement("div");
+        col.className = "bar-col";
+        fill.className = "bar-fill" + (count ? "" : " is-empty");
+        fill.dataset.tip = year + ": " + count;
+        fill.style.height = height + "%";
+        col.appendChild(fill);
+        chart.appendChild(col);
+      });
+
+      axis = document.createElement("div");
+      axis.className = "bar-axis";
+      tickYears.filter(function (year, index, list) {
+        return list.indexOf(year) === index;
+      }).sort(function (a, b) { return a - b; }).forEach(function (year) {
+        var pos = maxYear === minYear ? 50 : ((year - minYear) / (maxYear - minYear)) * 100;
+        var label = document.createElement("span");
+        label.className = "bar-axis-label" + (pos <= 1 ? " edge-start" : (pos >= 99 ? " edge-end" : ""));
+        label.style.left = pos + "%";
+        label.textContent = year;
+        axis.appendChild(label);
+      });
+
+      container.appendChild(chart);
+      container.appendChild(axis);
+    }
+
+    function renderJournalChart(container, works) {
+      var journalMap = {};
+      var topJournals;
+      var maxCount;
+
+      works.forEach(function (work) {
+        var journal = sourceName(work);
+        if (journal) journalMap[journal] = (journalMap[journal] || 0) + 1;
+      });
+
+      topJournals = Object.keys(journalMap).map(function (name) {
+        return [name, journalMap[name]];
+      }).sort(function (a, b) {
+        return b[1] - a[1];
+      }).slice(0, 6);
+
+      maxCount = topJournals[0] && topJournals[0][1] || 1;
+      container.className = "";
+      container.innerHTML = "";
+
+      topJournals.forEach(function (entry) {
+        var row = document.createElement("div");
+        var label = document.createElement("div");
+        var track = document.createElement("div");
+        var fill = document.createElement("div");
+        var value = document.createElement("div");
+        row.className = "hbar-row";
+        label.className = "hbar-label";
+        label.title = entry[0];
+        label.textContent = entry[0];
+        track.className = "hbar-track";
+        fill.className = "hbar-fill";
+        fill.style.width = Math.round((entry[1] / maxCount) * 100) + "%";
+        value.className = "hbar-val";
+        value.textContent = entry[1];
+        track.appendChild(fill);
+        row.appendChild(label);
+        row.appendChild(track);
+        row.appendChild(value);
+        container.appendChild(row);
+      });
+    }
+
+    function renderCitationChart(container, works) {
+      var tiers = [
+        { label: "100+ cit.", color: "#24448e", min: 100 },
+        { label: "50-99", color: "#335fa8", min: 50 },
+        { label: "10-49", color: "#4d7fb0", min: 10 },
+        { label: "1-9", color: "#c7d9f2", min: 1 },
+        { label: "0 cit.", color: "#e0e4ec", min: 0 }
+      ];
+      var total = works.length || 1;
+      var cumulative = 0;
+      var donutSize = 92;
+      var radius = 31;
+      var center = 46;
+      var strokeWidth = 14;
+      var circumference = 2 * Math.PI * radius;
+      var segments = tiers.map(function (tier, index) {
+        var max = tiers[index - 1] ? tiers[index - 1].min : Infinity;
+        var count = works.filter(function (work) {
+          var cites = work.cited_by_count || 0;
+          return cites >= tier.min && cites < max;
+        }).length;
+        var pct = count / total;
+        var start = cumulative;
+        cumulative += pct;
+        return { pct: pct, start: start, color: tier.color, label: tier.label, count: count };
+      });
+
+      container.className = "donut-wrap";
+      container.innerHTML = '<svg class="donut-svg" width="' + donutSize + '" height="' + donutSize + '" viewBox="0 0 ' + donutSize + ' ' + donutSize + '">' +
+        '<title>Citation tiers donut chart</title>' +
+        '<circle cx="' + center + '" cy="' + center + '" r="' + radius + '" fill="none" stroke="#e8edf4" stroke-width="' + strokeWidth + '"/>' +
+        segments.filter(function (segment) { return segment.pct > 0; }).map(function (segment) {
+          var dash = segment.pct * circumference;
+          var offset = circumference - segment.start * circumference;
+          return '<circle cx="' + center + '" cy="' + center + '" r="' + radius + '" fill="none" stroke="' + segment.color + '" stroke-width="' + strokeWidth + '" stroke-dasharray="' + dash + ' ' + Math.max(0, circumference - dash) + '" stroke-dashoffset="' + offset + '" stroke-linecap="butt" transform="rotate(-90 ' + center + ' ' + center + ')"/>';
+        }).join("") +
+        '<circle cx="' + center + '" cy="' + center + '" r="' + (radius - (strokeWidth / 2) - 1) + '" fill="#fff"/>' +
+        '<text x="' + center + '" y="' + (center - 3) + '" text-anchor="middle" font-size="10" font-weight="700" fill="#1f2d4f">' + total + '</text>' +
+        '<text x="' + center + '" y="' + (center + 8) + '" text-anchor="middle" font-size="6.5" fill="#888">papers</text>' +
+        '</svg><div class="donut-legend">' + segments.map(function (segment, index) {
+          return '<div class="donut-leg-item"><div class="donut-dot donut-dot-tier-' + index + '"></div><span>' + segment.label + ' <strong>(' + segment.count + ')</strong></span></div>';
+        }).join("") + '</div>';
+    }
+
+    function renderCharts(works) {
+      var yearChart = byId("chart-year");
+      var journalChart = byId("chart-journals");
+      var citationChart = byId("chart-cites");
+      if (yearChart) renderYearChart(yearChart, works);
+      if (journalChart) renderJournalChart(journalChart, works);
+      if (citationChart) renderCitationChart(citationChart, works);
+    }
+
+    function toggleFigurePanel(panelId, button) {
+      var panel = byId(panelId);
+      var shouldOpen;
+      if (!panel) return;
+      shouldOpen = panel.hidden;
+      panel.hidden = !shouldOpen;
+      button.classList.toggle("is-open", shouldOpen);
+    }
+
+    function openFigure(button) {
+      var box = byId("pub-lightbox");
+      var img = byId("pub-lightbox-img");
+      var caption = byId("pub-lightbox-caption");
+      var source = byId("pub-lightbox-source");
+      var nextImg = button.dataset.img || "";
+      if (!box || !img || !caption || !source) return;
+      if (!nextImg || /^(?:https?:)?\/\//i.test(nextImg) || /^data:/i.test(nextImg)) return;
+
+      img.src = nextImg;
+      img.alt = button.dataset.alt || "";
+      caption.textContent = button.dataset.caption || button.dataset.alt || "Publication figure";
+      if (button.dataset.href) {
+        source.href = button.dataset.href;
+        source.hidden = false;
+      } else {
+        source.hidden = true;
+        source.removeAttribute("href");
+      }
+
+      if (typeof box.showModal === "function") box.showModal();
+      else box.setAttribute("open", "");
+      document.body.style.overflow = "hidden";
+    }
+
+    function closeFigure(event) {
+      var box = byId("pub-lightbox");
+      var img = byId("pub-lightbox-img");
+      var isBackdrop = event && event.target && event.target.id === "pub-lightbox";
+      var isClose = event && event.target && event.target.closest && event.target.closest(".pub-lightbox-close");
+
+      if (event && !isBackdrop && !isClose) return;
+      if (event) event.stopPropagation();
+      if (box && typeof box.close === "function" && box.open) box.close();
+      else if (box) box.removeAttribute("open");
+      if (img) img.src = "";
+      document.body.style.overflow = "";
+    }
+
+    function toggleSidebarSection(header) {
+      var body = header.nextElementSibling;
+      header.classList.toggle("collapsed");
+      if (body) body.classList.toggle("collapsed");
+    }
+
+    function selectChip(button) {
+      page.querySelectorAll(".pchip").forEach(function (chip) {
+        chip.classList.remove("active");
+      });
+      button.classList.add("active");
+      activeChip = button.dataset.filter;
+      renderPubs();
+      focusResultsOnMobile();
+    }
+
+    function renderPubs() {
+      var query;
+      var sort;
+      var list;
+      var bar;
+      var listNode;
+
+      if (!allPubs.length) return;
+
+      query = (byId("pub-search-input") && byId("pub-search-input").value || "").toLowerCase();
+      sort = byId("pub-sort-select") && byId("pub-sort-select").value || "cites";
+
+      list = allPubs.filter(function (work) {
+        var year = work.publication_year || 0;
+        var cites = work.cited_by_count || 0;
+        var isOpenAccess = work.open_access && work.open_access.is_oa;
+        var title;
+        var auth;
+        var journal;
+
+        if (activeChip === "cited50" && cites < 50) return false;
+        if (activeChip === "cited100" && cites < 100) return false;
+        if (activeChip === "2020s" && year < 2020) return false;
+        if (activeChip === "2010s" && (year < 2010 || year >= 2020)) return false;
+        if (activeChip === "pre2010" && year >= 2010) return false;
+        if (activeChip === "oa" && !isOpenAccess) return false;
+        if (!query) return true;
+
+        title = (work.title || "").toLowerCase();
+        auth = (work.authorships || []).map(function (item) {
+          return item && item.author && item.author.display_name || "";
+        }).join(" ").toLowerCase();
+        journal = sourceName(work).toLowerCase();
+        return title.indexOf(query) !== -1 || auth.indexOf(query) !== -1 || journal.indexOf(query) !== -1;
+      });
+
+      list.sort(function (a, b) {
+        if (sort === "year-desc") return (b.publication_year || 0) - (a.publication_year || 0);
+        if (sort === "year-asc") return (a.publication_year || 0) - (b.publication_year || 0);
+        if (sort === "alpha") return (a.title || "").localeCompare(b.title || "");
+        return (b.cited_by_count || 0) - (a.cited_by_count || 0);
+      });
+
+      bar = byId("pub-result-bar");
+      if (bar) bar.classList.add("is-visible");
+      if (byId("pub-result-n")) byId("pub-result-n").textContent = list.length.toLocaleString();
+      page.classList.toggle("pub-searching", query.trim().length > 0);
+
+      listNode = byId("pub-list");
+      if (!listNode) return;
+      listNode.hidden = false;
+      listNode.innerHTML = list.map(function (work, index) {
+        var authors = escapeHtml(authorsFor(work));
+        var more = (work.authorships || []).length > 5 ? " et al." : "";
+        var journal = cleanJournal(sourceName(work));
+        var year = work.publication_year || "";
+        var url = workUrl(work);
+        var cites = work.cited_by_count || 0;
+        var workId = openAlexKey(work);
+        var itemId = domId(workId || normaliseDoi(work.doi), "pub-" + index);
+        var figurePanelId = itemId + "-figures";
+        var figures = figuresForWork(work);
+        var externalLabel = work.doi ? "DOI ↗" : "OpenAlex ↗";
+        var openAccessBadge = work.open_access && work.open_access.is_oa ? ' <span class="pub-oa-badge">OA</span>' : "";
+        var figureAction = figures.length
+          ? '<button class="pub-action" type="button" data-pub-toggle-panel="' + escapeAttr(figurePanelId) + '">Figures <span class="pub-action-count">' + figures.length + '</span></button>'
+          : "";
+        var figurePanel = figures.length
+          ? '<div class="pub-panel pub-figure-panel" id="' + figurePanelId + '" hidden><div class="pub-panel-title">Figures</div><div class="pub-figures">' +
+            figures.map(function (fig) {
+              return '<button class="pub-figure-thumb" type="button" data-pub-figure-thumb data-img="' + escapeAttr(fig.img) + '" data-href="' + escapeAttr(fig.href) + '" data-alt="' + escapeAttr(fig.alt) + '" data-caption="' + escapeAttr(fig.caption) + '"><img src="' + escapeAttr(fig.img) + '" alt="' + escapeAttr(fig.alt) + '" loading="lazy"><span class="pub-figure-caption">' + escapeHtml(fig.caption) + '</span></button>';
+            }).join("") +
+            '</div></div>'
+          : "";
+
+        return '<article class="pub-item"><div class="pub-num">' + (index + 1) + '</div><div class="pub-body">' +
+          '<div class="pub-title"><a class="pub-title-link" href="' + escapeAttr(url) + '" target="_blank" rel="noopener noreferrer">' + cleanTitle(work.title) + openAccessBadge + '</a></div>' +
+          '<div class="pub-meta">' + (authors || "Unknown authors") + more + ' · <em>' + (journal || "—") + '</em> · ' + year + '</div>' +
+          '<div class="pub-actions">' + figureAction + '<a class="pub-mini-link" href="' + escapeAttr(url) + '" target="_blank" rel="noopener noreferrer">' + externalLabel + '</a></div>' +
+          figurePanel + '</div><div class="pub-cites">' + cites.toLocaleString() + ' cit.</div></article>';
+      }).join("") || '<div class="pub-no-results">No publications match this filter.</div>';
+    }
+
+    function filterPubs(focusList) {
+      renderPubs();
+      if (focusList && allPubs.length) focusResultsOnMobile();
+    }
+
+    function load() {
+      var error;
+      if (loaded) return;
+      loaded = true;
+
+      try {
+        allPubs = Array.isArray(localPublications) ? localPublications : [];
+        if (!allPubs.length) throw new Error("No publications found");
+        setHidden("pub-loading", true);
+        renderCharts(allPubs);
+        renderPubs();
+      } catch (err) {
+        setHidden("pub-loading", true);
+        error = setHidden("pub-error", false);
+        if (error) {
+          error.innerHTML = '<strong>Could not load local publication data</strong> - ' + escapeHtml(err.message) + '. <a href="https://scholar.google.com/citations?user=BVBwiyAAAAAJ" target="_blank" rel="noopener noreferrer">View Google Scholar</a>';
+        }
+      }
+    }
+
+    if (byId("pub-search-input")) byId("pub-search-input").addEventListener("input", function () { filterPubs(true); });
+    if (byId("pub-sort-select")) byId("pub-sort-select").addEventListener("change", function () { filterPubs(true); });
+
+    page.querySelectorAll("[data-pub-sidebar-toggle]").forEach(function (header) {
+      header.addEventListener("click", function () { toggleSidebarSection(header); });
+    });
+
+    page.querySelectorAll(".pchip[data-filter]").forEach(function (button) {
+      button.addEventListener("click", function () { selectChip(button); });
+    });
+
+    document.addEventListener("click", function (event) {
+      var panelButton = event.target.closest && event.target.closest("[data-pub-toggle-panel]");
+      var figureButton;
+      if (panelButton) {
+        toggleFigurePanel(panelButton.dataset.pubTogglePanel, panelButton);
+        return;
+      }
+      figureButton = event.target.closest && event.target.closest("[data-pub-figure-thumb]");
+      if (figureButton) openFigure(figureButton);
+    });
+
+    document.addEventListener("keydown", function (event) {
+      if (event.key === "Escape") closeFigure();
+    });
+
+    if (byId("pub-lightbox")) {
+      byId("pub-lightbox").addEventListener("click", closeFigure);
+      byId("pub-lightbox").addEventListener("close", function () {
+        document.body.style.overflow = "";
+      });
+    }
+    if (document.querySelector("[data-pub-lightbox-close]")) {
+      document.querySelector("[data-pub-lightbox-close]").addEventListener("click", closeFigure);
+    }
+
+    load();
+  }
+
+  function initResearchPage() {
+    var page = document.getElementById("page-research");
+    var modal = document.getElementById("rx-project-modal");
+    if (!page || page.dataset.researchReady) return;
+    page.dataset.researchReady = "true";
+
+    function byId(id) {
+      return id ? document.getElementById(id) : null;
+    }
+
+    function toggleDomain(button) {
+      var section = byId(button.dataset.rxDomainToggle);
+      if (!section) return;
+      section.classList.toggle("open", !section.classList.contains("open"));
+    }
+
+    function togglePapers(button) {
+      var panel = byId(button.dataset.rxPaperToggle);
+      if (!panel) return;
+      var open = panel.hasAttribute("hidden");
+      if (open) panel.removeAttribute("hidden");
+      else panel.setAttribute("hidden", "");
+      button.classList.toggle("is-open", open);
+    }
+
+    function setText(id, value) {
+      var node = byId(id);
+      if (node) node.textContent = value || "";
+      return node;
+    }
+
+    function openProject(button) {
+      if (!modal || !button) return;
+
+      var detail = byId("rx-project-detail-" + button.dataset.projectId);
+      var detailTarget = byId("rx-modal-detail");
+      var image = byId("rx-modal-image");
+      var badge = byId("rx-modal-badge");
+      var polish = button.dataset.polishTitle || "";
+
+      setText("rx-modal-title", button.dataset.title);
+      setText("rx-modal-meta", button.dataset.meta);
+      setText("rx-modal-summary", button.dataset.summary);
+
+      var polishTarget = setText("rx-modal-polish", polish);
+      if (polishTarget) polishTarget.hidden = !polish;
+      if (detailTarget) detailTarget.innerHTML = detail ? detail.innerHTML : "";
+
+      if (badge) {
+        badge.className = "rx-modal-badge " + (button.dataset.badgeClass || "");
+        badge.textContent = button.dataset.badge || "";
+      }
+
+      if (image) {
+        if (button.dataset.image && !/^(?:https?:)?\/\//i.test(button.dataset.image) && !/^data:/i.test(button.dataset.image)) {
+          image.src = button.dataset.image;
+          image.alt = button.dataset.alt || "";
+        } else {
+          image.removeAttribute("src");
+          image.alt = "";
+        }
+      }
+
+      if (typeof modal.showModal === "function") modal.showModal();
+      else modal.setAttribute("open", "");
+      document.body.classList.add("rx-modal-lock");
+    }
+
+    function closeProject() {
+      if (!modal) return;
+      if (typeof modal.close === "function" && modal.open) modal.close();
+      else modal.removeAttribute("open");
+      document.body.classList.remove("rx-modal-lock");
+    }
+
+    page.querySelectorAll("[data-rx-domain-toggle]").forEach(function (button) {
+      button.addEventListener("click", function () { toggleDomain(button); });
+    });
+
+    page.querySelectorAll("[data-rx-paper-toggle]").forEach(function (button) {
+      button.addEventListener("click", function () { togglePapers(button); });
+    });
+
+    page.querySelectorAll("[data-rx-project-card]").forEach(function (button) {
+      button.addEventListener("click", function () { openProject(button); });
+    });
+
+    document.querySelectorAll("[data-rx-close-project]").forEach(function (button) {
+      button.addEventListener("click", closeProject);
+    });
+
+    document.addEventListener("keydown", function (event) {
+      if (event.key === "Escape") closeProject();
+    });
+
+    if (modal) {
+      modal.addEventListener("click", function (event) {
+        if (event.target === modal) closeProject();
+      });
+      modal.addEventListener("close", function () {
+        document.body.classList.remove("rx-modal-lock");
+      });
+    }
+  }
+
   if (document.readyState === "loading") {
     document.addEventListener("DOMContentLoaded", function () {
       initAssetGuard();
       initImageFallbacks();
       initSlideshow();
       initJumpNavs();
+      initPublicationsPage();
+      initResearchPage();
     });
   } else {
     initAssetGuard();
     initImageFallbacks();
     initSlideshow();
     initJumpNavs();
+    initPublicationsPage();
+    initResearchPage();
   }
 }());

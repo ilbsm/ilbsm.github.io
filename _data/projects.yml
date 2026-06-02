@@ -8,13 +8,9 @@ layout:
     sections:
       - id: "rp-topology"
         title: "Databases & Servers"
-        color: "#337caf"
+        theme: "topology"
         eyebrow: "Protein Topology"
-        eyebrow_icon: '<svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><ellipse cx="12" cy="5" rx="9" ry="3"/><path d="M21 12c0 1.66-4 3-9 3s-9-1.34-9-3"/><path d="M3 5v14c0 1.66 4 3 9 3s9-1.34 9-3V5"/></svg>'
-        knot_type: "trefoil"
-        knot_color: "#4d7fb0"
-        knot_speed: 0.009
-        knot_tilt: 0.5
+        eyebrow_icon: "database"
         cards:
           - name: "AlphaKnot 2.0"
             url: "http://alphaknot.cent.uw.edu.pl"
@@ -57,21 +53,19 @@ layout:
     sections:
       - id: "rp-plugins"
         title: "Plugins & Packages"
-        color: "#335fa8"
+        theme: "plugins"
         eyebrow: "Topology Identification"
-        eyebrow_icon: '<svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/></svg>'
-        knot_type: "lasso"
-        knot_color: "#7b1fa2"
-        knot_speed: 0.007
-        knot_tilt: 0.35
+        eyebrow_icon: "tools"
         cards:
           - name: "Topoly"
             url: "http://topoly.cent.uw.edu.pl"
             cat: "plugin"
-            img_bg: "#1f2d4f"
-            img_logo_html: '<svg viewBox="0 0 120 80" width="90" height="60" fill="none" stroke="rgba(255,255,255,0.12)" stroke-width="2.5" stroke-linecap="round" style="position:absolute;top:12px;right:12px"><path d="M30 20 Q60 5 90 20 Q105 35 90 50 Q60 65 30 50 Q15 35 30 20Z"/><path d="M45 28 Q60 18 75 28 Q82 38 75 48 Q60 58 45 48 Q38 38 45 28Z"/></svg><span style="font-size:2.4rem;font-weight:900;color:#fff;font-family:var(--font-serif);letter-spacing:0;line-height:1">Topoly</span><span style="font-size:0.6rem;color:rgba(255,255,255,0.4);letter-spacing:0.15em;text-transform:uppercase;margin-top:0.3rem">Python Package</span>'
+            img_bg_class: "bg-navy"
+            logo_type: "topoly"
+            logo_title: "Topoly"
+            logo_subtitle: "Python Package"
             badge: "Package"
-            badge_color: "#335fa8"
+            badge_class: "badge-primary"
             desc: "Knot polynomials (Alexander, Jones, HOMFLY) for polymers."
 
           - name: "PyLasso"
@@ -81,7 +75,7 @@ layout:
             img_alt: "PyLasso"
             img_dark: true
             badge: "Plugin"
-            badge_color: "#335fa8"
+            badge_class: "badge-primary"
             desc: "Lasso detection with 3D visualization in PyMOL/VMD."
 
           - name: "PyLink"
@@ -91,7 +85,7 @@ layout:
             img_alt: "PyLink"
             img_dark: true
             badge: "Plugin"
-            badge_color: "#335fa8"
+            badge_class: "badge-primary"
             desc: "Topological link identification and visualization in PyMOL."
 
           - name: "Knot_pull"
@@ -100,18 +94,14 @@ layout:
             img: "/assets/images/software/knot-pull.jpg"
             img_alt: "Knot_pull"
             badge: "GitHub"
-            badge_color: "#24292e"
+            badge_class: "badge-github"
             desc: "Topology simplification via iterative chain pulling."
 
       - id: "rp-chromatin"
         title: "Chromatin & Genome Topology"
-        color: "#335fa8"
+        theme: "chromatin"
         eyebrow: "Genomics"
-        eyebrow_icon: '<svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M21 3H3v7a6 6 0 0 0 12 0V3"/><path d="M6 21v-4a6 6 0 0 1 12 0v4"/></svg>'
-        knot_type: "hopf"
-        knot_color: "#c62828"
-        knot_speed: 0.008
-        knot_tilt: 0.45
+        eyebrow_icon: "genomics"
         cards:
           - name: "KnotGenome"
             url: "http://knotgenom.cent.uw.edu.pl"
@@ -119,28 +109,23 @@ layout:
             img: "/assets/images/software/knotgenome.png"
             img_alt: "KnotGenome"
             badge: "Server"
-            badge_color: "#335fa8"
+            badge_class: "badge-primary"
             desc: "Knots & links in chromatin fiber from polymer models."
 
   - pair: true
     sections:
       - id: "rp-mechanical"
         title: "Mechanical Properties"
-        color: "#0f8a8a"
+        theme: "mechanical"
         eyebrow: "Molecular Mechanics"
-        eyebrow_icon: '<svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M18 20V10"/><path d="M12 20V4"/><path d="M6 20v-6"/></svg>'
-        knot_type: "slipknot"
-        knot_color: "#da7101"
-        knot_speed: 0.008
-        knot_tilt: 0.4
+        eyebrow_icon: "mechanics"
         cards:
           - name: "BSDB — Bio-molecule Stretching Database"
             url: "https://pmc.ncbi.nlm.nih.gov/articles/PMC3013760/"
             cat: "database"
             img: "/assets/images/software/bsdb-stretch.png"
             img_alt: "BSDB"
-            img_bg: "#f5f5f5"
-            img_contain: true
+            img_bg_class: "bg-soft-gray"
             desc: "Force-extension data from coarse-grained simulations."
 
           - name: "Genus for Biomolecules"
@@ -148,29 +133,23 @@ layout:
             cat: "database server"
             img: "/assets/images/software/genus.png"
             img_alt: "Genus"
-            img_bg: "#f0f4ff"
-            img_contain: true
+            img_bg_class: "bg-soft-blue"
             desc: "Topological genus of proteins and RNA via minimal surfaces."
 
       - id: "rp-prediction"
         title: "Structure Prediction"
-        color: "#4d7fb0"
+        theme: "prediction"
         eyebrow: "Co-evolution Methods"
-        eyebrow_icon: '<svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>'
-        knot_type: "torus"
-        knot_color: "#4d7fb0"
-        knot_speed: 0.006
-        knot_tilt: 0.6
+        eyebrow_icon: "shield"
         cards:
           - name: "DCA-mol"
             url: "http://dca-mol.cent.uw.edu.pl"
             cat: "prediction server"
             img: "/assets/images/software/dca-mol.png"
             img_alt: "DCA-mol"
-            img_bg: "#f0f4f8"
-            img_contain: true
+            img_bg_class: "bg-cool-blue"
             badge: "Server"
-            badge_color: "#4d7fb0"
+            badge_class: "badge-blue"
             desc: "Evolutionary couplings from MSA for structure prediction."
 
           - name: "PconsFam"
@@ -178,8 +157,7 @@ layout:
             cat: "prediction database"
             img: "/assets/images/software/pconsfam.png"
             img_alt: "PconsFam"
-            img_bg: "#fff"
-            img_contain: true
+            img_bg_class: "bg-white"
             desc: "Contact-assisted models for thousands of Pfam families."
 
           - name: "GapRepairer"
@@ -188,33 +166,33 @@ layout:
             img: "/assets/images/software/gaprepairer.jpg"
             img_alt: "GapRepairer"
             badge: "Server"
-            badge_color: "#4d7fb0"
+            badge_class: "badge-blue"
             desc: "Reconstructs missing backbone fragments in PDB structures."
 
   - pair: false
     sections:
       - id: "rp-computing"
         title: "Computing Infrastructure"
-        color: "#57779c"
+        theme: "computing"
         eyebrow: "HPC Resources"
-        eyebrow_icon: '<svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><rect x="2" y="2" width="20" height="8" rx="2"/><rect x="2" y="14" width="20" height="8" rx="2"/></svg>'
-        knot_type: "helix"
-        knot_color: "#9db6e4"
-        knot_speed: 0.01
-        knot_tilt: 0.3
+        eyebrow_icon: "server"
         cards:
           - name: "Horda Cluster"
             url: "https://ilbsm.github.io/horda/"
             cat: "server"
-            img_bg: "#1f2d4f"
-            img_logo_html: '<span style="font-size:1.8rem;font-weight:900;color:#fff;letter-spacing:0;font-family:var(--font-serif)">HORDA</span><span style="font-size:0.58rem;color:rgba(255,255,255,0.4);letter-spacing:0.15em;text-transform:uppercase">HPC Cluster · CeNT UW</span>'
+            img_bg_class: "bg-navy"
+            logo_type: "simple"
+            logo_title: "HORDA"
+            logo_subtitle: "HPC Cluster · CeNT UW"
             desc: "Primary HPC cluster for large-scale topology simulations."
 
           - name: "LSSCB Cluster"
             url: "https://lsscb.cent.uw.edu.pl"
             cat: "server"
-            img_bg: "#1f2d4f"
-            img_logo_html: '<span style="font-size:1.8rem;font-weight:900;color:#fff;letter-spacing:0;font-family:Helvetica, sans-serif">C<span style="color:#9db6e4;font-size:0.8em">e</span>NT</span><span style="font-size:0.58rem;color:rgba(255,255,255,0.4);letter-spacing:0.15em;text-transform:uppercase">LSSCB Cluster</span>'
+            img_bg_class: "bg-navy"
+            logo_type: "cent"
+            logo_title: "CeNT"
+            logo_subtitle: "LSSCB Cluster"
             desc: "Shared HPC infrastructure for structural bioinformatics."
 
         resources:

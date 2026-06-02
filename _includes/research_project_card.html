@@ -1,0 +1,35 @@
+{% assign project = include.project %}
+{% assign project_image = project.image | default: "" | strip %}
+{% assign project_image_lc = project_image | downcase %}
+{% assign project_image_prefix = project_image_lc | slice: 0, 2 %}
+{% assign project_image_is_local = true %}
+{% if project_image_lc contains "://" or project_image_prefix == "//" or project_image_lc contains "data:" %}
+{% assign project_image_is_local = false %}
+{% endif %}
+
+<button class="rx-project-card" type="button"
+        data-rx-project-card
+        data-project-id="{{ project.id | escape }}"
+        data-title="{{ project.title | escape }}"
+        data-badge="{{ project.badge | escape }}"
+        data-badge-class="{{ project.badge_class | escape }}"
+        data-meta="{{ project.meta | escape }}"
+        data-polish-title="{{ project.polish_title | escape }}"
+        data-summary="{{ project.summary | escape }}"
+        data-image="{% if project_image_is_local %}{{ project.image | relative_url }}{% endif %}"
+        data-alt="{{ project.alt | escape }}">
+  <span class="rx-project-img{% if project.cover %} rx-cover{% endif %}">
+    {% if project_image_is_local %}
+    <img src="{{ project.image | relative_url }}" alt="{{ project.alt | escape }}" loading="lazy">
+    {% endif %}
+  </span>
+  <span class="rx-project-top">
+    <span class="rx-project-badge {{ project.badge_class }}">{{ project.badge }}</span>
+    <span class="rx-project-meta">{{ project.meta }}</span>
+  </span>
+  <span class="rx-project-title">{{ project.title }}</span>
+  {% if project.polish_title %}
+  <span class="rx-project-polish">{{ project.polish_title }}</span>
+  {% endif %}
+  <span class="rx-project-summary">{{ project.summary }}</span>
+</button>

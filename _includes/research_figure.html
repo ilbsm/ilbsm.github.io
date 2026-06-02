@@ -1,0 +1,23 @@
+{% assign figure = include.figure %}
+{% assign figure_img = figure.img | default: "" | strip %}
+{% assign figure_img_lc = figure_img | downcase %}
+{% assign figure_img_prefix = figure_img_lc | slice: 0, 2 %}
+
+{% unless figure_img_lc contains "://" or figure_img_prefix == "//" or figure_img_lc contains "data:" %}
+<a class="rx-figure {{ figure.width_class | default: 'rx-figure-w-default' }}" href="{{ figure.href }}" target="_blank" rel="noopener noreferrer">
+  <div class="rx-figure-frame">
+    <picture>
+      {% if figure.img2x %}
+      {% assign figure_img2x = figure.img2x | default: "" | strip %}
+      {% assign figure_img2x_lc = figure_img2x | downcase %}
+      {% assign figure_img2x_prefix = figure_img2x_lc | slice: 0, 2 %}
+      {% unless figure_img2x_lc contains "://" or figure_img2x_prefix == "//" or figure_img2x_lc contains "data:" %}
+      <source srcset="{{ '/assets/images/' | append: figure_img2x | relative_url }} 2x">
+      {% endunless %}
+      {% endif %}
+      <img src="{{ '/assets/images/' | append: figure_img | relative_url }}" width="{{ figure.width }}" height="{{ figure.height }}" alt="{{ figure.alt | escape }}" loading="{{ include.loading | default: 'lazy' }}">
+    </picture>
+  </div>
+  <div class="rx-figure-cap">{{ figure.caption }}</div>
+</a>
+{% endunless %}

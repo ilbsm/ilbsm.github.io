@@ -6,7 +6,7 @@ domains:
 
   - id:     "topic-folding"
     number: "01"
-    color:  "#4d7fb0"
+    theme:  "folding"
     alt:    false
     title:  "Protein Folding & Energy Landscapes"
     layout: "right"
@@ -15,6 +15,7 @@ domains:
       - href:    "https://doi.org/10.1073/pnas.1207864109"
         img:     "research/Picture3.png"
         img2x:   "research/Picture3@2x.png"
+        width_class: "rx-figure-w-926"
         width:   926
         height:  325
         alt:     "DCA pipeline"
@@ -22,7 +23,7 @@ domains:
         wide:    true
 
     text: |
-      <p>Proteins with non-trivial topology — knots, slipknots, and lassos — pose one of structural biology's deepest questions: how does a linear chain reliably fold into a knot without getting permanently trapped? We build multidimensional energy-landscape models using coarse-grained Go-models and maximum-entropy approaches. Our central finding: <strong>topological barriers</strong> protect protein function and generate unique mechanical signatures measurable by single-molecule force spectroscopy.</p>
+      Proteins with non-trivial topology — knots, slipknots, and lassos — pose one of structural biology's deepest questions: how does a linear chain reliably fold into a knot without getting permanently trapped? We build multidimensional energy-landscape models using coarse-grained Go-models and maximum-entropy approaches. Our central finding: **topological barriers** protect protein function and generate unique mechanical signatures measurable by single-molecule force spectroscopy.
 
     papers:
       - journal: "PNAS 2008"
@@ -48,7 +49,7 @@ domains:
 
   - id:     "topic-bioinformatics"
     number: "02"
-    color:  "#4d7fb0"
+    theme:  "bioinformatics"
     alt:    true
     title:  "Bioinformatics & Structure Prediction"
     layout: "left"
@@ -57,6 +58,7 @@ domains:
       - href:    "https://doi.org/10.1073/pnas.1207864109"
         img:     "research/bioinf2.png"
         img2x:   "research/bioinf2@2x.png"
+        width_class: "rx-figure-w-666"
         width:   666
         height:  287
         alt:     "MSA contact map"
@@ -64,7 +66,7 @@ domains:
         wide:    true
 
     text: |
-      <p>We build the computational infrastructure for proteome-scale topological analysis — our databases <strong>KnotProt</strong>, <strong>AlphaKnot</strong>, <strong>LassoProt</strong>, and <strong>LinkProt</strong> catalogue topological complexity across hundreds of thousands of structures. Analysing AlphaFold predictions, we were among the first to discover <strong>new knot types</strong> in the human proteome, including the rare 6₃ stevedore knot never seen in experimental data. Direct Coupling Analysis (DCA) further extracts co-evolutionary signals to predict 3D residue contacts from sequence alone.</p>
+      We build the computational infrastructure for proteome-scale topological analysis — our databases **KnotProt**, **AlphaKnot**, **LassoProt**, and **LinkProt** catalogue topological complexity across hundreds of thousands of structures. Analysing AlphaFold predictions, we were among the first to discover **new knot types** in the human proteome, including the rare 6₃ stevedore knot never seen in experimental data. Direct Coupling Analysis (DCA) further extracts co-evolutionary signals to predict 3D residue contacts from sequence alone.
 
     papers:
       - journal: "NAR 2014"
@@ -90,7 +92,7 @@ domains:
 
   - id:     "topic-math"
     number: "03"
-    color:  "#9c27b0"
+    theme:  "math"
     alt:    false
     title:  "Applied Mathematics & Knot Theory"
     layout: "right"
@@ -99,6 +101,7 @@ domains:
       - href:    "https://doi.org/10.1073/pnas.1205918109"
         img:     "research/math1.png"
         img2x:   "research/math1@2x.png"
+        width_class: "rx-figure-w-490"
         width:   490
         height:  245
         alt:     "Knot types survey"
@@ -107,13 +110,14 @@ domains:
       - href:    "https://doi.org/10.1093/nar/gkz845"
         img:     "research/math2.png"
         img2x:   "research/math2@2x.png"
+        width_class: "rx-figure-w-510"
         width:   510
         height:  216
         alt:     "Seifert surface"
         caption: "Seifert surface · topological linking"
 
     text: |
-      <p>Classifying protein topology requires rigorous mathematics: we develop <strong>knot polynomials</strong> — Alexander, Jones, and HOMFLY methods — that uniquely identify knot types in open-chain biomolecules. We extend these tools to <strong>Seifert surfaces</strong> and <strong>genus theory</strong>, capturing topological complexity in both proteins and nucleic acids. Our open-source Topoly Python package makes these tools freely accessible to the community.</p>
+      Classifying protein topology requires rigorous mathematics: we develop **knot polynomials** — Alexander, Jones, and HOMFLY methods — that uniquely identify knot types in open-chain biomolecules. We extend these tools to **Seifert surfaces** and **genus theory**, capturing topological complexity in both proteins and nucleic acids. Our open-source Topoly Python package makes these tools freely accessible to the community.
 
     papers:
       - journal: "PNAS 2012"
@@ -139,7 +143,7 @@ domains:
 
   - id:     "topic-drug-design"
     number: "04"
-    color:  "#e53935"
+    theme:  "drug-design"
     alt:    true
     title:  "Biochemistry & Drug Design"
     layout: "left"
@@ -148,6 +152,7 @@ domains:
       - href:    "https://doi.org/10.1093/nar/gky1140"
         img:     "research/chem1.png"
         img2x:   "research/chem1@2x.png"
+        width_class: "rx-figure-w-537"
         width:   537
         height:  260
         alt:     "Knotted vs unknotted fold"
@@ -156,13 +161,14 @@ domains:
       - href:    "https://doi.org/10.1073/pnas.0805468105"
         img:     "research/chem2.png"
         img2x:   "research/chem2@2x.png"
+        width_class: "rx-figure-w-489"
         width:   489
         height:  277
         alt:     "Antimicrobial drugs"
         caption: "Antimicrobial drug targets"
 
     text: |
-      <p>The <strong>TrmD enzyme</strong> — a tRNA methyltransferase essential for bacterial translation — owes its catalytic activity to a trefoil knot at its active site, a geometry impossible in unknotted proteins, making it a compelling <strong>antibiotic target</strong> with no structural human homologue. We apply DCA-guided computational docking and all-atom simulations to discover inhibitors for knotted proteins implicated in infectious disease, cancer, and neurodegeneration.</p>
+      The **TrmD enzyme** — a tRNA methyltransferase essential for bacterial translation — owes its catalytic activity to a trefoil knot at its active site, a geometry impossible in unknotted proteins, making it a compelling **antibiotic target** with no structural human homologue. We apply DCA-guided computational docking and all-atom simulations to discover inhibitors for knotted proteins implicated in infectious disease, cancer, and neurodegeneration.
 
     papers:
       - journal: "NAR 2018"
@@ -187,7 +193,9 @@ domains:
         cites:   "9 cit."
 
 join:
-  title:           "We are looking for curious,<br>motivated scientists"
+  title_lines:
+    - "We are looking for curious,"
+    - "motivated scientists"
   sub:             "Physicists, mathematicians, biologists, and chemists — united by curiosity and rigorous thinking."
   values:
     - "Interdisciplinary — knot theory to biochemistry"
