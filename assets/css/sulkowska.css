@@ -1,6 +1,8 @@
 /* Shared site shell: reset, banner, navigation, footer, and jump menus. */
 
 :root {
+  --font-sans: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  --font-serif: Georgia, "Times New Roman", serif;
   --text-xs: clamp(0.75rem, 0.7rem + 0.25vw, 0.875rem);
   --text-sm: clamp(0.875rem, 0.8rem + 0.35vw, 1rem);
   --text-base: clamp(1rem, 0.95rem + 0.25vw, 1.125rem);
@@ -52,7 +54,7 @@ html {
 body {
   background: #d9e9f7;
   color: #222;
-  font-family: "Open Sans", sans-serif;
+  font-family: var(--font-sans);
   font-size: 15px;
   line-height: 1.75;
 }
@@ -161,8 +163,8 @@ strong {
 
 .hero-slide::after {
   background:
-    linear-gradient(180deg, rgba(51, 124, 175, 0.36) 0%, rgba(51, 124, 175, 0.48) 52%, rgba(36, 68, 142, 0.7) 82%, rgba(36, 68, 142, 0.9) 100%),
-    linear-gradient(90deg, rgba(36, 68, 142, 0.34) 0%, rgba(51, 124, 175, 0.16) 42%, rgba(36, 68, 142, 0.38) 100%);
+    linear-gradient(180deg, rgba(51, 124, 175, 0.22) 0%, rgba(51, 124, 175, 0.3) 54%, rgba(36, 68, 142, 0.44) 84%, rgba(36, 68, 142, 0.56) 100%),
+    linear-gradient(90deg, rgba(36, 68, 142, 0.18) 0%, rgba(51, 124, 175, 0.08) 42%, rgba(36, 68, 142, 0.2) 100%);
   content: "";
   inset: 0;
   position: absolute;
@@ -206,7 +208,7 @@ strong {
   gap: 0.34rem;
   padding: 0 1rem;
   position: relative;
-  transform: translateY(-4px);
+  transform: translateY(4px);
   width: min(1700px, calc(100% - 2rem));
   z-index: 1;
 }
@@ -219,7 +221,7 @@ strong {
   box-shadow: 0 4px 20px rgba(0, 0, 0, 0.45);
   color: #fff;
   display: flex;
-  font-family: "Merriweather", serif;
+  font-family: var(--font-serif);
   font-size: 2.2rem;
   height: 70px;
   justify-content: center;
@@ -239,7 +241,7 @@ strong {
 
 .hero-lab {
   color: #fff;
-  font-family: "Merriweather", serif;
+  font-family: var(--font-serif);
   font-size: clamp(1.45rem, 3vw, 2.25rem);
   font-weight: 700;
   letter-spacing: 0;
@@ -585,8 +587,8 @@ footer {
 
   .hero-slide::after {
     background:
-      linear-gradient(180deg, rgba(51, 124, 175, 0.34) 0%, rgba(51, 124, 175, 0.46) 56%, rgba(36, 68, 142, 0.76) 100%),
-      linear-gradient(90deg, rgba(36, 68, 142, 0.3) 0%, rgba(51, 124, 175, 0.12) 46%, rgba(36, 68, 142, 0.32) 100%);
+      linear-gradient(180deg, rgba(51, 124, 175, 0.24) 0%, rgba(51, 124, 175, 0.32) 58%, rgba(36, 68, 142, 0.48) 100%),
+      linear-gradient(90deg, rgba(36, 68, 142, 0.16) 0%, rgba(51, 124, 175, 0.08) 46%, rgba(36, 68, 142, 0.18) 100%);
   }
 
   .hero-content {

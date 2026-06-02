@@ -1,0 +1,5745 @@
+[
+  {
+    "id": "https://openalex.org/W1965839094",
+    "doi": "https://doi.org/10.1073/pnas.1207864109",
+    "title": "Genomics-aided structure prediction",
+    "publication_year": 2012,
+    "cited_by_count": 251,
+    "open_access": {
+      "is_oa": true
+    },
+    "primary_location": {
+      "source": {
+        "display_name": "Proceedings of the National Academy of Sciences"
+      }
+    },
+    "authorships": [
+      {
+        "author": {
+          "display_name": "Joanna I. Su\u0142kowska"
+        }
+      },
+      {
+        "author": {
+          "display_name": "Faruck Morcos"
+        }
+      },
+      {
+        "author": {
+          "display_name": "Martin Weigt"
+        }
+      },
+      {
+        "author": {
+          "display_name": "Terence Hwa"
+        }
+      },
+      {
+        "author": {
+          "display_name": "Jos\u00e9 N. Onuchic"
+        }
+      }
+    ]
+  },
+  {
+    "id": "https://openalex.org/W2019218232",
+    "doi": "https://doi.org/10.1073/pnas.1205918109",
+    "title": "Conservation of complex knotting and slipknotting patterns in proteins",
+    "publication_year": 2012,
+    "cited_by_count": 247,
+    "open_access": {
+      "is_oa": true
+    },
+    "primary_location": {
+      "source": {
+        "display_name": "Proceedings of the National Academy of Sciences"
+      }
+    },
+    "authorships": [
+      {
+        "author": {
+          "display_name": "Joanna I. Su\u0142kowska"
+        }
+      },
+      {
+        "author": {
+          "display_name": "Eric J. Rawdon"
+        }
+      },
+      {
+        "author": {
+          "display_name": "Kenneth C. Millett"
+        }
+      },
+      {
+        "author": {
+          "display_name": "Jos\u00e9 N. Onuchic"
+        }
+      },
+      {
+        "author": {
+          "display_name": "Andrzej Stasiak"
+        }
+      }
+    ]
+  },
+  {
+    "id": "https://openalex.org/W2155075558",
+    "doi": "https://doi.org/10.1093/nar/gku1059",
+    "title": "KnotProt: a database of proteins with knots and slipknots",
+    "publication_year": 2014,
+    "cited_by_count": 203,
+    "open_access": {
+      "is_oa": true
+    },
+    "primary_location": {
+      "source": {
+        "display_name": "Nucleic Acids Research"
+      }
+    },
+    "authorships": [
+      {
+        "author": {
+          "display_name": "Micha\u0142 H. Jamr\u00f3z"
+        }
+      },
+      {
+        "author": {
+          "display_name": "Wanda Niemyska"
+        }
+      },
+      {
+        "author": {
+          "display_name": "Eric J. Rawdon"
+        }
+      },
+      {
+        "author": {
+          "display_name": "Andrzej Stasiak"
+        }
+      },
+      {
+        "author": {
+          "display_name": "Kenneth C. Millett"
+        }
+      },
+      {
+        "author": {
+          "display_name": "Piotr Su\u0142kowski"
+        }
+      },
+      {
+        "author": {
+          "display_name": "Joanna I. Su\u0142kowska"
+        }
+      }
+    ]
+  },
+  {
+    "id": "https://openalex.org/W2022652120",
+    "doi": "https://doi.org/10.1073/pnas.0811147106",
+    "title": "Dodging the crisis of folding proteins with knots",
+    "publication_year": 2009,
+    "cited_by_count": 177,
+    "open_access": {
+      "is_oa": true
+    },
+    "primary_location": {
+      "source": {
+        "display_name": "Proceedings of the National Academy of Sciences"
+      }
+    },
+    "authorships": [
+      {
+        "author": {
+          "display_name": "Joanna I. Su\u0142kowska"
+        }
+      },
+      {
+        "author": {
+          "display_name": "Piotr Su\u0142kowski"
+        }
+      },
+      {
+        "author": {
+          "display_name": "Jos\u00e9 N. Onuchic"
+        }
+      }
+    ]
+  },
+  {
+    "id": "https://openalex.org/W1965057964",
+    "doi": "https://doi.org/10.1073/pnas.0805468105",
+    "title": "Stabilizing effect of knots on proteins",
+    "publication_year": 2008,
+    "cited_by_count": 151,
+    "open_access": {
+      "is_oa": true
+    },
+    "primary_location": {
+      "source": {
+        "display_name": "Proceedings of the National Academy of Sciences"
+      }
+    },
+    "authorships": [
+      {
+        "author": {
+          "display_name": "Joanna I. Su\u0142kowska"
+        }
+      },
+      {
+        "author": {
+          "display_name": "Piotr Su\u0142kowski"
+        }
+      },
+      {
+        "author": {
+          "display_name": "Piotr Szymczak"
+        }
+      },
+      {
+        "author": {
+          "display_name": "Marek Cieplak"
+        }
+      }
+    ]
+  },
+  {
+    "id": "https://openalex.org/W1993558448",
+    "doi": "https://doi.org/10.1088/0953-8984/19/28/283201",
+    "title": "Mechanical stretching of proteins\u2014a theoretical survey of the Protein Data Bank",
+    "publication_year": 2007,
+    "cited_by_count": 144,
+    "open_access": {
+      "is_oa": false
+    },
+    "primary_location": {
+      "source": {
+        "display_name": "Journal of Physics Condensed Matter"
+      }
+    },
+    "authorships": [
+      {
+        "author": {
+          "display_name": "Joanna I. Su\u0142kowska"
+        }
+      },
+      {
+        "author": {
+          "display_name": "Marek Cieplak"
+        }
+      }
+    ]
+  },
+  {
+    "id": "https://openalex.org/W2594458869",
+    "doi": "https://doi.org/10.1073/pnas.1615862114",
+    "title": "Topological knots and links in proteins",
+    "publication_year": 2017,
+    "cited_by_count": 137,
+    "open_access": {
+      "is_oa": true
+    },
+    "primary_location": {
+      "source": {
+        "display_name": "Proceedings of the National Academy of Sciences"
+      }
+    },
+    "authorships": [
+      {
+        "author": {
+          "display_name": "Pawe\u0142 D\u0105browski-Tuma\u0144ski"
+        }
+      },
+      {
+        "author": {
+          "display_name": "Joanna I. Su\u0142kowska"
+        }
+      }
+    ]
+  },
+  {
+    "id": "https://openalex.org/W1970729662",
+    "doi": "https://doi.org/10.1529/biophysj.107.127233",
+    "title": "Selection of Optimal Variants of G\u014d-Like Models of Proteins through Studies of Stretching",
+    "publication_year": 2008,
+    "cited_by_count": 129,
+    "open_access": {
+      "is_oa": true
+    },
+    "primary_location": {
+      "source": {
+        "display_name": "Biophysical Journal"
+      }
+    },
+    "authorships": [
+      {
+        "author": {
+          "display_name": "Joanna I. Su\u0142kowska"
+        }
+      },
+      {
+        "author": {
+          "display_name": "Marek Cieplak"
+        }
+      }
+    ]
+  },
+  {
+    "id": "https://openalex.org/W2901992705",
+    "doi": "https://doi.org/10.1093/nar/gky1140",
+    "title": "KnotProt 2.0: a database of proteins with knots and other entangled structures",
+    "publication_year": 2018,
+    "cited_by_count": 128,
+    "open_access": {
+      "is_oa": true
+    },
+    "primary_location": {
+      "source": {
+        "display_name": "Nucleic Acids Research"
+      }
+    },
+    "authorships": [
+      {
+        "author": {
+          "display_name": "Pawe\u0142 D\u0105browski-Tuma\u0144ski"
+        }
+      },
+      {
+        "author": {
+          "display_name": "Pawe\u0142 Rubach"
+        }
+      },
+      {
+        "author": {
+          "display_name": "Dimos Goundaroulis"
+        }
+      },
+      {
+        "author": {
+          "display_name": "Julien Dorier"
+        }
+      },
+      {
+        "author": {
+          "display_name": "Piotr Su\u0142kowski"
+        }
+      },
+      {
+        "author": {
+          "display_name": "Kenneth C. Millett"
+        }
+      },
+      {
+        "author": {
+          "display_name": "Eric J. Rawdon"
+        }
+      },
+      {
+        "author": {
+          "display_name": "Andrzej Stasiak"
+        }
+      },
+      {
+        "author": {
+          "display_name": "Joanna I. Su\u0142kowska"
+        }
+      }
+    ]
+  },
+  {
+    "id": "https://openalex.org/W2162355408",
+    "doi": "https://doi.org/10.1073/pnas.1009522107",
+    "title": "Slipknotting upon native-like loop formation in a trefoil knot protein",
+    "publication_year": 2010,
+    "cited_by_count": 122,
+    "open_access": {
+      "is_oa": true
+    },
+    "primary_location": {
+      "source": {
+        "display_name": "Proceedings of the National Academy of Sciences"
+      }
+    },
+    "authorships": [
+      {
+        "author": {
+          "display_name": "Jeffrey K. Noel"
+        }
+      },
+      {
+        "author": {
+          "display_name": "Joanna I. Su\u0142kowska"
+        }
+      },
+      {
+        "author": {
+          "display_name": "Jos\u00e9 N. Onuchic"
+        }
+      }
+    ]
+  },
+  {
+    "id": "https://openalex.org/W2037805485",
+    "doi": "https://doi.org/10.1073/pnas.0813093106",
+    "title": "On the remarkable mechanostability of scaffoldins and the mechanical clamp motif",
+    "publication_year": 2009,
+    "cited_by_count": 120,
+    "open_access": {
+      "is_oa": true
+    },
+    "primary_location": {
+      "source": {
+        "display_name": "Proceedings of the National Academy of Sciences"
+      }
+    },
+    "authorships": [
+      {
+        "author": {
+          "display_name": "Alejandro Valbuena"
+        }
+      },
+      {
+        "author": {
+          "display_name": "Javier Oroz"
+        }
+      },
+      {
+        "author": {
+          "display_name": "Rub\u00e9n Herv\u00e1s"
+        }
+      },
+      {
+        "author": {
+          "display_name": "Andr\u00e9s Manuel Vera"
+        }
+      },
+      {
+        "author": {
+          "display_name": "David Rodr\u00edguez"
+        }
+      },
+      {
+        "author": {
+          "display_name": "Margarita Men\u00e9ndez"
+        }
+      },
+      {
+        "author": {
+          "display_name": "Joanna I. Su\u0142kowska"
+        }
+      },
+      {
+        "author": {
+          "display_name": "Marek Cieplak"
+        }
+      },
+      {
+        "author": {
+          "display_name": "Mariano Carri\u00f3n\u2010V\u00e1zquez"
+        }
+      }
+    ]
+  },
+  {
+    "id": "https://openalex.org/W3017135517",
+    "doi": "https://doi.org/10.3390/ijms21082778",
+    "title": "A Guide to Targeting the Endocannabinoid System in Drug Design",
+    "publication_year": 2020,
+    "cited_by_count": 118,
+    "open_access": {
+      "is_oa": true
+    },
+    "primary_location": {
+      "source": {
+        "display_name": "International Journal of Molecular Sciences"
+      }
+    },
+    "authorships": [
+      {
+        "author": {
+          "display_name": "Adam Stasiulewicz"
+        }
+      },
+      {
+        "author": {
+          "display_name": "Katarzyna Znajdek"
+        }
+      },
+      {
+        "author": {
+          "display_name": "Monika Grudzie\u0144"
+        }
+      },
+      {
+        "author": {
+          "display_name": "T. Pawi\u0144ski"
+        }
+      },
+      {
+        "author": {
+          "display_name": "Joanna I. Su\u0142kowska"
+        }
+      }
+    ]
+  },
+  {
+    "id": "https://openalex.org/W2015191244",
+    "doi": "https://doi.org/10.1371/journal.pcbi.1000547",
+    "title": "Mechanical Strength of 17 134 Model Proteins and Cysteine Slipknots",
+    "publication_year": 2009,
+    "cited_by_count": 115,
+    "open_access": {
+      "is_oa": true
+    },
+    "primary_location": {
+      "source": {
+        "display_name": "PLoS Computational Biology"
+      }
+    },
+    "authorships": [
+      {
+        "author": {
+          "display_name": "Mateusz Sikora"
+        }
+      },
+      {
+        "author": {
+          "display_name": "Joanna I. Su\u0142kowska"
+        }
+      },
+      {
+        "author": {
+          "display_name": "Marek Cieplak"
+        }
+      }
+    ]
+  },
+  {
+    "id": "https://openalex.org/W2516486208",
+    "doi": "https://doi.org/10.1038/nsmb.3282",
+    "title": "Methyl transfer by substrate signaling from a knotted protein fold",
+    "publication_year": 2016,
+    "cited_by_count": 108,
+    "open_access": {
+      "is_oa": false
+    },
+    "primary_location": {
+      "source": {
+        "display_name": "Nature Structural & Molecular Biology"
+      }
+    },
+    "authorships": [
+      {
+        "author": {
+          "display_name": "Thomas Christian"
+        }
+      },
+      {
+        "author": {
+          "display_name": "Reiko Sakaguchi"
+        }
+      },
+      {
+        "author": {
+          "display_name": "Agata P. Perlinska"
+        }
+      },
+      {
+        "author": {
+          "display_name": "Georges Lahoud"
+        }
+      },
+      {
+        "author": {
+          "display_name": "Takuhiro Ito"
+        }
+      },
+      {
+        "author": {
+          "display_name": "Erika A. Taylor"
+        }
+      },
+      {
+        "author": {
+          "display_name": "Shigeyuki Yokoyama"
+        }
+      },
+      {
+        "author": {
+          "display_name": "Joanna I. Su\u0142kowska"
+        }
+      },
+      {
+        "author": {
+          "display_name": "Ya\u2010Ming Hou"
+        }
+      }
+    ]
+  },
+  {
+    "id": "https://openalex.org/W1966069639",
+    "doi": "https://doi.org/10.1073/pnas.1201804109",
+    "title": "Energy landscape of knotted protein folding",
+    "publication_year": 2012,
+    "cited_by_count": 107,
+    "open_access": {
+      "is_oa": true
+    },
+    "primary_location": {
+      "source": {
+        "display_name": "Proceedings of the National Academy of Sciences"
+      }
+    },
+    "authorships": [
+      {
+        "author": {
+          "display_name": "Joanna I. Su\u0142kowska"
+        }
+      },
+      {
+        "author": {
+          "display_name": "Jeffrey K. Noel"
+        }
+      },
+      {
+        "author": {
+          "display_name": "Jos\u00e9 N. Onuchic"
+        }
+      }
+    ]
+  },
+  {
+    "id": "https://openalex.org/W2553019085",
+    "doi": "https://doi.org/10.1038/srep36895",
+    "title": "Complex lasso: new entangled motifs in proteins",
+    "publication_year": 2016,
+    "cited_by_count": 97,
+    "open_access": {
+      "is_oa": true
+    },
+    "primary_location": {
+      "source": {
+        "display_name": "Scientific Reports"
+      }
+    },
+    "authorships": [
+      {
+        "author": {
+          "display_name": "Wanda Niemyska"
+        }
+      },
+      {
+        "author": {
+          "display_name": "Pawe\u0142 D\u0105browski-Tuma\u0144ski"
+        }
+      },
+      {
+        "author": {
+          "display_name": "Micha\u0142 Kadlof"
+        }
+      },
+      {
+        "author": {
+          "display_name": "Ellinor Haglund"
+        }
+      },
+      {
+        "author": {
+          "display_name": "Piotr Su\u0142kowski"
+        }
+      },
+      {
+        "author": {
+          "display_name": "Joanna I. Su\u0142kowska"
+        }
+      }
+    ]
+  },
+  {
+    "id": "https://openalex.org/W2153375918",
+    "doi": "https://doi.org/10.1103/physreve.73.061501",
+    "title": "Correlated fluctuations of microparticles in viscoelastic solutions: Quantitative measurement of material properties by microrheology in the presence of optical traps",
+    "publication_year": 2006,
+    "cited_by_count": 94,
+    "open_access": {
+      "is_oa": false
+    },
+    "primary_location": {
+      "source": {
+        "display_name": "Physical Review E"
+      }
+    },
+    "authorships": [
+      {
+        "author": {
+          "display_name": "M. Atakhorrami"
+        }
+      },
+      {
+        "author": {
+          "display_name": "Joanna I. Su\u0142kowska"
+        }
+      },
+      {
+        "author": {
+          "display_name": "K. Addas"
+        }
+      },
+      {
+        "author": {
+          "display_name": "G. H. Koenderink"
+        }
+      },
+      {
+        "author": {
+          "display_name": "Jay X. Tang"
+        }
+      },
+      {
+        "author": {
+          "display_name": "Alex J. Levine"
+        }
+      },
+      {
+        "author": {
+          "display_name": "F. C. MacKintosh"
+        }
+      },
+      {
+        "author": {
+          "display_name": "Christoph F. Schmidt"
+        }
+      }
+    ]
+  },
+  {
+    "id": "https://openalex.org/W3214131546",
+    "doi": "https://doi.org/10.1093/nar/gkab988",
+    "title": "PDBe-KB: collaboratively defining the biological context of structural data",
+    "publication_year": 2021,
+    "cited_by_count": 89,
+    "open_access": {
+      "is_oa": true
+    },
+    "primary_location": {
+      "source": {
+        "display_name": "Nucleic Acids Research"
+      }
+    },
+    "authorships": [
+      {
+        "author": {
+          "display_name": "Mih\u00e1ly V\u00e1radi"
+        }
+      },
+      {
+        "author": {
+          "display_name": "Stephen Anyango"
+        }
+      },
+      {
+        "author": {
+          "display_name": "David Armstrong"
+        }
+      },
+      {
+        "author": {
+          "display_name": "John M. Berrisford"
+        }
+      },
+      {
+        "author": {
+          "display_name": "Preeti Choudhary"
+        }
+      },
+      {
+        "author": {
+          "display_name": "Mandar Deshpande"
+        }
+      },
+      {
+        "author": {
+          "display_name": "Nurul Nadzirin"
+        }
+      },
+      {
+        "author": {
+          "display_name": "Sreenath Nair"
+        }
+      },
+      {
+        "author": {
+          "display_name": "Luk\u00e1\u0161 Pravda"
+        }
+      },
+      {
+        "author": {
+          "display_name": "Ahsan Tanweer"
+        }
+      },
+      {
+        "author": {
+          "display_name": "Bissan Al\u2010Lazikani"
+        }
+      },
+      {
+        "author": {
+          "display_name": "Claudia Andreini"
+        }
+      },
+      {
+        "author": {
+          "display_name": "Geoffrey J. Barton"
+        }
+      },
+      {
+        "author": {
+          "display_name": "David Bedn\u00e1\u0159"
+        }
+      },
+      {
+        "author": {
+          "display_name": "Karel Berka"
+        }
+      },
+      {
+        "author": {
+          "display_name": "Tom L. Blundell"
+        }
+      },
+      {
+        "author": {
+          "display_name": "Kelly P. Brock"
+        }
+      },
+      {
+        "author": {
+          "display_name": "J.M. Carazo"
+        }
+      },
+      {
+        "author": {
+          "display_name": "Ji\u0159\u0131\u0301 Damborsk\u00fd"
+        }
+      },
+      {
+        "author": {
+          "display_name": "Alessia David"
+        }
+      },
+      {
+        "author": {
+          "display_name": "Sucharita Dey"
+        }
+      },
+      {
+        "author": {
+          "display_name": "Roland L. Dunbrack"
+        }
+      },
+      {
+        "author": {
+          "display_name": "Juan Fern\u00e1ndez Recio"
+        }
+      },
+      {
+        "author": {
+          "display_name": "Franca Fraternali"
+        }
+      },
+      {
+        "author": {
+          "display_name": "Toby J. Gibson"
+        }
+      },
+      {
+        "author": {
+          "display_name": "Manuela Helmer\u2010Citterich"
+        }
+      },
+      {
+        "author": {
+          "display_name": "David Hoksza"
+        }
+      },
+      {
+        "author": {
+          "display_name": "Thomas A. Hopf"
+        }
+      },
+      {
+        "author": {
+          "display_name": "D\u00e1vid Jakubec"
+        }
+      },
+      {
+        "author": {
+          "display_name": "Natarajan Kannan"
+        }
+      },
+      {
+        "author": {
+          "display_name": "Radoslav Kriv\u00e1k"
+        }
+      },
+      {
+        "author": {
+          "display_name": "Manjeet Kumar"
+        }
+      },
+      {
+        "author": {
+          "display_name": "Emmanuel D. Levy"
+        }
+      },
+      {
+        "author": {
+          "display_name": "Nir London"
+        }
+      },
+      {
+        "author": {
+          "display_name": "Jos\u00e9 Ram\u00f3n Mac\u00edas"
+        }
+      },
+      {
+        "author": {
+          "display_name": "Madhusudhan M Srivatsan"
+        }
+      },
+      {
+        "author": {
+          "display_name": "Debora S. Marks"
+        }
+      },
+      {
+        "author": {
+          "display_name": "Lennart Martens"
+        }
+      },
+      {
+        "author": {
+          "display_name": "Stuart A McGowan"
+        }
+      },
+      {
+        "author": {
+          "display_name": "Jake E McGreig"
+        }
+      },
+      {
+        "author": {
+          "display_name": "Vivek Modi"
+        }
+      },
+      {
+        "author": {
+          "display_name": "R. Gonzalo Parra"
+        }
+      },
+      {
+        "author": {
+          "display_name": "Gerardo Pepe"
+        }
+      },
+      {
+        "author": {
+          "display_name": "Damiano Piovesan"
+        }
+      },
+      {
+        "author": {
+          "display_name": "Jaime Prilusky"
+        }
+      },
+      {
+        "author": {
+          "display_name": "Valeria Putignano"
+        }
+      },
+      {
+        "author": {
+          "display_name": "Leandro Radusky"
+        }
+      },
+      {
+        "author": {
+          "display_name": "Pathmanaban Ramasamy"
+        }
+      },
+      {
+        "author": {
+          "display_name": "Atilio O Rausch"
+        }
+      },
+      {
+        "author": {
+          "display_name": "Nathalie Reuter"
+        }
+      },
+      {
+        "author": {
+          "display_name": "Luis A Rodriguez"
+        }
+      },
+      {
+        "author": {
+          "display_name": "Nathan Rollins"
+        }
+      },
+      {
+        "author": {
+          "display_name": "Antonio Rosato"
+        }
+      },
+      {
+        "author": {
+          "display_name": "Pawe\u0142 Rubach"
+        }
+      },
+      {
+        "author": {
+          "display_name": "Luis Serrano"
+        }
+      },
+      {
+        "author": {
+          "display_name": "Gulzar Singh"
+        }
+      },
+      {
+        "author": {
+          "display_name": "Petr \u0160koda"
+        }
+      },
+      {
+        "author": {
+          "display_name": "Carlos \u00d3scar S. Sorzano"
+        }
+      },
+      {
+        "author": {
+          "display_name": "Jan \u0160toura\u010d"
+        }
+      },
+      {
+        "author": {
+          "display_name": "Joanna I. Su\u0142kowska"
+        }
+      },
+      {
+        "author": {
+          "display_name": "Radka Svobodov\u00e1 Va\u0159ekov\u00e1"
+        }
+      },
+      {
+        "author": {
+          "display_name": "Natalia Tichshenko"
+        }
+      },
+      {
+        "author": {
+          "display_name": "Silvio C. E. Tosatto"
+        }
+      },
+      {
+        "author": {
+          "display_name": "Wim Vranken"
+        }
+      },
+      {
+        "author": {
+          "display_name": "Mark N. Wass"
+        }
+      },
+      {
+        "author": {
+          "display_name": "Dandan Xue"
+        }
+      },
+      {
+        "author": {
+          "display_name": "Daniel Zaidman"
+        }
+      },
+      {
+        "author": {
+          "display_name": "Janet M. Thornton"
+        }
+      },
+      {
+        "author": {
+          "display_name": "Michael J.E. Sternberg"
+        }
+      },
+      {
+        "author": {
+          "display_name": "Christine Orengo"
+        }
+      },
+      {
+        "author": {
+          "display_name": "Sameer Velankar"
+        }
+      }
+    ]
+  },
+  {
+    "id": "https://openalex.org/W3005909868",
+    "doi": "https://doi.org/10.1016/j.sbi.2020.01.007",
+    "title": "On folding of entangled proteins: knots, lassos, links and <mml:math xmlns:mml=\"http://www.w3.org/1998/Math/MathML\" altimg=\"si1.svg\"><mml:mi>\u03b8</mml:mi></mml:math>-curves",
+    "publication_year": 2020,
+    "cited_by_count": 87,
+    "open_access": {
+      "is_oa": false
+    },
+    "primary_location": {
+      "source": {
+        "display_name": "Current Opinion in Structural Biology"
+      }
+    },
+    "authorships": [
+      {
+        "author": {
+          "display_name": "Joanna I. Su\u0142kowska"
+        }
+      }
+    ]
+  },
+  {
+    "id": "https://openalex.org/W2049100090",
+    "doi": "https://doi.org/10.1042/bst20120339",
+    "title": "Identifying knots in proteins",
+    "publication_year": 2013,
+    "cited_by_count": 87,
+    "open_access": {
+      "is_oa": false
+    },
+    "primary_location": {
+      "source": {
+        "display_name": "Biochemical Society Transactions"
+      }
+    },
+    "authorships": [
+      {
+        "author": {
+          "display_name": "Kenneth C. Millett"
+        }
+      },
+      {
+        "author": {
+          "display_name": "Eric J. Rawdon"
+        }
+      },
+      {
+        "author": {
+          "display_name": "Andrzej Stasiak"
+        }
+      },
+      {
+        "author": {
+          "display_name": "Joanna I. Su\u0142kowska"
+        }
+      }
+    ]
+  },
+  {
+    "id": "https://openalex.org/W2134239230",
+    "doi": "https://doi.org/10.1103/physrevlett.100.058106",
+    "title": "Tightening of Knots in Proteins",
+    "publication_year": 2008,
+    "cited_by_count": 85,
+    "open_access": {
+      "is_oa": true
+    },
+    "primary_location": {
+      "source": {
+        "display_name": "Physical Review Letters"
+      }
+    },
+    "authorships": [
+      {
+        "author": {
+          "display_name": "Joanna I. Su\u0142kowska"
+        }
+      },
+      {
+        "author": {
+          "display_name": "Piotr Su\u0142kowski"
+        }
+      },
+      {
+        "author": {
+          "display_name": "Piotr Szymczak"
+        }
+      },
+      {
+        "author": {
+          "display_name": "Marek Cieplak"
+        }
+      }
+    ]
+  },
+  {
+    "id": "https://openalex.org/W4396962683",
+    "doi": "https://doi.org/10.1016/j.physrep.2024.04.002",
+    "title": "Topology in soft and biological matter",
+    "publication_year": 2024,
+    "cited_by_count": 77,
+    "open_access": {
+      "is_oa": true
+    },
+    "primary_location": {
+      "source": {
+        "display_name": "Physics Reports"
+      }
+    },
+    "authorships": [
+      {
+        "author": {
+          "display_name": "Luca Tubiana"
+        }
+      },
+      {
+        "author": {
+          "display_name": "Gareth P. Alexander"
+        }
+      },
+      {
+        "author": {
+          "display_name": "Agnese Barbensi"
+        }
+      },
+      {
+        "author": {
+          "display_name": "Dorothy Buck"
+        }
+      },
+      {
+        "author": {
+          "display_name": "Julyan H. E. Cartwright"
+        }
+      },
+      {
+        "author": {
+          "display_name": "Mateusz Chwastyk"
+        }
+      },
+      {
+        "author": {
+          "display_name": "Marek Cieplak"
+        }
+      },
+      {
+        "author": {
+          "display_name": "Ivan Coluzza"
+        }
+      },
+      {
+        "author": {
+          "display_name": "Simon \u010copar"
+        }
+      },
+      {
+        "author": {
+          "display_name": "David J. Craik"
+        }
+      },
+      {
+        "author": {
+          "display_name": "Marco Di Stefano"
+        }
+      },
+      {
+        "author": {
+          "display_name": "Ralf Everaers"
+        }
+      },
+      {
+        "author": {
+          "display_name": "Patr\u00edcia F. N. Fa\u00edsca"
+        }
+      },
+      {
+        "author": {
+          "display_name": "Franco Ferrari"
+        }
+      },
+      {
+        "author": {
+          "display_name": "Achille Giacometti"
+        }
+      },
+      {
+        "author": {
+          "display_name": "Dimos Goundaroulis"
+        }
+      },
+      {
+        "author": {
+          "display_name": "Ellinor Haglund"
+        }
+      },
+      {
+        "author": {
+          "display_name": "Ya\u2010Ming Hou"
+        }
+      },
+      {
+        "author": {
+          "display_name": "Nevena Ilieva"
+        }
+      },
+      {
+        "author": {
+          "display_name": "Sophie Jackson"
+        }
+      },
+      {
+        "author": {
+          "display_name": "Aleksandre Japaridze"
+        }
+      },
+      {
+        "author": {
+          "display_name": "N. Kaplan"
+        }
+      },
+      {
+        "author": {
+          "display_name": "Alexander Klotz"
+        }
+      },
+      {
+        "author": {
+          "display_name": "Hongbin Li"
+        }
+      },
+      {
+        "author": {
+          "display_name": "Christos N. Likos"
+        }
+      },
+      {
+        "author": {
+          "display_name": "Emanuele Locatelli"
+        }
+      },
+      {
+        "author": {
+          "display_name": "Teresa L\u00f3pez\u2010Le\u00f3n"
+        }
+      },
+      {
+        "author": {
+          "display_name": "Thomas Machon"
+        }
+      },
+      {
+        "author": {
+          "display_name": "Cristian Micheletti"
+        }
+      },
+      {
+        "author": {
+          "display_name": "Davide Michieletto"
+        }
+      },
+      {
+        "author": {
+          "display_name": "Antti J. Niemi"
+        }
+      },
+      {
+        "author": {
+          "display_name": "Wanda Niemyska"
+        }
+      },
+      {
+        "author": {
+          "display_name": "Szymon Niewieczerza\u0142"
+        }
+      },
+      {
+        "author": {
+          "display_name": "Francesco Nitti"
+        }
+      },
+      {
+        "author": {
+          "display_name": "Enzo Orlandini"
+        }
+      },
+      {
+        "author": {
+          "display_name": "Samuela Pasquali"
+        }
+      },
+      {
+        "author": {
+          "display_name": "Agata P. Perlinska"
+        }
+      },
+      {
+        "author": {
+          "display_name": "Rudolf Podgornik"
+        }
+      },
+      {
+        "author": {
+          "display_name": "Raffaello Potestio"
+        }
+      },
+      {
+        "author": {
+          "display_name": "Nicola M. Pugno"
+        }
+      },
+      {
+        "author": {
+          "display_name": "Miha Ravnik"
+        }
+      },
+      {
+        "author": {
+          "display_name": "Renzo L. Ricca"
+        }
+      },
+      {
+        "author": {
+          "display_name": "Christian M. Rohwer"
+        }
+      },
+      {
+        "author": {
+          "display_name": "Angelo Rosa"
+        }
+      },
+      {
+        "author": {
+          "display_name": "Jan Smrek"
+        }
+      },
+      {
+        "author": {
+          "display_name": "Anton Souslov"
+        }
+      },
+      {
+        "author": {
+          "display_name": "Andrzej Stasiak"
+        }
+      },
+      {
+        "author": {
+          "display_name": "D. A. Steer"
+        }
+      },
+      {
+        "author": {
+          "display_name": "Joanna I. Su\u0142kowska"
+        }
+      },
+      {
+        "author": {
+          "display_name": "Piotr Su\u0142kowski"
+        }
+      },
+      {
+        "author": {
+          "display_name": "D. W. Sumners"
+        }
+      },
+      {
+        "author": {
+          "display_name": "Carsten Svaneborg"
+        }
+      },
+      {
+        "author": {
+          "display_name": "Piotr Szymczak"
+        }
+      },
+      {
+        "author": {
+          "display_name": "Thomas Tarenzi"
+        }
+      },
+      {
+        "author": {
+          "display_name": "Rui D. M. Travasso"
+        }
+      },
+      {
+        "author": {
+          "display_name": "Peter Virnau"
+        }
+      },
+      {
+        "author": {
+          "display_name": "Dimitris Vlassopoulos"
+        }
+      },
+      {
+        "author": {
+          "display_name": "P. Ziherl"
+        }
+      },
+      {
+        "author": {
+          "display_name": "S. \u017dumer"
+        }
+      }
+    ]
+  },
+  {
+    "id": "https://openalex.org/W3087730481",
+    "doi": "https://doi.org/10.1093/bib/bbaa196",
+    "title": "Topoly: Python package to analyze topology of polymers",
+    "publication_year": 2020,
+    "cited_by_count": 74,
+    "open_access": {
+      "is_oa": true
+    },
+    "primary_location": {
+      "source": {
+        "display_name": "Briefings in Bioinformatics"
+      }
+    },
+    "authorships": [
+      {
+        "author": {
+          "display_name": "Pawe\u0142 D\u0105browski-Tuma\u0144ski"
+        }
+      },
+      {
+        "author": {
+          "display_name": "Pawe\u0142 Rubach"
+        }
+      },
+      {
+        "author": {
+          "display_name": "Wanda Niemyska"
+        }
+      },
+      {
+        "author": {
+          "display_name": "Bartosz A. Gren"
+        }
+      },
+      {
+        "author": {
+          "display_name": "Joanna I. Su\u0142kowska"
+        }
+      }
+    ]
+  },
+  {
+    "id": "https://openalex.org/W2546974677",
+    "doi": "https://doi.org/10.1371/journal.pone.0165986",
+    "title": "In Search of Functional Advantages of Knots in Proteins",
+    "publication_year": 2016,
+    "cited_by_count": 72,
+    "open_access": {
+      "is_oa": true
+    },
+    "primary_location": {
+      "source": {
+        "display_name": "PLoS ONE"
+      }
+    },
+    "authorships": [
+      {
+        "author": {
+          "display_name": "Pawe\u0142 D\u0105browski-Tuma\u0144ski"
+        }
+      },
+      {
+        "author": {
+          "display_name": "Andrzej Stasiak"
+        }
+      },
+      {
+        "author": {
+          "display_name": "Joanna I. Su\u0142kowska"
+        }
+      }
+    ]
+  },
+  {
+    "id": "https://openalex.org/W3023747927",
+    "doi": "https://doi.org/10.1021/jz401842f",
+    "title": "Knotting a Protein in Explicit Solvent",
+    "publication_year": 2013,
+    "cited_by_count": 70,
+    "open_access": {
+      "is_oa": false
+    },
+    "primary_location": {
+      "source": {
+        "display_name": "The Journal of Physical Chemistry Letters"
+      }
+    },
+    "authorships": [
+      {
+        "author": {
+          "display_name": "Jeffrey K. Noel"
+        }
+      },
+      {
+        "author": {
+          "display_name": "Jos\u00e9 N. Onuchic"
+        }
+      },
+      {
+        "author": {
+          "display_name": "Joanna I. Su\u0142kowska"
+        }
+      }
+    ]
+  },
+  {
+    "id": "https://openalex.org/W2342906045",
+    "doi": "https://doi.org/10.1093/nar/gkw308",
+    "title": "LassoProt: server to analyze biopolymers with lassos",
+    "publication_year": 2016,
+    "cited_by_count": 66,
+    "open_access": {
+      "is_oa": true
+    },
+    "primary_location": {
+      "source": {
+        "display_name": "Nucleic Acids Research"
+      }
+    },
+    "authorships": [
+      {
+        "author": {
+          "display_name": "Pawe\u0142 D\u0105browski-Tuma\u0144ski"
+        }
+      },
+      {
+        "author": {
+          "display_name": "Wanda Niemyska"
+        }
+      },
+      {
+        "author": {
+          "display_name": "Pawe\u0142 Pasznik"
+        }
+      },
+      {
+        "author": {
+          "display_name": "Joanna I. Su\u0142kowska"
+        }
+      }
+    ]
+  },
+  {
+    "id": "https://openalex.org/W2075701206",
+    "doi": "https://doi.org/10.1021/jz301893w",
+    "title": "Hysteresis as a Marker for Complex, Overlapping Landscapes in Proteins",
+    "publication_year": 2012,
+    "cited_by_count": 60,
+    "open_access": {
+      "is_oa": false
+    },
+    "primary_location": {
+      "source": {
+        "display_name": "The Journal of Physical Chemistry Letters"
+      }
+    },
+    "authorships": [
+      {
+        "author": {
+          "display_name": "Benjamin T. Andrews"
+        }
+      },
+      {
+        "author": {
+          "display_name": "Dominique T. Capraro"
+        }
+      },
+      {
+        "author": {
+          "display_name": "Joanna I. Su\u0142kowska"
+        }
+      },
+      {
+        "author": {
+          "display_name": "Jos\u00e9 N. Onuchic"
+        }
+      },
+      {
+        "author": {
+          "display_name": "Patricia A. Jennings"
+        }
+      }
+    ]
+  },
+  {
+    "id": "https://openalex.org/W2072982744",
+    "doi": "https://doi.org/10.1371/journal.pcbi.1003613",
+    "title": "Pierced Lasso Bundles Are a New Class of Knot-like Motifs",
+    "publication_year": 2014,
+    "cited_by_count": 58,
+    "open_access": {
+      "is_oa": true
+    },
+    "primary_location": {
+      "source": {
+        "display_name": "PLoS Computational Biology"
+      }
+    },
+    "authorships": [
+      {
+        "author": {
+          "display_name": "Ellinor Haglund"
+        }
+      },
+      {
+        "author": {
+          "display_name": "Joanna I. Su\u0142kowska"
+        }
+      },
+      {
+        "author": {
+          "display_name": "Jeffrey K. Noel"
+        }
+      },
+      {
+        "author": {
+          "display_name": "Heiko Lammert"
+        }
+      },
+      {
+        "author": {
+          "display_name": "Jos\u00e9 N. Onuchic"
+        }
+      },
+      {
+        "author": {
+          "display_name": "Patricia A. Jennings"
+        }
+      }
+    ]
+  },
+  {
+    "id": "https://openalex.org/W2755698155",
+    "doi": "https://doi.org/10.3390/polym9090454",
+    "title": "To Tie or Not to Tie? That Is the Question",
+    "publication_year": 2017,
+    "cited_by_count": 56,
+    "open_access": {
+      "is_oa": true
+    },
+    "primary_location": {
+      "source": {
+        "display_name": "Polymers"
+      }
+    },
+    "authorships": [
+      {
+        "author": {
+          "display_name": "Pawe\u0142 D\u0105browski-Tuma\u0144ski"
+        }
+      },
+      {
+        "author": {
+          "display_name": "Joanna I. Su\u0142kowska"
+        }
+      }
+    ]
+  },
+  {
+    "id": "https://openalex.org/W2054618331",
+    "doi": "https://doi.org/10.1371/journal.pone.0045654",
+    "title": "The Unique Cysteine Knot Regulates the Pleotropic Hormone Leptin",
+    "publication_year": 2012,
+    "cited_by_count": 54,
+    "open_access": {
+      "is_oa": true
+    },
+    "primary_location": {
+      "source": {
+        "display_name": "PLoS ONE"
+      }
+    },
+    "authorships": [
+      {
+        "author": {
+          "display_name": "Ellinor Haglund"
+        }
+      },
+      {
+        "author": {
+          "display_name": "Joanna I. Su\u0142kowska"
+        }
+      },
+      {
+        "author": {
+          "display_name": "Zhao He"
+        }
+      },
+      {
+        "author": {
+          "display_name": "Gen\u2010Sheng Feng"
+        }
+      },
+      {
+        "author": {
+          "display_name": "Patricia A. Jennings"
+        }
+      },
+      {
+        "author": {
+          "display_name": "Jos\u00e9 N. Onuchic"
+        }
+      }
+    ]
+  },
+  {
+    "id": "https://openalex.org/W2899044544",
+    "doi": "https://doi.org/10.1016/j.jmb.2018.10.012",
+    "title": "Proteins' Knotty Problems",
+    "publication_year": 2018,
+    "cited_by_count": 53,
+    "open_access": {
+      "is_oa": true
+    },
+    "primary_location": {
+      "source": {
+        "display_name": "Journal of Molecular Biology"
+      }
+    },
+    "authorships": [
+      {
+        "author": {
+          "display_name": "Aleksandra I. Jarmolinska"
+        }
+      },
+      {
+        "author": {
+          "display_name": "Agata P. Perlinska"
+        }
+      },
+      {
+        "author": {
+          "display_name": "Robert L. Runkel"
+        }
+      },
+      {
+        "author": {
+          "display_name": "Benjamin Trefz"
+        }
+      },
+      {
+        "author": {
+          "display_name": "Helen M. Ginn"
+        }
+      },
+      {
+        "author": {
+          "display_name": "Peter Virnau"
+        }
+      },
+      {
+        "author": {
+          "display_name": "Joanna I. Su\u0142kowska"
+        }
+      }
+    ]
+  },
+  {
+    "id": "https://openalex.org/W2890122284",
+    "doi": "https://doi.org/10.1021/acs.jpcb.8b07634",
+    "title": "Protein Knotting by Active Threading of Nascent Polypeptide Chain Exiting from the Ribosome Exit Channel",
+    "publication_year": 2018,
+    "cited_by_count": 51,
+    "open_access": {
+      "is_oa": false
+    },
+    "primary_location": {
+      "source": {
+        "display_name": "The Journal of Physical Chemistry B"
+      }
+    },
+    "authorships": [
+      {
+        "author": {
+          "display_name": "Pawe\u0142 D\u0105browski-Tuma\u0144ski"
+        }
+      },
+      {
+        "author": {
+          "display_name": "Maciej Piejko"
+        }
+      },
+      {
+        "author": {
+          "display_name": "Szymon Niewieczerza\u0142"
+        }
+      },
+      {
+        "author": {
+          "display_name": "Andrzej Stasiak"
+        }
+      },
+      {
+        "author": {
+          "display_name": "Joanna I. Su\u0142kowska"
+        }
+      }
+    ]
+  },
+  {
+    "id": "https://openalex.org/W2543748880",
+    "doi": "https://doi.org/10.1093/nar/gkw976",
+    "title": "LinkProt: a database collecting information about biological links",
+    "publication_year": 2016,
+    "cited_by_count": 51,
+    "open_access": {
+      "is_oa": true
+    },
+    "primary_location": {
+      "source": {
+        "display_name": "Nucleic Acids Research"
+      }
+    },
+    "authorships": [
+      {
+        "author": {
+          "display_name": "Pawe\u0142 D\u0105browski-Tuma\u0144ski"
+        }
+      },
+      {
+        "author": {
+          "display_name": "Aleksandra I. Jarmolinska"
+        }
+      },
+      {
+        "author": {
+          "display_name": "Wanda Niemyska"
+        }
+      },
+      {
+        "author": {
+          "display_name": "Eric J. Rawdon"
+        }
+      },
+      {
+        "author": {
+          "display_name": "Kenneth C. Millett"
+        }
+      },
+      {
+        "author": {
+          "display_name": "Joanna I. Su\u0142kowska"
+        }
+      }
+    ]
+  },
+  {
+    "id": "https://openalex.org/W2138981267",
+    "doi": "https://doi.org/10.1021/ja102441z",
+    "title": "Untying Knots in Proteins",
+    "publication_year": 2010,
+    "cited_by_count": 46,
+    "open_access": {
+      "is_oa": false
+    },
+    "primary_location": {
+      "source": {
+        "display_name": "Journal of the American Chemical Society"
+      }
+    },
+    "authorships": [
+      {
+        "author": {
+          "display_name": "Joanna I. Su\u0142kowska"
+        }
+      },
+      {
+        "author": {
+          "display_name": "Piotr Su\u0142kowski"
+        }
+      },
+      {
+        "author": {
+          "display_name": "Piotr Szymczak"
+        }
+      },
+      {
+        "author": {
+          "display_name": "Marek Cieplak"
+        }
+      }
+    ]
+  },
+  {
+    "id": "https://openalex.org/W2043226133",
+    "doi": "https://doi.org/10.1529/biophysj.107.105973",
+    "title": "Stretching to Understand Proteins\u2014A Survey of the Protein Data Bank",
+    "publication_year": 2007,
+    "cited_by_count": 46,
+    "open_access": {
+      "is_oa": true
+    },
+    "primary_location": {
+      "source": {
+        "display_name": "Biophysical Journal"
+      }
+    },
+    "authorships": [
+      {
+        "author": {
+          "display_name": "Joanna I. Su\u0142kowska"
+        }
+      },
+      {
+        "author": {
+          "display_name": "Marek Cieplak"
+        }
+      }
+    ]
+  },
+  {
+    "id": "https://openalex.org/W2041150841",
+    "doi": "https://doi.org/10.1016/j.bpj.2014.10.021",
+    "title": "Connecting Thermal and Mechanical Protein (Un)folding Landscapes",
+    "publication_year": 2014,
+    "cited_by_count": 44,
+    "open_access": {
+      "is_oa": true
+    },
+    "primary_location": {
+      "source": {
+        "display_name": "Biophysical Journal"
+      }
+    },
+    "authorships": [
+      {
+        "author": {
+          "display_name": "Sun Li"
+        }
+      },
+      {
+        "author": {
+          "display_name": "Jeffrey K. Noel"
+        }
+      },
+      {
+        "author": {
+          "display_name": "Joanna I. Su\u0142kowska"
+        }
+      },
+      {
+        "author": {
+          "display_name": "Herbert Levine"
+        }
+      },
+      {
+        "author": {
+          "display_name": "Jos\u00e9 N. Onuchic"
+        }
+      }
+    ]
+  },
+  {
+    "id": "https://openalex.org/W2621855997",
+    "doi": "https://doi.org/10.1016/bs.enz.2017.03.003",
+    "title": "TrmD",
+    "publication_year": 2017,
+    "cited_by_count": 43,
+    "open_access": {
+      "is_oa": true
+    },
+    "primary_location": {
+      "source": {
+        "display_name": "\u0098The \u009cEnzymes"
+      }
+    },
+    "authorships": [
+      {
+        "author": {
+          "display_name": "Ya\u2010Ming Hou"
+        }
+      },
+      {
+        "author": {
+          "display_name": "Ryuma Matsubara"
+        }
+      },
+      {
+        "author": {
+          "display_name": "Ryuichi Takase"
+        }
+      },
+      {
+        "author": {
+          "display_name": "Isao Masuda"
+        }
+      },
+      {
+        "author": {
+          "display_name": "Joanna I. Su\u0142kowska"
+        }
+      }
+    ]
+  },
+  {
+    "id": "https://openalex.org/W2051202304",
+    "doi": "https://doi.org/10.1042/bst20120342",
+    "title": "Knotting pathways in proteins",
+    "publication_year": 2013,
+    "cited_by_count": 41,
+    "open_access": {
+      "is_oa": false
+    },
+    "primary_location": {
+      "source": {
+        "display_name": "Biochemical Society Transactions"
+      }
+    },
+    "authorships": [
+      {
+        "author": {
+          "display_name": "Joanna I. Su\u0142kowska"
+        }
+      },
+      {
+        "author": {
+          "display_name": "Jeffrey K. Noel"
+        }
+      },
+      {
+        "author": {
+          "display_name": "C\u00e9sar A. Ram\u00edrez\u2010Sarmiento"
+        }
+      },
+      {
+        "author": {
+          "display_name": "Eric J. Rawdon"
+        }
+      },
+      {
+        "author": {
+          "display_name": "Kenneth C. Millett"
+        }
+      },
+      {
+        "author": {
+          "display_name": "Jos\u00e9 N. Onuchic"
+        }
+      }
+    ]
+  },
+  {
+    "id": "https://openalex.org/W1983357705",
+    "doi": "https://doi.org/10.1103/physrevlett.103.268103",
+    "title": "Jamming Proteins with Slipknots and Their Free Energy Landscape",
+    "publication_year": 2009,
+    "cited_by_count": 41,
+    "open_access": {
+      "is_oa": true
+    },
+    "primary_location": {
+      "source": {
+        "display_name": "Physical Review Letters"
+      }
+    },
+    "authorships": [
+      {
+        "author": {
+          "display_name": "Joanna I. Su\u0142kowska"
+        }
+      },
+      {
+        "author": {
+          "display_name": "Piotr Su\u0142kowski"
+        }
+      },
+      {
+        "author": {
+          "display_name": "Jos\u00e9 N. Onuchic"
+        }
+      }
+    ]
+  },
+  {
+    "id": "https://openalex.org/W2143572728",
+    "doi": "https://doi.org/10.1093/nar/gkq851",
+    "title": "BSDB: the biomolecule stretching database",
+    "publication_year": 2010,
+    "cited_by_count": 40,
+    "open_access": {
+      "is_oa": true
+    },
+    "primary_location": {
+      "source": {
+        "display_name": "Nucleic Acids Research"
+      }
+    },
+    "authorships": [
+      {
+        "author": {
+          "display_name": "Mateusz Sikora"
+        }
+      },
+      {
+        "author": {
+          "display_name": "Joanna I. Su\u0142kowska"
+        }
+      },
+      {
+        "author": {
+          "display_name": "B.S. Witkowski"
+        }
+      },
+      {
+        "author": {
+          "display_name": "Marek Cieplak"
+        }
+      }
+    ]
+  },
+  {
+    "id": "https://openalex.org/W4282920722",
+    "doi": "https://doi.org/10.1093/nar/gkac388",
+    "title": "AlphaKnot: server to analyze entanglement in structures predicted by AlphaFold methods",
+    "publication_year": 2022,
+    "cited_by_count": 39,
+    "open_access": {
+      "is_oa": true
+    },
+    "primary_location": {
+      "source": {
+        "display_name": "Nucleic Acids Research"
+      }
+    },
+    "authorships": [
+      {
+        "author": {
+          "display_name": "Wanda Niemyska"
+        }
+      },
+      {
+        "author": {
+          "display_name": "Pawe\u0142 Rubach"
+        }
+      },
+      {
+        "author": {
+          "display_name": "Bartosz A. Gren"
+        }
+      },
+      {
+        "author": {
+          "display_name": "Mai Lan Nguyen"
+        }
+      },
+      {
+        "author": {
+          "display_name": "Wojciech Garstka"
+        }
+      },
+      {
+        "author": {
+          "display_name": "Fernando Bruno da Silva"
+        }
+      },
+      {
+        "author": {
+          "display_name": "Eric J. Rawdon"
+        }
+      },
+      {
+        "author": {
+          "display_name": "Joanna I. Su\u0142kowska"
+        }
+      }
+    ]
+  },
+  {
+    "id": "https://openalex.org/W4360814081",
+    "doi": "https://doi.org/10.1002/pro.4631",
+    "title": "<scp>AlphaFold</scp> predicts novel human proteins with knots",
+    "publication_year": 2023,
+    "cited_by_count": 34,
+    "open_access": {
+      "is_oa": true
+    },
+    "primary_location": {
+      "source": {
+        "display_name": "Protein Science"
+      }
+    },
+    "authorships": [
+      {
+        "author": {
+          "display_name": "Agata P. Perlinska"
+        }
+      },
+      {
+        "author": {
+          "display_name": "Wanda Niemyska"
+        }
+      },
+      {
+        "author": {
+          "display_name": "Bartosz A. Gren"
+        }
+      },
+      {
+        "author": {
+          "display_name": "Marek Bukowicki"
+        }
+      },
+      {
+        "author": {
+          "display_name": "Szymon Nowakowski"
+        }
+      },
+      {
+        "author": {
+          "display_name": "Pawe\u0142 Rubach"
+        }
+      },
+      {
+        "author": {
+          "display_name": "Joanna I. Su\u0142kowska"
+        }
+      }
+    ]
+  },
+  {
+    "id": "https://openalex.org/W2001216797",
+    "doi": "https://doi.org/10.1016/j.bpj.2011.11.1395",
+    "title": "Conservation of Complex Knotting and Slipknotting Patterns in Proteins",
+    "publication_year": 2012,
+    "cited_by_count": 33,
+    "open_access": {
+      "is_oa": true
+    },
+    "primary_location": {
+      "source": {
+        "display_name": "Biophysical Journal"
+      }
+    },
+    "authorships": [
+      {
+        "author": {
+          "display_name": "Joanna I. Su\u0142kowska"
+        }
+      },
+      {
+        "author": {
+          "display_name": "Eric J. Rawdon"
+        }
+      },
+      {
+        "author": {
+          "display_name": "Kenneth C. Millet"
+        }
+      },
+      {
+        "author": {
+          "display_name": "Jos\u00e9 N. Onuchic"
+        }
+      },
+      {
+        "author": {
+          "display_name": "Andrzej Stasiak"
+        }
+      }
+    ]
+  },
+  {
+    "id": "https://openalex.org/W3031470308",
+    "doi": "https://doi.org/10.1371/journal.pcbi.1007904",
+    "title": "Restriction of S-adenosylmethionine conformational freedom by knotted protein binding sites",
+    "publication_year": 2020,
+    "cited_by_count": 30,
+    "open_access": {
+      "is_oa": true
+    },
+    "primary_location": {
+      "source": {
+        "display_name": "PLoS Computational Biology"
+      }
+    },
+    "authorships": [
+      {
+        "author": {
+          "display_name": "Agata P. Perlinska"
+        }
+      },
+      {
+        "author": {
+          "display_name": "Adam Stasiulewicz"
+        }
+      },
+      {
+        "author": {
+          "display_name": "Ewa K. Nawrocka"
+        }
+      },
+      {
+        "author": {
+          "display_name": "Krzysztof Kazimierczuk"
+        }
+      },
+      {
+        "author": {
+          "display_name": "Piotr Setny"
+        }
+      },
+      {
+        "author": {
+          "display_name": "Joanna I. Su\u0142kowska"
+        }
+      }
+    ]
+  },
+  {
+    "id": "https://openalex.org/W2790884329",
+    "doi": "https://doi.org/10.1371/journal.pcbi.1005970",
+    "title": "The exclusive effects of chaperonin on the behavior of proteins with 52 knot",
+    "publication_year": 2018,
+    "cited_by_count": 30,
+    "open_access": {
+      "is_oa": true
+    },
+    "primary_location": {
+      "source": {
+        "display_name": "PLoS Computational Biology"
+      }
+    },
+    "authorships": [
+      {
+        "author": {
+          "display_name": "Yani Zhao"
+        }
+      },
+      {
+        "author": {
+          "display_name": "Pawe\u0142 D\u0105browski-Tuma\u0144ski"
+        }
+      },
+      {
+        "author": {
+          "display_name": "Szymon Niewieczerza\u0142"
+        }
+      },
+      {
+        "author": {
+          "display_name": "Joanna I. Su\u0142kowska"
+        }
+      }
+    ]
+  },
+  {
+    "id": "https://openalex.org/W3036938103",
+    "doi": "https://doi.org/10.1021/acscatal.0c00059",
+    "title": "Mg<sup>2+</sup>-Dependent Methyl Transfer by a Knotted Protein: A Molecular Dynamics Simulation and Quantum Mechanics Study",
+    "publication_year": 2020,
+    "cited_by_count": 29,
+    "open_access": {
+      "is_oa": true
+    },
+    "primary_location": {
+      "source": {
+        "display_name": "ACS Catalysis"
+      }
+    },
+    "authorships": [
+      {
+        "author": {
+          "display_name": "Agata P. Perlinska"
+        }
+      },
+      {
+        "author": {
+          "display_name": "Marcin Ka\u0142ek"
+        }
+      },
+      {
+        "author": {
+          "display_name": "Thomas Christian"
+        }
+      },
+      {
+        "author": {
+          "display_name": "Ya\u2010Ming Hou"
+        }
+      },
+      {
+        "author": {
+          "display_name": "Joanna I. Su\u0142kowska"
+        }
+      }
+    ]
+  },
+  {
+    "id": "https://openalex.org/W2612028587",
+    "doi": "https://doi.org/10.1371/journal.pone.0176744",
+    "title": "Knotting and unknotting proteins in the chaperonin cage: Effects of the excluded volume",
+    "publication_year": 2017,
+    "cited_by_count": 29,
+    "open_access": {
+      "is_oa": true
+    },
+    "primary_location": {
+      "source": {
+        "display_name": "PLoS ONE"
+      }
+    },
+    "authorships": [
+      {
+        "author": {
+          "display_name": "Szymon Niewieczerza\u0142"
+        }
+      },
+      {
+        "author": {
+          "display_name": "Joanna I. Su\u0142kowska"
+        }
+      }
+    ]
+  },
+  {
+    "id": "https://openalex.org/W2003963431",
+    "doi": "https://doi.org/10.1042/bst20120329",
+    "title": "Knot localization in proteins",
+    "publication_year": 2013,
+    "cited_by_count": 27,
+    "open_access": {
+      "is_oa": false
+    },
+    "primary_location": {
+      "source": {
+        "display_name": "Biochemical Society Transactions"
+      }
+    },
+    "authorships": [
+      {
+        "author": {
+          "display_name": "Eric J. Rawdon"
+        }
+      },
+      {
+        "author": {
+          "display_name": "Kenneth C. Millett"
+        }
+      },
+      {
+        "author": {
+          "display_name": "Joanna I. Su\u0142kowska"
+        }
+      },
+      {
+        "author": {
+          "display_name": "Andrzej Stasiak"
+        }
+      }
+    ]
+  },
+  {
+    "id": "https://openalex.org/W2060744122",
+    "doi": "https://doi.org/10.1002/prot.21652",
+    "title": "Predicting the order in which contacts are broken during single molecule protein stretching experiments",
+    "publication_year": 2007,
+    "cited_by_count": 27,
+    "open_access": {
+      "is_oa": true
+    },
+    "primary_location": {
+      "source": {
+        "display_name": "Proteins Structure Function and Bioinformatics"
+      }
+    },
+    "authorships": [
+      {
+        "author": {
+          "display_name": "Joanna I. Su\u0142kowska"
+        }
+      },
+      {
+        "author": {
+          "display_name": "Andrzej Kloczkowski"
+        }
+      },
+      {
+        "author": {
+          "display_name": "Taner Z. Sen"
+        }
+      },
+      {
+        "author": {
+          "display_name": "Marek Cieplak"
+        }
+      },
+      {
+        "author": {
+          "display_name": "Robert L. Jernigan"
+        }
+      }
+    ]
+  },
+  {
+    "id": "https://openalex.org/W3154805970",
+    "doi": "https://doi.org/10.3390/ijms22083957",
+    "title": "SARS-CoV-2 Papain-Like Protease Potential Inhibitors\u2014In Silico Quantitative Assessment",
+    "publication_year": 2021,
+    "cited_by_count": 26,
+    "open_access": {
+      "is_oa": true
+    },
+    "primary_location": {
+      "source": {
+        "display_name": "International Journal of Molecular Sciences"
+      }
+    },
+    "authorships": [
+      {
+        "author": {
+          "display_name": "Adam Stasiulewicz"
+        }
+      },
+      {
+        "author": {
+          "display_name": "Alicja W. Maksymiuk"
+        }
+      },
+      {
+        "author": {
+          "display_name": "Mai Lan Nguyen"
+        }
+      },
+      {
+        "author": {
+          "display_name": "Barbara Be\u0142za"
+        }
+      },
+      {
+        "author": {
+          "display_name": "Joanna I. Su\u0142kowska"
+        }
+      }
+    ]
+  },
+  {
+    "id": "https://openalex.org/W2745769213",
+    "doi": "https://doi.org/10.1093/bioinformatics/btx493",
+    "title": "PyLasso: a PyMOL plugin to identify lassos",
+    "publication_year": 2017,
+    "cited_by_count": 26,
+    "open_access": {
+      "is_oa": true
+    },
+    "primary_location": {
+      "source": {
+        "display_name": "Bioinformatics"
+      }
+    },
+    "authorships": [
+      {
+        "author": {
+          "display_name": "Aleksandra M Gierut"
+        }
+      },
+      {
+        "author": {
+          "display_name": "Wanda Niemyska"
+        }
+      },
+      {
+        "author": {
+          "display_name": "Pawe\u0142 D\u0105browski-Tuma\u0144ski"
+        }
+      },
+      {
+        "author": {
+          "display_name": "Piotr Su\u0142kowski"
+        }
+      },
+      {
+        "author": {
+          "display_name": "Joanna I. Su\u0142kowska"
+        }
+      }
+    ]
+  },
+  {
+    "id": "https://openalex.org/W2203425081",
+    "doi": "https://doi.org/10.1088/0953-8984/27/35/354109",
+    "title": "Prediction of the optimal set of contacts to fold the smallest knotted protein",
+    "publication_year": 2015,
+    "cited_by_count": 25,
+    "open_access": {
+      "is_oa": false
+    },
+    "primary_location": {
+      "source": {
+        "display_name": "Journal of Physics Condensed Matter"
+      }
+    },
+    "authorships": [
+      {
+        "author": {
+          "display_name": "Pawe\u0142 D\u0105browski-Tuma\u0144ski"
+        }
+      },
+      {
+        "author": {
+          "display_name": "Aleksandra I. Jarmolinska"
+        }
+      },
+      {
+        "author": {
+          "display_name": "Joanna I. Su\u0142kowska"
+        }
+      }
+    ]
+  },
+  {
+    "id": "https://openalex.org/W4324134337",
+    "doi": "https://doi.org/10.1101/2023.03.13.532328",
+    "title": "First crystal structure of double knotted protein TrmD-Tm1570 \u2013 inside from degradation perspective",
+    "publication_year": 2023,
+    "cited_by_count": 18,
+    "open_access": {
+      "is_oa": true
+    },
+    "primary_location": {
+      "source": {
+        "display_name": "bioRxiv (Cold Spring Harbor Laboratory)"
+      }
+    },
+    "authorships": [
+      {
+        "author": {
+          "display_name": "Fernando Bruno da Silva"
+        }
+      },
+      {
+        "author": {
+          "display_name": "Iwona Lewandowska"
+        }
+      },
+      {
+        "author": {
+          "display_name": "Anna Kluza"
+        }
+      },
+      {
+        "author": {
+          "display_name": "Szymon Niewieczerza\u0142"
+        }
+      },
+      {
+        "author": {
+          "display_name": "Rafa\u0142 Augustyniak"
+        }
+      },
+      {
+        "author": {
+          "display_name": "Joanna I. Su\u0142kowska"
+        }
+      }
+    ]
+  },
+  {
+    "id": "https://openalex.org/W2915932155",
+    "doi": "https://doi.org/10.1016/j.jmb.2019.01.047",
+    "title": "PconsFam: An Interactive Database of Structure Predictions of Pfam Families",
+    "publication_year": 2019,
+    "cited_by_count": 18,
+    "open_access": {
+      "is_oa": false
+    },
+    "primary_location": {
+      "source": {
+        "display_name": "Journal of Molecular Biology"
+      }
+    },
+    "authorships": [
+      {
+        "author": {
+          "display_name": "John Lamb"
+        }
+      },
+      {
+        "author": {
+          "display_name": "Aleksandra I. Jarmolinska"
+        }
+      },
+      {
+        "author": {
+          "display_name": "Mirco Michel"
+        }
+      },
+      {
+        "author": {
+          "display_name": "David Men\u00e9ndez\u2010Hurtado"
+        }
+      },
+      {
+        "author": {
+          "display_name": "Joanna I. Su\u0142kowska"
+        }
+      },
+      {
+        "author": {
+          "display_name": "Arne Elofsson"
+        }
+      }
+    ]
+  },
+  {
+    "id": "https://openalex.org/W2800313339",
+    "doi": "https://doi.org/10.1093/bioinformatics/bty334",
+    "title": "GapRepairer: a server to model a structural gap and validate it using topological analysis",
+    "publication_year": 2018,
+    "cited_by_count": 17,
+    "open_access": {
+      "is_oa": true
+    },
+    "primary_location": {
+      "source": {
+        "display_name": "Bioinformatics"
+      }
+    },
+    "authorships": [
+      {
+        "author": {
+          "display_name": "Aleksandra I. Jarmolinska"
+        }
+      },
+      {
+        "author": {
+          "display_name": "Micha\u0142 Kadlof"
+        }
+      },
+      {
+        "author": {
+          "display_name": "Pawe\u0142 D\u0105browski-Tuma\u0144ski"
+        }
+      },
+      {
+        "author": {
+          "display_name": "Joanna I. Su\u0142kowska"
+        }
+      }
+    ]
+  },
+  {
+    "id": "https://openalex.org/W3037905218",
+    "doi": "https://doi.org/10.1002/ijch.202000036",
+    "title": "The Folding of Knotted Proteins: Distinguishing the Distinct Behavior of Shallow and Deep Knots",
+    "publication_year": 2020,
+    "cited_by_count": 16,
+    "open_access": {
+      "is_oa": false
+    },
+    "primary_location": {
+      "source": {
+        "display_name": "Israel Journal of Chemistry"
+      }
+    },
+    "authorships": [
+      {
+        "author": {
+          "display_name": "Maciej Piejko"
+        }
+      },
+      {
+        "author": {
+          "display_name": "Szymon Niewieczerza\u0142"
+        }
+      },
+      {
+        "author": {
+          "display_name": "Joanna I. Su\u0142kowska"
+        }
+      }
+    ]
+  },
+  {
+    "id": "https://openalex.org/W2910033432",
+    "doi": "https://doi.org/10.1093/bioinformatics/bty1038",
+    "title": "PyLink: a PyMOL plugin to identify links",
+    "publication_year": 2018,
+    "cited_by_count": 16,
+    "open_access": {
+      "is_oa": false
+    },
+    "primary_location": {
+      "source": {
+        "display_name": "Bioinformatics"
+      }
+    },
+    "authorships": [
+      {
+        "author": {
+          "display_name": "Aleksandra M Gierut"
+        }
+      },
+      {
+        "author": {
+          "display_name": "Pawe\u0142 D\u0105browski-Tuma\u0144ski"
+        }
+      },
+      {
+        "author": {
+          "display_name": "Wanda Niemyska"
+        }
+      },
+      {
+        "author": {
+          "display_name": "Kenneth C. Millett"
+        }
+      },
+      {
+        "author": {
+          "display_name": "Joanna I. Su\u0142kowska"
+        }
+      }
+    ]
+  },
+  {
+    "id": "https://openalex.org/W2077590612",
+    "doi": "https://doi.org/10.1016/s0271-5317(05)80740-7",
+    "title": "The effect of cadmium on iron metabolism in rats",
+    "publication_year": 1993,
+    "cited_by_count": 16,
+    "open_access": {
+      "is_oa": false
+    },
+    "primary_location": {
+      "source": {
+        "display_name": "Nutrition Research"
+      }
+    },
+    "authorships": [
+      {
+        "author": {
+          "display_name": "Katarzyna Koz\u0142owska"
+        }
+      },
+      {
+        "author": {
+          "display_name": "Anna Brzozowska"
+        }
+      },
+      {
+        "author": {
+          "display_name": "Joanna I. Su\u0142kowska"
+        }
+      },
+      {
+        "author": {
+          "display_name": "Wojciech Roszkowski"
+        }
+      }
+    ]
+  },
+  {
+    "id": "https://openalex.org/W2903520609",
+    "doi": "https://doi.org/10.1038/s41598-018-35557-3",
+    "title": "Genus trace reveals the topological complexity and domain structure of biomolecules",
+    "publication_year": 2018,
+    "cited_by_count": 15,
+    "open_access": {
+      "is_oa": true
+    },
+    "primary_location": {
+      "source": {
+        "display_name": "Scientific Reports"
+      }
+    },
+    "authorships": [
+      {
+        "author": {
+          "display_name": "Sebastian Zaj\u0105c"
+        }
+      },
+      {
+        "author": {
+          "display_name": "Cody Geary"
+        }
+      },
+      {
+        "author": {
+          "display_name": "Ebbe Sloth Andersen"
+        }
+      },
+      {
+        "author": {
+          "display_name": "Pawe\u0142 D\u0105browski-Tuma\u0144ski"
+        }
+      },
+      {
+        "author": {
+          "display_name": "Joanna I. Su\u0142kowska"
+        }
+      },
+      {
+        "author": {
+          "display_name": "Piotr Su\u0142kowski"
+        }
+      }
+    ]
+  },
+  {
+    "id": "https://openalex.org/W4399394178",
+    "doi": "https://doi.org/10.1093/nar/gkae443",
+    "title": "AlphaKnot 2.0: a web server for the visualization of proteins\u2019 knotting and a database of knotted AlphaFold-predicted models",
+    "publication_year": 2024,
+    "cited_by_count": 13,
+    "open_access": {
+      "is_oa": true
+    },
+    "primary_location": {
+      "source": {
+        "display_name": "Nucleic Acids Research"
+      }
+    },
+    "authorships": [
+      {
+        "author": {
+          "display_name": "Pawe\u0142 Rubach"
+        }
+      },
+      {
+        "author": {
+          "display_name": "Maciej Sikora"
+        }
+      },
+      {
+        "author": {
+          "display_name": "Aleksandra I. Jarmolinska"
+        }
+      },
+      {
+        "author": {
+          "display_name": "Agata P. Perlinska"
+        }
+      },
+      {
+        "author": {
+          "display_name": "Joanna I. Su\u0142kowska"
+        }
+      }
+    ]
+  },
+  {
+    "id": "https://openalex.org/W4317867626",
+    "doi": "https://doi.org/10.1021/acs.jcim.2c01503",
+    "title": "Identification of Novel CB2 Ligands through Virtual Screening and In Vitro Evaluation",
+    "publication_year": 2023,
+    "cited_by_count": 13,
+    "open_access": {
+      "is_oa": true
+    },
+    "primary_location": {
+      "source": {
+        "display_name": "Journal of Chemical Information and Modeling"
+      }
+    },
+    "authorships": [
+      {
+        "author": {
+          "display_name": "Adam Stasiulewicz"
+        }
+      },
+      {
+        "author": {
+          "display_name": "Anna Le\u015bniak"
+        }
+      },
+      {
+        "author": {
+          "display_name": "Magdalena Bujalska\u2010Zadro\u017cny"
+        }
+      },
+      {
+        "author": {
+          "display_name": "T. Pawi\u0144ski"
+        }
+      },
+      {
+        "author": {
+          "display_name": "Joanna I. Su\u0142kowska"
+        }
+      }
+    ]
+  },
+  {
+    "id": "https://openalex.org/W2972528048",
+    "doi": "https://doi.org/10.1093/bioinformatics/btz644",
+    "title": "Knot_pull\u2014python package for biopolymer smoothing and knot detection",
+    "publication_year": 2019,
+    "cited_by_count": 13,
+    "open_access": {
+      "is_oa": true
+    },
+    "primary_location": {
+      "source": {
+        "display_name": "Bioinformatics"
+      }
+    },
+    "authorships": [
+      {
+        "author": {
+          "display_name": "Aleksandra I. Jarmolinska"
+        }
+      },
+      {
+        "author": {
+          "display_name": "Anna Gambin"
+        }
+      },
+      {
+        "author": {
+          "display_name": "Joanna I. Su\u0142kowska"
+        }
+      }
+    ]
+  },
+  {
+    "id": "https://openalex.org/W2976246219",
+    "doi": "https://doi.org/10.1103/physrevlett.123.138102",
+    "title": "Supercoiling in a Protein Increases its Stability",
+    "publication_year": 2019,
+    "cited_by_count": 13,
+    "open_access": {
+      "is_oa": false
+    },
+    "primary_location": {
+      "source": {
+        "display_name": "Physical Review Letters"
+      }
+    },
+    "authorships": [
+      {
+        "author": {
+          "display_name": "Szymon Niewieczerza\u0142"
+        }
+      },
+      {
+        "author": {
+          "display_name": "Joanna I. Su\u0142kowska"
+        }
+      }
+    ]
+  },
+  {
+    "id": "https://openalex.org/W2977840803",
+    "doi": "https://doi.org/10.1093/nar/gkz845",
+    "title": "Genus for biomolecules",
+    "publication_year": 2019,
+    "cited_by_count": 13,
+    "open_access": {
+      "is_oa": true
+    },
+    "primary_location": {
+      "source": {
+        "display_name": "Nucleic Acids Research"
+      }
+    },
+    "authorships": [
+      {
+        "author": {
+          "display_name": "Pawe\u0142 Rubach"
+        }
+      },
+      {
+        "author": {
+          "display_name": "Sebastian Zaj\u0105c"
+        }
+      },
+      {
+        "author": {
+          "display_name": "Borys Jastrz\u0119bski"
+        }
+      },
+      {
+        "author": {
+          "display_name": "Joanna I. Su\u0142kowska"
+        }
+      },
+      {
+        "author": {
+          "display_name": "Piotr Su\u0142kowski"
+        }
+      }
+    ]
+  },
+  {
+    "id": "https://openalex.org/W4399523575",
+    "doi": "https://doi.org/10.3389/fmolb.2023.1223830",
+    "title": "Are there double knots in proteins? Prediction and in vitro verification based on TrmD-Tm1570 fusion from C. nitroreducens",
+    "publication_year": 2024,
+    "cited_by_count": 12,
+    "open_access": {
+      "is_oa": true
+    },
+    "primary_location": {
+      "source": {
+        "display_name": "Frontiers in Molecular Biosciences"
+      }
+    },
+    "authorships": [
+      {
+        "author": {
+          "display_name": "Agata P. Perlinska"
+        }
+      },
+      {
+        "author": {
+          "display_name": "Mai Lan Nguyen"
+        }
+      },
+      {
+        "author": {
+          "display_name": "Smita P. Pilla"
+        }
+      },
+      {
+        "author": {
+          "display_name": "Emilia Staszor"
+        }
+      },
+      {
+        "author": {
+          "display_name": "Iwona Lewandowska"
+        }
+      },
+      {
+        "author": {
+          "display_name": "Agata Bernat"
+        }
+      },
+      {
+        "author": {
+          "display_name": "El\u017cbieta Purta"
+        }
+      },
+      {
+        "author": {
+          "display_name": "Rafa\u0142 Augustyniak"
+        }
+      },
+      {
+        "author": {
+          "display_name": "Janusz M. Bujnicki"
+        }
+      },
+      {
+        "author": {
+          "display_name": "Joanna I. Su\u0142kowska"
+        }
+      }
+    ]
+  },
+  {
+    "id": "https://openalex.org/W4309494720",
+    "doi": "https://doi.org/10.1371/journal.pcbi.1010667",
+    "title": "Amino acid variants of SARS-CoV-2 papain-like protease have impact on drug binding",
+    "publication_year": 2022,
+    "cited_by_count": 12,
+    "open_access": {
+      "is_oa": true
+    },
+    "primary_location": {
+      "source": {
+        "display_name": "PLoS Computational Biology"
+      }
+    },
+    "authorships": [
+      {
+        "author": {
+          "display_name": "Agata P. Perlinska"
+        }
+      },
+      {
+        "author": {
+          "display_name": "Adam Stasiulewicz"
+        }
+      },
+      {
+        "author": {
+          "display_name": "Mai Lan Nguyen"
+        }
+      },
+      {
+        "author": {
+          "display_name": "K. \u015awiderska"
+        }
+      },
+      {
+        "author": {
+          "display_name": "Miko\u0142aj \u017bmudzi\u0144ski"
+        }
+      },
+      {
+        "author": {
+          "display_name": "Alicja W. Maksymiuk"
+        }
+      },
+      {
+        "author": {
+          "display_name": "Marcin Dr\u0105g"
+        }
+      },
+      {
+        "author": {
+          "display_name": "Joanna I. Su\u0142kowska"
+        }
+      }
+    ]
+  },
+  {
+    "id": "https://openalex.org/W2799791707",
+    "doi": "https://doi.org/10.1007/978-3-319-76596-9_8",
+    "title": "Entangled Proteins: Knots, Slipknots, Links, and Lassos",
+    "publication_year": 2018,
+    "cited_by_count": 12,
+    "open_access": {
+      "is_oa": false
+    },
+    "primary_location": {
+      "source": {
+        "display_name": "Springer series in solid-state sciences"
+      }
+    },
+    "authorships": [
+      {
+        "author": {
+          "display_name": "Joanna I. Su\u0142kowska"
+        }
+      },
+      {
+        "author": {
+          "display_name": "Piotr Su\u0142kowski"
+        }
+      }
+    ]
+  },
+  {
+    "id": "https://openalex.org/W2808582129",
+    "doi": "https://doi.org/10.1093/nar/gky511",
+    "title": "KnotGenome:\u00a0a server to analyze entanglements of chromosomes",
+    "publication_year": 2018,
+    "cited_by_count": 11,
+    "open_access": {
+      "is_oa": true
+    },
+    "primary_location": {
+      "source": {
+        "display_name": "Nucleic Acids Research"
+      }
+    },
+    "authorships": [
+      {
+        "author": {
+          "display_name": "Joanna I. Su\u0142kowska"
+        }
+      },
+      {
+        "author": {
+          "display_name": "Szymon Niewieczerza\u0142"
+        }
+      },
+      {
+        "author": {
+          "display_name": "Aleksandra I. Jarmolinska"
+        }
+      },
+      {
+        "author": {
+          "display_name": "J. Siebert"
+        }
+      },
+      {
+        "author": {
+          "display_name": "Peter Virnau"
+        }
+      },
+      {
+        "author": {
+          "display_name": "Wanda Niemyska"
+        }
+      }
+    ]
+  },
+  {
+    "id": "https://openalex.org/W2598799394",
+    "doi": "https://doi.org/10.1016/j.bpj.2008.12.319",
+    "title": "Dodging The Crisis Of Folding Proteins With Knots",
+    "publication_year": 2009,
+    "cited_by_count": 11,
+    "open_access": {
+      "is_oa": true
+    },
+    "primary_location": {
+      "source": {
+        "display_name": "Biophysical Journal"
+      }
+    },
+    "authorships": [
+      {
+        "author": {
+          "display_name": "Joanna I. Su\u0142kowska"
+        }
+      },
+      {
+        "author": {
+          "display_name": "Piotr Su\u0142kowski"
+        }
+      },
+      {
+        "author": {
+          "display_name": "Jos\u00e9 N. Onuchic"
+        }
+      }
+    ]
+  },
+  {
+    "id": "https://openalex.org/W4399776685",
+    "doi": "https://doi.org/10.1002/pro.4998",
+    "title": "Knot or not? <scp>Identifying</scp> unknotted proteins in knotted families with sequence\u2010based <scp>Machine Learning</scp> model",
+    "publication_year": 2024,
+    "cited_by_count": 10,
+    "open_access": {
+      "is_oa": true
+    },
+    "primary_location": {
+      "source": {
+        "display_name": "Protein Science"
+      }
+    },
+    "authorships": [
+      {
+        "author": {
+          "display_name": "Maciej Sikora"
+        }
+      },
+      {
+        "author": {
+          "display_name": "Eva Klimentov\u00e1"
+        }
+      },
+      {
+        "author": {
+          "display_name": "Dawid Uchal"
+        }
+      },
+      {
+        "author": {
+          "display_name": "Denisa \u0160r\u00e1mkov\u00e1"
+        }
+      },
+      {
+        "author": {
+          "display_name": "Agata P. Perlinska"
+        }
+      },
+      {
+        "author": {
+          "display_name": "Mai Lan Nguyen"
+        }
+      },
+      {
+        "author": {
+          "display_name": "Marta Korpacz"
+        }
+      },
+      {
+        "author": {
+          "display_name": "Roksana Malinowska"
+        }
+      },
+      {
+        "author": {
+          "display_name": "Szymon Nowakowski"
+        }
+      },
+      {
+        "author": {
+          "display_name": "Pawe\u0142 Rubach"
+        }
+      },
+      {
+        "author": {
+          "display_name": "Petr \u0160ime\u010dek"
+        }
+      },
+      {
+        "author": {
+          "display_name": "Joanna I. Su\u0142kowska"
+        }
+      }
+    ]
+  },
+  {
+    "id": "https://openalex.org/W2159675517",
+    "doi": "https://doi.org/10.1007/978-1-4419-6889-0_8",
+    "title": "Structure-Based Models of Biomolecules: Stretching of Proteins, Dynamics of Knots, Hydrodynamic Effects, and Indentation of Virus Capsids",
+    "publication_year": 2010,
+    "cited_by_count": 10,
+    "open_access": {
+      "is_oa": false
+    },
+    "primary_location": {
+      "source": {
+        "display_name": ""
+      }
+    },
+    "authorships": [
+      {
+        "author": {
+          "display_name": "Marek Cieplak"
+        }
+      },
+      {
+        "author": {
+          "display_name": "Joanna I. Su\u0142kowska"
+        }
+      }
+    ]
+  },
+  {
+    "id": "https://openalex.org/W4400723686",
+    "doi": "https://doi.org/10.1016/j.jmb.2024.168715",
+    "title": "Everything AlphaFold tells us about protein knots",
+    "publication_year": 2024,
+    "cited_by_count": 9,
+    "open_access": {
+      "is_oa": true
+    },
+    "primary_location": {
+      "source": {
+        "display_name": "Journal of Molecular Biology"
+      }
+    },
+    "authorships": [
+      {
+        "author": {
+          "display_name": "Agata P. Perlinska"
+        }
+      },
+      {
+        "author": {
+          "display_name": "Maciej Sikora"
+        }
+      },
+      {
+        "author": {
+          "display_name": "Joanna I. Su\u0142kowska"
+        }
+      }
+    ]
+  },
+  {
+    "id": "https://openalex.org/W3206268182",
+    "doi": "https://doi.org/10.1371/journal.pcbi.1009502",
+    "title": "Slipknotted and unknotted monovalent cation-proton antiporters evolved from a common ancestor",
+    "publication_year": 2021,
+    "cited_by_count": 9,
+    "open_access": {
+      "is_oa": true
+    },
+    "primary_location": {
+      "source": {
+        "display_name": "PLoS Computational Biology"
+      }
+    },
+    "authorships": [
+      {
+        "author": {
+          "display_name": "Vasilina Zayats"
+        }
+      },
+      {
+        "author": {
+          "display_name": "Agata P. Perlinska"
+        }
+      },
+      {
+        "author": {
+          "display_name": "Aleksandra I. Jarmolinska"
+        }
+      },
+      {
+        "author": {
+          "display_name": "Borys Jastrz\u0119bski"
+        }
+      },
+      {
+        "author": {
+          "display_name": "Stanis\u0142aw Dunin-Horkawicz"
+        }
+      },
+      {
+        "author": {
+          "display_name": "Joanna I. Su\u0142kowska"
+        }
+      }
+    ]
+  },
+  {
+    "id": "https://openalex.org/W4302028454",
+    "doi": "https://doi.org/10.1021/acschemneuro.2c00502",
+    "title": "Identification of CB1 Ligands among Drugs, Phytochemicals and Natural-Like Compounds: Virtual Screening and In Vitro Verification",
+    "publication_year": 2022,
+    "cited_by_count": 8,
+    "open_access": {
+      "is_oa": true
+    },
+    "primary_location": {
+      "source": {
+        "display_name": "ACS Chemical Neuroscience"
+      }
+    },
+    "authorships": [
+      {
+        "author": {
+          "display_name": "Adam Stasiulewicz"
+        }
+      },
+      {
+        "author": {
+          "display_name": "Anna Le\u015bniak"
+        }
+      },
+      {
+        "author": {
+          "display_name": "Piotr Setny"
+        }
+      },
+      {
+        "author": {
+          "display_name": "Magdalena Bujalska\u2010Zadro\u017cny"
+        }
+      },
+      {
+        "author": {
+          "display_name": "Joanna I. Su\u0142kowska"
+        }
+      }
+    ]
+  },
+  {
+    "id": "https://openalex.org/W3211933918",
+    "doi": "https://doi.org/10.3390/polym13223988",
+    "title": "Lasso Proteins\u2014Unifying Cysteine Knots and Miniproteins",
+    "publication_year": 2021,
+    "cited_by_count": 8,
+    "open_access": {
+      "is_oa": true
+    },
+    "primary_location": {
+      "source": {
+        "display_name": "Polymers"
+      }
+    },
+    "authorships": [
+      {
+        "author": {
+          "display_name": "Bartosz A. Gren"
+        }
+      },
+      {
+        "author": {
+          "display_name": "Pawe\u0142 D\u0105browski-Tuma\u0144ski"
+        }
+      },
+      {
+        "author": {
+          "display_name": "Wanda Niemyska"
+        }
+      },
+      {
+        "author": {
+          "display_name": "Joanna I. Su\u0142kowska"
+        }
+      }
+    ]
+  },
+  {
+    "id": "https://openalex.org/W1035291270",
+    "doi": "https://doi.org/10.12693/aphyspola.115.441",
+    "title": "Tests of the Structure-Based Models of Proteins",
+    "publication_year": 2009,
+    "cited_by_count": 8,
+    "open_access": {
+      "is_oa": true
+    },
+    "primary_location": {
+      "source": {
+        "display_name": "Acta Physica Polonica A"
+      }
+    },
+    "authorships": [
+      {
+        "author": {
+          "display_name": "Marek Cieplak"
+        }
+      },
+      {
+        "author": {
+          "display_name": "Joanna I. Su\u0142kowska"
+        }
+      }
+    ]
+  },
+  {
+    "id": "https://openalex.org/W4402622625",
+    "doi": "https://doi.org/10.3390/ijms251810088",
+    "title": "miRNAs in Signal Transduction of SMAD Proteins in Breast Cancer",
+    "publication_year": 2024,
+    "cited_by_count": 7,
+    "open_access": {
+      "is_oa": true
+    },
+    "primary_location": {
+      "source": {
+        "display_name": "International Journal of Molecular Sciences"
+      }
+    },
+    "authorships": [
+      {
+        "author": {
+          "display_name": "Tomasz Sirek"
+        }
+      },
+      {
+        "author": {
+          "display_name": "Agata Sirek"
+        }
+      },
+      {
+        "author": {
+          "display_name": "Przemys\u0142aw Borawski"
+        }
+      },
+      {
+        "author": {
+          "display_name": "Nikola Zmarz\u0142y"
+        }
+      },
+      {
+        "author": {
+          "display_name": "Joanna I. Su\u0142kowska"
+        }
+      },
+      {
+        "author": {
+          "display_name": "Katarzyna Kr\u00f3l-Jatr\u0119ga"
+        }
+      },
+      {
+        "author": {
+          "display_name": "Marcin Op\u0142awski"
+        }
+      },
+      {
+        "author": {
+          "display_name": "Dariusz Boro\u0144"
+        }
+      },
+      {
+        "author": {
+          "display_name": "Micha\u0142 Chalcarz"
+        }
+      },
+      {
+        "author": {
+          "display_name": "Piotr Ossowski"
+        }
+      },
+      {
+        "author": {
+          "display_name": "Konrad Dziobek"
+        }
+      },
+      {
+        "author": {
+          "display_name": "Damian Strojny"
+        }
+      },
+      {
+        "author": {
+          "display_name": "Kacper Boro\u0144"
+        }
+      },
+      {
+        "author": {
+          "display_name": "Dominika Janiszewska-Bil"
+        }
+      },
+      {
+        "author": {
+          "display_name": "Beniamin Oskar Grabarek"
+        }
+      }
+    ]
+  },
+  {
+    "id": "https://openalex.org/W4391133548",
+    "doi": "https://doi.org/10.1016/j.jmb.2024.168455",
+    "title": "Discovery of a trefoil knot in the RydC RNA: Challenging previous notions of RNA topology",
+    "publication_year": 2024,
+    "cited_by_count": 7,
+    "open_access": {
+      "is_oa": false
+    },
+    "primary_location": {
+      "source": {
+        "display_name": "Journal of Molecular Biology"
+      }
+    },
+    "authorships": [
+      {
+        "author": {
+          "display_name": "Wanda Niemyska"
+        }
+      },
+      {
+        "author": {
+          "display_name": "Sunandan Mukherjee"
+        }
+      },
+      {
+        "author": {
+          "display_name": "Bartosz A. Gren"
+        }
+      },
+      {
+        "author": {
+          "display_name": "Szymon Niewieczerza\u0142"
+        }
+      },
+      {
+        "author": {
+          "display_name": "Janusz M. Bujnicki"
+        }
+      },
+      {
+        "author": {
+          "display_name": "Joanna I. Su\u0142kowska"
+        }
+      }
+    ]
+  },
+  {
+    "id": "https://openalex.org/W2910754286",
+    "doi": "https://doi.org/10.1021/acs.jcim.8b00690",
+    "title": "DCA-MOL: A PyMOL Plugin To Analyze Direct Evolutionary Couplings",
+    "publication_year": 2019,
+    "cited_by_count": 7,
+    "open_access": {
+      "is_oa": false
+    },
+    "primary_location": {
+      "source": {
+        "display_name": "Journal of Chemical Information and Modeling"
+      }
+    },
+    "authorships": [
+      {
+        "author": {
+          "display_name": "Aleksandra I. Jarmolinska"
+        }
+      },
+      {
+        "author": {
+          "display_name": "Qin Zhou"
+        }
+      },
+      {
+        "author": {
+          "display_name": "Joanna I. Su\u0142kowska"
+        }
+      },
+      {
+        "author": {
+          "display_name": "Faruck Morcos"
+        }
+      }
+    ]
+  },
+  {
+    "id": "https://openalex.org/W2936331573",
+    "doi": "https://doi.org/10.3390/polym11040707",
+    "title": "Statistical Properties of Lasso-Shape Polymers and Their Implications for Complex Lasso Proteins Function",
+    "publication_year": 2019,
+    "cited_by_count": 7,
+    "open_access": {
+      "is_oa": true
+    },
+    "primary_location": {
+      "source": {
+        "display_name": "Polymers"
+      }
+    },
+    "authorships": [
+      {
+        "author": {
+          "display_name": "Pawe\u0142 D\u0105browski-Tuma\u0144ski"
+        }
+      },
+      {
+        "author": {
+          "display_name": "Bartosz A. Gren"
+        }
+      },
+      {
+        "author": {
+          "display_name": "Joanna I. Su\u0142kowska"
+        }
+      }
+    ]
+  },
+  {
+    "id": "https://openalex.org/W4250111053",
+    "doi": "https://doi.org/10.1016/j.bpj.2015.11.2045",
+    "title": "Complex Lasso: New Entangled Motifs in Proteins",
+    "publication_year": 2016,
+    "cited_by_count": 7,
+    "open_access": {
+      "is_oa": true
+    },
+    "primary_location": {
+      "source": {
+        "display_name": "Biophysical Journal"
+      }
+    },
+    "authorships": [
+      {
+        "author": {
+          "display_name": "Joanna I. Su\u0142kowska"
+        }
+      }
+    ]
+  },
+  {
+    "id": "https://openalex.org/W2963939548",
+    "doi": "https://doi.org/10.1016/j.bpj.2009.12.1285",
+    "title": "Jamming Proteins with Slipknots and Their Free Energy Landscape",
+    "publication_year": 2010,
+    "cited_by_count": 7,
+    "open_access": {
+      "is_oa": true
+    },
+    "primary_location": {
+      "source": {
+        "display_name": "Biophysical Journal"
+      }
+    },
+    "authorships": [
+      {
+        "author": {
+          "display_name": "Joanna I. Su\u0142kowska"
+        }
+      },
+      {
+        "author": {
+          "display_name": "Piotr Su\u0142kowski"
+        }
+      },
+      {
+        "author": {
+          "display_name": "Jos\u00e9 N. Onuchic"
+        }
+      }
+    ]
+  },
+  {
+    "id": "https://openalex.org/W4399849543",
+    "doi": "https://doi.org/10.1371/journal.pcbi.1011959",
+    "title": "Knotted artifacts in predicted 3D RNA structures",
+    "publication_year": 2024,
+    "cited_by_count": 6,
+    "open_access": {
+      "is_oa": true
+    },
+    "primary_location": {
+      "source": {
+        "display_name": "PLoS Computational Biology"
+      }
+    },
+    "authorships": [
+      {
+        "author": {
+          "display_name": "Bartosz A. Gren"
+        }
+      },
+      {
+        "author": {
+          "display_name": "Maciej Antczak"
+        }
+      },
+      {
+        "author": {
+          "display_name": "Tomasz \u017bok"
+        }
+      },
+      {
+        "author": {
+          "display_name": "Joanna I. Su\u0142kowska"
+        }
+      },
+      {
+        "author": {
+          "display_name": "Marta Szachniuk"
+        }
+      }
+    ]
+  },
+  {
+    "id": "https://openalex.org/W4394854922",
+    "doi": "https://doi.org/10.1021/acs.macromol.3c02479",
+    "title": "Knots and \u03b8-Curves Identification in Polymeric Chains and Native Proteins Using Neural Networks",
+    "publication_year": 2024,
+    "cited_by_count": 6,
+    "open_access": {
+      "is_oa": true
+    },
+    "primary_location": {
+      "source": {
+        "display_name": "Macromolecules"
+      }
+    },
+    "authorships": [
+      {
+        "author": {
+          "display_name": "Fernando Bruno da Silva"
+        }
+      },
+      {
+        "author": {
+          "display_name": "Bo\u0161tjan Gabrov\u0161ek"
+        }
+      },
+      {
+        "author": {
+          "display_name": "Marta Korpacz"
+        }
+      },
+      {
+        "author": {
+          "display_name": "Kamil \u0141uczkiewicz"
+        }
+      },
+      {
+        "author": {
+          "display_name": "Szymon Niewieczerza\u0142"
+        }
+      },
+      {
+        "author": {
+          "display_name": "Maciej Sikora"
+        }
+      },
+      {
+        "author": {
+          "display_name": "Joanna I. Su\u0142kowska"
+        }
+      }
+    ]
+  },
+  {
+    "id": "https://openalex.org/W4388210953",
+    "doi": "https://doi.org/10.1016/j.bpj.2023.10.031",
+    "title": "Conservation of knotted and slipknotted topology in transmembrane transporters",
+    "publication_year": 2023,
+    "cited_by_count": 6,
+    "open_access": {
+      "is_oa": true
+    },
+    "primary_location": {
+      "source": {
+        "display_name": "Biophysical Journal"
+      }
+    },
+    "authorships": [
+      {
+        "author": {
+          "display_name": "Vasilina Zayats"
+        }
+      },
+      {
+        "author": {
+          "display_name": "Maciej Sikora"
+        }
+      },
+      {
+        "author": {
+          "display_name": "Agata P. Perlinska"
+        }
+      },
+      {
+        "author": {
+          "display_name": "Adam Stasiulewicz"
+        }
+      },
+      {
+        "author": {
+          "display_name": "Bartosz A. Gren"
+        }
+      },
+      {
+        "author": {
+          "display_name": "Joanna I. Su\u0142kowska"
+        }
+      }
+    ]
+  },
+  {
+    "id": "https://openalex.org/W4385690461",
+    "doi": "https://doi.org/10.1016/j.csbj.2023.08.001",
+    "title": "Nucleolar Essential Protein 1 (Nep1): Elucidation of enzymatic catalysis mechanism by molecular dynamics simulation and quantum mechanics study",
+    "publication_year": 2023,
+    "cited_by_count": 6,
+    "open_access": {
+      "is_oa": true
+    },
+    "primary_location": {
+      "source": {
+        "display_name": "Computational and Structural Biotechnology Journal"
+      }
+    },
+    "authorships": [
+      {
+        "author": {
+          "display_name": "Mateusz J\u0119drzejewski"
+        }
+      },
+      {
+        "author": {
+          "display_name": "Barbara Be\u0142za"
+        }
+      },
+      {
+        "author": {
+          "display_name": "Iwona Lewandowska"
+        }
+      },
+      {
+        "author": {
+          "display_name": "Marta Sadlej"
+        }
+      },
+      {
+        "author": {
+          "display_name": "Agata P. Perlinska"
+        }
+      },
+      {
+        "author": {
+          "display_name": "Rafa\u0142 Augustyniak"
+        }
+      },
+      {
+        "author": {
+          "display_name": "Thomas Christian"
+        }
+      },
+      {
+        "author": {
+          "display_name": "Ya\u2010Ming Hou"
+        }
+      },
+      {
+        "author": {
+          "display_name": "Marcin Ka\u0142ek"
+        }
+      },
+      {
+        "author": {
+          "display_name": "Joanna I. Su\u0142kowska"
+        }
+      }
+    ]
+  },
+  {
+    "id": "https://openalex.org/W2967308002",
+    "doi": "https://doi.org/10.1038/s41598-019-47999-4",
+    "title": "Defining and detecting links in chromosomes",
+    "publication_year": 2019,
+    "cited_by_count": 6,
+    "open_access": {
+      "is_oa": true
+    },
+    "primary_location": {
+      "source": {
+        "display_name": "Scientific Reports"
+      }
+    },
+    "authorships": [
+      {
+        "author": {
+          "display_name": "Szymon Niewieczerza\u0142"
+        }
+      },
+      {
+        "author": {
+          "display_name": "Wanda Niemyska"
+        }
+      },
+      {
+        "author": {
+          "display_name": "Joanna I. Su\u0142kowska"
+        }
+      }
+    ]
+  },
+  {
+    "id": "https://openalex.org/W4381093595",
+    "doi": "https://doi.org/10.1101/2023.06.16.545156",
+    "title": "Proteins containing 6-crossing knot types and their folding pathways",
+    "publication_year": 2023,
+    "cited_by_count": 5,
+    "open_access": {
+      "is_oa": true
+    },
+    "primary_location": {
+      "source": {
+        "display_name": "bioRxiv (Cold Spring Harbor Laboratory)"
+      }
+    },
+    "authorships": [
+      {
+        "author": {
+          "display_name": "Maciej Sikora"
+        }
+      },
+      {
+        "author": {
+          "display_name": "Erica Flapan"
+        }
+      },
+      {
+        "author": {
+          "display_name": "Helen Wong"
+        }
+      },
+      {
+        "author": {
+          "display_name": "Pawe\u0142 Rubach"
+        }
+      },
+      {
+        "author": {
+          "display_name": "Wojciech Garstka"
+        }
+      },
+      {
+        "author": {
+          "display_name": "Szymon Niewieczerza\u0142"
+        }
+      },
+      {
+        "author": {
+          "display_name": "Eric J. Rawdon"
+        }
+      },
+      {
+        "author": {
+          "display_name": "Joanna I. Su\u0142kowska"
+        }
+      }
+    ]
+  },
+  {
+    "id": "https://openalex.org/W4206596435",
+    "doi": "https://doi.org/10.1101/2021.12.30.474018",
+    "title": "New 6 <sub>3</sub> knot and other knots in human proteome from AlphaFold predictions",
+    "publication_year": 2022,
+    "cited_by_count": 4,
+    "open_access": {
+      "is_oa": true
+    },
+    "primary_location": {
+      "source": {
+        "display_name": "bioRxiv (Cold Spring Harbor Laboratory)"
+      }
+    },
+    "authorships": [
+      {
+        "author": {
+          "display_name": "Agata P. Perlinska"
+        }
+      },
+      {
+        "author": {
+          "display_name": "Wanda Niemyska"
+        }
+      },
+      {
+        "author": {
+          "display_name": "Bartosz A. Gren"
+        }
+      },
+      {
+        "author": {
+          "display_name": "Pawe\u0142 Rubach"
+        }
+      },
+      {
+        "author": {
+          "display_name": "Joanna I. Su\u0142kowska"
+        }
+      }
+    ]
+  },
+  {
+    "id": "https://openalex.org/W1966039221",
+    "doi": "https://doi.org/10.1016/j.bpj.2013.11.2672",
+    "title": "Knotting a Protein in Explicit Solvent",
+    "publication_year": 2014,
+    "cited_by_count": 4,
+    "open_access": {
+      "is_oa": true
+    },
+    "primary_location": {
+      "source": {
+        "display_name": "Biophysical Journal"
+      }
+    },
+    "authorships": [
+      {
+        "author": {
+          "display_name": "Joanna I. Su\u0142kowska"
+        }
+      },
+      {
+        "author": {
+          "display_name": "Jeffrey K. Noel"
+        }
+      },
+      {
+        "author": {
+          "display_name": "Jos\u00e9 N. Onuchic"
+        }
+      }
+    ]
+  },
+  {
+    "id": "https://openalex.org/W4411024611",
+    "doi": "https://doi.org/10.3390/ijms26115402",
+    "title": "Tacrolimus Modulates TGF-\u03b2 Signaling\u2013Related Genes and MicroRNAs in Human Retinal Pigment Epithelial Cells Activated by Lipopolysaccharide",
+    "publication_year": 2025,
+    "cited_by_count": 3,
+    "open_access": {
+      "is_oa": true
+    },
+    "primary_location": {
+      "source": {
+        "display_name": "International Journal of Molecular Sciences"
+      }
+    },
+    "authorships": [
+      {
+        "author": {
+          "display_name": "Aleksandra Kie\u0142basi\u0144ska"
+        }
+      },
+      {
+        "author": {
+          "display_name": "Katarzyna Krysik"
+        }
+      },
+      {
+        "author": {
+          "display_name": "Dominika Janiszewska-Bil"
+        }
+      },
+      {
+        "author": {
+          "display_name": "Martyna Machaj"
+        }
+      },
+      {
+        "author": {
+          "display_name": "Zuzanna Lelek"
+        }
+      },
+      {
+        "author": {
+          "display_name": "Joanna I. Su\u0142kowska"
+        }
+      },
+      {
+        "author": {
+          "display_name": "Olga Nawotny-Czupryna"
+        }
+      },
+      {
+        "author": {
+          "display_name": "Beniamin Oskar Grabarek"
+        }
+      }
+    ]
+  },
+  {
+    "id": "https://openalex.org/W3023914365",
+    "doi": "https://doi.org/10.1038/s41598-020-71874-2",
+    "title": "GLN: a method to reveal unique properties of lasso type topology in proteins",
+    "publication_year": 2020,
+    "cited_by_count": 3,
+    "open_access": {
+      "is_oa": true
+    },
+    "primary_location": {
+      "source": {
+        "display_name": "Scientific Reports"
+      }
+    },
+    "authorships": [
+      {
+        "author": {
+          "display_name": "Wanda Niemyska"
+        }
+      },
+      {
+        "author": {
+          "display_name": "Kenneth C. Millett"
+        }
+      },
+      {
+        "author": {
+          "display_name": "Joanna I. Su\u0142kowska"
+        }
+      }
+    ]
+  },
+  {
+    "id": "https://openalex.org/W2891118523",
+    "doi": "https://doi.org/10.1016/j.reactfunctpolym.2018.09.005",
+    "title": "The APS-bracket \u2013 A topological tool to classify lasso proteins, RNAs and other tadpole-like structures",
+    "publication_year": 2018,
+    "cited_by_count": 3,
+    "open_access": {
+      "is_oa": false
+    },
+    "primary_location": {
+      "source": {
+        "display_name": "Reactive and Functional Polymers"
+      }
+    },
+    "authorships": [
+      {
+        "author": {
+          "display_name": "Pawe\u0142 D\u0105browski-Tuma\u0144ski"
+        }
+      },
+      {
+        "author": {
+          "display_name": "Joanna I. Su\u0142kowska"
+        }
+      }
+    ]
+  },
+  {
+    "id": "https://openalex.org/W4408766313",
+    "doi": "https://doi.org/10.1101/2025.03.21.644650",
+    "title": "Universe of Lasso Proteins: Exploring the limit of entanglement and folding landscape of proteins predicted by AlphaFold",
+    "publication_year": 2025,
+    "cited_by_count": 2,
+    "open_access": {
+      "is_oa": true
+    },
+    "primary_location": {
+      "source": {
+        "display_name": "bioRxiv (Cold Spring Harbor Laboratory)"
+      }
+    },
+    "authorships": [
+      {
+        "author": {
+          "display_name": "Fernando Bruno da Silva"
+        }
+      },
+      {
+        "author": {
+          "display_name": "Agata P. Perlinska"
+        }
+      },
+      {
+        "author": {
+          "display_name": "Jacek P\u0142onka"
+        }
+      },
+      {
+        "author": {
+          "display_name": "Erica Flapan"
+        }
+      },
+      {
+        "author": {
+          "display_name": "Joanna I. Su\u0142kowska"
+        }
+      }
+    ]
+  },
+  {
+    "id": "https://openalex.org/W2989981193",
+    "doi": "https://doi.org/10.1101/826248",
+    "title": "Restriction of S-adenosylmethionine conformational freedom by knotted protein binding sites",
+    "publication_year": 2019,
+    "cited_by_count": 2,
+    "open_access": {
+      "is_oa": true
+    },
+    "primary_location": {
+      "source": {
+        "display_name": "bioRxiv (Cold Spring Harbor Laboratory)"
+      }
+    },
+    "authorships": [
+      {
+        "author": {
+          "display_name": "Agata P. Perlinska"
+        }
+      },
+      {
+        "author": {
+          "display_name": "Adam Stasiulewicz"
+        }
+      },
+      {
+        "author": {
+          "display_name": "Ewa K. Nawrocka"
+        }
+      },
+      {
+        "author": {
+          "display_name": "Krzysztof Kazimierczuk"
+        }
+      },
+      {
+        "author": {
+          "display_name": "Piotr Setny"
+        }
+      },
+      {
+        "author": {
+          "display_name": "Joanna I. Su\u0142kowska"
+        }
+      }
+    ]
+  },
+  {
+    "id": "https://openalex.org/W4394654574",
+    "doi": "https://doi.org/10.48550/arxiv.1908.05919",
+    "title": "$\u03b8$-curves in proteins",
+    "publication_year": 2019,
+    "cited_by_count": 2,
+    "open_access": {
+      "is_oa": true
+    },
+    "primary_location": {
+      "source": {
+        "display_name": "arXiv (Cornell University)"
+      }
+    },
+    "authorships": [
+      {
+        "author": {
+          "display_name": "Pawe\u0142 D\u0105browski-Tuma\u0144ski"
+        }
+      },
+      {
+        "author": {
+          "display_name": "Dimos Goundaroulis"
+        }
+      },
+      {
+        "author": {
+          "display_name": "Andrzej Stasiak"
+        }
+      },
+      {
+        "author": {
+          "display_name": "Joanna I. Su\u0142kowska"
+        }
+      }
+    ]
+  },
+  {
+    "id": "https://openalex.org/W4410190596",
+    "doi": "https://doi.org/10.1093/nar/gkaf375",
+    "title": "AlphaLasso\u2014a web server to identify loop and lasso motifs in 3D structure of biopolymers",
+    "publication_year": 2025,
+    "cited_by_count": 1,
+    "open_access": {
+      "is_oa": true
+    },
+    "primary_location": {
+      "source": {
+        "display_name": "Nucleic Acids Research"
+      }
+    },
+    "authorships": [
+      {
+        "author": {
+          "display_name": "Pawe\u0142 Rubach"
+        }
+      },
+      {
+        "author": {
+          "display_name": "Jacek P\u0142onka"
+        }
+      },
+      {
+        "author": {
+          "display_name": "Bartosz A. Gren"
+        }
+      },
+      {
+        "author": {
+          "display_name": "Fernando Bruno da Silva"
+        }
+      },
+      {
+        "author": {
+          "display_name": "Marta Korpacz"
+        }
+      },
+      {
+        "author": {
+          "display_name": "Joanna I. Su\u0142kowska"
+        }
+      }
+    ]
+  },
+  {
+    "id": "https://openalex.org/W4353092811",
+    "doi": "https://doi.org/10.1101/2023.03.21.532383",
+    "title": "Nucleolar Essential Protein 1 (Nep1): Elucidation of Enzymatic Catalysis Mechanism by Combined Molecular Dynamics Simulation and Quantum Chemical Calculations",
+    "publication_year": 2023,
+    "cited_by_count": 1,
+    "open_access": {
+      "is_oa": true
+    },
+    "primary_location": {
+      "source": {
+        "display_name": "bioRxiv (Cold Spring Harbor Laboratory)"
+      }
+    },
+    "authorships": [
+      {
+        "author": {
+          "display_name": "Mateusz J\u0119drzejewski"
+        }
+      },
+      {
+        "author": {
+          "display_name": "Barbara Be\u0142za"
+        }
+      },
+      {
+        "author": {
+          "display_name": "Iwona Lewandowska"
+        }
+      },
+      {
+        "author": {
+          "display_name": "Marta Sadlej"
+        }
+      },
+      {
+        "author": {
+          "display_name": "Agata P. Perlinska"
+        }
+      },
+      {
+        "author": {
+          "display_name": "Rafa\u0142 Augustyniak"
+        }
+      },
+      {
+        "author": {
+          "display_name": "Thomas Christian"
+        }
+      },
+      {
+        "author": {
+          "display_name": "Ya\u2010Ming Hou"
+        }
+      },
+      {
+        "author": {
+          "display_name": "Marcin Ka\u0142ek"
+        }
+      },
+      {
+        "author": {
+          "display_name": "Joanna I. Su\u0142kowska"
+        }
+      }
+    ]
+  },
+  {
+    "id": "https://openalex.org/W4386510518",
+    "doi": "https://doi.org/10.1101/2023.09.06.556468",
+    "title": "Knot or Not? Sequence-Based Identification of Knotted Proteins With Machine Learning",
+    "publication_year": 2023,
+    "cited_by_count": 1,
+    "open_access": {
+      "is_oa": true
+    },
+    "primary_location": {
+      "source": {
+        "display_name": "bioRxiv (Cold Spring Harbor Laboratory)"
+      }
+    },
+    "authorships": [
+      {
+        "author": {
+          "display_name": "Denisa \u0160r\u00e1mkov\u00e1"
+        }
+      },
+      {
+        "author": {
+          "display_name": "Maciej Sikora"
+        }
+      },
+      {
+        "author": {
+          "display_name": "Dawid Uchal"
+        }
+      },
+      {
+        "author": {
+          "display_name": "Eva Klimentov\u00e1"
+        }
+      },
+      {
+        "author": {
+          "display_name": "Agata P. Perlinska"
+        }
+      },
+      {
+        "author": {
+          "display_name": "Mai Lan Nguyen"
+        }
+      },
+      {
+        "author": {
+          "display_name": "Marta Korpacz"
+        }
+      },
+      {
+        "author": {
+          "display_name": "Roksana Malinowska"
+        }
+      },
+      {
+        "author": {
+          "display_name": "Pawe\u0142 Rubach"
+        }
+      },
+      {
+        "author": {
+          "display_name": "Petr \u0160ime\u010dek"
+        }
+      },
+      {
+        "author": {
+          "display_name": "Joanna I. Su\u0142kowska"
+        }
+      }
+    ]
+  },
+  {
+    "id": "https://openalex.org/W2793824319",
+    "doi": "https://doi.org/10.1016/j.bpj.2017.11.3018",
+    "title": "The Exclusive Effects of Chaperonin on the Free Energy Landscape of Proteins with Complex Knots",
+    "publication_year": 2018,
+    "cited_by_count": 1,
+    "open_access": {
+      "is_oa": true
+    },
+    "primary_location": {
+      "source": {
+        "display_name": "Biophysical Journal"
+      }
+    },
+    "authorships": [
+      {
+        "author": {
+          "display_name": "Joanna I. Su\u0142kowska"
+        }
+      },
+      {
+        "author": {
+          "display_name": "Yani Zhao"
+        }
+      },
+      {
+        "author": {
+          "display_name": "Pawe\u0142 D\u0105browski-Tuma\u0144ski"
+        }
+      },
+      {
+        "author": {
+          "display_name": "Szymon Niewieczerza\u0142"
+        }
+      }
+    ]
+  },
+  {
+    "id": "https://openalex.org/W2132505589",
+    "doi": "https://doi.org/10.17466/tq2014/18.3/t",
+    "title": "DETERMINING CRITICAL AMINO ACID CONTACTS FOR KNOTTED PROTEIN FOLDING",
+    "publication_year": 2014,
+    "cited_by_count": 1,
+    "open_access": {
+      "is_oa": true
+    },
+    "primary_location": {
+      "source": {
+        "display_name": "DOAJ (DOAJ: Directory of Open Access Journals)"
+      }
+    },
+    "authorships": [
+      {
+        "author": {
+          "display_name": "Pawe\u0142 D\u0105browski-Tuma\u0144ski"
+        }
+      },
+      {
+        "author": {
+          "display_name": "Szymon Niewieczerza\u0142"
+        }
+      },
+      {
+        "author": {
+          "display_name": "Joanna I. Su\u0142kowska"
+        }
+      }
+    ]
+  },
+  {
+    "id": "https://openalex.org/W4243479044",
+    "doi": "https://doi.org/10.1016/j.bpj.2012.11.2057",
+    "title": "Energy Landscape of Knotted Protein Folding",
+    "publication_year": 2013,
+    "cited_by_count": 1,
+    "open_access": {
+      "is_oa": true
+    },
+    "primary_location": {
+      "source": {
+        "display_name": "Biophysical Journal"
+      }
+    },
+    "authorships": [
+      {
+        "author": {
+          "display_name": "Joanna I. Su\u0142kowska"
+        }
+      },
+      {
+        "author": {
+          "display_name": "Jeff K. Noel"
+        }
+      },
+      {
+        "author": {
+          "display_name": "Jos\u00e9 N. Onuchic"
+        }
+      }
+    ]
+  },
+  {
+    "id": "https://openalex.org/W1518177075",
+    "doi": "https://doi.org/10.1371/journal.pcbi.1000731",
+    "title": "A Stevedore's Protein Knot",
+    "publication_year": 2010,
+    "cited_by_count": 1,
+    "open_access": {
+      "is_oa": true
+    },
+    "primary_location": {
+      "source": {
+        "display_name": "PLoS Computational Biology"
+      }
+    },
+    "authorships": [
+      {
+        "author": {
+          "display_name": "Daniel B\u00f6linger"
+        }
+      },
+      {
+        "author": {
+          "display_name": "Joanna I. Su\u0142kowska"
+        }
+      },
+      {
+        "author": {
+          "display_name": "Hsiao\u2010Ping Hsu"
+        }
+      },
+      {
+        "author": {
+          "display_name": "Leonid A. Mirny"
+        }
+      },
+      {
+        "author": {
+          "display_name": "Mehran Kardar"
+        }
+      },
+      {
+        "author": {
+          "display_name": "Jos\u00e9 N. Onuchic"
+        }
+      },
+      {
+        "author": {
+          "display_name": "Peter Virnau"
+        }
+      }
+    ]
+  },
+  {
+    "id": "https://openalex.org/W7155185629",
+    "doi": "https://doi.org/10.1073/pnas.2525920123",
+    "title": "Novel Knotted Solenoid fold with order-shifted coil arrangement leads to nontrivial 3 <sub>1</sub> topology",
+    "publication_year": 2026,
+    "cited_by_count": 0,
+    "open_access": {
+      "is_oa": true
+    },
+    "primary_location": {
+      "source": {
+        "display_name": "Proceedings of the National Academy of Sciences"
+      }
+    },
+    "authorships": [
+      {
+        "author": {
+          "display_name": "Maciej Sikora"
+        }
+      },
+      {
+        "author": {
+          "display_name": "Mariusz Mo\u017cajew"
+        }
+      },
+      {
+        "author": {
+          "display_name": "Julia A. Sikorska"
+        }
+      },
+      {
+        "author": {
+          "display_name": "Fernando Bruno da Silva"
+        }
+      },
+      {
+        "author": {
+          "display_name": "Agata P. Perlinska"
+        }
+      },
+      {
+        "author": {
+          "display_name": "Anna Kluza"
+        }
+      },
+      {
+        "author": {
+          "display_name": "Szymon Niewieczerza\u0142"
+        }
+      },
+      {
+        "author": {
+          "display_name": "Maciej \u0141ukaszewicz"
+        }
+      },
+      {
+        "author": {
+          "display_name": "Beata Wielgus\u2010Kutrowska"
+        }
+      },
+      {
+        "author": {
+          "display_name": "Karolina Stachurska-Korzeniowska"
+        }
+      },
+      {
+        "author": {
+          "display_name": "Sophie Jackson"
+        }
+      },
+      {
+        "author": {
+          "display_name": "Joanna I. Su\u0142kowska"
+        }
+      }
+    ]
+  },
+  {
+    "id": "https://openalex.org/W4410488060",
+    "doi": "https://doi.org/10.1016/j.jmb.2025.169217",
+    "title": "Universe of Lasso Proteins: Exploring the Limit of Entanglement of Proteins Predicted by AlphaFold",
+    "publication_year": 2025,
+    "cited_by_count": 0,
+    "open_access": {
+      "is_oa": false
+    },
+    "primary_location": {
+      "source": {
+        "display_name": "Journal of Molecular Biology"
+      }
+    },
+    "authorships": [
+      {
+        "author": {
+          "display_name": "Fernando Bruno da Silva"
+        }
+      },
+      {
+        "author": {
+          "display_name": "Agata P. Perlinska"
+        }
+      },
+      {
+        "author": {
+          "display_name": "Jacek P\u0142onka"
+        }
+      },
+      {
+        "author": {
+          "display_name": "Erica Flapan"
+        }
+      },
+      {
+        "author": {
+          "display_name": "Joanna I. Su\u0142kowska"
+        }
+      }
+    ]
+  },
+  {
+    "id": "https://openalex.org/W4413824435",
+    "doi": "https://doi.org/10.1101/2025.08.27.672562",
+    "title": "Multi-barrier unfolding of the double-knotted protein, TrmD\u2013Tm1570, revealed by single-molecule force spectroscopy and molecular dynamics",
+    "publication_year": 2025,
+    "cited_by_count": 0,
+    "open_access": {
+      "is_oa": true
+    },
+    "primary_location": {
+      "source": {
+        "display_name": "bioRxiv (Cold Spring Harbor Laboratory)"
+      }
+    },
+    "authorships": [
+      {
+        "author": {
+          "display_name": "Fernando Bruno da Silva"
+        }
+      },
+      {
+        "author": {
+          "display_name": "Szymon Niewieczerza\u0142"
+        }
+      },
+      {
+        "author": {
+          "display_name": "Iwona Lewandowska"
+        }
+      },
+      {
+        "author": {
+          "display_name": "Mateusz Fortunka"
+        }
+      },
+      {
+        "author": {
+          "display_name": "Maciej Sikora"
+        }
+      },
+      {
+        "author": {
+          "display_name": "Laura\u2010Marie Silbermann"
+        }
+      },
+      {
+        "author": {
+          "display_name": "Katarzyna Tych"
+        }
+      },
+      {
+        "author": {
+          "display_name": "Joanna I. Su\u0142kowska"
+        }
+      }
+    ]
+  },
+  {
+    "id": "https://openalex.org/W4416332730",
+    "doi": "https://doi.org/10.7554/elife.108823",
+    "title": "Multi-barrier unfolding of the double-knotted protein, TrmD\u2013Tm1570, revealed by single-molecule force spectroscopy and molecular dynamics",
+    "publication_year": 2025,
+    "cited_by_count": 0,
+    "open_access": {
+      "is_oa": true
+    },
+    "primary_location": {
+      "source": {
+        "display_name": "eLife"
+      }
+    },
+    "authorships": [
+      {
+        "author": {
+          "display_name": "Fernando Bruno da Silva"
+        }
+      },
+      {
+        "author": {
+          "display_name": "Szymon Niewieczerza\u0142"
+        }
+      },
+      {
+        "author": {
+          "display_name": "Iwona Lewandowska"
+        }
+      },
+      {
+        "author": {
+          "display_name": "Mateusz Fortunka"
+        }
+      },
+      {
+        "author": {
+          "display_name": "Maciej Sikora"
+        }
+      },
+      {
+        "author": {
+          "display_name": "Laura\u2010Marie Silbermann"
+        }
+      },
+      {
+        "author": {
+          "display_name": "Katarzyna Tych"
+        }
+      },
+      {
+        "author": {
+          "display_name": "Joanna I. Su\u0142kowska"
+        }
+      }
+    ]
+  },
+  {
+    "id": "https://openalex.org/W4416332756",
+    "doi": "https://doi.org/10.7554/elife.108823.1",
+    "title": "Multi-barrier unfolding of the double-knotted protein, TrmD\u2013Tm1570, revealed by single-molecule force spectroscopy and molecular dynamics",
+    "publication_year": 2025,
+    "cited_by_count": 0,
+    "open_access": {
+      "is_oa": true
+    },
+    "primary_location": {
+      "source": {
+        "display_name": "eLife"
+      }
+    },
+    "authorships": [
+      {
+        "author": {
+          "display_name": "Fernando Bruno da Silva"
+        }
+      },
+      {
+        "author": {
+          "display_name": "Szymon Niewieczerza\u0142"
+        }
+      },
+      {
+        "author": {
+          "display_name": "Iwona Lewandowska"
+        }
+      },
+      {
+        "author": {
+          "display_name": "Mateusz Fortunka"
+        }
+      },
+      {
+        "author": {
+          "display_name": "Maciej Sikora"
+        }
+      },
+      {
+        "author": {
+          "display_name": "Laura\u2010Marie Silbermann"
+        }
+      },
+      {
+        "author": {
+          "display_name": "Katarzyna Tych"
+        }
+      },
+      {
+        "author": {
+          "display_name": "Joanna I. Su\u0142kowska"
+        }
+      }
+    ]
+  },
+  {
+    "id": "https://openalex.org/W4417247959",
+    "doi": "https://doi.org/10.48550/arxiv.2504.06901",
+    "title": "Classification of algebraic tangles",
+    "publication_year": 2025,
+    "cited_by_count": 0,
+    "open_access": {
+      "is_oa": true
+    },
+    "primary_location": {
+      "source": {
+        "display_name": "ArXiv.org"
+      }
+    },
+    "authorships": [
+      {
+        "author": {
+          "display_name": "Bartosz A. Gren"
+        }
+      },
+      {
+        "author": {
+          "display_name": "Joanna I. Su\u0142kowska"
+        }
+      },
+      {
+        "author": {
+          "display_name": "Bo\u0161tjan Gabrov\u0161ek"
+        }
+      }
+    ]
+  },
+  {
+    "id": "https://openalex.org/W4392500991",
+    "doi": "https://doi.org/10.1101/2024.03.04.583268",
+    "title": "Knotted artifacts in predicted 3D RNA structures",
+    "publication_year": 2024,
+    "cited_by_count": 0,
+    "open_access": {
+      "is_oa": true
+    },
+    "primary_location": {
+      "source": {
+        "display_name": "bioRxiv (Cold Spring Harbor Laboratory)"
+      }
+    },
+    "authorships": [
+      {
+        "author": {
+          "display_name": "Bartosz A. Gren"
+        }
+      },
+      {
+        "author": {
+          "display_name": "Maciej Antczak"
+        }
+      },
+      {
+        "author": {
+          "display_name": "Tomasz \u017bok"
+        }
+      },
+      {
+        "author": {
+          "display_name": "Joanna I. Su\u0142kowska"
+        }
+      },
+      {
+        "author": {
+          "display_name": "Marta Szachniuk"
+        }
+      }
+    ]
+  },
+  {
+    "id": "https://openalex.org/W4286783851",
+    "doi": "https://doi.org/10.48550/arxiv.2005.05015",
+    "title": "GLN -- a method to reveal unique properties of lasso type topology in\\n proteins",
+    "publication_year": 2020,
+    "cited_by_count": 0,
+    "open_access": {
+      "is_oa": true
+    },
+    "primary_location": {
+      "source": {
+        "display_name": "arXiv (Cornell University)"
+      }
+    },
+    "authorships": [
+      {
+        "author": {
+          "display_name": "Wanda Niemyska"
+        }
+      },
+      {
+        "author": {
+          "display_name": "Kenneth C. Millett"
+        }
+      },
+      {
+        "author": {
+          "display_name": "Joanna I. Su\u0142kowska"
+        }
+      }
+    ]
+  },
+  {
+    "id": "https://openalex.org/W2984641462",
+    "doi": "",
+    "title": "Characterization of substrate binding and function of a knotted protein",
+    "publication_year": 2018,
+    "cited_by_count": 0,
+    "open_access": {
+      "is_oa": true
+    },
+    "primary_location": {
+      "source": {
+        "display_name": "Acta Biochimica Polonica"
+      }
+    },
+    "authorships": [
+      {
+        "author": {
+          "display_name": "Agata P. Perlinska"
+        }
+      },
+      {
+        "author": {
+          "display_name": "Joanna I. Su\u0142kowska"
+        }
+      }
+    ]
+  },
+  {
+    "id": "https://openalex.org/W2563823818",
+    "doi": "",
+    "title": "Volume estimation of glioblastomas from MRI : comparison of volumetric segmentation and ellipsoid formula",
+    "publication_year": 2016,
+    "cited_by_count": 0,
+    "open_access": {
+      "is_oa": false
+    },
+    "primary_location": {
+      "source": {
+        "display_name": ""
+      }
+    },
+    "authorships": [
+      {
+        "author": {
+          "display_name": "Joanna I. Su\u0142kowska"
+        }
+      }
+    ]
+  },
+  {
+    "id": "https://openalex.org/W2737543779",
+    "doi": "https://doi.org/10.17466/tq2016/20.4/h",
+    "title": "Molecular Dynamics and structural comparison approach to understanding the role of knots in proteins",
+    "publication_year": 2016,
+    "cited_by_count": 0,
+    "open_access": {
+      "is_oa": false
+    },
+    "primary_location": {
+      "source": {
+        "display_name": "DOAJ (DOAJ: Directory of Open Access Journals)"
+      }
+    },
+    "authorships": [
+      {
+        "author": {
+          "display_name": "Agata P. Perlinska"
+        }
+      },
+      {
+        "author": {
+          "display_name": "Joanna M. Macnar"
+        }
+      },
+      {
+        "author": {
+          "display_name": "Joanna I. Su\u0142kowska"
+        }
+      }
+    ]
+  },
+  {
+    "id": "https://openalex.org/W2978352065",
+    "doi": "https://doi.org/10.17466/tq2016/20.4/f",
+    "title": "CURRENT APPROACHES TO DISENTANGLE THE MYSTERY OF KNOTTED PROTEIN FOLDING",
+    "publication_year": 2016,
+    "cited_by_count": 0,
+    "open_access": {
+      "is_oa": true
+    },
+    "primary_location": {
+      "source": {
+        "display_name": "DOAJ (DOAJ: Directory of Open Access Journals)"
+      }
+    },
+    "authorships": [
+      {
+        "author": {
+          "display_name": "Pawe\u0142 D\u0105browski-Tuma\u0144ski"
+        }
+      },
+      {
+        "author": {
+          "display_name": "Mateusz Sk\u0142odowski"
+        }
+      },
+      {
+        "author": {
+          "display_name": "Joanna I. Su\u0142kowska"
+        }
+      }
+    ]
+  },
+  {
+    "id": "https://openalex.org/W2246492635",
+    "doi": "",
+    "title": "Connecting thermal and mechanical protein (un)folding landscapes",
+    "publication_year": 2015,
+    "cited_by_count": 0,
+    "open_access": {
+      "is_oa": false
+    },
+    "primary_location": {
+      "source": {
+        "display_name": "Bulletin of the American Physical Society"
+      }
+    },
+    "authorships": [
+      {
+        "author": {
+          "display_name": "Sun Li"
+        }
+      },
+      {
+        "author": {
+          "display_name": "Jeffrey K. Noel"
+        }
+      },
+      {
+        "author": {
+          "display_name": "Joanna I. Su\u0142kowska"
+        }
+      },
+      {
+        "author": {
+          "display_name": "Herbert Levine"
+        }
+      },
+      {
+        "author": {
+          "display_name": "Jos 'e Onuchic"
+        }
+      }
+    ]
+  },
+  {
+    "id": "https://openalex.org/W2044794391",
+    "doi": "https://doi.org/10.1016/j.bpj.2011.11.2514",
+    "title": "Structure Based Protein Models and In Vitro Experiments to Investigate the Folding Landscape of the Human Obesity Protein Leptin",
+    "publication_year": 2012,
+    "cited_by_count": 0,
+    "open_access": {
+      "is_oa": true
+    },
+    "primary_location": {
+      "source": {
+        "display_name": "Biophysical Journal"
+      }
+    },
+    "authorships": [
+      {
+        "author": {
+          "display_name": "Ellinor Haglund"
+        }
+      },
+      {
+        "author": {
+          "display_name": "Joanna I. Su\u0142kowska"
+        }
+      },
+      {
+        "author": {
+          "display_name": "Patricia A. Jennings"
+        }
+      },
+      {
+        "author": {
+          "display_name": "Jos\u00e9 N. Onuchic"
+        }
+      }
+    ]
+  },
+  {
+    "id": "https://openalex.org/W2076227105",
+    "doi": "https://doi.org/10.1016/j.bpj.2011.11.311",
+    "title": "The Force-Induced Activation of Talin in a Structure-Based Model Simulation",
+    "publication_year": 2012,
+    "cited_by_count": 0,
+    "open_access": {
+      "is_oa": true
+    },
+    "primary_location": {
+      "source": {
+        "display_name": "Biophysical Journal"
+      }
+    },
+    "authorships": [
+      {
+        "author": {
+          "display_name": "Li Sun"
+        }
+      },
+      {
+        "author": {
+          "display_name": "Joanna I. Su\u0142kowska"
+        }
+      },
+      {
+        "author": {
+          "display_name": "Jeff K. Noel"
+        }
+      },
+      {
+        "author": {
+          "display_name": "Jos\u00e9 N. Onuchic"
+        }
+      }
+    ]
+  },
+  {
+    "id": "https://openalex.org/W2087652907",
+    "doi": "https://doi.org/10.1016/j.bpj.2011.11.2515",
+    "title": "Protein Knot Forming, Terminal-Through-Loop Threading Events can Occur on the Microsecond (&lt;10) Timescale",
+    "publication_year": 2012,
+    "cited_by_count": 0,
+    "open_access": {
+      "is_oa": true
+    },
+    "primary_location": {
+      "source": {
+        "display_name": "Biophysical Journal"
+      }
+    },
+    "authorships": [
+      {
+        "author": {
+          "display_name": "Jeffrey K. Noel"
+        }
+      },
+      {
+        "author": {
+          "display_name": "Joanna I. Su\u0142kowska"
+        }
+      },
+      {
+        "author": {
+          "display_name": "Jos\u00e9 N. Onuchic"
+        }
+      }
+    ]
+  },
+  {
+    "id": "https://openalex.org/W3036272390",
+    "doi": "",
+    "title": "BSDB: the Biomolecule Stretching Database",
+    "publication_year": 2011,
+    "cited_by_count": 0,
+    "open_access": {
+      "is_oa": false
+    },
+    "primary_location": {
+      "source": {
+        "display_name": "APS March Meeting Abstracts"
+      }
+    },
+    "authorships": [
+      {
+        "author": {
+          "display_name": "Marek Cieplak"
+        }
+      },
+      {
+        "author": {
+          "display_name": "Mateusz Sikora"
+        }
+      },
+      {
+        "author": {
+          "display_name": "Joanna I. Su\u0142kowska"
+        }
+      },
+      {
+        "author": {
+          "display_name": "B.S. Witkowski"
+        }
+      }
+    ]
+  },
+  {
+    "id": "https://openalex.org/W429553913",
+    "doi": "",
+    "title": "Stretching of the knotted protein YibK and its unknotted constructs(Knots and soft-matter physics: Topology of polymers and related topics in physics, mathematics and biology)",
+    "publication_year": 2009,
+    "cited_by_count": 0,
+    "open_access": {
+      "is_oa": true
+    },
+    "primary_location": {
+      "source": {
+        "display_name": "Kyoto University Research Information Repository (Kyoto University)"
+      }
+    },
+    "authorships": [
+      {
+        "author": {
+          "display_name": "Joanna I. Su\u0142kowska"
+        }
+      },
+      {
+        "author": {
+          "display_name": "Piotr Su\u0142kowski"
+        }
+      },
+      {
+        "author": {
+          "display_name": "Piotr Szymczak"
+        }
+      },
+      {
+        "author": {
+          "display_name": "Marek Cieplak"
+        }
+      }
+    ]
+  },
+  {
+    "id": "https://openalex.org/W561245853",
+    "doi": "",
+    "title": "Stretching of the knotted protein YibK and its unknotted constructs (\u7d50\u3073\u76ee\u3068\u30bd\u30d5\u30c8\u30de\u30bf\u30fc\u7269\u7406\u5b66--\u9ad8\u5206\u5b50\u306e\u30c8\u30dd\u30ed\u30b8\u30fc\u3001\u305d\u3057\u3066\u7269\u7406\u5b66\u3001\u6570\u5b66\u304a\u3088\u3073\u751f\u7269\u5b66\u306b\u304a\u3051\u308b\u95a2\u9023\u3059\u308b\u8a71\u984c)",
+    "publication_year": 2009,
+    "cited_by_count": 0,
+    "open_access": {
+      "is_oa": false
+    },
+    "primary_location": {
+      "source": {
+        "display_name": "\u7269\u6027\u7814\u7a76"
+      }
+    },
+    "authorships": [
+      {
+        "author": {
+          "display_name": "Joanna I. Su\u0142kowska"
+        }
+      },
+      {
+        "author": {
+          "display_name": "Piotr Su\u0142kowski"
+        }
+      },
+      {
+        "author": {
+          "display_name": "P. Szymczak"
+        }
+      },
+      {
+        "author": {
+          "display_name": "M. Cieplak"
+        }
+      }
+    ]
+  },
+  {
+    "id": "https://openalex.org/W4394636448",
+    "doi": "https://doi.org/10.48550/arxiv.0706.2380",
+    "title": "Tightening of knots in proteins",
+    "publication_year": 2007,
+    "cited_by_count": 0,
+    "open_access": {
+      "is_oa": true
+    },
+    "primary_location": {
+      "source": {
+        "display_name": "arXiv (Cornell University)"
+      }
+    },
+    "authorships": [
+      {
+        "author": {
+          "display_name": "Joanna I. Su\u0142kowska"
+        }
+      },
+      {
+        "author": {
+          "display_name": "Piotr Su\u0142kowski"
+        }
+      },
+      {
+        "author": {
+          "display_name": "Piotr Szymczak"
+        }
+      },
+      {
+        "author": {
+          "display_name": "Marek Cieplak"
+        }
+      }
+    ]
+  },
+  {
+    "id": "https://openalex.org/W1016254076",
+    "doi": "",
+    "title": "Rozci\u0105ganie moleku\u0142 bia\u0142ek \u2014 por\u00f3wnywanie ich w\u0142asno\u015bci mechanicznych",
+    "publication_year": 2006,
+    "cited_by_count": 0,
+    "open_access": {
+      "is_oa": false
+    },
+    "primary_location": {
+      "source": {
+        "display_name": ""
+      }
+    },
+    "authorships": [
+      {
+        "author": {
+          "display_name": "Marek Cieplak"
+        }
+      },
+      {
+        "author": {
+          "display_name": "Joanna I. Su\u0142kowska"
+        }
+      }
+    ]
+  }
+]

@@ -46,7 +46,7 @@ _news/                      News collection items
 assets/css/sulkowska.css    Shared CSS
 assets/js/sulkowska.js      Shared banner and jump-menu behavior
 assets/js/hero-knot.js      Home-page Three.js animation
-assets/img/                 Images, logos, portraits, gallery media
+assets/images/                 Images, logos, portraits, gallery media
 scripts/                    Maintenance scripts
 ```
 

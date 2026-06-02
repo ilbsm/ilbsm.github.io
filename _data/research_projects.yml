@@ -1,6 +1,6 @@
 - id:          cost-eutopia
   title:       "COST - EUTOPIA"
-  image:       "/assets/img/projects/eutopia.jpg"
+  image:       "/assets/images/projects/eutopia.jpg"
   alt:         "EUTOPIA network graphic"
   cover:       true
   badge:       "COST"
@@ -17,7 +17,7 @@
 
 - id:          ideas-plus-entanglement
   title:       "Classification and Free Energy Landscape of Entanglement Proteins"
-  image:       "/assets/img/projects/ideasplus.png"
+  image:       "/assets/images/projects/ideasplus.png"
   alt:         "Ideas Plus project figure"
   badge:       "MNiSW"
   badge_class: "rx-funder-mnisw"
@@ -40,7 +40,7 @@
 
 - id:          sonata-bis-knotted-function
   title:       "Influence of Knotted Structure on Function of Proteins and Protein Structure Prediction"
-  image:       "/assets/img/projects/baner1.png"
+  image:       "/assets/images/projects/baner1.png"
   alt:         "Protein structure prediction and knotted proteins"
   badge:       "NCN"
   badge_class: "rx-funder-ncn"
@@ -60,7 +60,7 @@
 
 - id:          embo-installation-knotted-proteins
   title:       "Comprehensive Analysis of Knotted Proteins"
-  image:       "/assets/img/projects/embo.png"
+  image:       "/assets/images/projects/embo.png"
   alt:         "EMBO logo"
   badge:       "EMBO"
   badge_class: "rx-funder-embo"
@@ -82,7 +82,7 @@
 
 - id:          fnp-mathematical-lasso
   title:       "Can Biology Be Caught on a Mathematical Lasso?"
-  image:       "/assets/img/projects/Inter_Wanda.png"
+  image:       "/assets/images/projects/Inter_Wanda.png"
   alt:         "Mathematical lasso project figure"
   badge:       "FNP"
   badge_class: "rx-funder-fnp"
@@ -96,7 +96,7 @@
 
 - id:          dsm-lasso-structure-function
   title:       "Characterization of Structure-Function Relation in Proteins with Lassos"
-  image:       "/assets/img/projects/sonatabis2.png"
+  image:       "/assets/images/projects/sonatabis2.png"
   alt:         "Lasso protein topology figure"
   badge:       "UW"
   badge_class: "rx-funder-uw"
@@ -110,7 +110,7 @@
 
 - id:          embo-trmd-inhibitors
   title:       "Synthesis of Inhibitors for TrmD Proteins"
-  image:       "/assets/img/projects/embo_small.png"
+  image:       "/assets/images/projects/embo_small.png"
   alt:         "Synthetic scheme for TrmD inhibitors"
   badge:       "EMBO"
   badge_class: "rx-funder-embo"
@@ -128,7 +128,7 @@
 
 - id:          icm-trmd-ligand-binding
   title:       "Great Challenges - TrmD Ligand Binding"
-  image:       "/assets/img/projects/2.png"
+  image:       "/assets/images/projects/2.png"
   alt:         "TrmD ligand binding project banner"
   badge:       "ICM"
   badge_class: "rx-funder-icm"
@@ -144,7 +144,7 @@
 
 - id:          dsm-macrocyclic-links
   title:       "Development of Methodology to Uncover Macrocyclic Links in Proteins"
-  image:       "/assets/img/projects/DSM_macrolinks.png"
+  image:       "/assets/images/projects/DSM_macrolinks.png"
   alt:         "Macrocyclic link topology figure"
   badge:       "UW"
   badge_class: "rx-funder-uw"
@@ -158,7 +158,7 @@
 
 - id:          ncn-preludium-link-topology
   title:       "Identification and Characterization of Proteins with Link Topology"
-  image:       "/assets/img/projects/preludium.png"
+  image:       "/assets/images/projects/preludium.png"
   alt:         "Protein link topology project figure"
   badge:       "NCN"
   badge_class: "rx-funder-ncn"

@@ -161,7 +161,7 @@ grants:
     title: "National Synthesis Center for Emergence in the Molecular and Cellular Sciences"
     url: "https://cent.uw.edu.pl/the-national-synthesis-center-for-emergence-in-the-molecular-and-cellular-sciences-grant-awarded-to-joanna-sulkowska/"
     external: true
-    logo: "/assets/img/logos/media/nsf.svg"
+    logo: "/assets/images/logos/media/nsf.svg"
     logo_alt: "National Science Foundation"
     logo_class: "hp-grant-logo-seal"
 
@@ -170,7 +170,7 @@ grants:
     title: "EMBO Advanced Collaboration Grant"
     url: "https://cent.uw.edu.pl/prof-joanna-sulkowska-has-been-awarded-an-embo-advanced-collaboration-grant/"
     external: true
-    logo: "/assets/img/logos/media/embo.png"
+    logo: "/assets/images/logos/media/embo.png"
     logo_alt: "EMBO"
     logo_class: "hp-grant-logo-wide"
 
@@ -179,7 +179,7 @@ grants:
     title: "AIM SQuaRE Grant - American Institute of Mathematics"
     url: "/news/aim-square-grant-caltech-2024/"
     external: false
-    logo: "/assets/img/logos/funding/aim.png"
+    logo: "/assets/images/logos/funding/aim.png"
     logo_alt: "American Institute of Mathematics"
     logo_class: "hp-grant-logo-wide"
 
@@ -188,7 +188,7 @@ grants:
     title: "IDUB Grant - Design of Artificial Proteins"
     url: "/news/joanna-sulkowska-idub-artificial-proteins-2023/"
     external: false
-    logo: "/assets/img/logos/media/uw.png"
+    logo: "/assets/images/logos/media/uw.png"
     logo_alt: "University of Warsaw"
     logo_class: "hp-grant-logo-wide"
 

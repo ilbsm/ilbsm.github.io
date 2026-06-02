@@ -163,7 +163,7 @@ permalink: /group/
   gap: var(--space-8); flex-wrap: wrap;
 }
 .grp-join-title {
-  font-family: 'Merriweather', serif; font-size: var(--text-lg);
+  font-family: var(--font-serif); font-size: var(--text-lg);
   font-weight: 700; color: #fff; margin-bottom: var(--space-2);
 }
 .grp-join-sub { font-size: var(--text-sm); color: rgba(255,255,255,0.72); max-width: 50ch; line-height: 1.6; }
@@ -412,7 +412,7 @@ document.addEventListener('DOMContentLoaded', function () {
     var knot = new Image();
     knot.className = 'grp-photo';
     knot.alt = init.dataset.name || '';
-    knot.src = "{{ '/assets/img/team/knot-placeholder.png' | relative_url }}";
+    knot.src = "{{ '/assets/images/team/knot-placeholder.png' | relative_url }}";
     init.parentNode.appendChild(knot);
     init.style.opacity = '0';
   }
@@ -428,7 +428,7 @@ document.addEventListener('DOMContentLoaded', function () {
       init.style.opacity = '0';
     };
     img.onerror = function () { showKnot(init); };
-    img.src = "{{ '/assets/img/team/' | relative_url }}" + slug + ".jpg";
+    img.src = "{{ '/assets/images/team/' | relative_url }}" + slug + ".jpg";
   });
 
 });

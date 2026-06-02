@@ -33,7 +33,7 @@ permalink: /collaboration/
 #page-collab .cl-intro-title {
   margin: 0 0 0.35rem;
   color: #073d55;
-  font-family: 'Merriweather', serif;
+  font-family: var(--font-serif);
   font-size: clamp(2.15rem, 3vw, 3rem);
   font-weight: 900;
   line-height: 1.08;
@@ -130,8 +130,13 @@ permalink: /collaboration/
         <a class="cl-card" href="{{ c.url }}" target="_blank" rel="noopener noreferrer" style="--i:{{ forloop.index0 }}"
            title="{% if c.cta %}{{ c.cta }}{% else %}{{ c.url }}{% endif %}">
           <div class="cl-logo-wrap">
-            <img src="{{ '/assets/img/collab/' | append: c.logo | relative_url }}" alt="{{ c.fallback_text }} logo" loading="lazy"
+            {% assign collab_logo = c.logo | default: "" | strip %}
+            {% assign collab_logo_lc = collab_logo | downcase %}
+            {% assign collab_logo_prefix = collab_logo_lc | slice: 0, 2 %}
+            {% unless collab_logo_lc contains "://" or collab_logo_prefix == "//" or collab_logo_lc contains "data:" %}
+            <img src="{{ '/assets/images/collab/' | append: c.logo | relative_url }}" alt="{{ c.fallback_text }} logo" loading="lazy"
                  onerror="this.style.display='none';this.nextElementSibling.style.display='flex'"/>
+            {% endunless %}
             <div class="cl-logo-fallback" style="background:{{ c.fallback_color }}">{{ c.fallback_text }}</div>
           </div>
           <div class="cl-card-body">

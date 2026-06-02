@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Build _data/publication_figures.yml from OpenAlex + PubMed Central."""
+"""Build local publication metadata and figure indexes."""
 
 from __future__ import annotations
 
@@ -13,6 +13,7 @@ from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
 OUT = ROOT / "_data" / "publication_figures.yml"
+PUBS_OUT = ROOT / "_data" / "publications.json"
 MAILTO = "contact@lab.uw.edu.pl"
 AUTHOR_SEARCH = (
     "https://api.openalex.org/authors?"
@@ -20,6 +21,16 @@ AUTHOR_SEARCH = (
     f"&per-page=5&mailto={MAILTO}"
 )
 HEADERS = {"User-Agent": f"ilbsm.github.io figure updater ({MAILTO})"}
+LOCAL_IMAGE_PREFIXES = ("/assets/images/", "assets/images/")
+
+
+def is_local_image_path(src: object) -> bool:
+    raw = str(src or "").strip()
+    return raw.startswith(LOCAL_IMAGE_PREFIXES)
+
+
+def local_figures(figures: object) -> list[dict]:
+    return [fig for fig in figures or [] if is_local_image_path(fig.get("img"))]
 
 MANUAL_FALLBACKS = [
     {
@@ -28,34 +39,9 @@ MANUAL_FALLBACKS = [
         "label": "AlphaLasso",
         "figures": [
             {
-                "img": "https://cdn.ncbi.nlm.nih.gov/pmc/blobs/b4ea/12230674/901aa05b0687/gkaf375figgra1.jpg",
-                "href": "https://pmc.ncbi.nlm.nih.gov/articles/PMC12230674/figure/ga1/",
-                "alt": "Graphical Abstract.",
-                "caption": "Graphical Abstract.",
-            },
-            {
-                "img": "https://cdn.ncbi.nlm.nih.gov/pmc/blobs/b4ea/12230674/ad0c04a44764/gkaf375fig1.jpg",
-                "href": "https://pmc.ncbi.nlm.nih.gov/articles/PMC12230674/figure/F1/",
-                "alt": "Figure 1.",
-                "caption": "Figure 1. Distribution of distances between bonded and non-bonded atom pairs.",
-            },
-            {
-                "img": "https://cdn.ncbi.nlm.nih.gov/pmc/blobs/b4ea/12230674/3b3313548d72/gkaf375fig2.jpg",
-                "href": "https://pmc.ncbi.nlm.nih.gov/articles/PMC12230674/figure/F2/",
-                "alt": "Figure 2.",
-                "caption": "Figure 2. Submission options.",
-            },
-            {
-                "img": "https://cdn.ncbi.nlm.nih.gov/pmc/blobs/b4ea/12230674/5f014a11c077/gkaf375fig3.jpg",
-                "href": "https://pmc.ncbi.nlm.nih.gov/articles/PMC12230674/figure/F3/",
-                "alt": "Figure 3.",
-                "caption": "Figure 3. Protein analysis result.",
-            },
-            {
-                "img": "https://cdn.ncbi.nlm.nih.gov/pmc/blobs/b4ea/12230674/8498f5d942c7/gkaf375fig4.jpg",
-                "href": "https://pmc.ncbi.nlm.nih.gov/articles/PMC12230674/figure/F4/",
-                "alt": "Figure 4.",
-                "caption": "Figure 4. Proteins with a new lasso type.",
+                "img": "/assets/images/software/alphalasso.png",
+                "alt": "AlphaLasso web server figure",
+                "caption": "AlphaLasso server",
             }
         ],
     },
@@ -65,7 +51,7 @@ MANUAL_FALLBACKS = [
         "label": "AlphaKnot 2.0",
         "figures": [
             {
-                "img": "/assets/img/software/alphaknot.png",
+                "img": "/assets/images/software/alphaknot.png",
                 "alt": "AlphaKnot 2.0 web server figure",
                 "caption": "AlphaKnot 2.0 visualization server",
             }
@@ -77,7 +63,7 @@ MANUAL_FALLBACKS = [
         "label": "AlphaKnot",
         "figures": [
             {
-                "img": "/assets/img/software/alphaknot.png",
+                "img": "/assets/images/software/alphaknot.png",
                 "alt": "AlphaKnot web server figure",
                 "caption": "AlphaKnot server",
             }
@@ -89,7 +75,7 @@ MANUAL_FALLBACKS = [
         "label": "KnotProt",
         "figures": [
             {
-                "img": "/assets/img/software/knotprot.jpg",
+                "img": "/assets/images/software/knotprot.jpg",
                 "alt": "KnotProt database figure",
                 "caption": "KnotProt database",
             }
@@ -100,7 +86,7 @@ MANUAL_FALLBACKS = [
         "label": "LassoProt",
         "figures": [
             {
-                "img": "/assets/img/software/lassoprot.jpg",
+                "img": "/assets/images/software/lassoprot.jpg",
                 "alt": "LassoProt database figure",
                 "caption": "LassoProt database",
             }
@@ -111,7 +97,7 @@ MANUAL_FALLBACKS = [
         "label": "LinkProt",
         "figures": [
             {
-                "img": "/assets/img/software/linkprot.png",
+                "img": "/assets/images/software/linkprot.png",
                 "alt": "LinkProt database figure",
                 "caption": "LinkProt database",
             }
@@ -122,7 +108,7 @@ MANUAL_FALLBACKS = [
         "label": "PyLasso",
         "figures": [
             {
-                "img": "/assets/img/software/pylasso.png",
+                "img": "/assets/images/software/pylasso.png",
                 "alt": "PyLasso plugin figure",
                 "caption": "PyLasso plugin",
             }
@@ -134,12 +120,12 @@ MANUAL_FALLBACKS = [
         "label": "Genomics-aided structure prediction",
         "figures": [
             {
-                "img": "/assets/img/research/Picture3.png",
+                "img": "/assets/images/research/Picture3.png",
                 "alt": "DCA pipeline figure",
                 "caption": "DCA pipeline: MSA to structure prediction",
             },
             {
-                "img": "/assets/img/research/bioinf2.png",
+                "img": "/assets/images/research/bioinf2.png",
                 "alt": "MSA contact map figure",
                 "caption": "MSA alignment, conservation, and contact map prediction",
             },
@@ -151,7 +137,7 @@ MANUAL_FALLBACKS = [
         "label": "Complex knotting and slipknotting patterns",
         "figures": [
             {
-                "img": "/assets/img/research/math1.png",
+                "img": "/assets/images/research/math1.png",
                 "alt": "Knotted and slipknotted protein types",
                 "caption": "Knotted and slipknotted protein types",
             }
@@ -163,7 +149,7 @@ MANUAL_FALLBACKS = [
         "label": "Genus for biomolecules",
         "figures": [
             {
-                "img": "/assets/img/research/math2.png",
+                "img": "/assets/images/research/math2.png",
                 "alt": "Seifert surface and topological linking figure",
                 "caption": "Seifert surface and topological linking",
             }
@@ -175,7 +161,7 @@ MANUAL_FALLBACKS = [
         "label": "KnotProt 2.0",
         "figures": [
             {
-                "img": "/assets/img/research/chem1.png",
+                "img": "/assets/images/research/chem1.png",
                 "alt": "Knotted and unknotted fold comparison",
                 "caption": "Knotted fold vs. unknotted fold",
             }
@@ -187,7 +173,7 @@ MANUAL_FALLBACKS = [
         "label": "Stabilizing effect of knots",
         "figures": [
             {
-                "img": "/assets/img/research/chem2.png",
+                "img": "/assets/images/research/chem2.png",
                 "alt": "Antimicrobial drug target figure",
                 "caption": "Antimicrobial drug targets",
             }
@@ -403,13 +389,19 @@ def yaml_scalar(value: object) -> str:
     return json.dumps("" if value is None else str(value), ensure_ascii=True)
 
 
-def write_yaml(entries: list[dict]) -> None:
+def write_yaml(entries: list[dict]) -> int:
     lines: list[str] = [
         "# Generated by scripts/update_publication_figures.py.",
         "# PubMed Central figures are indexed from open full-text article pages.",
+        "# Remote image URLs are intentionally omitted; templates render local repo images only.",
         "",
     ]
+    written = 0
     for entry in entries:
+        figures = local_figures(entry.get("figures"))
+        if not figures:
+            continue
+        written += 1
         lines.append(f"- doi: {yaml_scalar(entry.get('doi', ''))}")
         if entry.get("openalex"):
             lines.append(f"  openalex: {yaml_scalar(entry['openalex'])}")
@@ -421,7 +413,7 @@ def write_yaml(entries: list[dict]) -> None:
         if entry.get("source"):
             lines.append(f"  source: {yaml_scalar(entry['source'])}")
         lines.append("  figures:")
-        for fig in entry.get("figures") or []:
+        for fig in figures:
             lines.append(f"    - img: {yaml_scalar(fig.get('img', ''))}")
             if fig.get("href"):
                 lines.append(f"      href: {yaml_scalar(fig['href'])}")
@@ -429,12 +421,51 @@ def write_yaml(entries: list[dict]) -> None:
             lines.append(f"      caption: {yaml_scalar(fig.get('caption', ''))}")
         lines.append("")
     OUT.write_text("\n".join(lines), encoding="utf-8")
+    return written
+
+
+def compact_work(work: dict) -> dict:
+    source = ((work.get("primary_location") or {}).get("source") or {}).get("display_name") or ""
+    authors = []
+    for authorship in work.get("authorships") or []:
+        author = authorship.get("author") or {}
+        display_name = author.get("display_name")
+        if display_name:
+            authors.append({"author": {"display_name": display_name}})
+
+    return {
+        "id": work.get("id") or "",
+        "doi": work.get("doi") or "",
+        "title": work.get("title") or "",
+        "publication_year": work.get("publication_year") or 0,
+        "cited_by_count": work.get("cited_by_count") or 0,
+        "open_access": {
+            "is_oa": bool((work.get("open_access") or {}).get("is_oa")),
+        },
+        "primary_location": {
+            "source": {
+                "display_name": source,
+            }
+        },
+        "authorships": authors,
+    }
+
+
+def write_publications_json(works: list[dict]) -> None:
+    compact = sorted(
+        (compact_work(work) for work in works),
+        key=lambda item: (item.get("cited_by_count") or 0, item.get("publication_year") or 0),
+        reverse=True,
+    )
+    PUBS_OUT.write_text(json.dumps(compact, ensure_ascii=True, indent=2), encoding="utf-8")
 
 
 def main() -> None:
     generated: list[dict] = []
     seen_dois: set[str] = set()
     works = openalex_works()
+    write_publications_json(works)
+    print(f"Wrote {len(works)} publication records to {PUBS_OUT.relative_to(ROOT)}")
     works_by_doi = {normalise_doi(work.get("doi")): work for work in works if normalise_doi(work.get("doi"))}
 
     def add_pmc_entry(doi: str, pmcid: str, work: dict | None) -> None:
@@ -442,11 +473,12 @@ def main() -> None:
         if not doi or doi in seen_dois:
             return
         try:
-            figures = extract_pmc_figures(pmcid)
+            figures = local_figures(extract_pmc_figures(pmcid))
         except Exception as exc:
             print(f"skip {doi} {pmcid}: {exc}")
             return
         if not figures:
+            print(f"skip {doi} {pmcid}: remote figures omitted")
             return
         generated.append(
             {
@@ -479,8 +511,8 @@ def main() -> None:
         generated.append(fallback)
 
     generated.sort(key=lambda item: (0 if item.get("source") == "PubMed Central" else 1, item.get("doi") or item.get("match") or ""))
-    write_yaml(generated)
-    print(f"Wrote {len(generated)} figure entries to {OUT.relative_to(ROOT)}")
+    written_figures = write_yaml(generated)
+    print(f"Wrote {written_figures} figure entries to {OUT.relative_to(ROOT)}")
 
 
 if __name__ == "__main__":

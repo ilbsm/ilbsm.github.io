@@ -29,7 +29,7 @@ permalink: /research/
 .rx-intro h1 {
   margin: 0 0 0.22rem;
   color: #063f55;
-  font-family: "Merriweather", serif;
+  font-family: var(--font-serif);
   font-size: clamp(2rem, 3.2vw, 3rem);
   line-height: 1.12;
 }
@@ -444,7 +444,7 @@ permalink: /research/
 .rx-join h2 {
   margin: 0 0 0.6rem;
   color: #fff;
-  font-family: "Merriweather", serif;
+  font-family: var(--font-serif);
   font-size: clamp(1.45rem, 2.2vw, 1.9rem);
   line-height: 1.18;
 }
@@ -727,17 +727,27 @@ body.rx-modal-lock {
     <div class="rx-domain-body" id="{{ domain.id }}-body">
       <div class="rx-figures{% if figure_count == 1 %} rx-figures-single{% endif %}">
         {% for figure in domain.figures %}
+        {% assign figure_img = figure.img | default: "" | strip %}
+        {% assign figure_img_lc = figure_img | downcase %}
+        {% assign figure_img_prefix = figure_img_lc | slice: 0, 2 %}
+        {% unless figure_img_lc contains "://" or figure_img_prefix == "//" or figure_img_lc contains "data:" %}
         <a class="rx-figure" href="{{ figure.href }}" target="_blank" rel="noopener noreferrer" style="max-width: {{ figure.width }}px">
           <div class="rx-figure-frame">
             <picture>
               {% if figure.img2x %}
-              <source srcset="{{ '/assets/img/' | append: figure.img2x | relative_url }} 2x">
+              {% assign figure_img2x = figure.img2x | default: "" | strip %}
+              {% assign figure_img2x_lc = figure_img2x | downcase %}
+              {% assign figure_img2x_prefix = figure_img2x_lc | slice: 0, 2 %}
+              {% unless figure_img2x_lc contains "://" or figure_img2x_prefix == "//" or figure_img2x_lc contains "data:" %}
+              <source srcset="{{ '/assets/images/' | append: figure.img2x | relative_url }} 2x">
+              {% endunless %}
               {% endif %}
-              <img src="{{ '/assets/img/' | append: figure.img | relative_url }}" width="{{ figure.width }}" height="{{ figure.height }}" alt="{{ figure.alt }}" loading="{% if domain_is_first %}eager{% else %}lazy{% endif %}">
+              <img src="{{ '/assets/images/' | append: figure.img | relative_url }}" width="{{ figure.width }}" height="{{ figure.height }}" alt="{{ figure.alt }}" loading="{% if domain_is_first %}eager{% else %}lazy{% endif %}">
             </picture>
           </div>
           <div class="rx-figure-cap">{{ figure.caption }}</div>
         </a>
+        {% endunless %}
         {% endfor %}
       </div>
 
@@ -765,6 +775,13 @@ body.rx-modal-lock {
     <h2 class="rx-section-label" id="rx-projects-title">Funded Research Projects</h2>
     <div class="rx-project-grid">
       {% for project in funded_projects %}
+      {% assign project_image = project.image | default: "" | strip %}
+      {% assign project_image_lc = project_image | downcase %}
+      {% assign project_image_prefix = project_image_lc | slice: 0, 2 %}
+      {% assign project_image_is_local = true %}
+      {% if project_image_lc contains "://" or project_image_prefix == "//" or project_image_lc contains "data:" %}
+      {% assign project_image_is_local = false %}
+      {% endif %}
       <button class="rx-project-card" type="button"
               onclick="rxOpenProject(this)"
               data-project-id="{{ project.id | escape }}"
@@ -774,10 +791,12 @@ body.rx-modal-lock {
               data-meta="{{ project.meta | escape }}"
               data-polish-title="{{ project.polish_title | escape }}"
               data-summary="{{ project.summary | escape }}"
-              data-image="{{ project.image | relative_url }}"
+              data-image="{% if project_image_is_local %}{{ project.image | relative_url }}{% endif %}"
               data-alt="{{ project.alt | escape }}">
         <span class="rx-project-img{% if project.cover %} rx-cover{% endif %}">
+          {% if project_image_is_local %}
           <img src="{{ project.image | relative_url }}" alt="{{ project.alt | escape }}" loading="lazy">
+          {% endif %}
         </span>
         <span class="rx-project-top">
           <span class="rx-project-badge {{ project.badge_class }}">{{ project.badge }}</span>
@@ -880,8 +899,13 @@ function rxOpenProject(button) {
 
   badge.className = 'rx-modal-badge ' + (button.dataset.badgeClass || '');
   badge.textContent = button.dataset.badge || '';
-  image.src = button.dataset.image || '';
-  image.alt = button.dataset.alt || '';
+  if (button.dataset.image && !/^(?:https?:)?\/\//i.test(button.dataset.image) && !/^data:/i.test(button.dataset.image)) {
+    image.src = button.dataset.image;
+    image.alt = button.dataset.alt || '';
+  } else {
+    image.removeAttribute('src');
+    image.alt = '';
+  }
 
   if (typeof modal.showModal === 'function') modal.showModal();
   else modal.setAttribute('open', '');

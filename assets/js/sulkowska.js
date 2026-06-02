@@ -1,6 +1,78 @@
 (function () {
   "use strict";
 
+  function isExternalAssetUrl(raw) {
+    var value = String(raw || "").trim();
+    if (!value || value.charAt(0) === "#") return false;
+    if (/^data:/i.test(value)) return true;
+    if (!/^(?:https?:)?\/\//i.test(value)) return false;
+
+    try {
+      var url = new URL(value, window.location.href);
+      if (url.origin === window.location.origin) return false;
+      return !isAllowedExternalAssetUrl(url);
+    } catch (error) {
+      return true;
+    }
+  }
+
+  function isAllowedExternalAssetUrl(url) {
+    var host = url.hostname.toLowerCase();
+    var path = url.pathname || "";
+
+    if (host === "i.ytimg.com" || host.endsWith(".ytimg.com")) return true;
+    if ((host === "www.youtube.com" || host === "www.youtube-nocookie.com") && path.indexOf("/embed/") === 0) return true;
+    if (host === "www.google.com" && path.indexOf("/maps/embed") === 0) return true;
+    if (host === "www.facebook.com" && path.indexOf("/plugins/page.php") === 0) return true;
+
+    return false;
+  }
+
+  function scrubExternalAssets(root) {
+    var scope = root && root.querySelectorAll ? root : document;
+    var nodes = Array.prototype.slice.call(scope.querySelectorAll("img[src], img[srcset], source[srcset], iframe[src]"));
+
+    if (scope.matches && scope.matches("img[src], img[srcset], source[srcset], iframe[src]")) {
+      nodes.push(scope);
+    }
+
+    nodes.forEach(function (node) {
+      var src = node.getAttribute("src");
+      var srcset = node.getAttribute("srcset");
+      if (src && isExternalAssetUrl(src)) {
+        node.setAttribute("data-blocked-external-src", src);
+        node.removeAttribute("src");
+        if (node.tagName === "IFRAME") node.remove();
+      }
+      if (srcset && isExternalAssetUrl(srcset)) {
+        node.setAttribute("data-blocked-external-srcset", srcset);
+        node.removeAttribute("srcset");
+      }
+    });
+  }
+
+  function initAssetGuard() {
+    scrubExternalAssets(document);
+    if (!("MutationObserver" in window)) return;
+
+    new MutationObserver(function (mutations) {
+      mutations.forEach(function (mutation) {
+        if (mutation.type === "attributes") {
+          scrubExternalAssets(mutation.target);
+        } else {
+          mutation.addedNodes.forEach(function (node) {
+            if (node.nodeType === 1) scrubExternalAssets(node);
+          });
+        }
+      });
+    }).observe(document.documentElement, {
+      attributes: true,
+      attributeFilter: ["src", "srcset"],
+      childList: true,
+      subtree: true
+    });
+  }
+
   function initSlideshow() {
     var slides = Array.prototype.slice.call(document.querySelectorAll(".hero-slide"));
     var dots = Array.prototype.slice.call(document.querySelectorAll(".slide-dot"));
@@ -220,10 +292,12 @@
 
   if (document.readyState === "loading") {
     document.addEventListener("DOMContentLoaded", function () {
+      initAssetGuard();
       initSlideshow();
       initJumpNavs();
     });
   } else {
+    initAssetGuard();
     initSlideshow();
     initJumpNavs();
   }

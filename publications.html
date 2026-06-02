@@ -1,7 +1,7 @@
 ---
 layout: default
 title: "Publications — Sulkowska Lab"
-description: "Publications by the Sulkowska Lab — fetched live from OpenAlex."
+description: "Publications by the Sulkowska Lab from the local site data snapshot."
 permalink: /publications/
 ---
 
@@ -48,7 +48,7 @@ permalink: /publications/
   .psb-stats { display: grid; grid-template-columns: 1fr 1fr; gap: 0.6rem; }
   .psb-stat { background: #e8f1fb; border-radius: 8px; padding: 0.6rem 0.75rem; }
   .psb-stat-n {
-    font-family: 'Merriweather', serif; font-size: 1.3rem;
+    font-family: var(--font-serif); font-size: 1.3rem;
     font-weight: 900; color: #335fa8; line-height: 1;
   }
   .psb-stat-l {
@@ -735,7 +735,7 @@ permalink: /publications/
       </div>
 
       <div class="psb-section psb-live-section">
-        <div class="psb-live-status"><span class="ps-dot"></span> Live via OpenAlex</div>
+        <div class="psb-live-status"><span class="ps-dot"></span> Local data snapshot</div>
       </div>
 
       <div class="psb-section" id="pub-analytics-section">
@@ -776,7 +776,7 @@ permalink: /publications/
       </div>
       <div id="pub-loading" class="pub-loading">
         <div class="pub-spinner"></div>
-        <div>Loading publications from OpenAlex…</div>
+        <div>Loading local publication data...</div>
       </div>
       <div id="pub-list" class="pub-list" style="display:none"></div>
       <div id="pub-error" class="pub-error" style="display:none"></div>
@@ -802,8 +802,8 @@ document.addEventListener('DOMContentLoaded', function() {
   let _allPubs = [], _loaded = false;
   let _resultScrollTimer = null;
   const SITE_BASEURL = '{{ site.baseurl }}';
+  const LOCAL_PUBLICATIONS = {{ site.data.publications | jsonify }};
   const PUB_FIGURE_ENTRIES = {{ site.data.publication_figures | jsonify }};
-  const _citingCache = new Map();
 
   function focusResultsOnMobile() {
     if (!window.matchMedia('(max-width: 700px)').matches) return;
@@ -814,30 +814,11 @@ document.addEventListener('DOMContentLoaded', function() {
     }, 160);
   }
 
-  async function load() {
+  function load() {
     if (_loaded) return;
     _loaded = true;
     try {
-      const ar = await fetch('https://api.openalex.org/authors?search=Joanna+Sulkowska&filter=last_known_institutions.country_code:PL&per-page=5&mailto=contact@lab.uw.edu.pl');
-      const ad = await ar.json();
-      let authorId = null;
-      if (ad.results?.length) {
-        const best = ad.results.sort((a,b) => b.cited_by_count - a.cited_by_count)[0];
-        authorId = best.id.replace('https://openalex.org/', '');
-      }
-
-      let works = [], cursor = '*';
-      for (let i = 0; i < 2; i++) {
-        const url = authorId
-          ? `https://api.openalex.org/works?filter=author.id:${authorId}&sort=cited_by_count:desc&per-page=100&cursor=${cursor}&mailto=contact@lab.uw.edu.pl`
-          : `https://api.openalex.org/works?filter=author.display_name.search:Joanna+Sulkowska,institutions.country_code:PL&sort=cited_by_count:desc&per-page=100&cursor=${cursor}&mailto=contact@lab.uw.edu.pl`;
-        const wr = await fetch(url);
-        const wd = await wr.json();
-        if (!wd.results?.length) break;
-        works = works.concat(wd.results);
-        cursor = wd.meta?.next_cursor;
-        if (!cursor) break;
-      }
+      const works = Array.isArray(LOCAL_PUBLICATIONS) ? LOCAL_PUBLICATIONS : [];
       if (!works.length) throw new Error('No publications found');
 
       _allPubs = works;
@@ -848,7 +829,7 @@ document.addEventListener('DOMContentLoaded', function() {
       document.getElementById('pub-loading').style.display = 'none';
       const err = document.getElementById('pub-error');
       err.style.display = 'block';
-      err.innerHTML = `<strong>Could not load live data</strong> — ${e.message}. <a href="https://scholar.google.com/citations?user=BVBwiyAAAAAJ" target="_blank" rel="noopener noreferrer">View Google Scholar</a>`;
+      err.innerHTML = `<strong>Could not load local publication data</strong> - ${escapeHtml(e.message)}. <a href="https://scholar.google.com/citations?user=BVBwiyAAAAAJ" target="_blank" rel="noopener noreferrer">View Google Scholar</a>`;
     }
   }
 
@@ -992,10 +973,11 @@ document.addEventListener('DOMContentLoaded', function() {
   }
 
   function assetUrl(path) {
-    const src = String(path || '');
-    if (/^https?:\/\//i.test(src)) return src;
+    const src = String(path || '').trim();
+    if (!src || /^(?:https?:)?\/\//i.test(src) || /^data:/i.test(src)) return '';
     const cleanBase = SITE_BASEURL.replace(/\/$/, '');
     const cleanPath = src.startsWith('/') ? src : `/${src}`;
+    if (!cleanPath.startsWith('/assets/images/')) return '';
     return `${cleanBase}${cleanPath}`;
   }
 
@@ -1014,6 +996,7 @@ document.addEventListener('DOMContentLoaded', function() {
       alt: fig.alt || entry.label || 'Publication figure',
       caption: fig.caption || entry.label || 'Publication figure'
     }))).filter(fig => {
+      if (!fig.img) return false;
       const key = `${fig.img}|${fig.caption}`;
       if (seen.has(key)) return false;
       seen.add(key);
@@ -1044,38 +1027,6 @@ document.addEventListener('DOMContentLoaded', function() {
     return work?.id || '#';
   }
 
-  async function getCitingPapers(workId) {
-    if (_citingCache.has(workId)) return _citingCache.get(workId);
-    const url = `https://api.openalex.org/works?filter=cites:${encodeURIComponent(workId)}&sort=publication_date:desc&per-page=8&mailto=contact@lab.uw.edu.pl`;
-    const res = await fetch(url);
-    if (!res.ok) throw new Error(`OpenAlex returned ${res.status}`);
-    const data = await res.json();
-    const papers = data.results || [];
-    _citingCache.set(workId, papers);
-    return papers;
-  }
-
-  function renderCitingPapers(papers, workId) {
-    if (!papers.length) {
-      return '<div class="pub-panel-title">Citing papers</div><div class="pub-panel-note">OpenAlex has not listed citing papers for this publication yet.</div>';
-    }
-    return `
-      <div class="pub-panel-title">Recent citing papers from OpenAlex</div>
-      <div class="pub-citing-list">
-        ${papers.map(paper => {
-          const authors = escapeHtml((paper.authorships || []).slice(0, 3).map(a => a.author?.display_name || '').filter(Boolean).join(', '));
-          const more = (paper.authorships || []).length > 3 ? ' et al.' : '';
-          const journal = cleanJournal(paper.primary_location?.source?.display_name || '');
-          const year = paper.publication_year || '';
-          const cites = paper.cited_by_count || 0;
-          return `<a class="pub-citing-item" href="${escapeAttr(workUrl(paper))}" target="_blank" rel="noopener noreferrer">
-            <div class="pub-citing-title">${cleanTitle(paper.title)}</div>
-            <div class="pub-citing-meta">${authors}${more}${authors ? ' · ' : ''}${journal || 'OpenAlex'}${year ? ` · ${year}` : ''} · ${cites.toLocaleString()} cit.</div>
-          </a>`;
-        }).join('')}
-      </div>`;
-  }
-
   window.pubTogglePanel = function(panelId, btn) {
     const panel = document.getElementById(panelId);
     if (!panel) return;
@@ -1084,31 +1035,15 @@ document.addEventListener('DOMContentLoaded', function() {
     btn.classList.toggle('is-open', shouldOpen);
   };
 
-  window.pubToggleCitations = async function(panelId, workId, btn) {
-    const panel = document.getElementById(panelId);
-    if (!panel) return;
-    const shouldOpen = panel.hidden;
-    panel.hidden = !shouldOpen;
-    btn.classList.toggle('is-open', shouldOpen);
-    if (!shouldOpen || panel.dataset.loaded === 'true') return;
-
-    panel.innerHTML = '<div class="pub-panel-loading">Loading citing papers from OpenAlex...</div>';
-    try {
-      const papers = await getCitingPapers(workId);
-      panel.innerHTML = renderCitingPapers(papers, workId);
-      panel.dataset.loaded = 'true';
-    } catch (error) {
-      panel.innerHTML = `<div class="pub-panel-title">Citing papers</div><div class="pub-panel-note">Could not load citing papers right now. <a href="https://openalex.org/${escapeAttr(workId)}" target="_blank" rel="noopener noreferrer">Open this work in OpenAlex</a>.</div>`;
-    }
-  };
-
   window.pubOpenFigure = function(btn) {
     const box = document.getElementById('pub-lightbox');
     const img = document.getElementById('pub-lightbox-img');
     const caption = document.getElementById('pub-lightbox-caption');
     const source = document.getElementById('pub-lightbox-source');
     if (!box || !img || !caption || !source) return;
-    img.src = btn.dataset.img || '';
+    const nextImg = btn.dataset.img || '';
+    if (!nextImg || /^(?:https?:)?\/\//i.test(nextImg) || /^data:/i.test(nextImg)) return;
+    img.src = nextImg;
     img.alt = btn.dataset.alt || '';
     caption.textContent = btn.dataset.caption || btn.dataset.alt || 'Publication figure';
     if (btn.dataset.href) {
@@ -1207,20 +1142,13 @@ document.addEventListener('DOMContentLoaded', function() {
       const cites  = w.cited_by_count || 0;
       const workId = openAlexKey(w);
       const itemId = domId(workId || normaliseDoi(w.doi), `pub-${i}`);
-      const citingPanelId = `${itemId}-citing`;
       const figurePanelId = `${itemId}-figures`;
       const figures = figuresForWork(w);
       const externalLabel = w.doi ? 'DOI ↗' : 'OpenAlex ↗';
       const oaBadge = w.open_access?.is_oa
         ? ' <span style="font-size:0.65rem;font-weight:700;color:#4d7fb0;background:#d9e9f7;padding:1px 5px;border-radius:8px;margin-left:3px">OA</span>' : '';
-      const citingAction = workId && cites > 0
-        ? `<button class="pub-action" type="button" onclick="pubToggleCitations('${citingPanelId}', '${workId}', this)">Citing papers <span class="pub-action-count">${cites.toLocaleString()}</span></button>`
-        : '';
       const figureAction = figures.length
         ? `<button class="pub-action" type="button" onclick="pubTogglePanel('${figurePanelId}', this)">Figures <span class="pub-action-count">${figures.length}</span></button>`
-        : '';
-      const citingPanel = citingAction
-        ? `<div class="pub-panel pub-citing-panel" id="${citingPanelId}" hidden></div>`
         : '';
       const figurePanel = figures.length
         ? `<div class="pub-panel pub-figure-panel" id="${figurePanelId}" hidden>
@@ -1239,11 +1167,9 @@ document.addEventListener('DOMContentLoaded', function() {
           <div class="pub-title"><a class="pub-title-link" href="${escapeAttr(url)}" target="_blank" rel="noopener noreferrer">${cleanTitle(w.title)}${oaBadge}</a></div>
           <div class="pub-meta">${auths || 'Unknown authors'}${more} · <em>${journal||'—'}</em> · ${year}</div>
           <div class="pub-actions">
-            ${citingAction}
             ${figureAction}
             <a class="pub-mini-link" href="${escapeAttr(url)}" target="_blank" rel="noopener noreferrer">${externalLabel}</a>
           </div>
-          ${citingPanel}
           ${figurePanel}
         </div>
         <div class="pub-cites">${cites.toLocaleString()} cit.</div>

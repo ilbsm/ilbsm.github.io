@@ -33,7 +33,7 @@ permalink: /topics/
 .tp-hero-title {
   margin: 0 0 0.22rem;
   color: #073f55;
-  font-family: "Merriweather", serif;
+  font-family: var(--font-serif);
   font-size: clamp(2.35rem, 4vw, 3.15rem);
   line-height: 1.12;
 }
@@ -369,7 +369,12 @@ permalink: /topics/
         <a class="tp-card" href="{{ card.url }}" target="_blank" rel="noopener noreferrer" style="--section-color: {{ section.color }}">
           <div class="tp-card-img{% if card.img_dark %} tp-dark{% endif %}"{% if card.img_bg %} style="--card-bg: {{ card.img_bg }}"{% endif %}>
             {% if card.img %}
+            {% assign card_img = card.img | default: "" | strip %}
+            {% assign card_img_lc = card_img | downcase %}
+            {% assign card_img_prefix = card_img_lc | slice: 0, 2 %}
+            {% unless card_img_lc contains "://" or card_img_prefix == "//" or card_img_lc contains "data:" %}
             <img src="{{ card.img | relative_url }}" alt="{{ card.img_alt | default: card.name }}" loading="lazy">
+            {% endunless %}
             {% elsif card.img_logo_html %}
             <div class="tp-logo">{{ card.img_logo_html }}</div>
             {% endif %}

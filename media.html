@@ -46,8 +46,7 @@ permalink: /media/
 .mg-item { position: relative; overflow: hidden; border-radius: var(--radius-md); aspect-ratio: 4/3; cursor: pointer; background: #f0ede8; }
 .mg-item img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.4s ease; }
 .mg-item:hover img { transform: scale(1.04); }
-.mg-caption { position: absolute; bottom: 0; left: 0; right: 0; padding: var(--space-2) var(--space-3); background: linear-gradient(transparent,rgba(0,0,0,0.6)); color: white; font-size: var(--text-xs); opacity: 0; transition: opacity 0.25s ease; pointer-events: none; }
-.mg-item:hover .mg-caption { opacity: 1; }
+.mg-caption { display: none; }
 .med-show-more { text-align: center; margin-top: 0.5rem; }
 .med-show-btn,
 .med-archive-toggle {
@@ -67,16 +66,33 @@ permalink: /media/
   background: #fff;
 }
 
-.mg-lightbox { display:none; position:fixed; inset:0; background:rgba(0,0,0,0.92); z-index:1000; align-items:center; justify-content:center; }
+.mg-lightbox {
+  display:none; position:fixed; inset:0; z-index:9000;
+  align-items:center; justify-content:center;
+  padding: clamp(3.5rem, 6vw, 5rem) clamp(1rem, 5vw, 4.5rem);
+  background:rgba(5,12,24,0.92);
+  box-sizing: border-box;
+}
 .mg-lightbox.open { display:flex; }
-.mg-lb-wrap { position:relative; max-width:90vw; max-height:90vh; }
-.mg-lb-wrap img { max-width:90vw; max-height:86vh; border-radius:var(--radius-md); object-fit:contain; }
-.mg-lb-close,.mg-lb-prev,.mg-lb-next { position:absolute; background:rgba(255,255,255,0.12); border:none; color:white; border-radius:var(--radius-full); cursor:pointer; transition:background var(--transition); font-family: inherit; font-size:0.78rem; font-weight:800; min-width:40px; height:40px; padding:0 0.85rem; display:flex; align-items:center; justify-content:center; }
-.mg-lb-close:hover,.mg-lb-prev:hover,.mg-lb-next:hover { background:rgba(255,255,255,0.28); }
-.mg-lb-close { top:-50px; right:0; }
-.mg-lb-prev { left:-56px; top:50%; transform:translateY(-50%); }
-.mg-lb-next { right:-56px; top:50%; transform:translateY(-50%); }
-.mg-lb-cap { color:rgba(255,255,255,0.75); font-size:var(--text-xs); text-align:center; margin-top:var(--space-3); }
+.mg-lb-wrap { position:relative; max-width:min(94vw, 1400px); max-height:calc(100vh - 7rem); display:flex; align-items:center; justify-content:center; }
+.mg-lb-wrap img { max-width:100%; max-height:calc(100vh - 7rem); border-radius:var(--radius-md); object-fit:contain; box-shadow:0 20px 70px rgba(0,0,0,0.38); }
+.mg-lb-close,.mg-lb-prev,.mg-lb-next {
+  position:fixed; width:48px; min-width:48px; height:48px; padding:0;
+  display:flex; align-items:center; justify-content:center;
+  border:1px solid rgba(255,255,255,0.22); border-radius:var(--radius-full);
+  background:rgba(12,22,38,0.58); color:white; cursor:pointer;
+  box-shadow:0 10px 30px rgba(0,0,0,0.22);
+  backdrop-filter: blur(8px);
+  transition:background var(--transition), border-color var(--transition), transform var(--transition);
+}
+.mg-lb-close:hover,.mg-lb-prev:hover,.mg-lb-next:hover { background:rgba(255,255,255,0.22); border-color:rgba(255,255,255,0.38); }
+.mg-lb-close { top:clamp(0.85rem, 2vw, 1.4rem); right:clamp(0.85rem, 2vw, 1.4rem); }
+.mg-lb-prev,.mg-lb-next { top:50%; transform:translateY(-50%); }
+.mg-lb-prev { left:clamp(0.75rem, 2.8vw, 2rem); }
+.mg-lb-next { right:clamp(0.75rem, 2.8vw, 2rem); }
+.mg-lb-prev:hover { transform:translateY(-50%) translateX(-2px); }
+.mg-lb-next:hover { transform:translateY(-50%) translateX(2px); }
+.mg-lb-cap { display: none; }
 
 .med-video-section .hp-row-head {
   align-items: center;
@@ -802,6 +818,37 @@ permalink: /media/
     justify-content: center;
     margin-top: 0.75rem;
   }
+  .mg-lightbox {
+    padding: 4rem 0.75rem 5rem;
+  }
+  .mg-lb-wrap,
+  .mg-lb-wrap img {
+    max-height: calc(100vh - 9rem);
+  }
+  .mg-lb-close {
+    width: 44px;
+    min-width: 44px;
+    height: 44px;
+  }
+  .mg-lb-prev,
+  .mg-lb-next {
+    top: auto;
+    bottom: 1rem;
+    width: 52px;
+    min-width: 52px;
+    height: 52px;
+    transform: none;
+  }
+  .mg-lb-prev,
+  .mg-lb-prev:hover {
+    left: calc(50% - 4rem);
+    transform: none;
+  }
+  .mg-lb-next,
+  .mg-lb-next:hover {
+    right: calc(50% - 4rem);
+    transform: none;
+  }
 }
 </style>
 
@@ -828,71 +875,71 @@ permalink: /media/
       </button>
     </div>
     <div class="med-gallery-grid" id="mg-grid">
-      <div class="mg-item" data-cat="group"><img src="{{ '/assets/img/media/gallery/72eECOe.jpeg' | relative_url }}" alt="Lab members — group photo" loading="lazy"/><div class="mg-caption">Lab members — group photo</div></div>
-      <div class="mg-item" data-cat="group"><img src="{{ '/assets/img/media/gallery/bg6fQOH.jpeg' | relative_url }}" alt="Lab gathering" loading="lazy"/><div class="mg-caption">Lab gathering</div></div>
-      <div class="mg-item" data-cat="group"><img src="{{ '/assets/img/media/gallery/Yf5CkxL.jpeg' | relative_url }}" alt="Lab meeting" loading="lazy"/><div class="mg-caption">Lab meeting</div></div>
-      <div class="mg-item" data-cat="group"><img src="{{ '/assets/img/media/gallery/FBUwdRU.jpeg' | relative_url }}" alt="Team at CeNT" loading="lazy"/><div class="mg-caption">Team at CeNT</div></div>
-      <div class="mg-item" data-cat="group"><img src="{{ '/assets/img/media/gallery/upIza2H.jpeg' | relative_url }}" alt="Lab members" loading="lazy"/><div class="mg-caption">Lab members</div></div>
-      <div class="mg-item" data-cat="group"><img src="{{ '/assets/img/media/gallery/gCyo6II.jpeg' | relative_url }}" alt="Lab at work" loading="lazy"/><div class="mg-caption">Lab at work</div></div>
-      <div class="mg-item" data-cat="group"><img src="{{ '/assets/img/media/gallery/Ftc6Frx.jpeg' | relative_url }}" alt="Lab social event" loading="lazy"/><div class="mg-caption">Lab social event</div></div>
-      <div class="mg-item" data-cat="group"><img src="{{ '/assets/img/media/gallery/KOV9l7B.png' | relative_url }}" alt="Adam Stasiulewicz PhD defense" loading="lazy"/><div class="mg-caption">Adam Stasiulewicz PhD defense</div></div>
-      <div class="mg-item" data-cat="group"><img src="{{ '/assets/img/media/gallery/3h9RGF1.jpeg' | relative_url }}" alt="Group photo outdoors" loading="lazy"/><div class="mg-caption">Group photo outdoors</div></div>
-      <div class="mg-item" data-cat="group"><img src="{{ '/assets/img/media/gallery/7Z1NE9M.jpeg' | relative_url }}" alt="Lab meeting — Teatr Nowy" loading="lazy"/><div class="mg-caption">Lab meeting — Teatr Nowy</div></div>
-      <div class="mg-item" data-cat="group"><img src="{{ '/assets/img/media/gallery/GzPEZ6J.jpeg' | relative_url }}" alt="TrmD inhibitors — wet lab" loading="lazy"/><div class="mg-caption">TrmD inhibitors — wet lab</div></div>
-      <div class="mg-item" data-cat="group"><img src="{{ '/assets/img/media/gallery/iwDwR4k.jpeg' | relative_url }}" alt="Lab life — miscellaneous" loading="lazy"/><div class="mg-caption">Lab life — miscellaneous</div></div>
-      <div class="mg-item" data-cat="group"><img src="{{ '/assets/img/media/gallery/FXLBMFD.jpeg' | relative_url }}" alt="Lab celebration" loading="lazy"/><div class="mg-caption">Lab celebration</div></div>
-      <div class="mg-item" data-cat="group"><img src="{{ '/assets/img/media/gallery/uHnbEK3.jpeg' | relative_url }}" alt="Lab members" loading="lazy"/><div class="mg-caption">Lab members</div></div>
-      <div class="mg-item" data-cat="group"><img src="{{ '/assets/img/media/gallery/8zPFRK2.jpeg' | relative_url }}" alt="Group photo" loading="lazy"/><div class="mg-caption">Group photo</div></div>
-      <div class="mg-item" data-cat="group"><img src="{{ '/assets/img/media/gallery/boOgt0G.jpeg' | relative_url }}" alt="Group outing" loading="lazy"/><div class="mg-caption">Group outing</div></div>
-      <div class="mg-item" data-cat="group"><img src="{{ '/assets/img/media/gallery/D8f81Pn.jpeg' | relative_url }}" alt="Lab social" loading="lazy"/><div class="mg-caption">Lab social</div></div>
-      <div class="mg-item" data-cat="group"><img src="{{ '/assets/img/media/gallery/wse8hJq.jpeg' | relative_url }}" alt="Team" loading="lazy"/><div class="mg-caption">Team</div></div>
-      <div class="mg-item" data-cat="conf"><img src="{{ '/assets/img/media/gallery/leXzRKe.jpeg' | relative_url }}" alt="San Sebastián — Eutopia-2" loading="lazy"/><div class="mg-caption">San Sebastián — Eutopia-2</div></div>
-      <div class="mg-item" data-cat="conf"><img src="{{ '/assets/img/media/gallery/e8qGQU5.jpeg' | relative_url }}" alt="Conference presentation" loading="lazy"/><div class="mg-caption">Conference presentation</div></div>
-      <div class="mg-item" data-cat="conf"><img src="{{ '/assets/img/media/gallery/azVpQn2.jpeg' | relative_url }}" alt="Sofia workshop 2021" loading="lazy"/><div class="mg-caption">Sofia workshop 2021</div></div>
-      <div class="mg-item" data-cat="conf"><img src="{{ '/assets/img/media/gallery/2a8mLXc.jpeg' | relative_url }}" alt="Conference talk" loading="lazy"/><div class="mg-caption">Conference talk</div></div>
-      <div class="mg-item" data-cat="conf"><img src="{{ '/assets/img/media/gallery/X1AHi2f.jpeg' | relative_url }}" alt="Poster session" loading="lazy"/><div class="mg-caption">Poster session</div></div>
-      <div class="mg-item" data-cat="conf"><img src="{{ '/assets/img/media/gallery/9j2Qfrq.jpeg' | relative_url }}" alt="International meeting" loading="lazy"/><div class="mg-caption">International meeting</div></div>
-      <div class="mg-item" data-cat="conf"><img src="{{ '/assets/img/media/gallery/5w3IANU.jpeg' | relative_url }}" alt="Conference networking" loading="lazy"/><div class="mg-caption">Conference networking</div></div>
-      <div class="mg-item" data-cat="conf"><img src="{{ '/assets/img/media/gallery/A05S51P.jpeg' | relative_url }}" alt="Scientific workshop" loading="lazy"/><div class="mg-caption">Scientific workshop</div></div>
-      <div class="mg-item" data-cat="conf"><img src="{{ '/assets/img/media/gallery/srOe36v.jpeg' | relative_url }}" alt="Conference group" loading="lazy"/><div class="mg-caption">Conference group</div></div>
-      <div class="mg-item" data-cat="conf"><img src="{{ '/assets/img/media/gallery/8ZerPF5.jpeg' | relative_url }}" alt="Conference" loading="lazy"/><div class="mg-caption">Conference</div></div>
-      <div class="mg-item" data-cat="conf"><img src="{{ '/assets/img/media/gallery/lmyYTI6.jpeg' | relative_url }}" alt="Workshop" loading="lazy"/><div class="mg-caption">Workshop</div></div>
-      <div class="mg-item" data-cat="conf"><img src="{{ '/assets/img/media/gallery/CSNpH97.jpeg' | relative_url }}" alt="Scientific meeting" loading="lazy"/><div class="mg-caption">Scientific meeting</div></div>
-      <div class="mg-item" data-cat="conf"><img src="{{ '/assets/img/media/gallery/yn3ABXv.jpeg' | relative_url }}" alt="Scientific gathering" loading="lazy"/><div class="mg-caption">Scientific gathering</div></div>
-      <div class="mg-item" data-cat="ourconf"><img src="{{ '/assets/img/media/gallery/3QE20KI.jpeg' | relative_url }}" alt="Protein DICES 2025" loading="lazy"/><div class="mg-caption">Protein DICES 2025</div></div>
-      <div class="mg-item" data-cat="ourconf"><img src="{{ '/assets/img/media/gallery/fnbO3P0.jpeg' | relative_url }}" alt="Organized workshop" loading="lazy"/><div class="mg-caption">Organized workshop</div></div>
-      <div class="mg-item" data-cat="ourconf"><img src="{{ '/assets/img/media/gallery/ILNsbtO.jpeg' | relative_url }}" alt="Lab-organized workshop" loading="lazy"/><div class="mg-caption">Lab-organized workshop</div></div>
-      <div class="mg-item" data-cat="ourconf"><img src="{{ '/assets/img/media/gallery/ucuDeWF.jpeg' | relative_url }}" alt="Workshop speakers" loading="lazy"/><div class="mg-caption">Workshop speakers</div></div>
-      <div class="mg-item" data-cat="ourconf"><img src="{{ '/assets/img/media/gallery/FDffXls.jpeg' | relative_url }}" alt="Conference opening" loading="lazy"/><div class="mg-caption">Conference opening</div></div>
-      <div class="mg-item" data-cat="ourconf"><img src="{{ '/assets/img/media/gallery/XaRUA0P.jpeg' | relative_url }}" alt="Workshop participants" loading="lazy"/><div class="mg-caption">Workshop participants</div></div>
-      <div class="mg-item" data-cat="ourconf"><img src="{{ '/assets/img/media/gallery/8gz5gsI.jpeg' | relative_url }}" alt="Symposium" loading="lazy"/><div class="mg-caption">Symposium</div></div>
-      <div class="mg-item" data-cat="kfnd"><img src="{{ '/assets/img/media/gallery/LUyk3jp.jpeg' | relative_url }}" alt="Polish Children's Fund — workshop" loading="lazy"/><div class="mg-caption">Polish Children's Fund — workshop</div></div>
-      <div class="mg-item" data-cat="kfnd"><img src="{{ '/assets/img/media/gallery/4UWYf9v.jpeg' | relative_url }}" alt="Biophysics for talented youths" loading="lazy"/><div class="mg-caption">Biophysics for talented youths</div></div>
-      <div class="mg-item" data-cat="kfnd"><img src="{{ '/assets/img/media/gallery/4dgy6Tq.jpeg' | relative_url }}" alt="Science workshop" loading="lazy"/><div class="mg-caption">Science workshop</div></div>
-      <div class="mg-item" data-cat="kfnd"><img src="{{ '/assets/img/media/gallery/XW55Jnp.jpeg' | relative_url }}" alt="Children's Fund workshop 2016" loading="lazy"/><div class="mg-caption">Children's Fund workshop 2016</div></div>
-      <div class="mg-item" data-cat="kfnd"><img src="{{ '/assets/img/media/gallery/eHXcKmC.jpeg' | relative_url }}" alt="Workshop with students" loading="lazy"/><div class="mg-caption">Workshop with students</div></div>
-      <div class="mg-item" data-cat="kfnd"><img src="{{ '/assets/img/media/gallery/xuEOB26.jpeg' | relative_url }}" alt="Science outreach" loading="lazy"/><div class="mg-caption">Science outreach</div></div>
-      <div class="mg-item" data-cat="kfnd"><img src="{{ '/assets/img/media/gallery/UXkGDg3.jpeg' | relative_url }}" alt="Young scientists workshop" loading="lazy"/><div class="mg-caption">Young scientists workshop</div></div>
-      <div class="mg-item" data-cat="kfnd"><img src="{{ '/assets/img/media/gallery/uJuGz7U.jpeg' | relative_url }}" alt="Polish Children's Fund 2017" loading="lazy"/><div class="mg-caption">Polish Children's Fund 2017</div></div>
-      <div class="mg-item" data-cat="kfnd"><img src="{{ '/assets/img/media/gallery/85Z2QG6.jpeg' | relative_url }}" alt="Outreach activity" loading="lazy"/><div class="mg-caption">Outreach activity</div></div>
-      <div class="mg-item" data-cat="kfnd"><img src="{{ '/assets/img/media/gallery/toyimyG.jpeg' | relative_url }}" alt="DOKO — workshops for children" loading="lazy"/><div class="mg-caption">DOKO — workshops for children</div></div>
-      <div class="mg-item" data-cat="kfnd"><img src="{{ '/assets/img/media/gallery/cRYQnJe.jpeg' | relative_url }}" alt="Children's Fund — Serock" loading="lazy"/><div class="mg-caption">Children's Fund — Serock</div></div>
-      <div class="mg-item" data-cat="kfnd"><img src="{{ '/assets/img/media/gallery/x98ooAO.jpeg' | relative_url }}" alt="Science cafeteria — PAN" loading="lazy"/><div class="mg-caption">Science cafeteria — PAN</div></div>
-      <div class="mg-item" data-cat="kfnd"><img src="{{ '/assets/img/media/gallery/5XSbg3x.jpeg' | relative_url }}" alt="Universytet Dzieci lecture" loading="lazy"/><div class="mg-caption">Universytet Dzieci lecture</div></div>
-      <div class="mg-item" data-cat="kfnd"><img src="{{ '/assets/img/media/gallery/U0eIPNW.jpeg' | relative_url }}" alt="Children's Fund 2007" loading="lazy"/><div class="mg-caption">Children's Fund 2007</div></div>
-      <div class="mg-item" data-cat="kfnd"><img src="{{ '/assets/img/media/gallery/4Ql2ZqD.jpeg' | relative_url }}" alt="Science for children" loading="lazy"/><div class="mg-caption">Science for children</div></div>
-      <div class="mg-item" data-cat="kfnd"><img src="{{ '/assets/img/media/gallery/vjJrgVS.jpeg' | relative_url }}" alt="Workshop activity" loading="lazy"/><div class="mg-caption">Workshop activity</div></div>
-      <div class="mg-item" data-cat="kfnd"><img src="{{ '/assets/img/media/gallery/j0OpJNv.jpeg' | relative_url }}" alt="Young researchers" loading="lazy"/><div class="mg-caption">Young researchers</div></div>
-      <div class="mg-item" data-cat="kfnd"><img src="{{ '/assets/img/media/gallery/VyogMfM.jpeg' | relative_url }}" alt="Biophysics workshop" loading="lazy"/><div class="mg-caption">Biophysics workshop</div></div>
-      <div class="mg-item" data-cat="kfnd"><img src="{{ '/assets/img/media/gallery/iPwWCft.jpeg' | relative_url }}" alt="Outreach" loading="lazy"/><div class="mg-caption">Outreach</div></div>
-      <div class="mg-item" data-cat="kfnd"><img src="{{ '/assets/img/media/gallery/ItFPGjp.jpeg' | relative_url }}" alt="Children's science day" loading="lazy"/><div class="mg-caption">Children's science day</div></div>
-      <div class="mg-item" data-cat="kfnd"><img src="{{ '/assets/img/media/gallery/XuLKKDU.jpeg' | relative_url }}" alt="Outreach 2018" loading="lazy"/><div class="mg-caption">Outreach 2018</div></div>
-      <div class="mg-item" data-cat="kfnd"><img src="{{ '/assets/img/media/gallery/9yWQ1ZA.jpeg' | relative_url }}" alt="Science cafeteria" loading="lazy"/><div class="mg-caption">Science cafeteria</div></div>
-      <div class="mg-item" data-cat="kfnd"><img src="{{ '/assets/img/media/gallery/fEKhZYl.jpeg' | relative_url }}" alt="Children's Fund activity" loading="lazy"/><div class="mg-caption">Children's Fund activity</div></div>
-      <div class="mg-item" data-cat="kfnd"><img src="{{ '/assets/img/media/gallery/looiWL6.jpeg' | relative_url }}" alt="Polish Children's Fund" loading="lazy"/><div class="mg-caption">Polish Children's Fund</div></div>
-      <div class="mg-item" data-cat="kfnd"><img src="{{ '/assets/img/media/gallery/jWKKlvr.jpeg' | relative_url }}" alt="Science outreach" loading="lazy"/><div class="mg-caption">Science outreach</div></div>
-      <div class="mg-item" data-cat="kfnd"><img src="{{ '/assets/img/media/gallery/pwdk6Nm.jpeg' | relative_url }}" alt="Young scientists" loading="lazy"/><div class="mg-caption">Young scientists</div></div>
-      <div class="mg-item" data-cat="kfnd"><img src="{{ '/assets/img/media/gallery/EZVYtPT.jpeg' | relative_url }}" alt="Children's Fund activity" loading="lazy"/><div class="mg-caption">Children's Fund activity</div></div>
+      <div class="mg-item" data-cat="group"><img src="{{ '/assets/images/media/gallery/72eECOe.jpeg' | relative_url }}" alt="Lab members — group photo" loading="lazy"/><div class="mg-caption">Lab members — group photo</div></div>
+      <div class="mg-item" data-cat="group"><img src="{{ '/assets/images/media/gallery/bg6fQOH.jpeg' | relative_url }}" alt="Lab gathering" loading="lazy"/><div class="mg-caption">Lab gathering</div></div>
+      <div class="mg-item" data-cat="group"><img src="{{ '/assets/images/media/gallery/Yf5CkxL.jpeg' | relative_url }}" alt="Lab meeting" loading="lazy"/><div class="mg-caption">Lab meeting</div></div>
+      <div class="mg-item" data-cat="group"><img src="{{ '/assets/images/media/gallery/FBUwdRU.jpeg' | relative_url }}" alt="Team at CeNT" loading="lazy"/><div class="mg-caption">Team at CeNT</div></div>
+      <div class="mg-item" data-cat="group"><img src="{{ '/assets/images/media/gallery/upIza2H.jpeg' | relative_url }}" alt="Lab members" loading="lazy"/><div class="mg-caption">Lab members</div></div>
+      <div class="mg-item" data-cat="group"><img src="{{ '/assets/images/media/gallery/gCyo6II.jpeg' | relative_url }}" alt="Lab at work" loading="lazy"/><div class="mg-caption">Lab at work</div></div>
+      <div class="mg-item" data-cat="group"><img src="{{ '/assets/images/media/gallery/Ftc6Frx.jpeg' | relative_url }}" alt="Lab social event" loading="lazy"/><div class="mg-caption">Lab social event</div></div>
+      <div class="mg-item" data-cat="group"><img src="{{ '/assets/images/media/gallery/KOV9l7B.png' | relative_url }}" alt="Adam Stasiulewicz PhD defense" loading="lazy"/><div class="mg-caption">Adam Stasiulewicz PhD defense</div></div>
+      <div class="mg-item" data-cat="group"><img src="{{ '/assets/images/media/gallery/3h9RGF1.jpeg' | relative_url }}" alt="Group photo outdoors" loading="lazy"/><div class="mg-caption">Group photo outdoors</div></div>
+      <div class="mg-item" data-cat="group"><img src="{{ '/assets/images/media/gallery/7Z1NE9M.jpeg' | relative_url }}" alt="Lab meeting — Teatr Nowy" loading="lazy"/><div class="mg-caption">Lab meeting — Teatr Nowy</div></div>
+      <div class="mg-item" data-cat="group"><img src="{{ '/assets/images/media/gallery/GzPEZ6J.jpeg' | relative_url }}" alt="TrmD inhibitors — wet lab" loading="lazy"/><div class="mg-caption">TrmD inhibitors — wet lab</div></div>
+      <div class="mg-item" data-cat="group"><img src="{{ '/assets/images/media/gallery/iwDwR4k.jpeg' | relative_url }}" alt="Lab life — miscellaneous" loading="lazy"/><div class="mg-caption">Lab life — miscellaneous</div></div>
+      <div class="mg-item" data-cat="group"><img src="{{ '/assets/images/media/gallery/FXLBMFD.jpeg' | relative_url }}" alt="Lab celebration" loading="lazy"/><div class="mg-caption">Lab celebration</div></div>
+      <div class="mg-item" data-cat="group"><img src="{{ '/assets/images/media/gallery/uHnbEK3.jpeg' | relative_url }}" alt="Lab members" loading="lazy"/><div class="mg-caption">Lab members</div></div>
+      <div class="mg-item" data-cat="group"><img src="{{ '/assets/images/media/gallery/8zPFRK2.jpeg' | relative_url }}" alt="Group photo" loading="lazy"/><div class="mg-caption">Group photo</div></div>
+      <div class="mg-item" data-cat="group"><img src="{{ '/assets/images/media/gallery/boOgt0G.jpeg' | relative_url }}" alt="Group outing" loading="lazy"/><div class="mg-caption">Group outing</div></div>
+      <div class="mg-item" data-cat="group"><img src="{{ '/assets/images/media/gallery/D8f81Pn.jpeg' | relative_url }}" alt="Lab social" loading="lazy"/><div class="mg-caption">Lab social</div></div>
+      <div class="mg-item" data-cat="group"><img src="{{ '/assets/images/media/gallery/wse8hJq.jpeg' | relative_url }}" alt="Team" loading="lazy"/><div class="mg-caption">Team</div></div>
+      <div class="mg-item" data-cat="conf"><img src="{{ '/assets/images/media/gallery/leXzRKe.jpeg' | relative_url }}" alt="San Sebastián — Eutopia-2" loading="lazy"/><div class="mg-caption">San Sebastián — Eutopia-2</div></div>
+      <div class="mg-item" data-cat="conf"><img src="{{ '/assets/images/media/gallery/e8qGQU5.jpeg' | relative_url }}" alt="Conference presentation" loading="lazy"/><div class="mg-caption">Conference presentation</div></div>
+      <div class="mg-item" data-cat="conf"><img src="{{ '/assets/images/media/gallery/azVpQn2.jpeg' | relative_url }}" alt="Sofia workshop 2021" loading="lazy"/><div class="mg-caption">Sofia workshop 2021</div></div>
+      <div class="mg-item" data-cat="conf"><img src="{{ '/assets/images/media/gallery/2a8mLXc.jpeg' | relative_url }}" alt="Conference talk" loading="lazy"/><div class="mg-caption">Conference talk</div></div>
+      <div class="mg-item" data-cat="conf"><img src="{{ '/assets/images/media/gallery/X1AHi2f.jpeg' | relative_url }}" alt="Poster session" loading="lazy"/><div class="mg-caption">Poster session</div></div>
+      <div class="mg-item" data-cat="conf"><img src="{{ '/assets/images/media/gallery/9j2Qfrq.jpeg' | relative_url }}" alt="International meeting" loading="lazy"/><div class="mg-caption">International meeting</div></div>
+      <div class="mg-item" data-cat="conf"><img src="{{ '/assets/images/media/gallery/5w3IANU.jpeg' | relative_url }}" alt="Conference networking" loading="lazy"/><div class="mg-caption">Conference networking</div></div>
+      <div class="mg-item" data-cat="conf"><img src="{{ '/assets/images/media/gallery/A05S51P.jpeg' | relative_url }}" alt="Scientific workshop" loading="lazy"/><div class="mg-caption">Scientific workshop</div></div>
+      <div class="mg-item" data-cat="conf"><img src="{{ '/assets/images/media/gallery/srOe36v.jpeg' | relative_url }}" alt="Conference group" loading="lazy"/><div class="mg-caption">Conference group</div></div>
+      <div class="mg-item" data-cat="conf"><img src="{{ '/assets/images/media/gallery/8ZerPF5.jpeg' | relative_url }}" alt="Conference" loading="lazy"/><div class="mg-caption">Conference</div></div>
+      <div class="mg-item" data-cat="conf"><img src="{{ '/assets/images/media/gallery/lmyYTI6.jpeg' | relative_url }}" alt="Workshop" loading="lazy"/><div class="mg-caption">Workshop</div></div>
+      <div class="mg-item" data-cat="conf"><img src="{{ '/assets/images/media/gallery/CSNpH97.jpeg' | relative_url }}" alt="Scientific meeting" loading="lazy"/><div class="mg-caption">Scientific meeting</div></div>
+      <div class="mg-item" data-cat="conf"><img src="{{ '/assets/images/media/gallery/yn3ABXv.jpeg' | relative_url }}" alt="Scientific gathering" loading="lazy"/><div class="mg-caption">Scientific gathering</div></div>
+      <div class="mg-item" data-cat="ourconf"><img src="{{ '/assets/images/media/gallery/3QE20KI.jpeg' | relative_url }}" alt="Protein DICES 2025" loading="lazy"/><div class="mg-caption">Protein DICES 2025</div></div>
+      <div class="mg-item" data-cat="ourconf"><img src="{{ '/assets/images/media/gallery/fnbO3P0.jpeg' | relative_url }}" alt="Organized workshop" loading="lazy"/><div class="mg-caption">Organized workshop</div></div>
+      <div class="mg-item" data-cat="ourconf"><img src="{{ '/assets/images/media/gallery/ILNsbtO.jpeg' | relative_url }}" alt="Lab-organized workshop" loading="lazy"/><div class="mg-caption">Lab-organized workshop</div></div>
+      <div class="mg-item" data-cat="ourconf"><img src="{{ '/assets/images/media/gallery/ucuDeWF.jpeg' | relative_url }}" alt="Workshop speakers" loading="lazy"/><div class="mg-caption">Workshop speakers</div></div>
+      <div class="mg-item" data-cat="ourconf"><img src="{{ '/assets/images/media/gallery/FDffXls.jpeg' | relative_url }}" alt="Conference opening" loading="lazy"/><div class="mg-caption">Conference opening</div></div>
+      <div class="mg-item" data-cat="ourconf"><img src="{{ '/assets/images/media/gallery/XaRUA0P.jpeg' | relative_url }}" alt="Workshop participants" loading="lazy"/><div class="mg-caption">Workshop participants</div></div>
+      <div class="mg-item" data-cat="ourconf"><img src="{{ '/assets/images/media/gallery/8gz5gsI.jpeg' | relative_url }}" alt="Symposium" loading="lazy"/><div class="mg-caption">Symposium</div></div>
+      <div class="mg-item" data-cat="kfnd"><img src="{{ '/assets/images/media/gallery/LUyk3jp.jpeg' | relative_url }}" alt="Polish Children's Fund — workshop" loading="lazy"/><div class="mg-caption">Polish Children's Fund — workshop</div></div>
+      <div class="mg-item" data-cat="kfnd"><img src="{{ '/assets/images/media/gallery/4UWYf9v.jpeg' | relative_url }}" alt="Biophysics for talented youths" loading="lazy"/><div class="mg-caption">Biophysics for talented youths</div></div>
+      <div class="mg-item" data-cat="kfnd"><img src="{{ '/assets/images/media/gallery/4dgy6Tq.jpeg' | relative_url }}" alt="Science workshop" loading="lazy"/><div class="mg-caption">Science workshop</div></div>
+      <div class="mg-item" data-cat="kfnd"><img src="{{ '/assets/images/media/gallery/XW55Jnp.jpeg' | relative_url }}" alt="Children's Fund workshop 2016" loading="lazy"/><div class="mg-caption">Children's Fund workshop 2016</div></div>
+      <div class="mg-item" data-cat="kfnd"><img src="{{ '/assets/images/media/gallery/eHXcKmC.jpeg' | relative_url }}" alt="Workshop with students" loading="lazy"/><div class="mg-caption">Workshop with students</div></div>
+      <div class="mg-item" data-cat="kfnd"><img src="{{ '/assets/images/media/gallery/xuEOB26.jpeg' | relative_url }}" alt="Science outreach" loading="lazy"/><div class="mg-caption">Science outreach</div></div>
+      <div class="mg-item" data-cat="kfnd"><img src="{{ '/assets/images/media/gallery/UXkGDg3.jpeg' | relative_url }}" alt="Young scientists workshop" loading="lazy"/><div class="mg-caption">Young scientists workshop</div></div>
+      <div class="mg-item" data-cat="kfnd"><img src="{{ '/assets/images/media/gallery/uJuGz7U.jpeg' | relative_url }}" alt="Polish Children's Fund 2017" loading="lazy"/><div class="mg-caption">Polish Children's Fund 2017</div></div>
+      <div class="mg-item" data-cat="kfnd"><img src="{{ '/assets/images/media/gallery/85Z2QG6.jpeg' | relative_url }}" alt="Outreach activity" loading="lazy"/><div class="mg-caption">Outreach activity</div></div>
+      <div class="mg-item" data-cat="kfnd"><img src="{{ '/assets/images/media/gallery/toyimyG.jpeg' | relative_url }}" alt="DOKO — workshops for children" loading="lazy"/><div class="mg-caption">DOKO — workshops for children</div></div>
+      <div class="mg-item" data-cat="kfnd"><img src="{{ '/assets/images/media/gallery/cRYQnJe.jpeg' | relative_url }}" alt="Children's Fund — Serock" loading="lazy"/><div class="mg-caption">Children's Fund — Serock</div></div>
+      <div class="mg-item" data-cat="kfnd"><img src="{{ '/assets/images/media/gallery/x98ooAO.jpeg' | relative_url }}" alt="Science cafeteria — PAN" loading="lazy"/><div class="mg-caption">Science cafeteria — PAN</div></div>
+      <div class="mg-item" data-cat="kfnd"><img src="{{ '/assets/images/media/gallery/5XSbg3x.jpeg' | relative_url }}" alt="Universytet Dzieci lecture" loading="lazy"/><div class="mg-caption">Universytet Dzieci lecture</div></div>
+      <div class="mg-item" data-cat="kfnd"><img src="{{ '/assets/images/media/gallery/U0eIPNW.jpeg' | relative_url }}" alt="Children's Fund 2007" loading="lazy"/><div class="mg-caption">Children's Fund 2007</div></div>
+      <div class="mg-item" data-cat="kfnd"><img src="{{ '/assets/images/media/gallery/4Ql2ZqD.jpeg' | relative_url }}" alt="Science for children" loading="lazy"/><div class="mg-caption">Science for children</div></div>
+      <div class="mg-item" data-cat="kfnd"><img src="{{ '/assets/images/media/gallery/vjJrgVS.jpeg' | relative_url }}" alt="Workshop activity" loading="lazy"/><div class="mg-caption">Workshop activity</div></div>
+      <div class="mg-item" data-cat="kfnd"><img src="{{ '/assets/images/media/gallery/j0OpJNv.jpeg' | relative_url }}" alt="Young researchers" loading="lazy"/><div class="mg-caption">Young researchers</div></div>
+      <div class="mg-item" data-cat="kfnd"><img src="{{ '/assets/images/media/gallery/VyogMfM.jpeg' | relative_url }}" alt="Biophysics workshop" loading="lazy"/><div class="mg-caption">Biophysics workshop</div></div>
+      <div class="mg-item" data-cat="kfnd"><img src="{{ '/assets/images/media/gallery/iPwWCft.jpeg' | relative_url }}" alt="Outreach" loading="lazy"/><div class="mg-caption">Outreach</div></div>
+      <div class="mg-item" data-cat="kfnd"><img src="{{ '/assets/images/media/gallery/ItFPGjp.jpeg' | relative_url }}" alt="Children's science day" loading="lazy"/><div class="mg-caption">Children's science day</div></div>
+      <div class="mg-item" data-cat="kfnd"><img src="{{ '/assets/images/media/gallery/XuLKKDU.jpeg' | relative_url }}" alt="Outreach 2018" loading="lazy"/><div class="mg-caption">Outreach 2018</div></div>
+      <div class="mg-item" data-cat="kfnd"><img src="{{ '/assets/images/media/gallery/9yWQ1ZA.jpeg' | relative_url }}" alt="Science cafeteria" loading="lazy"/><div class="mg-caption">Science cafeteria</div></div>
+      <div class="mg-item" data-cat="kfnd"><img src="{{ '/assets/images/media/gallery/fEKhZYl.jpeg' | relative_url }}" alt="Children's Fund activity" loading="lazy"/><div class="mg-caption">Children's Fund activity</div></div>
+      <div class="mg-item" data-cat="kfnd"><img src="{{ '/assets/images/media/gallery/looiWL6.jpeg' | relative_url }}" alt="Polish Children's Fund" loading="lazy"/><div class="mg-caption">Polish Children's Fund</div></div>
+      <div class="mg-item" data-cat="kfnd"><img src="{{ '/assets/images/media/gallery/jWKKlvr.jpeg' | relative_url }}" alt="Science outreach" loading="lazy"/><div class="mg-caption">Science outreach</div></div>
+      <div class="mg-item" data-cat="kfnd"><img src="{{ '/assets/images/media/gallery/pwdk6Nm.jpeg' | relative_url }}" alt="Young scientists" loading="lazy"/><div class="mg-caption">Young scientists</div></div>
+      <div class="mg-item" data-cat="kfnd"><img src="{{ '/assets/images/media/gallery/EZVYtPT.jpeg' | relative_url }}" alt="Children's Fund activity" loading="lazy"/><div class="mg-caption">Children's Fund activity</div></div>
     </div>
     <button class="med-show-btn med-gallery-more-mobile" data-med-more type="button">
       Show all 65 photos
@@ -900,12 +947,18 @@ permalink: /media/
     </button>
   </div>
 
-  <div class="mg-lightbox" id="mg-lightbox">
+  <div class="mg-lightbox" id="mg-lightbox" role="dialog" aria-modal="true" aria-label="Photo viewer">
     <div class="mg-lb-wrap">
-      <button class="mg-lb-close" type="button">Close</button>
-      <button class="mg-lb-prev" type="button">Previous</button>
+      <button class="mg-lb-close" type="button" aria-label="Close photo viewer">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+      </button>
+      <button class="mg-lb-prev" type="button" aria-label="Previous photo">
+        <svg width="25" height="25" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"/></svg>
+      </button>
       <img id="mg-lb-img" src="" alt=""/>
-      <button class="mg-lb-next" type="button">Next</button>
+      <button class="mg-lb-next" type="button" aria-label="Next photo">
+        <svg width="25" height="25" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"/></svg>
+      </button>
       <div class="mg-lb-cap" id="mg-lb-cap"></div>
     </div>
   </div>
@@ -934,7 +987,7 @@ permalink: /media/
           <div class="med-vid-t">{{ video.title }}</div>
           <div class="med-vid-s">
             {% if video.logo %}
-            <span class="med-src-logo {{ video.logo_class }}"><img src="{{ '/assets/img/logos/media/' | append: video.logo | relative_url }}" alt="{{ video.title | escape }} source"></span>
+            <span class="med-src-logo {{ video.logo_class }}"><img src="{{ '/assets/images/logos/media/' | append: video.logo | relative_url }}" alt="{{ video.title | escape }} source"></span>
             {% endif %}
             {{ video.subtitle }}
           </div>
@@ -988,7 +1041,7 @@ permalink: /media/
               <div class="med-li-source">
                 <span class="med-src-logo {{ item.logo_class }}">
                   {% if item.logo %}
-                  <img src="{{ '/assets/img/logos/media/' | append: item.logo | relative_url }}" alt="{{ item.source }} logo">
+                  <img src="{{ '/assets/images/logos/media/' | append: item.logo | relative_url }}" alt="{{ item.source }} logo">
                   {% elsif item.logo_text %}
                   {{ item.logo_text }}
                   {% endif %}
@@ -1022,7 +1075,7 @@ permalink: /media/
               <div class="med-li-source">
                 <span class="med-src-logo {{ item.logo_class }}">
                   {% if item.logo %}
-                  <img src="{{ '/assets/img/logos/media/' | append: item.logo | relative_url }}" alt="{{ item.source }} logo">
+                  <img src="{{ '/assets/images/logos/media/' | append: item.logo | relative_url }}" alt="{{ item.source }} logo">
                   {% elsif item.logo_text %}
                   {{ item.logo_text }}
                   {% endif %}
@@ -1065,7 +1118,7 @@ permalink: /media/
         <div class="med-grant-funder">
           <span class="med-src-logo {{ grant.logo_class }}">
             {% if grant.logo %}
-            <img src="{{ '/assets/img/logos/media/' | append: grant.logo | relative_url }}" alt="{{ grant.funder }} logo">
+            <img src="{{ '/assets/images/logos/media/' | append: grant.logo | relative_url }}" alt="{{ grant.funder }} logo">
             {% endif %}
           </span>
         </div>
@@ -1092,7 +1145,7 @@ permalink: /media/
           <div class="med-li-source">
             <span class="med-src-logo {{ item.logo_class }}">
               {% if item.logo %}
-              <img src="{{ '/assets/img/logos/media/' | append: item.logo | relative_url }}" alt="{{ item.source }} logo">
+              <img src="{{ '/assets/images/logos/media/' | append: item.logo | relative_url }}" alt="{{ item.source }} logo">
               {% endif %}
             </span>
             <span class="med-src-name">{{ item.source }}</span>
@@ -1129,7 +1182,7 @@ permalink: /media/
       {% endif %}
         <div class="med-int-source">
           {% if item.logo %}
-          <span class="med-src-logo {{ item.logo_class }}"><img src="{{ '/assets/img/logos/media/' | append: item.logo | relative_url }}" alt="{{ item.source }} logo"></span>
+          <span class="med-src-logo {{ item.logo_class }}"><img src="{{ '/assets/images/logos/media/' | append: item.logo | relative_url }}" alt="{{ item.source }} logo"></span>
           {% endif %}
           <span class="med-src-name">{{ item.source }}</span>
           <span class="med-int-year">{{ item.year }}</span>
@@ -1167,7 +1220,7 @@ permalink: /media/
       <div class="med-press-item med-press-item-empty">
       {% endif %}
         <span class="med-press-org">
-          <span class="med-src-logo {{ item.logo_class }}"><img src="{{ '/assets/img/logos/media/' | append: item.logo | relative_url }}" alt="{{ item.org }} logo"></span>
+          <span class="med-src-logo {{ item.logo_class }}"><img src="{{ '/assets/images/logos/media/' | append: item.logo | relative_url }}" alt="{{ item.org }} logo"></span>
           {{ item.org }}
         </span>
         <span class="med-press-yr">{{ item.year }}</span>
@@ -1249,26 +1302,26 @@ permalink: /media/
     <div class="med-feat-label">Featured In</div>
     <div class="med-feat-track-outer">
       <div class="med-feat-track">
-        <span class="med-feat-item"><span class="med-src-logo round"><img src="{{ '/assets/img/logos/media/polsat-news.svg' | relative_url }}" alt=""></span>Polsat News</span>
-        <span class="med-feat-item"><span class="med-src-logo med-logo-wide"><img src="{{ '/assets/img/logos/media/wyborcza.svg' | relative_url }}" alt=""></span>Gazeta Wyborcza</span>
-        <span class="med-feat-item"><span class="med-src-logo med-logo-wide"><img src="{{ '/assets/img/logos/media/tvn.svg' | relative_url }}" alt=""></span>TVN Dzień Dobry</span>
+        <span class="med-feat-item"><span class="med-src-logo round"><img src="{{ '/assets/images/logos/media/polsat-news.svg' | relative_url }}" alt=""></span>Polsat News</span>
+        <span class="med-feat-item"><span class="med-src-logo med-logo-wide"><img src="{{ '/assets/images/logos/media/wyborcza.svg' | relative_url }}" alt=""></span>Gazeta Wyborcza</span>
+        <span class="med-feat-item"><span class="med-src-logo med-logo-wide"><img src="{{ '/assets/images/logos/media/tvn.svg' | relative_url }}" alt=""></span>TVN Dzień Dobry</span>
         <span class="med-feat-item"><span class="med-src-logo med-logo-wide med-logo-tok-text">TOK FM</span>TOK FM</span>
-        <span class="med-feat-item"><span class="med-src-logo med-logo-wide"><img src="{{ '/assets/img/logos/media/pap.svg' | relative_url }}" alt=""></span>Polska Agencja Prasowa</span>
-        <span class="med-feat-item"><span class="med-src-logo med-logo-wide"><img src="{{ '/assets/img/logos/media/unesco.svg' | relative_url }}" alt=""></span>UNESCO</span>
-        <span class="med-feat-item"><span class="med-src-logo med-logo-wide"><img src="{{ '/assets/img/logos/media/embo.png' | relative_url }}" alt=""></span>EMBO</span>
-        <span class="med-feat-item"><span class="med-src-logo med-logo-wide"><img src="{{ '/assets/img/logos/media/loreal.svg' | relative_url }}" alt=""></span>L'Oréal</span>
-        <span class="med-feat-item"><span class="med-src-logo"><img src="{{ '/assets/img/logos/media/fnp.svg' | relative_url }}" alt=""></span>Foundation for Polish Science</span>
-        <span class="med-feat-item"><span class="med-src-logo med-logo-long"><img src="{{ '/assets/img/logos/media/business-insider.svg' | relative_url }}" alt=""></span>Business Insider</span>
-        <span class="med-feat-item" inert><span class="med-src-logo round"><img src="{{ '/assets/img/logos/media/polsat-news.svg' | relative_url }}" alt=""></span>Polsat News</span>
-        <span class="med-feat-item" inert><span class="med-src-logo med-logo-wide"><img src="{{ '/assets/img/logos/media/wyborcza.svg' | relative_url }}" alt=""></span>Gazeta Wyborcza</span>
-        <span class="med-feat-item" inert><span class="med-src-logo med-logo-wide"><img src="{{ '/assets/img/logos/media/tvn.svg' | relative_url }}" alt=""></span>TVN Dzień Dobry</span>
+        <span class="med-feat-item"><span class="med-src-logo med-logo-wide"><img src="{{ '/assets/images/logos/media/pap.svg' | relative_url }}" alt=""></span>Polska Agencja Prasowa</span>
+        <span class="med-feat-item"><span class="med-src-logo med-logo-wide"><img src="{{ '/assets/images/logos/media/unesco.svg' | relative_url }}" alt=""></span>UNESCO</span>
+        <span class="med-feat-item"><span class="med-src-logo med-logo-wide"><img src="{{ '/assets/images/logos/media/embo.png' | relative_url }}" alt=""></span>EMBO</span>
+        <span class="med-feat-item"><span class="med-src-logo med-logo-wide"><img src="{{ '/assets/images/logos/media/loreal.svg' | relative_url }}" alt=""></span>L'Oréal</span>
+        <span class="med-feat-item"><span class="med-src-logo"><img src="{{ '/assets/images/logos/media/fnp.svg' | relative_url }}" alt=""></span>Foundation for Polish Science</span>
+        <span class="med-feat-item"><span class="med-src-logo med-logo-long"><img src="{{ '/assets/images/logos/media/business-insider.svg' | relative_url }}" alt=""></span>Business Insider</span>
+        <span class="med-feat-item" inert><span class="med-src-logo round"><img src="{{ '/assets/images/logos/media/polsat-news.svg' | relative_url }}" alt=""></span>Polsat News</span>
+        <span class="med-feat-item" inert><span class="med-src-logo med-logo-wide"><img src="{{ '/assets/images/logos/media/wyborcza.svg' | relative_url }}" alt=""></span>Gazeta Wyborcza</span>
+        <span class="med-feat-item" inert><span class="med-src-logo med-logo-wide"><img src="{{ '/assets/images/logos/media/tvn.svg' | relative_url }}" alt=""></span>TVN Dzień Dobry</span>
         <span class="med-feat-item" inert><span class="med-src-logo med-logo-wide med-logo-tok-text">TOK FM</span>TOK FM</span>
-        <span class="med-feat-item" inert><span class="med-src-logo med-logo-wide"><img src="{{ '/assets/img/logos/media/pap.svg' | relative_url }}" alt=""></span>Polska Agencja Prasowa</span>
-        <span class="med-feat-item" inert><span class="med-src-logo med-logo-wide"><img src="{{ '/assets/img/logos/media/unesco.svg' | relative_url }}" alt=""></span>UNESCO</span>
-        <span class="med-feat-item" inert><span class="med-src-logo med-logo-wide"><img src="{{ '/assets/img/logos/media/embo.png' | relative_url }}" alt=""></span>EMBO</span>
-        <span class="med-feat-item" inert><span class="med-src-logo med-logo-wide"><img src="{{ '/assets/img/logos/media/loreal.svg' | relative_url }}" alt=""></span>L'Oréal</span>
-        <span class="med-feat-item" inert><span class="med-src-logo"><img src="{{ '/assets/img/logos/media/fnp.svg' | relative_url }}" alt=""></span>Foundation for Polish Science</span>
-        <span class="med-feat-item" inert><span class="med-src-logo med-logo-long"><img src="{{ '/assets/img/logos/media/business-insider.svg' | relative_url }}" alt=""></span>Business Insider</span>
+        <span class="med-feat-item" inert><span class="med-src-logo med-logo-wide"><img src="{{ '/assets/images/logos/media/pap.svg' | relative_url }}" alt=""></span>Polska Agencja Prasowa</span>
+        <span class="med-feat-item" inert><span class="med-src-logo med-logo-wide"><img src="{{ '/assets/images/logos/media/unesco.svg' | relative_url }}" alt=""></span>UNESCO</span>
+        <span class="med-feat-item" inert><span class="med-src-logo med-logo-wide"><img src="{{ '/assets/images/logos/media/embo.png' | relative_url }}" alt=""></span>EMBO</span>
+        <span class="med-feat-item" inert><span class="med-src-logo med-logo-wide"><img src="{{ '/assets/images/logos/media/loreal.svg' | relative_url }}" alt=""></span>L'Oréal</span>
+        <span class="med-feat-item" inert><span class="med-src-logo"><img src="{{ '/assets/images/logos/media/fnp.svg' | relative_url }}" alt=""></span>Foundation for Polish Science</span>
+        <span class="med-feat-item" inert><span class="med-src-logo med-logo-long"><img src="{{ '/assets/images/logos/media/business-insider.svg' | relative_url }}" alt=""></span>Business Insider</span>
       </div>
     </div>
   </div>
@@ -1501,7 +1554,7 @@ permalink: /media/
     const img = item.querySelector('img');
     lbImg.src = img.src;
     lbImg.alt = img.alt;
-    lbCap.textContent = item.querySelector('.mg-caption').textContent;
+    if (lbCap) lbCap.textContent = '';
     lb.classList.add('open');
     document.body.style.overflow = 'hidden';
   }
