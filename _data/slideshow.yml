@@ -1,0 +1,19 @@
+slides:
+  - class: "hero-slide-mesh"
+    image: "/assets/images/hero/sulkowska-mesh-banner.jpg"
+  - class: "hero-slide-publications"
+    image: "/assets/images/hero/publications-header.jpg"
+  - class: "hero-slide-projects"
+    image: "/assets/images/hero/projects-header.jpg"
+    active: true
+  - class: "hero-slide-baner1"
+    image: "/assets/images/projects/baner1.png"
+  - class: "hero-slide-posters"
+    image: "/assets/images/hero/scientific-community-posters-wide.jpeg"
+
+avatar:
+  image: "/assets/images/team/joannas.jpg"
+  alt: "Prof. Joanna Sulkowska"
+
+lab: "Interdisciplinary Laboratory of Biological Systems Modelling"
+name: "Prof. Joanna I. Sulkowska"

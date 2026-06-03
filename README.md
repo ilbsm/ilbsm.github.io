@@ -28,7 +28,7 @@ The static output is written to `_site/`. Do not edit `_site/` directly; it is g
 
 The repository remote is `https://github.com/ilbsm/ilbsm.github.io.git`. The expected host is GitHub Pages from the `main` branch because this is an organization pages repo. Confirm the Pages settings in GitHub before handoff.
 
-No env vars are required for the Jekyll build. Publication data is stored locally in `_data/publications.json`; the browser does not fetch OpenAlex directly.
+No env vars are required for the Jekyll build. The publications page fetches live OpenAlex data in the browser and falls back to `_data/publications.json` if the API is unavailable.
 
 ## Structure
 
@@ -42,9 +42,12 @@ _includes/slideshow.html    Shared top banner
 _includes/footer.html       Site footer
 _includes/jump_nav.html     Reusable section jump menu
 _data/                      Editable YAML/JSON content
+_data/navigation.yml        Primary navigation links
+_data/slideshow.yml         Shared top banner slides and labels
+_data/footer.yml            Footer address and social links
 _news/                      News collection items
-assets/css/sulkowska.css    Shared CSS
-assets/js/sulkowska.js      Shared banner and jump-menu behavior
+assets/css/sulkowska.css    Shared CSS, currently grouped by page sections
+assets/js/sulkowska.js      Shared behavior and page-specific initializers
 assets/js/hero-knot.js      Home-page Three.js animation
 assets/images/                 Images, logos, portraits, gallery media
 scripts/                    Maintenance scripts
@@ -66,7 +69,7 @@ Most content changes should happen in `_data/`:
 
 Long-form news items live in `_news/` and use `layout: news_item`.
 
-Publication data and figure metadata live in `_data/publications.json` and `_data/publication_figures.yml`. They can be rebuilt with:
+The local publication fallback and figure metadata live in `_data/publications.json` and `_data/publication_figures.yml`. They can be rebuilt with:
 
 ```bash
 python3 scripts/update_publication_figures.py
@@ -96,6 +99,8 @@ The repo does not contain DNS ownership records, registrar access notes, or SSL 
 
 ## Known Issues
 
-- Several pages still keep page-specific CSS in their HTML files. This is workable for handoff, but a future style pass should move repeated rules to shared CSS or Sass partials.
-- Publication data is local, so the page continues to render if OpenAlex is temporarily unavailable. Refresh `_data/publications.json` periodically with the maintenance script.
+- Page CSS has been moved out of page templates, but `assets/css/sulkowska.css` is now a large monolithic stylesheet. A future pass should split it into Sass partials or clearer CSS modules.
+- Page behavior has been moved into `assets/js/sulkowska.js`, but that file now mixes shared behavior with page-specific initializers. A future pass should split it into smaller files.
+- The publications page prefers live OpenAlex data, then falls back to `_data/publications.json` if OpenAlex is temporarily unavailable. Refresh `_data/publications.json` periodically with the maintenance script.
 - `Gemfile.lock` exists locally and `.gitignore` now allows it to be tracked; include it in the next commit.
+- See `docs/cleanup-audit.md` for the current structural audit and proposed cleanup order.

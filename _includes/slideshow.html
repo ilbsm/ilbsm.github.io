@@ -1,19 +1,16 @@
+{% assign slideshow = site.data.slideshow %}
 <div class="hero">
   <div class="hero-slideshow">
-    <div class="hero-slide hero-slide-mesh" style="--hero-img: url('{{ '/assets/images/hero/sulkowska-mesh-banner.jpg' | relative_url }}');"></div>
-    <div class="hero-slide hero-slide-publications" style="--hero-img: url('{{ '/assets/images/hero/publications-header.jpg' | relative_url }}');"></div>
-    <div class="hero-slide hero-slide-projects active" style="--hero-img: url('{{ '/assets/images/hero/projects-header.jpg' | relative_url }}');"></div>
-    <div class="hero-slide hero-slide-baner1" style="--hero-img: url('{{ '/assets/images/projects/baner1.png' | relative_url }}');"></div>
-    <div class="hero-slide hero-slide-posters" style="--hero-img: url('{{ '/assets/images/hero/scientific-community-posters-wide.jpeg' | relative_url }}');"></div>
-
+    {% for slide in slideshow.slides %}
+    <div class="hero-slide {{ slide.class }}{% if slide.active %} active{% endif %}" style="--hero-img: url('{{ slide.image | relative_url }}');"></div>
+    {% endfor %}
   </div>
 
   <div class="hero-content">
     <div class="hero-avatar">
-      <img src="{{ '/assets/images/team/joannas.jpg' | relative_url }}" alt="Prof. Joanna Sulkowska">
+      <img src="{{ slideshow.avatar.image | relative_url }}" alt="{{ slideshow.avatar.alt | escape }}">
     </div>
-    <div class="hero-lab">Interdisciplinary Laboratory of Biological Systems Modelling</div>
-    <div class="hero-name">Prof. Joanna I. Sulkowska</div>
-
+    <div class="hero-lab">{{ slideshow.lab }}</div>
+    <div class="hero-name">{{ slideshow.name }}</div>
   </div>
 </div>

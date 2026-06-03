@@ -307,11 +307,21 @@
     var dataTemplate = document.getElementById("pub-publications-data");
     var figureTemplate = document.getElementById("pub-figures-data");
     var siteBaseurl = dataTemplate ? dataTemplate.dataset.siteBaseurl || "" : "";
+    var openAlexAuthorOrcid = dataTemplate ? dataTemplate.dataset.openalexAuthorOrcid || "" : "";
+    var openAlexMailto = dataTemplate ? dataTemplate.dataset.openalexMailto || "" : "";
     var localPublications = readJsonTemplate(dataTemplate, []);
     var figureEntries = readJsonTemplate(figureTemplate, []);
+    var openAlexApiBase = "https://api.openalex.org";
+    var openAlexPageLimit = 4;
+    var citingCache = {};
 
     function byId(id) {
       return id ? document.getElementById(id) : null;
+    }
+
+    function setDataStatus(label) {
+      var status = byId("pub-data-status-text");
+      if (status) status.textContent = label;
     }
 
     function readJsonTemplate(template, fallback) {
@@ -350,6 +360,117 @@
 
     function openAlexKey(work) {
       return String(work && work.id || "").replace("https://openalex.org/", "");
+    }
+
+    function workKey(work) {
+      return openAlexKey(work) || normaliseDoi(work && work.doi) || String(work && work.title || "") + "|" + String(work && work.publication_year || "");
+    }
+
+    function normalizeWork(work) {
+      if (!work) return null;
+      return {
+        id: work.id || "",
+        doi: work.doi || "",
+        title: work.title || work.display_name || "",
+        publication_year: work.publication_year || "",
+        cited_by_count: work.cited_by_count || 0,
+        referenced_works_count: work.referenced_works_count || 0,
+        open_access: work.open_access || {},
+        primary_location: work.primary_location || {},
+        authorships: work.authorships || [],
+        concepts: work.concepts || [],
+        topics: work.topics || [],
+        keywords: work.keywords || []
+      };
+    }
+
+    function mergeWorks(primary, fallback) {
+      var seen = {};
+      var merged = [];
+
+      function add(work) {
+        var normalized = normalizeWork(work);
+        var key;
+        if (!normalized) return;
+        key = workKey(normalized);
+        if (!key || seen[key]) return;
+        seen[key] = true;
+        merged.push(normalized);
+      }
+
+      (primary || []).forEach(add);
+      (fallback || []).forEach(add);
+      return merged;
+    }
+
+    function appendMailto(url) {
+      if (openAlexMailto) url.searchParams.set("mailto", openAlexMailto);
+      return url;
+    }
+
+    function fetchJson(url) {
+      var controller = "AbortController" in window ? new AbortController() : null;
+      var timer = controller ? window.setTimeout(function () {
+        controller.abort();
+      }, 10000) : null;
+      var options = controller ? { signal: controller.signal } : {};
+
+      return window.fetch(url.toString(), options).then(function (response) {
+        if (timer) window.clearTimeout(timer);
+        if (!response.ok) throw new Error("OpenAlex returned HTTP " + response.status);
+        return response.json();
+      }, function (error) {
+        if (timer) window.clearTimeout(timer);
+        throw error;
+      });
+    }
+
+    function fetchOpenAlexAuthor() {
+      var id = openAlexAuthorOrcid ? "orcid:" + openAlexAuthorOrcid : "";
+      var url;
+      if (!id) throw new Error("Missing OpenAlex author ORCID");
+      url = new URL(openAlexApiBase + "/authors/" + encodeURIComponent(id));
+      url.searchParams.set("select", "id,display_name,works_api_url,cited_by_count");
+      return fetchJson(appendMailto(url));
+    }
+
+    function fetchOpenAlexWorks() {
+      return fetchOpenAlexAuthor().then(function (author) {
+        var authorId = String(author && author.id || "").replace("https://openalex.org/", "");
+        var works = [];
+        var seen = {};
+        var cursor = "*";
+
+        if (!authorId) throw new Error("OpenAlex author profile was missing an ID");
+
+        function fetchPage(pageIndex) {
+          var url;
+          if (pageIndex >= openAlexPageLimit) return Promise.resolve(works);
+
+          url = new URL(openAlexApiBase + "/works");
+          url.searchParams.set("filter", "author.id:" + authorId);
+          url.searchParams.set("sort", "cited_by_count:desc");
+          url.searchParams.set("per-page", "100");
+          url.searchParams.set("cursor", cursor);
+          url.searchParams.set("select", "id,doi,title,display_name,publication_year,cited_by_count,referenced_works_count,open_access,primary_location,authorships,concepts,topics,keywords");
+
+          return fetchJson(appendMailto(url)).then(function (data) {
+            var results = data && data.results || [];
+            results.forEach(function (work) {
+              var key = workKey(work);
+              if (!key || seen[key]) return;
+              seen[key] = true;
+              works.push(work);
+            });
+
+            cursor = data && data.meta && data.meta.next_cursor;
+            if (!cursor || !results.length) return works;
+            return fetchPage(pageIndex + 1);
+          });
+        }
+
+        return fetchPage(0);
+      });
     }
 
     function domId(raw, fallback) {
@@ -413,6 +534,100 @@
         });
         return items;
       }, []);
+    }
+
+    function formatCount(value) {
+      return Number(value || 0).toLocaleString();
+    }
+
+    function workTopics(work) {
+      var seen = {};
+      var topics = (work && work.topics || []).map(function (topic) {
+        return topic && topic.display_name || "";
+      });
+      var concepts = (work && work.concepts || []).filter(function (concept) {
+        return concept && concept.display_name && (concept.score || 0) > 0.25 && (concept.level || 0) > 0;
+      }).map(function (concept) {
+        return concept.display_name;
+      });
+      var keywords = (work && work.keywords || []).filter(function (keyword) {
+        return keyword && keyword.display_name && (keyword.score || 0) > 0.45;
+      }).map(function (keyword) {
+        return keyword.display_name;
+      });
+
+      return topics.concat(concepts, keywords).filter(function (label) {
+        var key = String(label || "").toLowerCase();
+        if (!key || seen[key]) return false;
+        seen[key] = true;
+        return true;
+      }).slice(0, 4);
+    }
+
+    function metricPill(label, value, className) {
+      if (value == null || value === "" || Number(value) < 0) return "";
+      return '<span class="pub-metric ' + className + '" title="' + escapeAttr(label) + '"><span class="pub-metric-icon" aria-hidden="true"></span><span class="visually-hidden">' + escapeHtml(label) + '</span>' + (value === true ? "" : '<span class="pub-metric-value">' + escapeHtml(value) + '</span>') + '</span>';
+    }
+
+    function renderFigurePreview(figures) {
+      if (!figures.length) return "";
+      return '<div class="pub-figure-preview">' + figures.slice(0, 3).map(function (fig, index) {
+        return '<button class="pub-figure-preview-btn" type="button" data-pub-figure-thumb data-img="' + escapeAttr(fig.img) + '" data-href="' + escapeAttr(fig.href) + '" data-alt="' + escapeAttr(fig.alt) + '" data-caption="' + escapeAttr(fig.caption) + '"><img src="' + escapeAttr(fig.img) + '" alt="' + escapeAttr(fig.alt) + '" loading="lazy"><span>Fig. ' + (index + 1) + '</span></button>';
+      }).join("") + (figures.length > 3 ? '<span class="pub-figure-preview-more">+' + (figures.length - 3) + '</span>' : "") + '</div>';
+    }
+
+    function renderCitingItems(data) {
+      var results = data && data.results || [];
+      if (!results.length) return '<div class="pub-panel-note">No citing papers found in OpenAlex yet.</div>';
+      return '<div class="pub-citing-list">' + results.map(function (work) {
+        var authors = escapeHtml(authorsFor(work));
+        var more = (work.authorships || []).length > 5 ? " et al." : "";
+        var journal = cleanJournal(sourceName(work));
+        var year = work.publication_year || "";
+        var cites = work.cited_by_count || 0;
+        return '<a class="pub-citing-item" href="' + escapeAttr(workUrl(work)) + '" target="_blank" rel="noopener noreferrer">' +
+          '<div class="pub-citing-title">' + cleanTitle(work.title) + '</div>' +
+          '<div class="pub-citing-meta">' + (authors || "Unknown authors") + more + ' · ' + (journal || "—") + ' · ' + year + ' · ' + formatCount(cites) + ' cit.</div>' +
+          '</a>';
+      }).join("") + '</div>';
+    }
+
+    function fetchCitingWorks(workId) {
+      var url;
+      if (!workId) return Promise.resolve({ results: [], count: 0 });
+      if (citingCache[workId]) return citingCache[workId];
+
+      url = new URL(openAlexApiBase + "/works");
+      url.searchParams.set("filter", "cites:" + workId);
+      url.searchParams.set("sort", "publication_year:desc");
+      url.searchParams.set("per-page", "8");
+      url.searchParams.set("select", "id,doi,title,display_name,publication_year,cited_by_count,primary_location,authorships");
+
+      citingCache[workId] = fetchJson(appendMailto(url)).then(function (data) {
+        return {
+          count: data && data.meta && data.meta.count || 0,
+          results: data && data.results || []
+        };
+      });
+      return citingCache[workId];
+    }
+
+    function toggleCitingPanel(panelId, button) {
+      var panel = byId(panelId);
+      var shouldOpen;
+      if (!panel) return;
+      shouldOpen = panel.hidden;
+      panel.hidden = !shouldOpen;
+      button.classList.toggle("is-open", shouldOpen);
+      if (!shouldOpen || panel.dataset.loaded) return;
+
+      panel.innerHTML = '<div class="pub-panel-title">Citing papers</div><div class="pub-panel-loading">Loading OpenAlex citing papers...</div>';
+      fetchCitingWorks(button.dataset.workId).then(function (data) {
+        panel.dataset.loaded = "true";
+        panel.innerHTML = '<div class="pub-panel-title">Citing papers <span class="pub-panel-count">' + formatCount(data.count) + '</span></div>' + renderCitingItems(data);
+      }).catch(function (error) {
+        panel.innerHTML = '<div class="pub-panel-title">Citing papers</div><div class="pub-panel-note">Could not load citing papers from OpenAlex: ' + escapeHtml(error.message) + '</div>';
+      });
     }
 
     function cleanTitle(raw) {
@@ -746,11 +961,26 @@
         var workId = openAlexKey(work);
         var itemId = domId(workId || normaliseDoi(work.doi), "pub-" + index);
         var figurePanelId = itemId + "-figures";
+        var citingPanelId = itemId + "-citing";
         var figures = figuresForWork(work);
+        var topics = workTopics(work);
         var externalLabel = work.doi ? "DOI ↗" : "OpenAlex ↗";
         var openAccessBadge = work.open_access && work.open_access.is_oa ? ' <span class="pub-oa-badge">OA</span>' : "";
+        var metrics = '<div class="pub-metrics">' +
+          metricPill("OpenAlex citations", formatCount(cites), "pub-metric-cites") +
+          metricPill("References", work.referenced_works_count ? formatCount(work.referenced_works_count) : "", "pub-metric-refs") +
+          (work.open_access && work.open_access.is_oa ? metricPill("Open access", true, "pub-metric-oa") : "") +
+          (figures.length ? metricPill("Figures", formatCount(figures.length), "pub-metric-figures") : "") +
+          '</div>';
+        var categories = topics.length
+          ? '<div class="pub-categories"><span>Categories:</span> ' + topics.map(function (topic) { return '<em>' + escapeHtml(topic) + '</em>'; }).join(", ") + '</div>'
+          : "";
+        var figurePreview = renderFigurePreview(figures);
         var figureAction = figures.length
           ? '<button class="pub-action" type="button" data-pub-toggle-panel="' + escapeAttr(figurePanelId) + '">Figures <span class="pub-action-count">' + figures.length + '</span></button>'
+          : "";
+        var citingAction = workId && cites
+          ? '<button class="pub-action" type="button" data-pub-toggle-citing="' + escapeAttr(citingPanelId) + '" data-work-id="' + escapeAttr(workId) + '">Citing papers <span class="pub-action-count">OpenAlex - ' + formatCount(cites) + '</span></button>'
           : "";
         var figurePanel = figures.length
           ? '<div class="pub-panel pub-figure-panel" id="' + figurePanelId + '" hidden><div class="pub-panel-title">Figures</div><div class="pub-figures">' +
@@ -759,12 +989,16 @@
             }).join("") +
             '</div></div>'
           : "";
+        var citingPanel = citingAction
+          ? '<div class="pub-panel pub-citing-panel" id="' + citingPanelId + '" hidden><div class="pub-panel-title">Citing papers</div><div class="pub-panel-loading">Loading OpenAlex citing papers...</div></div>'
+          : "";
 
         return '<article class="pub-item"><div class="pub-num">' + (index + 1) + '</div><div class="pub-body">' +
           '<div class="pub-title"><a class="pub-title-link" href="' + escapeAttr(url) + '" target="_blank" rel="noopener noreferrer">' + cleanTitle(work.title) + openAccessBadge + '</a></div>' +
           '<div class="pub-meta">' + (authors || "Unknown authors") + more + ' · <em>' + (journal || "—") + '</em> · ' + year + '</div>' +
-          '<div class="pub-actions">' + figureAction + '<a class="pub-mini-link" href="' + escapeAttr(url) + '" target="_blank" rel="noopener noreferrer">' + externalLabel + '</a></div>' +
-          figurePanel + '</div><div class="pub-cites">' + cites.toLocaleString() + ' cit.</div></article>';
+          metrics + categories + figurePreview +
+          '<div class="pub-actions">' + citingAction + figureAction + '<a class="pub-mini-link" href="' + escapeAttr(url) + '" target="_blank" rel="noopener noreferrer">' + externalLabel + '</a></div>' +
+          citingPanel + figurePanel + '</div><div class="pub-cites">' + cites.toLocaleString() + ' cit.</div></article>';
       }).join("") || '<div class="pub-no-results">No publications match this filter.</div>';
     }
 
@@ -773,24 +1007,40 @@
       if (focusList && allPubs.length) focusResultsOnMobile();
     }
 
+    function renderLoadedPubs(works) {
+      allPubs = works;
+      setHidden("pub-loading", true);
+      setHidden("pub-error", true);
+      renderCharts(allPubs);
+      renderPubs();
+    }
+
     function load() {
       var error;
       if (loaded) return;
       loaded = true;
 
-      try {
-        allPubs = Array.isArray(localPublications) ? localPublications : [];
-        if (!allPubs.length) throw new Error("No publications found");
-        setHidden("pub-loading", true);
-        renderCharts(allPubs);
-        renderPubs();
-      } catch (err) {
+      setDataStatus("Loading OpenAlex...");
+      fetchOpenAlexWorks().then(function (livePublications) {
+        var liveWorks = Array.isArray(livePublications) ? livePublications : [];
+        if (!liveWorks.length) throw new Error("OpenAlex returned no publications");
+        setDataStatus("OpenAlex live data");
+        renderLoadedPubs(mergeWorks(liveWorks, localPublications));
+      }).catch(function (err) {
+        var localWorks = Array.isArray(localPublications) ? localPublications : [];
+        if (localWorks.length) {
+          setDataStatus("Local data fallback");
+          renderLoadedPubs(localWorks);
+          return;
+        }
+
+        setDataStatus("OpenAlex unavailable");
         setHidden("pub-loading", true);
         error = setHidden("pub-error", false);
         if (error) {
-          error.innerHTML = '<strong>Could not load local publication data</strong> - ' + escapeHtml(err.message) + '. <a href="https://scholar.google.com/citations?user=BVBwiyAAAAAJ" target="_blank" rel="noopener noreferrer">View Google Scholar</a>';
+          error.innerHTML = '<strong>Could not load OpenAlex or local publication data</strong> - ' + escapeHtml(err.message) + '. <a href="https://scholar.google.com/citations?user=BVBwiyAAAAAJ" target="_blank" rel="noopener noreferrer">View Google Scholar</a>';
         }
-      }
+      });
     }
 
     if (byId("pub-search-input")) byId("pub-search-input").addEventListener("input", function () { filterPubs(true); });
@@ -806,9 +1056,14 @@
 
     document.addEventListener("click", function (event) {
       var panelButton = event.target.closest && event.target.closest("[data-pub-toggle-panel]");
+      var citingButton = event.target.closest && event.target.closest("[data-pub-toggle-citing]");
       var figureButton;
       if (panelButton) {
         toggleFigurePanel(panelButton.dataset.pubTogglePanel, panelButton);
+        return;
+      }
+      if (citingButton) {
+        toggleCitingPanel(citingButton.dataset.pubToggleCiting, citingButton);
         return;
       }
       figureButton = event.target.closest && event.target.closest("[data-pub-figure-thumb]");
@@ -1056,6 +1311,262 @@
     }
   }
 
+  function initGroupPage() {
+    var page = document.getElementById("page-group");
+    var memberModal = document.getElementById("grp-member-modal");
+    if (!page || page.dataset.groupReady) return;
+    page.dataset.groupReady = "true";
+
+    var teamImageBase = page.dataset.teamImageBase || "/assets/images/team/";
+    var teamPlaceholder = page.dataset.teamPlaceholder || teamImageBase + "knot-placeholder.png";
+    var modalName = document.getElementById("grp-modal-name");
+    var modalRole = document.getElementById("grp-modal-role");
+    var modalDetail = document.getElementById("grp-modal-detail");
+    var modalLinks = document.getElementById("grp-modal-links");
+    var lastMemberCard = null;
+
+    page.querySelectorAll("[data-color]").forEach(function (element) {
+      element.style.background = element.dataset.color;
+    });
+
+    page.querySelectorAll("[data-i]").forEach(function (element) {
+      element.style.setProperty("--i", element.dataset.i);
+    });
+
+    function showFallbackPhoto(initials) {
+      var knot = new Image();
+      knot.className = "grp-photo";
+      knot.alt = initials.dataset.name || "";
+      knot.src = teamPlaceholder;
+      initials.parentNode.appendChild(knot);
+      initials.style.opacity = "0";
+    }
+
+    page.querySelectorAll("[data-slug]").forEach(function (initials) {
+      var slug = initials.dataset.slug;
+      if (!slug) {
+        showFallbackPhoto(initials);
+        return;
+      }
+
+      var image = new Image();
+      image.onload = function () {
+        image.className = "grp-photo";
+        image.alt = initials.dataset.name || "";
+        initials.parentNode.appendChild(image);
+        initials.style.opacity = "0";
+      };
+      image.onerror = function () {
+        showFallbackPhoto(initials);
+      };
+      image.src = teamImageBase + slug + ".jpg";
+    });
+
+    function allowedProfileHref(href) {
+      return /^(mailto:|https?:\/\/|\/(?!\/))/i.test(href || "");
+    }
+
+    function addModalLink(label, href) {
+      if (!modalLinks || !href || !allowedProfileHref(href)) return;
+
+      var link = document.createElement("a");
+      link.className = "grp-modal-link";
+      link.href = href;
+      link.textContent = label;
+      if (!/^mailto:/i.test(href)) {
+        link.target = "_blank";
+        link.rel = "noopener noreferrer";
+      }
+      modalLinks.appendChild(link);
+    }
+
+    function profileUrl(prefix, value) {
+      if (!value) return "";
+      if (/^https?:\/\//i.test(value) || /^\/(?!\/)/.test(value)) return value;
+      return prefix + value;
+    }
+
+    function openMemberModal(card) {
+      if (!memberModal || !card || !modalName || !modalRole || !modalDetail || !modalLinks) return;
+      lastMemberCard = card;
+
+      modalName.textContent = card.dataset.name || "";
+      modalRole.textContent = card.dataset.role || "";
+      modalDetail.textContent = card.dataset.detail || "";
+      modalDetail.style.display = card.dataset.detail ? "" : "none";
+      modalLinks.innerHTML = "";
+
+      if (card.dataset.email) {
+        addModalLink("Email", /^mailto:/i.test(card.dataset.email) ? card.dataset.email : "mailto:" + card.dataset.email);
+      }
+      addModalLink("Publications", card.dataset.publicationsUrl);
+      card.querySelectorAll(".grp-card-publications a").forEach(function (publication) {
+        addModalLink(publication.textContent.trim() || "Publication", publication.getAttribute("href"));
+      });
+      addModalLink("Google Scholar", card.dataset.googleScholar);
+      addModalLink("ResearchGate", card.dataset.researchGate);
+      addModalLink("ORCID", profileUrl("https://orcid.org/", card.dataset.orcid));
+      addModalLink("GitHub", profileUrl("https://github.com/", card.dataset.github));
+      addModalLink("Website", card.dataset.url);
+
+      if (typeof memberModal.showModal === "function") {
+        if (!memberModal.open) memberModal.showModal();
+      } else {
+        memberModal.setAttribute("open", "");
+      }
+      document.body.classList.add("grp-modal-lock");
+    }
+
+    function closeMemberModal() {
+      if (!memberModal) return;
+      if (typeof memberModal.close === "function" && memberModal.open) memberModal.close();
+      else memberModal.removeAttribute("open");
+      document.body.classList.remove("grp-modal-lock");
+    }
+
+    page.querySelectorAll("[data-grp-member-card]").forEach(function (card) {
+      card.addEventListener("click", function (event) {
+        if (event.target.closest("a")) return;
+        openMemberModal(card);
+      });
+      card.addEventListener("keydown", function (event) {
+        if (event.target.closest("a")) return;
+        if (event.key === "Enter" || event.key === " ") {
+          event.preventDefault();
+          openMemberModal(card);
+        }
+      });
+    });
+
+    document.querySelectorAll("[data-grp-modal-close]").forEach(function (button) {
+      button.addEventListener("click", closeMemberModal);
+    });
+
+    if (memberModal) {
+      memberModal.addEventListener("click", function (event) {
+        if (event.target === memberModal) closeMemberModal();
+      });
+      memberModal.addEventListener("close", function () {
+        document.body.classList.remove("grp-modal-lock");
+        if (lastMemberCard) lastMemberCard.focus();
+      });
+    }
+
+    document.addEventListener("keydown", function (event) {
+      if (event.key === "Escape" && memberModal && memberModal.open) closeMemberModal();
+    });
+  }
+
+  function initContactPage() {
+    var page = document.getElementById("page-contact");
+    if (!page || page.dataset.contactReady) return;
+    page.dataset.contactReady = "true";
+
+    var form = page.querySelector("#cp-inquiry-form");
+    var success = page.querySelector("#cp-success");
+
+    function field(id) {
+      return page.querySelector("#" + id);
+    }
+
+    function markInvalid(element) {
+      if (!element) return;
+      element.focus();
+      element.style.borderColor = "#b94a40";
+      window.setTimeout(function () {
+        element.style.borderColor = "";
+      }, 1800);
+    }
+
+    if (form) {
+      form.addEventListener("submit", function (event) {
+        event.preventDefault();
+
+        var nameField = field("cp-name");
+        var emailField = field("cp-email");
+        var subjectField = field("cp-subject");
+        var affiliationField = field("cp-affil");
+        var messageField = field("cp-message");
+        var recipient = form.dataset.recipientEmail || "j.sulkowska@cent.uw.edu.pl";
+        var subjectPrefix = form.dataset.subjectPrefix || "[Lab Contact]";
+
+        var name = nameField ? nameField.value.trim() : "";
+        var email = emailField ? emailField.value.trim() : "";
+        var subject = subjectField ? subjectField.value : "";
+        var affiliation = affiliationField ? affiliationField.value.trim() : "";
+        var message = messageField ? messageField.value.trim() : "";
+
+        if (!name || !email || !subject || !message) {
+          markInvalid(!name ? nameField : !email ? emailField : !subject ? subjectField : messageField);
+          return;
+        }
+
+        var body = "Name: " + name + "\nEmail: " + email + (affiliation ? "\nAffiliation: " + affiliation : "") + "\n\n" + message;
+        var mailto = "mailto:" + recipient
+          + "?subject=" + encodeURIComponent(subjectPrefix + " " + subject + " - " + name)
+          + "&body=" + encodeURIComponent(body);
+
+        window.location.href = mailto;
+        form.style.display = "none";
+        if (success) success.classList.add("visible");
+      });
+
+      ["cp-name", "cp-email", "cp-subject", "cp-message"].forEach(function (id) {
+        var element = field(id);
+        if (!element) return;
+        ["input", "change"].forEach(function (eventName) {
+          element.addEventListener(eventName, function () {
+            element.style.borderColor = "";
+          });
+        });
+      });
+    }
+
+    var frame = page.querySelector(".cp-fb-frame");
+    var wrap = page.querySelector(".cp-fb-frame-wrap");
+    if (!frame || !wrap) return;
+
+    var lastWidth = 0;
+    var lastHeight = 0;
+    var pageUrl = frame.getAttribute("data-page-url") || "https://www.facebook.com/SulkowskaLab/";
+
+    function frameHeight() {
+      return window.matchMedia("(max-width: 680px)").matches ? 590 : 780;
+    }
+
+    function renderFacebookFrame() {
+      var width = Math.max(280, Math.min(500, Math.floor(wrap.clientWidth || 500)));
+      var height = frameHeight();
+
+      if (Math.abs(width - lastWidth) < 8 && height === lastHeight && frame.src) {
+        wrap.style.height = height + "px";
+        frame.height = String(height);
+        return;
+      }
+
+      lastWidth = width;
+      lastHeight = height;
+      wrap.style.height = height + "px";
+      frame.width = String(width);
+      frame.height = String(height);
+      frame.src = "https://www.facebook.com/plugins/page.php"
+        + "?href=" + encodeURIComponent(pageUrl)
+        + "&tabs=timeline"
+        + "&width=" + width
+        + "&height=" + height
+        + "&small_header=true"
+        + "&adapt_container_width=true"
+        + "&hide_cover=false"
+        + "&show_facepile=false";
+    }
+
+    renderFacebookFrame();
+    window.addEventListener("resize", renderFacebookFrame);
+    if ("ResizeObserver" in window) {
+      new ResizeObserver(renderFacebookFrame).observe(wrap);
+    }
+  }
+
   function initResearchPage() {
     var page = document.getElementById("page-research");
     var modal = document.getElementById("rx-project-modal");
@@ -1170,6 +1681,8 @@
       initPublicationsPage();
       initMediaPage();
       initHomePage();
+      initGroupPage();
+      initContactPage();
       initResearchPage();
     });
   } else {
@@ -1180,6 +1693,8 @@
     initPublicationsPage();
     initMediaPage();
     initHomePage();
+    initGroupPage();
+    initContactPage();
     initResearchPage();
   }
 }());

@@ -1,0 +1,24 @@
+address:
+  institution: "Centre of New Technologies"
+  university: "University of Warsaw"
+  street: "ul. Stefana Banacha 2c"
+  postcode: "02-097"
+  city: "Warsaw"
+  country: "Poland"
+
+email: "j.sulkowska@cent.uw.edu.pl"
+
+phone:
+  display: "(+48) 22 55 43 675"
+  href: "+48225543675"
+  office: "04.43"
+
+facebook_url: "https://www.facebook.com/SulkowskaLab/"
+
+map_embed_src: "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2445.573!2d20.98077!3d52.21137!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x471eccef30c3e8b5%3A0x4c11ad69e20b970d!2sCentre%20of%20New%20Technologies%2C%20University%20of%20Warsaw!5e0!3m2!1sen!2spl!4v1713360000000!5m2!1sen!2spl"
+
+form:
+  recipient: "j.sulkowska@cent.uw.edu.pl"
+  subject_prefix: "[Lab Contact]"
+  join_subject: "Join%20the%20lab%20inquiry"
+  join_body: "Dear%20Prof.%20Sulkowska%2C%0A%0AI%20am%20interested%20in%20joining%20the%20lab.%0A%0AName%3A%20%0AAffiliation%3A%20%0APosition%20of%20interest%3A%20%0A%0ABest%20regards%2C%0A"

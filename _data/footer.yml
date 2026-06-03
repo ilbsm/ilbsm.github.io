@@ -1,0 +1,29 @@
+address: |-
+  Centre of New Technologies, University of Warsaw
+  Interdisciplinary Laboratory of Biological Systems Modelling
+  ul. Stefana Banacha 2c, 02-097 Warsaw, Poland
+
+social:
+  - label: "Email"
+    icon: "email"
+    url: "mailto:j.sulkowska@cent.uw.edu.pl"
+  - label: "Facebook"
+    icon: "facebook"
+    url: "https://www.facebook.com/SulkowskaLab/"
+  - label: "Twitter/X"
+    icon: "twitter"
+    url: "https://twitter.com/sulkowskal"
+  - label: "YouTube"
+    icon: "youtube"
+    url: "https://www.youtube.com/channel/UCeLQTTlftS-APrHgFL8OYEw"
+  - label: "Instagram"
+    icon: "instagram"
+    url: "https://www.instagram.com/sulkowskalab/?hl=en"
+  - label: "GitHub"
+    icon: "github"
+    url: "https://github.com/ilbsm"
+  - label: "ResearchGate"
+    icon: "researchgate"
+    url: "https://www.researchgate.net/profile/Joanna-Sulkowska"
+
+copy: "&copy; 2025 Joanna I. Sulkowska &middot; Interdisciplinary Laboratory of Biological Systems Modelling"
