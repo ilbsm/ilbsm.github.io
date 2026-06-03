@@ -60,7 +60,7 @@ permalink: /group/
   transition: box-shadow var(--transition), transform var(--transition), border-color var(--transition);
   animation: grpFadeUp 0.4s ease both;
   animation-delay: calc(var(--i, 0) * 0.055s);
-  cursor: default;
+  cursor: pointer;
   position: relative;
 }
 
@@ -68,6 +68,11 @@ permalink: /group/
   box-shadow: var(--shadow-md); transform: translateY(-4px);
   border-color: #c8c5be;
 }
+.grp-card:focus-visible {
+  outline: 3px solid rgba(51,95,168,0.34);
+  outline-offset: 3px;
+}
+.grp-card:focus-visible .grp-links { opacity: 1; }
 @keyframes grpFadeUp {
   from { opacity: 0; transform: translateY(14px); }
   to   { opacity: 1; transform: translateY(0); }
@@ -102,6 +107,7 @@ permalink: /group/
   opacity: 0; transition: opacity var(--transition);
 }
 .grp-card:hover .grp-links { opacity: 1; }
+.grp-card:focus-within .grp-links { opacity: 1; }
 .grp-link {
   display: flex; align-items: center; justify-content: center;
   width: 24px; height: 24px; border-radius: var(--radius-full);
@@ -112,9 +118,127 @@ permalink: /group/
 .grp-link-email:hover { background: #335fa8; color: #fff; }
 .grp-link-orcid:hover { background: #4d7fb0; color: #fff; }
 .grp-link-scholar:hover { background: #4d7fb0; color: #fff; }
+.grp-link-pubs:hover { background: #24448e; color: #fff; }
+.grp-link-rg {
+  font-size: 0.55rem;
+  font-weight: 900;
+  letter-spacing: 0;
+}
+.grp-link-rg:hover { background: #00a16a; color: #fff; }
 .grp-link-github:hover { background: #24292e; color: #fff; }
 .grp-link-web:hover { background: #335fa8; color: #fff; }
 
+.grp-modal {
+  position: fixed;
+  inset: 0;
+  z-index: 5000;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 100%;
+  max-width: none;
+  max-height: none;
+  margin: 0;
+  padding: 1.25rem;
+  border: 0;
+  background: transparent;
+  color: inherit;
+}
+.grp-modal:not([open]) { display: none; }
+.grp-modal[open] { display: flex; }
+.grp-modal::backdrop { background: rgba(7, 31, 50, 0.66); }
+.grp-modal-panel {
+  position: relative;
+  width: min(520px, 100%);
+  max-height: min(82vh, 720px);
+  overflow: auto;
+  border-radius: 12px;
+  background: #fff;
+  box-shadow: 0 22px 80px rgba(0,0,0,0.32);
+}
+.grp-modal-close {
+  position: absolute;
+  top: 0.7rem;
+  right: 0.7rem;
+  min-height: 32px;
+  padding: 0.42rem 0.68rem;
+  border: 1px solid #dbe1ea;
+  border-radius: 7px;
+  background: #fff;
+  color: #4b5563;
+  cursor: pointer;
+  font: inherit;
+  font-size: 0.72rem;
+  font-weight: 800;
+  line-height: 1;
+}
+.grp-modal-close:hover,
+.grp-modal-close:focus-visible {
+  border-color: #335fa8;
+  color: #335fa8;
+  outline: none;
+}
+.grp-modal-content {
+  padding: 1.55rem 1.45rem 1.4rem;
+}
+.grp-modal-name {
+  margin: 0;
+  padding-right: 4rem;
+  color: #073d55;
+  font-family: var(--font-serif);
+  font-size: clamp(1.55rem, 4vw, 2rem);
+  line-height: 1.15;
+}
+.grp-modal-role {
+  margin-top: 0.38rem;
+  color: #335fa8;
+  font-size: 0.86rem;
+  font-weight: 800;
+  line-height: 1.35;
+}
+.grp-modal-detail {
+  margin-top: 0.45rem;
+  color: #66615d;
+  font-size: 0.9rem;
+  line-height: 1.5;
+}
+.grp-modal-links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.45rem;
+  margin-top: 1.1rem;
+  padding-top: 0.95rem;
+  border-top: 1px solid #edf0f4;
+}
+.grp-modal-links:empty {
+  display: none;
+}
+.grp-modal-link {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 32px;
+  max-width: 100%;
+  padding: 0.38rem 0.72rem;
+  border: 1px solid #dbe6f2;
+  border-radius: 999px;
+  background: #f7fbff;
+  color: #335fa8;
+  font-size: 0.76rem;
+  font-weight: 850;
+  line-height: 1.25;
+  text-align: center;
+  text-decoration: none;
+}
+.grp-modal-link:hover,
+.grp-modal-link:focus-visible {
+  border-color: #335fa8;
+  background: #335fa8;
+  color: #fff;
+  text-decoration: none;
+  outline: none;
+}
+body.grp-modal-lock { overflow: hidden; }
 
 .grp-sec-alumni { background: #f9f8f5; border: 1px solid #ede9e3; }
 .grp-alumni-grid {
@@ -131,7 +255,12 @@ permalink: /group/
   animation: grpFadeUp 0.4s ease both;
   animation-delay: calc(var(--i, 0) * 0.03s);
 }
+.grp-alumni-card[data-grp-member-card] { cursor: pointer; }
 .grp-alumni-card:hover { box-shadow: var(--shadow-sm); transform: translateY(-2px); }
+.grp-alumni-card:focus-visible {
+  outline: 3px solid rgba(51,95,168,0.34);
+  outline-offset: 3px;
+}
 .grp-alumni-photo {
   width: 56px; height: 56px; position: relative; flex-shrink: 0;
   border-radius: 50%; overflow: hidden;
@@ -280,7 +409,25 @@ permalink: /group/
       </div>
       <div class="grp-grid">
         {% for m in members %}
-        <div class="grp-card" data-i="{{ forloop.index0 }}">
+        {% assign scholar_url = m.google_scholar | default: m.scholar | default: "" | strip %}
+        {% assign research_gate_url = m.research_gate | default: "" | strip %}
+        {% assign publications_url = m.publications_url | default: "" | strip %}
+        <div class="grp-card"
+             data-i="{{ forloop.index0 }}"
+             data-grp-member-card
+             role="button"
+             tabindex="0"
+             aria-label="Open profile for {{ m.name | escape }}"
+             data-name="{{ m.name | escape }}"
+             data-role="{{ m.role | escape }}"
+             data-detail="{{ m.detail | default: '' | escape }}"
+             data-email="{{ m.email | default: '' | escape }}"
+             data-google-scholar="{{ scholar_url | escape }}"
+             data-research-gate="{{ research_gate_url | escape }}"
+             data-publications-url="{{ publications_url | escape }}"
+             data-orcid="{{ m.orcid | default: '' | escape }}"
+             data-github="{{ m.github | default: '' | escape }}"
+             data-url="{{ m.url | default: '' | escape }}">
           <div class="grp-photo-wrap">
             <div class="grp-initials"
                  data-color="{{ m.color | default: '#57779c' }}"
@@ -305,10 +452,22 @@ permalink: /group/
               <span class="visually-hidden">ORCID profile for {{ m.name }}</span>
             </a>
             {% endif %}
-            {% if m.scholar %}
-            <a class="grp-link grp-link-scholar" href="{{ m.scholar }}" target="_blank" rel="noopener noreferrer" title="Google Scholar">
+            {% if scholar_url != "" %}
+            <a class="grp-link grp-link-scholar" href="{{ scholar_url }}" target="_blank" rel="noopener noreferrer" title="Google Scholar">
               <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M12 2L2 7l10 5 10-5-10-5z"/><path d="M2 17l10 5 10-5"/><path d="M2 12l10 5 10-5"/></svg>
               <span class="visually-hidden">Google Scholar profile for {{ m.name }}</span>
+            </a>
+            {% endif %}
+            {% if publications_url != "" %}
+            <a class="grp-link grp-link-pubs" href="{{ publications_url }}" target="_blank" rel="noopener noreferrer" title="Publications">
+              <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M4 4.5A2.5 2.5 0 0 1 6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5z"/></svg>
+              <span class="visually-hidden">Publication list for {{ m.name }}</span>
+            </a>
+            {% endif %}
+            {% if research_gate_url != "" %}
+            <a class="grp-link grp-link-rg" href="{{ research_gate_url }}" target="_blank" rel="noopener noreferrer" title="ResearchGate">
+              <span aria-hidden="true">RG</span>
+              <span class="visually-hidden">ResearchGate profile for {{ m.name }}</span>
             </a>
             {% endif %}
             {% if m.github %}
@@ -324,6 +483,13 @@ permalink: /group/
             </a>
             {% endif %}
           </div>
+          {% if m.publications %}
+          <div class="grp-card-publications" hidden>
+            {% for pub in m.publications %}
+            <a href="{{ pub.url | escape }}">{{ pub.label }}</a>
+            {% endfor %}
+          </div>
+          {% endif %}
         </div>
         {% endfor %}
       </div>
@@ -366,13 +532,44 @@ permalink: /group/
     {% if total_former > 0 %}
     <div class="grp-alumni-grid">
       {% for m in site.data.group.former %}
-      <div class="grp-alumni-card" data-i="{{ forloop.index0 }}">
+      {% assign scholar_url = m.google_scholar | default: m.scholar | default: "" | strip %}
+      {% assign research_gate_url = m.research_gate | default: "" | strip %}
+      {% assign publications_url = m.publications_url | default: "" | strip %}
+      {% assign alumni_has_profile = false %}
+      {% if scholar_url != "" or research_gate_url != "" or publications_url != "" or m.publications or m.email or m.orcid or m.github or m.url %}
+      {% assign alumni_has_profile = true %}
+      {% endif %}
+      <div class="grp-alumni-card"
+           data-i="{{ forloop.index0 }}"
+           {% if alumni_has_profile %}
+           data-grp-member-card
+           role="button"
+           tabindex="0"
+           aria-label="Open profile for {{ m.name | escape }}"
+           data-name="{{ m.name | escape }}"
+           data-role="{{ m.role | default: 'Former member' | escape }}"
+           data-detail="{{ m.detail | default: '' | escape }}"
+           data-email="{{ m.email | default: '' | escape }}"
+           data-google-scholar="{{ scholar_url | escape }}"
+           data-research-gate="{{ research_gate_url | escape }}"
+           data-publications-url="{{ publications_url | escape }}"
+           data-orcid="{{ m.orcid | default: '' | escape }}"
+           data-github="{{ m.github | default: '' | escape }}"
+           data-url="{{ m.url | default: '' | escape }}"
+           {% endif %}>
         <div class="grp-alumni-photo">
           <div class="grp-initials grp-alumni-initials"
                data-color="{{ m.color | default: '#78909c' }}"
                data-slug="{{ m.slug }}" data-name="{{ m.name }}">{{ m.initials }}</div>
         </div>
         <div class="grp-alumni-name">{{ m.name }}</div>
+        {% if m.publications %}
+        <div class="grp-card-publications" hidden>
+          {% for pub in m.publications %}
+          <a href="{{ pub.url | escape }}">{{ pub.label }}</a>
+          {% endfor %}
+        </div>
+        {% endif %}
       </div>
       {% endfor %}
 
@@ -397,6 +594,18 @@ permalink: /group/
 
 </div>
 </div>
+
+<dialog class="grp-modal" id="grp-member-modal">
+  <section class="grp-modal-panel">
+    <button class="grp-modal-close" type="button" data-grp-modal-close>Close</button>
+    <div class="grp-modal-content">
+      <h2 class="grp-modal-name" id="grp-modal-name"></h2>
+      <div class="grp-modal-role" id="grp-modal-role"></div>
+      <div class="grp-modal-detail" id="grp-modal-detail"></div>
+      <div class="grp-modal-links" id="grp-modal-links"></div>
+    </div>
+  </section>
+</dialog>
 
 <script>
 document.addEventListener('DOMContentLoaded', function () {
@@ -429,6 +638,106 @@ document.addEventListener('DOMContentLoaded', function () {
     };
     img.onerror = function () { showKnot(init); };
     img.src = "{{ '/assets/images/team/' | relative_url }}" + slug + ".jpg";
+  });
+
+  var memberModal = document.getElementById('grp-member-modal');
+  var modalName = document.getElementById('grp-modal-name');
+  var modalRole = document.getElementById('grp-modal-role');
+  var modalDetail = document.getElementById('grp-modal-detail');
+  var modalLinks = document.getElementById('grp-modal-links');
+  var lastMemberCard = null;
+
+  function allowedProfileHref(href) {
+    return /^(mailto:|https?:\/\/|\/(?!\/))/i.test(href || '');
+  }
+
+  function addModalLink(label, href) {
+    if (!modalLinks || !href || !allowedProfileHref(href)) return;
+    var link = document.createElement('a');
+    link.className = 'grp-modal-link';
+    link.href = href;
+    link.textContent = label;
+    if (!/^mailto:/i.test(href)) {
+      link.target = '_blank';
+      link.rel = 'noopener noreferrer';
+    }
+    modalLinks.appendChild(link);
+  }
+
+  function profileUrl(prefix, value) {
+    if (!value) return '';
+    if (/^https?:\/\//i.test(value) || /^\/(?!\/)/.test(value)) return value;
+    return prefix + value;
+  }
+
+  function openMemberModal(card) {
+    if (!memberModal || !card) return;
+    lastMemberCard = card;
+
+    modalName.textContent = card.dataset.name || '';
+    modalRole.textContent = card.dataset.role || '';
+    modalDetail.textContent = card.dataset.detail || '';
+    modalDetail.style.display = card.dataset.detail ? '' : 'none';
+    modalLinks.innerHTML = '';
+
+    if (card.dataset.email) {
+      addModalLink('Email', /^mailto:/i.test(card.dataset.email) ? card.dataset.email : 'mailto:' + card.dataset.email);
+    }
+    addModalLink('Publications', card.dataset.publicationsUrl);
+    card.querySelectorAll('.grp-card-publications a').forEach(function (publication) {
+      addModalLink(publication.textContent.trim() || 'Publication', publication.getAttribute('href'));
+    });
+    addModalLink('Google Scholar', card.dataset.googleScholar);
+    addModalLink('ResearchGate', card.dataset.researchGate);
+    addModalLink('ORCID', profileUrl('https://orcid.org/', card.dataset.orcid));
+    addModalLink('GitHub', profileUrl('https://github.com/', card.dataset.github));
+    addModalLink('Website', card.dataset.url);
+
+    if (typeof memberModal.showModal === 'function') {
+      if (!memberModal.open) memberModal.showModal();
+    } else {
+      memberModal.setAttribute('open', '');
+    }
+    document.body.classList.add('grp-modal-lock');
+  }
+
+  function closeMemberModal() {
+    if (!memberModal) return;
+    if (typeof memberModal.close === 'function' && memberModal.open) memberModal.close();
+    else memberModal.removeAttribute('open');
+    document.body.classList.remove('grp-modal-lock');
+  }
+
+  document.querySelectorAll('[data-grp-member-card]').forEach(function (card) {
+    card.addEventListener('click', function (event) {
+      if (event.target.closest('a')) return;
+      openMemberModal(card);
+    });
+    card.addEventListener('keydown', function (event) {
+      if (event.target.closest('a')) return;
+      if (event.key === 'Enter' || event.key === ' ') {
+        event.preventDefault();
+        openMemberModal(card);
+      }
+    });
+  });
+
+  document.querySelectorAll('[data-grp-modal-close]').forEach(function (button) {
+    button.addEventListener('click', closeMemberModal);
+  });
+
+  if (memberModal) {
+    memberModal.addEventListener('click', function (event) {
+      if (event.target === memberModal) closeMemberModal();
+    });
+    memberModal.addEventListener('close', function () {
+      document.body.classList.remove('grp-modal-lock');
+      if (lastMemberCard) lastMemberCard.focus();
+    });
+  }
+
+  document.addEventListener('keydown', function (event) {
+    if (event.key === 'Escape' && memberModal && memberModal.open) closeMemberModal();
   });
 
 });

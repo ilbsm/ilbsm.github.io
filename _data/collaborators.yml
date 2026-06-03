@@ -1,5 +1,5 @@
 stats:
-  groups: "9"
+  groups: "10"
   continents: "5"
   years: "15+"
 
@@ -86,6 +86,17 @@ collaborators:
     inst: "Faculty of Chemistry, University of Warsaw"
     topic: "Coarse-grained protein modeling · CABS · multiscale simulations"
     cta: "biocomp.chem.uw.edu.pl ↗"
+
+  - name: "Dr. Paweł Rubach"
+    url: "https://pawelrubach.pl/"
+    logo: "uw.png"
+    fallback_text: "PR"
+    fallback_color: "#335fa8"
+    inst: "University of Warsaw · distributed computing and IT support"
+    topic: "Distributed computing · scientific infrastructure · computational support"
+    cta: "pawelrubach.pl ↗"
+    orcid: "0000-0001-5487-609X"
+    publications_url: "https://scholar.google.com/scholar?q=%22Pawel%20Rubach%22%20Sulkowska"
 
 inactive_collaborators:
   - name: "Prof. Faruck Morcos"
