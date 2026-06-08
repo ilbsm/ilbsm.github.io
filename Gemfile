@@ -1,14 +1,8 @@
 source "https://rubygems.org"
 
-# Pin to a Jekyll version compatible with GitHub Pages by default.
-# If you don't deploy to GitHub Pages, you can use plain Jekyll instead.
-gem "jekyll", "~> 4.3"
-
-# Optional but commonly needed:
-gem "kramdown-parser-gfm"
-
 group :jekyll_plugins do
-  # add plugins here if needed; none required for this site
+  # Match the dependency set used by GitHub Pages builds.
+  gem "github-pages", "~> 232"
 end
 
 # Windows / JRuby compatibility

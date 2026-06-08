@@ -82,8 +82,8 @@ Review the generated diff before committing because the script pulls live OpenAl
 - `baseurl` is empty for root-domain hosting.
 - `url` is the production origin.
 - The `news` collection outputs pages under `/news/:path/`.
-- `plugins` is empty to keep the GitHub Pages build path simple.
-- `Gemfile.lock` should be committed so future installs resolve the same dependency set.
+- The Gemfile uses the `github-pages` gem so the default GitHub Pages action resolves the same Jekyll version as production.
+- Do not commit a stale `Gemfile.lock` from a local Jekyll 4 install; GitHub Pages currently builds this site with Jekyll 3.10.0 through `github-pages`.
 
 ## Ownership And Attribution
 
@@ -102,5 +102,4 @@ The repo does not contain DNS ownership records, registrar access notes, or SSL 
 - Page CSS has been moved out of page templates, but `assets/css/sulkowska.css` is now a large monolithic stylesheet. A future pass should split it into Sass partials or clearer CSS modules.
 - Page behavior has been moved into `assets/js/sulkowska.js`, but that file now mixes shared behavior with page-specific initializers. A future pass should split it into smaller files.
 - The publications page prefers live OpenAlex data, then falls back to `_data/publications.json` if OpenAlex is temporarily unavailable. Refresh `_data/publications.json` periodically with the maintenance script.
-- `Gemfile.lock` exists locally and `.gitignore` now allows it to be tracked; include it in the next commit.
 - See `docs/cleanup-audit.md` for the current structural audit and proposed cleanup order.
