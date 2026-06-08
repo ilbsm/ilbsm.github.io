@@ -1017,20 +1017,22 @@
 
     function load() {
       var error;
+      var localWorks;
       if (loaded) return;
       loaded = true;
 
+      localWorks = Array.isArray(localPublications) ? localPublications : [];
       setDataStatus("Loading OpenAlex...");
+      if (localWorks.length) renderLoadedPubs(localWorks);
+
       fetchOpenAlexWorks().then(function (livePublications) {
         var liveWorks = Array.isArray(livePublications) ? livePublications : [];
         if (!liveWorks.length) throw new Error("OpenAlex returned no publications");
         setDataStatus("OpenAlex live data");
         renderLoadedPubs(mergeWorks(liveWorks, localPublications));
       }).catch(function (err) {
-        var localWorks = Array.isArray(localPublications) ? localPublications : [];
         if (localWorks.length) {
           setDataStatus("Local data fallback");
-          renderLoadedPubs(localWorks);
           return;
         }
 
