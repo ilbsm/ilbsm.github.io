@@ -37,7 +37,7 @@ Approximate source sizes:
    - A future pass should split shared behavior from page-specific behavior.
 
 3. Some data-driven styling is still inline.
-   - Examples: dynamic accent colors, fallback colors, animation index variables, and slideshow background image variables.
+   - Examples: dynamic accent colors, fallback colors, animation index values, and slideshow background image values.
    - This is not the same as giant inline CSS, but it still requires `style-src 'unsafe-inline'` in the CSP.
 
 4. Data path conventions are inconsistent.

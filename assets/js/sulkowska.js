@@ -203,6 +203,9 @@
       if (!target) return;
 
       if (target.classList.contains("rx-domain")) {
+        document.querySelectorAll(".rx-domain.open").forEach(function (domain) {
+          if (domain !== target) domain.classList.remove("open");
+        });
         target.classList.add("open");
       }
 
@@ -566,7 +569,7 @@
 
     function metricPill(label, value, className) {
       if (value == null || value === "" || Number(value) < 0) return "";
-      return '<span class="pub-metric ' + className + '" title="' + escapeAttr(label) + '"><span class="pub-metric-icon" aria-hidden="true"></span><span class="visually-hidden">' + escapeHtml(label) + '</span>' + (value === true ? "" : '<span class="pub-metric-value">' + escapeHtml(value) + '</span>') + '</span>';
+      return '<span class="pub-metric ' + className + '" title="' + escapeAttr(label) + '"><span class="pub-metric-icon"></span><span class="visually-hidden">' + escapeHtml(label) + '</span>' + (value === true ? "" : '<span class="pub-metric-value">' + escapeHtml(value) + '</span>') + '</span>';
     }
 
     function renderFigurePreview(figures) {
@@ -1582,7 +1585,11 @@
     function toggleDomain(button) {
       var section = byId(button.dataset.rxDomainToggle);
       if (!section) return;
-      section.classList.toggle("open", !section.classList.contains("open"));
+      var shouldOpen = !section.classList.contains("open");
+      page.querySelectorAll(".rx-domain.open").forEach(function (domain) {
+        if (domain !== section) domain.classList.remove("open");
+      });
+      section.classList.toggle("open", shouldOpen);
     }
 
     function togglePapers(button) {

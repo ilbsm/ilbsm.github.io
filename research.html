@@ -28,7 +28,7 @@ permalink: /research/
   {% assign figure_loading = "eager" %}
   {% endif %}
   {% assign domain_theme = domain.theme | default: domain.id | remove: "topic-" %}
-  <section class="rx-domain is-{{ domain_theme }}{% if domain.alt %} rx-domain-alt{% endif %} open" id="{{ domain.id }}">
+  <section class="rx-domain is-{{ domain_theme }}{% if domain.alt %} rx-domain-alt{% endif %}{% if forloop.first %} open{% endif %}" id="{{ domain.id }}">
     <h2 class="visually-hidden">{{ domain.title }}</h2>
     <button class="rx-domain-head" type="button" data-rx-domain-toggle="{{ domain.id }}">
       <span class="rx-domain-titleline">

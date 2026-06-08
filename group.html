@@ -39,7 +39,7 @@ permalink: /group/
              data-grp-member-card
              role="button"
              tabindex="0"
-             aria-label="Open profile for {{ m.name | escape }}"
+             title="Open profile for {{ m.name | escape }}"
              data-name="{{ m.name | escape }}"
              data-role="{{ m.role | escape }}"
              data-detail="{{ m.detail | default: '' | escape }}"
@@ -88,7 +88,7 @@ permalink: /group/
             {% endif %}
             {% if research_gate_url != "" %}
             <a class="grp-link grp-link-rg" href="{{ research_gate_url }}" target="_blank" rel="noopener noreferrer" title="ResearchGate">
-              <span aria-hidden="true">RG</span>
+              <span>RG</span>
               <span class="visually-hidden">ResearchGate profile for {{ m.name }}</span>
             </a>
             {% endif %}
@@ -167,7 +167,7 @@ permalink: /group/
            data-grp-member-card
            role="button"
            tabindex="0"
-           aria-label="Open profile for {{ m.name | escape }}"
+           title="Open profile for {{ m.name | escape }}"
            data-name="{{ m.name | escape }}"
            data-role="{{ m.role | default: 'Former member' | escape }}"
            data-detail="{{ m.detail | default: '' | escape }}"
@@ -228,4 +228,3 @@ permalink: /group/
     </div>
   </section>
 </dialog>
-

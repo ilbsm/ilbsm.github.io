@@ -177,12 +177,28 @@
 }
 
 .rx-domain-body {
-  border-top: 1px solid #e5e7ee;
-  display: none;
+  border-top: 0 solid #e5e7ee;
+  display: block;
+  max-height: 0;
+  opacity: 0;
+  overflow: hidden;
+  transform: translateY(10px);
+  transition:
+    max-height 0.46s cubic-bezier(0.16, 1, 0.3, 1),
+    opacity 0.26s ease,
+    transform 0.36s cubic-bezier(0.16, 1, 0.3, 1),
+    border-top-width 0.18s ease,
+    visibility 0s linear 0.46s;
+  visibility: hidden;
 }
 
 .rx-domain.open .rx-domain-body {
-  display: block;
+  border-top-width: 1px;
+  max-height: 3200px;
+  opacity: 1;
+  transform: translateY(0);
+  transition-delay: 0s;
+  visibility: visible;
 }
 
 .rx-figures {
@@ -898,4 +914,3 @@ body.rx-modal-lock {
     padding: 0.75rem;
   }
 }
-
