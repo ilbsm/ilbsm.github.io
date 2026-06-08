@@ -15,7 +15,7 @@
   text-transform: uppercase; color: #335fa8; margin-bottom: var(--space-2);
 }
 .grp-title {
-  font-size: clamp(1.75rem, 1.45rem + 0.8vw, 2rem); font-weight: 700; color: #073d55; line-height: 1.2; margin: 0;
+  font-size: unquote("clamp(1.75rem, 1.45rem + 0.8vw, 2rem)"); font-weight: 700; color: #073d55; line-height: 1.2; margin: 0;
 }
 .grp-subtitle {
   font-size: var(--text-xs); color: #9a9896; margin-top: var(--space-1);
@@ -373,4 +373,3 @@ body.grp-modal-lock { overflow: hidden; }
   .grp-card { animation: none; }
   .grp-links { opacity: 1; }
 }
-

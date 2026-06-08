@@ -11,7 +11,7 @@
   scroll-margin-top: 88px;
 }
 #page-home .hp-title {
-  font-size: clamp(1.75rem, 1.45rem + 0.8vw, 2rem); font-weight: 700; color: #073d55; line-height: 1.2; margin: 0;
+  font-size: unquote("clamp(1.75rem, 1.45rem + 0.8vw, 2rem)"); font-weight: 700; color: #073d55; line-height: 1.2; margin: 0;
 }
 #page-home .hp-row-head {
   display: flex; align-items: flex-start; justify-content: space-between;
@@ -375,7 +375,7 @@
 }
 #page-home .lp-hero-title {
   font-family: var(--font-serif);
-  font-size: clamp(1.3rem, 0.85rem + 1.5vw, 2.15rem);
+  font-size: unquote("clamp(1.3rem, 0.85rem + 1.5vw, 2.15rem)");
   font-weight: 700; color: #fff; line-height: 1.18;
   margin-bottom: 0; letter-spacing: 0;
 }
@@ -444,4 +444,3 @@
 #page-home .lp-explore-icon svg { display: block; }
 #page-home .lp-explore-card:hover .lp-explore-icon { color: #335fa8; }
 #page-home .lp-explore-title { font-size: 0.72rem; font-weight: 700; color: #1f2d4f; line-height: 1.3; }
-
