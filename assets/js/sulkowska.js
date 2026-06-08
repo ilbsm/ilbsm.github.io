@@ -1533,7 +1533,7 @@
     var pageUrl = frame.getAttribute("data-page-url") || "https://www.facebook.com/SulkowskaLab/";
 
     function frameHeight() {
-      return window.matchMedia("(max-width: 680px)").matches ? 590 : 780;
+      return window.matchMedia("(max-width: 680px)").matches ? 540 : 620;
     }
 
     function renderFacebookFrame() {

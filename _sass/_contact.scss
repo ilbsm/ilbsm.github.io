@@ -256,12 +256,14 @@
 
 .cp-bottom-grid {
   display: grid;
-  grid-template-columns: minmax(0, 1.35fr) minmax(320px, 1.1fr);
+  grid-template-columns: minmax(0, 1fr) minmax(360px, 500px);
   gap: 0.82rem;
-  align-items: start;
+  align-items: stretch;
 }
 
 .cp-panel {
+  display: flex;
+  flex-direction: column;
   min-width: 0;
   overflow: hidden;
   border: 1px solid #d7e0e8;
@@ -294,7 +296,8 @@
 }
 
 .cp-map-frame {
-  height: 300px;
+  flex: 1 1 auto;
+  min-height: 560px;
 }
 
 .cp-fb-head {
@@ -343,7 +346,7 @@
 
 .cp-fb-frame-wrap {
   position: relative;
-  height: 780px;
+  height: 620px;
   overflow: hidden;
   background: #f8fafc;
 }
@@ -359,6 +362,10 @@
 
   .cp-bottom-grid {
     grid-template-columns: 1fr;
+  }
+
+  .cp-map-frame {
+    min-height: 360px;
   }
 }
 
@@ -401,7 +408,7 @@
   }
 
   .cp-map-frame {
-    height: 280px;
+    min-height: 280px;
   }
 
   .cp-fb-head {
@@ -428,7 +435,6 @@
 
   .cp-fb-frame-wrap,
   .cp-fb-frame {
-    height: 590px;
+    height: 540px;
   }
 }
-
