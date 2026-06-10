@@ -203,9 +203,6 @@
       if (!target) return;
 
       if (target.classList.contains("rx-domain")) {
-        document.querySelectorAll(".rx-domain.open").forEach(function (domain) {
-          if (domain !== target) domain.classList.remove("open");
-        });
         target.classList.add("open");
       }
 
@@ -1585,11 +1582,7 @@
     function toggleDomain(button) {
       var section = byId(button.dataset.rxDomainToggle);
       if (!section) return;
-      var shouldOpen = !section.classList.contains("open");
-      page.querySelectorAll(".rx-domain.open").forEach(function (domain) {
-        if (domain !== section) domain.classList.remove("open");
-      });
-      section.classList.toggle("open", shouldOpen);
+      section.classList.toggle("open", !section.classList.contains("open"));
     }
 
     function togglePapers(button) {
